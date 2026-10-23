@@ -16,7 +16,8 @@ import math
 
 import numpy as np
 
-from kagome_qea.observables import binder_from_moments, connected_binder
+from kagome_qea.observables import binder_from_moments, connected_binder, overlap
+from qmc_numerics import series_error, systematic, weighted_interval
 
 
 class _Walker:
@@ -28,32 +29,6 @@ class _Walker:
         self.weight = 1.0
         self.tag = 0.0
         self.ancestor = 0
-
-
-def _weighted_interval(weight, local_energy, shift, dt):
-    """Integrate the Feynman–Kac weight over a hop-free interval."""
-    alpha = -(local_energy - shift)
-    exponent = alpha * dt
-    if exponent > 700.0:
-        raise RuntimeError("walker weight overflowed; reduce tau_block or the shift step")
-    factor = math.exp(exponent)
-    weight_end = weight * factor
-    if abs(alpha) < 1e-12:
-        time_integral = weight * dt
-    else:
-        time_integral = weight * (factor - 1.0) / alpha
-    return weight_end, local_energy * time_integral, time_integral
-
-
-def _systematic(weights, rng):
-    total = float(weights.sum())
-    if total <= 0.0 or not np.isfinite(weights).all() or np.any(weights < 0.0):
-        raise RuntimeError("walker weights left the positive reals")
-    n_walkers = weights.size
-    cdf = np.cumsum(weights) / total
-    positions = (rng.random() + np.arange(n_walkers)) / n_walkers
-    indexes = np.searchsorted(cdf, positions, side="left")
-    return np.clip(indexes, 0, n_walkers - 1), total
 
 
 def _initial_walkers(ham, n_walkers, n_replicas, rng):
@@ -82,7 +57,7 @@ def _advance(walker, ham, rate, shift, tau, rng):
             waiting = tau - elapsed
             hop = False
         local = walker.diagonal - rate
-        walker.weight, energy_piece, time_piece = _weighted_interval(
+        walker.weight, energy_piece, time_piece = weighted_interval(
             walker.weight, local, shift, waiting
         )
         energy_integral += energy_piece
@@ -98,7 +73,7 @@ def _advance(walker, ham, rate, shift, tau, rng):
 
 def _resample(walkers, rng):
     weights = np.fromiter((walker.weight for walker in walkers), dtype=np.float64)
-    indexes, total = _systematic(weights, rng)
+    indexes, log_total = systematic(weights, rng)
     children = []
     for index in indexes:
         parent = walkers[int(index)]
@@ -106,12 +81,12 @@ def _resample(walkers, rng):
         child.tag = parent.tag
         child.ancestor = parent.ancestor
         children.append(child)
-    return children, total
+    return children, log_total
 
 
 def _tag_overlap(walker):
     spins = walker.spins
-    return float(np.dot(spins[0], spins[1]) / spins.shape[1])
+    return overlap(spins[0], spins[1])
 
 
 def project(
@@ -130,9 +105,9 @@ def project(
     """Project ``n_replicas`` non-interacting copies.
 
     Energy blocks are one mixed estimate each. Overlap moments are one
-    forward-walking cycle each. Both standard errors use that block scatter
-    and are smaller than a fully independent-run error when blocks still
-    correlate.
+    forward-walking cycle each. Errors use the shared autocorrelation
+    estimator. ``q``, ``q2``, ``q3``, and ``q4`` each keep a series and a
+    resolved flag. A series shorter than 64 values is unresolved.
     """
     if gamma <= 0.0:
         raise ValueError("gamma must be positive")
@@ -157,14 +132,14 @@ def project(
             time_sum += time_piece
         if record and time_sum > 0.0:
             energies.append(energy_sum / time_sum / n_replicas)
-        children, total = _resample(walkers, rng)
+        children, log_total = _resample(walkers, rng)
+        log_growth = (log_total - math.log(n_walkers)) / tau_block
         if record:
             # Growth estimates the pair. Store one copy, as `energy` does.
-            pair_growth = shift - math.log(total / n_walkers) / tau_block
-            growth.append(pair_growth / n_replicas)
+            growth.append((shift - log_growth) / n_replicas)
         # Damped population control. The mixed estimator inside a block does
         # not use this shift; the next block's branching does.
-        shift = 0.5 * shift + 0.5 * (shift - math.log(total / n_walkers) / tau_block)
+        shift = 0.5 * shift + 0.5 * (shift - log_growth)
         walkers = children
 
     for _ in range(int(n_equilibrate)):
@@ -195,40 +170,44 @@ def project(
             q4_means.append(float(np.mean(tags ** 4)))
             unique_ancestors.append(int(np.unique(ancestors).size))
 
-    def _mean_error(values):
-        data = np.asarray(values, dtype=np.float64)
-        if data.size == 0:
-            return float("nan"), float("nan")
-        error = float(data.std(ddof=1) / np.sqrt(data.size)) if data.size > 1 else float("nan")
-        return float(data.mean()), error
-
-    energy, energy_error = _mean_error(energies)
-    growth_mean, growth_error = _mean_error(growth)
+    energy, energy_error, energy_resolved = series_error(energies)
+    growth_mean, growth_error, growth_resolved = series_error(growth)
     result = {
         "energy": energy,
         "energy_error": energy_error,
+        "energy_resolved": bool(energy_resolved),
         "energy_growth": growth_mean,
         "energy_growth_error": growth_error,
+        "energy_growth_resolved": bool(growth_resolved),
         "n_walkers": int(n_walkers),
         "n_replicas": int(n_replicas),
         "n_energy_blocks": len(energies),
         "shift": float(shift),
     }
     if q2_means:
-        q_mean, q_error = _mean_error(q_means)
-        q2, q2_error = _mean_error(q2_means)
-        q3, _q3_error = _mean_error(q3_means)
-        q4, q4_error = _mean_error(q4_means)
+        q_mean, q_error, q_resolved = series_error(q_means)
+        q2, q2_error, q2_resolved = series_error(q2_means)
+        q3, q3_error, q3_resolved = series_error(q3_means)
+        q4, q4_error, q4_resolved = series_error(q4_means)
         binder, ratio = binder_from_moments(q2, q4)
         connected, connected_ratio = connected_binder(q_mean, q2, q3, q4)
         result.update(
             q=q_mean,
             q_error=q_error,
+            q_resolved=q_resolved,
+            q_series=np.asarray(q_means, dtype=np.float64),
             q2=q2,
             q2_error=q2_error,
+            q2_resolved=q2_resolved,
+            q2_series=np.asarray(q2_means, dtype=np.float64),
             q3=q3,
+            q3_error=q3_error,
+            q3_resolved=q3_resolved,
+            q3_series=np.asarray(q3_means, dtype=np.float64),
             q4=q4,
             q4_error=q4_error,
+            q4_resolved=q4_resolved,
+            q4_series=np.asarray(q4_means, dtype=np.float64),
             binder=binder,
             ratio=ratio,
             connected_binder=connected,

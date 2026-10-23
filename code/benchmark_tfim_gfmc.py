@@ -5,10 +5,10 @@ From the repository root:
 
     python code/benchmark_tfim_gfmc.py
 
-The reference is exact diagonalization. A row passes when the block standard
-error is at most 0.03 and both energy estimators lie within
-max(0.03, 3 standard errors) of that reference. Each run is written under
-``data/tfim/gfmc/{lattice}/{boundary}/{size}/J…/gamma…/h…/seed….npz``.
+The reference is exact diagonalization. A row passes when the
+autocorrelation-aware error is marked resolved, is at most 0.03, and both energy
+estimators lie within max(0.03, 3 errors) of that reference. Each run is written under
+``data/tfim/gfmc/{lattice}/{boundary}/{size}/J…/gamma…/h…/seed…_{id}.npz``.
 """
 
 import math
@@ -25,7 +25,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 ATOL = 0.03
-SETTINGS = dict(n_walkers=2500, tau_block=0.2, n_equilibrate=40, n_measure=50)
+SETTINGS = dict(n_walkers=2500, tau_block=0.2, n_equilibrate=40, n_measure=160)
 
 
 def main():
@@ -86,9 +86,15 @@ def _compare(
     if h is not None:
         hamiltonian = hamiltonian.with_field(h)
     if exact is None:
-        exact = ground_state(hamiltonian, gamma)["energy"]
+        exact = ground_state(hamiltonian, gamma, moments=False)["energy"]
     result = GFMC(hamiltonian, gamma, h=h).run(seed=seed, configurations=configurations, **SETTINGS)
     boundary = "pbc" if periodic else "obc"
+    if not (result["energy_resolved"] and result["energy_growth_resolved"]):
+        report.fail(
+            f"{name} blocking",
+            "error is unresolved "
+            f"(mixed {result['energy_resolved']}, growth {result['energy_growth_resolved']})",
+        )
     path = save_run(
         ROOT / "data",
         {
@@ -105,6 +111,7 @@ def _compare(
             **SETTINGS,
             **result,
         },
+        overwrite=True,
     )
     for label, got, stderr in (
         ("mixed", result["energy"], result["energy_error"]),

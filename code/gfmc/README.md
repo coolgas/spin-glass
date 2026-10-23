@@ -24,7 +24,7 @@ Any object with these attributes. `spins` has length `n_sites` and entries `±1`
 
 - `log_amplitude(spins)`: float. $\log \psi(s)$.
 - `log_ratio(spins, site)`: float. $\log \psi(s \oplus \mathrm{site}) - \log \psi(s)$. The default calls `log_amplitude` twice.
-- `ConstantGuide`: $\psi = 1$. Every `log_ratio` is 0. This is the default guide.
+- `ConstantGuide`: $\psi = 1$. Every `log_ratio` is 0. This is the default guide. The projector draws the flipped site uniformly and does not call `log_ratio`. A subclass does.
 
 A ratio that is not a positive real raises `ValueError`.
 
@@ -49,22 +49,26 @@ A ratio that is not a positive real raises `ValueError`.
 Returned dict:
 
 - `energy`: float. Mixed estimator, the weight-and-time average of the local energy.
-- `energy_error`: float. Standard error of those block means.
+- `energy_error`: float. Autocorrelation-aware error of the mixed-energy blocks. The larger of the initial positive sequence and the lag-1 AR(1) time, widened for extra smoothness and low-frequency power, and by a Student-$t$ factor when the series passes the length checks.
 - `energy_growth`: float. Growth estimator $E_T - \log(W / n_{\mathrm{walkers}}) / \tau_{\mathrm{block}}$.
-- `energy_growth_error`: float. Standard error of those block means.
+- `energy_growth_error`: float. The same error for the growth-energy blocks.
+- `energy_series`: array. One mixed energy per measured block.
+- `energy_growth_series`: array. One growth energy per measured block.
+- `energy_resolved`: bool. False when the mixed series has fewer than 64 values, its positive sequence is truncated, or it has fewer than 8 estimated independent samples. This is a length check, not a coverage certificate.
+- `energy_growth_resolved`: bool. The same flag for the growth series.
 - `shift`: float. Final $E_T$.
 - `n_walkers`: int. Population size.
 - `h`: float. Longitudinal field used in the run.
 
 ## Runs on disk
 
-`save_run(root, record)` writes one file and returns its path.
+`save_run(root, record, overwrite=False)` writes one file and returns its path. It raises `FileExistsError` when that file is already present.
 
 ```text
-{root}/tfim/gfmc/{lattice}/{boundary}/{size}/J{J}/gamma{gamma}/h{h}/seed{seed}.npz
+{root}/tfim/gfmc/{lattice}/{boundary}/{size}/J{J}/gamma{gamma}/h{h}/seed{seed}_{id}.npz
 ```
 
-In a directory name, a decimal point is `p` and a leading minus sign is `m`.
+In a directory name, a decimal point is `p` and a leading minus sign is `m`. `id` is 12 hex characters. It hashes the exact settings: `lattice`, `boundary`, `size`, `n_sites`, `J`, `gamma`, `h`, `seed`, `n_walkers`, `tau_block`, `n_equilibrate`, `n_measure`, `guide`.
 
 `record` fields:
 
@@ -87,4 +91,6 @@ In a directory name, a decimal point is `p` and a leading minus sign is `m`.
 - `exact_energy`: float.
 - `guide`: str. Name of the guiding function, `constant` for $\psi = 1$.
 
-`load_run(path)` returns that record as a dict. `iter_runs(root)` returns every saved record under `{root}/tfim/gfmc`, in path order.
+Optional fields, saved when present: `energy_series`, `energy_growth_series`, `energy_resolved`, `energy_growth_resolved`.
+
+`load_run(path)` returns that record. Scalars come back as Python values and series come back as arrays. `iter_runs(root)` returns every saved record under `{root}/tfim/gfmc`, in path order. Older `seed{seed}.npz` files are still loaded.

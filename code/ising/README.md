@@ -21,7 +21,7 @@ from ising import Hamiltonian, chain, square
 - `J`: float array of length `n_bonds`. One coupling per bond.
 - `h`: float. Longitudinal field. Default `0`.
 
-Stored attributes: `n_sites`, `bonds`, `J`, `h`, and `neighbors`. `neighbors[i]` is a list of `(neighbor, J)`.
+Stored attributes: `n_sites`, `bonds`, `J`, `h`, and `neighbors`. `neighbors[i]` is a list of `(neighbor, J)`. `bonds` and `J` are copies of the arguments, and both arrays are read-only.
 
 - `diagonal_energy(spins)`: float. `spins` has length `n_sites` and entries `±1`. Sums the stored bonds and the field.
 - `flip_delta(spins, site)`: float. Uses only the neighbor list of `site`.

@@ -120,32 +120,81 @@ def _pack_moments(moments):
     return packed
 
 
-def ground_state(ham, gamma, subspace_tol=1e-6):
-    """Lowest eigenpair and the two-replica overlap moments.
+def _select_ground_states(eigenvalues, residual, dimension, mix_window):
+    """Choose eigenvectors for the moments.
 
-    A cluster of eigenvalues within ``subspace_tol`` is mixed with equal
-    weight. A unique ground state is the usual one-vector projector.
+    ``eigenvalues`` is ascending. The residual cluster is every leading
+    eigenvalue within ``10 * residual`` of the lowest. That cluster is a
+    resolved degeneracy when a later eigenvalue lies outside it, or when the
+    computed list is the full spectrum. An open cluster on a truncated
+    spectrum is not mixed. ``mix_window`` instead mixes ``E <= E_0 + mix_window``
+    and is a requested ensemble, not a claim that those states are degenerate.
+    An open window is not mixed either. The returned count is how many leading
+    eigenvectors the moments use.
     """
+    eigenvalues = np.asarray(eigenvalues, dtype=np.float64)
+    noise = max(10.0 * float(residual), 0.0)
+    cluster = int(np.count_nonzero(eigenvalues <= eigenvalues[0] + noise))
+    full_spectrum = eigenvalues.size == int(dimension)
+    degeneracy_resolved = bool(full_spectrum or cluster < eigenvalues.size)
+    if mix_window is None:
+        keep = cluster if degeneracy_resolved else 1
+        return keep, cluster, degeneracy_resolved, keep > 1, False
+    window = float(mix_window)
+    if not np.isfinite(window) or window < 0.0:
+        raise ValueError("mix_window must be finite and nonnegative")
+    keep = int(np.count_nonzero(eigenvalues <= eigenvalues[0] + window))
+    window_open = keep == eigenvalues.size and not full_spectrum
+    if window_open:
+        keep = 1
+    return keep, cluster, degeneracy_resolved, keep > 1, True
+
+
+def ground_state(ham, gamma, mix_window=None, moments=True):
+    """Lowest eigenvalue, and overlap moments when ``moments`` is true.
+
+    ``moments=False`` skips the two-replica contraction and returns the
+    energy, gap, degeneracy, and residual. Moments stop at 12 sites and are
+    refused before the diagonalization. The matrix itself stops at 16 sites.
+
+    The default moments use the lowest eigenvector. Eigenvalues within
+    ``10 * residual`` of it are a resolved degeneracy when the next computed
+    eigenvalue lies outside that noise, or when the spectrum is complete, and
+    those states are mixed with equal weight. ``degeneracy_resolved`` is false
+    when the next eigenvalue is still inside the noise and the spectrum was
+    truncated; the moments then stay on the lowest eigenvector.
+    ``mix_window`` mixes ``E <= E_0 + mix_window`` and sets ``ensemble``.
+    That window is not a degeneracy. The reported energy is always the lowest
+    eigenvalue. ``mixed`` means the moments used more than one eigenvector.
+    """
+    if moments and ham.n_sites > MAX_MOMENT_SITES:
+        raise ValueError(f"overlap moments stop at {MAX_MOMENT_SITES} sites")
     matrix = operator_matrix(ham, gamma)
     dimension = matrix.shape[0]
     if dimension <= 64:
         eigenvalues, eigenvectors = np.linalg.eigh(matrix.toarray())
     else:
         eigenvalues, eigenvectors = _lowest(matrix, min(6, dimension - 2))
-    gap = float(eigenvalues[1] - eigenvalues[0])
-    keep = eigenvalues <= eigenvalues[0] + subspace_tol
-    subspace = eigenvectors[:, keep]
-    probability = np.sum(subspace * subspace, axis=1) / float(keep.sum())
-    residual = matrix @ subspace[:, 0] - eigenvalues[0] * subspace[:, 0]
-    moments = _pack_moments(moments_from_probability(probability, ham.n_sites))
-    moments.update(
-        energy=float(eigenvalues[0]),
-        energy_per_spin=float(eigenvalues[0] / ham.n_sites),
-        gap=gap,
-        degeneracy=int(keep.sum()),
-        residual=float(np.linalg.norm(residual)),
+    lowest = eigenvectors[:, 0]
+    residual = float(np.linalg.norm(matrix @ lowest - eigenvalues[0] * lowest))
+    keep, degeneracy, degeneracy_resolved, mixed, ensemble = _select_ground_states(
+        eigenvalues, residual, dimension, mix_window
     )
-    return moments
+    result = {
+        "energy": float(eigenvalues[0]),
+        "energy_per_spin": float(eigenvalues[0] / ham.n_sites),
+        "gap": float(eigenvalues[1] - eigenvalues[0]),
+        "degeneracy": degeneracy,
+        "degeneracy_resolved": degeneracy_resolved,
+        "mixed": mixed,
+        "ensemble": ensemble,
+        "residual": residual,
+    }
+    if moments:
+        subspace = eigenvectors[:, :keep]
+        probability = np.sum(subspace * subspace, axis=1) / float(keep)
+        result.update(_pack_moments(moments_from_probability(probability, ham.n_sites)))
+    return result
 
 
 def _tail_bound(eigenvalues, dimension, beta):
@@ -159,13 +208,16 @@ def _tail_bound(eigenvalues, dimension, beta):
     return tail / (kept + tail)
 
 
-def thermal_observables(ham, gamma, beta, tail_tolerance=1e-4):
+def thermal_observables(ham, gamma, beta, tail_tolerance=1e-4, moments=True):
     """Thermal moments of one copy, traced in the computational basis.
 
     ``tail_bound`` is a pessimistic mass of the discarded eigenvalues, valid
     when the computed eigenvalues are the lowest ones. A small system is
-    diagonalized in full.
+    diagonalized in full. ``moments=False`` returns the energy without the
+    overlap contraction, which stops at 12 sites and is refused first.
     """
+    if moments and ham.n_sites > MAX_MOMENT_SITES:
+        raise ValueError(f"overlap moments stop at {MAX_MOMENT_SITES} sites")
     if beta <= 0.0:
         raise ValueError("beta must be positive")
     matrix = operator_matrix(ham, gamma)
@@ -186,15 +238,18 @@ def thermal_observables(ham, gamma, beta, tail_tolerance=1e-4):
             eigenvalues, eigenvectors = np.linalg.eigh(matrix.toarray())
             tail = 0.0
     weights = np.exp(-float(beta) * (eigenvalues - eigenvalues[0]))
-    probability = np.sum(eigenvectors ** 2 * weights, axis=1)
-    moments = _pack_moments(moments_from_probability(probability, ham.n_sites))
     partition = float(weights.sum())
     energy = float(np.dot(weights, eigenvalues) / partition)
-    moments.update(
+    if moments:
+        probability = np.sum(eigenvectors ** 2 * weights, axis=1)
+        result = _pack_moments(moments_from_probability(probability, ham.n_sites))
+    else:
+        result = {}
+    result.update(
         energy=energy,
         energy_per_spin=energy / ham.n_sites,
         beta=float(beta),
         n_states=int(eigenvalues.size),
         tail_bound=float(tail),
     )
-    return moments
+    return result

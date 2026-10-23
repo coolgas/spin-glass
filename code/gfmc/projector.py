@@ -21,6 +21,7 @@ import math
 import numpy as np
 
 from gfmc.guide import ConstantGuide
+from qmc_numerics import series_error, systematic, weighted_interval
 
 
 class _Walker:
@@ -32,32 +33,6 @@ class _Walker:
         self.weight = 1.0
         self.ratios = ratios
         self.rate = float(rate)
-
-
-def _weighted_interval(weight, local_energy, shift, dt):
-    """Integrate the Feynman–Kac weight over a hop-free interval."""
-    alpha = -(local_energy - shift)
-    exponent = alpha * dt
-    if exponent > 700.0:
-        raise RuntimeError("walker weight overflowed; reduce tau_block or the shift step")
-    factor = math.exp(exponent)
-    weight_end = weight * factor
-    if abs(alpha) < 1e-12:
-        time_integral = weight * dt
-    else:
-        time_integral = weight * (factor - 1.0) / alpha
-    return weight_end, local_energy * time_integral, time_integral
-
-
-def _systematic(weights, rng):
-    total = float(weights.sum())
-    if total <= 0.0 or not np.isfinite(weights).all() or np.any(weights < 0.0):
-        raise RuntimeError("walker weights left the positive reals")
-    n_walkers = weights.size
-    cdf = np.cumsum(weights) / total
-    positions = (rng.random() + np.arange(n_walkers)) / n_walkers
-    indexes = np.searchsorted(cdf, positions, side="left")
-    return np.clip(indexes, 0, n_walkers - 1), total
 
 
 class GFMC:
@@ -82,6 +57,8 @@ class GFMC:
         self.gamma = float(gamma)
         self.h = float(getattr(hamiltonian, "h", 0.0))
         self.guide = ConstantGuide() if guide is None else guide
+        # A subclass that overrides log_ratio must stay on the generic path.
+        self._constant_guide = type(self.guide) is ConstantGuide
 
     def run(
         self,
@@ -117,11 +94,12 @@ class GFMC:
                 energy_piece, time_piece = self._advance(walker, shift, tau_block, rng)
                 energy_sum += energy_piece
                 time_sum += time_piece
-            children, total = self._resample(walkers, rng)
+            children, log_total = self._resample(walkers, rng)
+            log_growth = (log_total - math.log(n_walkers)) / tau_block
             if record and time_sum > 0.0:
                 mixed.append(energy_sum / time_sum)
-                growth.append(shift - math.log(total / n_walkers) / tau_block)
-            shift = 0.5 * shift + 0.5 * (shift - math.log(total / n_walkers) / tau_block)
+                growth.append(shift - log_growth)
+            shift = 0.5 * shift + 0.5 * (shift - log_growth)
             walkers = children
 
         for _ in range(int(n_equilibrate)):
@@ -129,13 +107,17 @@ class GFMC:
         for _ in range(int(n_measure)):
             one_block(True)
 
-        energy, energy_error = _mean_error(mixed)
-        growth_mean, growth_error = _mean_error(growth)
+        energy, energy_error, energy_resolved = series_error(mixed)
+        growth_mean, growth_error, growth_resolved = series_error(growth)
         return {
             "energy": energy,
             "energy_error": energy_error,
             "energy_growth": growth_mean,
             "energy_growth_error": growth_error,
+            "energy_series": np.asarray(mixed, dtype=np.float64),
+            "energy_growth_series": np.asarray(growth, dtype=np.float64),
+            "energy_resolved": bool(energy_resolved),
+            "energy_growth_resolved": bool(growth_resolved),
             "shift": float(shift),
             "n_walkers": int(n_walkers),
             "h": self.h,
@@ -147,10 +129,13 @@ class GFMC:
         walkers = []
         for replica in range(n_walkers):
             state = np.ascontiguousarray(spins[replica])
-            ratios = self._ratios(state)
-            walkers.append(
-                _Walker(state, ham.diagonal_energy(state), ratios, self.gamma * float(ratios.sum()))
-            )
+            if self._constant_guide:
+                ratios = np.ones(ham.n_sites, dtype=np.float64)
+                rate = self.gamma * ham.n_sites
+            else:
+                ratios = self._ratios(state)
+                rate = self.gamma * float(ratios.sum())
+            walkers.append(_Walker(state, ham.diagonal_energy(state), ratios, rate))
         return walkers
 
     def _ratios(self, spins):
@@ -177,23 +162,27 @@ class GFMC:
                 waiting = tau - elapsed
                 hop = False
             local = walker.diagonal - rate
-            walker.weight, energy_piece, time_piece = _weighted_interval(
+            walker.weight, energy_piece, time_piece = weighted_interval(
                 walker.weight, local, shift, waiting
             )
             energy_integral += energy_piece
             time_integral += time_piece
             elapsed += waiting
             if hop:
-                chosen = _choose_site(walker.ratios, rng)
+                if self._constant_guide:
+                    chosen = int(rng.integers(spins.size))
+                else:
+                    chosen = _choose_site(walker.ratios, rng)
                 walker.diagonal += self.hamiltonian.flip_delta(spins, chosen)
                 spins[chosen] = -spins[chosen]
-                walker.ratios = self._ratios(spins)
-                walker.rate = self.gamma * float(walker.ratios.sum())
+                if not self._constant_guide:
+                    walker.ratios = self._ratios(spins)
+                    walker.rate = self.gamma * float(walker.ratios.sum())
         return energy_integral, time_integral
 
     def _resample(self, walkers, rng):
         weights = np.fromiter((walker.weight for walker in walkers), dtype=np.float64)
-        indexes, total = _systematic(weights, rng)
+        indexes, log_total = systematic(weights, rng)
         children = []
         for index in indexes:
             parent = walkers[int(index)]
@@ -204,7 +193,7 @@ class GFMC:
                 parent.rate,
             )
             children.append(child)
-        return children, total
+        return children, log_total
 
 
 def _choose_site(ratios, rng):
@@ -231,11 +220,3 @@ def _configurations(n_sites, n_walkers, configurations, rng):
     if not np.all((config == 1) | (config == -1)):
         raise ValueError("configurations must be ±1")
     return np.array(config, dtype=np.int8, copy=True)
-
-
-def _mean_error(values):
-    data = np.asarray(values, dtype=np.float64)
-    if data.size < 2:
-        return float(data.mean()) if data.size else float("nan"), float("nan")
-    error = float(data.std(ddof=1) / math.sqrt(data.size))
-    return float(data.mean()), error

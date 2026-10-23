@@ -2,6 +2,7 @@
 
 Round 1 is the Gaussian nearest-neighbor ensemble at zero longitudinal field.
 The flat-guide GFMC notes are in `notebook/tfim_gfmc.ipynb`.
+`notebook/kagome_6x6_gfmc.ipynb` runs one periodic $L = 6$ Gaussian sample with that projector.
 This package is the Kagome solver side.
 
 The operator is the longitudinal-transverse Ising model
@@ -22,8 +23,8 @@ Round 1 draws `J ~ N(0,1)` on the nearest-neighbor bonds and keeps `h = 0`.
 | `hamiltonian.py` | Re-exports `ising.Hamiltonian`. |
 | `sample.py` | Disorder records in `data/kagome/{ensemble}/{obc\|pbc}/L{L}_nr{N}.npz`. |
 | `observables.py` | Overlap moments, Binder ratio, jackknife, bootstrap index, crossings. |
-| `exact.py` | Sparse diagonalization (`N ≤ 16`) and overlap moments (`N ≤ 12`). |
-| `pqmc.py` | Continuous-time projector QMC. Flat guide, forward-walked overlap. |
+| `exact.py` | Sparse diagonalization (`N ≤ 16`). Moments (`N ≤ 12`) are optional. A gap outside the residual keeps the lowest state. `mix_window` mixes a requested window. |
+| `pqmc.py` | Continuous-time projector QMC. Flat guide, forward-walked overlap, autocorrelation-aware errors. |
 | `pimc.py` | Continuous-time path-integral Monte Carlo and a `Γ` ladder. |
 | `scan.py` | Loop order over samples, `Γ`, and `h`. |
 | `checks.py` | Validation against exact results. |

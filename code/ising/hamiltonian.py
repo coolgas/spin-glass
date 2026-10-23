@@ -13,14 +13,28 @@ class Hamiltonian:
         if isinstance(n_sites, bool) or int(n_sites) < 1:
             raise ValueError("n_sites must be a positive integer")
         self.n_sites = int(n_sites)
-        self.bonds = np.asarray(bonds, dtype=np.int64).reshape(-1, 2)
-        self.J = np.asarray(J, dtype=np.float64).reshape(-1)
+        # Own the couplings. A later write to the caller's arrays must not
+        # change the diagonal while the neighbor list keeps the old values.
+        self.bonds = np.array(
+            np.asarray(bonds, dtype=np.int64).reshape(-1, 2),
+            dtype=np.int64,
+            copy=True,
+            order="C",
+        )
+        self.J = np.array(
+            np.asarray(J, dtype=np.float64).reshape(-1),
+            dtype=np.float64,
+            copy=True,
+            order="C",
+        )
         if self.bonds.shape[0] != self.J.shape[0]:
             raise ValueError("J must have one value per bond")
         if self.bonds.size and (
             int(self.bonds.min()) < 0 or int(self.bonds.max()) >= self.n_sites
         ):
             raise ValueError("bond index out of range")
+        self.bonds.setflags(write=False)
+        self.J.setflags(write=False)
         self.h = float(h)
         self.neighbors = [[] for _ in range(self.n_sites)]
         for (left, right), coupling in zip(self.bonds, self.J):

@@ -102,7 +102,7 @@ def _check_cache_identity(report):
     block, forward = projector_times(1.0)
     series = np.linspace(0.01, 0.02, N_POPULATIONS)
     scatter = float(series.std(ddof=1) / np.sqrt(series.size))
-    times = np.full(N_POPULATIONS * N_FORWARD_CYCLES, 1.5)
+    times = np.full((N_POPULATIONS, N_FORWARD_CYCLES), 1.5)
     sample = make_sample(6, True, 0)
     expected = {"L": 6, "sample_id": 0, "sigma": 1.0, "gamma": 0.05}
     payload = dict(
@@ -122,6 +122,10 @@ def _check_cache_identity(report):
         h=np.float64(0.0),
         min_unique_ancestors=np.int64(125),
         min_effective_ancestors=np.float64(10.0),
+        energy=np.float64(-10.0),
+        energy_error=np.float64(0.1),
+        energy_growth=np.float64(-10.0),
+        energy_growth_error=np.float64(0.1),
         n_populations=np.int64(N_POPULATIONS),
         n_walkers=np.int64(5000),
         n_equilibrate=np.int64(40),
@@ -170,19 +174,91 @@ def _check_cache_identity(report):
                 "errors.npz",
                 {"q2_error": np.float64(999.0), "chi_sg_error": np.float64(-1.0)},
             ),
+            "sites": archive(
+                directory,
+                "sites.npz",
+                {
+                    "n_sites": np.int64(1),
+                    "chi_sg": np.float64(series.mean()),
+                    "chi_sg_error": np.float64(scatter),
+                },
+            ),
+            "negative_time": archive(
+                directory,
+                "negative_time.npz",
+                {
+                    "forward_times": np.full(times.shape, -1.0),
+                    "tau_forward": np.float64(-1.0),
+                },
+            ),
+            "overtime": archive(
+                directory,
+                "overtime.npz",
+                {
+                    "forward_times": np.full(times.shape, 5.0),
+                    "tau_forward": np.float64(5.0),
+                    "projection_complete": np.int64(1),
+                    "n_forward_truncated": np.int64(0),
+                },
+            ),
+            "q4": archive(directory, "q4.npz", {"q4": np.float64(-1.0)}),
+            "moment": archive(
+                directory,
+                "moment.npz",
+                {
+                    "q2_series": np.full(N_POPULATIONS, 2.0),
+                    "q2": np.float64(2.0),
+                    "q4": np.float64(4.0),
+                    "q2_error": np.float64(0.0),
+                    "chi_sg": np.float64(216.0),
+                    "chi_sg_error": np.float64(0.0),
+                },
+            ),
+            "energy": archive(directory, "energy.npz", {"energy": np.float64(np.nan)}),
         }
         missing = {}
-        for key in ("gamma", "sample_id", "L", "seed_entropy"):
+        for key in ("gamma", "sample_id", "L", "seed_entropy", "energy"):
             written = dict(payload)
             del written[key]
             path = Path(directory) / f"missing_{key}.npz"
             np.savez_compressed(path, **written)
             missing[key] = result_ready(path, expected=expected)
-    rejected_ok = kept and not any(rejected.values()) and not any(missing.values())
+        complete = archive(
+            directory,
+            "complete.npz",
+            {
+                "forward_times": np.full(times.shape, forward),
+                "tau_forward": np.float64(forward),
+                "projection_complete": np.int64(1),
+                "n_forward_truncated": np.int64(0),
+            },
+        )
+        from unittest.mock import patch
+
+        with patch("kagome_qea.trial_overlap.git_revision", return_value="unknown"):
+            unknown_checkout = archive(
+                directory,
+                "unknown_checkout.npz",
+                {"git_revision": np.array("unknown")},
+            )
+    rejected_ok = (
+        kept
+        and complete
+        and not unknown_checkout
+        and not any(rejected.values())
+        and not any(missing.values())
+    )
     if rejected_ok:
-        report.ok("cache identity", "identity, revision, flags, and error scaling are checked")
+        report.ok(
+            "cache identity",
+            "identity, moments, times, site count, and energy are checked",
+        )
     else:
-        report.fail("cache identity", f"kept {kept} rejected {rejected} missing {missing}")
+        report.fail(
+            "cache identity",
+            f"kept {kept} complete {complete} unknown {unknown_checkout} "
+            f"rejected {rejected} missing {missing}",
+        )
 
 
 def _check_operator(report):

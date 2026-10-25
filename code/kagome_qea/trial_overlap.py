@@ -189,9 +189,12 @@ def result_ready(path, expected=None):
 
     ``expected`` is the queue request. Without it, the identity is read from
     a canonical ``pqmc_k*`` path. The stored revision must be the checked-out
-    commit and the solver-file hash must match the files on disk. Completion
-    flags are recomputed from the achieved times. A shortened walk may be
-    kept, and it is not marked time-converged.
+    commit. A checkout that cannot name that commit is rejected. The solver-file
+    hash must match the files on disk, and the site count must match the
+    lattice. Overlap moments stay in ``[0, 1]``. Achieved times are nonnegative
+    and do not exceed the requested time. Completion flags are recomputed from
+    the achieved times. A shortened walk may be kept, and it is not marked
+    time-converged.
     """
     if not path.is_file() or path.stat().st_size < 64:
         return False
@@ -228,6 +231,10 @@ def result_ready(path, expected=None):
                 "h",
                 "git_revision",
                 "code_fingerprint",
+                "energy",
+                "energy_error",
+                "energy_growth",
+                "energy_growth_error",
             }
             if not required <= set(data.files):
                 return False
@@ -241,7 +248,8 @@ def result_ready(path, expected=None):
                 return False
             if int(data["n_forward_cycles"]) != N_FORWARD_CYCLES:
                 return False
-            if _stored_text(data["git_revision"]) != git_revision():
+            revision = git_revision()
+            if revision == "unknown" or _stored_text(data["git_revision"]) != revision:
                 return False
             if _stored_text(data["code_fingerprint"]) != code_fingerprint():
                 return False
@@ -272,6 +280,8 @@ def result_ready(path, expected=None):
                 atol=1e-12,
             ):
                 return False
+            if int(data["n_sites"]) != int(sample.n_sites):
+                return False
             series = np.asarray(data["q2_series"], dtype=np.float64)
             times = np.asarray(data["forward_times"], dtype=np.float64)
             statistics = [
@@ -281,6 +291,10 @@ def result_ready(path, expected=None):
                 data["chi_sg"],
                 data["chi_sg_error"],
                 data["min_effective_ancestors"],
+                data["energy"],
+                data["energy_error"],
+                data["energy_growth"],
+                data["energy_growth_error"],
             ]
             if series.shape != (N_POPULATIONS,) or not np.isfinite(series).all():
                 return False
@@ -289,6 +303,13 @@ def result_ready(path, expected=None):
             if not all(np.isfinite(np.asarray(value, dtype=np.float64)).all() for value in statistics):
                 return False
             if float(data["q2_error"]) < 0.0 or float(data["chi_sg_error"]) < 0.0:
+                return False
+            q2 = float(data["q2"])
+            q4 = float(data["q4"])
+            moment_limit = 1.0 + 1e-8
+            if q2 < 0.0 or q4 < 0.0 or q2 > moment_limit or q4 > moment_limit:
+                return False
+            if np.any(series < 0.0) or np.any(series > moment_limit):
                 return False
             scatter = float(series.std(ddof=1) / np.sqrt(series.size))
             if not _close(series.mean(), data["q2"]) or not _close(data["q2_error"], scatter):
@@ -300,6 +321,10 @@ def result_ready(path, expected=None):
             if not _close(times.min(), data["tau_forward"]):
                 return False
             requested = float(data["tau_forward_requested"])
+            if requested <= 0.0 or float(data["tau_forward"]) < 0.0 or np.any(times < 0.0):
+                return False
+            if np.any(times > requested + 1e-8):
+                return False
             truncated = int(np.count_nonzero(times + 1e-8 < requested))
             complete = int(times.size > 0 and truncated == 0)
             if int(data["n_forward_truncated"]) != truncated or int(data["projection_complete"]) != complete:

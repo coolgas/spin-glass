@@ -4,7 +4,7 @@ Round 1 is the Gaussian nearest-neighbor ensemble at zero longitudinal field.
 The flat-guide GFMC notes are in `notebook/tfim_gfmc.ipynb`.
 `notebook/kagome_6x6_gfmc.ipynb` runs one periodic Gaussian sample. `L` is the number of cells on a side and is set to 8.
 `notebook/kagome_qea_scan.ipynb` averages the forward-walked overlap of 32 periodic coupling draws. It starts at $L = 4$.
-`notebook/kagome_qea_variance_plan.ipynb` is the plan for repeating that curve at Gaussian widths $\sigma = 0.5, 1, 2$.
+`notebook/kagome_qea_variance_plan.ipynb` is the plan for the $L = 8$ figure due before Friday 30 October 2026: $\sigma = 0.05, 0.1, 0.2, 0.5, 1, 2$, 32 draws. A one-sample $L = 6$ trial runs first. $\sigma$ is the standard deviation of $J_b = \sigma z_b$. Projection time scales as $1/\sigma$. `notebook/kagome_qea_l6_trial.ipynb` plots that trial against $\Gamma$ and against $\Gamma/\sigma$.
 This package is the Kagome solver side.
 
 The operator is the longitudinal-transverse Ising model

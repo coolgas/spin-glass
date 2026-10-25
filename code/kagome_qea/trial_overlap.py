@@ -47,7 +47,11 @@ N_FORWARD_CYCLES = 8
 # of independent populations. Thirty-two is the count used for the L=6 rerun.
 N_POPULATIONS = 32
 TAU_BLOCK_AT_SIGMA_1 = 0.2
-TAU_FORWARD_AT_SIGMA_1 = 4.0
+# Time 4 at Gamma/sigma = 0.2 is a finite-time bias of several reported
+# standard errors on L=2. Time 8 is the projection that matched the exact
+# susceptibility there. A cycle the ancestor floor cuts short is stored
+# and is not marked complete.
+TAU_FORWARD_AT_SIGMA_1 = 8.0
 GATE_SIGMAS = (1.0, 0.05)
 
 

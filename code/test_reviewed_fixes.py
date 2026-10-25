@@ -195,8 +195,8 @@ def _check_cache_identity(report):
                 directory,
                 "overtime.npz",
                 {
-                    "forward_times": np.full(times.shape, 5.0),
-                    "tau_forward": np.float64(5.0),
+                    "forward_times": np.full(times.shape, forward + 1.0),
+                    "tau_forward": np.float64(forward + 1.0),
                     "projection_complete": np.int64(1),
                     "n_forward_truncated": np.int64(0),
                 },

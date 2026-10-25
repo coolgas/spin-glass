@@ -179,11 +179,14 @@ def _project_once(
     """One independent population.
 
     Energy blocks are one mixed estimate each. Overlap moments are one
-    forward-walking cycle each. The cycle stops before the unique ancestor
-    count falls below ``n_walkers / 40``. That count is not a Kish effective
-    size. The cycle keeps the last population still above the floor, so the
-    achieved time can be shorter than requested. A shortened cycle is flagged
-    and does not set the resolved flags.
+    forward-walking cycle each. The cycle stops before the Kish size of the
+    descendant weights falls below 8, or before only one unique ancestor
+    remains. A unique-id floor of ``n_walkers / 40`` cuts the walk while that
+    Kish size is still large, so a longer request never runs. A Kish floor
+    near ``n_walkers / 40`` stops too early. The cycle keeps the last
+    population still above the floor, so the achieved time can be shorter
+    than requested. A shortened cycle is flagged and does not set the
+    resolved flags.
     """
     if gamma <= 0.0:
         raise ValueError("gamma must be positive")
@@ -246,10 +249,13 @@ def _project_once(
     effective_tag_sizes = []
     forward_times = []
     if n_replicas == 2 and n_forward_cycles:
-        # Unique ancestors, not the Kish size of the descendant weights.
-        # Below this count one walker sets q^4. Stopping here keeps that
-        # from happening and leaves the achieved time short of the request.
-        ancestor_floor = max(2, int(n_walkers) // 40)
+        # Kish size 8 lets a requested time of 8 finish at Gamma/sigma = 0.2,
+        # where that size stays above 20, and keeps the Gamma/sigma = 1
+        # susceptibility on the previous estimator. A higher Kish floor stops
+        # early and pulls the mid-field susceptibility down. Two unique ids
+        # refuse a one-lineage average. A smaller population uses half its
+        # walkers so the floor cannot exceed the population.
+        effective_floor = 8 if int(n_walkers) >= 16 else max(2, int(n_walkers) // 2)
         for _ in range(int(n_forward_cycles)):
             for identity, walker in enumerate(walkers):
                 walker.tag = _tag_overlap(walker)
@@ -263,7 +269,10 @@ def _project_once(
                 shift_backup = shift
                 dt = _branch_dt(walkers, float(tau_forward) - elapsed)
                 energy_piece, time_piece, growth_value = population_step(dt)
-                if _ancestor_count(walkers) < ancestor_floor:
+                if (
+                    _ancestor_count(walkers) < 2
+                    or _effective_ancestors(walkers) < effective_floor
+                ):
                     walkers = backup
                     shift = shift_backup
                     break

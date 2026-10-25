@@ -45,9 +45,12 @@ def _check_cache_identity(report):
 
     from ising import chain
     from kagome_qea.pqmc import project
+    from kagome_qea.sample import make_sample
     from kagome_qea.trial_overlap import (
         N_FORWARD_CYCLES,
         N_POPULATIONS,
+        code_fingerprint,
+        git_revision,
         projector_times,
         result_ready,
     )
@@ -98,15 +101,25 @@ def _check_cache_identity(report):
 
     block, forward = projector_times(1.0)
     series = np.linspace(0.01, 0.02, N_POPULATIONS)
+    scatter = float(series.std(ddof=1) / np.sqrt(series.size))
     times = np.full(N_POPULATIONS * N_FORWARD_CYCLES, 1.5)
+    sample = make_sample(6, True, 0)
+    expected = {"L": 6, "sample_id": 0, "sigma": 1.0, "gamma": 0.05}
     payload = dict(
         q2=np.float64(series.mean()),
         q4=np.float64(0.01),
         q2_series=series,
-        q2_error=np.float64(0.001),
+        q2_error=np.float64(scatter),
         chi_sg=np.float64(108 * series.mean()),
-        chi_sg_error=np.float64(0.1),
-        J=np.ones(1),
+        chi_sg_error=np.float64(108 * scatter),
+        J=np.asarray(sample.J, dtype=np.float64),
+        seed_entropy=np.asarray(sample.seed_entropy, dtype=np.int64),
+        L=np.int64(6),
+        sample_id=np.int64(0),
+        sigma=np.float64(1.0),
+        gamma=np.float64(0.05),
+        periodic=np.int64(1),
+        h=np.float64(0.0),
         min_unique_ancestors=np.int64(125),
         min_effective_ancestors=np.float64(10.0),
         n_populations=np.int64(N_POPULATIONS),
@@ -121,34 +134,55 @@ def _check_cache_identity(report):
         forward_times=times,
         projection_complete=np.int64(0),
         n_forward_truncated=np.int64(N_POPULATIONS * N_FORWARD_CYCLES),
-        sigma=np.float64(1.0),
-        git_revision=np.array("abc"),
+        git_revision=np.array(git_revision()),
+        code_fingerprint=np.array(code_fingerprint()),
     )
+
+    def archive(directory, name, changes):
+        written = dict(payload)
+        written.update(changes)
+        path = Path(directory) / name
+        np.savez_compressed(path, **written)
+        return result_ready(path, expected=expected)
+
     with tempfile.TemporaryDirectory() as directory:
-        path = Path(directory) / "run.npz"
-        np.savez_compressed(path, **payload)
-        kept = result_ready(path)
-        payload["q2"] = np.float64(np.nan)
-        nan_path = Path(directory) / "nan.npz"
-        np.savez_compressed(nan_path, **payload)
-        payload["q2"] = np.float64(series.mean())
-        payload["n_walkers"] = np.int64(2)
-        small_path = Path(directory) / "small.npz"
-        np.savez_compressed(small_path, **payload)
-        payload["n_walkers"] = np.int64(5000)
-        payload["tau_forward_requested"] = np.float64(0.01)
-        stale_path = Path(directory) / "stale.npz"
-        np.savez_compressed(stale_path, **payload)
-        rejected_nan = result_ready(nan_path)
-        rejected_walkers = result_ready(small_path)
-        rejected_time = result_ready(stale_path)
-    if kept and not rejected_nan and not rejected_walkers and not rejected_time:
-        report.ok("cache identity", "matching archive kept; nan, walker count, and time rejected")
+        kept = archive(directory, "run.npz", {})
+        rejected = {
+            "nan": archive(directory, "nan.npz", {"q2": np.float64(np.nan)}),
+            "walkers": archive(directory, "small.npz", {"n_walkers": np.int64(2)}),
+            "time": archive(directory, "stale.npz", {"tau_forward_requested": np.float64(0.01)}),
+            "revision": archive(directory, "rev.npz", {"git_revision": np.array("unknown")}),
+            "old": archive(
+                directory,
+                "old.npz",
+                {"git_revision": np.array("0471af6c2c4da1cf599304f7b3932a0835a682b1")},
+            ),
+            "gamma": archive(directory, "gamma.npz", {"gamma": np.float64(3.0)}),
+            "sample": archive(directory, "sample.npz", {"sample_id": np.int64(99)}),
+            "couplings": archive(directory, "couplings.npz", {"J": -np.asarray(sample.J)}),
+            "flags": archive(
+                directory,
+                "flags.npz",
+                {"projection_complete": np.int64(1), "n_forward_truncated": np.int64(0)},
+            ),
+            "errors": archive(
+                directory,
+                "errors.npz",
+                {"q2_error": np.float64(999.0), "chi_sg_error": np.float64(-1.0)},
+            ),
+        }
+        missing = {}
+        for key in ("gamma", "sample_id", "L", "seed_entropy"):
+            written = dict(payload)
+            del written[key]
+            path = Path(directory) / f"missing_{key}.npz"
+            np.savez_compressed(path, **written)
+            missing[key] = result_ready(path, expected=expected)
+    rejected_ok = kept and not any(rejected.values()) and not any(missing.values())
+    if rejected_ok:
+        report.ok("cache identity", "identity, revision, flags, and error scaling are checked")
     else:
-        report.fail(
-            "cache identity",
-            f"kept {kept} nan {rejected_nan} walkers {rejected_walkers} time {rejected_time}",
-        )
+        report.fail("cache identity", f"kept {kept} rejected {rejected} missing {missing}")
 
 
 def _check_operator(report):

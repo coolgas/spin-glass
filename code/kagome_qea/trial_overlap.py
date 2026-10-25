@@ -11,6 +11,7 @@ the 1/σ projection time, produces an overlap that falls as Γ/σ grows.
 """
 
 import argparse
+import hashlib
 import os
 import shutil
 import subprocess
@@ -119,18 +120,78 @@ def git_revision():
         return "unknown"
 
 
+def code_fingerprint():
+    """Hash of the solver files that decide a cached run.
+
+    The commit name alone stays valid while those files are edited, so the
+    cache also requires this hash.
+    """
+    digest = hashlib.sha256()
+    directory = Path(__file__).resolve().parent
+    for name in ("pqmc.py", "trial_overlap.py"):
+        digest.update((directory / name).read_bytes())
+    return digest.hexdigest()
+
+
+def _stored_text(value):
+    array = np.asarray(value)
+    if array.shape == ():
+        return str(array.item())
+    return str(array)
+
+
+def _identity_from_path(path):
+    """Job identity encoded by the canonical ``pqmc_k*`` path."""
+    path = Path(path)
+    stem = path.name[: -len(".npz")] if path.name.endswith(".npz") else ""
+    if not stem.startswith("sample") or "_seed" not in stem:
+        return None
+    sample_text, seed_text = stem.split("_seed", 1)
+    try:
+        sample_id = int(sample_text.removeprefix("sample"))
+        seed = int(seed_text)
+        size = int(path.parents[4].name.removeprefix("L"))
+    except (ValueError, IndexError):
+        return None
+    if seed != PROJECTOR_SEED or sample_id < 0 or size < 1:
+        return None
+    names = [parent.name for parent in path.parents]
+    if names[:7] != [
+        f"gamma{path.parent.name.removeprefix('gamma')}",
+        f"sigma{path.parents[1].name.removeprefix('sigma')}",
+        "h0",
+        f"pqmc_k{N_POPULATIONS}",
+        f"L{size}",
+        "pbc",
+        "gaussian_nn",
+    ]:
+        return None
+    if not path.parent.name.startswith("gamma") or not path.parents[1].name.startswith("sigma"):
+        return None
+    return {
+        "L": size,
+        "sample_id": sample_id,
+        "sigma_token": path.parents[1].name.removeprefix("sigma"),
+        "gamma_token": path.parent.name.removeprefix("gamma"),
+        "sigma": None,
+        "gamma": None,
+    }
+
+
 def _close(stored, expected):
     stored = float(stored)
     expected = float(expected)
     return abs(stored - expected) <= 1e-8 * max(1.0, abs(expected))
 
 
-def result_ready(path):
-    """True when the archive matches this run and its statistics are finite.
+def result_ready(path, expected=None):
+    """True when the archive is this job and its statistics agree with the series.
 
-    A file from another walker count, projection time, or population count
-    is not reused. ``projection_complete`` is stored either way: a finished
-    record of a shortened walk is kept, and it is not marked time-converged.
+    ``expected`` is the queue request. Without it, the identity is read from
+    a canonical ``pqmc_k*`` path. The stored revision must be the checked-out
+    commit and the solver-file hash must match the files on disk. Completion
+    flags are recomputed from the achieved times. A shortened walk may be
+    kept, and it is not marked time-converged.
     """
     if not path.is_file() or path.stat().st_size < 64:
         return False
@@ -159,7 +220,14 @@ def result_ready(path):
                 "projection_complete",
                 "n_forward_truncated",
                 "sigma",
+                "gamma",
+                "L",
+                "sample_id",
+                "seed_entropy",
+                "periodic",
+                "h",
                 "git_revision",
+                "code_fingerprint",
             }
             if not required <= set(data.files):
                 return False
@@ -173,7 +241,36 @@ def result_ready(path):
                 return False
             if int(data["n_forward_cycles"]) != N_FORWARD_CYCLES:
                 return False
-            if str(data["git_revision"]) == "":
+            if _stored_text(data["git_revision"]) != git_revision():
+                return False
+            if _stored_text(data["code_fingerprint"]) != code_fingerprint():
+                return False
+            if int(data["periodic"]) != 1 or not _close(data["h"], 0.0):
+                return False
+            identity = expected if expected is not None else _identity_from_path(path)
+            if identity is None:
+                return False
+            if int(data["L"]) != int(identity["L"]) or int(data["sample_id"]) != int(identity["sample_id"]):
+                return False
+            if identity.get("sigma") is None:
+                if token(float(data["sigma"])) != identity["sigma_token"]:
+                    return False
+                if token(float(data["gamma"])) != identity["gamma_token"]:
+                    return False
+            elif not _close(data["sigma"], identity["sigma"]) or not _close(data["gamma"], identity["gamma"]):
+                return False
+            sample = make_sample(int(identity["L"]), True, int(identity["sample_id"]))
+            if not np.array_equal(
+                np.asarray(data["seed_entropy"], dtype=np.int64),
+                np.asarray(sample.seed_entropy, dtype=np.int64),
+            ):
+                return False
+            if not np.allclose(
+                np.asarray(data["J"], dtype=np.float64),
+                np.asarray(sample.J, dtype=np.float64),
+                rtol=0.0,
+                atol=1e-12,
+            ):
                 return False
             series = np.asarray(data["q2_series"], dtype=np.float64)
             times = np.asarray(data["forward_times"], dtype=np.float64)
@@ -191,19 +288,24 @@ def result_ready(path):
                 return False
             if not all(np.isfinite(np.asarray(value, dtype=np.float64)).all() for value in statistics):
                 return False
-            if not _close(series.mean(), data["q2"]):
+            if float(data["q2_error"]) < 0.0 or float(data["chi_sg_error"]) < 0.0:
+                return False
+            scatter = float(series.std(ddof=1) / np.sqrt(series.size))
+            if not _close(series.mean(), data["q2"]) or not _close(data["q2_error"], scatter):
                 return False
             if not _close(float(data["chi_sg"]), int(data["n_sites"]) * float(data["q2"])):
                 return False
+            if not _close(float(data["chi_sg_error"]), int(data["n_sites"]) * scatter):
+                return False
             if not _close(times.min(), data["tau_forward"]):
                 return False
+            requested = float(data["tau_forward_requested"])
+            truncated = int(np.count_nonzero(times + 1e-8 < requested))
+            complete = int(times.size > 0 and truncated == 0)
+            if int(data["n_forward_truncated"]) != truncated or int(data["projection_complete"]) != complete:
+                return False
             block, forward = projector_times(float(data["sigma"]))
-            return (
-                _close(data["tau_block"], block)
-                and _close(data["tau_forward_requested"], forward)
-                and int(data["n_forward_truncated"]) >= 0
-                and int(data["projection_complete"]) in (0, 1)
-            )
+            return _close(data["tau_block"], block) and _close(data["tau_forward_requested"], forward)
     except Exception:
         return False
 
@@ -229,7 +331,10 @@ def save_run(path, sample, result, sigma, gamma, tau_block, tau_forward, seconds
         projection_complete=np.int64(bool(result["projection_complete"])),
         seconds=np.float64(seconds),
         seed_entropy=np.asarray(sample.seed_entropy, dtype=np.int64),
+        periodic=np.int64(int(bool(sample.periodic))),
+        h=np.float64(0.0),
         git_revision=np.array(git_revision()),
+        code_fingerprint=np.array(code_fingerprint()),
         J=np.asarray(sample.J, dtype=np.float64),
         q2=np.float64(result["q2"]),
         q2_error=np.float64(result["q2_error"]),

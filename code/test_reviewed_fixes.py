@@ -16,7 +16,8 @@ import numpy as np
 from gfmc import GFMC, save_run, load_run
 from gfmc.guide import ConstantGuide, Guide
 from ising import Hamiltonian, chain
-from kagome_qea.exact import _select_ground_states, ground_state
+from kagome_qea.exact import _select_ground_states, ground_state, moments_from_probability
+from kagome_qea.observables import spin_glass_susceptibility
 from kagome_qea.pqmc import _tag_overlap
 from qmc_numerics import series_error, systematic, weighted_interval
 
@@ -150,6 +151,12 @@ def _check_overlap(report):
 
 
 def _check_exact(report):
+    frozen = moments_from_probability(np.array([1.0, 0.0, 0.0, 0.0]), 2)
+    chi = spin_glass_susceptibility(frozen["q2"], 2)
+    if abs(frozen["q2"] - 1.0) < 1e-12 and abs(chi - 2.0) < 1e-12:
+        report.ok("spin-glass susceptibility", "aligned two-site state gives chi_SG = 2")
+    else:
+        report.fail("spin-glass susceptibility", f"q2 {frozen['q2']} chi {chi}")
     unit = ground_state(chain(2, J=1.0), 1.0)
     tiny = ground_state(chain(2, J=1e-7), 1e-7)
     if (
@@ -159,6 +166,8 @@ def _check_exact(report):
         and not tiny["mixed"]
         and abs(unit["q2"] - 0.6) < 1e-8
         and abs(tiny["q2"] - unit["q2"]) < 1e-6
+        and abs(unit["chi_sg"] - 1.2) < 1e-8
+        and abs(tiny["chi_sg"] - unit["chi_sg"]) < 1e-6
     ):
         report.ok("scale-invariant q2", f"unit {unit['q2']:.6f}, tiny {tiny['q2']:.6f}")
     else:

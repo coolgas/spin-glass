@@ -24,7 +24,7 @@ Round 1 draws `J ~ N(0,1)` on the nearest-neighbor bonds and keeps `h = 0`.
 | `lattice.py` | `build_kagome(L, periodic)`. Re-exported by `generate_kagome_4x4.py`. |
 | `hamiltonian.py` | Re-exports `ising.Hamiltonian`. |
 | `sample.py` | Disorder records in `data/kagome/{ensemble}/{obc\|pbc}/L{L}_nr{N}.npz`. |
-| `observables.py` | Overlap moments, Binder ratio, jackknife, bootstrap index, crossings. |
+| `observables.py` | Overlap moments, Binder ratio, spin-glass susceptibility, jackknife, bootstrap index, crossings. |
 | `exact.py` | Sparse diagonalization (`N ≤ 16`). Moments (`N ≤ 12`) are optional. A gap outside the residual keeps the lowest state. `mix_window` mixes a requested window. |
 | `pqmc.py` | Continuous-time projector QMC. Flat guide, forward-walked overlap, autocorrelation-aware errors. |
 | `pimc.py` | Continuous-time path-integral Monte Carlo and a `Γ` ladder. |

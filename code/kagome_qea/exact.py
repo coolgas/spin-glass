@@ -7,16 +7,20 @@ bit 1 is spin ``-1``. For a product of two identical copies,
 
     \\langle q^2\\rangle = N^{-2}\\sum_{ij}\\langle\\sigma_i^z\\sigma_j^z\\rangle^2,
 
-and ``⟨q^4⟩`` is the same contraction of the four-point function. Both
-identities hold for a thermal product state ``ρ⊗ρ``, not only for a pure
-ground state.
+``χ_SG = N ⟨q^2⟩``, and ``⟨q^4⟩`` is the same contraction of the four-point
+function. These identities hold for a thermal product state ``ρ⊗ρ``, not
+only for a pure ground state.
 """
 
 import numpy as np
 from scipy import sparse
 from scipy.sparse.linalg import eigsh
 
-from kagome_qea.observables import binder_from_moments, connected_binder
+from kagome_qea.observables import (
+    binder_from_moments,
+    connected_binder,
+    spin_glass_susceptibility,
+)
 
 MAX_SITES = 16
 MAX_MOMENT_SITES = 12
@@ -105,7 +109,7 @@ def moments_from_probability(probability, n_sites):
     }
 
 
-def _pack_moments(moments):
+def _pack_moments(moments, n_sites):
     binder, ratio = binder_from_moments(moments["q2"], moments["q4"])
     connected, connected_ratio = connected_binder(
         moments["q"], moments["q2"], moments["q3"], moments["q4"]
@@ -116,6 +120,7 @@ def _pack_moments(moments):
         ratio=ratio,
         connected_binder=connected,
         connected_ratio=connected_ratio,
+        chi_sg=spin_glass_susceptibility(moments["q2"], n_sites),
     )
     return packed
 
@@ -193,7 +198,7 @@ def ground_state(ham, gamma, mix_window=None, moments=True):
     if moments:
         subspace = eigenvectors[:, :keep]
         probability = np.sum(subspace * subspace, axis=1) / float(keep)
-        result.update(_pack_moments(moments_from_probability(probability, ham.n_sites)))
+        result.update(_pack_moments(moments_from_probability(probability, ham.n_sites), ham.n_sites))
     return result
 
 
@@ -242,7 +247,7 @@ def thermal_observables(ham, gamma, beta, tail_tolerance=1e-4, moments=True):
     energy = float(np.dot(weights, eigenvalues) / partition)
     if moments:
         probability = np.sum(eigenvectors ** 2 * weights, axis=1)
-        result = _pack_moments(moments_from_probability(probability, ham.n_sites))
+        result = _pack_moments(moments_from_probability(probability, ham.n_sites), ham.n_sites)
     else:
         result = {}
     result.update(

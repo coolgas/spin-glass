@@ -30,6 +30,7 @@ from kagome_qea.observables import (
     binder_from_moments,
     blocked_stderr,
     connected_binder,
+    spin_glass_susceptibility,
 )
 
 
@@ -294,7 +295,7 @@ def rescale_beta(worldline, beta):
             times[index] = time * factor
 
 
-def _series_result(energies, moments, block_size):
+def _series_result(energies, moments, block_size, n_sites):
     energy = np.asarray(energies, dtype=np.float64)
     result = {
         "energy": float(energy.mean()),
@@ -319,6 +320,8 @@ def _series_result(energies, moments, block_size):
             ratio=ratio,
             connected_binder=connected,
             connected_ratio=connected_ratio,
+            chi_sg=spin_glass_susceptibility(q2, n_sites),
+            chi_sg_error=float(n_sites) * blocked_stderr(stacked[:, 1], block_size),
             series_q2=stacked[:, 1],
             series_q4=stacked[:, 3],
         )
@@ -365,7 +368,9 @@ def simulate(
             energies.append(float(np.mean(reading)))
             if n_replicas == 2:
                 moments.append(measure_overlap(replicas[0], replicas[1]))
-    return _series_result(energies, moments, _block_size(len(energies), block_size))
+    return _series_result(
+        energies, moments, _block_size(len(energies), block_size), ham.n_sites
+    )
 
 
 def attempt_temper_swap(worldline_a, gamma_a, worldline_b, gamma_b, rng):
@@ -388,6 +393,14 @@ def attempt_temper_swap(worldline_a, gamma_a, worldline_b, gamma_b, rng):
     return False
 
 
+def _install_spins(worldline, spins):
+    values = np.asarray(spins, dtype=np.int8).reshape(-1)
+    if values.shape != (worldline.n_sites,) or not np.all(np.abs(values) == 1):
+        raise ValueError("initial spins must be ±1 on every site")
+    worldline.s0 = [int(spin) for spin in values]
+    worldline.kinks = [[] for _ in range(worldline.n_sites)]
+
+
 def parallel_temper(
     ham,
     gammas,
@@ -400,11 +413,15 @@ def parallel_temper(
     swap_every=1,
     measure_every=1,
     block_size=None,
+    initial_s0=None,
 ):
     """Ladder in ``Γ`` at one ``β``. Spin replicas at a rung swap independently.
 
     Tempering replicas are the ladder. They are not the overlap pair. Each
     rung can still hold an overlap pair; those two worldlines swap on their own.
+    ``initial_s0`` is a classical product state, shape ``(n_replicas, n_sites)``
+    or ``(n_rungs, n_replicas, n_sites)``. It replaces the all-up start. Kinks
+    still grow during the sweeps.
     """
     ladder = [float(gamma) for gamma in gammas]
     if any(gamma <= 0.0 for gamma in ladder):
@@ -415,6 +432,15 @@ def parallel_temper(
     rungs = [
         [Worldline(ham.n_sites, beta) for _ in range(n_replicas)] for _ in ladder
     ]
+    if initial_s0 is not None:
+        seeded = np.asarray(initial_s0, dtype=np.int8)
+        if seeded.ndim == 2:
+            seeded = np.broadcast_to(seeded, (len(ladder), n_replicas, ham.n_sites))
+        if seeded.shape != (len(ladder), n_replicas, ham.n_sites):
+            raise ValueError("initial_s0 does not match the ladder and the replica count")
+        for rung, worldlines in enumerate(rungs):
+            for replica, worldline in enumerate(worldlines):
+                _install_spins(worldline, seeded[rung, replica])
     swaps = 0
     attempts = 0
 
@@ -452,7 +478,7 @@ def parallel_temper(
     results = []
     width = _block_size(len(series[0]), block_size)
     for rung, gamma in enumerate(ladder):
-        packed = _series_result(series[rung], moments[rung], width)
+        packed = _series_result(series[rung], moments[rung], width, ham.n_sites)
         packed.update(gamma=gamma, beta=float(beta))
         results.append(packed)
     return results, {

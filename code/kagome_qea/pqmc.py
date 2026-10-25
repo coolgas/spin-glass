@@ -16,7 +16,13 @@ import math
 
 import numpy as np
 
-from kagome_qea.observables import binder_from_moments, connected_binder, overlap
+from kagome_qea.observables import (
+    binder_from_moments,
+    connected_binder,
+    jackknife_binder_series,
+    overlap,
+    spin_glass_susceptibility,
+)
 from qmc_numerics import series_error, systematic, weighted_interval
 
 
@@ -89,9 +95,78 @@ def _tag_overlap(walker):
     return overlap(spins[0], spins[1])
 
 
-def project(
+def _branch_dt(walkers, limit):
+    """Longest resampling interval that keeps log-weights of order one.
+
+    One block of length 0.2 multiplies weights by the diagonal-energy spread.
+    On 216 bonds that spread is large enough to leave a single ancestor, and
+    the forward-walked overlap then jumps from one Γ to the next.
+    """
+    limit = float(limit)
+    if limit <= 0.0:
+        raise ValueError("branch interval must be positive")
+    diagonals = np.fromiter((walker.diagonal for walker in walkers), dtype=np.float64)
+    spread = float(diagonals.std()) if diagonals.size else 0.0
+    if not math.isfinite(spread) or spread < 1e-8:
+        return limit
+    return min(limit, 0.5 / spread)
+
+
+def _ancestor_count(walkers):
+    ancestors = np.fromiter((walker.ancestor for walker in walkers), dtype=np.int64)
+    return int(np.unique(ancestors).size)
+
+
+def _effective_ancestors(walkers):
+    """Kish size ``(Σ w)^2 / Σ w^2`` of the descendant weights.
+
+    Unique ancestor ids can stay large while one lineage carries almost
+    every walker. Moments then have the variance of that one lineage.
+    """
+    ancestors = np.fromiter((walker.ancestor for walker in walkers), dtype=np.int64)
+    if ancestors.size == 0:
+        return 0.0
+    _, counts = np.unique(ancestors, return_counts=True)
+    weights = counts.astype(np.float64)
+    total = float(weights.sum())
+    if total <= 0.0:
+        return 0.0
+    return float(total * total / np.dot(weights, weights))
+
+
+def _distinct_tags(walkers):
+    tags = np.fromiter((walker.tag for walker in walkers), dtype=np.float64)
+    if tags.size == 0:
+        return 0
+    return int(np.unique(np.round(tags, decimals=12)).size)
+
+
+def _effective_tags(walkers):
+    """Kish size of the tagged overlaps, grouping copies of the same tag."""
+    tags = np.fromiter((walker.tag for walker in walkers), dtype=np.float64)
+    if tags.size == 0:
+        return 0.0
+    _, counts = np.unique(np.round(tags, decimals=12), return_counts=True)
+    weights = counts.astype(np.float64)
+    total = float(weights.sum())
+    return float(total * total / np.dot(weights, weights))
+
+
+def _clone_population(walkers):
+    clones = []
+    for walker in walkers:
+        child = _Walker(walker.spins.copy(), walker.diagonal)
+        child.weight = walker.weight
+        child.tag = walker.tag
+        child.ancestor = walker.ancestor
+        clones.append(child)
+    return clones
+
+
+def _project_once(
     ham,
     gamma,
+    rng,
     *,
     n_replicas=2,
     n_walkers=2000,
@@ -100,14 +175,13 @@ def project(
     n_measure=60,
     tau_forward=8.0,
     n_forward_cycles=4,
-    seed=0,
 ):
-    """Project ``n_replicas`` non-interacting copies.
+    """One independent population.
 
     Energy blocks are one mixed estimate each. Overlap moments are one
-    forward-walking cycle each. Errors use the shared autocorrelation
-    estimator. ``q``, ``q2``, ``q3``, and ``q4`` each keep a series and a
-    resolved flag. A series shorter than 64 values is unresolved.
+    forward-walking cycle each. The cycle stops before the tagged population
+    falls below ``n_walkers / 40`` lineages, so one walker cannot set the
+    cycle's ``q^4``.
     """
     if gamma <= 0.0:
         raise ValueError("gamma must be positive")
@@ -115,32 +189,45 @@ def project(
         raise ValueError("phase 1 uses one replica or a pair")
     if n_walkers < 2 or tau_block <= 0.0:
         raise ValueError("need at least two walkers and a positive block")
-    rng = np.random.default_rng(seed)
     rate = float(n_replicas * ham.n_sites * gamma)
     walkers = _initial_walkers(ham, n_walkers, n_replicas, rng)
     shift = float(np.mean([walker.diagonal - rate for walker in walkers]))
     energies = []
     growth = []
 
-    def one_block(record):
+    def population_step(dt):
         nonlocal shift, walkers
         energy_sum = 0.0
         time_sum = 0.0
         for walker in walkers:
-            energy_piece, time_piece = _advance(walker, ham, rate, shift, tau_block, rng)
+            energy_piece, time_piece = _advance(walker, ham, rate, shift, dt, rng)
             energy_sum += energy_piece
             time_sum += time_piece
-        if record and time_sum > 0.0:
-            energies.append(energy_sum / time_sum / n_replicas)
         children, log_total = _resample(walkers, rng)
-        log_growth = (log_total - math.log(n_walkers)) / tau_block
-        if record:
-            # Growth estimates the pair. Store one copy, as `energy` does.
-            growth.append((shift - log_growth) / n_replicas)
-        # Damped population control. The mixed estimator inside a block does
-        # not use this shift; the next block's branching does.
+        log_growth = (log_total - math.log(n_walkers)) / dt
+        # Growth estimates the pair. The shift used here is the one that
+        # branched this step; the next step uses the damped update.
+        growth_value = (shift - log_growth) / n_replicas
         shift = 0.5 * shift + 0.5 * (shift - log_growth)
         walkers = children
+        return energy_sum, time_sum, growth_value
+
+    def one_block(record):
+        nonlocal walkers
+        energy_sum = 0.0
+        time_sum = 0.0
+        growth_values = []
+        covered = 0.0
+        while covered < tau_block - 1e-12:
+            dt = _branch_dt(walkers, tau_block - covered)
+            energy_piece, time_piece, growth_value = population_step(dt)
+            energy_sum += energy_piece
+            time_sum += time_piece
+            growth_values.append(growth_value)
+            covered += dt
+        if record and time_sum > 0.0:
+            energies.append(energy_sum / time_sum / n_replicas)
+            growth.append(float(np.mean(growth_values)))
 
     for _ in range(int(n_equilibrate)):
         one_block(False)
@@ -152,23 +239,45 @@ def project(
     q3_means = []
     q4_means = []
     unique_ancestors = []
+    effective_ancestors = []
+    distinct_tags = []
+    effective_tag_sizes = []
+    forward_times = []
     if n_replicas == 2 and n_forward_cycles:
-        n_forward_blocks = max(1, int(round(float(tau_forward) / tau_block)))
+        # Below this many effective lineages one walker sets q^4, and the
+        # Binder ratio moves by tenths from cycle to cycle.
+        ancestor_floor = max(2, int(n_walkers) // 40)
         for _ in range(int(n_forward_cycles)):
             for identity, walker in enumerate(walkers):
                 walker.tag = _tag_overlap(walker)
                 walker.ancestor = identity
-            for _block in range(n_forward_blocks):
-                one_block(True)
-            tags = np.fromiter((walker.tag for walker in walkers), dtype=np.float64)
-            ancestors = np.fromiter(
-                (walker.ancestor for walker in walkers), dtype=np.int64
-            )
+            distinct_tags.append(_distinct_tags(walkers))
+            effective_tag_sizes.append(_effective_tags(walkers))
+            saved = _clone_population(walkers)
+            elapsed = 0.0
+            while elapsed < float(tau_forward) - 1e-12:
+                backup = _clone_population(walkers)
+                shift_backup = shift
+                dt = _branch_dt(walkers, float(tau_forward) - elapsed)
+                energy_piece, time_piece, growth_value = population_step(dt)
+                if _ancestor_count(walkers) < ancestor_floor:
+                    walkers = backup
+                    shift = shift_backup
+                    break
+                if time_piece > 0.0:
+                    energies.append(energy_piece / time_piece / n_replicas)
+                    growth.append(growth_value)
+                saved = walkers
+                elapsed += dt
+            tags = np.fromiter((walker.tag for walker in saved), dtype=np.float64)
             q_means.append(float(tags.mean()))
             q2_means.append(float(np.mean(tags ** 2)))
             q3_means.append(float(np.mean(tags ** 3)))
             q4_means.append(float(np.mean(tags ** 4)))
-            unique_ancestors.append(int(np.unique(ancestors).size))
+            unique_ancestors.append(_ancestor_count(saved))
+            effective_ancestors.append(_effective_ancestors(saved))
+            forward_times.append(elapsed)
+            walkers = saved
 
     energy, energy_error, energy_resolved = series_error(energies)
     growth_mean, growth_error, growth_resolved = series_error(growth)
@@ -181,7 +290,9 @@ def project(
         "energy_growth_resolved": bool(growth_resolved),
         "n_walkers": int(n_walkers),
         "n_replicas": int(n_replicas),
+        "n_sites": int(ham.n_sites),
         "n_energy_blocks": len(energies),
+        "n_populations": 1,
         "shift": float(shift),
     }
     if q2_means:
@@ -190,6 +301,7 @@ def project(
         q3, q3_error, q3_resolved = series_error(q3_means)
         q4, q4_error, q4_resolved = series_error(q4_means)
         binder, ratio = binder_from_moments(q2, q4)
+        _series_binder, binder_error = jackknife_binder_series(q2_means, q4_means)
         connected, connected_ratio = connected_binder(q_mean, q2, q3, q4)
         result.update(
             q=q_mean,
@@ -209,11 +321,143 @@ def project(
             q4_resolved=q4_resolved,
             q4_series=np.asarray(q4_means, dtype=np.float64),
             binder=binder,
+            binder_error=binder_error,
             ratio=ratio,
             connected_binder=connected,
             connected_ratio=connected_ratio,
-            tau_forward=n_forward_blocks * tau_block,
+            chi_sg=spin_glass_susceptibility(q2, ham.n_sites),
+            chi_sg_error=float(ham.n_sites) * float(q2_error),
+            tau_forward=float(min(forward_times)),
             n_forward_cycles=len(q2_means),
             min_unique_ancestors=int(min(unique_ancestors)),
+            min_effective_ancestors=float(min(effective_ancestors)),
+            min_distinct_tags=int(min(distinct_tags)),
+            min_effective_tags=float(min(effective_tag_sizes)),
         )
     return result
+
+
+def _population_stderr(values):
+    """Standard error across independent populations."""
+    data = np.asarray(values, dtype=np.float64)
+    if data.size < 2:
+        return float("nan")
+    return float(data.std(ddof=1) / np.sqrt(data.size))
+
+
+def _combine_populations(parts):
+    """Average independent populations with equal weight.
+
+    A stuck population remeasures one survivor and reports a tiny internal
+    error. Weighting populations by that internal error would keep the
+    survivor and drop the runs that found a different overlap. Each
+    population is one draw. The reported error is the scatter of those draws.
+    """
+    first = parts[0]
+    energies = np.array([part["energy"] for part in parts], dtype=np.float64)
+    growths = np.array([part["energy_growth"] for part in parts], dtype=np.float64)
+    result = {
+        "energy": float(energies.mean()),
+        "energy_error": _population_stderr(energies),
+        "energy_resolved": len(parts) >= 8,
+        "energy_growth": float(growths.mean()),
+        "energy_growth_error": _population_stderr(growths),
+        "energy_growth_resolved": len(parts) >= 8,
+        "n_walkers": first["n_walkers"],
+        "n_replicas": first["n_replicas"],
+        "n_sites": int(first["n_sites"]),
+        "n_energy_blocks": int(sum(part["n_energy_blocks"] for part in parts)),
+        "n_populations": len(parts),
+        "shift": float(np.mean([part["shift"] for part in parts])),
+    }
+    if "q2" not in first:
+        return result
+    q = np.array([part["q"] for part in parts], dtype=np.float64)
+    q2 = np.array([part["q2"] for part in parts], dtype=np.float64)
+    q3 = np.array([part["q3"] for part in parts], dtype=np.float64)
+    q4 = np.array([part["q4"] for part in parts], dtype=np.float64)
+    binder, _ratio = binder_from_moments(float(q2.mean()), float(q4.mean()))
+    _series_binder, binder_error = jackknife_binder_series(q2, q4)
+    connected, connected_ratio = connected_binder(
+        float(q.mean()), float(q2.mean()), float(q3.mean()), float(q4.mean())
+    )
+    resolved = len(parts) >= 8
+    result.update(
+        q=float(q.mean()),
+        q_error=_population_stderr(q),
+        q_resolved=resolved,
+        q_series=q,
+        q2=float(q2.mean()),
+        q2_error=_population_stderr(q2),
+        q2_resolved=resolved,
+        q2_series=q2,
+        q3=float(q3.mean()),
+        q3_error=_population_stderr(q3),
+        q3_resolved=resolved,
+        q3_series=q3,
+        q4=float(q4.mean()),
+        q4_error=_population_stderr(q4),
+        q4_resolved=resolved,
+        q4_series=q4,
+        binder=binder,
+        binder_error=binder_error,
+        ratio=float(q4.mean()) / float(q2.mean()) ** 2,
+        connected_binder=connected,
+        connected_ratio=connected_ratio,
+        chi_sg=spin_glass_susceptibility(float(q2.mean()), first["n_sites"]),
+        chi_sg_error=float(first["n_sites"]) * _population_stderr(q2),
+        tau_forward=float(min(part["tau_forward"] for part in parts)),
+        n_forward_cycles=int(first["n_forward_cycles"]),
+        min_unique_ancestors=int(min(part["min_unique_ancestors"] for part in parts)),
+        min_effective_ancestors=float(min(part["min_effective_ancestors"] for part in parts)),
+        min_distinct_tags=int(min(part["min_distinct_tags"] for part in parts)),
+        min_effective_tags=float(min(part["min_effective_tags"] for part in parts)),
+    )
+    return result
+
+
+def project(
+    ham,
+    gamma,
+    *,
+    n_replicas=2,
+    n_walkers=2000,
+    tau_block=0.25,
+    n_equilibrate=40,
+    n_measure=60,
+    tau_forward=8.0,
+    n_forward_cycles=4,
+    n_populations=1,
+    seed=0,
+):
+    """Project ``n_replicas`` non-interacting copies.
+
+    ``n_populations`` independent populations are averaged with equal weight.
+    One population remeasures its own survivors, so its cycle-to-cycle error
+    can be far smaller than the scatter between populations. With two or more
+    populations the reported errors are that scatter. Eight or more
+    populations set the resolved flags. The flag records the population
+    count, not a coverage certificate.
+    """
+    if isinstance(n_populations, bool) or int(n_populations) < 1:
+        raise ValueError("n_populations must be a positive integer")
+    n_populations = int(n_populations)
+    options = dict(
+        n_replicas=n_replicas,
+        n_walkers=n_walkers,
+        tau_block=tau_block,
+        n_equilibrate=n_equilibrate,
+        n_measure=n_measure,
+        tau_forward=tau_forward,
+        n_forward_cycles=n_forward_cycles,
+    )
+    if n_populations == 1:
+        result = _project_once(ham, gamma, np.random.default_rng(seed), **options)
+        result["n_populations"] = 1
+        return result
+    rngs = [
+        np.random.default_rng(child)
+        for child in np.random.SeedSequence(seed).spawn(n_populations)
+    ]
+    parts = [_project_once(ham, gamma, rng, **options) for rng in rngs]
+    return _combine_populations(parts)

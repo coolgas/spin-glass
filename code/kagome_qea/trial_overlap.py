@@ -6,10 +6,13 @@ the 1/σ projection time, produces an overlap that falls as Γ/σ grows.
 ``--gate`` compares L=2 sample 0 with exact diagonalization.
 ``--run`` projects one (σ, Γ/σ) pair at L=6.
 ``--farm`` runs the nine trial pairs on a process pool.
+``--scan`` runs a dense Γ/σ grid at σ = 1 and 2 for four samples.
 ``--table`` prints the pairs that have finished.
 """
 
 import argparse
+import os
+import shutil
 import sys
 import time
 from concurrent.futures import ProcessPoolExecutor, as_completed
@@ -27,11 +30,20 @@ TRIAL_SIZE = 6
 TRIAL_SAMPLE = 0
 TRIAL_SIGMAS = (0.05, 1.0, 2.0)
 TRIAL_RATIOS = (1.0, 2.0, 3.0)
+SCAN_SIGMAS = (0.05, 0.1, 0.2, 0.5, 1.0, 2.0)
+SCAN_RATIOS = (
+    0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8,
+    1.0, 1.25, 1.5, 2.0, 2.5, 3.0,
+)
+SCAN_SAMPLES = (0, 1, 2, 3)
 PROJECTOR_SEED = 0
 N_WALKERS = 5000
 N_EQUILIBRATE = 40
 N_MEASURE = 40
-N_FORWARD_CYCLES = 24
+N_FORWARD_CYCLES = 8
+# One population remeasures one survivor. The reported error is the scatter
+# of independent populations. Thirty-two is the count used for the L=6 rerun.
+N_POPULATIONS = 32
 TAU_BLOCK_AT_SIGMA_1 = 0.2
 TAU_FORWARD_AT_SIGMA_1 = 4.0
 GATE_SIGMAS = (1.0, 0.05)
@@ -48,7 +60,7 @@ def token(value):
     return text.replace("-", "m").replace(".", "p")
 
 
-def output_path(sigma, gamma, size=TRIAL_SIZE):
+def output_path(sigma, gamma, size=TRIAL_SIZE, sample_id=TRIAL_SAMPLE):
     directory = (
         repo_root()
         / "data"
@@ -56,12 +68,12 @@ def output_path(sigma, gamma, size=TRIAL_SIZE):
         / "gaussian_nn"
         / "pbc"
         / f"L{size}"
-        / "pqmc"
+        / f"pqmc_k{N_POPULATIONS}"
         / "h0"
         / f"sigma{token(sigma)}"
         / f"gamma{token(gamma)}"
     )
-    return directory / f"sample{TRIAL_SAMPLE}_seed{PROJECTOR_SEED}.npz"
+    return directory / f"sample{int(sample_id)}_seed{PROJECTOR_SEED}.npz"
 
 
 def projector_times(sigma):
@@ -70,10 +82,10 @@ def projector_times(sigma):
     return TAU_BLOCK_AT_SIGMA_1 * scale, TAU_FORWARD_AT_SIGMA_1 * scale
 
 
-def project_pair(size, sigma, ratio):
+def project_pair(size, sigma, ratio, sample_id=TRIAL_SAMPLE):
     gamma = float(sigma) * float(ratio)
     tau_block, tau_forward = projector_times(sigma)
-    sample = make_sample(size, True, TRIAL_SAMPLE)
+    sample = make_sample(size, True, sample_id)
     operator = sample.hamiltonian(0.0).with_classical_scale(sigma)
     started = time.perf_counter()
     result = project(
@@ -86,16 +98,33 @@ def project_pair(size, sigma, ratio):
         n_measure=N_MEASURE,
         tau_forward=tau_forward,
         n_forward_cycles=N_FORWARD_CYCLES,
+        n_populations=N_POPULATIONS,
         seed=PROJECTOR_SEED,
     )
     seconds = time.perf_counter() - started
     return sample, result, gamma, tau_block, tau_forward, seconds
 
 
+def result_ready(path):
+    """True when the npz is complete enough to keep and to skip."""
+    if not path.is_file() or path.stat().st_size < 64:
+        return False
+    try:
+        with np.load(path) as data:
+            return (
+                {"q2", "q4", "J", "min_unique_ancestors", "n_populations"}
+                <= set(data.files)
+                and int(data["n_populations"]) == N_POPULATIONS
+            )
+    except Exception:
+        return False
+
+
 def save_run(path, sample, result, sigma, gamma, tau_block, tau_forward, seconds):
     path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(f".{path.stem}.partial.npz")
     np.savez_compressed(
-        path,
+        temporary,
         L=np.int64(sample.L),
         sample_id=np.int64(sample.sample_id),
         sigma=np.float64(sigma),
@@ -110,26 +139,38 @@ def save_run(path, sample, result, sigma, gamma, tau_block, tau_forward, seconds
         q2_series=np.asarray(result["q2_series"], dtype=np.float64),
         q4=np.float64(result["q4"]),
         binder=np.float64(result["binder"]),
+        binder_error=np.float64(result["binder_error"]),
+        chi_sg=np.float64(result["chi_sg"]),
+        chi_sg_error=np.float64(result["chi_sg_error"]),
+        n_populations=np.int64(result["n_populations"]),
         energy=np.float64(result["energy"]),
         energy_error=np.float64(result["energy_error"]),
         energy_growth=np.float64(result["energy_growth"]),
         energy_growth_error=np.float64(result["energy_growth_error"]),
         min_unique_ancestors=np.int64(result["min_unique_ancestors"]),
     )
+    os.replace(temporary, path)
+    if not result_ready(path):
+        path.unlink(missing_ok=True)
+        raise RuntimeError(f"saved file is unreadable: {path}")
+    backup = repo_root() / "saved" / path.relative_to(repo_root())
+    backup.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(path, backup)
 
 
-def run_one(sigma, ratio):
-    path = output_path(sigma, sigma * ratio)
-    if path.exists():
-        print(f"skip sigma {sigma:g} ratio {ratio:g} {path}", flush=True)
+def run_one(sigma, ratio, sample_id=TRIAL_SAMPLE):
+    path = output_path(sigma, sigma * ratio, sample_id=sample_id)
+    if result_ready(path):
+        print(f"skip sigma {sigma:g} ratio {ratio:g} sample {sample_id} {path}", flush=True)
         return str(path)
     sample, result, gamma, tau_block, tau_forward, seconds = project_pair(
-        TRIAL_SIZE, sigma, ratio
+        TRIAL_SIZE, sigma, ratio, sample_id
     )
     save_run(path, sample, result, sigma, gamma, tau_block, tau_forward, seconds)
     print(
-        f"L=6 sigma {sigma:g} ratio {ratio:g} gamma {gamma:.4f}  "
+        f"L=6 sigma {sigma:g} ratio {ratio:g} gamma {gamma:.4f} sample {sample_id}  "
         f"q2 {result['q2']:.4f} ± {result['q2_error']:.4f}  "
+        f"B {result['binder']:.3f} ± {result['binder_error']:.3f}  "
         f"ancestors {result['min_unique_ancestors']}  "
         f"energy {result['energy']:.3f} growth {result['energy_growth']:.3f}  "
         f"{seconds:.0f}s",
@@ -163,14 +204,96 @@ def gate():
         raise SystemExit(1)
 
 
-def farm(workers):
-    jobs = [(sigma, ratio) for sigma in TRIAL_SIGMAS for ratio in TRIAL_RATIOS]
+def _pool(jobs, workers):
     workers = max(1, min(int(workers), len(jobs)))
     print(f"farm {len(jobs)} jobs on {workers} workers", flush=True)
     with ProcessPoolExecutor(max_workers=workers) as pool:
-        futures = [pool.submit(run_one, sigma, ratio) for sigma, ratio in jobs]
+        futures = [pool.submit(run_one, sigma, ratio, sample_id) for sigma, ratio, sample_id in jobs]
         for future in as_completed(futures):
             future.result()
+
+
+def farm(workers):
+    jobs = [
+        (sigma, ratio, TRIAL_SAMPLE)
+        for sigma in TRIAL_SIGMAS
+        for ratio in TRIAL_RATIOS
+    ]
+    _pool(jobs, workers)
+
+
+def scan_jobs(sigma=None):
+    sigmas = SCAN_SIGMAS if sigma is None else (float(sigma),)
+    return [
+        (width, ratio, sample_id)
+        for width in sigmas
+        for ratio in SCAN_RATIOS
+        for sample_id in SCAN_SAMPLES
+    ]
+
+
+def scan(workers):
+    """Dense Γ/σ grid, six variances, four disorder samples."""
+    _pool(scan_jobs(), workers)
+
+
+def queue(workers, sigma=None):
+    """Run every scan job, skip files already saved, then draw the figure.
+
+    The manifest is ``l6_k32_queue.txt`` when 32 populations are used.
+    ``l6_k32_queue_status.txt`` is one line rewritten as each job finishes.
+    Starting this again continues the same list. Passed ``sigma`` keeps one width.
+    """
+    jobs = scan_jobs(sigma)
+    pending = []
+    manifest = []
+    for sigma, ratio, sample_id in jobs:
+        path = output_path(sigma, sigma * ratio, sample_id=sample_id)
+        state = "done" if result_ready(path) else "queued"
+        manifest.append(f"{state}\tsigma={sigma:g}\tratio={ratio:g}\tsample={sample_id}")
+        if state == "queued":
+            pending.append((sigma, ratio, sample_id))
+    manifest_path = repo_root() / f"l6_k{N_POPULATIONS}_queue.txt"
+    status_path = repo_root() / f"l6_k{N_POPULATIONS}_queue_status.txt"
+    manifest_path.write_text("\n".join(manifest) + "\n")
+    total = len(jobs)
+    done = total - len(pending)
+    print(
+        f"queue {total} jobs, {done} already on disk, {len(pending)} pending",
+        flush=True,
+    )
+    status_path.write_text(f"pending={len(pending)} done={done} total={total} failed=0\n")
+    failed = 0
+    if pending:
+        workers = max(1, min(int(workers), len(pending)))
+        with ProcessPoolExecutor(max_workers=workers) as pool:
+            futures = {
+                pool.submit(run_one, sigma, ratio, sample_id): (sigma, ratio, sample_id)
+                for sigma, ratio, sample_id in pending
+            }
+            for future in as_completed(futures):
+                sigma, ratio, sample_id = futures[future]
+                try:
+                    future.result()
+                except Exception as exc:
+                    failed += 1
+                    print(
+                        f"FAIL sigma {sigma:g} ratio {ratio:g} sample {sample_id} {exc}",
+                        flush=True,
+                    )
+                finished = sum(
+                    1
+                    for sigma_i, ratio_i, sample_i in jobs
+                    if result_ready(output_path(sigma_i, sigma_i * ratio_i, sample_id=sample_i))
+                )
+                status_path.write_text(
+                    f"pending={total - finished} done={finished} total={total} failed={failed}\n"
+                )
+    from kagome_qea.plot_l6_scan import main as plot_main
+
+    plot_main()
+    if failed:
+        raise SystemExit(f"{failed} queued jobs failed")
 
 
 def table():
@@ -198,9 +321,12 @@ def main(argv=None):
     parser.add_argument("--gate", action="store_true")
     parser.add_argument("--run", action="store_true")
     parser.add_argument("--farm", action="store_true")
+    parser.add_argument("--scan", action="store_true")
+    parser.add_argument("--queue", action="store_true")
     parser.add_argument("--table", action="store_true")
     parser.add_argument("--sigma", type=float)
     parser.add_argument("--ratio", type=float)
+    parser.add_argument("--sample", type=int, default=TRIAL_SAMPLE)
     parser.add_argument("--workers", type=int, default=16)
     args = parser.parse_args(argv)
     if args.gate:
@@ -208,9 +334,13 @@ def main(argv=None):
     elif args.run:
         if args.sigma is None or args.ratio is None:
             parser.error("--run needs --sigma and --ratio")
-        run_one(args.sigma, args.ratio)
+        run_one(args.sigma, args.ratio, args.sample)
     elif args.farm:
         farm(args.workers)
+    elif args.scan:
+        scan(args.workers)
+    elif args.queue:
+        queue(args.workers, args.sigma)
     elif args.table:
         table()
     else:

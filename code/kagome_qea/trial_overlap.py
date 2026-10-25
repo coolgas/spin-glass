@@ -25,7 +25,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import numpy as np
 
 from kagome_qea.exact import ground_state
-from kagome_qea.pqmc import project
+from kagome_qea.pqmc import _CHECKPOINT_COUNT, project
 from kagome_qea.sample import make_sample
 
 TRIAL_SIZE = 6
@@ -197,7 +197,10 @@ def result_ready(path, expected=None):
     hash must match the files on disk, and the site count must match the
     lattice. Overlap moments stay in ``[0, 1]``. Achieved times are nonnegative
     and do not exceed the requested time. Completion flags are recomputed from
-    the achieved times. A shortened walk may be kept, and it is not marked
+    the achieved times. The production floors are Kish size 8 and two unique
+    ancestors. Per-cycle stop codes, rejected steps, and checkpoints have to
+    agree with those times. Equilibration and measurement energies are stored
+    on their own traces. A shortened walk may be kept, and it is not marked
     time-converged.
     """
     if not path.is_file() or path.stat().st_size < 64:
@@ -239,6 +242,25 @@ def result_ready(path, expected=None):
                 "energy_error",
                 "energy_growth",
                 "energy_growth_error",
+                "floor_unique",
+                "floor_effective",
+                "cycle_q2",
+                "cycle_unique",
+                "cycle_effective",
+                "cycle_max_fraction",
+                "cycle_weight_ess",
+                "cycle_stop",
+                "cycle_rejected_dt",
+                "cycle_rejected_unique",
+                "cycle_rejected_effective",
+                "cycle_rejected_weight_ess",
+                "cycle_rejected_max_fraction",
+                "cycle_checkpoints",
+                "energy_forward_trace",
+                "energy_equilibration_trace",
+                "energy_equilibration_time",
+                "energy_measure_trace",
+                "energy_measure_time",
             }
             if not required <= set(data.files):
                 return False
@@ -333,6 +355,123 @@ def result_ready(path, expected=None):
             complete = int(times.size > 0 and truncated == 0)
             if int(data["n_forward_truncated"]) != truncated or int(data["projection_complete"]) != complete:
                 return False
+            if int(data["floor_unique"]) != 2 or not _close(data["floor_effective"], 8.0):
+                return False
+            cycle_q2 = np.asarray(data["cycle_q2"], dtype=np.float64)
+            cycle_unique = np.asarray(data["cycle_unique"], dtype=np.float64)
+            cycle_effective = np.asarray(data["cycle_effective"], dtype=np.float64)
+            cycle_fraction = np.asarray(data["cycle_max_fraction"], dtype=np.float64)
+            cycle_weight = np.asarray(data["cycle_weight_ess"], dtype=np.float64)
+            cycle_stop = np.asarray(data["cycle_stop"])
+            forward_energy = np.asarray(data["energy_forward_trace"], dtype=np.float64)
+            cycle_arrays = (
+                cycle_q2,
+                cycle_unique,
+                cycle_effective,
+                cycle_fraction,
+                cycle_weight,
+                forward_energy,
+            )
+            if cycle_stop.shape != times.shape or any(array.shape != times.shape for array in cycle_arrays):
+                return False
+            if not np.isfinite(cycle_q2).all() or np.any(cycle_q2 < 0.0) or np.any(cycle_q2 > moment_limit):
+                return False
+            if not _close(float(cycle_q2.mean()), q2):
+                return False
+            if not np.allclose(cycle_q2.mean(axis=1), series, rtol=1e-8, atol=1e-8):
+                return False
+            if not np.isfinite(cycle_unique).all() or int(np.min(cycle_unique)) != int(data["min_unique_ancestors"]):
+                return False
+            if not np.isfinite(cycle_effective).all() or not _close(
+                float(np.min(cycle_effective)), data["min_effective_ancestors"]
+            ):
+                return False
+            if np.any(cycle_unique < 2) or np.any(cycle_effective + 1e-8 < 8.0):
+                return False
+            if (
+                not np.isfinite(cycle_fraction).all()
+                or np.any(cycle_fraction <= 0.0)
+                or np.any(cycle_fraction > 1.0 + 1e-8)
+            ):
+                return False
+            if not np.isfinite(cycle_weight).all() or np.any(cycle_weight <= 0.0):
+                return False
+            reached = times + 1e-8 >= requested
+            if not np.array_equal(cycle_stop == 0, reached):
+                return False
+            if np.any(~np.isin(cycle_stop[~reached], (1, 2, 3))):
+                return False
+            rejected = [
+                np.asarray(data[name], dtype=np.float64)
+                for name in (
+                    "cycle_rejected_dt",
+                    "cycle_rejected_unique",
+                    "cycle_rejected_effective",
+                    "cycle_rejected_weight_ess",
+                    "cycle_rejected_max_fraction",
+                )
+            ]
+            if any(array.shape != times.shape for array in rejected):
+                return False
+            if reached.any() and not all(np.isnan(array[reached]).all() for array in rejected):
+                return False
+            if (~reached).any():
+                if not all(np.isfinite(array[~reached]).all() for array in rejected):
+                    return False
+                rejected_dt = rejected[0][~reached]
+                rejected_unique = rejected[1][~reached]
+                rejected_effective = rejected[2][~reached]
+                rejected_fraction = rejected[4][~reached]
+                stop_short = cycle_stop[~reached]
+                if np.any(rejected_dt <= 0.0):
+                    return False
+                if np.any(rejected_fraction <= 0.0) or np.any(rejected_fraction > 1.0 + 1e-8):
+                    return False
+                effective_only = (rejected_effective < 8.0) & (rejected_unique >= 2)
+                unique_only = (rejected_unique < 2) & (rejected_effective >= 8.0)
+                both = (rejected_effective < 8.0) & (rejected_unique < 2)
+                if np.any((stop_short == 1) & ~effective_only):
+                    return False
+                if np.any((stop_short == 2) & ~unique_only):
+                    return False
+                if np.any((stop_short == 3) & ~both):
+                    return False
+            if np.any(times > 1e-8) and not np.isfinite(forward_energy[times > 1e-8]).all():
+                return False
+            checkpoints = np.asarray(data["cycle_checkpoints"], dtype=np.float64)
+            if checkpoints.shape != times.shape + (_CHECKPOINT_COUNT, 5):
+                return False
+            for achieved, rows in zip(times.reshape(-1), checkpoints.reshape(-1, _CHECKPOINT_COUNT, 5)):
+                finite_rows = np.isfinite(rows).all(axis=1)
+                blank_rows = np.isnan(rows).all(axis=1)
+                if not np.all(finite_rows | blank_rows) or not finite_rows.any():
+                    return False
+                elapsed = rows[finite_rows, 0]
+                if np.any(elapsed < -1e-12) or np.any(elapsed > float(achieved) + 1e-8):
+                    return False
+                if not _close(float(np.max(elapsed)), achieved):
+                    return False
+            equilibration = np.asarray(data["energy_equilibration_trace"], dtype=np.float64)
+            measurement = np.asarray(data["energy_measure_trace"], dtype=np.float64)
+            equilibration_time = np.asarray(data["energy_equilibration_time"], dtype=np.float64)
+            measurement_time = np.asarray(data["energy_measure_time"], dtype=np.float64)
+            if equilibration.shape != (N_POPULATIONS, N_EQUILIBRATE) or not np.isfinite(equilibration).all():
+                return False
+            if measurement.shape != (N_POPULATIONS, N_MEASURE) or not np.isfinite(measurement).all():
+                return False
+            block_time = float(data["tau_block"])
+            expected_equilibration = block_time * np.arange(1, N_EQUILIBRATE + 1)
+            expected_measurement = block_time * np.arange(
+                N_EQUILIBRATE + 1, N_EQUILIBRATE + N_MEASURE + 1
+            )
+            if equilibration_time.shape != expected_equilibration.shape:
+                return False
+            if measurement_time.shape != expected_measurement.shape:
+                return False
+            if not np.allclose(equilibration_time, expected_equilibration, rtol=1e-6, atol=1e-8):
+                return False
+            if not np.allclose(measurement_time, expected_measurement, rtol=1e-6, atol=1e-8):
+                return False
             block, forward = projector_times(float(data["sigma"]))
             return _close(data["tau_block"], block) and _close(data["tau_forward_requested"], forward)
     except Exception:
@@ -385,6 +524,25 @@ def save_run(path, sample, result, sigma, gamma, tau_block, tau_forward, seconds
         energy_growth_error=np.float64(result["energy_growth_error"]),
         min_unique_ancestors=np.int64(result["min_unique_ancestors"]),
         min_effective_ancestors=np.float64(result["min_effective_ancestors"]),
+        floor_unique=np.int64(result["floor_unique"]),
+        floor_effective=np.float64(result["floor_effective"]),
+        cycle_q2=np.asarray(result["cycle_q2"], dtype=np.float64),
+        cycle_unique=np.asarray(result["cycle_unique"], dtype=np.int64),
+        cycle_effective=np.asarray(result["cycle_effective"], dtype=np.float64),
+        cycle_max_fraction=np.asarray(result["cycle_max_fraction"], dtype=np.float64),
+        cycle_weight_ess=np.asarray(result["cycle_weight_ess"], dtype=np.float64),
+        cycle_stop=np.asarray(result["cycle_stop"], dtype=np.int64),
+        cycle_rejected_dt=np.asarray(result["cycle_rejected_dt"], dtype=np.float64),
+        cycle_rejected_unique=np.asarray(result["cycle_rejected_unique"], dtype=np.float64),
+        cycle_rejected_effective=np.asarray(result["cycle_rejected_effective"], dtype=np.float64),
+        cycle_rejected_weight_ess=np.asarray(result["cycle_rejected_weight_ess"], dtype=np.float64),
+        cycle_rejected_max_fraction=np.asarray(result["cycle_rejected_max_fraction"], dtype=np.float64),
+        cycle_checkpoints=np.asarray(result["cycle_checkpoints"], dtype=np.float64),
+        energy_forward_trace=np.asarray(result["energy_forward_trace"], dtype=np.float64),
+        energy_equilibration_trace=np.asarray(result["energy_equilibration_trace"], dtype=np.float64),
+        energy_equilibration_time=np.asarray(result["energy_equilibration_time"], dtype=np.float64),
+        energy_measure_trace=np.asarray(result["energy_measure_trace"], dtype=np.float64),
+        energy_measure_time=np.asarray(result["energy_measure_time"], dtype=np.float64),
     )
     os.replace(temporary, path)
     if not result_ready(path):

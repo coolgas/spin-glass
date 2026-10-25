@@ -152,6 +152,74 @@ def _effective_tags(walkers):
     return float(total * total / np.dot(weights, weights))
 
 
+_CHECKPOINT_COUNT = 8
+
+
+def _weight_ess(walkers):
+    """Kish size of the walker weights before resampling.
+
+    Weights are reset to one by resampling, so this is not the descendant
+    Kish size. ``_effective_ancestors`` is that size.
+    """
+    weights = np.fromiter((walker.weight for walker in walkers), dtype=np.float64)
+    total = float(weights.sum()) if weights.size else 0.0
+    if total <= 0.0 or not np.isfinite(weights).all():
+        return 0.0
+    return float(total * total / np.dot(weights, weights))
+
+
+def _max_descendant_fraction(walkers):
+    ancestors = np.fromiter((walker.ancestor for walker in walkers), dtype=np.int64)
+    if ancestors.size == 0:
+        return 0.0
+    _, counts = np.unique(ancestors, return_counts=True)
+    return float(counts.max() / float(counts.sum()))
+
+
+def _bounded_checkpoints(rows):
+    """At most eight samples of one cycle, always including the last step."""
+    out = np.full((_CHECKPOINT_COUNT, 5), np.nan, dtype=np.float64)
+    if not rows:
+        return out
+    if len(rows) <= _CHECKPOINT_COUNT:
+        out[: len(rows)] = np.asarray(rows, dtype=np.float64)
+        return out
+    chosen = np.linspace(0, len(rows) - 1, _CHECKPOINT_COUNT).round().astype(int)
+    chosen[0] = 0
+    chosen[-1] = len(rows) - 1
+    out[:] = np.asarray([rows[int(index)] for index in chosen], dtype=np.float64)
+    return out
+
+
+def _resolve_floors(n_walkers, min_effective_ancestors, min_unique_ancestors):
+    """Production floors are Kish size 8 and two unique ancestors.
+
+    A population below 16 walkers uses half its walkers instead of 8, so the
+    floor cannot exceed the population. Passing the same numbers reproduces
+    that rule.
+    """
+    if min_unique_ancestors is None:
+        unique_floor = 2
+    else:
+        if isinstance(min_unique_ancestors, bool):
+            raise ValueError("the unique ancestor floor must be an integer")
+        unique_floor = int(min_unique_ancestors)
+    if unique_floor < 2:
+        raise ValueError("the unique ancestor floor must be at least 2")
+    if min_effective_ancestors is None:
+        if int(n_walkers) >= 16:
+            effective_floor = 8.0
+        else:
+            effective_floor = float(max(2, int(n_walkers) // 2))
+    else:
+        if isinstance(min_effective_ancestors, bool):
+            raise ValueError("the effective ancestor floor must be a number")
+        effective_floor = float(min_effective_ancestors)
+    if not math.isfinite(effective_floor) or effective_floor < 2.0:
+        raise ValueError("the effective ancestor floor must be at least 2")
+    return unique_floor, effective_floor
+
+
 def _clone_population(walkers):
     clones = []
     for walker in walkers:
@@ -175,18 +243,20 @@ def _project_once(
     n_measure=60,
     tau_forward=8.0,
     n_forward_cycles=4,
+    min_effective_ancestors=None,
+    min_unique_ancestors=None,
 ):
     """One independent population.
 
     Energy blocks are one mixed estimate each. Overlap moments are one
     forward-walking cycle each. The cycle stops before the Kish size of the
     descendant weights falls below 8, or before only one unique ancestor
-    remains. A unique-id floor of ``n_walkers / 40`` cuts the walk while that
-    Kish size is still large, so a longer request never runs. A Kish floor
-    near ``n_walkers / 40`` stops too early. The cycle keeps the last
-    population still above the floor, so the achieved time can be shorter
-    than requested. A shortened cycle is flagged and does not set the
-    resolved flags.
+    remains. The arguments select those floors; the defaults are that rule.
+    The cycle keeps the last population still above the floor, so the
+    achieved time can be shorter than requested. A shortened cycle is flagged
+    and does not set the resolved flags. The scalar energy still mixes the
+    measurement window with the forward walk. The equilibration and
+    measurement traces are stored on their own.
     """
     if gamma <= 0.0:
         raise ValueError("gamma must be positive")
@@ -197,8 +267,16 @@ def _project_once(
     rate = float(n_replicas * ham.n_sites * gamma)
     walkers = _initial_walkers(ham, n_walkers, n_replicas, rng)
     shift = float(np.mean([walker.diagonal - rate for walker in walkers]))
+    unique_floor, effective_floor = _resolve_floors(
+        n_walkers, min_effective_ancestors, min_unique_ancestors
+    )
     energies = []
     growth = []
+    equilibration_energy = []
+    equilibration_time = []
+    measure_energy = []
+    measure_time = []
+    clock = 0.0
 
     def population_step(dt):
         nonlocal shift, walkers
@@ -208,6 +286,9 @@ def _project_once(
             energy_piece, time_piece = _advance(walker, ham, rate, shift, dt, rng)
             energy_sum += energy_piece
             time_sum += time_piece
+        # Weight diversity before the resample. Descendant diversity is read
+        # from the children, after the weights have been reset.
+        weight_ess = _weight_ess(walkers)
         children, log_total = _resample(walkers, rng)
         log_growth = (log_total - math.log(n_walkers)) / dt
         # Growth estimates the pair. The shift used here is the one that
@@ -215,29 +296,38 @@ def _project_once(
         growth_value = (shift - log_growth) / n_replicas
         shift = 0.5 * shift + 0.5 * (shift - log_growth)
         walkers = children
-        return energy_sum, time_sum, growth_value
+        return energy_sum, time_sum, growth_value, weight_ess
 
-    def one_block(record):
-        nonlocal walkers
+    def one_block(phase):
+        nonlocal walkers, clock
         energy_sum = 0.0
         time_sum = 0.0
         growth_values = []
         covered = 0.0
         while covered < tau_block - 1e-12:
             dt = _branch_dt(walkers, tau_block - covered)
-            energy_piece, time_piece, growth_value = population_step(dt)
+            energy_piece, time_piece, growth_value, _weight = population_step(dt)
             energy_sum += energy_piece
             time_sum += time_piece
             growth_values.append(growth_value)
             covered += dt
-        if record and time_sum > 0.0:
-            energies.append(energy_sum / time_sum / n_replicas)
+        clock += covered
+        if time_sum <= 0.0:
+            return
+        value = energy_sum / time_sum / n_replicas
+        if phase == "equilibration":
+            equilibration_energy.append(value)
+            equilibration_time.append(clock)
+        elif phase == "measure":
+            energies.append(value)
             growth.append(float(np.mean(growth_values)))
+            measure_energy.append(value)
+            measure_time.append(clock)
 
     for _ in range(int(n_equilibrate)):
-        one_block(False)
+        one_block("equilibration")
     for _ in range(int(n_measure)):
-        one_block(True)
+        one_block("measure")
 
     q_means = []
     q2_means = []
@@ -248,14 +338,24 @@ def _project_once(
     distinct_tags = []
     effective_tag_sizes = []
     forward_times = []
+    cycle_max_fraction = []
+    cycle_weight_ess = []
+    cycle_stop = []
+    cycle_rejected_dt = []
+    cycle_rejected_unique = []
+    cycle_rejected_effective = []
+    cycle_rejected_weight_ess = []
+    cycle_rejected_max_fraction = []
+    cycle_checkpoints = []
+    forward_energy_means = []
     if n_replicas == 2 and n_forward_cycles:
+        # The default floors are Kish size 8 and two unique ancestors.
         # Kish size 8 lets a requested time of 8 finish at Gamma/sigma = 0.2,
         # where that size stays above 20, and keeps the Gamma/sigma = 1
         # susceptibility on the previous estimator. A higher Kish floor stops
         # early and pulls the mid-field susceptibility down. Two unique ids
         # refuse a one-lineage average. A smaller population uses half its
         # walkers so the floor cannot exceed the population.
-        effective_floor = 8 if int(n_walkers) >= 16 else max(2, int(n_walkers) // 2)
         for _ in range(int(n_forward_cycles)):
             for identity, walker in enumerate(walkers):
                 walker.tag = _tag_overlap(walker)
@@ -264,23 +364,59 @@ def _project_once(
             effective_tag_sizes.append(_effective_tags(walkers))
             saved = _clone_population(walkers)
             elapsed = 0.0
+            checkpoints = [(
+                0.0,
+                float(_ancestor_count(walkers)),
+                float(_effective_ancestors(walkers)),
+                float(_weight_ess(walkers)),
+                float(_max_descendant_fraction(walkers)),
+            )]
+            forward_energies = []
+            last_weight_ess = checkpoints[0][3]
+            rejected = None
+            stop = 0
             while elapsed < float(tau_forward) - 1e-12:
                 backup = _clone_population(walkers)
                 shift_backup = shift
                 dt = _branch_dt(walkers, float(tau_forward) - elapsed)
-                energy_piece, time_piece, growth_value = population_step(dt)
-                if (
-                    _ancestor_count(walkers) < 2
-                    or _effective_ancestors(walkers) < effective_floor
-                ):
+                energy_piece, time_piece, growth_value, weight_ess = population_step(dt)
+                unique_now = _ancestor_count(walkers)
+                effective_now = _effective_ancestors(walkers)
+                fraction_now = _max_descendant_fraction(walkers)
+                if unique_now < unique_floor or effective_now < effective_floor:
+                    rejected = (
+                        float(dt),
+                        float(unique_now),
+                        float(effective_now),
+                        float(weight_ess),
+                        float(fraction_now),
+                    )
+                    hit_effective = effective_now < effective_floor
+                    hit_unique = unique_now < unique_floor
+                    if hit_effective and hit_unique:
+                        stop = 3
+                    elif hit_effective:
+                        stop = 1
+                    else:
+                        stop = 2
                     walkers = backup
                     shift = shift_backup
                     break
                 if time_piece > 0.0:
-                    energies.append(energy_piece / time_piece / n_replicas)
+                    step_energy = energy_piece / time_piece / n_replicas
+                    energies.append(step_energy)
                     growth.append(growth_value)
+                    forward_energies.append(step_energy)
                 saved = walkers
                 elapsed += dt
+                last_weight_ess = float(weight_ess)
+                checkpoints.append((
+                    float(elapsed),
+                    float(unique_now),
+                    float(effective_now),
+                    float(weight_ess),
+                    float(fraction_now),
+                ))
             tags = np.fromiter((walker.tag for walker in saved), dtype=np.float64)
             q_means.append(float(tags.mean()))
             q2_means.append(float(np.mean(tags ** 2)))
@@ -288,6 +424,25 @@ def _project_once(
             q4_means.append(float(np.mean(tags ** 4)))
             unique_ancestors.append(_ancestor_count(saved))
             effective_ancestors.append(_effective_ancestors(saved))
+            cycle_max_fraction.append(_max_descendant_fraction(saved))
+            cycle_weight_ess.append(float(last_weight_ess))
+            cycle_stop.append(int(stop))
+            if rejected is None:
+                cycle_rejected_dt.append(np.nan)
+                cycle_rejected_unique.append(np.nan)
+                cycle_rejected_effective.append(np.nan)
+                cycle_rejected_weight_ess.append(np.nan)
+                cycle_rejected_max_fraction.append(np.nan)
+            else:
+                cycle_rejected_dt.append(rejected[0])
+                cycle_rejected_unique.append(rejected[1])
+                cycle_rejected_effective.append(rejected[2])
+                cycle_rejected_weight_ess.append(rejected[3])
+                cycle_rejected_max_fraction.append(rejected[4])
+            cycle_checkpoints.append(_bounded_checkpoints(checkpoints))
+            forward_energy_means.append(
+                float(np.mean(forward_energies)) if forward_energies else np.nan
+            )
             forward_times.append(elapsed)
             walkers = saved
 
@@ -309,6 +464,12 @@ def _project_once(
         "n_energy_blocks": len(energies),
         "n_populations": 1,
         "shift": float(shift),
+        "floor_unique": int(unique_floor),
+        "floor_effective": float(effective_floor),
+        "energy_equilibration_trace": np.asarray(equilibration_energy, dtype=np.float64),
+        "energy_equilibration_time": np.asarray(equilibration_time, dtype=np.float64),
+        "energy_measure_trace": np.asarray(measure_energy, dtype=np.float64),
+        "energy_measure_time": np.asarray(measure_time, dtype=np.float64),
     }
     if q2_means:
         q_mean, q_error, q_resolved = series_error(q_means)
@@ -359,6 +520,19 @@ def _project_once(
             min_effective_ancestors=float(min(effective_ancestors)),
             min_distinct_tags=int(min(distinct_tags)),
             min_effective_tags=float(min(effective_tag_sizes)),
+            cycle_q2=np.asarray(q2_means, dtype=np.float64),
+            cycle_unique=np.asarray(unique_ancestors, dtype=np.int64),
+            cycle_effective=np.asarray(effective_ancestors, dtype=np.float64),
+            cycle_max_fraction=np.asarray(cycle_max_fraction, dtype=np.float64),
+            cycle_weight_ess=np.asarray(cycle_weight_ess, dtype=np.float64),
+            cycle_stop=np.asarray(cycle_stop, dtype=np.int64),
+            cycle_rejected_dt=np.asarray(cycle_rejected_dt, dtype=np.float64),
+            cycle_rejected_unique=np.asarray(cycle_rejected_unique, dtype=np.float64),
+            cycle_rejected_effective=np.asarray(cycle_rejected_effective, dtype=np.float64),
+            cycle_rejected_weight_ess=np.asarray(cycle_rejected_weight_ess, dtype=np.float64),
+            cycle_rejected_max_fraction=np.asarray(cycle_rejected_max_fraction, dtype=np.float64),
+            cycle_checkpoints=np.stack(cycle_checkpoints),
+            energy_forward_trace=np.asarray(forward_energy_means, dtype=np.float64),
         )
     return result
 
@@ -374,6 +548,25 @@ def _projection_record(forward_times, requested):
         "tau_forward_requested": requested,
         "n_forward_truncated": int(np.count_nonzero(truncated)),
         "projection_complete": bool(times.size) and not bool(np.any(truncated)),
+    }
+
+
+def qualify_production(result):
+    """Refuse to treat attained time as a ground-state certificate.
+
+    A shortened archive stays an exploratory record. A run that reaches the
+    requested time, including a complete small lattice, is still not
+    production-qualified for the L=6 window. ``qualified`` stays false.
+    """
+    complete = bool(result.get("projection_complete"))
+    if complete:
+        reason = "attained time is not a convergence certificate"
+    else:
+        reason = "truncated"
+    return {
+        "qualified": False,
+        "reason": reason,
+        "projection_complete": complete,
     }
 
 
@@ -412,6 +605,16 @@ def _combine_populations(parts):
         "n_energy_blocks": int(sum(part["n_energy_blocks"] for part in parts)),
         "n_populations": len(parts),
         "shift": float(np.mean([part["shift"] for part in parts])),
+        "floor_unique": int(first["floor_unique"]),
+        "floor_effective": float(first["floor_effective"]),
+        "energy_equilibration_trace": np.stack(
+            [np.asarray(part["energy_equilibration_trace"], dtype=np.float64) for part in parts]
+        ),
+        "energy_equilibration_time": np.asarray(first["energy_equilibration_time"], dtype=np.float64),
+        "energy_measure_trace": np.stack(
+            [np.asarray(part["energy_measure_trace"], dtype=np.float64) for part in parts]
+        ),
+        "energy_measure_time": np.asarray(first["energy_measure_time"], dtype=np.float64),
     }
     if "q2" not in first:
         return result
@@ -464,6 +667,39 @@ def _combine_populations(parts):
         min_effective_ancestors=float(min(part["min_effective_ancestors"] for part in parts)),
         min_distinct_tags=int(min(part["min_distinct_tags"] for part in parts)),
         min_effective_tags=float(min(part["min_effective_tags"] for part in parts)),
+        cycle_q2=np.stack([np.asarray(part["cycle_q2"], dtype=np.float64) for part in parts]),
+        cycle_unique=np.stack([np.asarray(part["cycle_unique"], dtype=np.int64) for part in parts]),
+        cycle_effective=np.stack(
+            [np.asarray(part["cycle_effective"], dtype=np.float64) for part in parts]
+        ),
+        cycle_max_fraction=np.stack(
+            [np.asarray(part["cycle_max_fraction"], dtype=np.float64) for part in parts]
+        ),
+        cycle_weight_ess=np.stack(
+            [np.asarray(part["cycle_weight_ess"], dtype=np.float64) for part in parts]
+        ),
+        cycle_stop=np.stack([np.asarray(part["cycle_stop"], dtype=np.int64) for part in parts]),
+        cycle_rejected_dt=np.stack(
+            [np.asarray(part["cycle_rejected_dt"], dtype=np.float64) for part in parts]
+        ),
+        cycle_rejected_unique=np.stack(
+            [np.asarray(part["cycle_rejected_unique"], dtype=np.float64) for part in parts]
+        ),
+        cycle_rejected_effective=np.stack(
+            [np.asarray(part["cycle_rejected_effective"], dtype=np.float64) for part in parts]
+        ),
+        cycle_rejected_weight_ess=np.stack(
+            [np.asarray(part["cycle_rejected_weight_ess"], dtype=np.float64) for part in parts]
+        ),
+        cycle_rejected_max_fraction=np.stack(
+            [np.asarray(part["cycle_rejected_max_fraction"], dtype=np.float64) for part in parts]
+        ),
+        cycle_checkpoints=np.stack(
+            [np.asarray(part["cycle_checkpoints"], dtype=np.float64) for part in parts]
+        ),
+        energy_forward_trace=np.stack(
+            [np.asarray(part["energy_forward_trace"], dtype=np.float64) for part in parts]
+        ),
     )
     return result
 
@@ -481,6 +717,8 @@ def project(
     n_forward_cycles=4,
     n_populations=1,
     seed=0,
+    min_effective_ancestors=None,
+    min_unique_ancestors=None,
 ):
     """Project ``n_replicas`` non-interacting copies.
 
@@ -490,7 +728,11 @@ def project(
     populations the reported errors are that scatter. Eight or more
     populations set the resolved flags only when every forward cycle reaches
     the requested time. A cycle stopped by the ancestor floor does not.
-    The flag records that count and that check, not a coverage certificate.
+    ``projection_complete`` records that attained time. ``qualify_production``
+    does not treat it as a ground-state certificate.
+    ``min_effective_ancestors`` and ``min_unique_ancestors`` select the
+    forward-walk floors. The defaults are Kish size 8, or half the population
+    below 16 walkers, and two unique ancestors.
     """
     if isinstance(n_populations, bool) or int(n_populations) < 1:
         raise ValueError("n_populations must be a positive integer")
@@ -503,6 +745,8 @@ def project(
         n_measure=n_measure,
         tau_forward=tau_forward,
         n_forward_cycles=n_forward_cycles,
+        min_effective_ancestors=min_effective_ancestors,
+        min_unique_ancestors=min_unique_ancestors,
     )
     if n_populations == 1:
         result = _project_once(ham, gamma, np.random.default_rng(seed), **options)

@@ -47,7 +47,9 @@ def _check_cache_identity(report):
     from kagome_qea.pqmc import project
     from kagome_qea.sample import make_sample
     from kagome_qea.trial_overlap import (
+        N_EQUILIBRATE,
         N_FORWARD_CYCLES,
+        N_MEASURE,
         N_POPULATIONS,
         code_fingerprint,
         git_revision,
@@ -98,6 +100,7 @@ def _check_cache_identity(report):
             f"short {short['projection_complete']} long {long['projection_complete']} "
             f"resolved {long['q2_resolved']}",
         )
+    _check_stop_diagnostics(report, short, long)
 
     block, forward = projector_times(1.0)
     series = np.linspace(0.01, 0.02, N_POPULATIONS)
@@ -140,6 +143,25 @@ def _check_cache_identity(report):
         n_forward_truncated=np.int64(N_POPULATIONS * N_FORWARD_CYCLES),
         git_revision=np.array(git_revision()),
         code_fingerprint=np.array(code_fingerprint()),
+        floor_unique=np.int64(2),
+        floor_effective=np.float64(8.0),
+        cycle_q2=np.repeat(series[:, None], N_FORWARD_CYCLES, axis=1),
+        cycle_unique=np.full(times.shape, 125, dtype=np.int64),
+        cycle_effective=np.full(times.shape, 10.0),
+        cycle_max_fraction=np.full(times.shape, 0.05),
+        cycle_weight_ess=np.full(times.shape, 1000.0),
+        cycle_stop=np.ones(times.shape, dtype=np.int64),
+        cycle_rejected_dt=np.full(times.shape, 0.01),
+        cycle_rejected_unique=np.full(times.shape, 50.0),
+        cycle_rejected_effective=np.full(times.shape, 7.0),
+        cycle_rejected_weight_ess=np.full(times.shape, 20.0),
+        cycle_rejected_max_fraction=np.full(times.shape, 0.4),
+        cycle_checkpoints=_truncated_checkpoints(times),
+        energy_forward_trace=np.full(times.shape, -10.0),
+        energy_equilibration_trace=np.full((N_POPULATIONS, N_EQUILIBRATE), -10.0),
+        energy_equilibration_time=block * np.arange(1, N_EQUILIBRATE + 1),
+        energy_measure_trace=np.full((N_POPULATIONS, N_MEASURE), -10.0),
+        energy_measure_time=block * np.arange(N_EQUILIBRATE + 1, N_EQUILIBRATE + N_MEASURE + 1),
     )
 
     def archive(directory, name, changes):
@@ -215,14 +237,27 @@ def _check_cache_identity(report):
                 },
             ),
             "energy": archive(directory, "energy.npz", {"energy": np.float64(np.nan)}),
+            "effective_floor": archive(
+                directory, "effective_floor.npz", {"floor_effective": np.float64(125.0)}
+            ),
+            "unique_floor": archive(
+                directory, "unique_floor.npz", {"floor_unique": np.int64(125)}
+            ),
+            "false_stop": archive(
+                directory,
+                "false_stop.npz",
+                {"cycle_stop": np.zeros(times.shape, dtype=np.int64)},
+            ),
         }
         missing = {}
-        for key in ("gamma", "sample_id", "L", "seed_entropy", "energy"):
+        for key in ("gamma", "sample_id", "L", "seed_entropy", "energy", "floor_effective"):
             written = dict(payload)
             del written[key]
             path = Path(directory) / f"missing_{key}.npz"
             np.savez_compressed(path, **written)
             missing[key] = result_ready(path, expected=expected)
+        finished_points = _truncated_checkpoints(times)
+        finished_points[:, :, 0, 0] = forward
         complete = archive(
             directory,
             "complete.npz",
@@ -231,6 +266,13 @@ def _check_cache_identity(report):
                 "tau_forward": np.float64(forward),
                 "projection_complete": np.int64(1),
                 "n_forward_truncated": np.int64(0),
+                "cycle_stop": np.zeros(times.shape, dtype=np.int64),
+                "cycle_rejected_dt": np.full(times.shape, np.nan),
+                "cycle_rejected_unique": np.full(times.shape, np.nan),
+                "cycle_rejected_effective": np.full(times.shape, np.nan),
+                "cycle_rejected_weight_ess": np.full(times.shape, np.nan),
+                "cycle_rejected_max_fraction": np.full(times.shape, np.nan),
+                "cycle_checkpoints": finished_points,
             },
         )
         from unittest.mock import patch
@@ -258,6 +300,137 @@ def _check_cache_identity(report):
             "cache identity",
             f"kept {kept} complete {complete} unknown {unknown_checkout} "
             f"rejected {rejected} missing {missing}",
+        )
+
+
+def _truncated_checkpoints(times):
+    points = np.full(times.shape + (8, 5), np.nan)
+    points[:, :, 0, :] = np.array([1.5, 125.0, 10.0, 1000.0, 0.05])
+    return points
+
+
+def _check_stop_diagnostics(report, short, long):
+    """Floors, rollback records, separate energy windows, and qualification."""
+    from pathlib import Path
+
+    from ising import chain
+    from kagome_qea.pqmc import (
+        _CHECKPOINT_COUNT,
+        _bounded_checkpoints,
+        _resolve_floors,
+        project,
+        qualify_production,
+    )
+
+    problems = []
+    if _resolve_floors(5000, None, None) != (2, 8.0):
+        problems.append("default floors")
+    if _resolve_floors(5000, 8.0, 2) != (2, 8.0):
+        problems.append("explicit floors")
+    if _resolve_floors(10, None, None) != (2, 5.0):
+        problems.append("small population")
+    for arguments in ((5000, True, None), (5000, 1.0, None), (5000, None, True), (5000, None, 1)):
+        try:
+            _resolve_floors(*arguments)
+        except ValueError:
+            pass
+        else:
+            problems.append(f"accepted {arguments}")
+    rows = [(float(index), 1.0, 2.0, 3.0, 4.0) for index in range(20)]
+    packed = _bounded_checkpoints(rows)
+    if (
+        packed.shape != (_CHECKPOINT_COUNT, 5)
+        or packed[0, 0] != 0.0
+        or packed[-1, 0] != 19.0
+        or not np.isfinite(packed).all()
+    ):
+        problems.append("checkpoints")
+    if not np.isnan(_bounded_checkpoints([])).all():
+        problems.append("empty checkpoints")
+    if short["floor_unique"] != 2 or short["floor_effective"] != 8.0:
+        problems.append("short floors")
+    if not np.all(short["cycle_stop"] == 0) or not np.isnan(short["cycle_rejected_dt"]).all():
+        problems.append("short stop")
+    if short["energy_equilibration_trace"].shape != (0,) or short["energy_measure_trace"].shape != (0,):
+        problems.append("short traces")
+    if not math.isfinite(short["energy"]) or not np.isfinite(short["energy_forward_trace"]).all():
+        problems.append("short energy")
+    if abs(float(np.mean(short["cycle_q2"])) - float(short["q2"])) > 1e-12:
+        problems.append("short cycle mean")
+    short_verdict = qualify_production(short)
+    if short_verdict["qualified"] or short_verdict["reason"] != "attained time is not a convergence certificate":
+        problems.append(f"short qualify {short_verdict}")
+    stopped = long["cycle_stop"] != 0
+    if long["floor_effective"] != 8.0 or not stopped.any():
+        problems.append("long stop")
+    if not np.isfinite(long["cycle_rejected_effective"][stopped]).all():
+        problems.append("long rejected")
+    if abs(float(np.mean(long["cycle_q2"])) - float(long["q2"])) > 1e-12:
+        problems.append("long cycle mean")
+    if long["energy_measure_trace"].shape != (2, 0):
+        problems.append("long traces")
+    long_verdict = qualify_production(long)
+    if long_verdict["qualified"] or long_verdict["reason"] != "truncated":
+        problems.append(f"long qualify {long_verdict}")
+    for requested in (8.0, 16.0):
+        truncated = qualify_production({"projection_complete": False, "tau_forward_requested": requested})
+        attained = qualify_production({"projection_complete": True, "tau_forward_requested": requested})
+        if truncated["qualified"] or truncated["reason"] != "truncated":
+            problems.append(f"request {requested:g} truncated")
+        if attained["qualified"] or attained["reason"] != "attained time is not a convergence certificate":
+            problems.append(f"request {requested:g} attained")
+    traced = project(
+        chain(2, J=1.0),
+        1.0,
+        n_walkers=20,
+        n_equilibrate=2,
+        n_measure=3,
+        tau_block=0.05,
+        tau_forward=1e-6,
+        n_forward_cycles=2,
+        n_populations=1,
+        seed=2,
+    )
+    if traced["energy_equilibration_trace"].shape != (2,) or traced["energy_measure_trace"].shape != (3,):
+        problems.append("window lengths")
+    if traced["n_energy_blocks"] <= 3:
+        problems.append("forward energy left the scalar")
+    if abs(float(traced["energy_equilibration_time"][-1]) - 0.10) > 1e-6:
+        problems.append("equilibration clock")
+    if abs(float(traced["energy_measure_time"][0]) - 0.15) > 1e-6:
+        problems.append("measurement starts in the equilibration window")
+    if abs(float(traced["energy_measure_time"][-1]) - 0.25) > 1e-6:
+        problems.append("measurement clock")
+    with tempfile.TemporaryDirectory() as directory:
+        path = Path(directory) / "diag.npz"
+        np.savez_compressed(
+            path,
+            floor_unique=np.int64(short["floor_unique"]),
+            floor_effective=np.float64(short["floor_effective"]),
+            cycle_stop=np.asarray(short["cycle_stop"]),
+            cycle_q2=np.asarray(short["cycle_q2"]),
+            forward_times=np.asarray(short["forward_times"]),
+            cycle_checkpoints=np.asarray(short["cycle_checkpoints"]),
+            cycle_rejected_dt=np.asarray(short["cycle_rejected_dt"]),
+        )
+        with np.load(path) as loaded:
+            reloaded = (
+                int(loaded["floor_unique"]) == 2
+                and abs(float(loaded["floor_effective"]) - 8.0) < 1e-12
+                and np.array_equal(loaded["cycle_stop"], short["cycle_stop"])
+                and np.allclose(loaded["cycle_q2"], short["cycle_q2"])
+                and np.allclose(loaded["forward_times"], short["forward_times"])
+                and np.allclose(loaded["cycle_checkpoints"], short["cycle_checkpoints"], equal_nan=True)
+                and np.allclose(loaded["cycle_rejected_dt"], short["cycle_rejected_dt"], equal_nan=True)
+            )
+    if not reloaded:
+        problems.append("reload")
+    if problems:
+        report.fail("stop diagnostics", ", ".join(problems))
+    else:
+        report.ok(
+            "stop diagnostics",
+            f"long tau {long['tau_forward']:.3g}, stops {sorted(set(long['cycle_stop'].reshape(-1).tolist()))}",
         )
 
 

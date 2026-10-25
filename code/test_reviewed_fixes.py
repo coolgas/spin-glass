@@ -24,6 +24,7 @@ from qmc_numerics import series_error, systematic, weighted_interval
 
 def main():
     report = _Report()
+    _check_cache_identity(report)
     _check_operator(report)
     _check_weights(report)
     _check_overlap(report)
@@ -36,6 +37,118 @@ def main():
         print("Failed checks: " + ", ".join(report.failed))
         return 1
     return 0
+
+
+def _check_cache_identity(report):
+    import tempfile
+    from pathlib import Path
+
+    from ising import chain
+    from kagome_qea.pqmc import project
+    from kagome_qea.trial_overlap import (
+        N_FORWARD_CYCLES,
+        N_POPULATIONS,
+        projector_times,
+        result_ready,
+    )
+
+    short = project(
+        chain(2, J=1.0),
+        1.0,
+        n_walkers=30,
+        n_equilibrate=0,
+        n_measure=0,
+        tau_block=0.05,
+        tau_forward=1e-6,
+        n_forward_cycles=2,
+        n_populations=1,
+        seed=0,
+    )
+    long = project(
+        chain(2, J=1.0),
+        1.0,
+        n_walkers=30,
+        n_equilibrate=0,
+        n_measure=0,
+        tau_block=0.05,
+        tau_forward=30.0,
+        n_forward_cycles=2,
+        n_populations=2,
+        seed=1,
+    )
+    if (
+        short["projection_complete"]
+        and short["n_forward_truncated"] == 0
+        and short["tau_forward"] + 1e-8 >= 1e-6
+        and not long["projection_complete"]
+        and long["n_forward_truncated"] >= 1
+        and not long["q2_resolved"]
+        and long["forward_times"].shape == (2, 2)
+    ):
+        report.ok(
+            "projection completeness",
+            f"short tau {short['tau_forward']:.3g}, long tau {long['tau_forward']:.3g}",
+        )
+    else:
+        report.fail(
+            "projection completeness",
+            f"short {short['projection_complete']} long {long['projection_complete']} "
+            f"resolved {long['q2_resolved']}",
+        )
+
+    block, forward = projector_times(1.0)
+    series = np.linspace(0.01, 0.02, N_POPULATIONS)
+    times = np.full(N_POPULATIONS * N_FORWARD_CYCLES, 1.5)
+    payload = dict(
+        q2=np.float64(series.mean()),
+        q4=np.float64(0.01),
+        q2_series=series,
+        q2_error=np.float64(0.001),
+        chi_sg=np.float64(108 * series.mean()),
+        chi_sg_error=np.float64(0.1),
+        J=np.ones(1),
+        min_unique_ancestors=np.int64(125),
+        min_effective_ancestors=np.float64(10.0),
+        n_populations=np.int64(N_POPULATIONS),
+        n_walkers=np.int64(5000),
+        n_equilibrate=np.int64(40),
+        n_measure=np.int64(40),
+        n_forward_cycles=np.int64(N_FORWARD_CYCLES),
+        n_sites=np.int64(108),
+        tau_block=np.float64(block),
+        tau_forward=np.float64(1.5),
+        tau_forward_requested=np.float64(forward),
+        forward_times=times,
+        projection_complete=np.int64(0),
+        n_forward_truncated=np.int64(N_POPULATIONS * N_FORWARD_CYCLES),
+        sigma=np.float64(1.0),
+        git_revision=np.array("abc"),
+    )
+    with tempfile.TemporaryDirectory() as directory:
+        path = Path(directory) / "run.npz"
+        np.savez_compressed(path, **payload)
+        kept = result_ready(path)
+        payload["q2"] = np.float64(np.nan)
+        nan_path = Path(directory) / "nan.npz"
+        np.savez_compressed(nan_path, **payload)
+        payload["q2"] = np.float64(series.mean())
+        payload["n_walkers"] = np.int64(2)
+        small_path = Path(directory) / "small.npz"
+        np.savez_compressed(small_path, **payload)
+        payload["n_walkers"] = np.int64(5000)
+        payload["tau_forward_requested"] = np.float64(0.01)
+        stale_path = Path(directory) / "stale.npz"
+        np.savez_compressed(stale_path, **payload)
+        rejected_nan = result_ready(nan_path)
+        rejected_walkers = result_ready(small_path)
+        rejected_time = result_ready(stale_path)
+    if kept and not rejected_nan and not rejected_walkers and not rejected_time:
+        report.ok("cache identity", "matching archive kept; nan, walker count, and time rejected")
+    else:
+        report.fail(
+            "cache identity",
+            f"kept {kept} nan {rejected_nan} walkers {rejected_walkers} time {rejected_time}",
+        )
 
 
 def _check_operator(report):

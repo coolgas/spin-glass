@@ -144,7 +144,7 @@ def draw(points, path):
             key=lambda row: row["ratio"],
         )
         color = color_for(sigma)
-        label = rf"$\sigma = {sigma:g}$"
+        label = rf"$\sigma = {sigma:g}$, disorder jackknife"
         _panel(axes[0, 0], group, "gamma", "q2", "q2_error", color, label)
         _panel(axes[0, 1], group, "ratio", "q2", "q2_error", color, label)
         _panel(axes[1, 0], group, "gamma", "chi_sg", "chi_sg_error", color, label)
@@ -166,7 +166,10 @@ def draw(points, path):
         axis.set_xlabel(r"$\Gamma$")
     for axis in axes[:, 1]:
         axis.set_xlabel(r"$\Gamma/\sigma$")
-    figure.suptitle(r"$6\times 6$ Kagome torus, four coupling draws, $h = 0$")
+    figure.suptitle(
+        r"$6\times 6$ Kagome, $pqmc\_k32$, four coupling draws, $h = 0$"
+        "\nerror bars are the disorder jackknife, not the within-file Monte Carlo error"
+    )
     figure.tight_layout()
     figure.savefig(path, dpi=140)
     plt.close(figure)

@@ -179,9 +179,11 @@ def _project_once(
     """One independent population.
 
     Energy blocks are one mixed estimate each. Overlap moments are one
-    forward-walking cycle each. The cycle stops before the tagged population
-    falls below ``n_walkers / 40`` lineages, so one walker cannot set the
-    cycle's ``q^4``.
+    forward-walking cycle each. The cycle stops before the unique ancestor
+    count falls below ``n_walkers / 40``. That count is not a Kish effective
+    size. The cycle keeps the last population still above the floor, so the
+    achieved time can be shorter than requested. A shortened cycle is flagged
+    and does not set the resolved flags.
     """
     if gamma <= 0.0:
         raise ValueError("gamma must be positive")
@@ -244,8 +246,9 @@ def _project_once(
     effective_tag_sizes = []
     forward_times = []
     if n_replicas == 2 and n_forward_cycles:
-        # Below this many effective lineages one walker sets q^4, and the
-        # Binder ratio moves by tenths from cycle to cycle.
+        # Unique ancestors, not the Kish size of the descendant weights.
+        # Below this count one walker sets q^4. Stopping here keeps that
+        # from happening and leaves the achieved time short of the request.
         ancestor_floor = max(2, int(n_walkers) // 40)
         for _ in range(int(n_forward_cycles)):
             for identity, walker in enumerate(walkers):
@@ -291,6 +294,9 @@ def _project_once(
         "n_walkers": int(n_walkers),
         "n_replicas": int(n_replicas),
         "n_sites": int(ham.n_sites),
+        "n_equilibrate": int(n_equilibrate),
+        "n_measure": int(n_measure),
+        "tau_block": float(tau_block),
         "n_energy_blocks": len(energies),
         "n_populations": 1,
         "shift": float(shift),
@@ -300,6 +306,13 @@ def _project_once(
         q2, q2_error, q2_resolved = series_error(q2_means)
         q3, q3_error, q3_resolved = series_error(q3_means)
         q4, q4_error, q4_resolved = series_error(q4_means)
+        record = _projection_record(forward_times, tau_forward)
+        # A cycle cut by the ancestor floor is not the requested projection.
+        reached = record["projection_complete"]
+        q_resolved = bool(q_resolved) and reached
+        q2_resolved = bool(q2_resolved) and reached
+        q3_resolved = bool(q3_resolved) and reached
+        q4_resolved = bool(q4_resolved) and reached
         binder, ratio = binder_from_moments(q2, q4)
         _series_binder, binder_error = jackknife_binder_series(q2_means, q4_means)
         connected, connected_ratio = connected_binder(q_mean, q2, q3, q4)
@@ -327,7 +340,11 @@ def _project_once(
             connected_ratio=connected_ratio,
             chi_sg=spin_glass_susceptibility(q2, ham.n_sites),
             chi_sg_error=float(ham.n_sites) * float(q2_error),
-            tau_forward=float(min(forward_times)),
+            tau_forward=record["tau_forward"],
+            tau_forward_requested=record["tau_forward_requested"],
+            forward_times=record["forward_times"],
+            n_forward_truncated=record["n_forward_truncated"],
+            projection_complete=record["projection_complete"],
             n_forward_cycles=len(q2_means),
             min_unique_ancestors=int(min(unique_ancestors)),
             min_effective_ancestors=float(min(effective_ancestors)),
@@ -335,6 +352,20 @@ def _project_once(
             min_effective_tags=float(min(effective_tag_sizes)),
         )
     return result
+
+
+def _projection_record(forward_times, requested):
+    """Achieved forward times. A short cycle is not the requested projection."""
+    times = np.asarray(forward_times, dtype=np.float64)
+    requested = float(requested)
+    truncated = times + 1e-8 < requested
+    return {
+        "forward_times": times,
+        "tau_forward": float(times.min()) if times.size else float("nan"),
+        "tau_forward_requested": requested,
+        "n_forward_truncated": int(np.count_nonzero(truncated)),
+        "projection_complete": bool(times.size) and not bool(np.any(truncated)),
+    }
 
 
 def _population_stderr(values):
@@ -366,6 +397,9 @@ def _combine_populations(parts):
         "n_walkers": first["n_walkers"],
         "n_replicas": first["n_replicas"],
         "n_sites": int(first["n_sites"]),
+        "n_equilibrate": int(first["n_equilibrate"]),
+        "n_measure": int(first["n_measure"]),
+        "tau_block": float(first["tau_block"]),
         "n_energy_blocks": int(sum(part["n_energy_blocks"] for part in parts)),
         "n_populations": len(parts),
         "shift": float(np.mean([part["shift"] for part in parts])),
@@ -381,7 +415,12 @@ def _combine_populations(parts):
     connected, connected_ratio = connected_binder(
         float(q.mean()), float(q2.mean()), float(q3.mean()), float(q4.mean())
     )
-    resolved = len(parts) >= 8
+    # Eight populations are not enough when a forward cycle was cut short.
+    reached = all(bool(part["projection_complete"]) for part in parts)
+    resolved = len(parts) >= 8 and reached
+    forward_times = np.stack(
+        [np.asarray(part["forward_times"], dtype=np.float64) for part in parts]
+    )
     result.update(
         q=float(q.mean()),
         q_error=_population_stderr(q),
@@ -406,7 +445,11 @@ def _combine_populations(parts):
         connected_ratio=connected_ratio,
         chi_sg=spin_glass_susceptibility(float(q2.mean()), first["n_sites"]),
         chi_sg_error=float(first["n_sites"]) * _population_stderr(q2),
-        tau_forward=float(min(part["tau_forward"] for part in parts)),
+        tau_forward=float(forward_times.min()),
+        tau_forward_requested=float(first["tau_forward_requested"]),
+        forward_times=forward_times,
+        n_forward_truncated=int(sum(part["n_forward_truncated"] for part in parts)),
+        projection_complete=reached,
         n_forward_cycles=int(first["n_forward_cycles"]),
         min_unique_ancestors=int(min(part["min_unique_ancestors"] for part in parts)),
         min_effective_ancestors=float(min(part["min_effective_ancestors"] for part in parts)),
@@ -436,8 +479,9 @@ def project(
     One population remeasures its own survivors, so its cycle-to-cycle error
     can be far smaller than the scatter between populations. With two or more
     populations the reported errors are that scatter. Eight or more
-    populations set the resolved flags. The flag records the population
-    count, not a coverage certificate.
+    populations set the resolved flags only when every forward cycle reaches
+    the requested time. A cycle stopped by the ancestor floor does not.
+    The flag records that count and that check, not a coverage certificate.
     """
     if isinstance(n_populations, bool) or int(n_populations) < 1:
         raise ValueError("n_populations must be a positive integer")

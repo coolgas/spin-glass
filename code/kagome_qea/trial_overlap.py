@@ -13,6 +13,7 @@ the 1/σ projection time, produces an overlap that falls as Γ/σ grows.
 import argparse
 import os
 import shutil
+import subprocess
 import sys
 import time
 from concurrent.futures import ProcessPoolExecutor, as_completed
@@ -105,22 +106,113 @@ def project_pair(size, sigma, ratio, sample_id=TRIAL_SAMPLE):
     return sample, result, gamma, tau_block, tau_forward, seconds
 
 
+def git_revision():
+    """Current commit, recorded so a saved run names the code that wrote it."""
+    try:
+        return subprocess.check_output(
+            ["git", "rev-parse", "HEAD"],
+            cwd=repo_root(),
+            text=True,
+            stderr=subprocess.DEVNULL,
+        ).strip()
+    except (OSError, subprocess.CalledProcessError):
+        return "unknown"
+
+
+def _close(stored, expected):
+    stored = float(stored)
+    expected = float(expected)
+    return abs(stored - expected) <= 1e-8 * max(1.0, abs(expected))
+
+
 def result_ready(path):
-    """True when the npz is complete enough to keep and to skip."""
+    """True when the archive matches this run and its statistics are finite.
+
+    A file from another walker count, projection time, or population count
+    is not reused. ``projection_complete`` is stored either way: a finished
+    record of a shortened walk is kept, and it is not marked time-converged.
+    """
     if not path.is_file() or path.stat().st_size < 64:
         return False
     try:
         with np.load(path) as data:
+            required = {
+                "q2",
+                "q4",
+                "q2_series",
+                "q2_error",
+                "chi_sg",
+                "chi_sg_error",
+                "J",
+                "min_unique_ancestors",
+                "min_effective_ancestors",
+                "n_populations",
+                "n_walkers",
+                "n_equilibrate",
+                "n_measure",
+                "n_forward_cycles",
+                "n_sites",
+                "tau_block",
+                "tau_forward",
+                "tau_forward_requested",
+                "forward_times",
+                "projection_complete",
+                "n_forward_truncated",
+                "sigma",
+                "git_revision",
+            }
+            if not required <= set(data.files):
+                return False
+            if int(data["n_populations"]) != N_POPULATIONS:
+                return False
+            if int(data["n_walkers"]) != N_WALKERS:
+                return False
+            if int(data["n_equilibrate"]) != N_EQUILIBRATE:
+                return False
+            if int(data["n_measure"]) != N_MEASURE:
+                return False
+            if int(data["n_forward_cycles"]) != N_FORWARD_CYCLES:
+                return False
+            if str(data["git_revision"]) == "":
+                return False
+            series = np.asarray(data["q2_series"], dtype=np.float64)
+            times = np.asarray(data["forward_times"], dtype=np.float64)
+            statistics = [
+                data["q2"],
+                data["q4"],
+                data["q2_error"],
+                data["chi_sg"],
+                data["chi_sg_error"],
+                data["min_effective_ancestors"],
+            ]
+            if series.shape != (N_POPULATIONS,) or not np.isfinite(series).all():
+                return False
+            if times.size != N_POPULATIONS * N_FORWARD_CYCLES or not np.isfinite(times).all():
+                return False
+            if not all(np.isfinite(np.asarray(value, dtype=np.float64)).all() for value in statistics):
+                return False
+            if not _close(series.mean(), data["q2"]):
+                return False
+            if not _close(float(data["chi_sg"]), int(data["n_sites"]) * float(data["q2"])):
+                return False
+            if not _close(times.min(), data["tau_forward"]):
+                return False
+            block, forward = projector_times(float(data["sigma"]))
             return (
-                {"q2", "q4", "J", "min_unique_ancestors", "n_populations"}
-                <= set(data.files)
-                and int(data["n_populations"]) == N_POPULATIONS
+                _close(data["tau_block"], block)
+                and _close(data["tau_forward_requested"], forward)
+                and int(data["n_forward_truncated"]) >= 0
+                and int(data["projection_complete"]) in (0, 1)
             )
     except Exception:
         return False
 
 
 def save_run(path, sample, result, sigma, gamma, tau_block, tau_forward, seconds):
+    if not _close(tau_block, result["tau_block"]) or not _close(
+        tau_forward, result["tau_forward_requested"]
+    ):
+        raise ValueError("saved projection settings do not match the run")
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_name(f".{path.stem}.partial.npz")
     np.savez_compressed(
@@ -129,10 +221,15 @@ def save_run(path, sample, result, sigma, gamma, tau_block, tau_forward, seconds
         sample_id=np.int64(sample.sample_id),
         sigma=np.float64(sigma),
         gamma=np.float64(gamma),
-        tau_block=np.float64(tau_block),
-        tau_forward=np.float64(tau_forward),
+        tau_block=np.float64(result["tau_block"]),
+        tau_forward=np.float64(result["tau_forward"]),
+        tau_forward_requested=np.float64(result["tau_forward_requested"]),
+        forward_times=np.asarray(result["forward_times"], dtype=np.float64),
+        n_forward_truncated=np.int64(result["n_forward_truncated"]),
+        projection_complete=np.int64(bool(result["projection_complete"])),
         seconds=np.float64(seconds),
         seed_entropy=np.asarray(sample.seed_entropy, dtype=np.int64),
+        git_revision=np.array(git_revision()),
         J=np.asarray(sample.J, dtype=np.float64),
         q2=np.float64(result["q2"]),
         q2_error=np.float64(result["q2_error"]),
@@ -143,11 +240,17 @@ def save_run(path, sample, result, sigma, gamma, tau_block, tau_forward, seconds
         chi_sg=np.float64(result["chi_sg"]),
         chi_sg_error=np.float64(result["chi_sg_error"]),
         n_populations=np.int64(result["n_populations"]),
+        n_walkers=np.int64(result["n_walkers"]),
+        n_equilibrate=np.int64(result["n_equilibrate"]),
+        n_measure=np.int64(result["n_measure"]),
+        n_forward_cycles=np.int64(result["n_forward_cycles"]),
+        n_sites=np.int64(result["n_sites"]),
         energy=np.float64(result["energy"]),
         energy_error=np.float64(result["energy_error"]),
         energy_growth=np.float64(result["energy_growth"]),
         energy_growth_error=np.float64(result["energy_growth_error"]),
         min_unique_ancestors=np.int64(result["min_unique_ancestors"]),
+        min_effective_ancestors=np.float64(result["min_effective_ancestors"]),
     )
     os.replace(temporary, path)
     if not result_ready(path):
@@ -172,6 +275,8 @@ def run_one(sigma, ratio, sample_id=TRIAL_SAMPLE):
         f"q2 {result['q2']:.4f} ± {result['q2_error']:.4f}  "
         f"B {result['binder']:.3f} ± {result['binder_error']:.3f}  "
         f"ancestors {result['min_unique_ancestors']}  "
+        f"tau {result['tau_forward']:.3f}/{result['tau_forward_requested']:.3f}  "
+        f"complete {int(bool(result['projection_complete']))}  "
         f"energy {result['energy']:.3f} growth {result['energy_growth']:.3f}  "
         f"{seconds:.0f}s",
         flush=True,
@@ -242,7 +347,9 @@ def queue(workers, sigma=None):
 
     The manifest is ``l6_k32_queue.txt`` when 32 populations are used.
     ``l6_k32_queue_status.txt`` is one line rewritten as each job finishes.
-    Starting this again continues the same list. Passed ``sigma`` keeps one width.
+    Starting this again continues the same list. An archive is skipped only
+    when its settings and finite statistics match this run. Passed ``sigma``
+    keeps one width.
     """
     jobs = scan_jobs(sigma)
     pending = []

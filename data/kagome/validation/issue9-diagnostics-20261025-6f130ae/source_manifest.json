@@ -1,0 +1,32 @@
+{
+  "revision": "6f130ae809215bdcfc579239b0f6d2fdad540ac9",
+  "sha256": {
+    "code/benchmark_tfim_gfmc.py": "25b9afb621f61b3264f08b9aa3056d2593bfda747ded73bd6292875ffd3b21bb",
+    "code/generate_kagome_4x4.py": "42e26e52484df6bc57142db1f7df2502e581150bbe78b3d845e1c27504490d4e",
+    "code/gfmc/__init__.py": "f55f4113c608decdfd1093bf3da92508de00b4744cbacea6f1ab4f0a34509752",
+    "code/gfmc/guide.py": "80712753266a34cffc0e2c9fd869e61b0b3412aa28f4c4de8438d6e584beb09c",
+    "code/gfmc/projector.py": "9d02f53e4890bee8eb0e4c37fb77f0b67b2de27defbaf64efa69c40e5d791336",
+    "code/gfmc/storage.py": "fe65314e0f61e17267a9be3cedec77ecf1950a948ffb761b5a90465882cc8d11",
+    "code/ising/__init__.py": "1e7797a86b9ff2cb4e0f88362d374cee063a029d7946329b8fb8a1a65f47baa7",
+    "code/ising/hamiltonian.py": "08d4fbddf7fd5a8981f6d6c9ab197a74e4df8c6dc943abf7ad70ced1b8508143",
+    "code/ising/lattices.py": "eab632e0a8621339031ef1068cf1be105a09fc5f06125c47df960afedf36d92c",
+    "code/kagome_qea/__init__.py": "3769a8a9f185dd54a53ddcadb7b264cb4a2b460668f12bd72be81114837fd16e",
+    "code/kagome_qea/__main__.py": "26601a7d7f723561e768dafd146db42452d242359f33d41c9bf50b32951899a4",
+    "code/kagome_qea/checks.py": "2284e2bdf0eabe3e26b516006210cd1521b541d684235b7aaed83958d9e3e0af",
+    "code/kagome_qea/classical.py": "604683985bfe534482fa702c2cd3f4ac81f10636a1ecc0ca3d5f4e5e1514417c",
+    "code/kagome_qea/exact.py": "043025716b8d85f7d707e7d0bf0a4fac5681335990b17760cf41995483920b52",
+    "code/kagome_qea/hamiltonian.py": "5ad6ce56f2b5ddacd2b01d828e706d74b3ac62b98b45b165c2ce5e4109d8891d",
+    "code/kagome_qea/lattice.py": "a7008f0a7da2c30189e67f62ff50edc21701bc0dcfa550906e72721ab5bd3d05",
+    "code/kagome_qea/observables.py": "34f6a5bd4b34d6c84d8bff49aa9495c63e01f6fa2f7a0861ce75be25f2a44ff0",
+    "code/kagome_qea/pimc.py": "7aafb53fd40447958a01dd2dbe2dc043bde5eb55330d4e57effb0987e2bc18c1",
+    "code/kagome_qea/plot_l6_scan.py": "41d019096a056d0d97fb8c814fa56f6f5707a7cdb01e4a6a6b49314939e4f679",
+    "code/kagome_qea/pqmc.py": "6f702d9cdad7aca033a245b43ed541334716b3f3db8bac4e90a180fb6e1cdecd",
+    "code/kagome_qea/sample.py": "908c8b392a84f207b98438e2f1106ec256b9a43663b141191e988fadd9b1cdc4",
+    "code/kagome_qea/scan.py": "25443c8e077496c71cda69dd450c1fa20d0b1718a309ddb81c4599a08f869f40",
+    "code/kagome_qea/trial_overlap.py": "21127fe74fb5432320e9a3124e93d11845cae7f8e27cf01e889433dd09ae5bf0",
+    "code/qmc_numerics.py": "88e433af2447ce91c1cc08fcac0e646b2829008c2a1406a25f2fc77f6d23355c",
+    "code/run_phase1_checks.py": "e089071cf83633d47f45f0f2ab710a9288c6c27a8dcc16a15da36b4f605cf55c",
+    "code/test_reviewed_fixes.py": "66738eeed87bb45fc0ac073f26f4b293d13d96623404fa36d0507c0e03505da8",
+    "review.py": "571c43aa36ffaf877c89f1234a2de82635b6c5504bbed28297974aa1411fc667"
+  }
+}

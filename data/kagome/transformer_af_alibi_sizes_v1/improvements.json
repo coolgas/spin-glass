@@ -1,0 +1,50 @@
+[
+  {
+    "L": 4,
+    "N": 48,
+    "seed": 201,
+    "energy_change_per_spin": -0.01724905066191207,
+    "combined_se": 0.0003705008303798713,
+    "variance_reduction": 5.0427192442891675
+  },
+  {
+    "L": 4,
+    "N": 48,
+    "seed": 202,
+    "energy_change_per_spin": -0.017217276038263396,
+    "combined_se": 0.00036290067120955147,
+    "variance_reduction": 4.862258675832596
+  },
+  {
+    "L": 6,
+    "N": 108,
+    "seed": 201,
+    "energy_change_per_spin": -0.027267609146769654,
+    "combined_se": 0.00034515619470814967,
+    "variance_reduction": 3.2593684035002886
+  },
+  {
+    "L": 6,
+    "N": 108,
+    "seed": 202,
+    "energy_change_per_spin": -0.02731383097731705,
+    "combined_se": 0.0003466828518413313,
+    "variance_reduction": 3.209419789887823
+  },
+  {
+    "L": 8,
+    "N": 192,
+    "seed": 201,
+    "energy_change_per_spin": -0.0353081314214451,
+    "combined_se": 0.0004401202440229938,
+    "variance_reduction": 3.463894079704001
+  },
+  {
+    "L": 8,
+    "N": 192,
+    "seed": 202,
+    "energy_change_per_spin": -0.035115066861862644,
+    "combined_se": 0.0004441166629715547,
+    "variance_reduction": 3.251032587842694
+  }
+]

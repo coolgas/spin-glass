@@ -1,0 +1,41 @@
+pass  projection completeness: short tau 1e-06, long tau 1.94
+pass  stop diagnostics: long tau 1.94, stops [1]
+pass  cache identity: identity, moments, times, site count, and energy are checked
+pass  rollback at step 1: physical state, shift, RNG, time, energy, and next cycle agree
+pass  rollback at step 2: physical state, shift, RNG, time, energy, and next cycle agree
+pass  weight ESS stability: scale invariant; invalid weights rejected
+pass  operator copy: diagonal -2.6000 after the caller array changed
+pass  read-only couplings: J rejects assignment
+pass  flip identity: max abs diff 0.00e+00
+pass  tiny interval: time 1.000e-08
+pass  weight overflow: a non-finite product raises
+pass  energy overflow: a non-finite energy integral raises
+pass  weight underflow: time 0.001000
+pass  large weights: log total 709.889356, indexes [0, 1]
+pass  zero weights: offspring in [1, 3]
+pass  all-zero weights: an empty population raises
+pass  negative weight: a negative weight raises
+pass  underflow projection: energy -1000.00100000
+pass  int8 overlap: 147 identical sites give +1
+pass  spin-glass susceptibility: aligned two-site state gives chi_SG = 2
+pass  scale-invariant q2: unit 0.600000, tiny 0.600000
+pass  resolved unique ground state: q 0.9975062, gap/noise 359877509.9
+pass  requested ensemble: degeneracy 1, energy -2.236068
+pass  degeneracy versus truncation: a closed tie is mixed and an open cluster is not
+pass  moment limit: 13 sites with moments raises before the solve
+pass  energy only: N=13 energy -16.198434
+pass  constant-guide hop: subclass calls 183
+pass  flat guides match: max |E+1| 0.0000
+pass  refuse overwrite: seed3_114114a88b78.npz
+pass  run identity: seed3_042c6edb23c1.npz and seed3_923f52f69153.npz
+pass  load series: series [1.0, 2.0, 3.0]
+pass  short series: four points stay unresolved
+pass  constant series: error 0
+pass  short correlation: 20 series of length 32 stay unresolved
+pass  slow AR(1): 187/200 resolved, median/exact 1.180, coverage 0.952
+pass  white noise: 200/200 resolved, median/exact 1.079, coverage 0.945
+pass  mild AR(1): 200/200 resolved, median/exact 1.159, coverage 0.960
+pass  affine series: shift leaves the error unchanged and scale multiplies it
+pass  very slow AR(1): 31/200 resolved, median/exact 1.694, coverage 0.839
+pass  mixed timescale: 200/200 resolved, median/exact 1.728, coverage 0.875
+Passed 40. Failed 0.

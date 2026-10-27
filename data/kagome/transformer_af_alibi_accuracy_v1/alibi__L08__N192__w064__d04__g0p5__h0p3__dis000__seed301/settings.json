@@ -1,0 +1,19 @@
+{
+  "name": "alibi__L08__N192__w064__d04__g0p5__h0p3__dis000__seed301",
+  "architecture": {
+    "width": 64,
+    "layers": 4,
+    "heads": 4
+  },
+  "L": 8,
+  "N": 192,
+  "gamma": 0.5,
+  "h": 0.3,
+  "sample_id": 0,
+  "task": {
+    "L": 8,
+    "seed": 301,
+    "parent": "/root/autodl-tmp/transformer-af-ltfim-20261026-alibi-sizes-v1/results/alibi__L08__N192__g0p5__h0p3__dis000__init-shared__seed201/alibi__L08__N192__g0p5__h0p3__dis000__init-shared__seed201__step002400__final.pt",
+    "parent_sha256": "917a43cf5abbb9d4b202bef7ebba748a17236d07d993a60fc05d3adcf2ee67c6"
+  }
+}

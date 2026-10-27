@@ -1,0 +1,7 @@
+{
+  "state": "mirroring",
+  "updated_unix": 1793059101.974367,
+  "scan_state": "running",
+  "direct_pilot_state": "queued_for_scan_gpu",
+  "notebook": "/Users/tianyiyan/Dropbox/spin-glasses/notebook/shared_alibi_frozen_scan_gfmc.ipynb"
+}

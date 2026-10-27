@@ -1,0 +1,6 @@
+{
+  "pid": 748262,
+  "launched": "2026-10-26T00:49:59.596138+00:00",
+  "command": "python -B -u energy_study.py",
+  "workers": 8
+}

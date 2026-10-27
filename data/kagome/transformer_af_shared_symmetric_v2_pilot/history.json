@@ -1,0 +1,219 @@
+[
+  {
+    "step": 1,
+    "seconds": 1.119314320385456,
+    "sample_id": 165,
+    "gamma": 0.5,
+    "h": 0.0,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -0.9144205942360144,
+        "variance_per_spin": 0.6399871890674639
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -0.8811800409585825,
+        "variance_per_spin": 0.5663454854022941
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -0.8754029856882113,
+        "variance_per_spin": 0.588597884494069
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -0.8847546118963048,
+        "variance_per_spin": 0.48424039808851654
+      }
+    ],
+    "gradient": 0.4718458354473114,
+    "lr": 0.000499996915755671
+  },
+  {
+    "step": 100,
+    "seconds": 51.83580513112247,
+    "sample_id": 349,
+    "gamma": 0.5,
+    "h": 0.0,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.007848001662715,
+        "variance_per_spin": 0.14231135629645028
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -0.9830144086941047,
+        "variance_per_spin": 0.0966345882751224
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -0.9935923051750896,
+        "variance_per_spin": 0.16146144684215205
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -0.9690837637100991,
+        "variance_per_spin": 0.08766653265334153
+      }
+    ],
+    "gradient": 0.11968030035495758,
+    "lr": 0.00046985571585149866
+  },
+  {
+    "step": 200,
+    "seconds": 103.45233045704663,
+    "sample_id": 240,
+    "gamma": 0.5,
+    "h": 0.3,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.0383547155233517,
+        "variance_per_spin": 0.1319853370633555
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.0267303983729257,
+        "variance_per_spin": 0.12789467880171854
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.0139958555029358,
+        "variance_per_spin": 0.07490930520061678
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.031762512617193,
+        "variance_per_spin": 0.11743633222728644
+      }
+    ],
+    "gradient": 0.12214846163988113,
+    "lr": 0.00038750000000000004
+  },
+  {
+    "step": 300,
+    "seconds": 154.7207784615457,
+    "sample_id": 219,
+    "gamma": 2.0,
+    "h": 0.3,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -2.2390105317121294,
+        "variance_per_spin": 0.060914712905527975
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -2.216719582765634,
+        "variance_per_spin": 0.08976697910752501
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -2.22635591647368,
+        "variance_per_spin": 0.10385167922594848
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -2.2276331167708396,
+        "variance_per_spin": 0.09671344322202635
+      }
+    ],
+    "gradient": 0.26436662673950195,
+    "lr": 0.000275
+  },
+  {
+    "step": 400,
+    "seconds": 206.03392767719924,
+    "sample_id": 316,
+    "gamma": 0.5,
+    "h": 0.0,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.1646300409011843,
+        "variance_per_spin": 0.09202025801868459
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.060125688551065,
+        "variance_per_spin": 0.0907200677208369
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.0522126200137707,
+        "variance_per_spin": 0.09284963942843351
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.0245939625191112,
+        "variance_per_spin": 0.0923226824039658
+      }
+    ],
+    "gradient": 0.1418505758047104,
+    "lr": 0.00016249999999999997
+  },
+  {
+    "step": 500,
+    "seconds": 257.1263784747571,
+    "sample_id": 130,
+    "gamma": 0.5,
+    "h": 0.3,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.0363920785112088,
+        "variance_per_spin": 0.09375545615744722
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.0105270768130088,
+        "variance_per_spin": 0.07392116862773736
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.029599521740239,
+        "variance_per_spin": 0.10050945212734551
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.0393204542198295,
+        "variance_per_spin": 0.09092782475174445
+      }
+    ],
+    "gradient": 0.18254031240940094,
+    "lr": 8.014428414850134e-05
+  },
+  {
+    "step": 600,
+    "seconds": 308.52286078594625,
+    "sample_id": 139,
+    "gamma": 2.0,
+    "h": 0.3,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -2.2364747619550838,
+        "variance_per_spin": 0.046538981910387245
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -2.2239415926106627,
+        "variance_per_spin": 0.04433799659177715
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -2.2319787165887917,
+        "variance_per_spin": 0.04708406036554769
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -2.2211145125480893,
+        "variance_per_spin": 0.052625050513398046
+      }
+    ],
+    "gradient": 0.06682207435369492,
+    "lr": 5e-05
+  }
+]

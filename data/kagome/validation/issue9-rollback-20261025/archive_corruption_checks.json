@@ -1,0 +1,10 @@
+{
+  "negative_rejected_ess": true,
+  "large_weight_ess": true,
+  "small_fraction": true,
+  "fractional_floor": true,
+  "long_rejected_step": true,
+  "endpoint_mismatch": true,
+  "negative_checkpoints": true,
+  "reverse_checkpoints": true
+}

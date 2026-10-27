@@ -162,9 +162,15 @@ def _weight_ess(walkers):
     Kish size. ``_effective_ancestors`` is that size.
     """
     weights = np.fromiter((walker.weight for walker in walkers), dtype=np.float64)
-    total = float(weights.sum()) if weights.size else 0.0
-    if total <= 0.0 or not np.isfinite(weights).all():
+    if not np.isfinite(weights).all() or np.any(weights < 0.0):
+        raise ValueError("weight ESS requires finite nonnegative weights")
+    scale = float(weights.max()) if weights.size else 0.0
+    if scale == 0.0:
         return 0.0
+    # ESS is scale invariant. Squaring raw weights can overflow or underflow
+    # even when every weight is finite and positive.
+    weights = weights / scale
+    total = float(weights.sum())
     return float(total * total / np.dot(weights, weights))
 
 
@@ -201,22 +207,31 @@ def _resolve_floors(n_walkers, min_effective_ancestors, min_unique_ancestors):
     if min_unique_ancestors is None:
         unique_floor = 2
     else:
-        if isinstance(min_unique_ancestors, bool):
+        if isinstance(min_unique_ancestors, (bool, np.bool_)):
             raise ValueError("the unique ancestor floor must be an integer")
-        unique_floor = int(min_unique_ancestors)
-    if unique_floor < 2:
-        raise ValueError("the unique ancestor floor must be at least 2")
+        try:
+            unique_value = float(min_unique_ancestors)
+        except (TypeError, ValueError, OverflowError) as exc:
+            raise ValueError("the unique ancestor floor must be an integer") from exc
+        if not math.isfinite(unique_value) or not unique_value.is_integer():
+            raise ValueError("the unique ancestor floor must be a finite integer")
+        unique_floor = int(unique_value)
+    if not 2 <= unique_floor <= n_walkers:
+        raise ValueError("the unique ancestor floor must be between 2 and n_walkers")
     if min_effective_ancestors is None:
         if int(n_walkers) >= 16:
             effective_floor = 8.0
         else:
             effective_floor = float(max(2, int(n_walkers) // 2))
     else:
-        if isinstance(min_effective_ancestors, bool):
+        if isinstance(min_effective_ancestors, (bool, np.bool_)):
             raise ValueError("the effective ancestor floor must be a number")
-        effective_floor = float(min_effective_ancestors)
-    if not math.isfinite(effective_floor) or effective_floor < 2.0:
-        raise ValueError("the effective ancestor floor must be at least 2")
+        try:
+            effective_floor = float(min_effective_ancestors)
+        except (TypeError, ValueError, OverflowError) as exc:
+            raise ValueError("the effective ancestor floor must be a number") from exc
+    if not math.isfinite(effective_floor) or not 2.0 <= effective_floor <= n_walkers:
+        raise ValueError("the effective ancestor floor must be between 2 and n_walkers")
     return unique_floor, effective_floor
 
 
@@ -264,12 +279,12 @@ def _project_once(
         raise ValueError("phase 1 uses one replica or a pair")
     if n_walkers < 2 or tau_block <= 0.0:
         raise ValueError("need at least two walkers and a positive block")
-    rate = float(n_replicas * ham.n_sites * gamma)
-    walkers = _initial_walkers(ham, n_walkers, n_replicas, rng)
-    shift = float(np.mean([walker.diagonal - rate for walker in walkers]))
     unique_floor, effective_floor = _resolve_floors(
         n_walkers, min_effective_ancestors, min_unique_ancestors
     )
+    rate = float(n_replicas * ham.n_sites * gamma)
+    walkers = _initial_walkers(ham, n_walkers, n_replicas, rng)
+    shift = float(np.mean([walker.diagonal - rate for walker in walkers]))
     energies = []
     growth = []
     equilibration_energy = []
@@ -399,7 +414,13 @@ def _project_once(
                         stop = 1
                     else:
                         stop = 2
-                    walkers = backup
+                    # _advance mutated the parents referenced by saved before
+                    # resampling. Retain the deep pre-attempt snapshot for both
+                    # measurement and continuation; the end-of-cycle assignment
+                    # must not restore those rejected parents. RNG draws remain
+                    # consumed, as before; rejected time/energy stay excluded.
+                    saved = backup
+                    walkers = saved
                     shift = shift_backup
                     break
                 if time_piece > 0.0:
@@ -440,6 +461,8 @@ def _project_once(
                 cycle_rejected_weight_ess.append(rejected[3])
                 cycle_rejected_max_fraction.append(rejected[4])
             cycle_checkpoints.append(_bounded_checkpoints(checkpoints))
+            # Legacy energy_forward_trace contains one arithmetic mean per
+            # cycle, not a time-indexed series of individual forward steps.
             forward_energy_means.append(
                 float(np.mean(forward_energies)) if forward_energies else np.nan
             )

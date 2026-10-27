@@ -1,0 +1,43 @@
+{
+  "config": {
+    "name": "reproduce_s0_g02_t16",
+    "L": 2,
+    "sample": 0,
+    "gamma": 0.2,
+    "walkers": 5000,
+    "equil": 40,
+    "tau": 16.0,
+    "populations": 8,
+    "measure": 40,
+    "cycles": 8,
+    "block": 0.2,
+    "seed": 0
+  },
+  "count": 8,
+  "chi": 11.574293749999999,
+  "se": 0.019375369284115214,
+  "energy": -14.88993966549505,
+  "energy_se": 0.0010676684127610225,
+  "achieved_min": 16.0,
+  "achieved_median": 16.0,
+  "achieved_max": 16.0,
+  "complete_populations": 8,
+  "truncated_cycles": 0,
+  "cycles": 64,
+  "min_unique": 24,
+  "min_effective": 10.621899467545424,
+  "cpu_seconds": 262.3127009626478,
+  "chi_populations": [
+    11.591141666666667,
+    11.678341666666666,
+    11.549166666666666,
+    11.5544,
+    11.538025,
+    11.496366666666667,
+    11.612991666666668,
+    11.573916666666666
+  ],
+  "exact": 11.581661330758426,
+  "difference": -0.007367580758426584,
+  "difference_se": -0.38025498509939903
+}

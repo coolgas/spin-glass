@@ -1,0 +1,85 @@
+{
+  "manifest": {
+    "checkpoint_sha256": "5f9fa33b04102ddff2e43179440514021090ed3aaf228ce67dce53c2139e2544",
+    "L": 4,
+    "ids": [
+      10000
+    ],
+    "gamma": 0.5,
+    "h": [
+      0.3
+    ],
+    "K": 1.0,
+    "settings": [
+      [
+        32,
+        1.0,
+        0.5,
+        0.1
+      ]
+    ],
+    "independent_populations": 4,
+    "measurement_time": 0.5,
+    "cycles": 4,
+    "interpretation": "Direct 48-spin network pilot; short times and small populations. No ground-state or finite-size scaling qualification."
+  },
+  "rows": [
+    {
+      "L": 4,
+      "sample_id": 10000,
+      "h": 0.3,
+      "gamma": 0.5,
+      "K": 1.0,
+      "walkers": 32,
+      "equilibration_time": 1.0,
+      "tau_forward": 0.5,
+      "tau_block": 0.1,
+      "observables": {
+        "energy": {
+          "mean": -53.91656570414703,
+          "se": 0.14618452559081663,
+          "independent_values": [
+            -54.08823679561493,
+            -53.80890522638051,
+            -53.5579654150824,
+            -54.21115537951026
+          ]
+        },
+        "energy_growth": {
+          "mean": -53.91517011485607,
+          "se": 0.14572267370638578,
+          "independent_values": [
+            -54.08777555262293,
+            -53.807683670679566,
+            -53.55752989186035,
+            -54.207691344261434
+          ]
+        },
+        "q2": {
+          "mean": 0.1369289822048611,
+          "se": 0.06206854827502599,
+          "independent_values": [
+            0.3111436631944445,
+            0.020697699652777776,
+            0.1264919704861111,
+            0.0893825954861111
+          ]
+        },
+        "chi_connected": {
+          "mean": 1.3400065104166665,
+          "se": 0.4739047754975655,
+          "independent_values": [
+            0.26236979166666663,
+            1.3795572916666667,
+            2.563802083333333,
+            1.154296875
+          ]
+        }
+      },
+      "min_descendant_ess": 2.4380952380952383,
+      "max_largest_lineage": 0.625,
+      "seconds": 35.45102068409324
+    }
+  ],
+  "completed": true
+}

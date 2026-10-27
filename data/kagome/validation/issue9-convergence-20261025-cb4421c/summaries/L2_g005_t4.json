@@ -1,0 +1,42 @@
+{
+  "config": {
+    "name": "L2_g005_t4",
+    "L": 2,
+    "sample": 0,
+    "gamma": 0.05,
+    "walkers": 5000,
+    "equil": 40,
+    "tau": 4.0,
+    "populations": 8,
+    "measure": 40,
+    "cycles": 8,
+    "block": 0.2
+  },
+  "count": 8,
+  "chi": 11.970719791666667,
+  "se": 0.001996750173086366,
+  "energy": -14.756961776582367,
+  "energy_se": 0.006620388814520499,
+  "achieved_min": 4.0,
+  "achieved_median": 4.0,
+  "achieved_max": 4.0,
+  "complete_populations": 8,
+  "truncated_cycles": 0,
+  "cycles": 64,
+  "min_unique": 761,
+  "min_effective": 479.0924073435284,
+  "cpu_seconds": 38.3072097748518,
+  "chi_populations": [
+    11.977016666666668,
+    11.959766666666667,
+    11.969641666666668,
+    11.972491666666667,
+    11.966925,
+    11.976466666666667,
+    11.97395,
+    11.9695
+  ],
+  "exact": 11.973897341443852,
+  "difference": -0.0031775497771846517,
+  "difference_se": -1.59136071202795
+}

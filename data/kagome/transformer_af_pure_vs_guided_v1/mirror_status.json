@@ -1,0 +1,12 @@
+{
+  "state": "completed",
+  "remote_status": {
+    "state": "completed",
+    "pid": 812337,
+    "updated_unix": 1793058630.759973,
+    "completed_populations": 256,
+    "expected_populations": 256
+  },
+  "updated_unix": 1793058669.910947,
+  "notebook": "/Users/tianyiyan/Dropbox/spin-glasses/notebook/pure_vs_guided_gfmc.ipynb"
+}

@@ -1,0 +1,27 @@
+{
+  "n_sites": 108,
+  "physical_settings": {
+    "L": 6,
+    "periodic": true,
+    "sigma": 1,
+    "gamma": 5,
+    "h": 0
+  },
+  "campaign": "campaign.json",
+  "forward_time": 0.8,
+  "samples": [
+    {
+      "sample_id": 0,
+      "populations": [
+        "runs/t3_p24.npz",
+        "runs/t3_p25.npz",
+        "runs/t3_p26.npz",
+        "runs/t3_p27.npz",
+        "runs/t3_p28.npz",
+        "runs/t3_p29.npz",
+        "runs/t3_p30.npz",
+        "runs/t3_p31.npz"
+      ]
+    }
+  ]
+}

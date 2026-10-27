@@ -1,0 +1,24 @@
+{
+  "checkpoint_sha256": "5f9fa33b04102ddff2e43179440514021090ed3aaf228ce67dce53c2139e2544",
+  "L": 4,
+  "ids": [
+    10000
+  ],
+  "gamma": 0.5,
+  "h": [
+    0.3
+  ],
+  "K": 1.0,
+  "settings": [
+    [
+      32,
+      1.0,
+      0.5,
+      0.1
+    ]
+  ],
+  "independent_populations": 4,
+  "measurement_time": 0.5,
+  "cycles": 4,
+  "interpretation": "Direct 48-spin network pilot; short times and small populations. No ground-state or finite-size scaling qualification."
+}

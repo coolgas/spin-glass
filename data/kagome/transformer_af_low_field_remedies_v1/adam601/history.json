@@ -1,0 +1,662 @@
+[
+  {
+    "sample_id": 110,
+    "gamma": 0.5,
+    "h": 0.0,
+    "batch": 1024,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.1140381439678135,
+        "variance_per_spin": 0.04576045787606239
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.0221078764661005,
+        "variance_per_spin": 0.07051118124072149
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.0600611508027518,
+        "variance_per_spin": 0.08578274195909132
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.035182409686535,
+        "variance_per_spin": 0.07302394332068061
+      }
+    ],
+    "gradient": 0.07655487209558487,
+    "rate": 0.00015,
+    "step": 1,
+    "seconds": 12.140482584014535,
+    "peak_gpu_bytes": 1807455232
+  },
+  {
+    "sample_id": 149,
+    "gamma": 0.5,
+    "h": 0.3,
+    "batch": 1024,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.0488867351886009,
+        "variance_per_spin": 0.050519315034680046
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.0197772266175813,
+        "variance_per_spin": 0.06449184564833933
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.0584846463704365,
+        "variance_per_spin": 0.08508585370592069
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.0468326582923482,
+        "variance_per_spin": 0.10712278552292455
+      }
+    ],
+    "gradient": 0.08137653768062592,
+    "rate": 0.00014999907472670128,
+    "step": 2,
+    "seconds": 19.14708279632032,
+    "peak_gpu_bytes": 1807455232
+  },
+  {
+    "sample_id": 219,
+    "gamma": 2.0,
+    "h": 0.3,
+    "batch": 512,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -2.2340609933277418,
+        "variance_per_spin": 0.01667800990309827
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -2.2198775903886503,
+        "variance_per_spin": 0.026202606731889542
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -2.230054223827701,
+        "variance_per_spin": 0.03202477728112471
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -2.2306081516674365,
+        "variance_per_spin": 0.03338672498361125
+      }
+    ],
+    "gradient": 0.07783029228448868,
+    "rate": 0.00014999629893217207,
+    "step": 3,
+    "seconds": 23.17613934352994,
+    "peak_gpu_bytes": 1807455232
+  },
+  {
+    "sample_id": 196,
+    "gamma": 0.5,
+    "h": 0.0,
+    "batch": 1024,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.077185432623395,
+        "variance_per_spin": 0.08641003569217205
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.0520888613938313,
+        "variance_per_spin": 0.06739652373437195
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.0194237502000703,
+        "variance_per_spin": 0.06441775112413622
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.042931214998161,
+        "variance_per_spin": 0.06687227368787901
+      }
+    ],
+    "gradient": 0.11969780176877975,
+    "rate": 0.00014999167269251208,
+    "step": 4,
+    "seconds": 35.26109876669943,
+    "peak_gpu_bytes": 1808835584
+  },
+  {
+    "sample_id": 208,
+    "gamma": 0.5,
+    "h": 0.3,
+    "batch": 1024,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.0706930893767292,
+        "variance_per_spin": 0.064317685195091
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.0658708656067202,
+        "variance_per_spin": 0.07700856974864428
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.074926805634701,
+        "variance_per_spin": 0.07872057466845978
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.0500342185272638,
+        "variance_per_spin": 0.06799358154677147
+      }
+    ],
+    "gradient": 0.1313539445400238,
+    "rate": 0.00014998519613455206,
+    "step": 5,
+    "seconds": 42.826833767816424,
+    "peak_gpu_bytes": 1808835584
+  },
+  {
+    "sample_id": 144,
+    "gamma": 2.0,
+    "h": 0.3,
+    "batch": 512,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -2.2251776283094507,
+        "variance_per_spin": 0.02176276754176414
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -2.2441611335516853,
+        "variance_per_spin": 0.03676743180951738
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -2.2303697754370635,
+        "variance_per_spin": 0.028494163144668253
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -2.2248034899842293,
+        "variance_per_spin": 0.029816576901624522
+      }
+    ],
+    "gradient": 0.0415244996547699,
+    "rate": 0.0001499768694358501,
+    "step": 6,
+    "seconds": 46.37583025172353,
+    "peak_gpu_bytes": 1808835584
+  },
+  {
+    "sample_id": 354,
+    "gamma": 0.5,
+    "h": 0.0,
+    "batch": 1024,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.0296759927487742,
+        "variance_per_spin": 0.06021341297251265
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.0672637799041047,
+        "variance_per_spin": 0.07933765732169096
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.040593645633767,
+        "variance_per_spin": 0.05785035421318829
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.0465794775499946,
+        "variance_per_spin": 0.08196765513748445
+      }
+    ],
+    "gradient": 0.11566174775362015,
+    "rate": 0.00014996669282468686,
+    "step": 7,
+    "seconds": 56.03675205633044,
+    "peak_gpu_bytes": 1808835584
+  },
+  {
+    "sample_id": 199,
+    "gamma": 0.5,
+    "h": 0.3,
+    "batch": 1024,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.006427523814245,
+        "variance_per_spin": 0.024020534271877097
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.062154929644911,
+        "variance_per_spin": 0.07023960385803206
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.0577316368850869,
+        "variance_per_spin": 0.07679254975036019
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.0672205912362385,
+        "variance_per_spin": 0.08121177565975737
+      }
+    ],
+    "gradient": 0.10756881535053253,
+    "rate": 0.00014995466658005926,
+    "step": 8,
+    "seconds": 61.250247867777944,
+    "peak_gpu_bytes": 1808835584
+  },
+  {
+    "sample_id": 133,
+    "gamma": 2.0,
+    "h": 0.3,
+    "batch": 512,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -2.225119565028183,
+        "variance_per_spin": 0.02085190041737785
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -2.2379709775558347,
+        "variance_per_spin": 0.03204616058385621
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -2.222020601526868,
+        "variance_per_spin": 0.03188974201830427
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -2.2248593003628767,
+        "variance_per_spin": 0.029849659692246493
+      }
+    ],
+    "gradient": 0.0851544514298439,
+    "rate": 0.00014994079103167294,
+    "step": 9,
+    "seconds": 64.56815105862916,
+    "peak_gpu_bytes": 1808835584
+  },
+  {
+    "sample_id": 1,
+    "gamma": 0.5,
+    "h": 0.0,
+    "batch": 1024,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.1265683851916124,
+        "variance_per_spin": 0.042404310786144754
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.0359907837127216,
+        "variance_per_spin": 0.0759826374735255
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.015898838639532,
+        "variance_per_spin": 0.06759256911235785
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.0355558380517331,
+        "variance_per_spin": 0.06922993680640128
+      }
+    ],
+    "gradient": 0.0835963562130928,
+    "rate": 0.00014992506655993297,
+    "step": 10,
+    "seconds": 74.28832950815558,
+    "peak_gpu_bytes": 1808835584
+  },
+  {
+    "sample_id": 208,
+    "gamma": 0.5,
+    "h": 0.3,
+    "batch": 1024,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.0764262088950078,
+        "variance_per_spin": 0.05909694449477056
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.0680599030732292,
+        "variance_per_spin": 0.07712625352430057
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.0735874279355524,
+        "variance_per_spin": 0.09237388414050379
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.050806544812897,
+        "variance_per_spin": 0.06392206163724233
+      }
+    ],
+    "gradient": 0.08818776160478592,
+    "rate": 0.00014990749359593372,
+    "step": 11,
+    "seconds": 79.75596519559622,
+    "peak_gpu_bytes": 1808835584
+  },
+  {
+    "sample_id": 341,
+    "gamma": 2.0,
+    "h": 0.3,
+    "batch": 512,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -2.2676686085973095,
+        "variance_per_spin": 0.035832516701796296
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -2.2157771477368127,
+        "variance_per_spin": 0.023913168654415142
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -2.2049418053011456,
+        "variance_per_spin": 0.02872993917102528
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -2.2271715239558376,
+        "variance_per_spin": 0.031611485340057206
+      }
+    ],
+    "gradient": 0.08995302021503448,
+    "rate": 0.0001498880726214469,
+    "step": 12,
+    "seconds": 82.90921513177454,
+    "peak_gpu_bytes": 1808835584
+  },
+  {
+    "sample_id": 163,
+    "gamma": 0.5,
+    "h": 0.0,
+    "batch": 1024,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.0315264885276383,
+        "variance_per_spin": 0.04521183892589977
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.0617415629931357,
+        "variance_per_spin": 0.07739569923821044
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.011912507383134,
+        "variance_per_spin": 0.07041817307938042
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.0546684821034458,
+        "variance_per_spin": 0.0752355153229024
+      }
+    ],
+    "gradient": 0.06229283660650253,
+    "rate": 0.00014986680416890832,
+    "step": 13,
+    "seconds": 92.4210847876966,
+    "peak_gpu_bytes": 1808835584
+  },
+  {
+    "sample_id": 287,
+    "gamma": 0.5,
+    "h": 0.3,
+    "batch": 1024,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.0074076504852318,
+        "variance_per_spin": 0.04854684129283587
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.015794201430494,
+        "variance_per_spin": 0.046060567559685385
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.0276837685586158,
+        "variance_per_spin": 0.07909462675300999
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.0505376312803063,
+        "variance_per_spin": 0.07721793224005775
+      }
+    ],
+    "gradient": 0.132392019033432,
+    "rate": 0.00014984368882140335,
+    "step": 14,
+    "seconds": 98.19826121069491,
+    "peak_gpu_bytes": 1808835584
+  },
+  {
+    "sample_id": 134,
+    "gamma": 2.0,
+    "h": 0.3,
+    "batch": 512,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -2.2322646460725983,
+        "variance_per_spin": 0.024173486215076895
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -2.23524706515213,
+        "variance_per_spin": 0.03625189997699249
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -2.2246140203861193,
+        "variance_per_spin": 0.03011140943627552
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -2.226142459164945,
+        "variance_per_spin": 0.03467909376670158
+      }
+    ],
+    "gradient": 0.05976385250687599,
+    "rate": 0.0001498187272126509,
+    "step": 15,
+    "seconds": 100.94230162352324,
+    "peak_gpu_bytes": 1808835584
+  },
+  {
+    "sample_id": 136,
+    "gamma": 0.5,
+    "h": 0.0,
+    "batch": 1024,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.1869370398896892,
+        "variance_per_spin": 0.07653790766929947
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.0560280722540212,
+        "variance_per_spin": 0.05767258060021573
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.0321079876356432,
+        "variance_per_spin": 0.08318569753779821
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.0327080094820897,
+        "variance_per_spin": 0.06706293773134112
+      }
+    ],
+    "gradient": 0.18834806978702545,
+    "rate": 0.00014979192002698613,
+    "step": 16,
+    "seconds": 110.8083249758929,
+    "peak_gpu_bytes": 1808835584
+  },
+  {
+    "sample_id": 335,
+    "gamma": 0.5,
+    "h": 0.3,
+    "batch": 1024,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.0554335723601904,
+        "variance_per_spin": 0.07663881488497168
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.0399065170397765,
+        "variance_per_spin": 0.06389423693685332
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.0452876146722643,
+        "variance_per_spin": 0.06625577549574667
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.0607297592108524,
+        "variance_per_spin": 0.07651402318985588
+      }
+    ],
+    "gradient": 0.07629931718111038,
+    "rate": 0.00014976326799934155,
+    "step": 17,
+    "seconds": 116.39793459884822,
+    "peak_gpu_bytes": 1808835584
+  },
+  {
+    "sample_id": 151,
+    "gamma": 2.0,
+    "h": 0.3,
+    "batch": 512,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -2.2469733868910966,
+        "variance_per_spin": 0.025444208877389688
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -2.2294962364571087,
+        "variance_per_spin": 0.030451278324649916
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -2.2262120732140103,
+        "variance_per_spin": 0.027931194186517246
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -2.225340626489982,
+        "variance_per_spin": 0.03142967498973817
+      }
+    ],
+    "gradient": 0.04554000869393349,
+    "rate": 0.00014973277191522694,
+    "step": 18,
+    "seconds": 119.50429821200669,
+    "peak_gpu_bytes": 1808835584
+  },
+  {
+    "sample_id": 134,
+    "gamma": 0.5,
+    "h": 0.0,
+    "batch": 1024,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.0966578036020775,
+        "variance_per_spin": 0.05958523382361478
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.0642759878800618,
+        "variance_per_spin": 0.07812573762838539
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.048983093152744,
+        "variance_per_spin": 0.06868146311224876
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.047363217945546,
+        "variance_per_spin": 0.07831500481639304
+      }
+    ],
+    "gradient": 0.15942640602588654,
+    "rate": 0.0001497004326107079,
+    "step": 19,
+    "seconds": 126.4653916079551,
+    "peak_gpu_bytes": 1808835584
+  },
+  {
+    "sample_id": 215,
+    "gamma": 0.5,
+    "h": 0.3,
+    "batch": 1024,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.1716588578030196,
+        "variance_per_spin": 0.025015540100835006
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.0256907800767914,
+        "variance_per_spin": 0.07714470535283535
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.0689575061417942,
+        "variance_per_spin": 0.07998626099804247
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.0427796074221007,
+        "variance_per_spin": 0.06484191669518637
+      }
+    ],
+    "gradient": 0.0629241093993187,
+    "rate": 0.00014966625097238278,
+    "step": 20,
+    "seconds": 130.57203842885792,
+    "peak_gpu_bytes": 1808835584
+  }
+]

@@ -1,0 +1,26 @@
+# L6 block and walker study
+
+Exploratory screen only; require absolute-reference, start-policy, held-out and observable convergence checks.
+
+Total energy per replica; eight populations on the same sample. All intervals are descriptive 95% Student-t intervals.
+
+| Walkers | Energy, blocks 1920–2560 | SE | Late drift | Population range |
+| --- | ---: | ---: | ---: | --- |
+| 5000 | -137.938079 | 0.785477 | -0.494129 | [-140.45998780706446, -133.5824772850432] |
+| 10000 | -137.252572 | 0.864599 | -0.450844 | [-139.98215459950964, -132.94984941094225] |
+| 20000 | -137.428585 | 0.625156 | -0.060405 | [-140.14862161199596, -134.976519911534] |
+
+| Walker contrast | Late energy change | 95% interval |
+| --- | ---: | --- |
+| 10000_minus_5000 | 0.685506 | [-1.255206433668036, 2.6262190835325683] |
+| 20000_minus_10000 | -0.176013 | [-2.2927542053191035, 1.9407290077951744] |
+| 20000_minus_5000 | 0.509494 | [-1.7438352086631834, 2.7628226610037867] |
+
+Independent variational upper bound: E0 <= -143.636557202.
+
+## Doubling the blocks at 5,000 walkers
+
+20,480 blocks, tau=4096: late energy {'mean': -139.0921534009595, 'se': 0.8600960272616852, 'ci95': [-141.1259573257211, -137.0583494761979], 'values': [-134.5927481412742, -139.55160893634246, -142.19042170863648, -137.15883807499782, -139.83489846929638, -141.16684542307985, -137.94270270067608, -140.2991637533726]}; primary late drift {'mean': -0.12884571583684945, 'se': 0.0741200912028809, 'ci95': [-0.3041118810254506, 0.046420449351751714], 'values': [-0.5788882732123, -0.02073934796544563, -0.0059817054511199785, 0.0017440828705730382, 0.010965329157272663, -0.29634756405152984, -0.12960413639515878, -0.011914111647087111]}; change from the time-2048 late window {'mean': -0.2511160996495576, 'se': 0.12322196176125029, 'ci95': [-0.5424897387590487, 0.04025753945993349], 'values': [-0.8495969151693146, -0.004425130688446188, 0.014150281794997, -0.00649569199001121, -0.3314534785677097, -0.7115294601230175, -0.12833431564621378, 0.008755913193255083]}.
+All eight energy/time prefixes through 10,240 blocks reproduce exactly.
+
+No production block count has been qualified by this exploratory stage. See PROTOCOL.md, final.json and the unsmoothed population archives.

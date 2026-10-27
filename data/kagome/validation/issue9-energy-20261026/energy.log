@@ -1,0 +1,65 @@
+PROGRESS child=1 blocks=320 tau=64.0
+PROGRESS child=2 blocks=320 tau=64.0
+PROGRESS child=5 blocks=320 tau=64.0
+PROGRESS child=6 blocks=320 tau=64.0
+PROGRESS child=4 blocks=320 tau=64.0
+PROGRESS child=3 blocks=320 tau=64.0
+PROGRESS child=7 blocks=320 tau=64.0
+PROGRESS child=0 blocks=320 tau=64.0
+PROGRESS child=2 blocks=640 tau=128.0
+PROGRESS child=6 blocks=640 tau=128.0
+PROGRESS child=1 blocks=640 tau=128.0
+PROGRESS child=4 blocks=640 tau=128.0
+PROGRESS child=5 blocks=640 tau=128.0
+PROGRESS child=7 blocks=640 tau=128.0
+PROGRESS child=3 blocks=640 tau=128.0
+PROGRESS child=0 blocks=640 tau=128.0
+PROGRESS child=2 blocks=960 tau=192.0
+PROGRESS child=6 blocks=960 tau=192.0
+PROGRESS child=1 blocks=960 tau=192.0
+PROGRESS child=4 blocks=960 tau=192.0
+PROGRESS child=5 blocks=960 tau=192.0
+PROGRESS child=7 blocks=960 tau=192.0
+PROGRESS child=3 blocks=960 tau=192.0
+PROGRESS child=0 blocks=960 tau=192.0
+PROGRESS child=2 blocks=1280 tau=256.0
+PROGRESS child=6 blocks=1280 tau=256.0
+PROGRESS child=4 blocks=1280 tau=256.0
+PROGRESS child=1 blocks=1280 tau=256.0
+PROGRESS child=7 blocks=1280 tau=256.0
+PROGRESS child=5 blocks=1280 tau=256.0
+PROGRESS child=3 blocks=1280 tau=256.0
+PROGRESS child=0 blocks=1280 tau=256.0
+PROGRESS child=2 blocks=1600 tau=320.0
+PROGRESS child=6 blocks=1600 tau=320.0
+PROGRESS child=1 blocks=1600 tau=320.0
+PROGRESS child=4 blocks=1600 tau=320.0
+PROGRESS child=7 blocks=1600 tau=320.0
+PROGRESS child=5 blocks=1600 tau=320.0
+PROGRESS child=3 blocks=1600 tau=320.0
+PROGRESS child=0 blocks=1600 tau=320.0
+PROGRESS child=2 blocks=1920 tau=384.0
+PROGRESS child=1 blocks=1920 tau=384.0
+PROGRESS child=6 blocks=1920 tau=384.0
+PROGRESS child=4 blocks=1920 tau=384.0
+PROGRESS child=7 blocks=1920 tau=384.0
+PROGRESS child=5 blocks=1920 tau=384.0
+PROGRESS child=3 blocks=1920 tau=384.0
+PROGRESS child=0 blocks=1920 tau=384.0
+PROGRESS child=1 blocks=2240 tau=448.0
+PROGRESS child=6 blocks=2240 tau=448.0
+PROGRESS child=2 blocks=2240 tau=448.0
+PROGRESS child=4 blocks=2240 tau=448.0
+PROGRESS child=7 blocks=2240 tau=448.0
+PROGRESS child=5 blocks=2240 tau=448.0
+PROGRESS child=3 blocks=2240 tau=448.0
+PROGRESS child=0 blocks=2240 tau=448.0
+DONE {"child": 6, "blocks": 2560, "imaginary_time": 511.9999999999795, "elapsed_seconds": 189.57283094525337, "finished": "2026-10-26T00:53:09.853087+00:00"}
+DONE {"child": 1, "blocks": 2560, "imaginary_time": 511.9999999999795, "elapsed_seconds": 189.65474474802613, "finished": "2026-10-26T00:53:09.934654+00:00"}
+DONE {"child": 2, "blocks": 2560, "imaginary_time": 511.9999999999795, "elapsed_seconds": 190.09276273660362, "finished": "2026-10-26T00:53:10.372737+00:00"}
+DONE {"child": 7, "blocks": 2560, "imaginary_time": 511.9999999999795, "elapsed_seconds": 190.23965035565197, "finished": "2026-10-26T00:53:10.519950+00:00"}
+DONE {"child": 4, "blocks": 2560, "imaginary_time": 511.9999999999795, "elapsed_seconds": 190.27907982841134, "finished": "2026-10-26T00:53:10.559199+00:00"}
+DONE {"child": 5, "blocks": 2560, "imaginary_time": 511.9999999999795, "elapsed_seconds": 190.32613834179938, "finished": "2026-10-26T00:53:10.606328+00:00"}
+DONE {"child": 3, "blocks": 2560, "imaginary_time": 511.9999999999795, "elapsed_seconds": 190.95706986635923, "finished": "2026-10-26T00:53:11.237117+00:00"}
+DONE {"child": 0, "blocks": 2560, "imaginary_time": 511.9999999999795, "elapsed_seconds": 191.83208096772432, "finished": "2026-10-26T00:53:12.111801+00:00"}
+FINAL {"decision": "resolved late-time energy drift", "primary_late_shift": {"label": "tau256_384_to_tau384_512", "mean": -0.49412898731262445, "se": 0.1705007733447432, "ci95": [-0.8972992508789288, -0.09095872374632014], "populations": 8, "per_spin_mean": -0.004575268401042819, "per_spin_ci95": [-0.008308326397027119, -0.0008422104050585197], "resolved_drift": true, "population_differences": [-0.002382135491103554, -0.309067921500656, -0.9835907268549136, -0.9495828708307101, -0.01798425309209506, -0.42780319673366307, -1.1952805966693063, -0.0673401973285479]}, "elapsed_seconds": 192.4848957825452}

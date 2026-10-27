@@ -1,0 +1,40 @@
+{
+  "fixed_size": {
+    "state": "completed",
+    "started": "2026-10-26T07:36:39.936507+00:00",
+    "command": [
+      "/root/miniconda3/envs/yjye_project_env/bin/python",
+      "-B",
+      "-u",
+      "-m",
+      "transformer_qmc.experiment",
+      "--output",
+      "/root/autodl-tmp/transformer-af-ltfim-20261026-dual-v1/results/fixed_size",
+      "--steps",
+      "800",
+      "--batch",
+      "128"
+    ],
+    "returncode": 0,
+    "finished": "2026-10-26T07:41:31.970721+00:00"
+  },
+  "unified_alibi": {
+    "state": "completed",
+    "started": "2026-10-26T07:41:31.971153+00:00",
+    "command": [
+      "/root/miniconda3/envs/yjye_project_env/bin/python",
+      "-B",
+      "-u",
+      "-m",
+      "transformer_qmc.unified_experiment",
+      "--output",
+      "/root/autodl-tmp/transformer-af-ltfim-20261026-dual-v1/results/unified_alibi",
+      "--steps",
+      "4800",
+      "--batch",
+      "128"
+    ],
+    "returncode": 0,
+    "finished": "2026-10-26T07:45:10.277900+00:00"
+  }
+}

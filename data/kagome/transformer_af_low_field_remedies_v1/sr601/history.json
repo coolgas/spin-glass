@@ -1,0 +1,38 @@
+[
+  {
+    "sample_id": 110,
+    "gamma": 0.5,
+    "h": 0.0,
+    "batch": 1024,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.1140381439678135,
+        "variance_per_spin": 0.04576045787606239
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.0221078764661005,
+        "variance_per_spin": 0.07051118124072149
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.0600611508027518,
+        "variance_per_spin": 0.08578274195909132
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.035182409686535,
+        "variance_per_spin": 0.07302394332068061
+      }
+    ],
+    "rate": 0.02839108792936885,
+    "predicted_max_logpsi_rms": 0.05,
+    "direction_norm": 1.2648998498916626,
+    "solve_residual": 0.00039504060987383127,
+    "damping": 0.01,
+    "step": 1,
+    "seconds": 16.714420311152935,
+    "peak_gpu_bytes": 9107399168
+  }
+]

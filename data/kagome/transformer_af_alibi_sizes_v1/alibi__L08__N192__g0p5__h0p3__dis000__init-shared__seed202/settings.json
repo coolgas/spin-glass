@@ -1,0 +1,67 @@
+{
+  "tasks": [
+    {
+      "L": 4,
+      "seed": 201
+    },
+    {
+      "L": 4,
+      "seed": 202
+    },
+    {
+      "L": 6,
+      "seed": 201
+    },
+    {
+      "L": 6,
+      "seed": 202
+    },
+    {
+      "L": 8,
+      "seed": 201
+    },
+    {
+      "L": 8,
+      "seed": 202
+    }
+  ],
+  "gamma": 0.5,
+  "h": 0.3,
+  "sample_id": 0,
+  "architecture": {
+    "width": 32,
+    "layers": 2,
+    "heads": 4
+  },
+  "steps": 2400,
+  "batch": 128,
+  "lr": 0.0005,
+  "selection": "predeclared final step; both independent seeds retained",
+  "initialization": "original shared checkpoint, not L2-specialized weights",
+  "shared_sha256": "a90835ebab6627304a893652c1e1478b33cfd0dc7b4061e0aab94fbd53b74a64",
+  "torch": "2.12.1+cu130",
+  "gpu": "NVIDIA H800 PCIe",
+  "sources": {
+    "__init__.py": "071075c0031f42990757eae8fd31dc8894112cd3faa10cfd5da84df26440773a",
+    "benchmark.py": "e30e466459890b813e80a5afe5cedad5cd634139635cb52a135cff8edfcb21a8",
+    "experiment.py": "b9783ff39bfa5e9b7152e4168d5847c0afc72503b3ac96ad124c02c4e014c5aa",
+    "model.py": "077a03140f2fccfe38e6dbf5cb57645788156337fe45f71fb835909faab290ab",
+    "physics.py": "9ce8568f1d3f74701abc8b993ca4b1296fd38b69e5c10b18c60b9170529bd4d9",
+    "plot_benchmark.py": "666db20896fcba23c15fff95d898aee008adf72bcb411667fef9d8843ef8dd95",
+    "projector.py": "071467a09061dfd3a9fdd131e06c26dc16b76ea55be0238ef719d871115459d6",
+    "refine_l2.py": "8b5686d2868c9778a094bc95d8a26ba35b53e5b5f548f65ebbe42eb3c04f3726",
+    "refine_sizes.py": "94ae5a504efe144df9f6b20f44a2952c22d5ceca136e057a65f874abe6558273",
+    "report_l2.py": "624bcc57242270f02bfc10cd94509b4c8c22e0507944d1fbd6a58685c30f4318",
+    "run_campaigns.py": "dbb2faa9ef3a558e8a2a914a9a68cdbd518be9a1c4418d9e502077ef0ffe7efc",
+    "test_core.py": "47ca713624628a171f08f209f686840a716225c0443aab736c84c0494117b037",
+    "unified.py": "461ad92ffbe33c963c24f6e3d066ab5a67c78e1627dea1f9a19d9d413ee16057",
+    "unified_experiment.py": "b9624cd30cff2cebca16fe1b380bb9b103d523a2269729a0fc156581b26a0fa8",
+    "vmc.py": "649207b6dfc6c3ae835c276442a92b43a26fce20c246d78fb09d0daa8e7deba1"
+  },
+  "task": {
+    "L": 8,
+    "seed": 202
+  },
+  "name": "alibi__L08__N192__g0p5__h0p3__dis000__init-shared__seed202",
+  "model_type": "alibi_hamiltonian_specialized"
+}

@@ -1,0 +1,9 @@
+{
+  "walkers": 20000,
+  "child": 7,
+  "blocks": 2560,
+  "tau": 511.9999999999795,
+  "exact_10240_block_prefix": false,
+  "elapsed_seconds": 761.2360942922533,
+  "finished": "2026-10-26T01:36:01.015993+00:00"
+}

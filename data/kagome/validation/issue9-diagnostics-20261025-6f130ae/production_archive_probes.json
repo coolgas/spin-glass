@@ -1,0 +1,11 @@
+{
+  "baseline": true,
+  "negative_rejected_weight_ess": true,
+  "above_population_weight_ess": true,
+  "impossible_descendant_fraction": true,
+  "fractional_unique_floor": true,
+  "rejected_step_past_requested": true,
+  "inconsistent_final_checkpoint": true,
+  "negative_checkpoint_diagnostics": true,
+  "reverse_checkpoint_time": true
+}

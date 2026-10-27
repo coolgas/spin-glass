@@ -1,0 +1,535 @@
+diff --git a/code/kagome_qea/pqmc.py b/code/kagome_qea/pqmc.py
+index 67ef7e3..96da3bf 100644
+--- a/code/kagome_qea/pqmc.py
++++ b/code/kagome_qea/pqmc.py
+@@ -162,9 +162,15 @@ def _weight_ess(walkers):
+     Kish size. ``_effective_ancestors`` is that size.
+     """
+     weights = np.fromiter((walker.weight for walker in walkers), dtype=np.float64)
+-    total = float(weights.sum()) if weights.size else 0.0
+-    if total <= 0.0 or not np.isfinite(weights).all():
++    if not np.isfinite(weights).all() or np.any(weights < 0.0):
++        raise ValueError("weight ESS requires finite nonnegative weights")
++    scale = float(weights.max()) if weights.size else 0.0
++    if scale == 0.0:
+         return 0.0
++    # ESS is scale invariant. Squaring raw weights can overflow or underflow
++    # even when every weight is finite and positive.
++    weights = weights / scale
++    total = float(weights.sum())
+     return float(total * total / np.dot(weights, weights))
+ 
+ 
+@@ -201,22 +207,31 @@ def _resolve_floors(n_walkers, min_effective_ancestors, min_unique_ancestors):
+     if min_unique_ancestors is None:
+         unique_floor = 2
+     else:
+-        if isinstance(min_unique_ancestors, bool):
++        if isinstance(min_unique_ancestors, (bool, np.bool_)):
+             raise ValueError("the unique ancestor floor must be an integer")
+-        unique_floor = int(min_unique_ancestors)
+-    if unique_floor < 2:
+-        raise ValueError("the unique ancestor floor must be at least 2")
++        try:
++            unique_value = float(min_unique_ancestors)
++        except (TypeError, ValueError, OverflowError) as exc:
++            raise ValueError("the unique ancestor floor must be an integer") from exc
++        if not math.isfinite(unique_value) or not unique_value.is_integer():
++            raise ValueError("the unique ancestor floor must be a finite integer")
++        unique_floor = int(unique_value)
++    if not 2 <= unique_floor <= n_walkers:
++        raise ValueError("the unique ancestor floor must be between 2 and n_walkers")
+     if min_effective_ancestors is None:
+         if int(n_walkers) >= 16:
+             effective_floor = 8.0
+         else:
+             effective_floor = float(max(2, int(n_walkers) // 2))
+     else:
+-        if isinstance(min_effective_ancestors, bool):
++        if isinstance(min_effective_ancestors, (bool, np.bool_)):
+             raise ValueError("the effective ancestor floor must be a number")
+-        effective_floor = float(min_effective_ancestors)
+-    if not math.isfinite(effective_floor) or effective_floor < 2.0:
+-        raise ValueError("the effective ancestor floor must be at least 2")
++        try:
++            effective_floor = float(min_effective_ancestors)
++        except (TypeError, ValueError, OverflowError) as exc:
++            raise ValueError("the effective ancestor floor must be a number") from exc
++    if not math.isfinite(effective_floor) or not 2.0 <= effective_floor <= n_walkers:
++        raise ValueError("the effective ancestor floor must be between 2 and n_walkers")
+     return unique_floor, effective_floor
+ 
+ 
+@@ -264,12 +279,12 @@ def _project_once(
+         raise ValueError("phase 1 uses one replica or a pair")
+     if n_walkers < 2 or tau_block <= 0.0:
+         raise ValueError("need at least two walkers and a positive block")
+-    rate = float(n_replicas * ham.n_sites * gamma)
+-    walkers = _initial_walkers(ham, n_walkers, n_replicas, rng)
+-    shift = float(np.mean([walker.diagonal - rate for walker in walkers]))
+     unique_floor, effective_floor = _resolve_floors(
+         n_walkers, min_effective_ancestors, min_unique_ancestors
+     )
++    rate = float(n_replicas * ham.n_sites * gamma)
++    walkers = _initial_walkers(ham, n_walkers, n_replicas, rng)
++    shift = float(np.mean([walker.diagonal - rate for walker in walkers]))
+     energies = []
+     growth = []
+     equilibration_energy = []
+@@ -399,7 +414,13 @@ def _project_once(
+                         stop = 1
+                     else:
+                         stop = 2
+-                    walkers = backup
++                    # _advance mutated the parents referenced by saved before
++                    # resampling. Retain the deep pre-attempt snapshot for both
++                    # measurement and continuation; the end-of-cycle assignment
++                    # must not restore those rejected parents. RNG draws remain
++                    # consumed, as before; rejected time/energy stay excluded.
++                    saved = backup
++                    walkers = saved
+                     shift = shift_backup
+                     break
+                 if time_piece > 0.0:
+@@ -440,6 +461,8 @@ def _project_once(
+                 cycle_rejected_weight_ess.append(rejected[3])
+                 cycle_rejected_max_fraction.append(rejected[4])
+             cycle_checkpoints.append(_bounded_checkpoints(checkpoints))
++            # Legacy energy_forward_trace contains one arithmetic mean per
++            # cycle, not a time-indexed series of individual forward steps.
+             forward_energy_means.append(
+                 float(np.mean(forward_energies)) if forward_energies else np.nan
+             )
+diff --git a/code/kagome_qea/trial_overlap.py b/code/kagome_qea/trial_overlap.py
+index 0912724..357ad0a 100644
+--- a/code/kagome_qea/trial_overlap.py
++++ b/code/kagome_qea/trial_overlap.py
+@@ -12,6 +12,7 @@ the 1/σ projection time, produces an overlap that falls as Γ/σ grows.
+ 
+ import argparse
+ import hashlib
++import math
+ import os
+ import shutil
+ import subprocess
+@@ -188,6 +189,46 @@ def _close(stored, expected):
+     return abs(stored - expected) <= 1e-8 * max(1.0, abs(expected))
+ 
+ 
++def _integer_scalar(value):
++    """Check a scalar count before any lossy integer coercion."""
++    array = np.asarray(value)
++    if array.shape != () or array.dtype.kind == "b":
++        return False
++    number = float(array)
++    return math.isfinite(number) and number.is_integer()
++
++
++def _lineage_diagnostics_valid(unique, effective, weight, fraction, n_walkers):
++    """Feasible post-resample ancestry and pre-resample weight diversity."""
++    values = [np.asarray(x, dtype=np.float64) for x in (unique, effective, weight, fraction)]
++    if not all(np.isfinite(x).all() for x in values):
++        return False
++    unique, effective, weight, fraction = values
++    tolerance = 1e-8
++    if np.any(unique != np.floor(unique)) or np.any(unique < 1) or np.any(unique > n_walkers):
++        return False
++    if np.any(effective < 1 - tolerance) or np.any(effective > unique + tolerance):
++        return False
++    if np.any(weight < 1 - tolerance) or np.any(weight > n_walkers + tolerance):
++        return False
++    if np.any(fraction < 1.0 / n_walkers - tolerance) or np.any(fraction > 1 + tolerance):
++        return False
++    # The largest lineage is an integer number of equal-weight children.
++    largest = fraction * n_walkers
++    if not np.allclose(largest, np.rint(largest), rtol=0.0, atol=tolerance):
++        return False
++    if np.any(fraction < 1.0 / unique - tolerance):
++        return False
++    if np.any(largest > n_walkers - unique + 1 + tolerance):
++        return False
++    # For lineage proportions p: max(p)^2 <= sum(p^2) <= max(p).
++    if np.any(1.0 / effective > fraction + tolerance):
++        return False
++    if np.any(1.0 / effective < fraction * fraction - tolerance):
++        return False
++    return True
++
++
+ def result_ready(path, expected=None):
+     """True when the archive is this job and its statistics agree with the series.
+ 
+@@ -264,6 +305,10 @@ def result_ready(path, expected=None):
+             }
+             if not required <= set(data.files):
+                 return False
++            for name in ("n_populations", "n_walkers", "n_equilibrate", "n_measure",
++                         "n_forward_cycles", "n_sites", "L", "sample_id", "periodic"):
++                if not _integer_scalar(data[name]):
++                    return False
+             if int(data["n_populations"]) != N_POPULATIONS:
+                 return False
+             if int(data["n_walkers"]) != N_WALKERS:
+@@ -324,7 +369,7 @@ def result_ready(path, expected=None):
+             ]
+             if series.shape != (N_POPULATIONS,) or not np.isfinite(series).all():
+                 return False
+-            if times.size != N_POPULATIONS * N_FORWARD_CYCLES or not np.isfinite(times).all():
++            if times.shape != (N_POPULATIONS, N_FORWARD_CYCLES) or not np.isfinite(times).all():
+                 return False
+             if not all(np.isfinite(np.asarray(value, dtype=np.float64)).all() for value in statistics):
+                 return False
+@@ -347,22 +392,26 @@ def result_ready(path, expected=None):
+             if not _close(times.min(), data["tau_forward"]):
+                 return False
+             requested = float(data["tau_forward_requested"])
+-            if requested <= 0.0 or float(data["tau_forward"]) < 0.0 or np.any(times < 0.0):
++            if not math.isfinite(requested) or requested <= 0.0 or float(data["tau_forward"]) < 0.0 or np.any(times < 0.0):
+                 return False
+             if np.any(times > requested + 1e-8):
+                 return False
+             truncated = int(np.count_nonzero(times + 1e-8 < requested))
+             complete = int(times.size > 0 and truncated == 0)
++            if not _integer_scalar(data["n_forward_truncated"]) or not _integer_scalar(data["projection_complete"]):
++                return False
+             if int(data["n_forward_truncated"]) != truncated or int(data["projection_complete"]) != complete:
+                 return False
+-            if int(data["floor_unique"]) != 2 or not _close(data["floor_effective"], 8.0):
++            if not _integer_scalar(data["floor_unique"]) or int(data["floor_unique"]) != 2:
++                return False
++            if not _close(data["floor_effective"], 8.0):
+                 return False
+             cycle_q2 = np.asarray(data["cycle_q2"], dtype=np.float64)
+             cycle_unique = np.asarray(data["cycle_unique"], dtype=np.float64)
+             cycle_effective = np.asarray(data["cycle_effective"], dtype=np.float64)
+             cycle_fraction = np.asarray(data["cycle_max_fraction"], dtype=np.float64)
+             cycle_weight = np.asarray(data["cycle_weight_ess"], dtype=np.float64)
+-            cycle_stop = np.asarray(data["cycle_stop"])
++            cycle_stop = np.asarray(data["cycle_stop"], dtype=np.float64)
+             forward_energy = np.asarray(data["energy_forward_trace"], dtype=np.float64)
+             cycle_arrays = (
+                 cycle_q2,
+@@ -380,7 +429,13 @@ def result_ready(path, expected=None):
+                 return False
+             if not np.allclose(cycle_q2.mean(axis=1), series, rtol=1e-8, atol=1e-8):
+                 return False
+-            if not np.isfinite(cycle_unique).all() or int(np.min(cycle_unique)) != int(data["min_unique_ancestors"]):
++            if not _integer_scalar(data["min_unique_ancestors"]):
++                return False
++            if not _lineage_diagnostics_valid(
++                cycle_unique, cycle_effective, cycle_weight, cycle_fraction, N_WALKERS
++            ):
++                return False
++            if float(np.min(cycle_unique)) != float(data["min_unique_ancestors"]):
+                 return False
+             if not np.isfinite(cycle_effective).all() or not _close(
+                 float(np.min(cycle_effective)), data["min_effective_ancestors"]
+@@ -388,13 +443,7 @@ def result_ready(path, expected=None):
+                 return False
+             if np.any(cycle_unique < 2) or np.any(cycle_effective + 1e-8 < 8.0):
+                 return False
+-            if (
+-                not np.isfinite(cycle_fraction).all()
+-                or np.any(cycle_fraction <= 0.0)
+-                or np.any(cycle_fraction > 1.0 + 1e-8)
+-            ):
+-                return False
+-            if not np.isfinite(cycle_weight).all() or np.any(cycle_weight <= 0.0):
++            if not np.isfinite(cycle_stop).all() or np.any(~np.isin(cycle_stop, (0, 1, 2, 3))):
+                 return False
+             reached = times + 1e-8 >= requested
+             if not np.array_equal(cycle_stop == 0, reached):
+@@ -421,11 +470,14 @@ def result_ready(path, expected=None):
+                 rejected_dt = rejected[0][~reached]
+                 rejected_unique = rejected[1][~reached]
+                 rejected_effective = rejected[2][~reached]
++                rejected_weight = rejected[3][~reached]
+                 rejected_fraction = rejected[4][~reached]
+                 stop_short = cycle_stop[~reached]
+-                if np.any(rejected_dt <= 0.0):
++                if np.any(rejected_dt <= 0.0) or np.any(rejected_dt > requested - times[~reached] + 1e-8):
+                     return False
+-                if np.any(rejected_fraction <= 0.0) or np.any(rejected_fraction > 1.0 + 1e-8):
++                if not _lineage_diagnostics_valid(
++                    rejected_unique, rejected_effective, rejected_weight, rejected_fraction, N_WALKERS
++                ):
+                     return False
+                 effective_only = (rejected_effective < 8.0) & (rejected_unique >= 2)
+                 unique_only = (rejected_unique < 2) & (rejected_effective >= 8.0)
+@@ -436,20 +488,34 @@ def result_ready(path, expected=None):
+                     return False
+                 if np.any((stop_short == 3) & ~both):
+                     return False
+-            if np.any(times > 1e-8) and not np.isfinite(forward_energy[times > 1e-8]).all():
++            if not np.isfinite(forward_energy[times > 0.0]).all():
++                return False
++            if not np.isnan(forward_energy[times == 0.0]).all():
+                 return False
+             checkpoints = np.asarray(data["cycle_checkpoints"], dtype=np.float64)
+             if checkpoints.shape != times.shape + (_CHECKPOINT_COUNT, 5):
+                 return False
+-            for achieved, rows in zip(times.reshape(-1), checkpoints.reshape(-1, _CHECKPOINT_COUNT, 5)):
++            endpoints = np.stack((times, cycle_unique, cycle_effective, cycle_weight, cycle_fraction), axis=-1)
++            for endpoint, rows in zip(endpoints.reshape(-1, 5), checkpoints.reshape(-1, _CHECKPOINT_COUNT, 5)):
++                achieved = endpoint[0]
+                 finite_rows = np.isfinite(rows).all(axis=1)
+                 blank_rows = np.isnan(rows).all(axis=1)
+                 if not np.all(finite_rows | blank_rows) or not finite_rows.any():
+                     return False
++                count = int(finite_rows.sum())
++                if not finite_rows[:count].all() or finite_rows[count:].any():
++                    return False
++                valid = rows[:count]
+                 elapsed = rows[finite_rows, 0]
+                 if np.any(elapsed < -1e-12) or np.any(elapsed > float(achieved) + 1e-8):
+                     return False
+-                if not _close(float(np.max(elapsed)), achieved):
++                if not _close(elapsed[0], 0.0) or np.any(np.diff(elapsed) <= 0.0):
++                    return False
++                if not _lineage_diagnostics_valid(valid[:, 1], valid[:, 2], valid[:, 3], valid[:, 4], N_WALKERS):
++                    return False
++                if np.any(valid[:, 1] < 2) or np.any(valid[:, 2] + 1e-8 < 8.0):
++                    return False
++                if not np.allclose(valid[-1], endpoint, rtol=1e-8, atol=1e-8):
+                     return False
+             equilibration = np.asarray(data["energy_equilibration_trace"], dtype=np.float64)
+             measurement = np.asarray(data["energy_measure_trace"], dtype=np.float64)
+diff --git a/code/test_reviewed_fixes.py b/code/test_reviewed_fixes.py
+index 421831a..07dc293 100644
+--- a/code/test_reviewed_fixes.py
++++ b/code/test_reviewed_fixes.py
+@@ -25,6 +25,8 @@ from qmc_numerics import series_error, systematic, weighted_interval
+ def main():
+     report = _Report()
+     _check_cache_identity(report)
++    _check_rollback(report)
++    _check_weight_ess(report)
+     _check_operator(report)
+     _check_weights(report)
+     _check_overlap(report)
+@@ -148,14 +150,14 @@ def _check_cache_identity(report):
+         cycle_q2=np.repeat(series[:, None], N_FORWARD_CYCLES, axis=1),
+         cycle_unique=np.full(times.shape, 125, dtype=np.int64),
+         cycle_effective=np.full(times.shape, 10.0),
+-        cycle_max_fraction=np.full(times.shape, 0.05),
++        cycle_max_fraction=np.full(times.shape, 0.2),
+         cycle_weight_ess=np.full(times.shape, 1000.0),
+         cycle_stop=np.ones(times.shape, dtype=np.int64),
+         cycle_rejected_dt=np.full(times.shape, 0.01),
+         cycle_rejected_unique=np.full(times.shape, 50.0),
+         cycle_rejected_effective=np.full(times.shape, 7.0),
+         cycle_rejected_weight_ess=np.full(times.shape, 20.0),
+-        cycle_rejected_max_fraction=np.full(times.shape, 0.4),
++        cycle_rejected_max_fraction=np.full(times.shape, 0.3),
+         cycle_checkpoints=_truncated_checkpoints(times),
+         energy_forward_trace=np.full(times.shape, -10.0),
+         energy_equilibration_trace=np.full((N_POPULATIONS, N_EQUILIBRATE), -10.0),
+@@ -249,6 +251,32 @@ def _check_cache_identity(report):
+                 {"cycle_stop": np.zeros(times.shape, dtype=np.int64)},
+             ),
+         }
++        mutations = {
++            "negative_rejected_weight": {"cycle_rejected_weight_ess": np.full(times.shape, -1.0)},
++            "large_weight_ess": {"cycle_weight_ess": np.full(times.shape, 50000.0)},
++            "small_descendant_fraction": {"cycle_max_fraction": np.full(times.shape, 1e-6)},
++            "fractional_floor": {"floor_unique": np.float64(2.9)},
++            "long_rejected_step": {"cycle_rejected_dt": np.full(times.shape, 100.0)},
++            "endpoint_mismatch": {"cycle_unique": payload["cycle_unique"] + 1,
++                                  "min_unique_ancestors": np.int64(126)},
++            "fractional_unique": {"cycle_unique": payload["cycle_unique"] + 0.5},
++            "fractional_stop": {"cycle_stop": np.full(times.shape, 1.5)},
++            "impossible_kish": {"cycle_effective": np.full(times.shape, 126.0),
++                                 "min_effective_ancestors": np.float64(126.0)},
++            "bad_fraction_kish": {"cycle_max_fraction": np.full(times.shape, 0.05)},
++        }
++        negative = _truncated_checkpoints(times)
++        negative[:, :, 1, 1:] = [-10.0, -20.0, -30.0, -40.0]
++        mutations["negative_checkpoints"] = {"cycle_checkpoints": negative}
++        reversed_points = _truncated_checkpoints(times)
++        reversed_points[:, :, :2] = reversed_points[:, :, 1::-1].copy()
++        mutations["reversed_checkpoints"] = {"cycle_checkpoints": reversed_points}
++        gap = _truncated_checkpoints(times)
++        gap[:, :, 2] = gap[:, :, 1]
++        gap[:, :, 1] = np.nan
++        mutations["checkpoint_padding_gap"] = {"cycle_checkpoints": gap}
++        for name, changes in mutations.items():
++            rejected[name] = archive(directory, name + ".npz", changes)
+         missing = {}
+         for key in ("gamma", "sample_id", "L", "seed_entropy", "energy", "floor_effective"):
+             written = dict(payload)
+@@ -257,7 +285,7 @@ def _check_cache_identity(report):
+             np.savez_compressed(path, **written)
+             missing[key] = result_ready(path, expected=expected)
+         finished_points = _truncated_checkpoints(times)
+-        finished_points[:, :, 0, 0] = forward
++        finished_points[:, :, 1, 0] = forward
+         complete = archive(
+             directory,
+             "complete.npz",
+@@ -305,7 +333,8 @@ def _check_cache_identity(report):
+ 
+ def _truncated_checkpoints(times):
+     points = np.full(times.shape + (8, 5), np.nan)
+-    points[:, :, 0, :] = np.array([1.5, 125.0, 10.0, 1000.0, 0.05])
++    points[:, :, 0, :] = np.array([0.0, 5000.0, 5000.0, 5000.0, 1.0 / 5000])
++    points[:, :, 1, :] = np.array([1.5, 125.0, 10.0, 1000.0, 0.2])
+     return points
+ 
+ 
+@@ -329,7 +358,12 @@ def _check_stop_diagnostics(report, short, long):
+         problems.append("explicit floors")
+     if _resolve_floors(10, None, None) != (2, 5.0):
+         problems.append("small population")
+-    for arguments in ((5000, True, None), (5000, 1.0, None), (5000, None, True), (5000, None, 1)):
++    for arguments in (
++        (5000, True, None), (5000, 1.0, None), (5000, None, True), (5000, None, 1),
++        (30, 8.0, 2.9), (30, 31.0, 2), (30, 8.0, 31), (30, 8.0, np.nan),
++        (30, 8.0, np.inf), (30, np.nan, 2), (30, np.inf, 2),
++        (30, np.bool_(True), 2), (30, 8.0, np.bool_(True)),
++    ):
+         try:
+             _resolve_floors(*arguments)
+         except ValueError:
+@@ -434,6 +468,142 @@ def _check_stop_diagnostics(report, short, long):
+         )
+ 
+ 
++def _check_rollback(report):
++    """Force rejection before/after acceptance and inspect retained state."""
++    import inspect
++    import sys
++    from unittest.mock import patch
++    import kagome_qea.pqmc as pq
++
++    source, start = inspect.getsourcelines(pq._project_once)
++    measure_line = start + next(
++        i for i, line in enumerate(source)
++        if line.strip().startswith("tags = np.fromiter((walker.tag for walker in saved)")
++    )
++    cycle_line = start + next(
++        i for i, line in enumerate(source)
++        if line.strip() == "for identity, walker in enumerate(walkers):"
++    )
++
++    def state(walkers):
++        return [(w.spins.copy(), w.diagonal, w.weight, w.tag, w.ancestor) for w in walkers]
++
++    def equal(left, right):
++        return all(np.array_equal(a[0], b[0]) and a[1:] == b[1:] for a, b in zip(left, right))
++
++    for reject_step in (1, 2):
++        errors = []
++        snapshots = []
++        pending = []
++        resamples = []
++        rejected_rng_state = []
++        rng = np.random.default_rng(17)
++
++        def controlled_resample(walkers, random):
++            # Mutating propagation is real; deterministic offspring isolate
++            # rollback independently of a chance threshold crossing.
++            random.random()
++            resamples.append(1)
++            children = pq._clone_population(walkers)
++            for child in children:
++                child.weight = 1.0
++            if len(resamples) == reject_step:
++                for child in children:
++                    child.ancestor = 0
++                rejected_rng_state.append(repr(random.bit_generator.state))
++            return children, math.log(len(walkers)) + 0.1
++
++        def local_trace(frame, event, arg):
++            if event != "line":
++                return local_trace
++            values = frame.f_locals
++            if frame.f_lineno == measure_line and values["rejected"] is not None:
++                snapshot = state(values["backup"])
++                snapshots.append(snapshot)
++                if not equal(state(values["saved"]), snapshot):
++                    errors.append("retained state differs from pre-attempt snapshot")
++                if not equal(state(values["walkers"]), snapshot):
++                    errors.append("live population differs from backup")
++                if values["shift"] != values["shift_backup"]:
++                    errors.append("shift not restored")
++                if repr(rng.bit_generator.state) != rejected_rng_state[-1]:
++                    errors.append("rejected RNG consumption changed")
++                if len(values["energies"]) != reject_step - 1:
++                    errors.append("rejected energy included")
++                if not np.isclose(values["elapsed"], 0.05 * (reject_step - 1)):
++                    errors.append("rejected time included")
++                pending.append((snapshot, values["shift_backup"]))
++            if frame.f_lineno == cycle_line and pending:
++                snapshot, shift = pending.pop()
++                if not equal(state(values["walkers"]), snapshot) or values["shift"] != shift:
++                    errors.append("next cycle does not continue the accepted state")
++            return local_trace
++
++        def global_trace(frame, event, arg):
++            return local_trace if frame.f_code is pq._project_once.__code__ else None
++
++        previous_trace = sys.gettrace()
++        try:
++            with patch.object(pq, "_resample", controlled_resample), patch.object(
++                pq, "_branch_dt", side_effect=lambda walkers, limit: min(0.05, limit)
++            ):
++                sys.settrace(global_trace)
++                result = pq._project_once(
++                    chain(4, J=1.0), 1.0, rng, n_walkers=30, n_equilibrate=0,
++                    n_measure=0, tau_forward=0.2, n_forward_cycles=2,
++                )
++        finally:
++            sys.settrace(previous_trace)
++        if len(snapshots) != 1 or pending:
++            errors.append("rejection/continuation not exercised")
++        if result["cycle_stop"].tolist() != [3, 0]:
++            errors.append("stop codes")
++        expected_energy_count = reject_step - 1 + 4
++        if result["n_energy_blocks"] != expected_energy_count:
++            errors.append("accepted energy count")
++        for i, rows in enumerate(result["cycle_checkpoints"]):
++            rows = rows[np.isfinite(rows).all(axis=1)]
++            expected = [result["forward_times"][i], result["cycle_unique"][i],
++                        result["cycle_effective"][i], result["cycle_weight_ess"][i],
++                        result["cycle_max_fraction"][i]]
++            if not np.array_equal(rows[-1], expected):
++                errors.append("accepted endpoint diagnostics")
++        name = f"rollback at step {reject_step}"
++        if errors:
++            report.fail(name, ", ".join(errors))
++        else:
++            report.ok(name, "physical state, shift, RNG, time, energy, and next cycle agree")
++
++
++def _check_weight_ess(report):
++    from kagome_qea.pqmc import _Walker, _weight_ess
++
++    def walkers(values):
++        result = [_Walker(np.ones((2, 2), dtype=np.int8), 0.0) for _ in values]
++        for walker, weight in zip(result, values):
++            walker.weight = weight
++        return result
++
++    problems = []
++    for scale in (1.0, 1e200, 1e-200):
++        if not np.isclose(_weight_ess(walkers([scale, 2 * scale, 3 * scale])), 36.0 / 14.0):
++            problems.append(f"scale {scale}")
++    for values, expected in (([], 0.0), ([0.0, 0.0], 0.0), ([0.0, 1.0], 1.0)):
++        if _weight_ess(walkers(values)) != expected:
++            problems.append(f"weights {values}")
++    for values in ([-1.0, 2.0], [np.nan, 1.0], [np.inf, 1.0]):
++        try:
++            _weight_ess(walkers(values))
++        except ValueError:
++            pass
++        else:
++            problems.append(f"accepted {values}")
++    if problems:
++        report.fail("weight ESS stability", ", ".join(problems))
++    else:
++        report.ok("weight ESS stability", "scale invariant; invalid weights rejected")
++
++
+ def _check_operator(report):
+     bonds = np.array([[0, 1], [1, 2]], dtype=np.int64)
+     couplings = np.array([1.0, 1.0])

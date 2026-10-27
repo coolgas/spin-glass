@@ -1,0 +1,20 @@
+{
+  "state": "completed",
+  "production": {
+    "state": "completed",
+    "pid": 813075,
+    "started_unix": 1793061781.2406538,
+    "updated_unix": 1793066768.0468295,
+    "completed": 7168,
+    "expected": 7168
+  },
+  "reference": {
+    "completed": 448,
+    "expected": 448,
+    "state": "completed",
+    "elapsed_seconds": 1220.6223175525665,
+    "updated_unix": 1793063524.1076322
+  },
+  "updated_unix": 1793066879.964682,
+  "notebook": "/Users/tianyiyan/Dropbox/spin-glasses/notebook/disorder_averaged_guided_gfmc.ipynb"
+}

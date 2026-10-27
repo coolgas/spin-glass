@@ -1,0 +1,42 @@
+{
+  "config": {
+    "name": "L2_g3_t4",
+    "L": 2,
+    "sample": 0,
+    "gamma": 3.0,
+    "walkers": 5000,
+    "equil": 40,
+    "tau": 4.0,
+    "populations": 8,
+    "measure": 40,
+    "cycles": 8,
+    "block": 0.2
+  },
+  "count": 8,
+  "chi": 1.1818947916666667,
+  "se": 0.023319763589130273,
+  "energy": -37.820389304802944,
+  "energy_se": 0.0010289557128133231,
+  "achieved_min": 4.0,
+  "achieved_median": 4.0,
+  "achieved_max": 4.0,
+  "complete_populations": 8,
+  "truncated_cycles": 0,
+  "cycles": 64,
+  "min_unique": 194,
+  "min_effective": 66.92723670825079,
+  "cpu_seconds": 565.9711660780013,
+  "chi_populations": [
+    1.1887166666666666,
+    1.1131,
+    1.14975,
+    1.2260416666666667,
+    1.229425,
+    1.0794000000000001,
+    1.2813833333333333,
+    1.1873416666666667
+  ],
+  "exact": 1.1296363044417943,
+  "difference": 0.05225848722487236,
+  "difference_se": 2.240952701991838
+}

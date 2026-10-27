@@ -1,0 +1,189 @@
+{
+  "latest": "unified_alibi__L02-04-06-08__dis000-001__fields3__seed042__latest.pt",
+  "step": 4800,
+  "final": true,
+  "metadata": {
+    "tasks": [
+      {
+        "L": 2,
+        "sample_id": 0,
+        "gamma": 0.5,
+        "h": 0.3
+      },
+      {
+        "L": 2,
+        "sample_id": 0,
+        "gamma": 2.0,
+        "h": 0.3
+      },
+      {
+        "L": 2,
+        "sample_id": 0,
+        "gamma": 0.5,
+        "h": 0.0
+      },
+      {
+        "L": 2,
+        "sample_id": 1,
+        "gamma": 0.5,
+        "h": 0.3
+      },
+      {
+        "L": 2,
+        "sample_id": 1,
+        "gamma": 2.0,
+        "h": 0.3
+      },
+      {
+        "L": 2,
+        "sample_id": 1,
+        "gamma": 0.5,
+        "h": 0.0
+      },
+      {
+        "L": 4,
+        "sample_id": 0,
+        "gamma": 0.5,
+        "h": 0.3
+      },
+      {
+        "L": 4,
+        "sample_id": 0,
+        "gamma": 2.0,
+        "h": 0.3
+      },
+      {
+        "L": 4,
+        "sample_id": 0,
+        "gamma": 0.5,
+        "h": 0.0
+      },
+      {
+        "L": 4,
+        "sample_id": 1,
+        "gamma": 0.5,
+        "h": 0.3
+      },
+      {
+        "L": 4,
+        "sample_id": 1,
+        "gamma": 2.0,
+        "h": 0.3
+      },
+      {
+        "L": 4,
+        "sample_id": 1,
+        "gamma": 0.5,
+        "h": 0.0
+      },
+      {
+        "L": 6,
+        "sample_id": 0,
+        "gamma": 0.5,
+        "h": 0.3
+      },
+      {
+        "L": 6,
+        "sample_id": 0,
+        "gamma": 2.0,
+        "h": 0.3
+      },
+      {
+        "L": 6,
+        "sample_id": 0,
+        "gamma": 0.5,
+        "h": 0.0
+      },
+      {
+        "L": 6,
+        "sample_id": 1,
+        "gamma": 0.5,
+        "h": 0.3
+      },
+      {
+        "L": 6,
+        "sample_id": 1,
+        "gamma": 2.0,
+        "h": 0.3
+      },
+      {
+        "L": 6,
+        "sample_id": 1,
+        "gamma": 0.5,
+        "h": 0.0
+      },
+      {
+        "L": 8,
+        "sample_id": 0,
+        "gamma": 0.5,
+        "h": 0.3
+      },
+      {
+        "L": 8,
+        "sample_id": 0,
+        "gamma": 2.0,
+        "h": 0.3
+      },
+      {
+        "L": 8,
+        "sample_id": 0,
+        "gamma": 0.5,
+        "h": 0.0
+      },
+      {
+        "L": 8,
+        "sample_id": 1,
+        "gamma": 0.5,
+        "h": 0.3
+      },
+      {
+        "L": 8,
+        "sample_id": 1,
+        "gamma": 2.0,
+        "h": 0.3
+      },
+      {
+        "L": 8,
+        "sample_id": 1,
+        "gamma": 0.5,
+        "h": 0.0
+      }
+    ],
+    "steps": 4800,
+    "batch": 128,
+    "architecture": {
+      "width": 32,
+      "layers": 2,
+      "heads": 4
+    },
+    "seed": 42,
+    "objective": "uniform contexts; energy per spin",
+    "torch": "2.12.1+cu130",
+    "gpu": "NVIDIA H800 PCIe",
+    "sources": {
+      "__init__.py": "071075c0031f42990757eae8fd31dc8894112cd3faa10cfd5da84df26440773a",
+      "benchmark.py": "e30e466459890b813e80a5afe5cedad5cd634139635cb52a135cff8edfcb21a8",
+      "experiment.py": "b9783ff39bfa5e9b7152e4168d5847c0afc72503b3ac96ad124c02c4e014c5aa",
+      "model.py": "077a03140f2fccfe38e6dbf5cb57645788156337fe45f71fb835909faab290ab",
+      "physics.py": "9ce8568f1d3f74701abc8b993ca4b1296fd38b69e5c10b18c60b9170529bd4d9",
+      "projector.py": "071467a09061dfd3a9fdd131e06c26dc16b76ea55be0238ef719d871115459d6",
+      "run_campaigns.py": "dbb2faa9ef3a558e8a2a914a9a68cdbd518be9a1c4418d9e502077ef0ffe7efc",
+      "test_core.py": "47ca713624628a171f08f209f686840a716225c0443aab736c84c0494117b037",
+      "unified.py": "461ad92ffbe33c963c24f6e3d066ab5a67c78e1627dea1f9a19d9d413ee16057",
+      "unified_experiment.py": "b9624cd30cff2cebca16fe1b380bb9b103d523a2269729a0fc156581b26a0fa8",
+      "vmc.py": "649207b6dfc6c3ae835c276442a92b43a26fce20c246d78fb09d0daa8e7deba1"
+    },
+    "model_type": "unified_alibi"
+  },
+  "snapshots": [
+    "unified_alibi__L02-04-06-08__dis000-001__fields3__seed042__step000001__snapshot.pt",
+    "unified_alibi__L02-04-06-08__dis000-001__fields3__seed042__step000600__snapshot.pt",
+    "unified_alibi__L02-04-06-08__dis000-001__fields3__seed042__step001200__snapshot.pt",
+    "unified_alibi__L02-04-06-08__dis000-001__fields3__seed042__step001800__snapshot.pt",
+    "unified_alibi__L02-04-06-08__dis000-001__fields3__seed042__step002400__snapshot.pt",
+    "unified_alibi__L02-04-06-08__dis000-001__fields3__seed042__step003000__snapshot.pt",
+    "unified_alibi__L02-04-06-08__dis000-001__fields3__seed042__step003600__snapshot.pt",
+    "unified_alibi__L02-04-06-08__dis000-001__fields3__seed042__step004200__snapshot.pt",
+    "unified_alibi__L02-04-06-08__dis000-001__fields3__seed042__step004800__final.pt"
+  ]
+}

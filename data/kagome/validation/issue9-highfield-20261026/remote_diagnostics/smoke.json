@@ -1,0 +1,13 @@
+{
+  "exact_repeatability": true,
+  "result_fields": 21,
+  "uncoupled_exact_fields": [
+    3,
+    5
+  ],
+  "benchmark_seconds": 0.7980374339967966,
+  "benchmark_walkers": 128,
+  "benchmark_blocks": 8,
+  "benchmark_gamma": 5,
+  "elapsed_seconds": 1.6083647571504116
+}

@@ -1,0 +1,27 @@
+{
+  "checkpoint": "/Users/tianyiyan/Dropbox/spin-glasses/data/kagome/transformer_af_shared_symmetric_v2_main/shared_symmetric_alibi__step003600.pt",
+  "sha256": "293cad708beed39436b0bbbb0c731b90efd18600d73d01815b49ccdf82c3b63f",
+  "walkers": [
+    512,
+    2048,
+    8192
+  ],
+  "forward": [
+    2.0,
+    8.0,
+    16.0
+  ],
+  "blocks": [
+    0.1,
+    0.05
+  ],
+  "ids": [
+    10000,
+    10001
+  ],
+  "seeds": 8,
+  "cycles": 12,
+  "equilibration_time": 16.0,
+  "energy_measurement_time": 4.0,
+  "interpretation": "12-spin frozen-network lookup. All cycles included; uncertainty across independent populations, not time-series SE."
+}

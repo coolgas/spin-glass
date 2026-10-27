@@ -1,0 +1,10 @@
+{
+  "exact_repeatability": true,
+  "sizes_checked": [
+    4,
+    8
+  ],
+  "seconds": 1.03733086027205,
+  "tasks": 192,
+  "full_settings_validated_by_smoke": false
+}

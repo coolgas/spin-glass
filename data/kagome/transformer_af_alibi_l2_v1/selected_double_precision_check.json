@@ -1,0 +1,12 @@
+{
+  "energy": -13.342859809930156,
+  "variance": 0.0008603618825357505,
+  "q2": 0.6823429042446194,
+  "chi_connected": 0.0650647799344133,
+  "normalization": 0.9999999999999999,
+  "energy_error_per_spin": 9.726324195528472e-06,
+  "q2_relative_error": 0.0007066834227429375,
+  "chi_connected_relative_error": 0.0034320649554960836,
+  "fidelity": 0.9999767562728723,
+  "qualified": true
+}

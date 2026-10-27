@@ -1,0 +1,90 @@
+{
+  "checkpoint_sha256": "5f9fa33b04102ddff2e43179440514021090ed3aaf228ce67dce53c2139e2544",
+  "design": {
+    "contexts": [
+      {
+        "gamma": 0.5,
+        "h": 0.3,
+        "K": 1.0
+      },
+      {
+        "gamma": 0.5,
+        "h": 0.3,
+        "K": 2.0
+      },
+      {
+        "gamma": 2.0,
+        "h": 0.3,
+        "K": 1.0
+      },
+      {
+        "gamma": 0.25,
+        "h": 0.3,
+        "K": 1.0
+      }
+    ],
+    "sample_ids": [
+      10000,
+      10001
+    ],
+    "walkers": [
+      512,
+      2048
+    ],
+    "forward_Ktau": [
+      2.0,
+      8.0
+    ],
+    "branch_Ktau": 0.1,
+    "equilibration_Ktau": 16.0,
+    "measurement_Ktau": 4.0,
+    "cycles": 12,
+    "seeds": [
+      98200,
+      98201,
+      98202,
+      98203
+    ],
+    "guides": [
+      "constant",
+      "network"
+    ]
+  },
+  "Hamiltonian": "sum K_ij ZiZj - Gamma sum Xi - h sum Zi; PBC",
+  "disorder": "matched K_ij=K*(1+0.5*u_ij)",
+  "pure_definition": "constant guide psi_T(s)=1; uniform initial samples",
+  "network_definition": "frozen seed501 psi_T=sqrt(p); initial samples from p",
+  "estimates": "mixed energy; four-replica forward-walking q2 and connected chi",
+  "uncertainty": "SE across four independent populations; all cycles retained",
+  "timing": "propagation plus guide sampling; excludes cache loading and creation",
+  "cost_limit": "network uses L2 lookup; direct inference overhead excluded",
+  "reserved_test_ids_inspected": false,
+  "source_sha256": {
+    "transformer_qmc/compare_pure_gfmc.py": "51e515093da6c6a1975484fc44d697bfbb1088b98829c9ba03e2730980257d1d",
+    "transformer_qmc/projector.py": "071467a09061dfd3a9fdd131e06c26dc16b76ea55be0238ef719d871115459d6",
+    "transformer_qmc/physics.py": "9ce8568f1d3f74701abc8b993ca4b1296fd38b69e5c10b18c60b9170529bd4d9",
+    "transformer_qmc/model.py": "077a03140f2fccfe38e6dbf5cb57645788156337fe45f71fb835909faab290ab",
+    "transformer_qmc/experiment.py": "b9783ff39bfa5e9b7152e4168d5847c0afc72503b3ac96ad124c02c4e014c5aa",
+    "transformer_qmc/frozen_scan.py": "b396ee2c6f59166e43dbf84cbb211ec82100e310277630ca001e164f2c895635",
+    "qmc_numerics.py": "88e433af2447ce91c1cc08fcac0e646b2829008c2a1406a25f2fc77f6d23355c",
+    "gfmc/guide.py": "80712753266a34cffc0e2c9fd869e61b0b3412aa28f4c4de8438d6e584beb09c"
+  },
+  "input_sha256": {
+    "L2_s10000_g0p5_h0p3_K1.json": "c689cdafbdc1dcc2d1df04703e1acd00dc44d5cfe4fc146882e1e4af3be67468",
+    "L2_s10000_g0p5_h0p3_K1.npz": "822942a6a3d9cb17b0b9126bec5e1b2dabe890789cefb98aba01a80e3d2699c1",
+    "L2_s10001_g0p5_h0p3_K1.json": "6644bb110d96acd8694775cb8d7b0e14dac845493f734ef088402227e9591729",
+    "L2_s10001_g0p5_h0p3_K1.npz": "64f559dc5ddb6b01ec6273919d7b9ae4e809c9679d7170da40d36473d7aa7500",
+    "L2_s10000_g0p5_h0p3_K2.json": "0d2275a63764388855534e0a1489e87f478aa692c30ab642d18bcb433bffd352",
+    "L2_s10000_g0p5_h0p3_K2.npz": "f2499efee1e410c7c87ba92f1b555a8d02f3e2dfd8009936ee998e455411de8e",
+    "L2_s10001_g0p5_h0p3_K2.json": "43b5ac7695cf17703e9c2b9caf515058a8838b438dedd6b0f90d574f21ccc2ad",
+    "L2_s10001_g0p5_h0p3_K2.npz": "7c7949fc40f880cac713332f1ad2a22c7d437cfd098aca24776e86ee93b17dd4",
+    "L2_s10000_g2_h0p3_K1.json": "600912973550b06def3e041d25ed51e963bf55665f09080befd1f1c7755ac491",
+    "L2_s10000_g2_h0p3_K1.npz": "d9713783c73abbd0c7608d4db602b6a4d1dc4e58cea1f1ff8a3df357f92eab46",
+    "L2_s10001_g2_h0p3_K1.json": "d95eb13d7e5ac3eb9ed27e4a961f0cf59f9351b272668753662e25ef27704d4d",
+    "L2_s10001_g2_h0p3_K1.npz": "44e63385ac87390dcbfc1f551a6c7e52c88dd727fc620f5ab0c95472b7035c85",
+    "L2_s10000_g0p25_h0p3_K1.json": "7d5350ff1233cf145fe3e13837f2750cde07d25dc6ac2442a36517762fb01d07",
+    "L2_s10000_g0p25_h0p3_K1.npz": "995c22d974923e674203bdd98434cce0aec99d67c78d5883d7c9dfc8d4c92105",
+    "L2_s10001_g0p25_h0p3_K1.json": "a47b9149c77c7762a1098e14f7880ec27109a6bac5b1401b82a80137f65a2908",
+    "L2_s10001_g0p25_h0p3_K1.npz": "f49429057a3a7dfa2f64cead7dd553d5e391bf435b6d121c501bf612741e4ae3"
+  }
+}

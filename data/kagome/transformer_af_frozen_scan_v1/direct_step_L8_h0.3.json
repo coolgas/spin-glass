@@ -1,0 +1,14 @@
+{
+  "L": 8,
+  "h": 0.3,
+  "gamma": 0.5,
+  "K": 1.0,
+  "walkers": 16,
+  "replicas": 4,
+  "tau": 0.02,
+  "seconds": 5.461999179795384,
+  "energy": -200.60107273514808,
+  "energy_growth": -200.6008951383502,
+  "weight_ess": 15.823554527865124,
+  "interpretation": "Throughput smoke test; no equilibration or accuracy claim"
+}

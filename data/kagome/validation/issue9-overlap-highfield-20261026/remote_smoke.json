@@ -1,0 +1,10 @@
+{
+  "exact_repeatability": true,
+  "result_fields": 67,
+  "benchmark_seconds": 0.554761222563684,
+  "benchmark_walkers": 128,
+  "benchmark_initial_blocks": 4,
+  "benchmark_cycles": 2,
+  "benchmark_forward_time": 0.2,
+  "projection_complete": false
+}

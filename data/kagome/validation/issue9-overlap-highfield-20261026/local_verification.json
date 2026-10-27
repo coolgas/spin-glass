@@ -1,0 +1,11 @@
+{
+  "sha256_verified": true,
+  "download_files": 73,
+  "complete_populations": 32,
+  "forward_cycles": 256,
+  "truncated_cycles": 0,
+  "independent_statistics_verified": true,
+  "achieved_times_and_lineage_verified": true,
+  "susceptibility_identity_verified": true,
+  "overlap_definition_verified": true
+}

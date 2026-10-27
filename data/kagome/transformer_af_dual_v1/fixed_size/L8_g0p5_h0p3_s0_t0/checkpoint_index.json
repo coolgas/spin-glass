@@ -1,0 +1,27 @@
+{
+  "latest": "fixed__L08__N192__g0p5__h0p3__dis000__seed024__latest.pt",
+  "step": 800,
+  "final": true,
+  "metadata": {
+    "name": "L8_g0p5_h0p3_s0_t0",
+    "L": 8,
+    "gamma": 0.5,
+    "h": 0.3,
+    "train_seed": 24,
+    "sample_id": 0,
+    "disorder_width": 0.5,
+    "steps": 800,
+    "batch": 128,
+    "architecture": {
+      "width": 32,
+      "layers": 2,
+      "heads": 4
+    },
+    "lr": 0.002,
+    "model_type": "fixed_learned_position"
+  },
+  "snapshots": [
+    "fixed__L08__N192__g0p5__h0p3__dis000__seed024__step000001__snapshot.pt",
+    "fixed__L08__N192__g0p5__h0p3__dis000__seed024__step000800__final.pt"
+  ]
+}

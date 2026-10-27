@@ -1,0 +1,8 @@
+# Generated Python bytecode and notebook checkpoints.
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Runtime process coordination files in mirrored campaign directories.
+/data/**/*.pid
+/data/**/*.lock

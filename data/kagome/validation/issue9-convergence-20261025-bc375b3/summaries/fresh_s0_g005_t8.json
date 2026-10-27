@@ -1,0 +1,43 @@
+{
+  "config": {
+    "name": "fresh_s0_g005_t8",
+    "L": 2,
+    "sample": 0,
+    "gamma": 0.05,
+    "walkers": 5000,
+    "equil": 40,
+    "tau": 8.0,
+    "populations": 8,
+    "measure": 40,
+    "cycles": 8,
+    "block": 0.2,
+    "seed": 20261025
+  },
+  "count": 8,
+  "chi": 11.974851041666666,
+  "se": 0.0014501936425671887,
+  "energy": -14.751829602944312,
+  "energy_se": 0.005330242852516725,
+  "achieved_min": 8.0,
+  "achieved_median": 8.0,
+  "achieved_max": 8.0,
+  "complete_populations": 8,
+  "truncated_cycles": 0,
+  "cycles": 64,
+  "min_unique": 344,
+  "min_effective": 207.61705449532445,
+  "cpu_seconds": 63.14901301637292,
+  "chi_populations": [
+    11.980291666666666,
+    11.977833333333333,
+    11.970758333333333,
+    11.972225,
+    11.9773,
+    11.969516666666667,
+    11.972241666666669,
+    11.978641666666668
+  ],
+  "exact": 11.973897341443852,
+  "difference": 0.0009537002228139357,
+  "difference_se": 0.6576364664829579
+}

@@ -1,0 +1,202 @@
+{
+  "architecture": {
+    "width": 64,
+    "layers": 4,
+    "heads": 4
+  },
+  "contexts": [
+    {
+      "L": 2,
+      "sample_id": 0,
+      "gamma": 0.5,
+      "h": 0.3
+    },
+    {
+      "L": 2,
+      "sample_id": 0,
+      "gamma": 2.0,
+      "h": 0.3
+    },
+    {
+      "L": 2,
+      "sample_id": 0,
+      "gamma": 0.5,
+      "h": 0.0
+    },
+    {
+      "L": 2,
+      "sample_id": 1,
+      "gamma": 0.5,
+      "h": 0.3
+    },
+    {
+      "L": 2,
+      "sample_id": 1,
+      "gamma": 2.0,
+      "h": 0.3
+    },
+    {
+      "L": 2,
+      "sample_id": 1,
+      "gamma": 0.5,
+      "h": 0.0
+    },
+    {
+      "L": 4,
+      "sample_id": 0,
+      "gamma": 0.5,
+      "h": 0.3
+    },
+    {
+      "L": 4,
+      "sample_id": 0,
+      "gamma": 2.0,
+      "h": 0.3
+    },
+    {
+      "L": 4,
+      "sample_id": 0,
+      "gamma": 0.5,
+      "h": 0.0
+    },
+    {
+      "L": 4,
+      "sample_id": 1,
+      "gamma": 0.5,
+      "h": 0.3
+    },
+    {
+      "L": 4,
+      "sample_id": 1,
+      "gamma": 2.0,
+      "h": 0.3
+    },
+    {
+      "L": 4,
+      "sample_id": 1,
+      "gamma": 0.5,
+      "h": 0.0
+    },
+    {
+      "L": 6,
+      "sample_id": 0,
+      "gamma": 0.5,
+      "h": 0.3
+    },
+    {
+      "L": 6,
+      "sample_id": 0,
+      "gamma": 2.0,
+      "h": 0.3
+    },
+    {
+      "L": 6,
+      "sample_id": 0,
+      "gamma": 0.5,
+      "h": 0.0
+    },
+    {
+      "L": 6,
+      "sample_id": 1,
+      "gamma": 0.5,
+      "h": 0.3
+    },
+    {
+      "L": 6,
+      "sample_id": 1,
+      "gamma": 2.0,
+      "h": 0.3
+    },
+    {
+      "L": 6,
+      "sample_id": 1,
+      "gamma": 0.5,
+      "h": 0.0
+    },
+    {
+      "L": 8,
+      "sample_id": 0,
+      "gamma": 0.5,
+      "h": 0.3
+    },
+    {
+      "L": 8,
+      "sample_id": 0,
+      "gamma": 2.0,
+      "h": 0.3
+    },
+    {
+      "L": 8,
+      "sample_id": 0,
+      "gamma": 0.5,
+      "h": 0.0
+    },
+    {
+      "L": 8,
+      "sample_id": 1,
+      "gamma": 0.5,
+      "h": 0.3
+    },
+    {
+      "L": 8,
+      "sample_id": 1,
+      "gamma": 2.0,
+      "h": 0.3
+    },
+    {
+      "L": 8,
+      "sample_id": 1,
+      "gamma": 0.5,
+      "h": 0.0
+    }
+  ],
+  "rounds": 6000,
+  "batch": 256,
+  "distillation_updates": 2400,
+  "seed": 401,
+  "objective": "uniform context mean energy per spin; all four sizes contribute before every optimizer step",
+  "checkpoint_contract": "one parameter state; no per-size weights or fine-tuning in evaluation/GFMC",
+  "teachers": {
+    "2": {
+      "path": "/root/autodl-tmp/transformer-af-ltfim-20261026-alibi-l2-v1/results/alibi__L02__N012__g0p5__h0p3__dis000__init-shared__seed101/alibi__L02__N012__g0p5__h0p3__dis000__init-shared__seed101__best.pt",
+      "sha256": "1151ad033c381272dcfce1a8e8807e9df94e8cfd903329de316ae758dd9deebd"
+    },
+    "4": {
+      "path": "/root/autodl-tmp/transformer-af-ltfim-20261026-alibi-sizes-v1/results/alibi__L04__N048__g0p5__h0p3__dis000__init-shared__seed201/alibi__L04__N048__g0p5__h0p3__dis000__init-shared__seed201__step002400__final.pt",
+      "sha256": "9e4d462790db24f54be339ef28d7447c6f7ed75c9e6c182d018ac90d6f7f0709"
+    },
+    "6": {
+      "path": "/root/autodl-tmp/transformer-af-ltfim-20261026-alibi-sizes-v1/results/alibi__L06__N108__g0p5__h0p3__dis000__init-shared__seed201/alibi__L06__N108__g0p5__h0p3__dis000__init-shared__seed201__step002400__final.pt",
+      "sha256": "6fb0baa14e194403f7569c76c0bda6fcb85ce6202065301f5e58cb7341721150"
+    },
+    "8": {
+      "path": "/root/autodl-tmp/transformer-af-ltfim-20261026-alibi-accuracy-v1/results/alibi__L08__N192__w064__d04__g0p5__h0p3__dis000__seed301/alibi__L08__N192__w064__d04__g0p5__h0p3__dis000__seed301__polish__step004000.pt",
+      "sha256": "55265913678710d6ab462d096c9575942a5bafc8e2a6e63aacb34e8249b63526"
+    }
+  },
+  "shared_teacher_sha256": "a90835ebab6627304a893652c1e1478b33cfd0dc7b4061e0aab94fbd53b74a64",
+  "source_sha256": {
+    "__init__.py": "071075c0031f42990757eae8fd31dc8894112cd3faa10cfd5da84df26440773a",
+    "audit_size_observables.py": "4ceee0f0b81b77ef8018c07104d1cf5942d9cf503f98633407373d113b93fb73",
+    "benchmark.py": "e30e466459890b813e80a5afe5cedad5cd634139635cb52a135cff8edfcb21a8",
+    "experiment.py": "b9783ff39bfa5e9b7152e4168d5847c0afc72503b3ac96ad124c02c4e014c5aa",
+    "model.py": "077a03140f2fccfe38e6dbf5cb57645788156337fe45f71fb835909faab290ab",
+    "monitor_accuracy.py": "85711222c676399f4beb2d0638f4ee98f8205e6b3e04ba1d680e6334b109da5f",
+    "physics.py": "9ce8568f1d3f74701abc8b993ca4b1296fd38b69e5c10b18c60b9170529bd4d9",
+    "plot_benchmark.py": "666db20896fcba23c15fff95d898aee008adf72bcb411667fef9d8843ef8dd95",
+    "projector.py": "071467a09061dfd3a9fdd131e06c26dc16b76ea55be0238ef719d871115459d6",
+    "push_accuracy.py": "0552eef10f9c255c86a976b2f347c8a17e3cc34f0489800b51b1ff2190ad9d4e",
+    "qualify_accuracy.py": "6f41089d6d1ea048f3b9624a97a148b8d075da43f2b90f466ff3b9b18e35ceba",
+    "refine_l2.py": "8b5686d2868c9778a094bc95d8a26ba35b53e5b5f548f65ebbe42eb3c04f3726",
+    "refine_sizes.py": "d72cc157c100c6c11189a7438cfc42c51a05b3396c2dfa9f080c87a0dc37d63b",
+    "report_accuracy.py": "4e8887d84fa84bea38ce8a415eb20d3b9f86e24ab659505904af494790cf3ef0",
+    "report_l2.py": "624bcc57242270f02bfc10cd94509b4c8c22e0507944d1fbd6a58685c30f4318",
+    "report_sizes.py": "bc0fdeae5f0982314fd235e0fe9275dfd959be1964803fee86e40918cff6708e",
+    "run_campaigns.py": "dbb2faa9ef3a558e8a2a914a9a68cdbd518be9a1c4418d9e502077ef0ffe7efc",
+    "shared_accuracy.py": "00a67c6d73e6b81dcb6718c58e1d4e18f57510703279506d3af97519bf692f49",
+    "test_core.py": "47ca713624628a171f08f209f686840a716225c0443aab736c84c0494117b037",
+    "unified.py": "461ad92ffbe33c963c24f6e3d066ab5a67c78e1627dea1f9a19d9d413ee16057",
+    "unified_experiment.py": "b9624cd30cff2cebca16fe1b380bb9b103d523a2269729a0fc156581b26a0fa8",
+    "vmc.py": "649207b6dfc6c3ae835c276442a92b43a26fce20c246d78fb09d0daa8e7deba1"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "tasks": [
+    {
+      "name": "L2_g0p5_h0p3_s0_t0",
+      "L": 2,
+      "gamma": 0.5,
+      "h": 0.3,
+      "train_seed": 18
+    },
+    {
+      "name": "L4_g0p5_h0p3_s0_t0",
+      "L": 4,
+      "gamma": 0.5,
+      "h": 0.3,
+      "train_seed": 19
+    },
+    {
+      "name": "L6_g2_h0p3_s0_t0",
+      "L": 6,
+      "gamma": 2.0,
+      "h": 0.3,
+      "train_seed": 20
+    },
+    {
+      "name": "L6_g0p5_h0p3_s0_t0",
+      "L": 6,
+      "gamma": 0.5,
+      "h": 0.3,
+      "train_seed": 21
+    },
+    {
+      "name": "L6_g0p5_h0p3_s0_t1",
+      "L": 6,
+      "gamma": 0.5,
+      "h": 0.3,
+      "train_seed": 22
+    },
+    {
+      "name": "L6_g0p5_h0_s0_t0",
+      "L": 6,
+      "gamma": 0.5,
+      "h": 0.0,
+      "train_seed": 23
+    },
+    {
+      "name": "L8_g0p5_h0p3_s0_t0",
+      "L": 8,
+      "gamma": 0.5,
+      "h": 0.3,
+      "train_seed": 24
+    }
+  ],
+  "steps": 800,
+  "batch": 128,
+  "device": "cuda",
+  "torch": "2.12.1+cu130",
+  "numpy": "2.5.1",
+  "python": "3.12.13",
+  "gpu": "NVIDIA H800 PCIe",
+  "source_sha256": {
+    "transformer_qmc/__init__.py": "071075c0031f42990757eae8fd31dc8894112cd3faa10cfd5da84df26440773a",
+    "transformer_qmc/benchmark.py": "e30e466459890b813e80a5afe5cedad5cd634139635cb52a135cff8edfcb21a8",
+    "transformer_qmc/experiment.py": "b9783ff39bfa5e9b7152e4168d5847c0afc72503b3ac96ad124c02c4e014c5aa",
+    "transformer_qmc/model.py": "077a03140f2fccfe38e6dbf5cb57645788156337fe45f71fb835909faab290ab",
+    "transformer_qmc/physics.py": "9ce8568f1d3f74701abc8b993ca4b1296fd38b69e5c10b18c60b9170529bd4d9",
+    "transformer_qmc/projector.py": "071467a09061dfd3a9fdd131e06c26dc16b76ea55be0238ef719d871115459d6",
+    "transformer_qmc/run_campaigns.py": "dbb2faa9ef3a558e8a2a914a9a68cdbd518be9a1c4418d9e502077ef0ffe7efc",
+    "transformer_qmc/test_core.py": "47ca713624628a171f08f209f686840a716225c0443aab736c84c0494117b037",
+    "transformer_qmc/unified.py": "461ad92ffbe33c963c24f6e3d066ab5a67c78e1627dea1f9a19d9d413ee16057",
+    "transformer_qmc/unified_experiment.py": "b9624cd30cff2cebca16fe1b380bb9b103d523a2269729a0fc156581b26a0fa8",
+    "transformer_qmc/vmc.py": "649207b6dfc6c3ae835c276442a92b43a26fce20c246d78fb09d0daa8e7deba1"
+  }
+}

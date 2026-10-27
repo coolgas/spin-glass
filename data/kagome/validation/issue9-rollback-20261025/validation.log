@@ -1,0 +1,63 @@
+DONE L6_eq40_t8 0
+DONE L6_eq40_t8 1
+DONE L6_eq40_t8 2
+DONE L6_eq40_t8 3
+DONE L6_eq40_t8 4
+DONE L6_eq40_t8 5
+DONE L6_eq40_t8 6
+DONE L6_eq40_t8 7
+DONE L6_eq40_t16 0
+DONE L6_eq40_t16 1
+DONE L6_eq40_t16 2
+DONE L6_eq40_t16 3
+DONE L6_eq40_t16 4
+DONE L6_eq40_t16 5
+DONE L6_eq40_t16 6
+DONE L6_eq40_t16 7
+DONE L6_eq80_t8 0
+DONE L6_eq80_t8 1
+DONE L6_eq80_t8 2
+DONE L6_eq80_t8 3
+DONE L6_eq80_t8 4
+DONE L6_eq80_t8 5
+DONE L6_eq80_t8 6
+DONE L6_eq80_t8 7
+DONE L6_eq160_t8 0
+DONE L6_eq160_t8 1
+DONE L6_eq160_t8 2
+DONE L6_eq160_t8 3
+DONE L6_eq160_t8 4
+DONE L6_eq160_t8 5
+DONE L6_eq160_t8 6
+DONE L6_eq160_t8 7
+DONE L2_completed_control 0
+DONE L2_completed_control 1
+Traceback (most recent call last):
+  File "/root/autodl-tmp/issue9-rollback-20261025/validate.py", line 197, in <module>
+    try:main()
+        ^^^^^^
+  File "/root/autodl-tmp/issue9-rollback-20261025/validate.py", line 188, in main
+    dump('preliminary.json',dict(summaries=summaries,pairs=pairs,controls=controls,old_new=differences))
+  File "/root/autodl-tmp/issue9-rollback-20261025/validate.py", line 25, in dump
+    (ROOT / name).write_text(json.dumps(value, indent=2, allow_nan=False))
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/yjye_project_env/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/root/miniconda3/envs/yjye_project_env/lib/python3.12/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/root/miniconda3/envs/yjye_project_env/lib/python3.12/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/root/miniconda3/envs/yjye_project_env/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/root/miniconda3/envs/yjye_project_env/lib/python3.12/json/encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "/root/miniconda3/envs/yjye_project_env/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/root/miniconda3/envs/yjye_project_env/lib/python3.12/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/root/miniconda3/envs/yjye_project_env/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bool is not JSON serializable

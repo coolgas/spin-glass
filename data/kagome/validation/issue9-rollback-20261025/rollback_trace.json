@@ -1,0 +1,73 @@
+[
+  {
+    "cycle": 0,
+    "achieved": 1.655503789920187,
+    "rejected_dt": 0.0735155674859284,
+    "state_equal_backup": true,
+    "shift_equal_backup": true,
+    "unit_weights": true,
+    "next_cycle_equal_backup": true
+  },
+  {
+    "cycle": 1,
+    "achieved": 2.311277949986485,
+    "rejected_dt": 0.06999197011033138,
+    "state_equal_backup": true,
+    "shift_equal_backup": true,
+    "unit_weights": true,
+    "next_cycle_equal_backup": true
+  },
+  {
+    "cycle": 2,
+    "achieved": 1.1682672928167364,
+    "rejected_dt": 0.0692825362138249,
+    "state_equal_backup": true,
+    "shift_equal_backup": true,
+    "unit_weights": true,
+    "next_cycle_equal_backup": true
+  },
+  {
+    "cycle": 3,
+    "achieved": 2.9714800997906012,
+    "rejected_dt": 0.07074342445801148,
+    "state_equal_backup": true,
+    "shift_equal_backup": true,
+    "unit_weights": true,
+    "next_cycle_equal_backup": true
+  },
+  {
+    "cycle": 4,
+    "achieved": 1.991213004501437,
+    "rejected_dt": 0.07059568975801485,
+    "state_equal_backup": true,
+    "shift_equal_backup": true,
+    "unit_weights": true,
+    "next_cycle_equal_backup": true
+  },
+  {
+    "cycle": 5,
+    "achieved": 2.392145937834106,
+    "rejected_dt": 0.07027166593678852,
+    "state_equal_backup": true,
+    "shift_equal_backup": true,
+    "unit_weights": true,
+    "next_cycle_equal_backup": true
+  },
+  {
+    "cycle": 6,
+    "achieved": 2.4733531470394388,
+    "rejected_dt": 0.07033490019576255,
+    "state_equal_backup": true,
+    "shift_equal_backup": true,
+    "unit_weights": true,
+    "next_cycle_equal_backup": true
+  },
+  {
+    "cycle": 7,
+    "achieved": 2.692642062780186,
+    "rejected_dt": 0.07089749981548829,
+    "state_equal_backup": true,
+    "shift_equal_backup": true,
+    "unit_weights": true
+  }
+]

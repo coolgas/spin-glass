@@ -1,0 +1,6 @@
+tree 36bcb3dac7eeb79bcea562ec334bdfe94e834ce2
+parent bc375b3d79cd51a5d56bca04f656e0c17f6e803d
+author Tianyi Yan <tiya3781@gmail.com> 1792942265 +0800
+committer Tianyi Yan <tiya3781@gmail.com> 1792942265 +0800
+
+Record forward-walk floors, stop diagnostics, and separate energy windows.

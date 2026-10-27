@@ -25,6 +25,8 @@ from qmc_numerics import series_error, systematic, weighted_interval
 def main():
     report = _Report()
     _check_cache_identity(report)
+    _check_rollback(report)
+    _check_weight_ess(report)
     _check_operator(report)
     _check_weights(report)
     _check_overlap(report)
@@ -148,14 +150,14 @@ def _check_cache_identity(report):
         cycle_q2=np.repeat(series[:, None], N_FORWARD_CYCLES, axis=1),
         cycle_unique=np.full(times.shape, 125, dtype=np.int64),
         cycle_effective=np.full(times.shape, 10.0),
-        cycle_max_fraction=np.full(times.shape, 0.05),
+        cycle_max_fraction=np.full(times.shape, 0.2),
         cycle_weight_ess=np.full(times.shape, 1000.0),
         cycle_stop=np.ones(times.shape, dtype=np.int64),
         cycle_rejected_dt=np.full(times.shape, 0.01),
         cycle_rejected_unique=np.full(times.shape, 50.0),
         cycle_rejected_effective=np.full(times.shape, 7.0),
         cycle_rejected_weight_ess=np.full(times.shape, 20.0),
-        cycle_rejected_max_fraction=np.full(times.shape, 0.4),
+        cycle_rejected_max_fraction=np.full(times.shape, 0.3),
         cycle_checkpoints=_truncated_checkpoints(times),
         energy_forward_trace=np.full(times.shape, -10.0),
         energy_equilibration_trace=np.full((N_POPULATIONS, N_EQUILIBRATE), -10.0),
@@ -249,6 +251,32 @@ def _check_cache_identity(report):
                 {"cycle_stop": np.zeros(times.shape, dtype=np.int64)},
             ),
         }
+        mutations = {
+            "negative_rejected_weight": {"cycle_rejected_weight_ess": np.full(times.shape, -1.0)},
+            "large_weight_ess": {"cycle_weight_ess": np.full(times.shape, 50000.0)},
+            "small_descendant_fraction": {"cycle_max_fraction": np.full(times.shape, 1e-6)},
+            "fractional_floor": {"floor_unique": np.float64(2.9)},
+            "long_rejected_step": {"cycle_rejected_dt": np.full(times.shape, 100.0)},
+            "endpoint_mismatch": {"cycle_unique": payload["cycle_unique"] + 1,
+                                  "min_unique_ancestors": np.int64(126)},
+            "fractional_unique": {"cycle_unique": payload["cycle_unique"] + 0.5},
+            "fractional_stop": {"cycle_stop": np.full(times.shape, 1.5)},
+            "impossible_kish": {"cycle_effective": np.full(times.shape, 126.0),
+                                 "min_effective_ancestors": np.float64(126.0)},
+            "bad_fraction_kish": {"cycle_max_fraction": np.full(times.shape, 0.05)},
+        }
+        negative = _truncated_checkpoints(times)
+        negative[:, :, 1, 1:] = [-10.0, -20.0, -30.0, -40.0]
+        mutations["negative_checkpoints"] = {"cycle_checkpoints": negative}
+        reversed_points = _truncated_checkpoints(times)
+        reversed_points[:, :, :2] = reversed_points[:, :, 1::-1].copy()
+        mutations["reversed_checkpoints"] = {"cycle_checkpoints": reversed_points}
+        gap = _truncated_checkpoints(times)
+        gap[:, :, 2] = gap[:, :, 1]
+        gap[:, :, 1] = np.nan
+        mutations["checkpoint_padding_gap"] = {"cycle_checkpoints": gap}
+        for name, changes in mutations.items():
+            rejected[name] = archive(directory, name + ".npz", changes)
         missing = {}
         for key in ("gamma", "sample_id", "L", "seed_entropy", "energy", "floor_effective"):
             written = dict(payload)
@@ -257,7 +285,7 @@ def _check_cache_identity(report):
             np.savez_compressed(path, **written)
             missing[key] = result_ready(path, expected=expected)
         finished_points = _truncated_checkpoints(times)
-        finished_points[:, :, 0, 0] = forward
+        finished_points[:, :, 1, 0] = forward
         complete = archive(
             directory,
             "complete.npz",
@@ -305,7 +333,8 @@ def _check_cache_identity(report):
 
 def _truncated_checkpoints(times):
     points = np.full(times.shape + (8, 5), np.nan)
-    points[:, :, 0, :] = np.array([1.5, 125.0, 10.0, 1000.0, 0.05])
+    points[:, :, 0, :] = np.array([0.0, 5000.0, 5000.0, 5000.0, 1.0 / 5000])
+    points[:, :, 1, :] = np.array([1.5, 125.0, 10.0, 1000.0, 0.2])
     return points
 
 
@@ -329,7 +358,12 @@ def _check_stop_diagnostics(report, short, long):
         problems.append("explicit floors")
     if _resolve_floors(10, None, None) != (2, 5.0):
         problems.append("small population")
-    for arguments in ((5000, True, None), (5000, 1.0, None), (5000, None, True), (5000, None, 1)):
+    for arguments in (
+        (5000, True, None), (5000, 1.0, None), (5000, None, True), (5000, None, 1),
+        (30, 8.0, 2.9), (30, 31.0, 2), (30, 8.0, 31), (30, 8.0, np.nan),
+        (30, 8.0, np.inf), (30, np.nan, 2), (30, np.inf, 2),
+        (30, np.bool_(True), 2), (30, 8.0, np.bool_(True)),
+    ):
         try:
             _resolve_floors(*arguments)
         except ValueError:
@@ -432,6 +466,142 @@ def _check_stop_diagnostics(report, short, long):
             "stop diagnostics",
             f"long tau {long['tau_forward']:.3g}, stops {sorted(set(long['cycle_stop'].reshape(-1).tolist()))}",
         )
+
+
+def _check_rollback(report):
+    """Force rejection before/after acceptance and inspect retained state."""
+    import inspect
+    import sys
+    from unittest.mock import patch
+    import kagome_qea.pqmc as pq
+
+    source, start = inspect.getsourcelines(pq._project_once)
+    measure_line = start + next(
+        i for i, line in enumerate(source)
+        if line.strip().startswith("tags = np.fromiter((walker.tag for walker in saved)")
+    )
+    cycle_line = start + next(
+        i for i, line in enumerate(source)
+        if line.strip() == "for identity, walker in enumerate(walkers):"
+    )
+
+    def state(walkers):
+        return [(w.spins.copy(), w.diagonal, w.weight, w.tag, w.ancestor) for w in walkers]
+
+    def equal(left, right):
+        return all(np.array_equal(a[0], b[0]) and a[1:] == b[1:] for a, b in zip(left, right))
+
+    for reject_step in (1, 2):
+        errors = []
+        snapshots = []
+        pending = []
+        resamples = []
+        rejected_rng_state = []
+        rng = np.random.default_rng(17)
+
+        def controlled_resample(walkers, random):
+            # Mutating propagation is real; deterministic offspring isolate
+            # rollback independently of a chance threshold crossing.
+            random.random()
+            resamples.append(1)
+            children = pq._clone_population(walkers)
+            for child in children:
+                child.weight = 1.0
+            if len(resamples) == reject_step:
+                for child in children:
+                    child.ancestor = 0
+                rejected_rng_state.append(repr(random.bit_generator.state))
+            return children, math.log(len(walkers)) + 0.1
+
+        def local_trace(frame, event, arg):
+            if event != "line":
+                return local_trace
+            values = frame.f_locals
+            if frame.f_lineno == measure_line and values["rejected"] is not None:
+                snapshot = state(values["backup"])
+                snapshots.append(snapshot)
+                if not equal(state(values["saved"]), snapshot):
+                    errors.append("retained state differs from pre-attempt snapshot")
+                if not equal(state(values["walkers"]), snapshot):
+                    errors.append("live population differs from backup")
+                if values["shift"] != values["shift_backup"]:
+                    errors.append("shift not restored")
+                if repr(rng.bit_generator.state) != rejected_rng_state[-1]:
+                    errors.append("rejected RNG consumption changed")
+                if len(values["energies"]) != reject_step - 1:
+                    errors.append("rejected energy included")
+                if not np.isclose(values["elapsed"], 0.05 * (reject_step - 1)):
+                    errors.append("rejected time included")
+                pending.append((snapshot, values["shift_backup"]))
+            if frame.f_lineno == cycle_line and pending:
+                snapshot, shift = pending.pop()
+                if not equal(state(values["walkers"]), snapshot) or values["shift"] != shift:
+                    errors.append("next cycle does not continue the accepted state")
+            return local_trace
+
+        def global_trace(frame, event, arg):
+            return local_trace if frame.f_code is pq._project_once.__code__ else None
+
+        previous_trace = sys.gettrace()
+        try:
+            with patch.object(pq, "_resample", controlled_resample), patch.object(
+                pq, "_branch_dt", side_effect=lambda walkers, limit: min(0.05, limit)
+            ):
+                sys.settrace(global_trace)
+                result = pq._project_once(
+                    chain(4, J=1.0), 1.0, rng, n_walkers=30, n_equilibrate=0,
+                    n_measure=0, tau_forward=0.2, n_forward_cycles=2,
+                )
+        finally:
+            sys.settrace(previous_trace)
+        if len(snapshots) != 1 or pending:
+            errors.append("rejection/continuation not exercised")
+        if result["cycle_stop"].tolist() != [3, 0]:
+            errors.append("stop codes")
+        expected_energy_count = reject_step - 1 + 4
+        if result["n_energy_blocks"] != expected_energy_count:
+            errors.append("accepted energy count")
+        for i, rows in enumerate(result["cycle_checkpoints"]):
+            rows = rows[np.isfinite(rows).all(axis=1)]
+            expected = [result["forward_times"][i], result["cycle_unique"][i],
+                        result["cycle_effective"][i], result["cycle_weight_ess"][i],
+                        result["cycle_max_fraction"][i]]
+            if not np.array_equal(rows[-1], expected):
+                errors.append("accepted endpoint diagnostics")
+        name = f"rollback at step {reject_step}"
+        if errors:
+            report.fail(name, ", ".join(errors))
+        else:
+            report.ok(name, "physical state, shift, RNG, time, energy, and next cycle agree")
+
+
+def _check_weight_ess(report):
+    from kagome_qea.pqmc import _Walker, _weight_ess
+
+    def walkers(values):
+        result = [_Walker(np.ones((2, 2), dtype=np.int8), 0.0) for _ in values]
+        for walker, weight in zip(result, values):
+            walker.weight = weight
+        return result
+
+    problems = []
+    for scale in (1.0, 1e200, 1e-200):
+        if not np.isclose(_weight_ess(walkers([scale, 2 * scale, 3 * scale])), 36.0 / 14.0):
+            problems.append(f"scale {scale}")
+    for values, expected in (([], 0.0), ([0.0, 0.0], 0.0), ([0.0, 1.0], 1.0)):
+        if _weight_ess(walkers(values)) != expected:
+            problems.append(f"weights {values}")
+    for values in ([-1.0, 2.0], [np.nan, 1.0], [np.inf, 1.0]):
+        try:
+            _weight_ess(walkers(values))
+        except ValueError:
+            pass
+        else:
+            problems.append(f"accepted {values}")
+    if problems:
+        report.fail("weight ESS stability", ", ".join(problems))
+    else:
+        report.ok("weight ESS stability", "scale invariant; invalid weights rejected")
 
 
 def _check_operator(report):

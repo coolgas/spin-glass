@@ -1,0 +1,31 @@
+{
+  "task": {
+    "id": 36,
+    "L": 4,
+    "gamma": 3.0,
+    "sample_id": 0,
+    "variant": "base",
+    "population": 0,
+    "seed_entropy": [
+      2026102604,
+      36
+    ],
+    "settings": {
+      "n_walkers": 10000,
+      "n_replicas": 2,
+      "tau_block": 0.2,
+      "n_equilibrate": 32,
+      "n_measure": 32,
+      "tau_forward": 0.8,
+      "n_forward_cycles": 8,
+      "min_effective_ancestors": 8,
+      "min_unique_ancestors": 2
+    },
+    "archive": "runs/p036.npz"
+  },
+  "seconds": 210.10513039305806,
+  "sha256": "2d36a9997b35ba55a12f8d047266810adbeddbc9ef12457fa1f53debfee8dd38",
+  "projection_complete": true,
+  "truncated_cycles": 0,
+  "finished": "2026-10-26T03:28:05.331952+00:00"
+}

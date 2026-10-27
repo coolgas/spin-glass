@@ -1,0 +1,9 @@
+{
+  "download_files": 75,
+  "download_bytes": 2435895,
+  "sha256_verified": true,
+  "complete_populations": 8,
+  "exact_time512_prefix_checks": 8,
+  "independent_paired_analysis_verified": true,
+  "solver_patch_sha256": "93d0501e69348867a532cb316bc5243d08e5be27bdb3c5d9c17492c8ee126c0b"
+}

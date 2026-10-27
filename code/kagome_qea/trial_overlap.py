@@ -12,6 +12,7 @@ the 1/σ projection time, produces an overlap that falls as Γ/σ grows.
 
 import argparse
 import hashlib
+import math
 import os
 import shutil
 import subprocess
@@ -188,6 +189,46 @@ def _close(stored, expected):
     return abs(stored - expected) <= 1e-8 * max(1.0, abs(expected))
 
 
+def _integer_scalar(value):
+    """Check a scalar count before any lossy integer coercion."""
+    array = np.asarray(value)
+    if array.shape != () or array.dtype.kind == "b":
+        return False
+    number = float(array)
+    return math.isfinite(number) and number.is_integer()
+
+
+def _lineage_diagnostics_valid(unique, effective, weight, fraction, n_walkers):
+    """Feasible post-resample ancestry and pre-resample weight diversity."""
+    values = [np.asarray(x, dtype=np.float64) for x in (unique, effective, weight, fraction)]
+    if not all(np.isfinite(x).all() for x in values):
+        return False
+    unique, effective, weight, fraction = values
+    tolerance = 1e-8
+    if np.any(unique != np.floor(unique)) or np.any(unique < 1) or np.any(unique > n_walkers):
+        return False
+    if np.any(effective < 1 - tolerance) or np.any(effective > unique + tolerance):
+        return False
+    if np.any(weight < 1 - tolerance) or np.any(weight > n_walkers + tolerance):
+        return False
+    if np.any(fraction < 1.0 / n_walkers - tolerance) or np.any(fraction > 1 + tolerance):
+        return False
+    # The largest lineage is an integer number of equal-weight children.
+    largest = fraction * n_walkers
+    if not np.allclose(largest, np.rint(largest), rtol=0.0, atol=tolerance):
+        return False
+    if np.any(fraction < 1.0 / unique - tolerance):
+        return False
+    if np.any(largest > n_walkers - unique + 1 + tolerance):
+        return False
+    # For lineage proportions p: max(p)^2 <= sum(p^2) <= max(p).
+    if np.any(1.0 / effective > fraction + tolerance):
+        return False
+    if np.any(1.0 / effective < fraction * fraction - tolerance):
+        return False
+    return True
+
+
 def result_ready(path, expected=None):
     """True when the archive is this job and its statistics agree with the series.
 
@@ -264,6 +305,10 @@ def result_ready(path, expected=None):
             }
             if not required <= set(data.files):
                 return False
+            for name in ("n_populations", "n_walkers", "n_equilibrate", "n_measure",
+                         "n_forward_cycles", "n_sites", "L", "sample_id", "periodic"):
+                if not _integer_scalar(data[name]):
+                    return False
             if int(data["n_populations"]) != N_POPULATIONS:
                 return False
             if int(data["n_walkers"]) != N_WALKERS:
@@ -324,7 +369,7 @@ def result_ready(path, expected=None):
             ]
             if series.shape != (N_POPULATIONS,) or not np.isfinite(series).all():
                 return False
-            if times.size != N_POPULATIONS * N_FORWARD_CYCLES or not np.isfinite(times).all():
+            if times.shape != (N_POPULATIONS, N_FORWARD_CYCLES) or not np.isfinite(times).all():
                 return False
             if not all(np.isfinite(np.asarray(value, dtype=np.float64)).all() for value in statistics):
                 return False
@@ -347,22 +392,26 @@ def result_ready(path, expected=None):
             if not _close(times.min(), data["tau_forward"]):
                 return False
             requested = float(data["tau_forward_requested"])
-            if requested <= 0.0 or float(data["tau_forward"]) < 0.0 or np.any(times < 0.0):
+            if not math.isfinite(requested) or requested <= 0.0 or float(data["tau_forward"]) < 0.0 or np.any(times < 0.0):
                 return False
             if np.any(times > requested + 1e-8):
                 return False
             truncated = int(np.count_nonzero(times + 1e-8 < requested))
             complete = int(times.size > 0 and truncated == 0)
+            if not _integer_scalar(data["n_forward_truncated"]) or not _integer_scalar(data["projection_complete"]):
+                return False
             if int(data["n_forward_truncated"]) != truncated or int(data["projection_complete"]) != complete:
                 return False
-            if int(data["floor_unique"]) != 2 or not _close(data["floor_effective"], 8.0):
+            if not _integer_scalar(data["floor_unique"]) or int(data["floor_unique"]) != 2:
+                return False
+            if not _close(data["floor_effective"], 8.0):
                 return False
             cycle_q2 = np.asarray(data["cycle_q2"], dtype=np.float64)
             cycle_unique = np.asarray(data["cycle_unique"], dtype=np.float64)
             cycle_effective = np.asarray(data["cycle_effective"], dtype=np.float64)
             cycle_fraction = np.asarray(data["cycle_max_fraction"], dtype=np.float64)
             cycle_weight = np.asarray(data["cycle_weight_ess"], dtype=np.float64)
-            cycle_stop = np.asarray(data["cycle_stop"])
+            cycle_stop = np.asarray(data["cycle_stop"], dtype=np.float64)
             forward_energy = np.asarray(data["energy_forward_trace"], dtype=np.float64)
             cycle_arrays = (
                 cycle_q2,
@@ -380,7 +429,13 @@ def result_ready(path, expected=None):
                 return False
             if not np.allclose(cycle_q2.mean(axis=1), series, rtol=1e-8, atol=1e-8):
                 return False
-            if not np.isfinite(cycle_unique).all() or int(np.min(cycle_unique)) != int(data["min_unique_ancestors"]):
+            if not _integer_scalar(data["min_unique_ancestors"]):
+                return False
+            if not _lineage_diagnostics_valid(
+                cycle_unique, cycle_effective, cycle_weight, cycle_fraction, N_WALKERS
+            ):
+                return False
+            if float(np.min(cycle_unique)) != float(data["min_unique_ancestors"]):
                 return False
             if not np.isfinite(cycle_effective).all() or not _close(
                 float(np.min(cycle_effective)), data["min_effective_ancestors"]
@@ -388,13 +443,7 @@ def result_ready(path, expected=None):
                 return False
             if np.any(cycle_unique < 2) or np.any(cycle_effective + 1e-8 < 8.0):
                 return False
-            if (
-                not np.isfinite(cycle_fraction).all()
-                or np.any(cycle_fraction <= 0.0)
-                or np.any(cycle_fraction > 1.0 + 1e-8)
-            ):
-                return False
-            if not np.isfinite(cycle_weight).all() or np.any(cycle_weight <= 0.0):
+            if not np.isfinite(cycle_stop).all() or np.any(~np.isin(cycle_stop, (0, 1, 2, 3))):
                 return False
             reached = times + 1e-8 >= requested
             if not np.array_equal(cycle_stop == 0, reached):
@@ -421,11 +470,14 @@ def result_ready(path, expected=None):
                 rejected_dt = rejected[0][~reached]
                 rejected_unique = rejected[1][~reached]
                 rejected_effective = rejected[2][~reached]
+                rejected_weight = rejected[3][~reached]
                 rejected_fraction = rejected[4][~reached]
                 stop_short = cycle_stop[~reached]
-                if np.any(rejected_dt <= 0.0):
+                if np.any(rejected_dt <= 0.0) or np.any(rejected_dt > requested - times[~reached] + 1e-8):
                     return False
-                if np.any(rejected_fraction <= 0.0) or np.any(rejected_fraction > 1.0 + 1e-8):
+                if not _lineage_diagnostics_valid(
+                    rejected_unique, rejected_effective, rejected_weight, rejected_fraction, N_WALKERS
+                ):
                     return False
                 effective_only = (rejected_effective < 8.0) & (rejected_unique >= 2)
                 unique_only = (rejected_unique < 2) & (rejected_effective >= 8.0)
@@ -436,20 +488,34 @@ def result_ready(path, expected=None):
                     return False
                 if np.any((stop_short == 3) & ~both):
                     return False
-            if np.any(times > 1e-8) and not np.isfinite(forward_energy[times > 1e-8]).all():
+            if not np.isfinite(forward_energy[times > 0.0]).all():
+                return False
+            if not np.isnan(forward_energy[times == 0.0]).all():
                 return False
             checkpoints = np.asarray(data["cycle_checkpoints"], dtype=np.float64)
             if checkpoints.shape != times.shape + (_CHECKPOINT_COUNT, 5):
                 return False
-            for achieved, rows in zip(times.reshape(-1), checkpoints.reshape(-1, _CHECKPOINT_COUNT, 5)):
+            endpoints = np.stack((times, cycle_unique, cycle_effective, cycle_weight, cycle_fraction), axis=-1)
+            for endpoint, rows in zip(endpoints.reshape(-1, 5), checkpoints.reshape(-1, _CHECKPOINT_COUNT, 5)):
+                achieved = endpoint[0]
                 finite_rows = np.isfinite(rows).all(axis=1)
                 blank_rows = np.isnan(rows).all(axis=1)
                 if not np.all(finite_rows | blank_rows) or not finite_rows.any():
                     return False
+                count = int(finite_rows.sum())
+                if not finite_rows[:count].all() or finite_rows[count:].any():
+                    return False
+                valid = rows[:count]
                 elapsed = rows[finite_rows, 0]
                 if np.any(elapsed < -1e-12) or np.any(elapsed > float(achieved) + 1e-8):
                     return False
-                if not _close(float(np.max(elapsed)), achieved):
+                if not _close(elapsed[0], 0.0) or np.any(np.diff(elapsed) <= 0.0):
+                    return False
+                if not _lineage_diagnostics_valid(valid[:, 1], valid[:, 2], valid[:, 3], valid[:, 4], N_WALKERS):
+                    return False
+                if np.any(valid[:, 1] < 2) or np.any(valid[:, 2] + 1e-8 < 8.0):
+                    return False
+                if not np.allclose(valid[-1], endpoint, rtol=1e-8, atol=1e-8):
                     return False
             equilibration = np.asarray(data["energy_equilibration_trace"], dtype=np.float64)
             measurement = np.asarray(data["energy_measure_trace"], dtype=np.float64)

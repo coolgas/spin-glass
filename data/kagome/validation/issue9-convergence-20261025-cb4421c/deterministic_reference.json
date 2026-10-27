@@ -1,0 +1,209 @@
+[
+  {
+    "sample": 0,
+    "gamma": 0.05,
+    "chi": 11.97389734144385,
+    "residual": 3.592508095038006e-13,
+    "min_amplitude": 3.2264484154355817e-12
+  },
+  {
+    "sample": 0,
+    "gamma": 0.2,
+    "chi": 11.58166133075845,
+    "residual": 3.2095859338854714e-13,
+    "min_amplitude": 1.321261849194539e-08,
+    "infinite_population_untruncated_cycles": [
+      {
+        "equilibration_blocks": 40,
+        "forward": 2.0,
+        "cycle_mean_chi": 11.346374710808568,
+        "first_cycle_chi": 11.346206883840564,
+        "last_cycle_chi": 11.346408932089723
+      },
+      {
+        "equilibration_blocks": 40,
+        "forward": 4.0,
+        "cycle_mean_chi": 11.533318870047795,
+        "first_cycle_chi": 11.533263128826993,
+        "last_cycle_chi": 11.533327511579387
+      },
+      {
+        "equilibration_blocks": 40,
+        "forward": 8.0,
+        "cycle_mean_chi": 11.578742913984371,
+        "first_cycle_chi": 11.578728557320085,
+        "last_cycle_chi": 11.578744975935427
+      },
+      {
+        "equilibration_blocks": 40,
+        "forward": 16.0,
+        "cycle_mean_chi": 11.581646927658756,
+        "first_cycle_chi": 11.581635711851817,
+        "last_cycle_chi": 11.581648529956988
+      },
+      {
+        "equilibration_blocks": 80,
+        "forward": 2.0,
+        "cycle_mean_chi": 11.346408787224108,
+        "first_cycle_chi": 11.346407992503407,
+        "last_cycle_chi": 11.346408949288275
+      },
+      {
+        "equilibration_blocks": 80,
+        "forward": 4.0,
+        "cycle_mean_chi": 11.533327470751377,
+        "first_cycle_chi": 11.533327207426028,
+        "last_cycle_chi": 11.533327511579857
+      },
+      {
+        "equilibration_blocks": 80,
+        "forward": 8.0,
+        "cycle_mean_chi": 11.578744966311287,
+        "first_cycle_chi": 11.578744899305784,
+        "last_cycle_chi": 11.578744975935427
+      },
+      {
+        "equilibration_blocks": 80,
+        "forward": 16.0,
+        "cycle_mean_chi": 11.581648522514659,
+        "first_cycle_chi": 11.581648470419692,
+        "last_cycle_chi": 11.581648529956992
+      },
+      {
+        "equilibration_blocks": 160,
+        "forward": 2.0,
+        "cycle_mean_chi": 11.346408949366523,
+        "first_cycle_chi": 11.346408949348678,
+        "last_cycle_chi": 11.346408949370158
+      },
+      {
+        "equilibration_blocks": 160,
+        "forward": 4.0,
+        "cycle_mean_chi": 11.533327511578943,
+        "first_cycle_chi": 11.533327511573034,
+        "last_cycle_chi": 11.533327511579863
+      },
+      {
+        "equilibration_blocks": 160,
+        "forward": 8.0,
+        "cycle_mean_chi": 11.578744975935212,
+        "first_cycle_chi": 11.578744975933716,
+        "last_cycle_chi": 11.578744975935427
+      },
+      {
+        "equilibration_blocks": 160,
+        "forward": 16.0,
+        "cycle_mean_chi": 11.581648529956821,
+        "first_cycle_chi": 11.581648529955652,
+        "last_cycle_chi": 11.581648529956988
+      }
+    ]
+  },
+  {
+    "sample": 0,
+    "gamma": 1.0,
+    "chi": 4.666208799933973,
+    "residual": 2.153519496051066e-14,
+    "min_amplitude": 0.00016277961868557661
+  },
+  {
+    "sample": 0,
+    "gamma": 3.0,
+    "chi": 1.1296363044417943,
+    "residual": 3.526092184038555e-14,
+    "min_amplitude": 0.0045333634174907255
+  },
+  {
+    "sample": 1,
+    "gamma": 0.2,
+    "chi": 9.873401402669023,
+    "residual": 1.36796247951062e-12,
+    "min_amplitude": 3.749472880864836e-08,
+    "infinite_population_untruncated_cycles": [
+      {
+        "equilibration_blocks": 40,
+        "forward": 2.0,
+        "cycle_mean_chi": 9.786510114822013,
+        "first_cycle_chi": 9.786497178053578,
+        "last_cycle_chi": 9.786513836579664
+      },
+      {
+        "equilibration_blocks": 40,
+        "forward": 4.0,
+        "cycle_mean_chi": 9.86406293396529,
+        "first_cycle_chi": 9.864045661679212,
+        "last_cycle_chi": 9.864066137604464
+      },
+      {
+        "equilibration_blocks": 40,
+        "forward": 8.0,
+        "cycle_mean_chi": 9.87277750245354,
+        "first_cycle_chi": 9.872757696657004,
+        "last_cycle_chi": 9.872780468980158
+      },
+      {
+        "equilibration_blocks": 40,
+        "forward": 16.0,
+        "cycle_mean_chi": 9.873375147859356,
+        "first_cycle_chi": 9.873354753636312,
+        "last_cycle_chi": 9.873378066775404
+      },
+      {
+        "equilibration_blocks": 80,
+        "forward": 2.0,
+        "cycle_mean_chi": 9.78651374457886,
+        "first_cycle_chi": 9.786513221474449,
+        "last_cycle_chi": 9.786513895075847
+      },
+      {
+        "equilibration_blocks": 80,
+        "forward": 4.0,
+        "cycle_mean_chi": 9.864066008293165,
+        "first_cycle_chi": 9.864065309662136,
+        "last_cycle_chi": 9.864066137865722
+      },
+      {
+        "equilibration_blocks": 80,
+        "forward": 8.0,
+        "cycle_mean_chi": 9.872780348993933,
+        "first_cycle_chi": 9.872779547902343,
+        "last_cycle_chi": 9.872780468980165
+      },
+      {
+        "equilibration_blocks": 80,
+        "forward": 16.0,
+        "cycle_mean_chi": 9.873377948714332,
+        "first_cycle_chi": 9.873377123830961,
+        "last_cycle_chi": 9.8733780667754
+      },
+      {
+        "equilibration_blocks": 160,
+        "forward": 2.0,
+        "cycle_mean_chi": 9.786513897290629,
+        "first_cycle_chi": 9.786513896435423,
+        "last_cycle_chi": 9.786513897536667
+      },
+      {
+        "equilibration_blocks": 160,
+        "forward": 4.0,
+        "cycle_mean_chi": 9.864066137664881,
+        "first_cycle_chi": 9.864066136522704,
+        "last_cycle_chi": 9.864066137876714
+      },
+      {
+        "equilibration_blocks": 160,
+        "forward": 8.0,
+        "cycle_mean_chi": 9.872780468784,
+        "first_cycle_chi": 9.872780467474325,
+        "last_cycle_chi": 9.872780468980165
+      },
+      {
+        "equilibration_blocks": 160,
+        "forward": 16.0,
+        "cycle_mean_chi": 9.873378066582386,
+        "first_cycle_chi": 9.873378065233815,
+        "last_cycle_chi": 9.873378066775402
+      }
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/root/autodl-tmp/issue9-diagnostics-20261025-6f130ae/review.py", line 169, in <module>
+    try:main()
+        ^^^^^^
+  File "/root/autodl-tmp/issue9-diagnostics-20261025-6f130ae/review.py", line 154, in main
+    probes()
+  File "/root/autodl-tmp/issue9-diagnostics-20261025-6f130ae/review.py", line 119, in probes
+    trial.save_run(archive,sample,r,1.,1.,.05,30.,0.)
+  File "/root/autodl-tmp/issue9-diagnostics-20261025-6f130ae/code/kagome_qea/trial_overlap.py", line 550, in save_run
+    raise RuntimeError(f"saved file is unreadable: {path}")
+RuntimeError: saved file is unreadable: /root/autodl-tmp/issue9-diagnostics-20261025-6f130ae/archive/L2/pqmc_k2/h0/sigma1/gamma1/sample0_seed0.npz

@@ -1,0 +1,189 @@
+{
+  "rollback_current": {
+    "label": "6f130ae",
+    "rows": [
+      {
+        "elapsed": 0.9567036774710449,
+        "saved_is_backup": false,
+        "walkers_is_backup": true,
+        "changed_spins": 24,
+        "changed_diagonals": 18,
+        "changed_weights": 30,
+        "saved_weight_min": 0.3185823516403901,
+        "saved_weight_max": 2.2871013707719126,
+        "backup_weight_min": 1.0,
+        "backup_weight_max": 1.0
+      },
+      {
+        "elapsed": 0.19390788374813214,
+        "saved_is_backup": false,
+        "walkers_is_backup": true,
+        "changed_spins": 23,
+        "changed_diagonals": 17,
+        "changed_weights": 30,
+        "saved_weight_min": 0.39448068657452723,
+        "saved_weight_max": 2.5764436560232435,
+        "backup_weight_min": 1.0,
+        "backup_weight_max": 1.0
+      },
+      {
+        "elapsed": 0.4216236750904324,
+        "saved_is_backup": false,
+        "walkers_is_backup": true,
+        "changed_spins": 24,
+        "changed_diagonals": 17,
+        "changed_weights": 30,
+        "saved_weight_min": 0.34662548399199583,
+        "saved_weight_max": 2.6602861155823723,
+        "backup_weight_min": 1.0,
+        "backup_weight_max": 1.0
+      }
+    ],
+    "chi": 1.9000000000000001,
+    "times": [
+      0.9567036774710449,
+      0.19390788374813214,
+      0.4216236750904324
+    ]
+  },
+  "rollback_baseline": {
+    "label": "bc375b3",
+    "rows": [
+      {
+        "elapsed": 0.9567036774710449,
+        "saved_is_backup": false,
+        "walkers_is_backup": true,
+        "changed_spins": 24,
+        "changed_diagonals": 18,
+        "changed_weights": 30,
+        "saved_weight_min": 0.3185823516403901,
+        "saved_weight_max": 2.2871013707719126,
+        "backup_weight_min": 1.0,
+        "backup_weight_max": 1.0
+      },
+      {
+        "elapsed": 0.19390788374813214,
+        "saved_is_backup": false,
+        "walkers_is_backup": true,
+        "changed_spins": 23,
+        "changed_diagonals": 17,
+        "changed_weights": 30,
+        "saved_weight_min": 0.39448068657452723,
+        "saved_weight_max": 2.5764436560232435,
+        "backup_weight_min": 1.0,
+        "backup_weight_max": 1.0
+      },
+      {
+        "elapsed": 0.4216236750904324,
+        "saved_is_backup": false,
+        "walkers_is_backup": true,
+        "changed_spins": 24,
+        "changed_diagonals": 17,
+        "changed_weights": 30,
+        "saved_weight_min": 0.34662548399199583,
+        "saved_weight_max": 2.6602861155823723,
+        "backup_weight_min": 1.0,
+        "backup_weight_max": 1.0
+      }
+    ],
+    "chi": 1.9000000000000001,
+    "times": [
+      0.9567036774710449,
+      0.19390788374813214,
+      0.4216236750904324
+    ]
+  },
+  "floor_cases": [
+    {
+      "input": [
+        "8.0",
+        "2.9"
+      ],
+      "accepted": true,
+      "output": [
+        2,
+        8.0
+      ]
+    },
+    {
+      "input": [
+        "31.0",
+        "2"
+      ],
+      "accepted": true,
+      "output": [
+        2,
+        31.0
+      ]
+    },
+    {
+      "input": [
+        "8.0",
+        "31"
+      ],
+      "accepted": true,
+      "output": [
+        31,
+        8.0
+      ]
+    },
+    {
+      "input": [
+        "8.0",
+        "True"
+      ],
+      "accepted": false,
+      "error": "ValueError"
+    },
+    {
+      "input": [
+        "8.0",
+        "nan"
+      ],
+      "accepted": false,
+      "error": "ValueError"
+    },
+    {
+      "input": [
+        "8.0",
+        "inf"
+      ],
+      "accepted": false,
+      "error": "OverflowError"
+    }
+  ],
+  "weight_scale_invariance": [
+    {
+      "weights": [
+        "1.0",
+        "1.0"
+      ],
+      "ess": "2.0"
+    },
+    {
+      "weights": [
+        "1e+200",
+        "1e+200"
+      ],
+      "ess": "nan"
+    },
+    {
+      "weights": [
+        "1e-200",
+        "1e-200"
+      ],
+      "ess": "nan"
+    }
+  ],
+  "real_archive_roundtrip": true,
+  "corrupt_archive_accepted": {
+    "negative_rejected_weight_ess": true,
+    "above_population_weight_ess": true,
+    "impossible_descendant_fraction": true,
+    "fractional_unique_floor": true,
+    "rejected_step_past_requested": true,
+    "negative_checkpoint_diagnostics": true,
+    "reverse_checkpoint_time": true,
+    "inconsistent_final_checkpoint": true
+  }
+}

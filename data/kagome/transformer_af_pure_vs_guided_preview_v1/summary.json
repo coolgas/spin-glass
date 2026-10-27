@@ -1,0 +1,354 @@
+{
+  "manifest": {
+    "checkpoint_sha256": "5f9fa33b04102ddff2e43179440514021090ed3aaf228ce67dce53c2139e2544",
+    "design": {
+      "contexts": [
+        {
+          "gamma": 0.5,
+          "h": 0.3,
+          "K": 1.0
+        },
+        {
+          "gamma": 0.5,
+          "h": 0.3,
+          "K": 2.0
+        }
+      ],
+      "sample_ids": [
+        10000
+      ],
+      "walkers": [
+        512
+      ],
+      "forward_Ktau": [
+        2.0
+      ],
+      "branch_Ktau": 0.1,
+      "equilibration_Ktau": 8.0,
+      "measurement_Ktau": 2.0,
+      "cycles": 6,
+      "seeds": [
+        98200,
+        98201,
+        98202,
+        98203
+      ],
+      "guides": [
+        "constant",
+        "network"
+      ]
+    },
+    "Hamiltonian": "sum K_ij ZiZj - Gamma sum Xi - h sum Zi; PBC",
+    "disorder": "matched K_ij=K*(1+0.5*u_ij)",
+    "pure_definition": "constant guide psi_T(s)=1; uniform initial samples",
+    "network_definition": "frozen seed501 psi_T=sqrt(p); initial samples from p",
+    "estimates": "mixed energy; four-replica forward-walking q2 and connected chi",
+    "uncertainty": "SE across four independent populations; all cycles retained",
+    "timing": "propagation plus guide sampling; excludes cache loading and creation",
+    "cost_limit": "network uses L2 lookup; direct inference overhead excluded",
+    "reserved_test_ids_inspected": false,
+    "source_sha256": {
+      "transformer_qmc/compare_pure_gfmc.py": "51e515093da6c6a1975484fc44d697bfbb1088b98829c9ba03e2730980257d1d",
+      "transformer_qmc/projector.py": "071467a09061dfd3a9fdd131e06c26dc16b76ea55be0238ef719d871115459d6",
+      "transformer_qmc/physics.py": "9ce8568f1d3f74701abc8b993ca4b1296fd38b69e5c10b18c60b9170529bd4d9",
+      "transformer_qmc/model.py": "077a03140f2fccfe38e6dbf5cb57645788156337fe45f71fb835909faab290ab",
+      "transformer_qmc/experiment.py": "b9783ff39bfa5e9b7152e4168d5847c0afc72503b3ac96ad124c02c4e014c5aa",
+      "transformer_qmc/frozen_scan.py": "b396ee2c6f59166e43dbf84cbb211ec82100e310277630ca001e164f2c895635",
+      "qmc_numerics.py": "88e433af2447ce91c1cc08fcac0e646b2829008c2a1406a25f2fc77f6d23355c",
+      "gfmc/guide.py": "80712753266a34cffc0e2c9fd869e61b0b3412aa28f4c4de8438d6e584beb09c"
+    },
+    "input_sha256": {
+      "L2_s10000_g0p5_h0p3_K1.json": "c689cdafbdc1dcc2d1df04703e1acd00dc44d5cfe4fc146882e1e4af3be67468",
+      "L2_s10000_g0p5_h0p3_K1.npz": "822942a6a3d9cb17b0b9126bec5e1b2dabe890789cefb98aba01a80e3d2699c1",
+      "L2_s10000_g0p5_h0p3_K2.json": "0d2275a63764388855534e0a1489e87f478aa692c30ab642d18bcb433bffd352",
+      "L2_s10000_g0p5_h0p3_K2.npz": "f2499efee1e410c7c87ba92f1b555a8d02f3e2dfd8009936ee998e455411de8e"
+    }
+  },
+  "rows": [
+    {
+      "gamma": 0.5,
+      "h": 0.3,
+      "K": 1.0,
+      "L": 2,
+      "sample_id": 10000,
+      "guide": "constant",
+      "walkers": 512,
+      "forward_Ktau": 2.0,
+      "branch_Ktau": 0.1,
+      "equilibration_Ktau": 8.0,
+      "independent_populations": 4,
+      "observables": {
+        "energy": {
+          "mean": -12.618506392637375,
+          "se": 0.13828113286858595,
+          "exact": -13.019861991265033,
+          "bias": 0.40135559862765824,
+          "independent_values": [
+            -12.369860869560284,
+            -12.47906164765476,
+            -12.62165417289018,
+            -13.003448880444278
+          ]
+        },
+        "energy_growth": {
+          "mean": -12.618375130224104,
+          "se": 0.13827566323550156,
+          "exact": -13.019861991265033,
+          "bias": 0.40148686104092945,
+          "independent_values": [
+            -12.369769203834647,
+            -12.478872075089956,
+            -12.621561068414707,
+            -13.003298173557104
+          ]
+        },
+        "q2": {
+          "mean": 0.13866735387731483,
+          "se": 0.03437574192500268,
+          "exact": 0.5690455818734715,
+          "bias": -0.4303782279961567,
+          "independent_values": [
+            0.2398546006944445,
+            0.12186234085648147,
+            0.08944589120370372,
+            0.10350658275462964
+          ]
+        },
+        "chi_connected": {
+          "mean": 1.4848904079861112,
+          "se": 0.41525849199869347,
+          "exact": 0.11846304247671686,
+          "bias": 1.3664273655093944,
+          "independent_values": [
+            0.9254557291666665,
+            2.0243055555555554,
+            0.6389973958333333,
+            2.350802951388889
+          ]
+        }
+      },
+      "initial_fidelity": 0.031114222608193548,
+      "initial_local_energy_variance": 28.335883767054,
+      "min_descendant_ess": 1.1305742922697397,
+      "max_largest_lineage": 0.939453125,
+      "min_weight_ess": 321.23345042453474,
+      "min_unique_ancestors": 5,
+      "seconds": 2.279129415
+    },
+    {
+      "gamma": 0.5,
+      "h": 0.3,
+      "K": 1.0,
+      "L": 2,
+      "sample_id": 10000,
+      "guide": "network",
+      "walkers": 512,
+      "forward_Ktau": 2.0,
+      "branch_Ktau": 0.1,
+      "equilibration_Ktau": 8.0,
+      "independent_populations": 4,
+      "observables": {
+        "energy": {
+          "mean": -13.008682498795327,
+          "se": 0.006241852387244835,
+          "exact": -13.019861991265033,
+          "bias": 0.011179492469706176,
+          "independent_values": [
+            -13.011282158361473,
+            -12.990333612494638,
+            -13.01674382716788,
+            -13.016370397157313
+          ]
+        },
+        "energy_growth": {
+          "mean": -13.00868216851869,
+          "se": 0.006242014698963641,
+          "exact": -13.019861991265033,
+          "bias": 0.011179822746342438,
+          "independent_values": [
+            -13.011280852878048,
+            -12.990333011889806,
+            -13.01674391507863,
+            -13.016370894228283
+          ]
+        },
+        "q2": {
+          "mean": 0.48600034360532407,
+          "se": 0.0016933093322816662,
+          "exact": 0.5690455818734715,
+          "bias": -0.08304523826814747,
+          "independent_values": [
+            0.4844654224537037,
+            0.4909577546296296,
+            0.4851888020833333,
+            0.4833893952546297
+          ]
+        },
+        "chi_connected": {
+          "mean": 0.29475911458333337,
+          "se": 0.009530766828795206,
+          "exact": 0.11846304247671686,
+          "bias": 0.17629607210661652,
+          "independent_values": [
+            0.26638454861111116,
+            0.30707465277777785,
+            0.30425347222222215,
+            0.3013237847222222
+          ]
+        }
+      },
+      "initial_fidelity": 0.5615906508084173,
+      "initial_local_energy_variance": 0.4576908558329421,
+      "min_descendant_ess": 97.23442136498517,
+      "max_largest_lineage": 0.0546875,
+      "min_weight_ess": 489.4698175205509,
+      "min_unique_ancestors": 229,
+      "seconds": 2.0497517499999995
+    },
+    {
+      "gamma": 0.5,
+      "h": 0.3,
+      "K": 2.0,
+      "L": 2,
+      "sample_id": 10000,
+      "guide": "constant",
+      "walkers": 512,
+      "forward_Ktau": 2.0,
+      "branch_Ktau": 0.1,
+      "equilibration_Ktau": 8.0,
+      "independent_populations": 4,
+      "observables": {
+        "energy": {
+          "mean": -21.89821651957922,
+          "se": 0.064128815950927,
+          "exact": -22.97148864907916,
+          "bias": 1.0732721294999408,
+          "independent_values": [
+            -22.05888545313658,
+            -21.809566159517114,
+            -21.94308779418433,
+            -21.78132667147885
+          ]
+        },
+        "energy_growth": {
+          "mean": -21.89811870826259,
+          "se": 0.06413753038248293,
+          "exact": -22.97148864907916,
+          "bias": 1.0733699408165691,
+          "independent_values": [
+            -22.05879168716512,
+            -21.80942619085671,
+            -21.94303185022186,
+            -21.781225104806676
+          ]
+        },
+        "q2": {
+          "mean": 0.1839916087962963,
+          "se": 0.11923972250942888,
+          "exact": 0.7704193473299357,
+          "bias": -0.5864277385336394,
+          "independent_values": [
+            0.5408166956018519,
+            0.06922743055555555,
+            0.042643229166666664,
+            0.08327907986111112
+          ]
+        },
+        "chi_connected": {
+          "mean": 2.1827528211805554,
+          "se": 0.8218350180526822,
+          "exact": 0.03612675965794562,
+          "bias": 2.1466260615226096,
+          "independent_values": [
+            0.12065972222222221,
+            3.0498046874999996,
+            1.6878255208333333,
+            3.872721354166666
+          ]
+        }
+      },
+      "initial_fidelity": 0.005644584649445594,
+      "initial_local_energy_variance": 110.10353506821603,
+      "min_descendant_ess": 1.2724448586517552,
+      "max_largest_lineage": 0.8828125,
+      "min_weight_ess": 398.29198011399205,
+      "min_unique_ancestors": 7,
+      "seconds": 1.6218582090000004
+    },
+    {
+      "gamma": 0.5,
+      "h": 0.3,
+      "K": 2.0,
+      "L": 2,
+      "sample_id": 10000,
+      "guide": "network",
+      "walkers": 512,
+      "forward_Ktau": 2.0,
+      "branch_Ktau": 0.1,
+      "equilibration_Ktau": 8.0,
+      "independent_populations": 4,
+      "observables": {
+        "energy": {
+          "mean": -22.52853353876604,
+          "se": 0.05909089811265416,
+          "exact": -22.97148864907916,
+          "bias": 0.4429551103131182,
+          "independent_values": [
+            -22.536834494730606,
+            -22.427765457161556,
+            -22.691819683947287,
+            -22.457714519224705
+          ]
+        },
+        "energy_growth": {
+          "mean": -22.52851175657269,
+          "se": 0.05909193232253861,
+          "exact": -22.97148864907916,
+          "bias": 0.44297689250646854,
+          "independent_values": [
+            -22.536825919890134,
+            -22.427731978363852,
+            -22.691795073652532,
+            -22.457694054384255
+          ]
+        },
+        "q2": {
+          "mean": 0.23130967881944445,
+          "se": 0.05217117873569864,
+          "exact": 0.7704193473299357,
+          "bias": -0.5391096685104912,
+          "independent_values": [
+            0.1190773292824074,
+            0.23795572916666666,
+            0.19911024305555558,
+            0.36909541377314814
+          ]
+        },
+        "chi_connected": {
+          "mean": 1.813232421875,
+          "se": 0.6564401830929703,
+          "exact": 0.03612675965794562,
+          "bias": 1.7771056622170545,
+          "independent_values": [
+            3.2613932291666665,
+            2.4975043402777777,
+            0.3396267361111111,
+            1.1544053819444444
+          ]
+        }
+      },
+      "initial_fidelity": 0.03917712001891164,
+      "initial_local_energy_variance": 2.3728020506401064,
+      "min_descendant_ess": 3.751452531554996,
+      "max_largest_lineage": 0.505859375,
+      "min_weight_ess": 389.0732600950368,
+      "min_unique_ancestors": 66,
+      "seconds": 1.477620043
+    }
+  ],
+  "completed_populations": 16,
+  "expected_populations": 16,
+  "completed": true,
+  "elapsed_seconds": 6.792833089828491,
+  "updated_unix": 1793058191.5044942
+}

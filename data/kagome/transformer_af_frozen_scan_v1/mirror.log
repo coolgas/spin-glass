@@ -1,0 +1,25 @@
+/Users/tianyiyan/Dropbox/spin-glasses/notebook/shared_alibi_frozen_scan_gfmc.ipynb
+{"state": "mirroring", "updated_unix": 1793057820.068929, "scan_state": "running", "direct_pilot_state": "queued_for_scan_gpu", "notebook": "/Users/tianyiyan/Dropbox/spin-glasses/notebook/shared_alibi_frozen_scan_gfmc.ipynb"}
+/Users/tianyiyan/Dropbox/spin-glasses/notebook/shared_alibi_frozen_scan_gfmc.ipynb
+{"state": "mirroring", "updated_unix": 1793058133.9920058, "scan_state": "running", "direct_pilot_state": "queued_for_scan_gpu", "notebook": "/Users/tianyiyan/Dropbox/spin-glasses/notebook/shared_alibi_frozen_scan_gfmc.ipynb"}
+/Users/tianyiyan/Dropbox/spin-glasses/notebook/shared_alibi_frozen_scan_gfmc.ipynb
+{"state": "mirroring", "updated_unix": 1793058465.565532, "scan_state": "running", "direct_pilot_state": "queued_for_scan_gpu", "notebook": "/Users/tianyiyan/Dropbox/spin-glasses/notebook/shared_alibi_frozen_scan_gfmc.ipynb"}
+/Users/tianyiyan/Dropbox/spin-glasses/notebook/shared_alibi_frozen_scan_gfmc.ipynb
+{"state": "mirroring", "updated_unix": 1793058785.915529, "scan_state": "running", "direct_pilot_state": "queued_for_scan_gpu", "notebook": "/Users/tianyiyan/Dropbox/spin-glasses/notebook/shared_alibi_frozen_scan_gfmc.ipynb"}
+/Users/tianyiyan/Dropbox/spin-glasses/notebook/shared_alibi_frozen_scan_gfmc.ipynb
+{"state": "mirroring", "updated_unix": 1793059101.974367, "scan_state": "running", "direct_pilot_state": "queued_for_scan_gpu", "notebook": "/Users/tianyiyan/Dropbox/spin-glasses/notebook/shared_alibi_frozen_scan_gfmc.ipynb"}
+ssh: Could not resolve hostname connect.westc.seetacloud.com: nodename nor servname provided, or not known
+rsync: connection unexpectedly closed (0 bytes received so far) [receiver]
+rsync error: unexplained error (code 255) at /AppleInternal/Library/BuildRoots/46298ee5-4a1c-11ef-a181-1aec23608739/Library/Caches/com.apple.xbs/Sources/rsync/rsync/io.c(453) [receiver=2.6.9]
+Traceback (most recent call last):
+  File "/Users/tianyiyan/opt/miniconda3/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/Users/tianyiyan/opt/miniconda3/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/Users/tianyiyan/Dropbox/spin-glasses/code/transformer_qmc/watch_frozen_scan.py", line 66, in <module>
+    main()
+  File "/Users/tianyiyan/Dropbox/spin-glasses/code/transformer_qmc/watch_frozen_scan.py", line 38, in main
+    subprocess.run(['rsync', '-az', '--exclude', '*.tmp', '--exclude', '*.tmp.npz',
+  File "/Users/tianyiyan/opt/miniconda3/lib/python3.9/subprocess.py", line 528, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['rsync', '-az', '--exclude', '*.tmp', '--exclude', '*.tmp.npz', '-e', 'sshpass -e ssh -o ConnectTimeout=15', 'autodl:/root/autodl-tmp/transformer-af-ltfim-20261027-frozen-scan-v1/results/', '/Users/tianyiyan/Dropbox/spin-glasses/data/kagome/transformer_af_frozen_scan_v1/']' returned non-zero exit status 255.

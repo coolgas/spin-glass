@@ -1,0 +1,38 @@
+{
+  "partial": true,
+  "populations": 28,
+  "groups": {
+    "L4_g0.5_base": {
+      "populations": 8,
+      "truncated_cycles": 39,
+      "min_achieved_time": 0.4476936895068836,
+      "min_kish": 8.023043464517047
+    },
+    "L4_g1_base": {
+      "populations": 8,
+      "truncated_cycles": 40,
+      "min_achieved_time": 0.26615558991710137,
+      "min_kish": 8.016379065707053
+    },
+    "L4_g1_projection": {
+      "populations": 4,
+      "truncated_cycles": 17,
+      "min_achieved_time": 0.4349863805299967,
+      "min_kish": 8.004749057520845
+    },
+    "L4_g1_forward": {
+      "populations": 4,
+      "truncated_cycles": 32,
+      "min_achieved_time": 0.34578516588783775,
+      "min_kish": 8.01635850181314
+    },
+    "L4_g1_walkers": {
+      "populations": 4,
+      "truncated_cycles": 18,
+      "min_achieved_time": 0.3432302038997662,
+      "min_kish": 8.031559853814366
+    }
+  },
+  "archive_sha256_matches_population_metadata": true,
+  "phase_established": false
+}

@@ -1,0 +1,16 @@
+{
+  "state": "running",
+  "pid": 811801,
+  "started_unix": 1793057259.6546009,
+  "completed_stages": [
+    "benchmark",
+    "exact",
+    "projection"
+  ],
+  "active": {
+    "gfmc": 811932,
+    "sampled": 811933
+  },
+  "time_cap_hours": 8,
+  "updated_unix": 1793057496.157883
+}

@@ -1,0 +1,7 @@
+{
+  "sources": {
+    "report_sizes.py": "bc0fdeae5f0982314fd235e0fe9275dfd959be1964803fee86e40918cff6708e",
+    "audit_size_observables.py": "4ceee0f0b81b77ef8018c07104d1cf5942d9cf503f98633407373d113b93fb73"
+  },
+  "checks": "latest archive hash, exact model weight equality, final reload and direct flip ratios"
+}

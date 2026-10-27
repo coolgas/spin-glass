@@ -1,0 +1,434 @@
+[
+  {
+    "sample_id": 110,
+    "gamma": 0.5,
+    "h": 0.0,
+    "batch": 1024,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.1140381439678135,
+        "variance_per_spin": 0.04576045787606239
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.0221078764661005,
+        "variance_per_spin": 0.07051118124072149
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.0600611508027518,
+        "variance_per_spin": 0.08578274195909132
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.035182409686535,
+        "variance_per_spin": 0.07302394332068061
+      }
+    ],
+    "rate": 0.028391591445233046,
+    "predicted_max_logpsi_rms": 0.05,
+    "direction_norm": 1.2646362781524658,
+    "solve_residual": 1.6041783687793747e-11,
+    "damping": 0.01,
+    "step": 1,
+    "seconds": 8.143299458548427,
+    "peak_gpu_bytes": 14172380672
+  },
+  {
+    "sample_id": 149,
+    "gamma": 0.5,
+    "h": 0.3,
+    "batch": 1024,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.048831524593829,
+        "variance_per_spin": 0.06007489802854979
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.021177510680675,
+        "variance_per_spin": 0.0693370568848674
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.0590762225094215,
+        "variance_per_spin": 0.08937336603687272
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.0468892332594038,
+        "variance_per_spin": 0.10117274350268117
+      }
+    ],
+    "rate": 0.027323407590418843,
+    "predicted_max_logpsi_rms": 0.05,
+    "direction_norm": 1.3996620178222656,
+    "solve_residual": 3.193119145128515e-11,
+    "damping": 0.01,
+    "step": 2,
+    "seconds": 12.347594978287816,
+    "peak_gpu_bytes": 14172380672
+  },
+  {
+    "sample_id": 219,
+    "gamma": 2.0,
+    "h": 0.3,
+    "batch": 512,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -2.232921012358224,
+        "variance_per_spin": 0.017008044459726018
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -2.220412010099557,
+        "variance_per_spin": 0.02615359074060104
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -2.230170009242524,
+        "variance_per_spin": 0.03168088688773954
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -2.2309316860830166,
+        "variance_per_spin": 0.02840513118251238
+      }
+    ],
+    "rate": 0.05,
+    "predicted_max_logpsi_rms": 0.044004276394844055,
+    "direction_norm": 0.5858367681503296,
+    "solve_residual": 1.7791790389891175e-11,
+    "damping": 0.01,
+    "step": 3,
+    "seconds": 14.307997046038508,
+    "peak_gpu_bytes": 14172380672
+  },
+  {
+    "sample_id": 196,
+    "gamma": 0.5,
+    "h": 0.0,
+    "batch": 1024,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.0743727579243247,
+        "variance_per_spin": 0.08393621163025383
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.0516844759705435,
+        "variance_per_spin": 0.05875856591837725
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.0199957799691501,
+        "variance_per_spin": 0.05647515342918301
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.0433549148441132,
+        "variance_per_spin": 0.06963420573176395
+      }
+    ],
+    "rate": 0.028541240702738665,
+    "predicted_max_logpsi_rms": 0.05,
+    "direction_norm": 1.2260771989822388,
+    "solve_residual": 4.75517586650494e-10,
+    "damping": 0.01,
+    "step": 4,
+    "seconds": 21.248802803456783,
+    "peak_gpu_bytes": 14172380672
+  },
+  {
+    "sample_id": 208,
+    "gamma": 0.5,
+    "h": 0.3,
+    "batch": 1024,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.0706209139028564,
+        "variance_per_spin": 0.06115419724119236
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.0681399680296642,
+        "variance_per_spin": 0.09409596206217642
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.0748841196786885,
+        "variance_per_spin": 0.0751404207288439
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.0489488595175926,
+        "variance_per_spin": 0.06804046609446072
+      }
+    ],
+    "rate": 0.026116687677640072,
+    "predicted_max_logpsi_rms": 0.05,
+    "direction_norm": 1.3753397464752197,
+    "solve_residual": 2.1767528762242043e-11,
+    "damping": 0.01,
+    "step": 5,
+    "seconds": 25.32983730919659,
+    "peak_gpu_bytes": 14172380672
+  },
+  {
+    "sample_id": 144,
+    "gamma": 2.0,
+    "h": 0.3,
+    "batch": 512,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -2.2256799215164627,
+        "variance_per_spin": 0.022075187558173916
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -2.244830648792993,
+        "variance_per_spin": 0.037909504100326445
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -2.2308550389672366,
+        "variance_per_spin": 0.03031944928598742
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -2.2248373830202257,
+        "variance_per_spin": 0.030041545357860338
+      }
+    ],
+    "rate": 0.04483252300733665,
+    "predicted_max_logpsi_rms": 0.05,
+    "direction_norm": 0.6231831908226013,
+    "solve_residual": 1.5052248970533062e-11,
+    "damping": 0.01,
+    "step": 6,
+    "seconds": 27.497545147314668,
+    "peak_gpu_bytes": 14172380672
+  },
+  {
+    "sample_id": 354,
+    "gamma": 0.5,
+    "h": 0.0,
+    "batch": 1024,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.028163143459918,
+        "variance_per_spin": 0.05193928747475335
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.066718829339731,
+        "variance_per_spin": 0.07549923342537233
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.0391571880988086,
+        "variance_per_spin": 0.05658354741544929
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.0454156773491212,
+        "variance_per_spin": 0.08273199763982081
+      }
+    ],
+    "rate": 0.026759962036018825,
+    "predicted_max_logpsi_rms": 0.05,
+    "direction_norm": 1.2151402235031128,
+    "solve_residual": 6.073852140761896e-11,
+    "damping": 0.01,
+    "step": 7,
+    "seconds": 34.26027518324554,
+    "peak_gpu_bytes": 14172380672
+  },
+  {
+    "sample_id": 199,
+    "gamma": 0.5,
+    "h": 0.3,
+    "batch": 1024,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.0107691082032568,
+        "variance_per_spin": 0.021226647396834376
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.060639985077044,
+        "variance_per_spin": 0.06755570269441076
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.0574859991227348,
+        "variance_per_spin": 0.07857947689702013
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.0672080008371292,
+        "variance_per_spin": 0.0784199853166011
+      }
+    ],
+    "rate": 0.027670877384279598,
+    "predicted_max_logpsi_rms": 0.05,
+    "direction_norm": 1.1925723552703857,
+    "solve_residual": 7.036395677433305e-10,
+    "damping": 0.01,
+    "step": 8,
+    "seconds": 38.343940855935216,
+    "peak_gpu_bytes": 14172380672
+  },
+  {
+    "sample_id": 133,
+    "gamma": 2.0,
+    "h": 0.3,
+    "batch": 512,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -2.2266438262696706,
+        "variance_per_spin": 0.018352962396747222
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -2.2383013802226586,
+        "variance_per_spin": 0.03174225161683158
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -2.222186408117496,
+        "variance_per_spin": 0.02990785456261988
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -2.224867363555948,
+        "variance_per_spin": 0.027440964172700696
+      }
+    ],
+    "rate": 0.05,
+    "predicted_max_logpsi_rms": 0.038289624452590945,
+    "direction_norm": 0.5588817596435547,
+    "solve_residual": 1.5364009637676927e-11,
+    "damping": 0.01,
+    "step": 9,
+    "seconds": 40.51324355416,
+    "peak_gpu_bytes": 14172380672
+  },
+  {
+    "sample_id": 1,
+    "gamma": 0.5,
+    "h": 0.0,
+    "batch": 1024,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.1275121481406736,
+        "variance_per_spin": 0.029674115071572332
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.037375187980145,
+        "variance_per_spin": 0.07697598937048307
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.0164687018251668,
+        "variance_per_spin": 0.06359329523781436
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.0358567188698071,
+        "variance_per_spin": 0.07404299142379282
+      }
+    ],
+    "rate": 0.026645660007216805,
+    "predicted_max_logpsi_rms": 0.05,
+    "direction_norm": 1.1814416646957397,
+    "solve_residual": 8.958083348097721e-11,
+    "damping": 0.01,
+    "step": 10,
+    "seconds": 47.28278166987002,
+    "peak_gpu_bytes": 14172380672
+  },
+  {
+    "sample_id": 208,
+    "gamma": 0.5,
+    "h": 0.3,
+    "batch": 1024,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -1.0742324550652727,
+        "variance_per_spin": 0.062499605517839785
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -1.0656702312336497,
+        "variance_per_spin": 0.0785404299735448
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -1.073691256776298,
+        "variance_per_spin": 0.09344579093176948
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -1.05091088459486,
+        "variance_per_spin": 0.07008782186154607
+      }
+    ],
+    "rate": 0.026182155039683942,
+    "predicted_max_logpsi_rms": 0.05,
+    "direction_norm": 1.2962708473205566,
+    "solve_residual": 5.592379182199521e-10,
+    "damping": 0.01,
+    "step": 11,
+    "seconds": 51.421760423108935,
+    "peak_gpu_bytes": 14172380672
+  },
+  {
+    "sample_id": 341,
+    "gamma": 2.0,
+    "h": 0.3,
+    "batch": 512,
+    "metrics": [
+      {
+        "L": 2,
+        "energy_per_spin": -2.268189057958755,
+        "variance_per_spin": 0.028166684088719817
+      },
+      {
+        "L": 4,
+        "energy_per_spin": -2.2155197292640127,
+        "variance_per_spin": 0.023922651506895654
+      },
+      {
+        "L": 6,
+        "energy_per_spin": -2.2053977931871915,
+        "variance_per_spin": 0.025339416188393575
+      },
+      {
+        "L": 8,
+        "energy_per_spin": -2.2279208684879035,
+        "variance_per_spin": 0.03060731664958075
+      }
+    ],
+    "rate": 0.04923161868144651,
+    "predicted_max_logpsi_rms": 0.05,
+    "direction_norm": 0.6564293503761292,
+    "solve_residual": 1.8694706228261832e-11,
+    "damping": 0.01,
+    "step": 12,
+    "seconds": 53.565980503335595,
+    "peak_gpu_bytes": 14172380672
+  }
+]

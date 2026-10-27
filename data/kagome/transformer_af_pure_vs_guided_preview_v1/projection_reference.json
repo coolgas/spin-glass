@@ -1,0 +1,580 @@
+{
+  "source_sha256": "00da1825483a7aa5ae8ac15b21ea47b9f9b5a72b1c381d8ee6e3233cd9ee7ed2",
+  "input_sha256": {
+    "L2_s10000_g0p5_h0p3_K1.json": "c689cdafbdc1dcc2d1df04703e1acd00dc44d5cfe4fc146882e1e4af3be67468",
+    "L2_s10000_g0p5_h0p3_K1.npz": "822942a6a3d9cb17b0b9126bec5e1b2dabe890789cefb98aba01a80e3d2699c1",
+    "L2_s10000_g0p5_h0p3_K2.json": "0d2275a63764388855534e0a1489e87f478aa692c30ab642d18bcb433bffd352",
+    "L2_s10000_g0p5_h0p3_K2.npz": "f2499efee1e410c7c87ba92f1b555a8d02f3e2dfd8009936ee998e455411de8e"
+  },
+  "checkpoint_sha256": "5f9fa33b04102ddff2e43179440514021090ed3aaf228ce67dce53c2139e2544",
+  "times_Ktau": [
+    0.0,
+    0.5,
+    1.0,
+    2.0,
+    4.0,
+    8.0,
+    16.0,
+    32.0,
+    64.0
+  ],
+  "interpretation": "Deterministic pure projected states, not finite-forward-time stochastic estimators",
+  "rows": [
+    {
+      "gamma": 0.5,
+      "h": 0.3,
+      "K": 1.0,
+      "sample_id": 10000,
+      "guide": "constant",
+      "trajectory": [
+        {
+          "Ktau": 0.0,
+          "fidelity": 0.031114222608193548,
+          "pure_energy_error_per_spin": 0.5849884992720861,
+          "mixed_energy_error_per_spin": 0.5849884992720861,
+          "chi_connected": 1.0,
+          "exact_chi_connected": 0.11846304247671686,
+          "connected_correlation_rms_error": 0.033505412067315304
+        },
+        {
+          "Ktau": 0.5,
+          "fidelity": 0.24549201965929948,
+          "pure_energy_error_per_spin": 0.05610844654322156,
+          "mixed_energy_error_per_spin": 0.11331445812202527,
+          "chi_connected": 1.5777726583601648,
+          "exact_chi_connected": 0.11846304247671686,
+          "connected_correlation_rms_error": 0.2061748029932742
+        },
+        {
+          "Ktau": 1.0,
+          "fidelity": 0.39970100997831887,
+          "pure_energy_error_per_spin": 0.030233832011618222,
+          "mixed_energy_error_per_spin": 0.05610844654322156,
+          "chi_connected": 1.7789699716288923,
+          "exact_chi_connected": 0.11846304247671686,
+          "connected_correlation_rms_error": 0.2541379318540321
+        },
+        {
+          "Ktau": 2.0,
+          "fidelity": 0.648378051560224,
+          "pure_energy_error_per_spin": 0.013146795042426588,
+          "mixed_energy_error_per_spin": 0.03023383201161896,
+          "chi_connected": 1.4008574916207275,
+          "exact_chi_connected": 0.11846304247671686,
+          "connected_correlation_rms_error": 0.23368788974208105
+        },
+        {
+          "Ktau": 4.0,
+          "fidelity": 0.9012954547072494,
+          "pure_energy_error_per_spin": 0.003029565790992006,
+          "mixed_energy_error_per_spin": 0.013146795042426588,
+          "chi_connected": 0.5323058215251774,
+          "exact_chi_connected": 0.11846304247671686,
+          "connected_correlation_rms_error": 0.11631099365132053
+        },
+        {
+          "Ktau": 8.0,
+          "fidelity": 0.9927807437729557,
+          "pure_energy_error_per_spin": 0.00019190071987399784,
+          "mixed_energy_error_per_spin": 0.00302956579099097,
+          "chi_connected": 0.17543210893669867,
+          "exact_chi_connected": 0.11846304247671686,
+          "connected_correlation_rms_error": 0.02791733006933336
+        },
+        {
+          "Ktau": 16.0,
+          "fidelity": 0.9999450450467027,
+          "pure_energy_error_per_spin": 1.3708281811908307e-06,
+          "mixed_energy_error_per_spin": 0.00019190071987296164,
+          "chi_connected": 0.12184567837599843,
+          "exact_chi_connected": 0.11846304247671686,
+          "connected_correlation_rms_error": 0.002207682594916163
+        },
+        {
+          "Ktau": 32.0,
+          "fidelity": 0.9999999960564758,
+          "pure_energy_error_per_spin": 9.791204883905873e-11,
+          "mixed_energy_error_per_spin": 1.3708281808947713e-06,
+          "chi_connected": 0.11848988450846953,
+          "exact_chi_connected": 0.11846304247671686,
+          "connected_correlation_rms_error": 1.8444586567665213e-05
+        },
+        {
+          "Ktau": 64.0,
+          "fidelity": 0.9999999999999987,
+          "pure_energy_error_per_spin": -3.1086244689504383e-15,
+          "mixed_energy_error_per_spin": 9.791293701747843e-11,
+          "chi_connected": 0.11846304441342632,
+          "exact_chi_connected": 0.11846304247671686,
+          "connected_correlation_rms_error": 1.3337854721354659e-09
+        }
+      ]
+    },
+    {
+      "gamma": 0.5,
+      "h": 0.3,
+      "K": 1.0,
+      "sample_id": 10000,
+      "guide": "network",
+      "trajectory": [
+        {
+          "Ktau": 0.0,
+          "fidelity": 0.5615906508084173,
+          "pure_energy_error_per_spin": 0.021604795408224426,
+          "mixed_energy_error_per_spin": 0.021604795408224724,
+          "chi_connected": 1.2239515181132263,
+          "exact_chi_connected": 0.11846304247671686,
+          "connected_correlation_rms_error": 0.207331390977282
+        },
+        {
+          "Ktau": 0.5,
+          "fidelity": 0.6644653372599687,
+          "pure_energy_error_per_spin": 0.010460904988122651,
+          "mixed_energy_error_per_spin": 0.013246893126691509,
+          "chi_connected": 1.0974438132034041,
+          "exact_chi_connected": 0.11846304247671686,
+          "connected_correlation_rms_error": 0.19547888266722166
+        },
+        {
+          "Ktau": 1.0,
+          "fidelity": 0.7384962775009989,
+          "pure_energy_error_per_spin": 0.0074399759868368776,
+          "mixed_energy_error_per_spin": 0.010460904988123687,
+          "chi_connected": 0.9887395508691301,
+          "exact_chi_connected": 0.11846304247671686,
+          "connected_correlation_rms_error": 0.1852738735642527
+        },
+        {
+          "Ktau": 2.0,
+          "fidelity": 0.8449252118426663,
+          "pure_energy_error_per_spin": 0.004133787896884122,
+          "mixed_energy_error_per_spin": 0.007439975986834509,
+          "chi_connected": 0.7482372056399532,
+          "exact_chi_connected": 0.11846304247671686,
+          "connected_correlation_rms_error": 0.1556308109754086
+        },
+        {
+          "Ktau": 4.0,
+          "fidelity": 0.9499537811556785,
+          "pure_energy_error_per_spin": 0.0012796986891515278,
+          "mixed_energy_error_per_spin": 0.004133787896882642,
+          "chi_connected": 0.3738258709121882,
+          "exact_chi_connected": 0.11846304247671686,
+          "connected_correlation_rms_error": 0.08847686066523675
+        },
+        {
+          "Ktau": 8.0,
+          "fidelity": 0.9953400663680424,
+          "pure_energy_error_per_spin": 0.00011650586260432878,
+          "mixed_energy_error_per_spin": 0.0012796986891509359,
+          "chi_connected": 0.16081508800581695,
+          "exact_chi_connected": 0.11846304247671686,
+          "connected_correlation_rms_error": 0.022996353097540955
+        },
+        {
+          "Ktau": 16.0,
+          "fidelity": 0.999960623472996,
+          "pure_energy_error_per_spin": 9.780894843676908e-07,
+          "mixed_energy_error_per_spin": 0.00011650586260225637,
+          "chi_connected": 0.12125631803782437,
+          "exact_chi_connected": 0.11846304247671686,
+          "connected_correlation_rms_error": 0.001870260225113336
+        },
+        {
+          "Ktau": 32.0,
+          "fidelity": 0.999999997154156,
+          "pure_energy_error_per_spin": 7.065710979266744e-11,
+          "mixed_energy_error_per_spin": 9.780894851078397e-07,
+          "chi_connected": 0.11848581186902629,
+          "exact_chi_connected": 0.11846304247671686,
+          "connected_correlation_rms_error": 1.5669288288837462e-05
+        },
+        {
+          "Ktau": 64.0,
+          "fidelity": 0.9999999999999991,
+          "pure_energy_error_per_spin": -2.812564995717063e-15,
+          "mixed_energy_error_per_spin": 7.065622161424774e-11,
+          "chi_connected": 0.11846304412196636,
+          "exact_chi_connected": 0.11846304247671686,
+          "connected_correlation_rms_error": 1.1330635740881425e-09
+        }
+      ]
+    },
+    {
+      "gamma": 0.5,
+      "h": 0.3,
+      "K": 2.0,
+      "sample_id": 10000,
+      "guide": "constant",
+      "trajectory": [
+        {
+          "Ktau": 0.0,
+          "fidelity": 0.005644584649445594,
+          "pure_energy_error_per_spin": 1.4142907207565962,
+          "mixed_energy_error_per_spin": 1.4142907207565962,
+          "chi_connected": 1.0,
+          "exact_chi_connected": 0.03612675965794562,
+          "connected_correlation_rms_error": 0.003968934400580453
+        },
+        {
+          "Ktau": 0.5,
+          "fidelity": 0.09665825353778333,
+          "pure_energy_error_per_spin": 0.16910408697485865,
+          "mixed_energy_error_per_spin": 0.335080665014656,
+          "chi_connected": 1.7052340830765018,
+          "exact_chi_connected": 0.03612675965794562,
+          "connected_correlation_rms_error": 0.2519950936978493
+        },
+        {
+          "Ktau": 1.0,
+          "fidelity": 0.20161919442138335,
+          "pure_energy_error_per_spin": 0.09119984525492193,
+          "mixed_energy_error_per_spin": 0.16910408697485746,
+          "chi_connected": 2.132693529911675,
+          "exact_chi_connected": 0.03612675965794562,
+          "connected_correlation_rms_error": 0.3251963889520605
+        },
+        {
+          "Ktau": 2.0,
+          "fidelity": 0.4231350604481573,
+          "pure_energy_error_per_spin": 0.04211261432721406,
+          "mixed_energy_error_per_spin": 0.09119984525492224,
+          "chi_connected": 2.069928768975409,
+          "exact_chi_connected": 0.03612675965794562,
+          "connected_correlation_rms_error": 0.34679989923876786
+        },
+        {
+          "Ktau": 4.0,
+          "fidelity": 0.7637724074397695,
+          "pure_energy_error_per_spin": 0.013045194582176714,
+          "mixed_energy_error_per_spin": 0.04211261432721288,
+          "chi_connected": 0.7030870831932182,
+          "exact_chi_connected": 0.03612675965794562,
+          "connected_correlation_rms_error": 0.1987592321358847
+        },
+        {
+          "Ktau": 8.0,
+          "fidelity": 0.9732453427240472,
+          "pure_energy_error_per_spin": 0.0012703288651006635,
+          "mixed_energy_error_per_spin": 0.013045194582174938,
+          "chi_connected": 0.0667907560918672,
+          "exact_chi_connected": 0.03612675965794562,
+          "connected_correlation_rms_error": 0.035520190795661995
+        },
+        {
+          "Ktau": 16.0,
+          "fidelity": 0.9996481098393487,
+          "pure_energy_error_per_spin": 1.559036919237163e-05,
+          "mixed_energy_error_per_spin": 0.0012703288651051043,
+          "chi_connected": 0.036657323185368594,
+          "exact_chi_connected": 0.03612675965794562,
+          "connected_correlation_rms_error": 0.0014979594962297178
+        },
+        {
+          "Ktau": 32.0,
+          "fidelity": 0.9999999236762985,
+          "pure_energy_error_per_spin": 3.3456008334079948e-09,
+          "mixed_energy_error_per_spin": 1.559036919148345e-05,
+          "chi_connected": 0.03613233105181406,
+          "exact_chi_connected": 0.03612675965794562,
+          "connected_correlation_rms_error": 1.621053209583438e-05
+        },
+        {
+          "Ktau": 64.0,
+          "fidelity": 0.999999999999998,
+          "pure_energy_error_per_spin": 6.809367884367627e-15,
+          "mixed_energy_error_per_spin": 3.345602313705361e-09,
+          "chi_connected": 0.03612676088087465,
+          "exact_chi_connected": 0.03612675965794562,
+          "connected_correlation_rms_error": 3.5712043241437985e-09
+        }
+      ]
+    },
+    {
+      "gamma": 0.5,
+      "h": 0.3,
+      "K": 2.0,
+      "sample_id": 10000,
+      "guide": "network",
+      "trajectory": [
+        {
+          "Ktau": 0.0,
+          "fidelity": 0.039177120018911694,
+          "pure_energy_error_per_spin": 0.14314280445089178,
+          "mixed_energy_error_per_spin": 0.14314280445089148,
+          "chi_connected": 0.6351637577408846,
+          "exact_chi_connected": 0.03612675965794562,
+          "connected_correlation_rms_error": 0.16452521502002118
+        },
+        {
+          "Ktau": 0.5,
+          "fidelity": 0.07807599563759068,
+          "pure_energy_error_per_spin": 0.095277958565202,
+          "mixed_energy_error_per_spin": 0.11319986542466569,
+          "chi_connected": 0.5570978866214047,
+          "exact_chi_connected": 0.03612675965794562,
+          "connected_correlation_rms_error": 0.1421111881172489
+        },
+        {
+          "Ktau": 1.0,
+          "fidelity": 0.1275260221228141,
+          "pure_energy_error_per_spin": 0.07010084359097905,
+          "mixed_energy_error_per_spin": 0.09527795856520023,
+          "chi_connected": 0.5691601549366592,
+          "exact_chi_connected": 0.03612675965794562,
+          "connected_correlation_rms_error": 0.14223838909454165
+        },
+        {
+          "Ktau": 2.0,
+          "fidelity": 0.24583412176184785,
+          "pure_energy_error_per_spin": 0.043038303831646196,
+          "mixed_energy_error_per_spin": 0.07010084359097994,
+          "chi_connected": 0.7864799633747026,
+          "exact_chi_connected": 0.03612675965794562,
+          "connected_correlation_rms_error": 0.1902625330129938
+        },
+        {
+          "Ktau": 4.0,
+          "fidelity": 0.5169320033736762,
+          "pure_energy_error_per_spin": 0.02207755296804444,
+          "mixed_energy_error_per_spin": 0.0430383038316459,
+          "chi_connected": 1.317225647572604,
+          "exact_chi_connected": 0.03612675965794562,
+          "connected_correlation_rms_error": 0.2810168732406404
+        },
+        {
+          "Ktau": 8.0,
+          "fidelity": 0.9001945730850652,
+          "pure_energy_error_per_spin": 0.004388762702826732,
+          "mixed_energy_error_per_spin": 0.02207755296804385,
+          "chi_connected": 0.2798040416869058,
+          "exact_chi_connected": 0.03612675965794562,
+          "connected_correlation_rms_error": 0.1208275273001297
+        },
+        {
+          "Ktau": 16.0,
+          "fidelity": 0.9983604063693061,
+          "pure_energy_error_per_spin": 7.187994010227072e-05,
+          "mixed_energy_error_per_spin": 0.004388762702824955,
+          "chi_connected": 0.03771274632158208,
+          "exact_chi_connected": 0.03612675965794562,
+          "connected_correlation_rms_error": 0.004325117466705505
+        },
+        {
+          "Ktau": 32.0,
+          "fidelity": 0.9999996363399057,
+          "pure_energy_error_per_spin": 1.59382394689563e-08,
+          "mixed_energy_error_per_spin": 7.187994010197467e-05,
+          "chi_connected": 0.036138946984910825,
+          "exact_chi_connected": 0.03612675965794562,
+          "connected_correlation_rms_error": 3.5624968880650666e-05
+        },
+        {
+          "Ktau": 64.0,
+          "fidelity": 0.9999999999999816,
+          "pure_energy_error_per_spin": 6.217248937900877e-15,
+          "mixed_energy_error_per_spin": 1.593823650836157e-08,
+          "chi_connected": 0.03612676232765128,
+          "exact_chi_connected": 0.03612675965794562,
+          "connected_correlation_rms_error": 7.796565247155822e-09
+        }
+      ]
+    }
+  ],
+  "finite_forward_rows": [
+    {
+      "gamma": 0.5,
+      "h": 0.3,
+      "K": 1.0,
+      "sample_id": 10000,
+      "guide": "constant",
+      "forward_Ktau": 2.0,
+      "chi_connected": 0.3643779701681615,
+      "q2": 0.41681833539964513,
+      "cycles": [
+        {
+          "cycle": 0,
+          "tag_Ktau": 10.0,
+          "chi_connected": 0.4092692179294013,
+          "q2": 0.4029443699779811
+        },
+        {
+          "cycle": 1,
+          "tag_Ktau": 12.0,
+          "chi_connected": 0.37654645296047745,
+          "q2": 0.41291438881446296
+        },
+        {
+          "cycle": 2,
+          "tag_Ktau": 14.0,
+          "chi_connected": 0.35970180257808576,
+          "q2": 0.41820498345562707
+        },
+        {
+          "cycle": 3,
+          "tag_Ktau": 16.0,
+          "chi_connected": 0.3508786407098265,
+          "q2": 0.4210138837912532
+        },
+        {
+          "cycle": 4,
+          "tag_Ktau": 18.0,
+          "chi_connected": 0.3461930902218107,
+          "q2": 0.42251335400720547
+        },
+        {
+          "cycle": 5,
+          "tag_Ktau": 20.0,
+          "chi_connected": 0.3436786166093669,
+          "q2": 0.42331903235134094
+        }
+      ]
+    },
+    {
+      "gamma": 0.5,
+      "h": 0.3,
+      "K": 1.0,
+      "sample_id": 10000,
+      "guide": "network",
+      "forward_Ktau": 2.0,
+      "chi_connected": 0.2730123992373188,
+      "q2": 0.4748156407059967,
+      "cycles": [
+        {
+          "cycle": 0,
+          "tag_Ktau": 10.0,
+          "chi_connected": 0.3022580854678029,
+          "q2": 0.46435230278893946
+        },
+        {
+          "cycle": 1,
+          "tag_Ktau": 12.0,
+          "chi_connected": 0.2814886434047527,
+          "q2": 0.4716555242137781
+        },
+        {
+          "cycle": 2,
+          "tag_Ktau": 14.0,
+          "chi_connected": 0.2702745074879003,
+          "q2": 0.4757328883812328
+        },
+        {
+          "cycle": 3,
+          "tag_Ktau": 16.0,
+          "chi_connected": 0.26417916222764787,
+          "q2": 0.4779913258887041
+        },
+        {
+          "cycle": 4,
+          "tag_Ktau": 18.0,
+          "chi_connected": 0.260849468333479,
+          "q2": 0.4792375967392155
+        },
+        {
+          "cycle": 5,
+          "tag_Ktau": 20.0,
+          "chi_connected": 0.2590245285023301,
+          "q2": 0.47992420622411014
+        }
+      ]
+    },
+    {
+      "gamma": 0.5,
+      "h": 0.3,
+      "K": 2.0,
+      "sample_id": 10000,
+      "guide": "constant",
+      "forward_Ktau": 2.0,
+      "chi_connected": 0.12346582811778352,
+      "q2": 0.6394068231777367,
+      "cycles": [
+        {
+          "cycle": 0,
+          "tag_Ktau": 10.0,
+          "chi_connected": 0.2198781604710097,
+          "q2": 0.5821563510449654
+        },
+        {
+          "cycle": 1,
+          "tag_Ktau": 12.0,
+          "chi_connected": 0.1461884298503908,
+          "q2": 0.6201401185694194
+        },
+        {
+          "cycle": 2,
+          "tag_Ktau": 14.0,
+          "chi_connected": 0.11166372792072558,
+          "q2": 0.6432104291457497
+        },
+        {
+          "cycle": 3,
+          "tag_Ktau": 16.0,
+          "chi_connected": 0.09487931184102028,
+          "q2": 0.656822561097608
+        },
+        {
+          "cycle": 4,
+          "tag_Ktau": 18.0,
+          "chi_connected": 0.08635050263761423,
+          "q2": 0.664754286877343
+        },
+        {
+          "cycle": 5,
+          "tag_Ktau": 20.0,
+          "chi_connected": 0.08183483598594056,
+          "q2": 0.6693571923313344
+        }
+      ]
+    },
+    {
+      "gamma": 0.5,
+      "h": 0.3,
+      "K": 2.0,
+      "sample_id": 10000,
+      "guide": "network",
+      "forward_Ktau": 2.0,
+      "chi_connected": 0.3792336053629719,
+      "q2": 0.5636723296100034,
+      "cycles": [
+        {
+          "cycle": 0,
+          "tag_Ktau": 10.0,
+          "chi_connected": 0.8237429211943547,
+          "q2": 0.4463078482195304
+        },
+        {
+          "cycle": 1,
+          "tag_Ktau": 12.0,
+          "chi_connected": 0.5448411234009923,
+          "q2": 0.5086856656929003
+        },
+        {
+          "cycle": 2,
+          "tag_Ktau": 14.0,
+          "chi_connected": 0.35118578826528074,
+          "q2": 0.5610109312577453
+        },
+        {
+          "cycle": 3,
+          "tag_Ktau": 16.0,
+          "chi_connected": 0.23757564508948772,
+          "q2": 0.5993295177696241
+        },
+        {
+          "cycle": 4,
+          "tag_Ktau": 18.0,
+          "chi_connected": 0.1756365133984096,
+          "q2": 0.6251142707193067
+        },
+        {
+          "cycle": 5,
+          "tag_Ktau": 20.0,
+          "chi_connected": 0.14241964082930622,
+          "q2": 0.6415857440009136
+        }
+      ]
+    }
+  ],
+  "finite_forward_definition": "p_ancestor(s) proportional to phi_tag_time(s)*phi_forward(s); infinite population",
+  "completed": true
+}

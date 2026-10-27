@@ -1,0 +1,228 @@
+{
+  "n_sites": 108,
+  "input_specification": {
+    "n_sites": 108,
+    "physical_settings": {
+      "L": 6,
+      "periodic": true,
+      "sigma": 1,
+      "gamma": 5,
+      "h": 0
+    },
+    "campaign": "campaign.json",
+    "forward_time": 0.8,
+    "samples": [
+      {
+        "sample_id": 0,
+        "populations": [
+          "runs/t3_p24.npz",
+          "runs/t3_p25.npz",
+          "runs/t3_p26.npz",
+          "runs/t3_p27.npz",
+          "runs/t3_p28.npz",
+          "runs/t3_p29.npz",
+          "runs/t3_p30.npz",
+          "runs/t3_p31.npz"
+        ]
+      }
+    ]
+  },
+  "disorder_samples": 1,
+  "samples": [
+    {
+      "sample_id": 0,
+      "populations": [
+        "runs/t3_p24.npz",
+        "runs/t3_p25.npz",
+        "runs/t3_p26.npz",
+        "runs/t3_p27.npz",
+        "runs/t3_p28.npz",
+        "runs/t3_p29.npz",
+        "runs/t3_p30.npz",
+        "runs/t3_p31.npz"
+      ],
+      "population_moments": [
+        [
+          0.004252314814814815,
+          0.010073945473251028,
+          0.00018190808692780566,
+          0.0003346918360881075
+        ],
+        [
+          0.005920370370370371,
+          0.008460210905349793,
+          0.00010219605751155816,
+          0.0002007137169271847
+        ],
+        [
+          -0.000608333333333334,
+          0.009348233882030179,
+          9.856300487730529e-05,
+          0.000256300217239543
+        ],
+        [
+          -6.597222222222226e-05,
+          0.010414767661179698,
+          0.00015069087219935986,
+          0.0003360998754447812
+        ],
+        [
+          -0.0007178240740740734,
+          0.008982034465020576,
+          0.0002312114991363105,
+          0.00026272941310747565
+        ],
+        [
+          -0.005914814814814814,
+          0.009393535665294925,
+          -8.29278438246202e-05,
+          0.00022716445122788792
+        ],
+        [
+          -0.0018444444444444454,
+          0.009363820301783263,
+          9.921267718335621e-05,
+          0.0002228765457971816
+        ],
+        [
+          0.00975300925925926,
+          0.009535978223593963,
+          0.00035823243725549965,
+          0.00027065882107562265
+        ]
+      ],
+      "moments": {
+        "q": 0.0013467881944444445,
+        "q2": 0.009446565822187928,
+        "q3": 0.0001423858489083219,
+        "q4": 0.00026390435961347303
+      },
+      "moment_mean_covariance": [
+        [
+          3.089645562042051e-06,
+          -2.6858064756408206e-08,
+          6.089188237690627e-08,
+          5.115439083572336e-09
+        ],
+        [
+          -2.6858064756408206e-08,
+          4.548264639330581e-08,
+          1.256157845254629e-09,
+          3.283562637420612e-09
+        ],
+        [
+          6.089188237690627e-08,
+          1.256157845254629e-09,
+          2.0049387576911534e-09,
+          3.1558903898775655e-10
+        ],
+        [
+          5.115439083572336e-09,
+          3.283562637420612e-09,
+          3.1558903898775655e-10,
+          3.0989366535367575e-10
+        ]
+      ],
+      "q2_projector_se": 0.0002132666087161931,
+      "chi_sg": 1.0202291087962962,
+      "chi_sg_projector_se": 0.023032793741348857,
+      "q_ea_squared": 0.009446565822187928,
+      "q_ea": 0.09719344536638223,
+      "q_ea_projector_ci95": [
+        0.09456357875610814,
+        0.09975400351471206
+      ],
+      "energy": -552.4798417517809,
+      "energy_projector_se": 0.005992835929925713,
+      "all_projection_complete": true,
+      "achieved_forward_times": [
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8
+      ],
+      "min_effective_ancestors": 20.83543423961916
+    }
+  ],
+  "q_ea_squared": 0.009446565822187928,
+  "q_ea": 0.09719344536638223,
+  "chi_sg": 1.0202291087962962,
+  "q2_projector_se": 0.0002132666087161931,
+  "chi_sg_projector_se": 0.023032793741348857,
+  "q_ea_projector_se_delta": 0.0010971244403995522,
+  "q2_sample_scatter_se": null,
+  "q_ea_sample_scatter_se_delta": null,
+  "chi_sg_sample_scatter_se": null,
+  "q2_disorder_se_estimate": null,
+  "all_projection_complete": true,
+  "definitions": {
+    "q_ea_squared": "equal-weight disorder mean of pure q2",
+    "q_ea": "sqrt(disorder mean of pure q2), finite-size RMS overlap",
+    "chi_sg": "n_sites * disorder mean of pure q2",
+    "projector_se": "scatter of independent population means; cycles remain grouped",
+    "sample_scatter_se": "sample-to-sample standard error including projector noise",
+    "disorder_se_estimate": "variance-component estimate subtracting mean projector variance; clipped at zero",
+    "q_ea_se_delta": "linear error propagation through sqrt(mean q2)",
+    "systematic_error": "forward-time and finite-population biases are assessed separately"
+  }
+}

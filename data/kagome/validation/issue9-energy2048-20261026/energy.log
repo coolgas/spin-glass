@@ -1,0 +1,65 @@
+PROGRESS child=3 blocks=1280 tau=256.0
+PROGRESS child=1 blocks=1280 tau=256.0
+PROGRESS child=5 blocks=1280 tau=256.0
+PROGRESS child=7 blocks=1280 tau=256.0
+PROGRESS child=2 blocks=1280 tau=256.0
+PROGRESS child=4 blocks=1280 tau=256.0
+PROGRESS child=0 blocks=1280 tau=256.0
+PROGRESS child=6 blocks=1280 tau=256.0
+PROGRESS child=3 blocks=2560 tau=512.0
+PROGRESS child=1 blocks=2560 tau=512.0
+PROGRESS child=7 blocks=2560 tau=512.0
+PROGRESS child=5 blocks=2560 tau=512.0
+PROGRESS child=4 blocks=2560 tau=512.0
+PROGRESS child=2 blocks=2560 tau=512.0
+PROGRESS child=0 blocks=2560 tau=512.0
+PROGRESS child=6 blocks=2560 tau=512.0
+PROGRESS child=3 blocks=3840 tau=768.0
+PROGRESS child=5 blocks=3840 tau=768.0
+PROGRESS child=7 blocks=3840 tau=768.0
+PROGRESS child=1 blocks=3840 tau=768.0
+PROGRESS child=4 blocks=3840 tau=768.0
+PROGRESS child=2 blocks=3840 tau=768.0
+PROGRESS child=0 blocks=3840 tau=768.0
+PROGRESS child=6 blocks=3840 tau=768.0
+PROGRESS child=5 blocks=5120 tau=1024.0
+PROGRESS child=3 blocks=5120 tau=1024.0
+PROGRESS child=1 blocks=5120 tau=1024.0
+PROGRESS child=7 blocks=5120 tau=1024.0
+PROGRESS child=4 blocks=5120 tau=1024.0
+PROGRESS child=2 blocks=5120 tau=1024.0
+PROGRESS child=0 blocks=5120 tau=1024.0
+PROGRESS child=6 blocks=5120 tau=1024.0
+PROGRESS child=5 blocks=6400 tau=1280.0
+PROGRESS child=3 blocks=6400 tau=1280.0
+PROGRESS child=1 blocks=6400 tau=1280.0
+PROGRESS child=7 blocks=6400 tau=1280.0
+PROGRESS child=4 blocks=6400 tau=1280.0
+PROGRESS child=0 blocks=6400 tau=1280.0
+PROGRESS child=2 blocks=6400 tau=1280.0
+PROGRESS child=6 blocks=6400 tau=1280.0
+PROGRESS child=1 blocks=7680 tau=1536.0
+PROGRESS child=3 blocks=7680 tau=1536.0
+PROGRESS child=7 blocks=7680 tau=1536.0
+PROGRESS child=5 blocks=7680 tau=1536.0
+PROGRESS child=4 blocks=7680 tau=1536.0
+PROGRESS child=0 blocks=7680 tau=1536.0
+PROGRESS child=2 blocks=7680 tau=1536.0
+PROGRESS child=6 blocks=7680 tau=1536.0
+PROGRESS child=3 blocks=8960 tau=1792.0
+PROGRESS child=1 blocks=8960 tau=1792.0
+PROGRESS child=7 blocks=8960 tau=1792.0
+PROGRESS child=4 blocks=8960 tau=1792.0
+PROGRESS child=0 blocks=8960 tau=1792.0
+PROGRESS child=5 blocks=8960 tau=1792.0
+PROGRESS child=2 blocks=8960 tau=1792.0
+PROGRESS child=6 blocks=8960 tau=1792.0
+DONE {"child": 3, "blocks": 10240, "imaginary_time": 2048.0000000003283, "elapsed_seconds": 766.1285606827587, "finished": "2026-10-26T01:09:12.806148+00:00"}
+DONE {"child": 1, "blocks": 10240, "imaginary_time": 2048.0000000003283, "elapsed_seconds": 766.509718330577, "finished": "2026-10-26T01:09:13.187152+00:00"}
+DONE {"child": 7, "blocks": 10240, "imaginary_time": 2048.0000000003283, "elapsed_seconds": 767.5188704021275, "finished": "2026-10-26T01:09:14.196722+00:00"}
+DONE {"child": 0, "blocks": 10240, "imaginary_time": 2048.0000000003283, "elapsed_seconds": 769.1426682267338, "finished": "2026-10-26T01:09:15.819871+00:00"}
+DONE {"child": 4, "blocks": 10240, "imaginary_time": 2048.0000000003283, "elapsed_seconds": 769.2784166093916, "finished": "2026-10-26T01:09:15.956080+00:00"}
+DONE {"child": 5, "blocks": 10240, "imaginary_time": 2048.0000000003283, "elapsed_seconds": 773.537499351427, "finished": "2026-10-26T01:09:20.215236+00:00"}
+DONE {"child": 6, "blocks": 10240, "imaginary_time": 2048.0000000003283, "elapsed_seconds": 773.6902753934264, "finished": "2026-10-26T01:09:20.368085+00:00"}
+DONE {"child": 2, "blocks": 10240, "imaginary_time": 2048.0000000003283, "elapsed_seconds": 773.9200575239956, "finished": "2026-10-26T01:09:20.597562+00:00"}
+FINAL {"decision": "no primary late-time drift resolved at current precision; plateau not certified", "primary_late_shift": {"label": "tau1024_1536_to_tau1536_2048", "mean": -0.022578293549070594, "se": 0.022260017490013204, "ci95": [-0.07521487074683535, 0.03005828364869416], "populations": 8, "per_spin_mean": -0.0002090582736025055, "per_spin_ci95": [-0.0006964339883966235, 0.0002783174411916126], "resolved_drift": false, "population_differences": [0.019407877869099366, 0.004288287511400313, -0.016606392151857108, -0.005451876185674109, -0.17585890725789, -0.002884116548216298, 0.00786437445620436, -0.011385596085631278]}, "elapsed_seconds": 774.6558324731886}

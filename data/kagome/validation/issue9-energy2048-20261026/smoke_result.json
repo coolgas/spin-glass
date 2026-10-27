@@ -1,0 +1,33 @@
+{
+  "exact_observer_equivalence": true,
+  "keys_checked": [
+    "energy",
+    "energy_equilibration_time",
+    "energy_equilibration_trace",
+    "energy_error",
+    "energy_growth",
+    "energy_growth_error",
+    "energy_growth_resolved",
+    "energy_measure_time",
+    "energy_measure_trace",
+    "energy_resolved",
+    "floor_effective",
+    "floor_unique",
+    "n_energy_blocks",
+    "n_equilibrate",
+    "n_measure",
+    "n_populations",
+    "n_replicas",
+    "n_sites",
+    "n_walkers",
+    "shift",
+    "tau_block"
+  ],
+  "metadata": {
+    "child": 0,
+    "blocks": 16,
+    "imaginary_time": 3.2000000000000006,
+    "elapsed_seconds": 0.03316528722643852,
+    "finished": "2026-10-26T00:56:12.517478+00:00"
+  }
+}

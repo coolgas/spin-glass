@@ -1,0 +1,17 @@
+{
+  "state": "training",
+  "task": {
+    "L": 8,
+    "gamma": 0.6,
+    "sample_id": 60000,
+    "kind": "rbm_2",
+    "seed": 0,
+    "mode": "anneal"
+  },
+  "stage": 0,
+  "gamma": 1.5,
+  "step": 25,
+  "energy": -296.0569190184052,
+  "variance": 437.5633737688363,
+  "gradient_norm": 0.5741324514082771
+}

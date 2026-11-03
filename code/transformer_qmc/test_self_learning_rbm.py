@@ -72,23 +72,46 @@ class SelfLearningTests(unittest.TestCase):
     def test_cuda_interrupted_fit_resumes_identical_trajectory(self):
         self.check_interrupted_fit('cuda')
 
-    def check_interrupted_fit(self, device):
+    def test_enhanced_interrupted_fit_resumes_identically(self):
+        self.check_interrupted_fit('cpu', enhanced=True)
+
+    @unittest.skipUnless(torch.cuda.is_available(), 'CUDA unavailable')
+    def test_cuda_enhanced_interrupted_fit_resumes_identically(self):
+        self.check_interrupted_fit('cuda', enhanced=True)
+
+    @unittest.skipUnless(torch.cuda.is_available(), 'CUDA unavailable')
+    def test_cuda_projection_and_round_robin_dispatch_resume_identically(self):
+        self.check_interrupted_fit('cuda', enhanced=True, phase='dispatch')
+
+    def test_enhanced_interrupted_projection_resumes_identically(self):
+        self.check_interrupted_fit('cpu', enhanced=True, phase='project')
+
+    def check_interrupted_fit(self, device, enhanced=False, phase='fit'):
         with tempfile.TemporaryDirectory() as temporary:
             args = argparse.Namespace(L=2, gamma=.6, sample_id=60000, seed=0,
                 stints=2, walkers=8, equil=.1, collect=.2, delta=.1,
                 sample_walkers=8, updates=30, batch=8, gibbs=1, initial_sweeps=1,
                 lr=.001, device=device, initial=None, output=Path(temporary)/'full')
+            if enhanced:
+                args.islands = 2; args.negative_temperatures = 4
+                args.step_rms = .025; args.step_max = .15
+            if phase == 'dispatch':args.projection_device = 'cuda'
+            if phase == 'project':
+                args.collect = 2.5
             feedback.run(args)
             full = torch.load(args.output/'checkpoint.pt', weights_only=False)
             args.output = Path(temporary)/'resumed'
             original = feedback.save_checkpoint
             def interrupt(path, state):
                 original(path, state)
-                if state.get('phase') == 'fit' and state.get('update') == 25:
+                if state.get('phase') == phase and state.get('update' if phase == 'fit' else 'step') == 25:
                     raise InterruptedError('intentional restart regression')
-            with patch.object(feedback, 'save_checkpoint', interrupt):
-                with self.assertRaises(InterruptedError):
-                    feedback.run(args)
+            if phase == 'dispatch':
+                feedback.run(args,stop_after_stints=1)
+            else:
+                with patch.object(feedback, 'save_checkpoint', interrupt):
+                    with self.assertRaises(InterruptedError):
+                        feedback.run(args)
             feedback.run(args)
             resumed = torch.load(args.output/'checkpoint.pt', weights_only=False)
             for key in full['model']:
@@ -98,6 +121,13 @@ class SelfLearningTests(unittest.TestCase):
             self.assertEqual(full['rng'], resumed['rng'])
             self.assertEqual(full['rows'], resumed['rows'])
             np.testing.assert_array_equal(full['states'], resumed['states'])
+            if enhanced:
+                self.assertEqual(full['island_rngs'], resumed['island_rngs'])
+                for key, value in full['sampler'].items():
+                    if isinstance(value, torch.Tensor):
+                        torch.testing.assert_close(value, resumed['sampler'][key], atol=0, rtol=0)
+                    else:
+                        self.assertEqual(value, resumed['sampler'][key])
             self.assertEqual(full['optimizer']['param_groups'], resumed['optimizer']['param_groups'])
             for index, values in full['optimizer']['state'].items():
                 for name, value in values.items():

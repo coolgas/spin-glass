@@ -72,6 +72,9 @@ def _run_one(spec, root):
         sources={name:digest(Path(__file__).with_name(name)) for name in
                  ['projector.py','disorder_scaling.py','physics.py','simple_guides.py',
                   'independent_replica_projector.py']})
+    projection_device = spec.get('projection_device', 'cpu')
+    if projection_device != 'cpu':
+        provenance['projection_device'] = projection_device
     if dest.exists():
         record = json.loads(dest.read_text())
         assert record['provenance'] == provenance
@@ -80,6 +83,7 @@ def _run_one(spec, root):
     n = 3*task['L']**2; w = task['walkers']; dt = task['delta']
     ham = make_af_sample(task['L'], task['sample_id']).hamiltonian(.15)
     model = Jastrow(n) if task['kind'] == 'jastrow' else RBM(n, 2)
+    model = model.to(projection_device)
     state = torch.load(spec['model'], map_location='cpu', weights_only=False)
     model.load_state_dict(state['model'] if 'model' in state else state)
     guide = SimpleGuide(model, sweeps=200)

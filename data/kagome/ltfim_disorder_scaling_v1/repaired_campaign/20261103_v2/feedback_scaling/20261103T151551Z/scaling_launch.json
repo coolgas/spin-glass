@@ -1,0 +1,70 @@
+{
+  "utc": "2026-11-03T15:12:24.982677+00:00",
+  "rows": [
+    {
+      "L": 6,
+      "pid": 393149,
+      "command": [
+        "/root/miniconda3/bin/python",
+        "-u",
+        "-m",
+        "transformer_qmc.feedback_scaling",
+        "--L",
+        "6",
+        "--output",
+        "/root/autodl-tmp/self-learning-frontier-20261103-v1/scaling/L6",
+        "--l6",
+        "/root/autodl-tmp/self-learning-l6-20261103-v1/results",
+        "--regressions",
+        "/root/autodl-tmp/self-learning-frontier-20261103-v1/validation/scaling_regressions.json"
+      ],
+      "output": "/root/autodl-tmp/self-learning-frontier-20261103-v1/scaling/L6"
+    },
+    {
+      "L": 8,
+      "pid": 393150,
+      "command": [
+        "/root/miniconda3/bin/python",
+        "-u",
+        "-m",
+        "transformer_qmc.feedback_scaling",
+        "--L",
+        "8",
+        "--output",
+        "/root/autodl-tmp/self-learning-frontier-20261103-v1/scaling/L8",
+        "--l6",
+        "/root/autodl-tmp/self-learning-l6-20261103-v1/results",
+        "--regressions",
+        "/root/autodl-tmp/self-learning-frontier-20261103-v1/validation/scaling_regressions.json"
+      ],
+      "output": "/root/autodl-tmp/self-learning-frontier-20261103-v1/scaling/L8"
+    },
+    {
+      "L": 10,
+      "pid": 393151,
+      "command": [
+        "/root/miniconda3/bin/python",
+        "-u",
+        "-m",
+        "transformer_qmc.feedback_scaling",
+        "--L",
+        "10",
+        "--output",
+        "/root/autodl-tmp/self-learning-frontier-20261103-v1/scaling/L10",
+        "--l6",
+        "/root/autodl-tmp/self-learning-l6-20261103-v1/results",
+        "--regressions",
+        "/root/autodl-tmp/self-learning-frontier-20261103-v1/validation/scaling_regressions.json"
+      ],
+      "output": "/root/autodl-tmp/self-learning-frontier-20261103-v1/scaling/L10"
+    }
+  ],
+  "workers": 3,
+  "deadline": null,
+  "user_priority": "L6 L8 L10; L2 limited to short implementation checks",
+  "stints": 288,
+  "training_contexts": 24,
+  "new_measurements": 112,
+  "reused_L6_controls": 8,
+  "ground_state_qualified": false
+}

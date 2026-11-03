@@ -1,0 +1,17 @@
+{
+  "pid": 393651,
+  "utc": "2026-11-03T15:21:19.424805+00:00",
+  "command": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "-m",
+    "transformer_qmc.notebook_feedback_scaling",
+    "--root",
+    "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle",
+    "--archive",
+    "data/kagome/ltfim_disorder_scaling_v1/repaired_campaign/20261103_v2/feedback_scaling/20261103T151551Z",
+    "--progress",
+    "data/kagome/ltfim_disorder_scaling_v1/repaired_campaign/20261103_v2/feedback_scaling/progress/20261103T152007Z",
+    "--execute"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "snapshot.json": "ce97c4b6f9bc6a9779a6b5377cd15f89fcc0bc959fd5d95d8cb09995d8cd1b91",
+  "L6/training/robust/L6_s60000_g0p6_rbm_2_anneal_seed0/summary.json": "5782c2300f46785b40ccd588a13e69fc91f176ae5801f44ffd7d99f5e2d2a87e",
+  "L6/training/robust/L6_s60000_g0p6_rbm_2_anneal_seed0/manifest.json": "d973c3bc944c94b3c8f3461758ea71c7e92adfe4a614fe9d2738ed987620b246",
+  "L6/training/robust/L6_s60000_g0p6_rbm_2_anneal_seed0/status.json": "511e085a1329880cee3ab4985ba11acdd7948d39debd80486189fe7e0b2490f7",
+  "L6/training/robust/L6_s60000_g0p6_rbm_2_anneal_seed0/stint_000/input_model.pt": "449e343707b7bec6bfa76bff2ce69fabe710a62309b01a7807a2cb14fa0c4d9b",
+  "L6/training/robust/L6_s60000_g0p6_rbm_2_anneal_seed0/stint_000/walkers.npz": "20ba136e4e3f1211c81aeb049bca876d12e2c325c8cb6a9b5dda6badce0b8ac9",
+  "L6/training/robust/L6_s60000_g0p6_rbm_2_anneal_seed0/stint_000/model.pt": "cb37c4a6660511d63b00599e22e92dd407680d3aad4b16df1eb2fa8c424626b4",
+  "L6/training/robust/L6_s60000_g0p6_rbm_2_anneal_seed0/stint_000/fit.npz": "41a1868930463424fc88dffe3b749b02919b8986d71ccdb08767125f64a93d1c",
+  "L6/training/robust/L6_s60000_g0p6_rbm_2_anneal_seed0/stint_000/timing.json": "bb8845d0684bd9f39895a07e24bedb9f31babea0d20c0e9b1fb34a2280bb9cb8",
+  "L6/training/robust/L6_s60000_g0p6_rbm_2_anneal_seed0/stint_000/summary.json": "219e20b36b45bff3f49d162ca1a0d0b5592f7b5c256aef9f355cef00c6ee19ea",
+  "L6/training/robust/L6_s60000_g0p6_rbm_2_anneal_seed0/stint_001/input_model.pt": "209bd5a1dd3d6d2143479a0068e713c9cd49c278cae25838e0053876a1a3008e",
+  "L6/training/robust/L6_s60000_g0p6_rbm_2_anneal_seed0/stint_001/walkers.npz": "7fd643ab1c02e966786affe7f520988d1a9f9d8e6ed00dfce6650de2c1782a79",
+  "L6/training/robust/L6_s60000_g0p6_rbm_2_anneal_seed0/stint_001/model.pt": "5bd7972d5edb8ba97c97cc0c2a46e9fb22aa41bf9bb355f3e52dc161138bdefb",
+  "L6/training/robust/L6_s60000_g0p6_rbm_2_anneal_seed0/stint_001/fit.npz": "63c69465b37eb76752497da839489db723797529557a7aa2b71a43e95c2766dd",
+  "L6/training/robust/L6_s60000_g0p6_rbm_2_anneal_seed0/stint_001/timing.json": "0aa4da711d84cfc28b95f74f4bad9a4b42550596ff77cf9dac9e3214c2572f31",
+  "L6/training/robust/L6_s60000_g0p6_rbm_2_anneal_seed0/stint_001/summary.json": "e03451dced227f2f5687b054d2d8e9a4eee65b71664945c238a765f9b9af12b6"
+}

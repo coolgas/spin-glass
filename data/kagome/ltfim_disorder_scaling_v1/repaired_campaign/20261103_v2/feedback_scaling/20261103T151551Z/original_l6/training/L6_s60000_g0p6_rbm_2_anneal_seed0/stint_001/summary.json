@@ -1,0 +1,14 @@
+{
+  "stint": 1,
+  "model_sha256": "dcafee6981a8fcacaa00479b21f12508b81134a71234e7f1466263d2b3039023",
+  "input_model_sha256": "f2345834fca77eb5c899b6f9dc24d447bd88e534979fed018758e8d782efc836",
+  "raw_sha256": "06b1431307e3a338869017819c366a1e7b36d9909698efea4ce139f465ab7647",
+  "fit_sha256": "8f6db0f582d0ee85b2b3a832a6152d55bd7b65913fedf67e241afbb84c5ff877",
+  "training_samples": 7680,
+  "before": null,
+  "after": null,
+  "minimum_training_lineage_ess": 2.484388697502286,
+  "largest_training_lineage": 0.6240234375,
+  "training_ancestry_alarm": true,
+  "ground_state_qualified": false
+}

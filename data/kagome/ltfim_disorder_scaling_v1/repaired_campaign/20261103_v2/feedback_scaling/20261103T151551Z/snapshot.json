@@ -1,0 +1,491 @@
+{
+  "utc": "2026-11-03T15:15:51.232990+00:00",
+  "scaling": [
+    {
+      "L": 6,
+      "pid": 393149,
+      "alive": true,
+      "status": {
+        "state": "adapting",
+        "current": {
+          "arm": "robust",
+          "target_stints": 2,
+          "L": 6,
+          "gamma": 0.6,
+          "sample_id": 60000,
+          "kind": "rbm_2",
+          "seed": 0,
+          "mode": "anneal"
+        },
+        "updated_utc": "2026-11-03T15:12:29.996972+00:00",
+        "L": 6,
+        "progress": {},
+        "completed_measurement_groups": 0,
+        "failures": [],
+        "deadline": null,
+        "ground_state_qualified": false
+      },
+      "training_status": [
+        {
+          "state": "fit",
+          "stint": 0,
+          "planned_stints": 12,
+          "projection_step": 200,
+          "fit_update": 825,
+          "completed_stints": 0,
+          "ground_state_qualified": false
+        }
+      ],
+      "initial_status": []
+    },
+    {
+      "L": 8,
+      "pid": 393150,
+      "alive": true,
+      "status": {
+        "state": "initial_vmc",
+        "current": {
+          "L": 8,
+          "gamma": 0.6,
+          "sample_id": 60000,
+          "kind": "rbm_2",
+          "seed": 0,
+          "mode": "anneal"
+        },
+        "updated_utc": "2026-11-03T15:12:29.920531+00:00",
+        "L": 8,
+        "progress": {},
+        "completed_measurement_groups": 0,
+        "failures": [],
+        "deadline": null,
+        "ground_state_qualified": false
+      },
+      "training_status": [],
+      "initial_status": [
+        {
+          "state": "training",
+          "task": {
+            "L": 8,
+            "gamma": 0.6,
+            "sample_id": 60000,
+            "kind": "rbm_2",
+            "seed": 0,
+            "mode": "anneal"
+          },
+          "stage": 0,
+          "gamma": 1.5,
+          "step": 25,
+          "energy": -296.0569190184052,
+          "variance": 437.5633737688363,
+          "gradient_norm": 0.5741324514082771
+        }
+      ]
+    },
+    {
+      "L": 10,
+      "pid": 393151,
+      "alive": true,
+      "status": {
+        "state": "initial_vmc",
+        "current": {
+          "L": 10,
+          "gamma": 0.6,
+          "sample_id": 60000,
+          "kind": "rbm_2",
+          "seed": 0,
+          "mode": "anneal"
+        },
+        "updated_utc": "2026-11-03T15:12:30.287106+00:00",
+        "L": 10,
+        "progress": {},
+        "completed_measurement_groups": 0,
+        "failures": [],
+        "deadline": null,
+        "ground_state_qualified": false
+      },
+      "training_status": [],
+      "initial_status": []
+    }
+  ],
+  "existing": [
+    {
+      "campaign": "self-learning-l6-20261103-v1",
+      "alive": true,
+      "status": {
+        "state": "frozen_sampling_checks",
+        "current": {
+          "L": 6,
+          "gamma": 0.6,
+          "sample_id": 60000,
+          "kind": "rbm_2",
+          "seed": 0,
+          "mode": "anneal"
+        },
+        "updated_utc": "2026-11-03T15:06:49.587420+00:00",
+        "completed_contexts": 0,
+        "planned_contexts": 4,
+        "planned_stints": 24,
+        "planned_final_projections": 8,
+        "failures": [],
+        "ground_state_qualified": false
+      },
+      "saved_runs": 8,
+      "ancestry_alarms": 8
+    },
+    {
+      "campaign": "l4-production-20261103-v1",
+      "alive": true,
+      "status": {
+        "state": "running",
+        "completed_fits": 41,
+        "planned_fits": 576,
+        "active_training": [
+          {
+            "L": 4,
+            "gamma": 0.56,
+            "sample_id": 60002,
+            "kind": "jastrow",
+            "seed": 1,
+            "mode": "anneal"
+          }
+        ],
+        "trainers": 1,
+        "queued_or_running_projectors": 4,
+        "running_projectors": [
+          {
+            "L": 4,
+            "gamma": 0.56,
+            "sample_id": 60001,
+            "kind": "rbm_2",
+            "training_seed": 0,
+            "audit": "time",
+            "walkers": 512,
+            "equil": 32.0,
+            "forward": 32.0,
+            "start": "guide",
+            "delta": 0.1,
+            "cycles": 8,
+            "repeat": 0
+          },
+          {
+            "L": 4,
+            "gamma": 0.56,
+            "sample_id": 60001,
+            "kind": "rbm_2",
+            "training_seed": 0,
+            "audit": "population",
+            "walkers": 1024,
+            "equil": 16.0,
+            "forward": 16.0,
+            "start": "guide",
+            "delta": 0.1,
+            "cycles": 8,
+            "repeat": 1
+          }
+        ],
+        "deferred_projectors": 2,
+        "projector_workers": 2,
+        "submitted_contexts": 20,
+        "completed_runs": 84,
+        "deadline_unix": null,
+        "budget_mode": "until_complete",
+        "failures": [],
+        "updated_unix": 1793718935.394857
+      },
+      "saved_runs": 84,
+      "ancestry_alarms": 23
+    },
+    {
+      "campaign": "l6-convergence-20261103-v1",
+      "alive": true,
+      "status": {
+        "state": "running",
+        "updated_utc": "2026-11-03T15:15:21.380885+00:00",
+        "training_workers": 2,
+        "projector_workers": 8,
+        "active_training": [
+          {
+            "task": {
+              "L": 6,
+              "gamma": 0.7,
+              "sample_id": 60001,
+              "kind": "rbm_2",
+              "seed": 1,
+              "mode": "anneal"
+            },
+            "extra_updates": 1200
+          },
+          {
+            "task": {
+              "L": 6,
+              "gamma": 0.55,
+              "sample_id": 60001,
+              "kind": "rbm_2",
+              "seed": 1,
+              "mode": "anneal"
+            },
+            "extra_updates": 3600
+          }
+        ],
+        "active_projectors": [
+          {
+            "spec": {
+              "task": {
+                "L": 6,
+                "gamma": 0.65,
+                "sample_id": 60000,
+                "kind": "rbm_2",
+                "training_seed": 0,
+                "audit": "l6_convergence_training",
+                "walkers": 512,
+                "equil": 16.0,
+                "forward": 16.0,
+                "start": "guide",
+                "delta": 0.1,
+                "cycles": 8,
+                "repeat": 1
+              },
+              "model": "/root/autodl-tmp/l6-convergence-20261103-v1/results/training/L6_s60000_g0p65_rbm_2_anneal_seed0/extra_1200/L6_s60000_g0p65_rbm_2_direct_seed0.pt"
+            },
+            "output": "/root/autodl-tmp/l6-convergence-20261103-v1/results/projector/L6_s60000_g0p65_rbm_2_anneal_seed0/extra_1200"
+          },
+          {
+            "spec": {
+              "task": {
+                "L": 6,
+                "gamma": 0.65,
+                "sample_id": 60000,
+                "kind": "rbm_2",
+                "training_seed": 1,
+                "audit": "l6_convergence_training",
+                "walkers": 512,
+                "equil": 16.0,
+                "forward": 16.0,
+                "start": "guide",
+                "delta": 0.1,
+                "cycles": 8,
+                "repeat": 0
+              },
+              "model": "/root/autodl-tmp/l6-convergence-20261103-v1/results/training/L6_s60000_g0p65_rbm_2_anneal_seed1/extra_1200/L6_s60000_g0p65_rbm_2_direct_seed1.pt"
+            },
+            "output": "/root/autodl-tmp/l6-convergence-20261103-v1/results/projector/L6_s60000_g0p65_rbm_2_anneal_seed1/extra_1200"
+          },
+          {
+            "spec": {
+              "task": {
+                "L": 6,
+                "gamma": 0.65,
+                "sample_id": 60000,
+                "kind": "rbm_2",
+                "training_seed": 1,
+                "audit": "l6_convergence_training",
+                "walkers": 512,
+                "equil": 16.0,
+                "forward": 16.0,
+                "start": "guide",
+                "delta": 0.1,
+                "cycles": 8,
+                "repeat": 1
+              },
+              "model": "/root/autodl-tmp/l6-convergence-20261103-v1/results/training/L6_s60000_g0p65_rbm_2_anneal_seed1/extra_1200/L6_s60000_g0p65_rbm_2_direct_seed1.pt"
+            },
+            "output": "/root/autodl-tmp/l6-convergence-20261103-v1/results/projector/L6_s60000_g0p65_rbm_2_anneal_seed1/extra_1200"
+          },
+          {
+            "spec": {
+              "task": {
+                "L": 6,
+                "gamma": 0.65,
+                "sample_id": 60001,
+                "kind": "rbm_2",
+                "training_seed": 0,
+                "audit": "l6_convergence_training",
+                "walkers": 512,
+                "equil": 16.0,
+                "forward": 16.0,
+                "start": "guide",
+                "delta": 0.1,
+                "cycles": 8,
+                "repeat": 0
+              },
+              "model": "/root/autodl-tmp/l6-convergence-20261103-v1/results/training/L6_s60001_g0p65_rbm_2_anneal_seed0/extra_1200/L6_s60001_g0p65_rbm_2_direct_seed0.pt"
+            },
+            "output": "/root/autodl-tmp/l6-convergence-20261103-v1/results/projector/L6_s60001_g0p65_rbm_2_anneal_seed0/extra_1200"
+          },
+          {
+            "spec": {
+              "task": {
+                "L": 6,
+                "gamma": 0.65,
+                "sample_id": 60001,
+                "kind": "rbm_2",
+                "training_seed": 0,
+                "audit": "l6_convergence_training",
+                "walkers": 512,
+                "equil": 16.0,
+                "forward": 16.0,
+                "start": "guide",
+                "delta": 0.1,
+                "cycles": 8,
+                "repeat": 1
+              },
+              "model": "/root/autodl-tmp/l6-convergence-20261103-v1/results/training/L6_s60001_g0p65_rbm_2_anneal_seed0/extra_1200/L6_s60001_g0p65_rbm_2_direct_seed0.pt"
+            },
+            "output": "/root/autodl-tmp/l6-convergence-20261103-v1/results/projector/L6_s60001_g0p65_rbm_2_anneal_seed0/extra_1200"
+          },
+          {
+            "spec": {
+              "task": {
+                "L": 6,
+                "gamma": 0.65,
+                "sample_id": 60001,
+                "kind": "rbm_2",
+                "training_seed": 1,
+                "audit": "l6_convergence_training",
+                "walkers": 512,
+                "equil": 16.0,
+                "forward": 16.0,
+                "start": "guide",
+                "delta": 0.1,
+                "cycles": 8,
+                "repeat": 0
+              },
+              "model": "/root/autodl-tmp/l6-convergence-20261103-v1/results/training/L6_s60001_g0p65_rbm_2_anneal_seed1/extra_1200/L6_s60001_g0p65_rbm_2_direct_seed1.pt"
+            },
+            "output": "/root/autodl-tmp/l6-convergence-20261103-v1/results/projector/L6_s60001_g0p65_rbm_2_anneal_seed1/extra_1200"
+          },
+          {
+            "spec": {
+              "task": {
+                "L": 6,
+                "gamma": 0.65,
+                "sample_id": 60001,
+                "kind": "rbm_2",
+                "training_seed": 1,
+                "audit": "l6_convergence_training",
+                "walkers": 512,
+                "equil": 16.0,
+                "forward": 16.0,
+                "start": "guide",
+                "delta": 0.1,
+                "cycles": 8,
+                "repeat": 1
+              },
+              "model": "/root/autodl-tmp/l6-convergence-20261103-v1/results/training/L6_s60001_g0p65_rbm_2_anneal_seed1/extra_1200/L6_s60001_g0p65_rbm_2_direct_seed1.pt"
+            },
+            "output": "/root/autodl-tmp/l6-convergence-20261103-v1/results/projector/L6_s60001_g0p65_rbm_2_anneal_seed1/extra_1200"
+          },
+          {
+            "spec": {
+              "task": {
+                "L": 6,
+                "gamma": 0.7,
+                "sample_id": 60000,
+                "kind": "rbm_2",
+                "training_seed": 0,
+                "audit": "l6_convergence_training",
+                "walkers": 512,
+                "equil": 16.0,
+                "forward": 16.0,
+                "start": "guide",
+                "delta": 0.1,
+                "cycles": 8,
+                "repeat": 0
+              },
+              "model": "/root/autodl-tmp/l6-convergence-20261103-v1/results/training/L6_s60000_g0p7_rbm_2_anneal_seed0/extra_1200/L6_s60000_g0p7_rbm_2_direct_seed0.pt"
+            },
+            "output": "/root/autodl-tmp/l6-convergence-20261103-v1/results/projector/L6_s60000_g0p7_rbm_2_anneal_seed0/extra_1200"
+          }
+        ],
+        "pending_training": 12,
+        "pending_projectors": 5,
+        "completed_milestones": 27,
+        "completed_projections": 41,
+        "failures": [],
+        "excluded_projections": [],
+        "ground_state_qualified": false
+      },
+      "saved_runs": 41,
+      "ancestry_alarms": 41
+    },
+    {
+      "campaign": "l6-reference-fields-20261103-v1",
+      "alive": true,
+      "status": {
+        "state": "running",
+        "updated_utc": "2026-11-03T15:15:30.033675+00:00",
+        "training_workers": 1,
+        "projector_workers": 2,
+        "planned_milestones": 24,
+        "maximum_projection_runs": 48,
+        "completed_milestones": 3,
+        "completed_projections": 0,
+        "pending_training": 7,
+        "pending_projectors": 4,
+        "active_training": [
+          {
+            "task": {
+              "L": 6,
+              "gamma": 0.85,
+              "sample_id": 60001,
+              "kind": "rbm_2",
+              "seed": 1,
+              "mode": "anneal"
+            },
+            "extra_updates": 0
+          }
+        ],
+        "active_projectors": [
+          {
+            "spec": {
+              "task": {
+                "L": 6,
+                "gamma": 0.85,
+                "sample_id": 60000,
+                "kind": "rbm_2",
+                "training_seed": 0,
+                "audit": "l6_convergence_training",
+                "walkers": 512,
+                "equil": 16.0,
+                "forward": 16.0,
+                "start": "guide",
+                "delta": 0.1,
+                "cycles": 8,
+                "repeat": 0
+              },
+              "model": "/root/autodl-tmp/l6-reference-fields-20261103-v1/results/training/L6_s60000_g0p85_rbm_2_anneal_seed0/extra_0/L6_s60000_g0p85_rbm_2_anneal_seed0.pt"
+            },
+            "output": "/root/autodl-tmp/l6-reference-fields-20261103-v1/results/projector/L6_s60000_g0p85_rbm_2_anneal_seed0/extra_0"
+          },
+          {
+            "spec": {
+              "task": {
+                "L": 6,
+                "gamma": 0.85,
+                "sample_id": 60000,
+                "kind": "rbm_2",
+                "training_seed": 0,
+                "audit": "l6_convergence_training",
+                "walkers": 512,
+                "equil": 16.0,
+                "forward": 16.0,
+                "start": "guide",
+                "delta": 0.1,
+                "cycles": 8,
+                "repeat": 1
+              },
+              "model": "/root/autodl-tmp/l6-reference-fields-20261103-v1/results/training/L6_s60000_g0p85_rbm_2_anneal_seed0/extra_0/L6_s60000_g0p85_rbm_2_anneal_seed0.pt"
+            },
+            "output": "/root/autodl-tmp/l6-reference-fields-20261103-v1/results/projector/L6_s60000_g0p85_rbm_2_anneal_seed0/extra_0"
+          }
+        ],
+        "failures": [],
+        "excluded_projections": [],
+        "ground_state_qualified": false
+      },
+      "saved_runs": 0,
+      "ancestry_alarms": 0
+    }
+  ],
+  "ground_state_qualified": false
+}

@@ -1,0 +1,18 @@
+{
+  "state": "initial_vmc",
+  "current": {
+    "L": 10,
+    "gamma": 0.6,
+    "sample_id": 60000,
+    "kind": "rbm_2",
+    "seed": 0,
+    "mode": "anneal"
+  },
+  "updated_utc": "2026-11-03T15:12:30.287106+00:00",
+  "L": 10,
+  "progress": {},
+  "completed_measurement_groups": 0,
+  "failures": [],
+  "deadline": null,
+  "ground_state_qualified": false
+}

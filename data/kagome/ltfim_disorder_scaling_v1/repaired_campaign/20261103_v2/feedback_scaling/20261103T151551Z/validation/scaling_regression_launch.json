@@ -1,0 +1,5 @@
+{
+  "pid": 393081,
+  "utc": "2026-11-03T15:11:07.985504+00:00",
+  "command": "import unittest,torch,json,hashlib\nfrom pathlib import Path\ntorch.set_num_threads(1);torch.set_num_interop_threads(1)\nmodules=['test_feedback_samplers','test_self_learning_rbm','test_feedback_frontier','test_feedback_scaling']\nsuite=unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromName('transformer_qmc.'+n) for n in modules)\nresult=unittest.TextTestRunner(verbosity=2).run(suite)\nsource=Path('source/code/transformer_qmc')\nrecord=dict(passed=result.wasSuccessful(),tests_run=result.testsRun,skipped=len(result.skipped),failures=len(result.failures),errors=len(result.errors),source_hashes={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in source.glob('*.py')})\nPath('validation/scaling_regressions.json').write_text(json.dumps(record,indent=2))\nraise SystemExit(not result.wasSuccessful())\n"
+}

@@ -1,0 +1,50 @@
+{
+  "stint": 0,
+  "model_sha256": "cb37c4a6660511d63b00599e22e92dd407680d3aad4b16df1eb2fa8c424626b4",
+  "input_model_sha256": "449e343707b7bec6bfa76bff2ce69fabe710a62309b01a7807a2cb14fa0c4d9b",
+  "raw_sha256": "20ba136e4e3f1211c81aeb049bca876d12e2c325c8cb6a9b5dda6badce0b8ac9",
+  "fit_sha256": "41a1868930463424fc88dffe3b749b02919b8986d71ccdb08767125f64a93d1c",
+  "training_samples": 7680,
+  "before": null,
+  "after": null,
+  "minimum_training_lineage_ess": 1.1609488865220117,
+  "largest_training_lineage": 0.927734375,
+  "training_ancestry_alarm": true,
+  "island_minimum_ess": [
+    11.994966711661213,
+    18.463445555712074,
+    10.35691991624195,
+    1.1609488865220117
+  ],
+  "island_largest_lineage": [
+    0.228515625,
+    0.1044921875,
+    0.2080078125,
+    0.927734375
+  ],
+  "negative_sampler": {
+    "sweeps": 10000,
+    "round_trips": 76699,
+    "exchange_fraction": [
+      0.9750562310218811,
+      0.9459984302520752,
+      0.9132382869720459,
+      0.8774421811103821,
+      0.837765634059906,
+      0.7894054651260376,
+      0.713798463344574,
+      0.5661523342132568,
+      0.3584507703781128,
+      0.36702343821525574,
+      0.4741703271865845,
+      0.5556929707527161,
+      0.6188734173774719,
+      0.6710984110832214,
+      0.7133499979972839
+    ],
+    "warning": "Adaptive transport is diagnostic, not proof of equilibrium or valley mixing."
+  },
+  "bounded_steps": 1000,
+  "rejected_steps": 0,
+  "ground_state_qualified": false
+}

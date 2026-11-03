@@ -1,5 +1,15 @@
 # Iterative PQMC–RBM feedback — 2026-11-03
 
+**Current priority update, 15:20Z:** the user requested that research effort
+focus on **L6/L8/L10**. Three finite size workers launched at15:12:24Z with
+paired baseline/strengthened feedback, both disorders and seeds,12 stints,
+and independent frozen measurements at six/twelve stints. L2 is now limited
+to short implementation regressions; the proposed five-arm L2 continuation
+was never launched. See `FEEDBACK_SCALING.md` for scope, kernels, validation,
+early ancestry alarms and immutable source/archive paths. The completed L2
+validation and original finite L6 pilot described below remain historical
+evidence; neither qualifies the new larger-size results.
+
 The current L4 production, L6 training-budget anchors, and .85/1.00 references
 use energy-only VMC followed by fixed-guide GFMC. They do not implement the
 self-learning protocol in Brodoloni and Pilati, *Zero-temperature Monte Carlo

@@ -1,0 +1,20 @@
+{
+  "state": "adapting",
+  "current": {
+    "arm": "robust",
+    "target_stints": 2,
+    "L": 6,
+    "gamma": 0.6,
+    "sample_id": 60000,
+    "kind": "rbm_2",
+    "seed": 0,
+    "mode": "anneal"
+  },
+  "updated_utc": "2026-11-03T15:12:29.996972+00:00",
+  "L": 6,
+  "progress": {},
+  "completed_measurement_groups": 0,
+  "failures": [],
+  "deadline": null,
+  "ground_state_qualified": false
+}

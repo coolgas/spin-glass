@@ -1,0 +1,38 @@
+[
+  {
+    "L": 6,
+    "device": "cpu",
+    "seconds_per_1024_rates": 0.4824213919540246,
+    "energy_mean": -65.50249736876066
+  },
+  {
+    "L": 6,
+    "device": "cuda",
+    "seconds_per_1024_rates": 0.01847527300318082,
+    "energy_mean": -65.50249736876067
+  },
+  {
+    "L": 8,
+    "device": "cpu",
+    "seconds_per_1024_rates": 0.9427584732572237,
+    "energy_mean": -115.90108493068195
+  },
+  {
+    "L": 8,
+    "device": "cuda",
+    "seconds_per_1024_rates": 0.03211579844355583,
+    "energy_mean": -115.90108493068195
+  },
+  {
+    "L": 10,
+    "device": "cpu",
+    "seconds_per_1024_rates": 3.7797340533385673,
+    "energy_mean": -180.46865742241837
+  },
+  {
+    "L": 10,
+    "device": "cuda",
+    "seconds_per_1024_rates": 0.06670863553881645,
+    "energy_mean": -180.468657422418
+  }
+]

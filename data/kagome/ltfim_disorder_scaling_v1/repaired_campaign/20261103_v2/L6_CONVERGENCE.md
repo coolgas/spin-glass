@@ -26,23 +26,27 @@ the other fourteen, comprising 42 training milestones and at most 84 GFMC runs.
 At each eligible milestone, two repeats use four independent populations of
 512 walkers, equilibration16, forward16 and eight cycles. Task/RNG identities
 are matched across budgets, with separate output directories and model hashes.
-Only two projector tasks are submitted at once. Milestone results feed GFMC
+Only worker-sized batches of projector tasks are submitted. Milestone results feed GFMC
 while subsequent training runs; the whole training grid need not finish first.
 All raw overlaps, counts, weights, energies and model provenance are retained.
 
-Allocation: new study two GPU trainers/two CPU projectors; existing extension
+Allocation after utilization review: new study two GPU trainers/eight CPU projectors; existing extension
 two GPU trainers then two CPU projectors; existing field controls two CPU
-projectors. L4 additionally uses one GPU trainer and one CPU projector.
-At most five GPU trainers and seven CPU projectors
-across these finite jobs; four trainers/six projectors remain allocated to L6.
+projectors. L4 additionally uses one GPU trainer and two CPU projectors.
+At most five GPU trainers and fourteen CPU projectors across these finite jobs.
+The extension's two trainers and two projectors run in separate phases, so the
+combined active compute-worker maximum is seventeen, within the 20-core quota.
 No deadline. The added L4 workload may affect throughput; the L6 ETA remains provisional.
 
 ## Completion budget
 
 Stage 1 is finite and must be assessed before adding Stage 2 jobs. Budget roughly
-30–48 hours from the November 3 launch for the full Stage 1 comparison. At the
+30–48 hours from the November 3 launch was the original two-projector estimate.
+The new eight-projector allocation reduces the idealized projection component
+to about seven hours; training readiness and shared-machine throughput now need
+measurement before giving a revised full-study completion promise. At the
 measured approximately 40 minutes per standard L6 RBM GFMC run, 84 runs require
-56 worker-hours, or 28 wall-hours on two workers. Training overlaps projection;
+56 worker-hours, or seven wall-hours on eight workers. Training overlaps projection;
 allowance covers pipeline gaps and field/throughput variation. This is a planning
 range, not a confidence interval or convergence promise. Higher-field timing is
 not yet measured. Earlier .55 extension and field controls should report sooner.
@@ -82,6 +86,6 @@ Retain .85/1.00 references and L4 work for the later resumed plan. Report any
 disorder summaries with equal prespecified weights and capped uncertainty bars;
 never replace a difficult disorder. No fixed ETA for scientific convergence.
 
-## L4 continuation snapshot
+## Utilization snapshot
 
-Verified 2026-11-03T10:10:04.474465+00:00. L4 runner PID 334854: one trainer, one GFMC worker, no deadline. Imported 16 fits and 26 GFMC runs, with 170 file hashes verified. Full L4 scope remains 576 fits and 1008 GFMC runs over Gamma .55–.70 in .01 steps plus .85/1.00. Broad L6 production remains paused; the L6 convergence jobs retain their workers. CUDA serial/parallel regression attempts timed out under the live workload and were terminated; task-priority tests and L4-only manifest/source checks passed.
+Verified 2026-11-03T10:13:02.516344+00:00: L6 anchor study two trainers/eight projectors; L4 one trainer/two projectors. Existing L6 extension and field controls continue. Over 10.0 seconds the container used 14.9/20 CPU cores, with 0 throttled quota periods and 27.4 GiB RAM. Five GPU trainers retained; no new scientific tasks added. Ready tasks, rather than configured pool size, determine actual occupancy. Full memory occupancy is not an efficiency goal. Four checkpoint/plan regression tests passed after the worker-count change.

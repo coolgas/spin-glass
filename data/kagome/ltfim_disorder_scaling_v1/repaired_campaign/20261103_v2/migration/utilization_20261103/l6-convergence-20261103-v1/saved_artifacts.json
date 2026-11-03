@@ -1,0 +1,12 @@
+{
+  "results/training/L6_s60001_g0p55_rbm_2_anneal_seed0/extra_0/L6_s60001_g0p55_rbm_2_anneal_seed0.pt": "6fdbbd33882cf982422f6c79b3cad5a5dbd3033985546cb28173b09c97a53215",
+  "results/training/L6_s60001_g0p55_rbm_2_anneal_seed0/extra_0/L6_s60001_g0p55_rbm_2_anneal_seed0.npz": "cbbfdf53d21a0357373222fc2d7772fefd4329580792bb79e4f46c8a896004cf",
+  "results/training/L6_s60001_g0p55_rbm_2_anneal_seed1/extra_0/L6_s60001_g0p55_rbm_2_anneal_seed1.pt": "fc963facd86a0916b4a2ea2a2964be021e6b78833a0f0e533609082bad5ea1a5",
+  "results/training/L6_s60001_g0p55_rbm_2_anneal_seed1/extra_0/L6_s60001_g0p55_rbm_2_anneal_seed1.npz": "53a742cfe249b315bca7f99b7ed72ca9e58a2d21f5b2912b237879c8e4a4dc6c",
+  "results/training/L6_s60000_g0p6_rbm_2_anneal_seed0/extra_0/L6_s60000_g0p6_rbm_2_anneal_seed0.pt": "14634926ff6dd2433cc84927427c6044f8de71740dd050ab6d309a9d0040c191",
+  "results/training/L6_s60000_g0p6_rbm_2_anneal_seed0/extra_0/L6_s60000_g0p6_rbm_2_anneal_seed0.npz": "8e612b088679cd56cb128e6c997260f51cd723799239dd2a7cc9370be4ee22f1",
+  "results/training/L6_s60000_g0p6_rbm_2_anneal_seed1/extra_0/L6_s60000_g0p6_rbm_2_anneal_seed1.pt": "b656ecf6672e33ae268eeebab91947b18ed9175d22a754379cf6f8a7385831d1",
+  "results/training/L6_s60001_g0p6_rbm_2_anneal_seed0/extra_0/L6_s60001_g0p6_rbm_2_anneal_seed0.pt": "742a41566818ee4bb61d8b1402875a5e0753e7685efb336c73db0defe92c00fd",
+  "results/projector/L6_s60001_g0p55_rbm_2_anneal_seed1/extra_0/checkpoints/53e87faa5327d2c855ae9020.npz": "c419b65e3fe932aa31467f0f7764dc10ec485e3a717c9dcf8fedb7c69f76acdd",
+  "results/projector/L6_s60001_g0p55_rbm_2_anneal_seed1/extra_0/checkpoints/b2be4e3a29d8e3ec47f60eda.npz": "b4e0a3ab2ffd09abf085c28905de0f4a6bec218ce354ed46cc02d50cd31e5a37"
+}

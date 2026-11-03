@@ -26,23 +26,27 @@ the other fourteen, comprising 42 training milestones and at most 84 GFMC runs.
 At each eligible milestone, two repeats use four independent populations of
 512 walkers, equilibration16, forward16 and eight cycles. Task/RNG identities
 are matched across budgets, with separate output directories and model hashes.
-Only two projector tasks are submitted at once. Milestone results feed GFMC
+Only worker-sized batches of projector tasks are submitted. Milestone results feed GFMC
 while subsequent training runs; the whole training grid need not finish first.
 All raw overlaps, counts, weights, energies and model provenance are retained.
 
-Allocation: new study two GPU trainers/two CPU projectors; existing extension
+Allocation after utilization review: new study two GPU trainers/eight CPU projectors; existing extension
 two GPU trainers then two CPU projectors; existing field controls two CPU
-projectors. L4 additionally uses one GPU trainer and one CPU projector.
-At most five GPU trainers and seven CPU projectors
-across these finite jobs; four trainers/six projectors remain allocated to L6.
+projectors. L4 additionally uses one GPU trainer and two CPU projectors.
+At most five GPU trainers and fourteen CPU projectors across these finite jobs.
+The extension's two trainers and two projectors run in separate phases, so the
+combined active compute-worker maximum is seventeen, within the 20-core quota.
 No deadline. The added L4 workload may affect throughput; the L6 ETA remains provisional.
 
 ## Completion budget
 
 Stage 1 is finite and must be assessed before adding Stage 2 jobs. Budget roughly
-30–48 hours from the November 3 launch for the full Stage 1 comparison. At the
+30–48 hours from the November 3 launch was the original two-projector estimate.
+The new eight-projector allocation reduces the idealized projection component
+to about seven hours; training readiness and shared-machine throughput now need
+measurement before giving a revised full-study completion promise. At the
 measured approximately 40 minutes per standard L6 RBM GFMC run, 84 runs require
-56 worker-hours, or 28 wall-hours on two workers. Training overlaps projection;
+56 worker-hours, or seven wall-hours on eight workers. Training overlaps projection;
 allowance covers pipeline gaps and field/throughput variation. This is a planning
 range, not a confidence interval or convergence promise. Higher-field timing is
 not yet measured. Earlier .55 extension and field controls should report sooner.

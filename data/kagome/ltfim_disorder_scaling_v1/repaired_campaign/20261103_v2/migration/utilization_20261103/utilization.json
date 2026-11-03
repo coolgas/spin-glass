@@ -1,0 +1,9 @@
+{
+  "utc": "2026-11-03T10:13:02.516344+00:00",
+  "sample_seconds": 10.000071071088314,
+  "cpu_cores_used": 14.894206645252416,
+  "cpu_quota": 20,
+  "throttled_periods": 0,
+  "memory_gib": 27.416831970214844,
+  "gpu": "utilization.gpu [%], power.draw [W], memory.used [MiB]\n99 %, 96.85 W, 3969 MiB\n"
+}

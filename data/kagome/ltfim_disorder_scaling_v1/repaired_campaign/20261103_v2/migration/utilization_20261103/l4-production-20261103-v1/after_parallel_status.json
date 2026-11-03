@@ -1,0 +1,57 @@
+{
+  "state": "running",
+  "completed_fits": 16,
+  "planned_fits": 576,
+  "active_training": [
+    {
+      "L": 4,
+      "gamma": 0.55,
+      "sample_id": 60004,
+      "kind": "jastrow",
+      "seed": 0,
+      "mode": "anneal"
+    }
+  ],
+  "trainers": 1,
+  "queued_or_running_projectors": 26,
+  "running_projectors": [
+    {
+      "L": 4,
+      "gamma": 0.55,
+      "sample_id": 60003,
+      "kind": "rbm_2",
+      "training_seed": 0,
+      "audit": "main",
+      "walkers": 512,
+      "equil": 16.0,
+      "forward": 16.0,
+      "start": "guide",
+      "delta": 0.1,
+      "cycles": 8,
+      "repeat": 0
+    },
+    {
+      "L": 4,
+      "gamma": 0.55,
+      "sample_id": 60003,
+      "kind": "rbm_2",
+      "training_seed": 0,
+      "audit": "main",
+      "walkers": 512,
+      "equil": 16.0,
+      "forward": 16.0,
+      "start": "guide",
+      "delta": 0.1,
+      "cycles": 8,
+      "repeat": 1
+    }
+  ],
+  "deferred_projectors": 24,
+  "projector_workers": 2,
+  "submitted_contexts": 8,
+  "completed_runs": 26,
+  "deadline_unix": null,
+  "budget_mode": "until_complete",
+  "failures": [],
+  "updated_unix": 1793700754.8091767
+}

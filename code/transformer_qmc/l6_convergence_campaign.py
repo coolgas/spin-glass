@@ -70,11 +70,14 @@ def main():
     p.add_argument('--campaign', type=Path, required=True)
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--validate-only', action='store_true')
+    p.add_argument('--workers', type=int, default=2)
     a = p.parse_args()
+    if a.workers < 1:
+        raise ValueError('Positive projector worker count required')
     tasks = contexts()
     assert len(tasks) == 14
     manifest = dict(contexts=tasks, extra_updates=[0, 1200, 3600],
-        target_updates=[400, 1600, 4000], training_workers=2, projector_workers=2,
+        target_updates=[400, 1600, 4000], training_workers=2, projector_workers=a.workers,
         planned_milestones=42, maximum_projection_runs=84, deadline=None,
         existing_extension='/root/autodl-tmp/extended-rbm-20261103-v1',
         existing_field_controls='/root/autodl-tmp/ancestry-diagnostic-20261103-v1',
@@ -101,16 +104,17 @@ def main():
     exclusions = []
     ctx = mp.get_context('spawn')
     with ProcessPoolExecutor(2, mp_context=ctx, initializer=configure_training_worker) as gpu, \
-         ProcessPoolExecutor(2, mp_context=ctx, initializer=configure) as cpu:
+         ProcessPoolExecutor(a.workers, mp_context=ctx, initializer=configure) as cpu:
         while pending or projections or active_train or active_project:
             while pending and len(active_train) < 2:
                 t, extra, parent = pending.popleft()
                 f = gpu.submit(milestone, t, extra, parent, str(a.campaign), str(a.output/'training'))
                 active_train[f] = dict(task=t, extra_updates=extra)
-            while projections and len(active_project) < 2:
+            while projections and len(active_project) < a.workers:
                 spec, dest = projections.popleft()
                 active_project[cpu.submit(run_one, spec, dest)] = dict(spec=spec, output=dest)
             write(a.output/'status.json', dict(state='running', updated_utc=datetime.now(timezone.utc).isoformat(),
+                training_workers=2, projector_workers=a.workers,
                 active_training=list(active_train.values()), active_projectors=list(active_project.values()),
                 pending_training=len(pending), pending_projectors=len(projections),
                 completed_milestones=len(rows), completed_projections=len(results),

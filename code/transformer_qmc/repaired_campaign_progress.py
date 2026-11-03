@@ -88,6 +88,11 @@ def notebook_cells(root):
         convergence_cell=nb.v4.new_markdown_cell(convergence.read_text())
         convergence_cell.metadata.tags=['repaired-campaign-progress']
         cells.append(convergence_cell)
+    reference=folder/'REFERENCE_FIELDS.md'
+    if reference.exists():
+        reference_cell=nb.v4.new_markdown_cell(reference.read_text())
+        reference_cell.metadata.tags=['repaired-campaign-progress']
+        cells.append(reference_cell)
     diagnosis=folder/'ANCESTRY_DIAGNOSIS.md'
     if diagnosis.exists():
         diagnostic_cell=nb.v4.new_markdown_cell(diagnosis.read_text())

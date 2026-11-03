@@ -7829,7 +7829,7 @@ ansatz/optimization test, not scalable sampled-training validation.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dad9b23e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0d2a09cc">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7902,7 +7902,7 @@ ansatz/optimization test, not scalable sampled-training validation.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c67f9366">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3bacfdb2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7978,12 +7978,622 @@ their frozen fits and prespecified GFMC sensitivities before broad production.
 Retain .85/1.00 references and L4 work for the later resumed plan. Report any
 disorder summaries with equal prespecified weights and capped uncertainty bars;
 never replace a difficult disorder. No fixed ETA for scientific convergence.</p>
-<h2 id="Utilization-snapshot">Utilization snapshot<a class="anchor-link" href="#Utilization-snapshot">¶</a></h2><p>Verified 2026-11-03T10:13:02.516344+00:00: L6 anchor study two trainers/eight projectors; L4 one trainer/two projectors. Existing L6 extension and field controls continue. Over 10.0 seconds the container used 14.9/20 CPU cores, with 0 throttled quota periods and 27.4 GiB RAM. Five GPU trainers retained; no new scientific tasks added. Ready tasks, rather than configured pool size, determine actual occupancy. Full memory occupancy is not an efficiency goal. Four checkpoint/plan regression tests passed after the worker-count change.</p>
+<h2 id="Authorized-reference-field-comparison-%E2%80%94-2026-11-03">Authorized reference-field comparison — 2026-11-03<a class="anchor-link" href="#Authorized-reference-field-comparison-%E2%80%94-2026-11-03">¶</a></h2><p>The user authorized testing whether the L6 difficulty is concentrated at lower
+Gamma. Add a finite reference study at .85 and 1.00, fixed disorders60000/60001,
+RBM alpha2, seeds0/1, and the same 400/1600/4000 target-update milestones.
+Eight contexts give 24 milestones and at most 48 GFMC runs. Use the same frozen
+checks and two-repeat, four-population GFMC protocol and screening tolerances as
+Stage 1. No energy-based seed choice or disorder substitution. Both reference
+fields remain unqualified until measured; neither is assumed paramagnetic.</p>
+<p>The existing annealing implementation visits only fields at or above target:
+1.50 -&gt; .85 or 1.50 -&gt; 1.00, 400 updates per stage, followed by preserved-state
+extensions of 1200 and 2400 target updates. This differs from the low-field
+1.50 -&gt; .75 -&gt; target warmup. Field-specific guides and schedules mean the
+comparison tests operational field dependence, not a Hamiltonian-only effect.
+Keep the existing Gamma4 interacting/exact and independent-spin controls in the
+notebook; their limited successful checks do not qualify .85/1.00 or lower fields.</p>
+<p>Allocate one GPU trainer and two CPU projectors to this finite addition. The
+extension has finished GPU training; the current total is four GPU trainers
+(two lower-field anchors, one reference, one L4), and at most sixteen CPU
+projectors. Actual readiness determines occupancy. Measure the 20-core quota;
+preserve L4 production and lower-field jobs. Run without a deadline or automatic
+retries. No Stage 2 Cartesian sweep or broad production restart is implied.</p>
+<p>Compare P(q), q2, connected spectra, energy/site, seed/repeat/budget spread and
+full ancestry distributions jointly. The two disorders are diagnostic cases,
+not an eight-disorder ensemble. Higher-field improvement would support
+field-dependent sampling difficulty, but cannot establish glass order or locate
+a transition. Independent connected glass diagnostics and reliable size scaling
+remain necessary. Assess the existing lower-field training/population/time
+controls with this reference before prescribing further sensitivities.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=794376b4">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7ca1f61a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_repaired-campaign-progress" data-mime-type="text/markdown">
+<h1 id="L6-lower-field-and-reference-comparison">L6 lower-field and reference comparison<a class="anchor-link" href="#L6-lower-field-and-reference-comparison">¶</a></h1><p>Verified snapshot: 2026-11-03T13:38:07.202535+00:00. No campaign is qualified by this report.</p>
+<table>
+<thead>
+<tr>
+<th>Campaign</th>
+<th style="text-align:right">Training milestones</th>
+<th style="text-align:right">GFMC runs</th>
+<th style="text-align:right">Ancestry alarms</th>
+<th style="text-align:right">Task failures</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>l6-convergence-20261103-v1</td>
+<td style="text-align:right">21</td>
+<td style="text-align:right">29</td>
+<td style="text-align:right">29</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>extended-rbm-20261103-v1</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">7</td>
+<td style="text-align:right">7</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>ancestry-diagnostic-20261103-v1</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>l6-reference-fields-20261103-v1</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+</tr>
+</tbody>
+</table>
+<p>Reference scope: Gamma .85/1.00; disorders60000/60001; both RBM seeds;
+400/1600/4000 target updates; at most 48 GFMC runs. All other jobs continue.
+Compare with lower-field .55/.60/.65/.70 at fixed h=.15. Existing Gamma4 controls
+remain in the notebook. Reference fields are not assumed to be outside a glassy regime.</p>
+<table>
+<thead>
+<tr>
+<th>Gamma</th>
+<th style="text-align:right">Disorder</th>
+<th style="text-align:right">Seed</th>
+<th>Training budget path</th>
+<th style="text-align:right">Repeat</th>
+<th style="text-align:right">Energy/site</th>
+<th style="text-align:right">q2</th>
+<th style="text-align:right">ESS min / median</th>
+<th style="text-align:right">Max lineage</th>
+<th>Alarm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.65</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">0</td>
+<td>projector/L6_s60000_g0p65_rbm_2_anneal_seed0/extra_0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">-1.168243</td>
+<td style="text-align:right">0.33342</td>
+<td style="text-align:right">1.38 / 4.32</td>
+<td style="text-align:right">0.844</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.65</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">0</td>
+<td>projector/L6_s60000_g0p65_rbm_2_anneal_seed0/extra_0</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">-1.167742</td>
+<td style="text-align:right">0.35332</td>
+<td style="text-align:right">1.12 / 4.82</td>
+<td style="text-align:right">0.945</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.65</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">1</td>
+<td>projector/L6_s60000_g0p65_rbm_2_anneal_seed1/extra_0</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">-1.173130</td>
+<td style="text-align:right">0.33788</td>
+<td style="text-align:right">1.19 / 6.39</td>
+<td style="text-align:right">0.914</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.65</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">1</td>
+<td>projector/L6_s60000_g0p65_rbm_2_anneal_seed1/extra_0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">-1.173171</td>
+<td style="text-align:right">0.33259</td>
+<td style="text-align:right">1.80 / 5.64</td>
+<td style="text-align:right">0.736</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.60</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">0</td>
+<td>projector/L6_s60000_g0p6_rbm_2_anneal_seed0/extra_0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">-1.143040</td>
+<td style="text-align:right">0.42094</td>
+<td style="text-align:right">1.50 / 5.52</td>
+<td style="text-align:right">0.812</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.60</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">0</td>
+<td>projector/L6_s60000_g0p6_rbm_2_anneal_seed0/extra_0</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">-1.143028</td>
+<td style="text-align:right">0.43184</td>
+<td style="text-align:right">1.75 / 5.75</td>
+<td style="text-align:right">0.727</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.60</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">1</td>
+<td>projector/L6_s60000_g0p6_rbm_2_anneal_seed1/extra_0</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">-1.148507</td>
+<td style="text-align:right">0.39478</td>
+<td style="text-align:right">2.39 / 7.03</td>
+<td style="text-align:right">0.629</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.60</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">1</td>
+<td>projector/L6_s60000_g0p6_rbm_2_anneal_seed1/extra_0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">-1.148503</td>
+<td style="text-align:right">0.40440</td>
+<td style="text-align:right">1.17 / 7.96</td>
+<td style="text-align:right">0.922</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.70</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">0</td>
+<td>projector/L6_s60000_g0p7_rbm_2_anneal_seed0/extra_0</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">-1.193767</td>
+<td style="text-align:right">0.28702</td>
+<td style="text-align:right">1.98 / 4.77</td>
+<td style="text-align:right">0.678</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.70</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">0</td>
+<td>projector/L6_s60000_g0p7_rbm_2_anneal_seed0/extra_0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">-1.194800</td>
+<td style="text-align:right">0.28428</td>
+<td style="text-align:right">1.00 / 4.22</td>
+<td style="text-align:right">1.000</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.70</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">1</td>
+<td>projector/L6_s60000_g0p7_rbm_2_anneal_seed1/extra_0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">-1.199166</td>
+<td style="text-align:right">0.29185</td>
+<td style="text-align:right">1.22 / 4.27</td>
+<td style="text-align:right">0.902</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.70</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">1</td>
+<td>projector/L6_s60000_g0p7_rbm_2_anneal_seed1/extra_0</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">-1.199068</td>
+<td style="text-align:right">0.29418</td>
+<td style="text-align:right">1.27 / 4.16</td>
+<td style="text-align:right">0.885</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.55</td>
+<td style="text-align:right">60001</td>
+<td style="text-align:right">0</td>
+<td>projector/L6_s60001_g0p55_rbm_2_anneal_seed0/extra_0</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">-1.123191</td>
+<td style="text-align:right">0.41963</td>
+<td style="text-align:right">1.52 / 6.21</td>
+<td style="text-align:right">0.807</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.55</td>
+<td style="text-align:right">60001</td>
+<td style="text-align:right">0</td>
+<td>projector/L6_s60001_g0p55_rbm_2_anneal_seed0/extra_0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">-1.123313</td>
+<td style="text-align:right">0.42242</td>
+<td style="text-align:right">1.89 / 4.31</td>
+<td style="text-align:right">0.717</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.55</td>
+<td style="text-align:right">60001</td>
+<td style="text-align:right">1</td>
+<td>projector/L6_s60001_g0p55_rbm_2_anneal_seed1/extra_0</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">-1.115300</td>
+<td style="text-align:right">0.36133</td>
+<td style="text-align:right">1.32 / 4.26</td>
+<td style="text-align:right">0.867</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.55</td>
+<td style="text-align:right">60001</td>
+<td style="text-align:right">1</td>
+<td>projector/L6_s60001_g0p55_rbm_2_anneal_seed1/extra_0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">-1.115368</td>
+<td style="text-align:right">0.32334</td>
+<td style="text-align:right">1.15 / 5.52</td>
+<td style="text-align:right">0.934</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.55</td>
+<td style="text-align:right">60001</td>
+<td style="text-align:right">1</td>
+<td>projector/L6_s60001_g0p55_rbm_2_anneal_seed1/extra_1200</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">-1.115670</td>
+<td style="text-align:right">0.33059</td>
+<td style="text-align:right">1.06 / 4.72</td>
+<td style="text-align:right">0.971</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.55</td>
+<td style="text-align:right">60001</td>
+<td style="text-align:right">1</td>
+<td>projector/L6_s60001_g0p55_rbm_2_anneal_seed1/extra_1200</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">-1.115357</td>
+<td style="text-align:right">0.34474</td>
+<td style="text-align:right">1.39 / 8.52</td>
+<td style="text-align:right">0.846</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.65</td>
+<td style="text-align:right">60001</td>
+<td style="text-align:right">0</td>
+<td>projector/L6_s60001_g0p65_rbm_2_anneal_seed0/extra_0</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">-1.172417</td>
+<td style="text-align:right">0.32123</td>
+<td style="text-align:right">1.12 / 4.75</td>
+<td style="text-align:right">0.943</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.65</td>
+<td style="text-align:right">60001</td>
+<td style="text-align:right">0</td>
+<td>projector/L6_s60001_g0p65_rbm_2_anneal_seed0/extra_0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">-1.172388</td>
+<td style="text-align:right">0.33137</td>
+<td style="text-align:right">1.25 / 5.09</td>
+<td style="text-align:right">0.893</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.65</td>
+<td style="text-align:right">60001</td>
+<td style="text-align:right">1</td>
+<td>projector/L6_s60001_g0p65_rbm_2_anneal_seed1/extra_0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">-1.165920</td>
+<td style="text-align:right">0.25073</td>
+<td style="text-align:right">1.09 / 4.13</td>
+<td style="text-align:right">0.959</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.65</td>
+<td style="text-align:right">60001</td>
+<td style="text-align:right">1</td>
+<td>projector/L6_s60001_g0p65_rbm_2_anneal_seed1/extra_0</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">-1.166063</td>
+<td style="text-align:right">0.24745</td>
+<td style="text-align:right">1.18 / 3.14</td>
+<td style="text-align:right">0.918</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.60</td>
+<td style="text-align:right">60001</td>
+<td style="text-align:right">0</td>
+<td>projector/L6_s60001_g0p6_rbm_2_anneal_seed0/extra_0</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">-1.147044</td>
+<td style="text-align:right">0.35772</td>
+<td style="text-align:right">1.26 / 5.50</td>
+<td style="text-align:right">0.885</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.60</td>
+<td style="text-align:right">60001</td>
+<td style="text-align:right">0</td>
+<td>projector/L6_s60001_g0p6_rbm_2_anneal_seed0/extra_0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">-1.147028</td>
+<td style="text-align:right">0.37450</td>
+<td style="text-align:right">1.43 / 4.35</td>
+<td style="text-align:right">0.828</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.60</td>
+<td style="text-align:right">60001</td>
+<td style="text-align:right">1</td>
+<td>projector/L6_s60001_g0p6_rbm_2_anneal_seed1/extra_0</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">-1.140087</td>
+<td style="text-align:right">0.30084</td>
+<td style="text-align:right">1.24 / 4.02</td>
+<td style="text-align:right">0.896</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.60</td>
+<td style="text-align:right">60001</td>
+<td style="text-align:right">1</td>
+<td>projector/L6_s60001_g0p6_rbm_2_anneal_seed1/extra_0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">-1.139928</td>
+<td style="text-align:right">0.30602</td>
+<td style="text-align:right">1.06 / 4.64</td>
+<td style="text-align:right">0.969</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.70</td>
+<td style="text-align:right">60001</td>
+<td style="text-align:right">0</td>
+<td>projector/L6_s60001_g0p7_rbm_2_anneal_seed0/extra_0</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">-1.199064</td>
+<td style="text-align:right">0.27062</td>
+<td style="text-align:right">1.16 / 3.63</td>
+<td style="text-align:right">0.926</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.70</td>
+<td style="text-align:right">60001</td>
+<td style="text-align:right">0</td>
+<td>projector/L6_s60001_g0p7_rbm_2_anneal_seed0/extra_0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">-1.199210</td>
+<td style="text-align:right">0.27448</td>
+<td style="text-align:right">1.08 / 3.38</td>
+<td style="text-align:right">0.963</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.70</td>
+<td style="text-align:right">60001</td>
+<td style="text-align:right">1</td>
+<td>projector/L6_s60001_g0p7_rbm_2_anneal_seed1/extra_0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">-1.194242</td>
+<td style="text-align:right">0.19384</td>
+<td style="text-align:right">1.10 / 3.21</td>
+<td style="text-align:right">0.953</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.55</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">0</td>
+<td>results/projector/seed0_extra0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">-1.120318</td>
+<td style="text-align:right">0.48144</td>
+<td style="text-align:right">1.71 / 6.39</td>
+<td style="text-align:right">0.760</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.55</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">0</td>
+<td>results/projector/seed0_extra0</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">-1.120198</td>
+<td style="text-align:right">0.49238</td>
+<td style="text-align:right">1.37 / 6.67</td>
+<td style="text-align:right">0.854</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.55</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">0</td>
+<td>results/projector/seed0_extra1200</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">-1.120315</td>
+<td style="text-align:right">0.48420</td>
+<td style="text-align:right">3.28 / 10.60</td>
+<td style="text-align:right">0.539</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.55</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">0</td>
+<td>results/projector/seed0_extra1200</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">-1.120239</td>
+<td style="text-align:right">0.48055</td>
+<td style="text-align:right">2.28 / 10.98</td>
+<td style="text-align:right">0.654</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.55</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">0</td>
+<td>results/projector/seed0_extra3600</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">-1.120376</td>
+<td style="text-align:right">0.46491</td>
+<td style="text-align:right">1.36 / 6.20</td>
+<td style="text-align:right">0.857</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.55</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">1</td>
+<td>results/projector/seed1_extra0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">-1.125728</td>
+<td style="text-align:right">0.44994</td>
+<td style="text-align:right">1.45 / 10.43</td>
+<td style="text-align:right">0.824</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.55</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">1</td>
+<td>results/projector/seed1_extra0</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">-1.125734</td>
+<td style="text-align:right">0.44220</td>
+<td style="text-align:right">1.85 / 7.53</td>
+<td style="text-align:right">0.727</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.55</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">0</td>
+<td>ancestry-diagnostic-20261103-v1/results/projector</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">-1.120311</td>
+<td style="text-align:right">0.48365</td>
+<td style="text-align:right">3.34 / 22.41</td>
+<td style="text-align:right">0.540</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.55</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">0</td>
+<td>ancestry-diagnostic-20261103-v1/results/projector</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">-1.120309</td>
+<td style="text-align:right">0.47713</td>
+<td style="text-align:right">3.04 / 13.48</td>
+<td style="text-align:right">0.566</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.55</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">0</td>
+<td>ancestry-diagnostic-20261103-v1/results/projector</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">-1.120299</td>
+<td style="text-align:right">0.47507</td>
+<td style="text-align:right">2.29 / 6.63</td>
+<td style="text-align:right">0.648</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.55</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">0</td>
+<td>ancestry-diagnostic-20261103-v1/results/projector</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">-1.120429</td>
+<td style="text-align:right">0.46970</td>
+<td style="text-align:right">2.00 / 13.20</td>
+<td style="text-align:right">0.705</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.55</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">0</td>
+<td>ancestry-diagnostic-20261103-v1/results/projector</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">-1.120293</td>
+<td style="text-align:right">0.48433</td>
+<td style="text-align:right">1.10 / 6.13</td>
+<td style="text-align:right">0.955</td>
+<td>True</td>
+</tr>
+<tr>
+<td>0.55</td>
+<td style="text-align:right">60000</td>
+<td style="text-align:right">0</td>
+<td>ancestry-diagnostic-20261103-v1/results/projector</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">-1.120141</td>
+<td style="text-align:right">0.49498</td>
+<td style="text-align:right">8.19 / 16.03</td>
+<td style="text-align:right">0.289</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<p>Raw SHA256, histogram normalization/moments, finite ancestry and alarm consistency
+were checked for every listed run. JSON retains full histograms, connected spectra,
+energy, provenance and ancestry quantiles/fractions; raw arrays remain in their campaign paths.
+Alarms and seed/repeat differences prevent a physical interpretation until resolved.
+Two repeats and two fixed disorders give limited precision. No automatic promotion,
+phase label or transition estimate follows from higher-field improvement.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=df3f4f24">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8490,7 +9100,7 @@ claim those follow-ups have converged.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4478badc">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=34302b7e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9452,7 +10062,7 @@ No matched-size crossing or collapse is inferred from this report.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fff68549">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b389563b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9524,7 +10134,7 @@ equal weight.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=32f98039">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e2cb7683">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9731,7 +10341,7 @@ equal weight.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c28b2f86">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=60d115f6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9748,7 +10358,7 @@ them does not by itself demonstrate exploration of competing sectors.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c309789b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fb48c7cc">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9791,7 +10401,7 @@ and numerical/ancestry diagnostics remain available in the source bundle.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=22600b3e">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cf8ffd08">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10184,7 +10794,7 @@ and numerical/ancestry diagnostics remain available in the source bundle.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9aba1072">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cf48672b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10207,7 +10817,7 @@ Its pending fits are not included as physical measurements here.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0094aff0">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3d13c19f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>

@@ -86,6 +86,35 @@ Retain .85/1.00 references and L4 work for the later resumed plan. Report any
 disorder summaries with equal prespecified weights and capped uncertainty bars;
 never replace a difficult disorder. No fixed ETA for scientific convergence.
 
-## Utilization snapshot
+## Authorized reference-field comparison — 2026-11-03
 
-Verified 2026-11-03T10:13:02.516344+00:00: L6 anchor study two trainers/eight projectors; L4 one trainer/two projectors. Existing L6 extension and field controls continue. Over 10.0 seconds the container used 14.9/20 CPU cores, with 0 throttled quota periods and 27.4 GiB RAM. Five GPU trainers retained; no new scientific tasks added. Ready tasks, rather than configured pool size, determine actual occupancy. Full memory occupancy is not an efficiency goal. Four checkpoint/plan regression tests passed after the worker-count change.
+The user authorized testing whether the L6 difficulty is concentrated at lower
+Gamma. Add a finite reference study at .85 and 1.00, fixed disorders60000/60001,
+RBM alpha2, seeds0/1, and the same 400/1600/4000 target-update milestones.
+Eight contexts give 24 milestones and at most 48 GFMC runs. Use the same frozen
+checks and two-repeat, four-population GFMC protocol and screening tolerances as
+Stage 1. No energy-based seed choice or disorder substitution. Both reference
+fields remain unqualified until measured; neither is assumed paramagnetic.
+
+The existing annealing implementation visits only fields at or above target:
+1.50 -> .85 or 1.50 -> 1.00, 400 updates per stage, followed by preserved-state
+extensions of 1200 and 2400 target updates. This differs from the low-field
+1.50 -> .75 -> target warmup. Field-specific guides and schedules mean the
+comparison tests operational field dependence, not a Hamiltonian-only effect.
+Keep the existing Gamma4 interacting/exact and independent-spin controls in the
+notebook; their limited successful checks do not qualify .85/1.00 or lower fields.
+
+Allocate one GPU trainer and two CPU projectors to this finite addition. The
+extension has finished GPU training; the current total is four GPU trainers
+(two lower-field anchors, one reference, one L4), and at most sixteen CPU
+projectors. Actual readiness determines occupancy. Measure the 20-core quota;
+preserve L4 production and lower-field jobs. Run without a deadline or automatic
+retries. No Stage 2 Cartesian sweep or broad production restart is implied.
+
+Compare P(q), q2, connected spectra, energy/site, seed/repeat/budget spread and
+full ancestry distributions jointly. The two disorders are diagnostic cases,
+not an eight-disorder ensemble. Higher-field improvement would support
+field-dependent sampling difficulty, but cannot establish glass order or locate
+a transition. Independent connected glass diagnostics and reliable size scaling
+remain necessary. Assess the existing lower-field training/population/time
+controls with this reference before prescribing further sensitivities.

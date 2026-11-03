@@ -1,0 +1,207 @@
+{
+  "state": "running",
+  "updated_utc": "2026-11-03T13:38:02.112394+00:00",
+  "training_workers": 2,
+  "projector_workers": 8,
+  "active_training": [
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.65,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "extra_updates": 1200
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.65,
+        "sample_id": 60001,
+        "kind": "rbm_2",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "extra_updates": 1200
+    }
+  ],
+  "active_projectors": [
+    {
+      "spec": {
+        "task": {
+          "L": 6,
+          "gamma": 0.7,
+          "sample_id": 60001,
+          "kind": "rbm_2",
+          "training_seed": 1,
+          "audit": "l6_convergence_training",
+          "walkers": 512,
+          "equil": 16.0,
+          "forward": 16.0,
+          "start": "guide",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 1
+        },
+        "model": "/root/autodl-tmp/l6-convergence-20261103-v1/results/training/L6_s60001_g0p7_rbm_2_anneal_seed1/extra_0/L6_s60001_g0p7_rbm_2_anneal_seed1.pt"
+      },
+      "output": "/root/autodl-tmp/l6-convergence-20261103-v1/results/projector/L6_s60001_g0p7_rbm_2_anneal_seed1/extra_0"
+    },
+    {
+      "spec": {
+        "task": {
+          "L": 6,
+          "gamma": 0.55,
+          "sample_id": 60001,
+          "kind": "rbm_2",
+          "training_seed": 0,
+          "audit": "l6_convergence_training",
+          "walkers": 512,
+          "equil": 16.0,
+          "forward": 16.0,
+          "start": "guide",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 0
+        },
+        "model": "/root/autodl-tmp/l6-convergence-20261103-v1/results/training/L6_s60001_g0p55_rbm_2_anneal_seed0/extra_1200/L6_s60001_g0p55_rbm_2_direct_seed0.pt"
+      },
+      "output": "/root/autodl-tmp/l6-convergence-20261103-v1/results/projector/L6_s60001_g0p55_rbm_2_anneal_seed0/extra_1200"
+    },
+    {
+      "spec": {
+        "task": {
+          "L": 6,
+          "gamma": 0.55,
+          "sample_id": 60001,
+          "kind": "rbm_2",
+          "training_seed": 0,
+          "audit": "l6_convergence_training",
+          "walkers": 512,
+          "equil": 16.0,
+          "forward": 16.0,
+          "start": "guide",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 1
+        },
+        "model": "/root/autodl-tmp/l6-convergence-20261103-v1/results/training/L6_s60001_g0p55_rbm_2_anneal_seed0/extra_1200/L6_s60001_g0p55_rbm_2_direct_seed0.pt"
+      },
+      "output": "/root/autodl-tmp/l6-convergence-20261103-v1/results/projector/L6_s60001_g0p55_rbm_2_anneal_seed0/extra_1200"
+    },
+    {
+      "spec": {
+        "task": {
+          "L": 6,
+          "gamma": 0.6,
+          "sample_id": 60000,
+          "kind": "rbm_2",
+          "training_seed": 0,
+          "audit": "l6_convergence_training",
+          "walkers": 512,
+          "equil": 16.0,
+          "forward": 16.0,
+          "start": "guide",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 0
+        },
+        "model": "/root/autodl-tmp/l6-convergence-20261103-v1/results/training/L6_s60000_g0p6_rbm_2_anneal_seed0/extra_1200/L6_s60000_g0p6_rbm_2_direct_seed0.pt"
+      },
+      "output": "/root/autodl-tmp/l6-convergence-20261103-v1/results/projector/L6_s60000_g0p6_rbm_2_anneal_seed0/extra_1200"
+    },
+    {
+      "spec": {
+        "task": {
+          "L": 6,
+          "gamma": 0.6,
+          "sample_id": 60000,
+          "kind": "rbm_2",
+          "training_seed": 0,
+          "audit": "l6_convergence_training",
+          "walkers": 512,
+          "equil": 16.0,
+          "forward": 16.0,
+          "start": "guide",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 1
+        },
+        "model": "/root/autodl-tmp/l6-convergence-20261103-v1/results/training/L6_s60000_g0p6_rbm_2_anneal_seed0/extra_1200/L6_s60000_g0p6_rbm_2_direct_seed0.pt"
+      },
+      "output": "/root/autodl-tmp/l6-convergence-20261103-v1/results/projector/L6_s60000_g0p6_rbm_2_anneal_seed0/extra_1200"
+    },
+    {
+      "spec": {
+        "task": {
+          "L": 6,
+          "gamma": 0.6,
+          "sample_id": 60000,
+          "kind": "rbm_2",
+          "training_seed": 1,
+          "audit": "l6_convergence_training",
+          "walkers": 512,
+          "equil": 16.0,
+          "forward": 16.0,
+          "start": "guide",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 0
+        },
+        "model": "/root/autodl-tmp/l6-convergence-20261103-v1/results/training/L6_s60000_g0p6_rbm_2_anneal_seed1/extra_1200/L6_s60000_g0p6_rbm_2_direct_seed1.pt"
+      },
+      "output": "/root/autodl-tmp/l6-convergence-20261103-v1/results/projector/L6_s60000_g0p6_rbm_2_anneal_seed1/extra_1200"
+    },
+    {
+      "spec": {
+        "task": {
+          "L": 6,
+          "gamma": 0.6,
+          "sample_id": 60000,
+          "kind": "rbm_2",
+          "training_seed": 1,
+          "audit": "l6_convergence_training",
+          "walkers": 512,
+          "equil": 16.0,
+          "forward": 16.0,
+          "start": "guide",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 1
+        },
+        "model": "/root/autodl-tmp/l6-convergence-20261103-v1/results/training/L6_s60000_g0p6_rbm_2_anneal_seed1/extra_1200/L6_s60000_g0p6_rbm_2_direct_seed1.pt"
+      },
+      "output": "/root/autodl-tmp/l6-convergence-20261103-v1/results/projector/L6_s60000_g0p6_rbm_2_anneal_seed1/extra_1200"
+    },
+    {
+      "spec": {
+        "task": {
+          "L": 6,
+          "gamma": 0.6,
+          "sample_id": 60001,
+          "kind": "rbm_2",
+          "training_seed": 0,
+          "audit": "l6_convergence_training",
+          "walkers": 512,
+          "equil": 16.0,
+          "forward": 16.0,
+          "start": "guide",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 0
+        },
+        "model": "/root/autodl-tmp/l6-convergence-20261103-v1/results/training/L6_s60001_g0p6_rbm_2_anneal_seed0/extra_1200/L6_s60001_g0p6_rbm_2_direct_seed0.pt"
+      },
+      "output": "/root/autodl-tmp/l6-convergence-20261103-v1/results/projector/L6_s60001_g0p6_rbm_2_anneal_seed0/extra_1200"
+    }
+  ],
+  "pending_training": 12,
+  "pending_projectors": 5,
+  "completed_milestones": 21,
+  "completed_projections": 29,
+  "failures": [],
+  "excluded_projections": [],
+  "ground_state_qualified": false
+}

@@ -1,0 +1,21 @@
+{
+  "pid": 385448,
+  "command": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "-m",
+    "transformer_qmc.l6_reference_fields",
+    "--campaign",
+    "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2",
+    "--output",
+    "/root/autodl-tmp/l6-reference-fields-20261103-v1/results",
+    "--workers",
+    "2"
+  ],
+  "launched_utc": "2026-11-03T13:37:03.073773+00:00",
+  "training_workers": 1,
+  "projector_workers": 2,
+  "deadline": null,
+  "planned_milestones": 24,
+  "maximum_projection_runs": 48
+}

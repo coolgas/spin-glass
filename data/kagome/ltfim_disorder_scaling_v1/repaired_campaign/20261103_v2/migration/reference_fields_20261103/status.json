@@ -1,0 +1,29 @@
+{
+  "state": "running",
+  "updated_utc": "2026-11-03T13:38:06.669181+00:00",
+  "training_workers": 1,
+  "projector_workers": 2,
+  "planned_milestones": 24,
+  "maximum_projection_runs": 48,
+  "completed_milestones": 0,
+  "completed_projections": 0,
+  "pending_training": 7,
+  "pending_projectors": 0,
+  "active_training": [
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.85,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "extra_updates": 0
+    }
+  ],
+  "active_projectors": [],
+  "failures": [],
+  "excluded_projections": [],
+  "ground_state_qualified": false
+}

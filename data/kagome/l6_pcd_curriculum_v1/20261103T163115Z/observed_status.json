@@ -1,0 +1,60 @@
+{
+  "legacy_scaling": {
+    "state": "adapting",
+    "current": {
+      "arm": "baseline",
+      "target_stints": 6,
+      "L": 6,
+      "gamma": 0.6,
+      "sample_id": 60001,
+      "kind": "rbm_2",
+      "seed": 0,
+      "mode": "anneal"
+    },
+    "updated_utc": "2026-11-03T16:30:32.803624+00:00",
+    "L": 6,
+    "progress": {
+      "robust/L6_s60000_g0p6_rbm_2_anneal_seed0": 6,
+      "baseline/L6_s60000_g0p6_rbm_2_anneal_seed0": 6,
+      "robust/L6_s60000_g0p6_rbm_2_anneal_seed1": 6,
+      "baseline/L6_s60000_g0p6_rbm_2_anneal_seed1": 6,
+      "robust/L6_s60001_g0p6_rbm_2_anneal_seed0": 6,
+      "baseline/L6_s60001_g0p6_rbm_2_anneal_seed0": 4,
+      "robust/L6_s60001_g0p6_rbm_2_anneal_seed1": 4,
+      "baseline/L6_s60001_g0p6_rbm_2_anneal_seed1": 4
+    },
+    "completed_measurement_groups": 0,
+    "failures": [],
+    "deadline": null,
+    "ground_state_qualified": false
+  },
+  "legacy_pilot": {
+    "state": "projecting",
+    "current": {
+      "L": 6,
+      "gamma": 0.6,
+      "sample_id": 60000,
+      "kind": "rbm_2",
+      "seed": 0,
+      "mode": "anneal",
+      "repeat": 1
+    },
+    "updated_utc": "2026-11-03T16:08:02.462074+00:00",
+    "completed_contexts": 0,
+    "planned_contexts": 4,
+    "planned_stints": 24,
+    "planned_final_projections": 8,
+    "failures": [],
+    "ground_state_qualified": false
+  },
+  "observed_utc": "2026-11-03T16:31:15.273781+00:00",
+  "processes": "   PID     ELAPSED COMMAND\n335205    06:18:48 /root/miniconda3/bin/python -u -m transformer_qmc.l6_convergence_campaign --campaign /root/autodl-tmp/disorder-scaling-repaired-20261103-v2 --output /root/autodl-tmp/l6-convergence-20261103-v1/results --workers 8\n335206    06:18:48 /root/miniconda3/bin/python -u -m transformer_qmc.fine_overlap_campaign --output /root/autodl-tmp/l4-production-20261103-v1/results --trainers 1 --workers 2 --no-deadline\n385448    02:54:12 /root/miniconda3/bin/python -u -m transformer_qmc.l6_reference_fields --campaign /root/autodl-tmp/disorder-scaling-repaired-20261103-v2 --output /root/autodl-tmp/l6-reference-fields-20261103-v1/results --workers 2\n391669    01:50:59 /root/miniconda3/bin/python -u -m transformer_qmc.self_learning_l6_pilot --anchor /root/autodl-tmp/l6-convergence-20261103-v1/results --validation /root/autodl-tmp/self-learning-rbm-20261103-v1/validation --output /root/autodl-tmp/self-learning-l6-20261103-v1/results\n393149    01:18:50 /root/miniconda3/bin/python -u -m transformer_qmc.feedback_scaling --L 6 --output /root/autodl-tmp/self-learning-frontier-20261103-v1/scaling/L6 --l6 /root/autodl-tmp/self-learning-l6-20261103-v1/results --regressions /root/autodl-tmp/self-learning-frontier-20261103-v1/validation/scaling_regressions.json\n396825       02:15 /root/miniconda3/bin/python -u -m transformer_qmc.l6_pcd_curriculum --output /root/autodl-tmp/l6-pcd-curriculum-20261103-v1/results --regressions /root/autodl-tmp/l6-pcd-curriculum-20261103-v1/validation/regressions.json\n",
+  "free_bytes": 15275905024,
+  "initial_checkpoints": [
+    {
+      "path": "/root/autodl-tmp/l6-pcd-curriculum-20261103-v1/results/initial/L6_s60000_g0p6_rbm_2_anneal_seed0/L6_s60000_g4_rbm_2_direct_seed0.pt",
+      "step": 50,
+      "stage": 0
+    }
+  ]
+}

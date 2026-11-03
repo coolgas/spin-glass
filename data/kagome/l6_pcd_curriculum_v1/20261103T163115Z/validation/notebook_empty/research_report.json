@@ -1,0 +1,8 @@
+{
+  "updated_utc": "2026-11-03T16:28:09.343877+00:00",
+  "training": [],
+  "measurements": [],
+  "comparisons": [],
+  "ground_state_qualified": false,
+  "limitations": "Matched update count, not identical propagation cost; curriculum spends 18 stints at higher fields. No ancestry-based selection. A high starting field is chosen heuristically; paramagnetic phase is not proved. PCD persistence does not ensure barrier crossing. Population/time/start convergence remains required."
+}

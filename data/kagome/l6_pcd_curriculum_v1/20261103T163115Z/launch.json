@@ -1,0 +1,20 @@
+{
+  "utc": "2026-11-03T16:29:00.326574+00:00",
+  "pid": 396825,
+  "command": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "-m",
+    "transformer_qmc.l6_pcd_curriculum",
+    "--output",
+    "/root/autodl-tmp/l6-pcd-curriculum-20261103-v1/results",
+    "--regressions",
+    "/root/autodl-tmp/l6-pcd-curriculum-20261103-v1/validation/regressions.json"
+  ],
+  "cwd": "/root/autodl-tmp/l6-pcd-curriculum-20261103-v1/source/code",
+  "log": "/root/autodl-tmp/l6-pcd-curriculum-20261103-v1/worker.log",
+  "deadline": null,
+  "workers": 1,
+  "free_bytes": 15287078912,
+  "regression_sha256": "d7d7c253fe93c8ed021fa2a74c852489eb929fd61ab28acead804ef1b6aa57ba"
+}

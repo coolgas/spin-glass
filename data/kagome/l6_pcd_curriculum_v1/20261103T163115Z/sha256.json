@@ -1,0 +1,23 @@
+{
+  "launch.json": "4a70ac5b4d2145b884995100584f89de82287873cf82ec8a3b562a5618057a36",
+  "L8_user_stop.json": "56049576818048fd684021662bd9875fe673e0d7c7cf68346f18db2e7a756a3b",
+  "L10_user_stop.json": "b420958ada059db3bc1db58b8bc1160f45a19f519ceb1b93ecd0e1c3115a724d",
+  "observed_status.json": "a8e54b0db6a2e75bccc75362ee4ca83ba00dabf6a964ca4f20e296225a05e5e1",
+  "validation/tests.log": "435d7b8e10dd246c8168d73f6c04a501ef113313a81d0bc2d0b1f4ff3671a11e",
+  "validation/regressions.json": "d7d7c253fe93c8ed021fa2a74c852489eb929fd61ab28acead804ef1b6aa57ba",
+  "validation/notebook_dependencies.log": "04d2014c1e9f0171e955a9948819614e2d61d8cbe431d59976c6efcda8a98b60",
+  "validation/notebook_checks.json": "a97c6eb6bc31c35885a44d1743938bfdaf6555f4766957cc3c914e08fb029f4f",
+  "results/status.json": "19a4f008689c5462334d3418ee8d0cf304207f3ad430db404acb544c7354fab5",
+  "results/research_report.json": "5bc36c5713382f26c41a8ce8058ab8aa3158cb39d216aa9ef03d9bc0ef151079",
+  "results/l6_pcd_curriculum.ipynb": "03f8ed18a61f0070424233f30d763a180811154c210be7f23f4896dc7c253234",
+  "results/l6_pcd_curriculum.html": "e50648ec8232a89575133ae2c3859c704094818ae9689b8c4ad21e7270f6e590",
+  "results/manifest.json": "ccdb7c5f643ff11e4f53f19ffcefbca4db6cfa7cf52efe14324db392b7996094",
+  "validation/notebook_empty/research_report.json": "95ee6d8f16a56b223afe1b99fbbf6aea41b6921f5e54b5958e67509e91d3c5f5",
+  "validation/notebook_empty/l6_pcd_curriculum.ipynb": "b7f41114c791cc4c684107a4a6efd83a52468ead6d8aceeb898c1f7f36f12502",
+  "validation/notebook_empty/l6_pcd_curriculum.html": "911c2d2a8b59b134db6467e16c054f358861be3ae3a9effa36a3ec2dff783445",
+  "validation/notebook_synthetic/research_report.json": "6a57e2e2d443e4aa73d0bfc8d28ebfb4a3e338276bfd9edc220ef8e89ea9a27c",
+  "validation/notebook_synthetic/l6_pcd_curriculum.ipynb": "d19deb03b6b258a6ed0fdcd78fe831e520582c2b9cc21aa78bf4c638384b1328",
+  "validation/notebook_synthetic/l6_pcd_curriculum.html": "9de97bbed7bd60aedb9ed342f8f76ade88448c48ec76fc958f1e75d4466c6441",
+  "results/initial/L6_s60000_g0p6_rbm_2_anneal_seed0/L6_s60000_g4_rbm_2_direct_seed0.pt": "f830de130d3a5379eec981db45e349e50f4385b1634b952a64402bb89e6c28a1",
+  "results/initial/L6_s60000_g0p6_rbm_2_anneal_seed0/status.json": "685cd259d318fe1a45b6c36a14cf3ddc7974372f89708ca95cea462afd0e4f65"
+}

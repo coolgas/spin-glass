@@ -1,12 +1,19 @@
-# L6 / L8 / L10 iterative feedback — 2026-11-03
+# Iterative feedback: current L6 priority — 2026-11-03
 
 ## Priority and live finite scope
 
-The user explicitly prioritized **L6, L8 and L10**. The proposed five-arm L2
-continuation campaign was **never launched**. Small systems receive only short
-implementation checks; new research compute targets the three requested sizes.
+The latest user instruction is **stop L8 and L10; focus on L6**. L8 PID393150
+and L10 PID393151 received targeted SIGTERM at 2026-11-03T16:16:43Z. Their
+checkpoints and `scaling/L{8,10}/user_stop.json` records are retained. Both PIDs
+were absent at 16:26:19Z. The earlier three-size launch below is historical.
+The proposed five-arm L2 continuation campaign was **never launched**.
+Small systems receive only short implementation checks.
 The already-running finite L6 pilot, L4 production and fixed-guide L6 controls
 continue with their original isolated sources.
+
+The new [L6 persistent-chain and field-curriculum study](L6_PCD_CURRICULUM.md)
+launched separately at 16:29:00Z, PID396825. It compares three arms across the
+same two disorders and both seeds, with automatic executed notebook snapshots.
 
 At **2026-11-03T15:12:24.982677Z**, three detached size workers launched under
 `/root/autodl-tmp/self-learning-frontier-20261103-v1/`:

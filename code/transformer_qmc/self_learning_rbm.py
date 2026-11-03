@@ -70,6 +70,13 @@ def run(args, stop_after_stints=None):
     step_rms = getattr(args, 'step_rms', 0.)
     step_max = getattr(args, 'step_max', 0.)
     projection_device = getattr(args, 'projection_device', 'cpu')
+    persistent_negative = getattr(args, 'persistent_negative', False)
+    gamma_schedule = getattr(args, 'gamma_schedule', None)
+    if gamma_schedule is not None:
+        if (len(gamma_schedule) != args.stints or not np.isfinite(gamma_schedule).all()
+                or min(gamma_schedule) <= 0 or gamma_schedule[-1] != args.gamma
+                or any(a < b for a, b in zip(gamma_schedule, gamma_schedule[1:]))):
+            raise ValueError('gamma schedule must decrease to target and specify every stint')
     if (islands < 1 or temperatures < 1 or args.sample_walkers % islands
             or (step_rms > 0) != (step_max > 0)
             or not np.isfinite([step_rms, step_max]).all()
@@ -99,6 +106,10 @@ def run(args, stop_after_stints=None):
         bounded_step='empirical centered log-density RMS/max, not a global KL bound',
         measurements='adaptation traces only; independent final-guide production required',
         ground_state_qualified=False)
+    if persistent_negative:
+        signature['negative_persistence'] = 'carry negative states, full tempering ladder and RNG across all updates and stints'
+    if gamma_schedule is not None:
+        signature['field_curriculum'] = list(gamma_schedule)
     manifest = args.output/'manifest.json'
     if manifest.exists():
         if json.loads(manifest.read_text()) != signature:
@@ -138,6 +149,7 @@ def run(args, stop_after_stints=None):
     initial_stint = state['stint']
     while state['stint'] < args.stints:
         stint = state['stint']; directory = args.output/f'stint_{stint:03d}'
+        gamma = args.gamma if gamma_schedule is None else gamma_schedule[stint]
         directory.mkdir(exist_ok=True)
         if state['phase'] == 'start':
             save_checkpoint(directory/'input_model.pt', dict(model=model.state_dict()))
@@ -145,15 +157,18 @@ def run(args, stop_after_stints=None):
             guide = SimpleGuide(frozen, sweeps=args.initial_sweeps)
             states = guide.sample(args.walkers, int(rng.integers(2**32)))[:, None, :]
             state.update(phase='project', step=0, update=0, states=states,
-                shift=float(rates_and_local(ham, args.gamma, guide, states)[1].mean()),
+                shift=float(rates_and_local(ham, gamma, guide, states)[1].mean()),
                 samples=[], energies=[], weight_ess=[], lineages=[], losses=[],
-                ancestors=np.arange(args.walkers), sampler=None, step_trace=[],
+                ancestors=np.arange(args.walkers), step_trace=[],
                 projection_seconds=0., fit_seconds=0.)
+            if not persistent_negative or 'negative' not in state:
+                state['sampler'] = None
+                state.pop('negative', None)
             if islands > 1:
                 populations = [guide.sample(args.walkers, int(random.integers(2**32)))[:, None, :]
                                for random in island_rngs]
                 state.update(states=np.asarray(populations),
-                    shift=np.asarray([rates_and_local(ham, args.gamma, guide, x)[1].mean() for x in populations]),
+                    shift=np.asarray([rates_and_local(ham, gamma, guide, x)[1].mean() for x in populations]),
                     ancestors=np.tile(np.arange(args.walkers), (islands, 1)))
             save()
         if state['phase'] == 'project':
@@ -164,12 +179,12 @@ def run(args, stop_after_stints=None):
                 started = time.monotonic()
                 if islands == 1:
                     states, children, shift, energy, growth, ess = propagate(
-                        ham, args.gamma, guide, state['states'], state['shift'], args.delta, rng)
+                        ham, gamma, guide, state['states'], state['shift'], args.delta, rng)
                     state['ancestors'] = state['ancestors'][children]
                     counts = np.bincount(state['ancestors'], minlength=args.walkers)
                     lineage = [args.walkers**2/float(counts @ counts), counts.max()/args.walkers]
                 else:
-                    results = [propagate(ham, args.gamma, guide, state['states'][k], state['shift'][k],
+                    results = [propagate(ham, gamma, guide, state['states'][k], state['shift'][k],
                                args.delta, island_rngs[k]) for k in range(islands)]
                     states = np.asarray([r[0] for r in results]); shift = np.asarray([r[2] for r in results])
                     energy = [r[3] for r in results]; growth = [r[4] for r in results]; ess = [r[5] for r in results]
@@ -200,15 +215,29 @@ def run(args, stop_after_stints=None):
                 energies=state['energies'], weight_ess=state['weight_ess'], lineages=state['lineages'],
                 sample_island=np.tile(np.repeat(np.arange(islands), args.sample_walkers//islands),
                                       round(args.collect/args.delta)))
-            state['before'] = exact_evaluation(model, ham, args.gamma, data) if args.L == 2 else None
-            state.update(phase='fit', negative=(2*torch.randint(2, (args.batch, ham.n_sites),
-                device=args.device, generator=generator)-1).double().cpu())
+            state['before'] = exact_evaluation(model, ham, gamma, data) if args.L == 2 else None
+            state['negative_carried'] = persistent_negative and 'negative' in state
+            if not state['negative_carried']:
+                state['negative'] = (2*torch.randint(2, (args.batch, ham.n_sites),
+                    device=args.device, generator=generator)-1).double().cpu()
+            state['phase'] = 'fit'
             save()
         if state['phase'] == 'fit':
             data = torch.tensor(np.concatenate(state['samples']), device=args.device, dtype=torch.float64)
             negative = state['negative'].to(args.device)
             sampler = (TwoCopyTempering(model, args.batch, temperatures, generator, state.get('sampler'))
                        if temperatures > 1 else None)
+            # Retain the exact input bank for independent persistence/restart audits.
+            if state['update'] == 0:
+                if sampler is not None:
+                    negative = sampler.states[-1]
+                    state['negative'] = negative.cpu()
+                    state['sampler'] = sampler.state_dict()
+                    # Commit initialization RNG before any interrupted-fit restart.
+                    save()
+                np.savez_compressed(directory/'negative_initial.npz',
+                    negative=negative.cpu().numpy().astype(np.int8),
+                    **({'ladder': sampler.states.cpu().numpy().astype(np.int8)} if sampler is not None else {}))
             while state['update'] < args.updates:
                 started = time.monotonic()
                 for _ in range(args.gibbs):
@@ -247,7 +276,7 @@ def run(args, stop_after_stints=None):
             row = dict(stint=stint, model_sha256=sha(directory/'model.pt'),
                 input_model_sha256=sha(directory/'input_model.pt'), raw_sha256=sha(directory/'walkers.npz'),
                 fit_sha256=sha(directory/'fit.npz'), training_samples=len(data), before=state['before'],
-                after=exact_evaluation(model, ham, args.gamma, data.cpu().numpy()) if args.L == 2 else None,
+                after=exact_evaluation(model, ham, gamma, data.cpu().numpy()) if args.L == 2 else None,
                 minimum_training_lineage_ess=float(lineage[:, 0].min()),
                 largest_training_lineage=float(lineage[:, 1].max()),
                 training_ancestry_alarm=bool(lineage[:, 0].min() < 8 or lineage[:, 1].max() > .5),
@@ -257,6 +286,9 @@ def run(args, stop_after_stints=None):
                 bounded_steps=int(sum(r[1] < 1 for r in state['step_trace'])),
                 rejected_steps=int(sum(r[1] == 0 for r in state['step_trace'])),
                 ground_state_qualified=False)
+            if persistent_negative or gamma_schedule is not None:
+                row.update(gamma=gamma, negative_carried=state['negative_carried'],
+                    negative_initial_sha256=sha(directory/'negative_initial.npz'))
             # Keep nondeterministic timings outside restart-equality scientific summaries.
             write(directory/'timing.json', dict(projection_seconds=state['projection_seconds'],
                 fit_seconds=state['fit_seconds'], islands=islands, negative_temperatures=temperatures))
@@ -286,6 +318,10 @@ def main():
     p.add_argument('--step-rms', type=float, default=0.)
     p.add_argument('--step-max', type=float, default=0.)
     p.add_argument('--projection-device', default='cpu')
+    p.add_argument('--persistent-negative', action='store_true',
+                   help='Keep negative chains/tempering state across feedback stints as well as updates')
+    p.add_argument('--gamma-schedule', nargs='+', type=float,
+                   help='Nonincreasing field for every stint, ending at --gamma')
     args = p.parse_args()
     torch.set_num_threads(1); torch.set_num_interop_threads(1)
     try:

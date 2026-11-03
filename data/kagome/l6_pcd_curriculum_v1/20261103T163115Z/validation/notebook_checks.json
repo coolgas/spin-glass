@@ -1,0 +1,12 @@
+[
+  {
+    "fixture": "notebook_empty",
+    "executed_code_cells": 3,
+    "errors": 0
+  },
+  {
+    "fixture": "notebook_synthetic",
+    "executed_code_cells": 3,
+    "errors": 0
+  }
+]

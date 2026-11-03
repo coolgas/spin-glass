@@ -1,0 +1,9 @@
+{
+  "utc": "2026-11-03T16:16:43.256198+00:00",
+  "L": 10,
+  "pid": 393151,
+  "was_alive": true,
+  "signal": "SIGTERM",
+  "reason": "User redirected research to L6 PCD and field curriculum; preserve all checkpoints",
+  "command": "/root/miniconda3/bin/python -u -m transformer_qmc.feedback_scaling --L 10 --output /root/autodl-tmp/self-learning-frontier-20261103-v1/scaling/L10 --l6 /root/autodl-tmp/self-learning-l6-20261103-v1/results --regressions /root/autodl-tmp/self-learning-frontier-20261103-v1/validation/scaling_regressions.json "
+}

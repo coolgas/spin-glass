@@ -1,0 +1,17 @@
+{
+  "state": "training",
+  "task": {
+    "L": 6,
+    "gamma": 4.0,
+    "sample_id": 60000,
+    "kind": "rbm_2",
+    "seed": 0,
+    "mode": "direct"
+  },
+  "stage": 0,
+  "gamma": 4.0,
+  "step": 50,
+  "energy": -436.91478314771086,
+  "variance": 135.09059333186568,
+  "gradient_norm": 0.35815018760533956
+}

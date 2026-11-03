@@ -1,0 +1,318 @@
+{
+  "state": "draining_projectors",
+  "completed_fits": 320,
+  "planned_fits": 320,
+  "active_training": [],
+  "trainers": 4,
+  "queued_or_running_projectors": 64,
+  "submitted_contexts": 160,
+  "completed_runs": 480,
+  "deadline_unix": 1793710777.5076935,
+  "failures": [
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.6,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "error": "RuntimeError('walker weights left the positive reals')",
+      "training": false
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.6,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "error": "RuntimeError('walker weights left the positive reals')",
+      "training": false
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.6,
+        "sample_id": 60001,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "error": "RuntimeError('walker weights left the positive reals')",
+      "training": false
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.6,
+        "sample_id": 60001,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "error": "RuntimeError('walker weights left the positive reals')",
+      "training": false
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.65,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "error": "RuntimeError('walker weights left the positive reals')",
+      "training": false
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.65,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "error": "RuntimeError('walker weights left the positive reals')",
+      "training": false
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.65,
+        "sample_id": 60001,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "error": "RuntimeError('walker weights left the positive reals')",
+      "training": false
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.65,
+        "sample_id": 60001,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "error": "RuntimeError('walker weights left the positive reals')",
+      "training": false
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.7,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "error": "RuntimeError('walker weights left the positive reals')",
+      "training": false
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.7,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "error": "RuntimeError('walker weights left the positive reals')",
+      "training": false
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.7,
+        "sample_id": 60001,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "error": "RuntimeError('walker weights left the positive reals')",
+      "training": false
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.7,
+        "sample_id": 60001,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "error": "RuntimeError('walker weights left the positive reals')",
+      "training": false
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.85,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "error": "RuntimeError('walker weights left the positive reals')",
+      "training": false
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.85,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "error": "RuntimeError('walker weights left the positive reals')",
+      "training": false
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.85,
+        "sample_id": 60001,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "error": "RuntimeError('walker weights left the positive reals')",
+      "training": false
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.85,
+        "sample_id": 60001,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "error": "RuntimeError('walker weights left the positive reals')",
+      "training": false
+    }
+  ],
+  "updated_unix": 1793690168.9030578
+}

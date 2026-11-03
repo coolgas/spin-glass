@@ -1,0 +1,8 @@
+{
+  "recorded_utc": "2026-11-03T07:32:48.726000+00:00",
+  "source": "code/transformer_qmc/overlap_polarization.py",
+  "head_sha256": "a7b79bf801b65ee6dee4bdca602799c862c4abdad9066097220a75ff5ef808cd",
+  "preserved_local_sha256": "710d2709f711f89857461cd6ea36188e79d3590716b078c02dbe0045301a19d5",
+  "arithmetic_ast_unchanged": true,
+  "disposition": "Preserve concurrent explanatory edit exactly and execute notebook with it; revised formulas in prose describe the existing estimators. No production source edit."
+}

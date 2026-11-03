@@ -1,0 +1,35 @@
+test_interrupted_replay_and_numerics_mismatch (transformer_qmc.test_repaired_histogram.RepairedHistogramTests.test_interrupted_replay_and_numerics_mismatch) ... ok
+test_interval_log_integral (transformer_qmc.test_log_projector.LogProjectorTests.test_interval_log_integral) ... ok
+test_l6_exact_product_guide_with_extreme_shift (transformer_qmc.test_log_projector.LogProjectorTests.test_l6_exact_product_guide_with_extreme_shift) ... ok
+test_resampling_offset_invariance_and_invalid_mass (transformer_qmc.test_log_projector.LogProjectorTests.test_resampling_offset_invariance_and_invalid_mass) ... ok
+test_signed_mixed_integrals_for_extreme_population_spread (transformer_qmc.test_log_projector.LogProjectorTests.test_signed_mixed_integrals_for_extreme_population_spread) ... ok
+test_exchange_detailed_balance (transformer_qmc.test_sampled_simple_guides.SampledTests.test_exchange_detailed_balance) ... ok
+test_guide_selection_rejects_spuriously_low_unmixed_energy (transformer_qmc.test_sampled_simple_guides.SampledTests.test_guide_selection_rejects_spuriously_low_unmixed_energy) ... ok
+test_local_energy_and_covariance_gradient (transformer_qmc.test_sampled_simple_guides.SampledTests.test_local_energy_and_covariance_gradient) ... ok
+test_low_variance_does_not_override_sampling_alarm (transformer_qmc.test_sampled_simple_guides.SampledTests.test_low_variance_does_not_override_sampling_alarm) ... ok
+test_tempered_frozen_marginal (transformer_qmc.test_sampled_simple_guides.SampledTests.test_tempered_frozen_marginal) ... ok
+test_lower_fields_across_sizes_precede_higher_l4_fields (transformer_qmc.test_training_priority.PriorityTests.test_lower_fields_across_sizes_precede_higher_l4_fields) ... ok
+test_projectors_prioritize_weak_field_main_ensemble (transformer_qmc.test_training_priority.PriorityTests.test_projectors_prioritize_weak_field_main_ensemble) ... ok
+test_serial_parallel_and_reuse (transformer_qmc.test_parallel_disorder_scaling.ParallelTrainingTests.test_serial_parallel_and_reuse) ... ERROR
+test_checkpoint_replay (transformer_qmc.test_disorder_scaling.ScalingTests.test_checkpoint_replay) ... ok
+test_exact_moment_identities (transformer_qmc.test_disorder_scaling.ScalingTests.test_exact_moment_identities) ... ok
+test_population_permutation (transformer_qmc.test_disorder_scaling.ScalingTests.test_population_permutation) ... ok
+
+======================================================================
+ERROR: test_serial_parallel_and_reuse (transformer_qmc.test_parallel_disorder_scaling.ParallelTrainingTests.test_serial_parallel_and_reuse)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code/transformer_qmc/test_parallel_disorder_scaling.py", line 26, in test_serial_parallel_and_reuse
+    references=[pool.submit(training_worker,t,settings,str(serial),deadline).result() for t in tasks]
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+concurrent.futures.process.BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+
+----------------------------------------------------------------------
+Ran 16 tests in 2.982s
+
+FAILED (errors=1)

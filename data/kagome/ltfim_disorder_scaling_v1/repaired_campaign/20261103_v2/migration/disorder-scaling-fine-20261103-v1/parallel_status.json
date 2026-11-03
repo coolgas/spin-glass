@@ -1,0 +1,30 @@
+{
+  "state": "running",
+  "completed_fits": 351,
+  "planned_fits": 576,
+  "active_training": [
+    {
+      "L": 4,
+      "gamma": 0.67,
+      "sample_id": 60007,
+      "kind": "rbm_2",
+      "seed": 1,
+      "mode": "anneal"
+    },
+    {
+      "L": 4,
+      "gamma": 0.68,
+      "sample_id": 60000,
+      "kind": "jastrow",
+      "seed": 0,
+      "mode": "anneal"
+    }
+  ],
+  "trainers": 2,
+  "queued_or_running_projectors": 460,
+  "submitted_contexts": 175,
+  "completed_runs": 154,
+  "deadline_unix": 1793710777.5076935,
+  "failures": [],
+  "updated_unix": 1793690167.7683227
+}

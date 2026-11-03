@@ -1,0 +1,21 @@
+{
+  "selected": {
+    "L": 6,
+    "gamma": 0.55,
+    "sample_id": 60000,
+    "kind": "rbm_2",
+    "seed": 1,
+    "mode": "anneal"
+  },
+  "candidate_energies": [
+    {
+      "seed": 0,
+      "energy": -120.39342300765549
+    },
+    {
+      "seed": 1,
+      "energy": -121.03178989108771
+    }
+  ],
+  "checkpoint_sha256": "c3ff04816ae4c03a54805f1f23ade86a81754b5275d3641165ffc4d5553c26b7"
+}

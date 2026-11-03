@@ -67,7 +67,11 @@ def run_one(spec, output):
 def _run_one(spec, root):
     task = spec['task']; key = identity(task)[:24]
     dest = root/'runs'/(key+'.json'); cp = root/'checkpoints'/(key+'.npz')
-    provenance = dict(model_sha256=digest(Path(spec['model'])), source_sha256=digest(Path(__file__)))
+    provenance = dict(model_sha256=digest(Path(spec['model'])), source_sha256=digest(Path(__file__)),
+        numerics='log_weight_v1',numerics_sha256=digest(Path(__file__).parent.parent/'qmc_numerics.py'),
+        sources={name:digest(Path(__file__).with_name(name)) for name in
+                 ['projector.py','disorder_scaling.py','physics.py','simple_guides.py',
+                  'independent_replica_projector.py']})
     if dest.exists():
         record = json.loads(dest.read_text())
         assert record['provenance'] == provenance
@@ -91,6 +95,8 @@ def _run_one(spec, root):
             tagged = data['tagged'].copy(); ancestors = data['ancestors'].copy()
             all_tags = list(data['tags']); all_counts = list(data['counts'])
             weight_ess = list(data['weight_ess'])
+            energies=list(data['energy']);growths=list(data['growth'])
+            log_weight_ranges=list(data['log_weight_ranges'])
     else:
         states = (guide.sample(4*w, int(rng.integers(2**32))).reshape(4, w, n)
                   if task['start'] == 'guide'
@@ -98,24 +104,32 @@ def _run_one(spec, root):
         shifts = np.array([rates_and_local(ham, task['gamma'], guide, s[:, None, :])[1].mean() for s in states])
         tagged = states.astype(float); ancestors = np.tile(np.arange(w), (4, 1))
         all_tags = []; all_counts = []; weight_ess = []; step = 0
+        energies=[];growths=[];log_weight_ranges=[]
 
     def save():
         cp.parent.mkdir(parents=True, exist_ok=True)
         checkpoint(cp, dict(states=states, shifts=shifts, tagged=tagged, ancestors=ancestors,
                             tags=np.asarray(all_tags, dtype=np.int8), counts=np.asarray(all_counts),
-                            weight_ess=np.asarray(weight_ess)),
+                            weight_ess=np.asarray(weight_ess),energy=np.asarray(energies),
+                            growth=np.asarray(growths),log_weight_ranges=np.asarray(log_weight_ranges)),
                    dict(task=task, provenance=provenance, rng=rng.bit_generator.state,
                         step=step, seconds=elapsed+time.monotonic()-started))
+        dump(root/'progress'/(key+'.json'),dict(task=task,step=step,
+             total=equil+task['cycles']*forward,cycles=len(all_tags),numerics='log_weight_v1'))
 
     while step < equil+task['cycles']*forward:
-        weights = []
+        weights = [];energy=[];growth=[];ranges=[]
         for r in range(4):
-            s, children, shifts[r], _, _, we = propagate(
-                ham, task['gamma'], guide, states[r, :, None, :], shifts[r], dt, rng)
+            diagnostic={}
+            s, children, shifts[r], mixed, eg, we = propagate(
+                ham, task['gamma'], guide, states[r, :, None, :], shifts[r], dt, rng,diagnostic)
             states[r] = s[:, 0]; weights.append(we)
+            energy.append(mixed);growth.append(eg)
+            ranges.append([diagnostic['min_log_weight'],diagnostic['max_log_weight']])
             if step >= equil:
                 ancestors[r] = ancestors[r, children]
         step += 1; weight_ess.append(weights)
+        energies.append(energy);growths.append(growth);log_weight_ranges.append(ranges)
         boundary = step == equil or (step > equil and (step-equil) % forward == 0)
         if step > equil and boundary:
             all_tags.append(tagged.astype(np.int8))
@@ -137,9 +151,12 @@ def _run_one(spec, root):
     ess = w*w/(counts.astype(float)**2).sum(2); lineage = counts.max(2)/w
     dest.parent.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(dest.with_suffix('.npz'), tags=tags, counts=counts,
-                        descendant_ess=ess, largest_lineage=lineage, weight_ess=weight_ess)
+                        descendant_ess=ess, largest_lineage=lineage, weight_ess=weight_ess,
+                        energy=energies,growth=growths,log_weight_ranges=log_weight_ranges)
     record = dict(task=task, provenance=provenance, q_grid=grid.tolist(), mass=mass.tolist(),
                   **moments, minimum_descendant_ess=float(ess.min()),
+                  largest_lineage=float(lineage.max()),energy=float(np.mean(energies[equil:])),
+                  growth_energy=float(np.mean(growths[equil:])),
                   ancestry_alarm=bool(ess.min()<8 or lineage.max()>.5),
                   replay_verified=bool(spec.get('original')), ground_state_qualified=False,
                   raw_file=str(dest.with_suffix('.npz').relative_to(root.parent)),

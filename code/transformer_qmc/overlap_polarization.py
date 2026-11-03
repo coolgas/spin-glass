@@ -37,10 +37,22 @@ def notebook_cells():
 
     return [nb.v4.new_markdown_cell(r'''## L=4, N=48: uniform polarization and nonuniform overlap
 
-For two independent replicas of the same disorder, let $m_{i,J}=\langle Z_i\rangle_J$
-and $\bar m_J=N^{-1}\sum_i m_{i,J}$. Then
-$$\langle q\rangle_J=\frac1N\sum_i m_{i,J}^2
-=\bar m_J^2+\frac1N\sum_i(m_{i,J}-\bar m_J)^2.$$
+**The three lines in each panel** (brackets denote an equal average over disorders):
+
+- **Black circles — mean overlap:** $[Q_J]_J=[N^{-1}\sum_i m_{i,J}^2]_J$.
+- **Orange squares — uniform contribution:** $[U_J]_J=[\bar m_J^2]_J$, from the spatially averaged magnetization.
+- **Blue triangles — nonuniform contribution:** $[V_J]_J=[N^{-1}\sum_i(m_{i,J}-\bar m_J)^2]_J$, from spatial variation of local magnetizations.
+
+At each field, **black = orange + blue**. Error bars are $\pm1$ standard error across eight disorders.
+
+For fixed disorder $J$, two independent configurations $s,t$ have overlap
+$$q(s,t)=\frac1N\sum_i s_i t_i,\qquad
+m_{i,J}=\langle Z_i\rangle_J,\qquad \bar m_J=\frac1N\sum_i m_{i,J}.$$
+Independence gives $\langle s_i t_i\rangle_J=m_{i,J}^2$. Since
+$\sum_i(m_{i,J}-\bar m_J)=0$, the mean overlap decomposes exactly as
+$$Q_J\equiv\langle q\rangle_J=\frac1N\sum_i m_{i,J}^2
+=\underbrace{\bar m_J^2}_{U_J:\ \text{uniform}}
++\underbrace{\frac1N\sum_i(m_{i,J}-\bar m_J)^2}_{V_J:\ \text{nonuniform}}.$$
 The first term measures the contribution of **uniform polarization** to the
 mean overlap. The second measures a **reproducible nonuniform local pattern**.
 We evaluate both terms within each disorder, then average the eight disorders
@@ -55,19 +67,43 @@ exclude ferromagnetic order. Nonuniform polarization can also arise from a
 field-pinned response to quenched disorder or other spatial order; it is not
 by itself a glass order parameter in a field.
 
-**Estimator:** reconstruct each of the four populations' local magnetizations
-from saved descendant weights, averaging cycles first as in the measured
-$P(q)$. Use all six cross-population products for both terms, without squaring
-a noisy pooled estimate. Thus $\widehat{\bar m_J^2}$ uses
-$\bar m_J^{(a)}\bar m_J^{(b)}$, and the nonuniform term uses
-$N^{-1}\sum_i(m_{i,J}^{(a)}-\bar m_J^{(a)})(m_{i,J}^{(b)}-\bar m_J^{(b)})$.
+**Estimator from saved GFMC measurements.** Within one run and disorder (indices
+suppressed), let $s_{cwi}^{(a)}$ be the tagged spin and $n_{cw}^{(a)}$ its
+descendant count in population $a$, cycle $c$, walker $w$. With $C$ cycles,
+$W$ walkers and $\sum_w n_{cw}^{(a)}=W$, compute
+$$\widehat m_i^{(a)}=\frac1C\sum_{c=1}^C\sum_{w=1}^W
+\frac{n_{cw}^{(a)}}W s_{cwi}^{(a)},\qquad
+\widehat{\bar m}^{(a)}=\frac1N\sum_i\widehat m_i^{(a)},\qquad
+\delta\widehat m_i^{(a)}=\widehat m_i^{(a)}-\widehat{\bar m}^{(a)}.$$
+Average all six pairs of the four separately branching populations:
+$$\widehat Q=\frac16\sum_{a<b}\frac1N\sum_i\widehat m_i^{(a)}\widehat m_i^{(b)},
+\qquad \widehat U=\frac16\sum_{a<b}\widehat{\bar m}^{(a)}\widehat{\bar m}^{(b)},
+\qquad \widehat V=\frac16\sum_{a<b}\frac1N\sum_i
+\delta\widehat m_i^{(a)}\delta\widehat m_i^{(b)}.$$
+Cross-population products avoid the positive self-squaring noise term
+$\mathbb E[\widehat m^2]=(\mathbb E[\widehat m])^2+\operatorname{Var}(\widehat m)$;
+they do not remove shared projection or mixing bias. The code checks
+$$\widehat Q=\widehat U+\widehat V=\sum_q q\,\widehat P_J(q)$$
+and agreement with the saved production mean overlap to tolerance $10^{-12}$.
 Finite-sample estimates are not clipped to zero. This is distinct from the
 single-snapshot second moment $\langle(N^{-1}\sum_i Z_i)^2\rangle$.
 
-Two repeats are averaged within each disorder before the disorder mean and
-capped $\pm1$ disorder-SE bars. The nonuniform fraction is the ratio of disorder
-means; its error uses a delete-one-disorder jackknife. Errors exclude sampling
-and projection bias. Every ancestry alarm is retained with equal weight.
+**Disorder averages and errors.** For any $X\in\{Q,U,V\}$, average two repeats
+within each disorder, then $D=8$ disorders equally:
+$$\widehat X_J=\frac{\widehat X_{J,0}+\widehat X_{J,1}}2,\qquad
+\overline X=\frac1D\sum_J\widehat X_J,\qquad
+\operatorname{SE}(\overline X)=
+\sqrt{\frac{\sum_J(\widehat X_J-\overline X)^2}{D(D-1)}}.$$
+The plotted curves are $\overline Q,\overline U,\overline V$ with capped
+$\pm1$ disorder-SE bars. The nonuniform fraction is the ratio of disorder means,
+$f=\overline V/\overline Q$. For its delete-one-disorder jackknife, define
+$$f_{(-J)}=\frac{\sum_{K\ne J}\widehat V_K}{\sum_{K\ne J}\widehat Q_K},\qquad
+\bar f_{\mathrm{leave}}=\frac1D\sum_J f_{(-J)},\qquad
+\operatorname{SE}_{\mathrm{jack}}(f)=
+\sqrt{\frac{D-1}{D}\sum_J(f_{(-J)}-\bar f_{\mathrm{leave}})^2}.$$
+These errors describe variation across disorder estimates; they do not bound
+systematic sampling or projection bias. Every ancestry alarm is retained with
+equal weight.
 '''), nb.v4.new_code_cell('''import importlib.util
 polarization_source=root/'code/transformer_qmc/overlap_polarization.py'
 spec=importlib.util.spec_from_file_location('overlap_polarization',polarization_source)

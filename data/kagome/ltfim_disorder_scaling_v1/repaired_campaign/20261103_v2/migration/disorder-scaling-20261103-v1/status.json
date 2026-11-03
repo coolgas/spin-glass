@@ -1,0 +1,12 @@
+{
+  "state": "running",
+  "completed_fits": 24,
+  "completed_runs": 44,
+  "queued_or_running_runs": 4,
+  "last_context": [
+    4,
+    0.6,
+    60005,
+    "rbm_2"
+  ]
+}

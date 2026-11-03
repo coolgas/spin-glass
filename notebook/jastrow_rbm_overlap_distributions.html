@@ -7828,6 +7828,115 @@ ansatz/optimization test, not scalable sampled-training validation.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=db95d5e6">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_repaired-campaign-progress" data-mime-type="text/markdown">
+<h2 id="Corrected-campaign:-compute-allocation-and-progress">Corrected campaign: compute allocation and progress<a class="anchor-link" href="#Corrected-campaign:-compute-allocation-and-progress">¶</a></h2><p><strong>Snapshot: 2026-11-03T07:32:54.982215+00:00 (UTC).</strong> This is a saved status, not a live monitor.</p>
+<table>
+<thead>
+<tr>
+<th>Work</th>
+<th>Status</th>
+<th style="text-align:right">Completed training fits</th>
+<th style="text-align:right">Completed GFMC runs</th>
+<th>Compute allocation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>disorder-scaling-20261103-v1</td>
+<td>Retired; preserved legacy output</td>
+<td style="text-align:right">320</td>
+<td style="text-align:right">480</td>
+<td>Zero workers</td>
+</tr>
+<tr>
+<td>disorder-scaling-fine-20261103-v1</td>
+<td>Retired; preserved legacy output</td>
+<td style="text-align:right">351</td>
+<td style="text-align:right">154</td>
+<td>Zero workers</td>
+</tr>
+<tr>
+<td>Corrected main campaign</td>
+<td>running</td>
+<td style="text-align:right">3/896</td>
+<td style="text-align:right">0/1568</td>
+<td>4 training + 6 GFMC workers</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recorded failures:</strong> corrected campaign 0; retired campaigns disorder-scaling-20261103-v1: 16, disorder-scaling-fine-20261103-v1: 0. All are retained.</p>
+<p><strong>One-shot process/source check (2026-11-03T07:31:55.675354+00:00):</strong> 0 active legacy processes; 199 production source files checked, 0 mismatches.</p>
+<table>
+<thead>
+<tr>
+<th>Active GFMC checkpoint</th>
+<th>Size / field / disorder</th>
+<th style="text-align:right">Repeat</th>
+<th style="text-align:right">Saved steps / total</th>
+<th style="text-align:right">Completed measurement cycles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rbm_2 / time</td>
+<td>L=6, Gamma=0.55, J=60000</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">320/2880</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>rbm_2 / main</td>
+<td>L=6, Gamma=0.55, J=60000</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">320/1440</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>rbm_2 / main</td>
+<td>L=6, Gamma=0.55, J=60000</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">320/1440</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>rbm_2 / start</td>
+<td>L=6, Gamma=0.55, J=60000</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">320/1440</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>rbm_2 / population</td>
+<td>L=6, Gamma=0.55, J=60000</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">160/1440</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>rbm_2 / population</td>
+<td>L=6, Gamma=0.55, J=60000</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">160/1440</td>
+<td style="text-align:right">0</td>
+</tr>
+</tbody>
+</table>
+<p>Checkpoint steps show trajectory progress only; they do not measure convergence.</p>
+<p><strong>What is running:</strong> repaired large-RBM learning rate (0.001), log-domain GFMC, and frozen random/up/down sampling checks before guide selection. The standalone weak-field pilot has been merged into this campaign; its completed fits and partial checkpoint are reused with matching source hashes.</p>
+<p><strong>Priority and coverage:</strong> fixed h=0.15; periodic kagome, N=3L². Ascending Gamma across L=4 and L=6. L=4 retains Gamma=0.55,0.56,...,0.70 plus 0.85 and 1.00; L=6 retains 0.55,...,0.60 plus 0.65,0.70,0.85,1.00. Disorders 60000–60007, both Jastrow/RBM guides, and both training seeds remain in the plan. No disorder is selected by overlap width.</p>
+<p><strong>Resource budget:</strong> at most 6 projector futures are submitted at once; 2 are deferred at this snapshot. New dispatch stops at 2026-11-03T12:59:37.507694+00:00; already-running GFMC jobs finish their finite trajectories. The complete 896-fit plan is not a promise of completion within this budget.</p>
+<p><strong>Validated so far:</strong> the repair controls contain 24 strong-field projection runs with no final projection failure or ancestry alarm, and the earlier 30-test regression suite passed. Sixteen targeted restart checks also passed, including the repaired histogram checkpoint replay and numerical-provenance mismatch rejection. These are implementation checks, not a ground-state convergence certificate.</p>
+<p><strong>Physical conclusions still pending:</strong> corrected weak-field disorder averages, population/forward-time sensitivity, and connected-correlation size checks. Passing frozen-start diagnostics alone does not establish equilibrium. The existing physical figures retain the frozen 112-run broader snapshot; the retired counts above are not corrected ensemble results.</p>
+<p>Remote campaign: <code>/root/autodl-tmp/disorder-scaling-repaired-20261103-v2</code>. Raw stop audit, launch configuration, source hashes, and imported-checkpoint identities are preserved with this snapshot.</p>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1702b7e6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8129,7 +8238,7 @@ claim those follow-ups have converged.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6c701bc3">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=07587a36">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9091,16 +9200,27 @@ No matched-size crossing or collapse is inferred from this report.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=32b2d659">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4d7055c0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="L=4,-N=48:-uniform-polarization-and-nonuniform-overlap">L=4, N=48: uniform polarization and nonuniform overlap<a class="anchor-link" href="#L=4,-N=48:-uniform-polarization-and-nonuniform-overlap">¶</a></h2><p>For two independent replicas of the same disorder, let $m_{i,J}=\langle Z_i\rangle_J$
-and $\bar m_J=N^{-1}\sum_i m_{i,J}$. Then
-$$\langle q\rangle_J=\frac1N\sum_i m_{i,J}^2
-=\bar m_J^2+\frac1N\sum_i(m_{i,J}-\bar m_J)^2.$$
+<h2 id="L=4,-N=48:-uniform-polarization-and-nonuniform-overlap">L=4, N=48: uniform polarization and nonuniform overlap<a class="anchor-link" href="#L=4,-N=48:-uniform-polarization-and-nonuniform-overlap">¶</a></h2><p><strong>The three lines in each panel</strong> (brackets denote an equal average over disorders):</p>
+<ul>
+<li><strong>Black circles — mean overlap:</strong> $[Q_J]_J=[N^{-1}\sum_i m_{i,J}^2]_J$.</li>
+<li><strong>Orange squares — uniform contribution:</strong> $[U_J]_J=[\bar m_J^2]_J$, from the spatially averaged magnetization.</li>
+<li><strong>Blue triangles — nonuniform contribution:</strong> $[V_J]_J=[N^{-1}\sum_i(m_{i,J}-\bar m_J)^2]_J$, from spatial variation of local magnetizations.</li>
+</ul>
+<p>At each field, <strong>black = orange + blue</strong>. Error bars are $\pm1$ standard error across eight disorders.</p>
+<p>For fixed disorder $J$, two independent configurations $s,t$ have overlap
+$$q(s,t)=\frac1N\sum_i s_i t_i,\qquad
+m_{i,J}=\langle Z_i\rangle_J,\qquad \bar m_J=\frac1N\sum_i m_{i,J}.$$
+Independence gives $\langle s_i t_i\rangle_J=m_{i,J}^2$. Since
+$\sum_i(m_{i,J}-\bar m_J)=0$, the mean overlap decomposes exactly as
+$$Q_J\equiv\langle q\rangle_J=\frac1N\sum_i m_{i,J}^2
+=\underbrace{\bar m_J^2}_{U_J:\ \text{uniform}}
++\underbrace{\frac1N\sum_i(m_{i,J}-\bar m_J)^2}_{V_J:\ \text{nonuniform}}.$$
 The first term measures the contribution of <strong>uniform polarization</strong> to the
 mean overlap. The second measures a <strong>reproducible nonuniform local pattern</strong>.
 We evaluate both terms within each disorder, then average the eight disorders
@@ -9113,22 +9233,46 @@ only a small fraction of the overlap. The inequality $h&lt;\Gamma$ alone does no
 exclude ferromagnetic order. Nonuniform polarization can also arise from a
 field-pinned response to quenched disorder or other spatial order; it is not
 by itself a glass order parameter in a field.</p>
-<p><strong>Estimator:</strong> reconstruct each of the four populations' local magnetizations
-from saved descendant weights, averaging cycles first as in the measured
-$P(q)$. Use all six cross-population products for both terms, without squaring
-a noisy pooled estimate. Thus $\widehat{\bar m_J^2}$ uses
-$\bar m_J^{(a)}\bar m_J^{(b)}$, and the nonuniform term uses
-$N^{-1}\sum_i(m_{i,J}^{(a)}-\bar m_J^{(a)})(m_{i,J}^{(b)}-\bar m_J^{(b)})$.
+<p><strong>Estimator from saved GFMC measurements.</strong> Within one run and disorder (indices
+suppressed), let $s_{cwi}^{(a)}$ be the tagged spin and $n_{cw}^{(a)}$ its
+descendant count in population $a$, cycle $c$, walker $w$. With $C$ cycles,
+$W$ walkers and $\sum_w n_{cw}^{(a)}=W$, compute
+$$\widehat m_i^{(a)}=\frac1C\sum_{c=1}^C\sum_{w=1}^W
+\frac{n_{cw}^{(a)}}W s_{cwi}^{(a)},\qquad
+\widehat{\bar m}^{(a)}=\frac1N\sum_i\widehat m_i^{(a)},\qquad
+\delta\widehat m_i^{(a)}=\widehat m_i^{(a)}-\widehat{\bar m}^{(a)}.$$
+Average all six pairs of the four separately branching populations:
+$$\widehat Q=\frac16\sum_{a&lt;b}\frac1N\sum_i\widehat m_i^{(a)}\widehat m_i^{(b)},
+\qquad \widehat U=\frac16\sum_{a&lt;b}\widehat{\bar m}^{(a)}\widehat{\bar m}^{(b)},
+\qquad \widehat V=\frac16\sum_{a&lt;b}\frac1N\sum_i
+\delta\widehat m_i^{(a)}\delta\widehat m_i^{(b)}.$$
+Cross-population products avoid the positive self-squaring noise term
+$\mathbb E[\widehat m^2]=(\mathbb E[\widehat m])^2+\operatorname{Var}(\widehat m)$;
+they do not remove shared projection or mixing bias. The code checks
+$$\widehat Q=\widehat U+\widehat V=\sum_q q\,\widehat P_J(q)$$
+and agreement with the saved production mean overlap to tolerance $10^{-12}$.
 Finite-sample estimates are not clipped to zero. This is distinct from the
 single-snapshot second moment $\langle(N^{-1}\sum_i Z_i)^2\rangle$.</p>
-<p>Two repeats are averaged within each disorder before the disorder mean and
-capped $\pm1$ disorder-SE bars. The nonuniform fraction is the ratio of disorder
-means; its error uses a delete-one-disorder jackknife. Errors exclude sampling
-and projection bias. Every ancestry alarm is retained with equal weight.</p>
+<p><strong>Disorder averages and errors.</strong> For any $X\in\{Q,U,V\}$, average two repeats
+within each disorder, then $D=8$ disorders equally:
+$$\widehat X_J=\frac{\widehat X_{J,0}+\widehat X_{J,1}}2,\qquad
+\overline X=\frac1D\sum_J\widehat X_J,\qquad
+\operatorname{SE}(\overline X)=
+\sqrt{\frac{\sum_J(\widehat X_J-\overline X)^2}{D(D-1)}}.$$
+The plotted curves are $\overline Q,\overline U,\overline V$ with capped
+$\pm1$ disorder-SE bars. The nonuniform fraction is the ratio of disorder means,
+$f=\overline V/\overline Q$. For its delete-one-disorder jackknife, define
+$$f_{(-J)}=\frac{\sum_{K\ne J}\widehat V_K}{\sum_{K\ne J}\widehat Q_K},\qquad
+\bar f_{\mathrm{leave}}=\frac1D\sum_J f_{(-J)},\qquad
+\operatorname{SE}_{\mathrm{jack}}(f)=
+\sqrt{\frac{D-1}{D}\sum_J(f_{(-J)}-\bar f_{\mathrm{leave}})^2}.$$
+These errors describe variation across disorder estimates; they do not bound
+systematic sampling or projection bias. Every ancestry alarm is retained with
+equal weight.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e84cac04">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=48f3089d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9335,7 +9479,7 @@ and projection bias. Every ancestry alarm is retained with equal weight.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=55d64d2c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f97e7e23">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9352,7 +9496,7 @@ them does not by itself demonstrate exploration of competing sectors.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b3d8cd50">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=07717da2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9395,7 +9539,7 @@ and numerical/ancestry diagnostics remain available in the source bundle.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4826bf20">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b548c157">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9788,7 +9932,7 @@ and numerical/ancestry diagnostics remain available in the source bundle.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ce1342ed">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f9ea10c5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9811,7 +9955,7 @@ Its pending fits are not included as physical measurements here.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=43a32a45">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ac66b779">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>

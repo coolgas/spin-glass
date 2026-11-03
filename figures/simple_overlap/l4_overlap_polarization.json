@@ -4,7 +4,7 @@
   "N": 48,
   "source_snapshot": "data/kagome/ltfim_disorder_scaling_v1/broader_histograms/20261103T035100Z_preview",
   "measurement_snapshot_utc": "2026-11-03T03:49:58.555724+00:00",
-  "source_sha256": "a7b79bf801b65ee6dee4bdca602799c862c4abdad9066097220a75ff5ef808cd",
+  "source_sha256": "710d2709f711f89857461cd6ea36188e79d3590716b078c02dbe0045301a19d5",
   "estimator": "Cross-population products of equal-cycle descendant-weighted local magnetizations",
   "uncertainty": "Disorder SE; fraction uses delete-one-disorder jackknife; excludes mixing and projection bias",
   "ground_state_qualified": false,

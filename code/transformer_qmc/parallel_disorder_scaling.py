@@ -53,6 +53,12 @@ def ordered_tasks(manifest):
     return sorted(tasks,key=lambda t:(t['gamma'],t['sample_id'],t['L'],t['kind'],t['seed']))
 
 
+def projector_priority(task):
+    """Weak fields first; main ensemble before sensitivity runs at each field."""
+    return (task['gamma'], task['audit']!='main', task['sample_id'],
+            task['L'], task['kind'], task['repeat'], task['audit'])
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--output',type=Path,required=True)
@@ -68,6 +74,7 @@ def main():
     deadline=time.monotonic()+max(0,a.deadline_unix-time.time())
     tasks=ordered_tasks(manifest)
     completed_fits={};pending=[];submitted_contexts=set();projectors={};failures=[]
+    waiting_projectors=[]
     training=a.output/'training';ctx=mp.get_context('spawn')
     training.mkdir(parents=True,exist_ok=True)
     (a.output/'inputs').mkdir(exist_ok=True)
@@ -101,8 +108,15 @@ def main():
                 for repeat in [0,1]:
                     task=dict(L=L,gamma=g,sample_id=sid,kind=kind,training_seed=best['task']['seed'],
                               audit=audit,walkers=w,equil=eq,forward=fw,start=start,delta=.1,cycles=8,repeat=repeat)
-                    projectors[cpu_pool.submit(project_task,task,str(model_path),str(a.output/'projector'))]=task
+                    waiting_projectors.append((task,str(model_path)))
             submitted_contexts.add(key)
+        def dispatch_projectors():
+            # Keep only the worker-sized active set in the executor. Deferred
+            # tasks stay explicit and are never dispatched past the time budget.
+            waiting_projectors.sort(key=lambda item:projector_priority(item[0]))
+            while waiting_projectors and len(projectors)<a.workers and time.monotonic()<deadline:
+                task,model_path=waiting_projectors.pop(0)
+                projectors[cpu_pool.submit(project_task,task,model_path,str(a.output/'projector'))]=task
         for task in tasks:
             record=training/(fit_name(task)+'.json')
             if record.exists():
@@ -131,10 +145,12 @@ def main():
         def status(state):
             write(a.output/'parallel_status.json',dict(state=state,completed_fits=len(completed_fits),
                 planned_fits=len(tasks),active_training=list(active.values()),trainers=a.trainers,
-                queued_or_running_projectors=len(projectors),submitted_contexts=len(submitted_contexts),
+                queued_or_running_projectors=len(projectors)+len(waiting_projectors),
+                running_projectors=list(projectors.values()),deferred_projectors=len(waiting_projectors),
+                projector_workers=a.workers,submitted_contexts=len(submitted_contexts),
                 completed_runs=len(list((a.output/'projector/runs').glob('*.json'))),
                 deadline_unix=a.deadline_unix,failures=failures,updated_unix=time.time()))
-        fill();status('running')
+        fill();dispatch_projectors();status('running')
         while active or projectors:
             done,_=wait(list(active)+list(projectors),timeout=30,return_when=FIRST_COMPLETED)
             for future in done:
@@ -150,11 +166,14 @@ def main():
                     if r['status']=='completed':
                         completed_fits[context(task)+(task['seed'],)]=r;launch_context(context(task))
                     else:paused=True
-            fill();reduce_results(a.output)
+            fill();dispatch_projectors();reduce_results(a.output)
             status('running' if active else 'draining_projectors')
         from .report_disorder_scaling import report
         report(a.output)
-        state='failed' if failures else ('paused_training_budget' if paused else 'completed')
+        if waiting_projectors:
+            write(a.output/'deferred_projectors.json',dict(tasks=[dict(task=t,model=p) for t,p in waiting_projectors],
+                reason='Dispatch budget expired; resume from unchanged manifest and sources'))
+        state='failed' if failures else ('paused_budget' if paused or waiting_projectors else 'completed')
         status(state)
         write(a.output/'status.json',dict(state=state,completed_fits=len(completed_fits),
               completed_runs=len(list((a.output/'projector/runs').glob('*.json'))),executor='parallel_disorder_scaling'))

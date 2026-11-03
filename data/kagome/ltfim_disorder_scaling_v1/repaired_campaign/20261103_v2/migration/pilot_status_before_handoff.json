@@ -1,0 +1,49 @@
+{
+  "state": "training",
+  "active": {
+    "L": 6,
+    "gamma": 0.6,
+    "sample_id": 60000,
+    "kind": "rbm_2",
+    "seed": 1,
+    "mode": "anneal"
+  },
+  "results": [
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "status": "completed",
+      "sampling_alarms": []
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "status": "completed",
+      "sampling_alarms": []
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.6,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "status": "completed",
+      "sampling_alarms": []
+    }
+  ]
+}

@@ -82,11 +82,18 @@ def consolidate(notebook, root):
     for cell in notebook.cells:
         if MARKER in cell.metadata.get('tags', []):
             break
+        if 'repaired-campaign-progress' in cell.metadata.get('tags', []):
+            continue
         original.append(deepcopy(cell))
     cells = label_l2_cells(original)
     title, body = cells[0].source.split('\n', 1)
     if SIZE_NOTE not in body:
         cells[0].source = title + '\n\n' + SIZE_NOTE + body.lstrip()
+    if __package__:
+        from .repaired_campaign_progress import notebook_cells as progress_cells
+    else:
+        from repaired_campaign_progress import notebook_cells as progress_cells
+    cells[1:1]=progress_cells(root)
     marker = nb.v4.new_markdown_cell(
         '## Saved disorder averages: sizes, Hamiltonian and provenance\n\n'
         'The following results are frozen measurements from the completed companion reports. '
@@ -192,6 +199,9 @@ def main():
         if repair_report.exists():outputs.append(repair_report)
         repair_manifest=root/'data/kagome/ltfim_disorder_scaling_v1/rbm_repair/20261103_v1/sha256.json'
         if repair_manifest.exists():outputs.append(repair_manifest)
+        progress_root=root/'data/kagome/ltfim_disorder_scaling_v1/repaired_campaign/20261103_v2'
+        outputs.extend(p for p in [progress_root/'progress.json',progress_root/'PROGRESS.md',
+            progress_root/'progress_sha256.json',Path(__file__).with_name('repaired_campaign_progress.py').resolve()] if p.exists())
         outputs.extend(sorted((root/'figures/simple_overlap').glob('*')))
         manifest = {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest()
             for p in outputs if p.is_file()}

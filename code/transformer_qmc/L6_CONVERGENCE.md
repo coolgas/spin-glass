@@ -1,5 +1,10 @@
 # L6 convergence first — 2026-11-03
 
+Method correction: the campaigns below use VMC-trained fixed guides. They do
+not include PQMC-to-RBM feedback and cannot test the published self-learning
+method. See [SELF_LEARNING.md](SELF_LEARNING.md) for the verified update rule,
+amplitude convention, and separate finite implementation/validation pilot.
+
 The combined L4/L6 runner is paused at saved checkpoints. At the user's direction,
 L4 production continues in a separate L4-only runner; broad L6 production is paused.
 Compute priority is L6 reliability in Gamma=.55–.70 at h=.15. Existing artifacts,

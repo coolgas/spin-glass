@@ -1,0 +1,7 @@
+test_final_measurements_match_existing_control_tasks (transformer_qmc.test_self_learning_l6_pilot.FeedbackPilotTests.test_final_measurements_match_existing_control_tasks) ... ok
+test_four_contexts_and_finite_budget (transformer_qmc.test_self_learning_l6_pilot.FeedbackPilotTests.test_four_contexts_and_finite_budget) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK

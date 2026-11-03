@@ -1,0 +1,17 @@
+{
+  "pid": 391377,
+  "command": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "-m",
+    "transformer_qmc.self_learning_measurements",
+    "--pilot",
+    "/root/autodl-tmp/self-learning-rbm-20261103-v1/results",
+    "--output",
+    "/root/autodl-tmp/self-learning-rbm-20261103-v1/validation"
+  ],
+  "utc": "2026-11-03T14:34:22.830019+00:00",
+  "planned_runs": 4,
+  "deadline": null,
+  "ground_state_qualified": false
+}

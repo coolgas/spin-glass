@@ -1,0 +1,92 @@
+{
+  "utc": "2026-11-03T14:48:51.382215+00:00",
+  "verified_runs": [
+    {
+      "seed": 0,
+      "repeat": 0,
+      "raw_sha256": "e1b1897c4b85fbf6fb634b0631a395aa15f24880e78a811bafbc8274f5e11416",
+      "minimum_ess": 85.66797385620914,
+      "largest_lineage": 0.04296875,
+      "errors": {
+        "energy_error_per_site": 2.0986482265043332e-05,
+        "q2_error": -0.0023760814907329286,
+        "histogram_tv": 0.0083111069903852,
+        "spectrum_max_tolerance_ratio": 0.4239350391672457,
+        "spectrum_error": [
+          0.013631953605985903,
+          0.008711730711291554,
+          0.007515902567074018,
+          0.00657411227528476
+        ]
+      }
+    },
+    {
+      "seed": 0,
+      "repeat": 1,
+      "raw_sha256": "b57ec072d1b13bc72ec884ff3f0265175fb2ba34d0fe8c66b5787a71a994a946",
+      "minimum_ess": 96.09384164222874,
+      "largest_lineage": 0.056640625,
+      "errors": {
+        "energy_error_per_site": -4.225215713734206e-05,
+        "q2_error": 0.0003059067662160575,
+        "histogram_tv": 0.008095475230540154,
+        "spectrum_max_tolerance_ratio": 0.18546754278582256,
+        "spectrum_error": [
+          0.002316737365744892,
+          0.005056387446801092,
+          0.000592622322356573,
+          0.0008684737429165423
+        ]
+      }
+    },
+    {
+      "seed": 1,
+      "repeat": 0,
+      "raw_sha256": "17ce3eac7f5d237f60cfb364319f5d8ee2178015d6de4ac19bea3a1c80d3cca4",
+      "minimum_ess": 92.30422535211268,
+      "largest_lineage": 0.060546875,
+      "errors": {
+        "energy_error_per_site": 0.00015218490705063795,
+        "q2_error": -0.007379366567616008,
+        "histogram_tv": 0.013574395256228902,
+        "spectrum_max_tolerance_ratio": 0.27831106113576276,
+        "spectrum_error": [
+          0.008949303838833411,
+          0.006136985396624328,
+          0.006440619323918928,
+          0.00683582093831081
+        ]
+      }
+    },
+    {
+      "seed": 1,
+      "repeat": 1,
+      "raw_sha256": "dc2a803e3985479f142b7b0e4f387361f4d32dc49694b011da9afb0472191077",
+      "minimum_ess": 76.6951433586893,
+      "largest_lineage": 0.05859375,
+      "errors": {
+        "energy_error_per_site": 4.0683647162106006e-05,
+        "q2_error": -0.002378069416015205,
+        "histogram_tv": 0.008930618639542509,
+        "spectrum_max_tolerance_ratio": 0.08235592890838508,
+        "spectrum_error": [
+          0.0026482175294174626,
+          0.0022409115986728456,
+          0.0009655566217600109,
+          0.0018826393291472843
+        ]
+      }
+    }
+  ],
+  "checks": [
+    "raw hashes",
+    "model hashes",
+    "histogram normalization",
+    "independent overlap moments",
+    "connected spectrum",
+    "energy",
+    "ancestry",
+    "frozen chain shapes"
+  ],
+  "ground_state_qualified": false
+}

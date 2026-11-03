@@ -1,0 +1,18 @@
+{
+  "state": "adapting",
+  "current": {
+    "L": 6,
+    "gamma": 0.6,
+    "sample_id": 60000,
+    "kind": "rbm_2",
+    "seed": 0,
+    "mode": "anneal"
+  },
+  "updated_utc": "2026-11-03T14:40:20.799053+00:00",
+  "completed_contexts": 0,
+  "planned_contexts": 4,
+  "planned_stints": 24,
+  "planned_final_projections": 8,
+  "failures": [],
+  "ground_state_qualified": false
+}

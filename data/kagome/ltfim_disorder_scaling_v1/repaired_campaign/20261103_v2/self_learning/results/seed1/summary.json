@@ -1,0 +1,173 @@
+{
+  "rows": [
+    {
+      "stint": 0,
+      "model_sha256": "f599b6248052873bd67d2b9f8c2f67f3eb974ad4456c2f7bbb42341cca3db48b",
+      "input_model_sha256": "2fdf6990242eaa0c64aafb6533d340778b380dd6139e63da9e9687a76cd3b14c",
+      "raw_sha256": "3da00cef18e5cf43fcbb1f0992bbaaa2e87a1d76bae5e9e2f43beba715316eba",
+      "fit_sha256": "120ec9c211f95dd5fb307e56faf96654161910a6a48df1d3619b2caf1e0cedc7",
+      "training_samples": 7680,
+      "before": {
+        "energy": -7.177304895364894,
+        "exact_energy": -13.893531841398032,
+        "energy_error_per_site": 0.5596855788360948,
+        "fidelity": 0.06694900534601352,
+        "ground_probability_tv": 0.9045697306000242,
+        "empirical_target_kl": 1.7226470839704158
+      },
+      "after": {
+        "energy": -12.317036370672813,
+        "exact_energy": -13.893531841398032,
+        "energy_error_per_site": 0.13137462256043486,
+        "fidelity": 0.5574889954873049,
+        "ground_probability_tv": 0.5658873536516127,
+        "empirical_target_kl": 0.2702344371833044
+      },
+      "minimum_training_lineage_ess": 5.351679647228148,
+      "largest_training_lineage": 0.322265625,
+      "training_ancestry_alarm": true,
+      "ground_state_qualified": false
+    },
+    {
+      "stint": 1,
+      "model_sha256": "79b340920673caf9f24b27bd01a18120cf5752cd33ce286a08c0d1f4c3fcfc9e",
+      "input_model_sha256": "145390f86a622b22dc68131cd75ff15bd5d2026e152d17d0f30cd6b74e883ceb",
+      "raw_sha256": "12a57884b1c005891674287a9ed7b24acfbcb97d9d642fd693f0d706c1a2ae1d",
+      "fit_sha256": "e55d328ffd63750d4b8d0637c803eda080270fc0eadfc8fdacb65955e1430dc9",
+      "training_samples": 7680,
+      "before": {
+        "energy": -12.317036370672813,
+        "exact_energy": -13.893531841398032,
+        "energy_error_per_site": 0.13137462256043486,
+        "fidelity": 0.5574889954873049,
+        "ground_probability_tv": 0.5658873536516127,
+        "empirical_target_kl": 0.47023987909392484
+      },
+      "after": {
+        "energy": -13.561139929599435,
+        "exact_energy": -13.893531841398032,
+        "energy_error_per_site": 0.02769932598321641,
+        "fidelity": 0.8995656050216596,
+        "ground_probability_tv": 0.2446907416394361,
+        "empirical_target_kl": 0.15788814076032195
+      },
+      "minimum_training_lineage_ess": 44.22132253711201,
+      "largest_training_lineage": 0.05078125,
+      "training_ancestry_alarm": false,
+      "ground_state_qualified": false
+    },
+    {
+      "stint": 2,
+      "model_sha256": "8ac3dfc8db9b93765f1d46a14cdbe92109247c58dcd8236e0fc611c54a328fb2",
+      "input_model_sha256": "d86a50160bb34a545054e8529eabf219afa2952cf6807dad7be8a80429742028",
+      "raw_sha256": "305f0b92be804c701b74676486d1bcc6998ee8929f2cb2cf65d177154f312bb5",
+      "fit_sha256": "cdc7c338de5cbbd579630dab5099450e03733d0d99590db25e4170956093d6f7",
+      "training_samples": 7680,
+      "before": {
+        "energy": -13.561139929599435,
+        "exact_energy": -13.893531841398032,
+        "energy_error_per_site": 0.02769932598321641,
+        "fidelity": 0.8995656050216596,
+        "ground_probability_tv": 0.2446907416394361,
+        "empirical_target_kl": 0.17437736938908943
+      },
+      "after": {
+        "energy": -13.769646962114141,
+        "exact_energy": -13.893531841398032,
+        "energy_error_per_site": 0.010323739940324206,
+        "fidelity": 0.9651619706661739,
+        "ground_probability_tv": 0.13687536520741042,
+        "empirical_target_kl": 0.12033460006885827
+      },
+      "minimum_training_lineage_ess": 111.2429450456185,
+      "largest_training_lineage": 0.0244140625,
+      "training_ancestry_alarm": false,
+      "ground_state_qualified": false
+    },
+    {
+      "stint": 3,
+      "model_sha256": "86420bceab7de3a7f2d7d27270082a2f9957ea0158cff8889fbe77aef3664c03",
+      "input_model_sha256": "361dee10be33749ea431c38e3e8d62a7a7e894a91379377753c4b3f8d8285704",
+      "raw_sha256": "c96cb9a196c63b6665181635bf618ba1a9bae8bac2577501d06bef0de958a4df",
+      "fit_sha256": "d9bc2d12a9a38072d4aa30902852d51df7cb80c33775711a66984125bb4382d2",
+      "training_samples": 7680,
+      "before": {
+        "energy": -13.769646962114141,
+        "exact_energy": -13.893531841398032,
+        "energy_error_per_site": 0.010323739940324206,
+        "fidelity": 0.9651619706661739,
+        "ground_probability_tv": 0.13687536520741042,
+        "empirical_target_kl": 0.12026370556240591
+      },
+      "after": {
+        "energy": -13.834554813366669,
+        "exact_energy": -13.893531841398032,
+        "energy_error_per_site": 0.004914752335946885,
+        "fidelity": 0.9838917416131303,
+        "ground_probability_tv": 0.0947778602021485,
+        "empirical_target_kl": 0.1004056913124955
+      },
+      "minimum_training_lineage_ess": 189.95942028985507,
+      "largest_training_lineage": 0.0205078125,
+      "training_ancestry_alarm": false,
+      "ground_state_qualified": false
+    },
+    {
+      "stint": 4,
+      "model_sha256": "5dc66fe83b43b0ca49490c5e18ea5f2fe209e61732b03f936fa0db7063ee69fa",
+      "input_model_sha256": "f61e0aabca5d759478fa75761628173fce0ae976c52290e68b229b98c71428b4",
+      "raw_sha256": "2f3695f485ca449afe1cc23cc3dc88ceca15d4bcaf05afee044bb8ad1415f976",
+      "fit_sha256": "8cbd6a9bb105a186366014161bfdb068ca9eccc54799c7ee3ec537ba54094c07",
+      "training_samples": 7680,
+      "before": {
+        "energy": -13.834554813366669,
+        "exact_energy": -13.893531841398032,
+        "energy_error_per_site": 0.004914752335946885,
+        "fidelity": 0.9838917416131303,
+        "ground_probability_tv": 0.0947778602021485,
+        "empirical_target_kl": 0.101478559053052
+      },
+      "after": {
+        "energy": -13.848187998148614,
+        "exact_energy": -13.893531841398032,
+        "energy_error_per_site": 0.0037786536041181464,
+        "fidelity": 0.9880876826085242,
+        "ground_probability_tv": 0.07340557609636196,
+        "empirical_target_kl": 0.09049719833209877
+      },
+      "minimum_training_lineage_ess": 230.5576077396658,
+      "largest_training_lineage": 0.0166015625,
+      "training_ancestry_alarm": false,
+      "ground_state_qualified": false
+    },
+    {
+      "stint": 5,
+      "model_sha256": "1bff203244a68c1fea6a30332d564d378c3acefc07bc9a9da261199c377dd473",
+      "input_model_sha256": "be643010e7f933358af397b8262eb8c19487fb02941b34e79362f27512367fdd",
+      "raw_sha256": "3bd76da783bf01ace93a102b6e35317e5c314acb7b87150a3d5f636355379fe8",
+      "fit_sha256": "ba734f1eb94d25308a57ab7cf8dcffe17cc31558d41033a568ddfa61d13a6ab8",
+      "training_samples": 7680,
+      "before": {
+        "energy": -13.848187998148614,
+        "exact_energy": -13.893531841398032,
+        "energy_error_per_site": 0.0037786536041181464,
+        "fidelity": 0.9880876826085242,
+        "ground_probability_tv": 0.07340557609636196,
+        "empirical_target_kl": 0.08673373932280323
+      },
+      "after": {
+        "energy": -13.855722464262499,
+        "exact_energy": -13.893531841398032,
+        "energy_error_per_site": 0.0031507814279610655,
+        "fidelity": 0.9903858870264207,
+        "ground_probability_tv": 0.054780782308226916,
+        "empirical_target_kl": 0.07922944080369025
+      },
+      "minimum_training_lineage_ess": 254.015503875969,
+      "largest_training_lineage": 0.013671875,
+      "training_ancestry_alarm": false,
+      "ground_state_qualified": false
+    }
+  ],
+  "ground_state_qualified": false
+}

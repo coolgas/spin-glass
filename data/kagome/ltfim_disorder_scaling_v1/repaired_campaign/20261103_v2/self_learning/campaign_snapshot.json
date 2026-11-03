@@ -1,0 +1,97 @@
+{
+  "utc": "2026-11-03T14:38:08.280813+00:00",
+  "rows": [
+    {
+      "campaign": "l6-convergence-20261103-v1",
+      "pid": 335205,
+      "alive": true,
+      "status": {
+        "state": "running",
+        "updated_utc": "2026-11-03T14:37:55.485033+00:00",
+        "training_workers": 2,
+        "projector_workers": 8,
+        "pending_training": 12,
+        "pending_projectors": 5,
+        "completed_milestones": 25,
+        "completed_projections": 37,
+        "ground_state_qualified": false
+      },
+      "failures": [],
+      "saved_runs": 37,
+      "ancestry_alarms": 37
+    },
+    {
+      "campaign": "extended-rbm-20261103-v1",
+      "pid": 332790,
+      "alive": true,
+      "status": {
+        "state": "projecting",
+        "updated_utc": "2026-11-03T14:32:22.876062+00:00",
+        "active": 2,
+        "completed_extensions": 4,
+        "ground_state_qualified": false
+      },
+      "failures": [],
+      "saved_runs": 10,
+      "ancestry_alarms": 10
+    },
+    {
+      "campaign": "ancestry-diagnostic-20261103-v1",
+      "pid": 331552,
+      "alive": true,
+      "status": {
+        "state": "running",
+        "updated_utc": "2026-11-03T14:38:04.015400+00:00",
+        "planned": 10,
+        "completed": 9,
+        "ground_state_qualified": false
+      },
+      "failures": [],
+      "saved_runs": 9,
+      "ancestry_alarms": 8
+    },
+    {
+      "campaign": "l6-reference-fields-20261103-v1",
+      "pid": 385448,
+      "alive": true,
+      "status": {
+        "state": "running",
+        "updated_utc": "2026-11-03T14:38:05.396696+00:00",
+        "training_workers": 1,
+        "projector_workers": 2,
+        "planned_milestones": 24,
+        "maximum_projection_runs": 48,
+        "completed_milestones": 2,
+        "completed_projections": 0,
+        "pending_training": 7,
+        "pending_projectors": 2,
+        "ground_state_qualified": false
+      },
+      "failures": [],
+      "saved_runs": 0,
+      "ancestry_alarms": 0
+    },
+    {
+      "campaign": "l4-production-20261103-v1",
+      "pid": 335206,
+      "alive": true,
+      "status": {
+        "state": "running",
+        "completed_fits": 39,
+        "planned_fits": 576,
+        "trainers": 1,
+        "queued_or_running_projectors": 0,
+        "deferred_projectors": 0,
+        "projector_workers": 2,
+        "submitted_contexts": 19,
+        "completed_runs": 80,
+        "deadline_unix": null,
+        "budget_mode": "until_complete",
+        "updated_unix": 1793716659.790792
+      },
+      "failures": [],
+      "saved_runs": 80,
+      "ancestry_alarms": 23
+    }
+  ]
+}

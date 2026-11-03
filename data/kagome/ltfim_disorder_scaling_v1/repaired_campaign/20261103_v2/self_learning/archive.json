@@ -1,0 +1,9 @@
+{
+  "utc": "2026-11-03T14:41:11.793649+00:00",
+  "l2_root": "/root/autodl-tmp/self-learning-rbm-20261103-v1",
+  "l6_root": "/root/autodl-tmp/self-learning-l6-20261103-v1",
+  "l2_training_complete": true,
+  "l2_measurement_complete": true,
+  "l6_completed": false,
+  "ground_state_qualified": false
+}

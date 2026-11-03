@@ -1,0 +1,14 @@
+{
+  "pid": 390956,
+  "command": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "-m",
+    "transformer_qmc.self_learning_validation",
+    "--output",
+    "/root/autodl-tmp/self-learning-rbm-20261103-v1/results"
+  ],
+  "utc": "2026-11-03T14:23:42.765821+00:00",
+  "scope": "finite L2 two-seed implementation validation, six feedback stints each",
+  "ground_state_qualified": false
+}

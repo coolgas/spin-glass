@@ -1,0 +1,22 @@
+{
+  "pid": 391669,
+  "command": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "-m",
+    "transformer_qmc.self_learning_l6_pilot",
+    "--anchor",
+    "/root/autodl-tmp/l6-convergence-20261103-v1/results",
+    "--validation",
+    "/root/autodl-tmp/self-learning-rbm-20261103-v1/validation",
+    "--output",
+    "/root/autodl-tmp/self-learning-l6-20261103-v1/results"
+  ],
+  "utc": "2026-11-03T14:40:16.077328+00:00",
+  "contexts": 4,
+  "planned_stints": 24,
+  "planned_projections": 8,
+  "workers": 1,
+  "deadline": null,
+  "ground_state_qualified": false
+}

@@ -1,0 +1,41 @@
+{
+  "seed": 0,
+  "starts": [
+    {
+      "start": "random",
+      "draws_per_chain": 100,
+      "chains": 256,
+      "density_tv": 0.041774136970926266,
+      "gradient_rms_error": 0.003906269623828172,
+      "gradient_max_absolute_error": 0.012361219519819833,
+      "gradient_max_standardized_error": 2.2798304412609314,
+      "gradient_fraction_outside_3se": 0.0
+    },
+    {
+      "start": "up",
+      "draws_per_chain": 100,
+      "chains": 256,
+      "density_tv": 0.04045594546635702,
+      "gradient_rms_error": 0.0049506236661628015,
+      "gradient_max_absolute_error": 0.01737905031267073,
+      "gradient_max_standardized_error": 2.9970718951143356,
+      "gradient_fraction_outside_3se": 0.0
+    },
+    {
+      "start": "down",
+      "draws_per_chain": 100,
+      "chains": 256,
+      "density_tv": 0.0464892066775929,
+      "gradient_rms_error": 0.005748178785376242,
+      "gradient_max_absolute_error": 0.021194371082084634,
+      "gradient_max_standardized_error": 3.0812777394913913,
+      "gradient_fraction_outside_3se": 0.0030864197530864196
+    }
+  ],
+  "raw_sha256": "46c77bca14a0a8b4e1e40adcfee4b1f7d16a88183c40ac3c0acf94e189d08d08",
+  "burn_sweeps": 500,
+  "retained_draws": 100,
+  "thin_sweeps": 10,
+  "caveat": "Finite frozen-chain audit, not proof of adaptive negative-phase mixing.",
+  "ground_state_qualified": false
+}

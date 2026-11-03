@@ -1,0 +1,85 @@
+{
+  "specs": [
+    {
+      "model": "/root/autodl-tmp/self-learning-rbm-20261103-v1/results/seed0/stint_005/model.pt",
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "self_learning_final_l2",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      }
+    },
+    {
+      "model": "/root/autodl-tmp/self-learning-rbm-20261103-v1/results/seed0/stint_005/model.pt",
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "self_learning_final_l2",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      }
+    },
+    {
+      "model": "/root/autodl-tmp/self-learning-rbm-20261103-v1/results/seed1/stint_005/model.pt",
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "self_learning_final_l2",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      }
+    },
+    {
+      "model": "/root/autodl-tmp/self-learning-rbm-20261103-v1/results/seed1/stint_005/model.pt",
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "self_learning_final_l2",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      }
+    }
+  ],
+  "model_hashes": [
+    "f33cd2aeaecc246053e939b2392212080c0d0e6ca6caf439965235a532c349f8",
+    "1bff203244a68c1fea6a30332d564d378c3acefc07bc9a9da261199c377dd473"
+  ],
+  "source_sha256": "8d3be1d23e9678e9b025babc782519b05803c8a955e993e36361d5178d224d43",
+  "planned_runs": 4,
+  "deadline": null,
+  "independent_from_training": true,
+  "ground_state_qualified": false
+}

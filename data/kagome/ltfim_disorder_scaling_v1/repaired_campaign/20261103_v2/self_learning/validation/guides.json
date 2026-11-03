@@ -1,0 +1,202 @@
+{
+  "rows": [
+    {
+      "seed": 0,
+      "model_sha256": "f33cd2aeaecc246053e939b2392212080c0d0e6ca6caf439965235a532c349f8",
+      "energy": -13.849948125114967,
+      "exact_energy": -13.893531841398032,
+      "energy_error_per_site": 0.0036319763569220656,
+      "fidelity": 0.9890786339800106,
+      "ground_probability_tv": 0.06019798370129681,
+      "q_grid": [
+        -1.0,
+        -0.8333333333333333,
+        -0.6666666666666667,
+        -0.5,
+        -0.33333333333333326,
+        -0.16666666666666674,
+        0.0,
+        0.16666666666666663,
+        0.33333333333333337,
+        0.5,
+        0.6666666666666667,
+        0.8333333333333334,
+        1.0
+      ],
+      "mass": [
+        0.001547030185871744,
+        0.00459907191661195,
+        0.007287377540502272,
+        0.009559528722465719,
+        0.013169556957471303,
+        0.02074909899875445,
+        0.036164567920621594,
+        0.06613966680931938,
+        0.11798399915253927,
+        0.1890086139850861,
+        0.24273198491773304,
+        0.20949701627165146,
+        0.08156248662137185
+      ],
+      "q": 0.5399545996476139,
+      "q2": 0.4095353023254223,
+      "spectrum": [
+        0.3446757898769745,
+        0.27613705490677215,
+        0.27085817482842367,
+        0.2934412138198034
+      ],
+      "errors": {
+        "q2_error": -0.0006673446473089428,
+        "histogram_tv": 0.0203058851249818,
+        "spectrum_max_tolerance_ratio": 0.7189437922774324,
+        "spectrum_error": [
+          0.023118184429598676,
+          0.003507819038790938,
+          0.012050566148030739,
+          0.007666146265032037
+        ]
+      },
+      "frozen_sampler": {
+        "seed": 0,
+        "starts": [
+          {
+            "start": "random",
+            "draws_per_chain": 100,
+            "chains": 256,
+            "density_tv": 0.041774136970926266,
+            "gradient_rms_error": 0.003906269623828172,
+            "gradient_max_absolute_error": 0.012361219519819833,
+            "gradient_max_standardized_error": 2.2798304412609314,
+            "gradient_fraction_outside_3se": 0.0
+          },
+          {
+            "start": "up",
+            "draws_per_chain": 100,
+            "chains": 256,
+            "density_tv": 0.04045594546635702,
+            "gradient_rms_error": 0.0049506236661628015,
+            "gradient_max_absolute_error": 0.01737905031267073,
+            "gradient_max_standardized_error": 2.9970718951143356,
+            "gradient_fraction_outside_3se": 0.0
+          },
+          {
+            "start": "down",
+            "draws_per_chain": 100,
+            "chains": 256,
+            "density_tv": 0.0464892066775929,
+            "gradient_rms_error": 0.005748178785376242,
+            "gradient_max_absolute_error": 0.021194371082084634,
+            "gradient_max_standardized_error": 3.0812777394913913,
+            "gradient_fraction_outside_3se": 0.0030864197530864196
+          }
+        ],
+        "raw_sha256": "46c77bca14a0a8b4e1e40adcfee4b1f7d16a88183c40ac3c0acf94e189d08d08",
+        "burn_sweeps": 500,
+        "retained_draws": 100,
+        "thin_sweeps": 10,
+        "caveat": "Finite frozen-chain audit, not proof of adaptive negative-phase mixing.",
+        "ground_state_qualified": false
+      }
+    },
+    {
+      "seed": 1,
+      "model_sha256": "1bff203244a68c1fea6a30332d564d378c3acefc07bc9a9da261199c377dd473",
+      "energy": -13.855722464262499,
+      "exact_energy": -13.893531841398032,
+      "energy_error_per_site": 0.0031507814279610655,
+      "fidelity": 0.9903858870264207,
+      "ground_probability_tv": 0.054780782308226916,
+      "q_grid": [
+        -1.0,
+        -0.8333333333333333,
+        -0.6666666666666667,
+        -0.5,
+        -0.33333333333333326,
+        -0.16666666666666674,
+        0.0,
+        0.16666666666666663,
+        0.33333333333333337,
+        0.5,
+        0.6666666666666667,
+        0.8333333333333334,
+        1.0
+      ],
+      "mass": [
+        0.0013535493835876286,
+        0.004068559375087266,
+        0.0066662544921066704,
+        0.0089845469511435,
+        0.01193554862763894,
+        0.01796664149601708,
+        0.0321954771224848,
+        0.06333643725471884,
+        0.11957509924652061,
+        0.1956999163373299,
+        0.2464254178178158,
+        0.2095379407925508,
+        0.08225461110299827
+      ],
+      "q": 0.5487641559769404,
+      "q2": 0.41247302440306777,
+      "spectrum": [
+        0.34007034947535714,
+        0.2809192437353811,
+        0.26753438483707687,
+        0.2916078725509958
+      ],
+      "errors": {
+        "q2_error": 0.0022703774303365343,
+        "histogram_tv": 0.011488804295856133,
+        "spectrum_max_tolerance_ratio": 0.5757209194982325,
+        "spectrum_error": [
+          0.01851274402798131,
+          0.008290007867399862,
+          0.008726776156683935,
+          0.0058328049962244055
+        ]
+      },
+      "frozen_sampler": {
+        "seed": 1,
+        "starts": [
+          {
+            "start": "random",
+            "draws_per_chain": 100,
+            "chains": 256,
+            "density_tv": 0.03986719237479608,
+            "gradient_rms_error": 0.00481409355102189,
+            "gradient_max_absolute_error": 0.01970356736052703,
+            "gradient_max_standardized_error": 1.9450602603997498,
+            "gradient_fraction_outside_3se": 0.0
+          },
+          {
+            "start": "up",
+            "draws_per_chain": 100,
+            "chains": 256,
+            "density_tv": 0.04256882501632539,
+            "gradient_rms_error": 0.004243590351919687,
+            "gradient_max_absolute_error": 0.011941771047562444,
+            "gradient_max_standardized_error": 2.100076278697183,
+            "gradient_fraction_outside_3se": 0.0
+          },
+          {
+            "start": "down",
+            "draws_per_chain": 100,
+            "chains": 256,
+            "density_tv": 0.04190356514024646,
+            "gradient_rms_error": 0.0058948830953401985,
+            "gradient_max_absolute_error": 0.0164481027982063,
+            "gradient_max_standardized_error": 2.912473011237886,
+            "gradient_fraction_outside_3se": 0.0
+          }
+        ],
+        "raw_sha256": "3163ed3de01c87e9a77a2e79e27d541a64cfe70df7732021e1fcf04f93324a54",
+        "burn_sweeps": 500,
+        "retained_draws": 100,
+        "thin_sweeps": 10,
+        "caveat": "Finite frozen-chain audit, not proof of adaptive negative-phase mixing.",
+        "ground_state_qualified": false
+      }
+    }
+  ]
+}

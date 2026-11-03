@@ -1,0 +1,41 @@
+{
+  "seed": 1,
+  "starts": [
+    {
+      "start": "random",
+      "draws_per_chain": 100,
+      "chains": 256,
+      "density_tv": 0.03986719237479608,
+      "gradient_rms_error": 0.00481409355102189,
+      "gradient_max_absolute_error": 0.01970356736052703,
+      "gradient_max_standardized_error": 1.9450602603997498,
+      "gradient_fraction_outside_3se": 0.0
+    },
+    {
+      "start": "up",
+      "draws_per_chain": 100,
+      "chains": 256,
+      "density_tv": 0.04256882501632539,
+      "gradient_rms_error": 0.004243590351919687,
+      "gradient_max_absolute_error": 0.011941771047562444,
+      "gradient_max_standardized_error": 2.100076278697183,
+      "gradient_fraction_outside_3se": 0.0
+    },
+    {
+      "start": "down",
+      "draws_per_chain": 100,
+      "chains": 256,
+      "density_tv": 0.04190356514024646,
+      "gradient_rms_error": 0.0058948830953401985,
+      "gradient_max_absolute_error": 0.0164481027982063,
+      "gradient_max_standardized_error": 2.912473011237886,
+      "gradient_fraction_outside_3se": 0.0
+    }
+  ],
+  "raw_sha256": "3163ed3de01c87e9a77a2e79e27d541a64cfe70df7732021e1fcf04f93324a54",
+  "burn_sweeps": 500,
+  "retained_draws": 100,
+  "thin_sweeps": 10,
+  "caveat": "Finite frozen-chain audit, not proof of adaptive negative-phase mixing.",
+  "ground_state_qualified": false
+}

@@ -1,0 +1,28 @@
+{
+  "stint": 0,
+  "model_sha256": "db1fac6c6c68a0c501ff6e5204f2364edd5c1bdd34f7ea782e803a769d5430dc",
+  "input_model_sha256": "64ae62c9c9f73900b04f31dfe42768f9f87922bcda8f7b9ad70626714fb4fff1",
+  "raw_sha256": "4dc68b67bb75de9b29c03165b28a0ec87e5562feea012de2c122b06b6a0e1442",
+  "fit_sha256": "4f99a96d097f57397ec80616f9023d686e23e4f49f89579737920aca78386cf8",
+  "training_samples": 7680,
+  "before": {
+    "energy": -7.097915270477242,
+    "exact_energy": -13.893531841398032,
+    "energy_error_per_site": 0.5663013809100658,
+    "fidelity": 0.06667218953958422,
+    "ground_probability_tv": 0.9046416896019088,
+    "empirical_target_kl": 1.39463542400298
+  },
+  "after": {
+    "energy": -12.414317814446981,
+    "exact_energy": -13.893531841398032,
+    "energy_error_per_site": 0.12326783557925418,
+    "fidelity": 0.4262774186559429,
+    "ground_probability_tv": 0.6628706336553487,
+    "empirical_target_kl": 0.28151687336788284
+  },
+  "minimum_training_lineage_ess": 6.369985177265327,
+  "largest_training_lineage": 0.2666015625,
+  "training_ancestry_alarm": true,
+  "ground_state_qualified": false
+}

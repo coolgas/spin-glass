@@ -1,5 +1,5 @@
 {
-  "pid": 317887,
+  "pid": 320640,
   "command": [
     "/root/miniconda3/bin/python",
     "-u",
@@ -19,8 +19,8 @@
   "source_manifest_sha256": "d85b505a9624cac5341894cab14bbf44b877018de5a3970760e7181828cb6a77",
   "training_workers": 4,
   "projector_workers": 6,
-  "planned_fits": 896,
-  "planned_projector_runs": 1568,
+  "planned_fits": 1152,
+  "planned_projector_runs": 2016,
   "imports": [
     {
       "task": {
@@ -87,5 +87,8 @@
       "sampling_alarms": null
     }
   ],
-  "mps_environment": {}
+  "mps_environment": {},
+  "previous_pid": 317887,
+  "restarted_utc": "2026-11-03T07:40:53.024871+00:00",
+  "grid_revision": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/migration/grid_expansion_20261103"
 }

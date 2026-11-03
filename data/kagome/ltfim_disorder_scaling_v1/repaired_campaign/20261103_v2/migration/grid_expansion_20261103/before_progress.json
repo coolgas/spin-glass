@@ -1,0 +1,702 @@
+{
+  "snapshot_utc": "2026-11-03T07:32:54.982215+00:00",
+  "remote_root": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2",
+  "legacy": [
+    {
+      "name": "disorder-scaling-20261103-v1",
+      "completed_fits": 320,
+      "completed_runs": 480,
+      "failures": 16
+    },
+    {
+      "name": "disorder-scaling-fine-20261103-v1",
+      "completed_fits": 351,
+      "completed_runs": 154,
+      "failures": 0
+    }
+  ],
+  "corrected": {
+    "state": "running",
+    "completed_fits": 3,
+    "planned_fits": 896,
+    "active_training": [
+      {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 1,
+        "mode": "anneal"
+      }
+    ],
+    "trainers": 4,
+    "queued_or_running_projectors": 8,
+    "running_projectors": [
+      {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "population",
+        "walkers": 1024,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "time",
+        "walkers": 512,
+        "equil": 32.0,
+        "forward": 32.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "population",
+        "walkers": 1024,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      }
+    ],
+    "deferred_projectors": 2,
+    "projector_workers": 6,
+    "submitted_contexts": 1,
+    "completed_runs": 0,
+    "deadline_unix": 1793710777.5076935,
+    "failures": [],
+    "updated_unix": 1793691174.3435764
+  },
+  "deadline_utc": "2026-11-03T12:59:37.507694+00:00",
+  "legacy_stopped_utc": "2026-11-03T07:16:30.656190+00:00",
+  "imports": [
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "completed": true,
+      "stage": 3,
+      "step": 0,
+      "source": "/root/autodl-tmp/rbm-repair-20261103-v1/weak_pilot/training/L6_s60000_g0p55_rbm_2_anneal_seed0.pt",
+      "checkpoint_sha256": "6597ae06ba46e9275bf53843181c684af556c9bf7e74cb66697c3d166004ae4d",
+      "sampling_alarms": []
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "completed": true,
+      "stage": 3,
+      "step": 0,
+      "source": "/root/autodl-tmp/rbm-repair-20261103-v1/weak_pilot/training/L6_s60000_g0p55_rbm_2_anneal_seed1.pt",
+      "checkpoint_sha256": "c3ff04816ae4c03a54805f1f23ade86a81754b5275d3641165ffc4d5553c26b7",
+      "sampling_alarms": []
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.6,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "completed": true,
+      "stage": 3,
+      "step": 0,
+      "source": "/root/autodl-tmp/rbm-repair-20261103-v1/weak_pilot/training/L6_s60000_g0p6_rbm_2_anneal_seed0.pt",
+      "checkpoint_sha256": "14634926ff6dd2433cc84927427c6044f8de71740dd050ab6d309a9d0040c191",
+      "sampling_alarms": []
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.6,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "completed": false,
+      "stage": 1,
+      "step": 125,
+      "source": "/root/autodl-tmp/rbm-repair-20261103-v1/weak_pilot/training/L6_s60000_g0p6_rbm_2_anneal_seed1.pt",
+      "checkpoint_sha256": "3db24e43deeab3223225968868efe49a88e1e8f620be224f8c213a7599c1e7f6",
+      "sampling_alarms": null
+    }
+  ],
+  "source_manifest_sha256": "d85b505a9624cac5341894cab14bbf44b877018de5a3970760e7181828cb6a77",
+  "planned_projector_runs": 1568,
+  "ground_state_qualified": false,
+  "health_check": {
+    "checked_utc": "2026-11-03T07:31:55.675354+00:00",
+    "status": {
+      "state": "running",
+      "completed_fits": 3,
+      "planned_fits": 896,
+      "active_training": [
+        {
+          "L": 4,
+          "gamma": 0.55,
+          "sample_id": 60000,
+          "kind": "jastrow",
+          "seed": 0,
+          "mode": "anneal"
+        },
+        {
+          "L": 4,
+          "gamma": 0.55,
+          "sample_id": 60000,
+          "kind": "jastrow",
+          "seed": 1,
+          "mode": "anneal"
+        },
+        {
+          "L": 4,
+          "gamma": 0.55,
+          "sample_id": 60000,
+          "kind": "rbm_2",
+          "seed": 0,
+          "mode": "anneal"
+        },
+        {
+          "L": 4,
+          "gamma": 0.55,
+          "sample_id": 60000,
+          "kind": "rbm_2",
+          "seed": 1,
+          "mode": "anneal"
+        }
+      ],
+      "trainers": 4,
+      "queued_or_running_projectors": 8,
+      "running_projectors": [
+        {
+          "L": 6,
+          "gamma": 0.55,
+          "sample_id": 60000,
+          "kind": "rbm_2",
+          "training_seed": 1,
+          "audit": "main",
+          "walkers": 512,
+          "equil": 16.0,
+          "forward": 16.0,
+          "start": "guide",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 0
+        },
+        {
+          "L": 6,
+          "gamma": 0.55,
+          "sample_id": 60000,
+          "kind": "rbm_2",
+          "training_seed": 1,
+          "audit": "main",
+          "walkers": 512,
+          "equil": 16.0,
+          "forward": 16.0,
+          "start": "guide",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 1
+        },
+        {
+          "L": 6,
+          "gamma": 0.55,
+          "sample_id": 60000,
+          "kind": "rbm_2",
+          "training_seed": 1,
+          "audit": "population",
+          "walkers": 1024,
+          "equil": 16.0,
+          "forward": 16.0,
+          "start": "guide",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 0
+        },
+        {
+          "L": 6,
+          "gamma": 0.55,
+          "sample_id": 60000,
+          "kind": "rbm_2",
+          "training_seed": 1,
+          "audit": "start",
+          "walkers": 512,
+          "equil": 16.0,
+          "forward": 16.0,
+          "start": "uniform",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 0
+        },
+        {
+          "L": 6,
+          "gamma": 0.55,
+          "sample_id": 60000,
+          "kind": "rbm_2",
+          "training_seed": 1,
+          "audit": "time",
+          "walkers": 512,
+          "equil": 32.0,
+          "forward": 32.0,
+          "start": "guide",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 0
+        },
+        {
+          "L": 6,
+          "gamma": 0.55,
+          "sample_id": 60000,
+          "kind": "rbm_2",
+          "training_seed": 1,
+          "audit": "population",
+          "walkers": 1024,
+          "equil": 16.0,
+          "forward": 16.0,
+          "start": "guide",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 1
+        }
+      ],
+      "deferred_projectors": 2,
+      "projector_workers": 6,
+      "submitted_contexts": 1,
+      "completed_runs": 0,
+      "deadline_unix": 1793710777.5076935,
+      "failures": [],
+      "updated_unix": 1793691114.3418815
+    },
+    "legacy_active_processes": [],
+    "corrected_processes": [
+      {
+        "pid": 317887,
+        "ppid": 1,
+        "state": "S",
+        "command": "/root/miniconda3/bin/python -u -m transformer_qmc.fine_overlap_campaign --output /root/autodl-tmp/disorder-scaling-repaired-20261103-v2/results --trainers 4 --workers 6 --deadline-unix 1793710777.5076935 ",
+        "pythonpath": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code"
+      },
+      {
+        "pid": 317889,
+        "ppid": 317887,
+        "state": "S",
+        "command": "/root/miniconda3/bin/python -c from multiprocessing.resource_tracker import main;main(7) ",
+        "pythonpath": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code"
+      },
+      {
+        "pid": 317890,
+        "ppid": 317887,
+        "state": "R",
+        "command": "/root/miniconda3/bin/python -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=8, pipe_handle=18) --multiprocessing-fork ",
+        "pythonpath": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code"
+      },
+      {
+        "pid": 317893,
+        "ppid": 317887,
+        "state": "R",
+        "command": "/root/miniconda3/bin/python -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=8, pipe_handle=20) --multiprocessing-fork ",
+        "pythonpath": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code"
+      },
+      {
+        "pid": 317894,
+        "ppid": 317887,
+        "state": "R",
+        "command": "/root/miniconda3/bin/python -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=8, pipe_handle=22) --multiprocessing-fork ",
+        "pythonpath": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code"
+      },
+      {
+        "pid": 317895,
+        "ppid": 317887,
+        "state": "R",
+        "command": "/root/miniconda3/bin/python -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=8, pipe_handle=24) --multiprocessing-fork ",
+        "pythonpath": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code"
+      },
+      {
+        "pid": 317896,
+        "ppid": 317887,
+        "state": "R",
+        "command": "/root/miniconda3/bin/python -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=8, pipe_handle=26) --multiprocessing-fork ",
+        "pythonpath": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code"
+      },
+      {
+        "pid": 317899,
+        "ppid": 317887,
+        "state": "R",
+        "command": "/root/miniconda3/bin/python -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=8, pipe_handle=28) --multiprocessing-fork ",
+        "pythonpath": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code"
+      },
+      {
+        "pid": 317900,
+        "ppid": 317887,
+        "state": "R",
+        "command": "/root/miniconda3/bin/python -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=8, pipe_handle=30) --multiprocessing-fork ",
+        "pythonpath": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code"
+      },
+      {
+        "pid": 317901,
+        "ppid": 317887,
+        "state": "R",
+        "command": "/root/miniconda3/bin/python -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=8, pipe_handle=32) --multiprocessing-fork ",
+        "pythonpath": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code"
+      },
+      {
+        "pid": 317902,
+        "ppid": 317887,
+        "state": "R",
+        "command": "/root/miniconda3/bin/python -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=8, pipe_handle=34) --multiprocessing-fork ",
+        "pythonpath": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code"
+      },
+      {
+        "pid": 317903,
+        "ppid": 317887,
+        "state": "R",
+        "command": "/root/miniconda3/bin/python -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=8, pipe_handle=36) --multiprocessing-fork ",
+        "pythonpath": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code"
+      }
+    ],
+    "production_source_mismatches": [],
+    "production_source_files": 199,
+    "training_progress": [
+      {
+        "file": "317890.json",
+        "modified_utc": "2026-11-03T07:29:55.653813+00:00",
+        "record": {
+          "state": "training",
+          "task": {
+            "L": 4,
+            "gamma": 0.55,
+            "sample_id": 60000,
+            "kind": "jastrow",
+            "seed": 0,
+            "mode": "anneal"
+          },
+          "stage": 2,
+          "gamma": 0.55,
+          "step": 400,
+          "energy": -52.64769297775145,
+          "variance": 0.4028056106743425,
+          "gradient_norm": 0.06608641029693331
+        }
+      },
+      {
+        "file": "317893.json",
+        "modified_utc": "2026-11-03T07:30:00.150408+00:00",
+        "record": {
+          "state": "training",
+          "task": {
+            "L": 4,
+            "gamma": 0.55,
+            "sample_id": 60000,
+            "kind": "jastrow",
+            "seed": 1,
+            "mode": "anneal"
+          },
+          "stage": 2,
+          "gamma": 0.55,
+          "step": 400,
+          "energy": -52.66650815956447,
+          "variance": 0.38264609701175706,
+          "gradient_norm": 0.07024075447778867
+        }
+      },
+      {
+        "file": "317895.json",
+        "modified_utc": "2026-11-03T07:30:00.162410+00:00",
+        "record": {
+          "state": "training",
+          "task": {
+            "L": 4,
+            "gamma": 0.55,
+            "sample_id": 60000,
+            "kind": "rbm_2",
+            "seed": 1,
+            "mode": "anneal"
+          },
+          "stage": 2,
+          "gamma": 0.55,
+          "step": 400,
+          "energy": -51.8805306289537,
+          "variance": 0.7244786688507937,
+          "gradient_norm": 0.0900048954798948
+        }
+      },
+      {
+        "file": "317894.json",
+        "modified_utc": "2026-11-03T07:30:00.590466+00:00",
+        "record": {
+          "state": "training",
+          "task": {
+            "L": 4,
+            "gamma": 0.55,
+            "sample_id": 60000,
+            "kind": "rbm_2",
+            "seed": 0,
+            "mode": "anneal"
+          },
+          "stage": 2,
+          "gamma": 0.55,
+          "step": 400,
+          "energy": -52.516623374265635,
+          "variance": 0.7683417178749748,
+          "gradient_norm": 0.09501509280539065
+        }
+      }
+    ],
+    "projector_progress": [
+      {
+        "file": "9ee79022667972ca5593e896.json",
+        "modified_utc": "2026-11-03T07:31:21.872401+00:00",
+        "record": {
+          "task": {
+            "L": 6,
+            "gamma": 0.55,
+            "sample_id": 60000,
+            "kind": "rbm_2",
+            "training_seed": 1,
+            "audit": "time",
+            "walkers": 512,
+            "equil": 32.0,
+            "forward": 32.0,
+            "start": "guide",
+            "delta": 0.1,
+            "cycles": 8,
+            "repeat": 0
+          },
+          "step": 320,
+          "total": 2880,
+          "cycles": 0,
+          "numerics": "log_weight_v1"
+        }
+      },
+      {
+        "file": "318579bf586b7a7f247c24d9.json",
+        "modified_utc": "2026-11-03T07:31:03.658303+00:00",
+        "record": {
+          "task": {
+            "L": 6,
+            "gamma": 0.55,
+            "sample_id": 60000,
+            "kind": "rbm_2",
+            "training_seed": 1,
+            "audit": "main",
+            "walkers": 512,
+            "equil": 16.0,
+            "forward": 16.0,
+            "start": "guide",
+            "delta": 0.1,
+            "cycles": 8,
+            "repeat": 1
+          },
+          "step": 320,
+          "total": 1440,
+          "cycles": 1,
+          "numerics": "log_weight_v1"
+        }
+      },
+      {
+        "file": "476d501bffc2d1ec42df7dd1.json",
+        "modified_utc": "2026-11-03T07:31:32.657611+00:00",
+        "record": {
+          "task": {
+            "L": 6,
+            "gamma": 0.55,
+            "sample_id": 60000,
+            "kind": "rbm_2",
+            "training_seed": 1,
+            "audit": "main",
+            "walkers": 512,
+            "equil": 16.0,
+            "forward": 16.0,
+            "start": "guide",
+            "delta": 0.1,
+            "cycles": 8,
+            "repeat": 0
+          },
+          "step": 320,
+          "total": 1440,
+          "cycles": 1,
+          "numerics": "log_weight_v1"
+        }
+      },
+      {
+        "file": "d909fd2250be05a5aca6f3d7.json",
+        "modified_utc": "2026-11-03T07:31:09.598995+00:00",
+        "record": {
+          "task": {
+            "L": 6,
+            "gamma": 0.55,
+            "sample_id": 60000,
+            "kind": "rbm_2",
+            "training_seed": 1,
+            "audit": "start",
+            "walkers": 512,
+            "equil": 16.0,
+            "forward": 16.0,
+            "start": "uniform",
+            "delta": 0.1,
+            "cycles": 8,
+            "repeat": 0
+          },
+          "step": 320,
+          "total": 1440,
+          "cycles": 1,
+          "numerics": "log_weight_v1"
+        }
+      },
+      {
+        "file": "a5be896362b2d00a1db159dc.json",
+        "modified_utc": "2026-11-03T07:30:53.249072+00:00",
+        "record": {
+          "task": {
+            "L": 6,
+            "gamma": 0.55,
+            "sample_id": 60000,
+            "kind": "rbm_2",
+            "training_seed": 1,
+            "audit": "population",
+            "walkers": 1024,
+            "equil": 16.0,
+            "forward": 16.0,
+            "start": "guide",
+            "delta": 0.1,
+            "cycles": 8,
+            "repeat": 1
+          },
+          "step": 160,
+          "total": 1440,
+          "cycles": 0,
+          "numerics": "log_weight_v1"
+        }
+      },
+      {
+        "file": "65026e0820f0214df31114de.json",
+        "modified_utc": "2026-11-03T07:31:55.448088+00:00",
+        "record": {
+          "task": {
+            "L": 6,
+            "gamma": 0.55,
+            "sample_id": 60000,
+            "kind": "rbm_2",
+            "training_seed": 1,
+            "audit": "population",
+            "walkers": 1024,
+            "equil": 16.0,
+            "forward": 16.0,
+            "start": "guide",
+            "delta": 0.1,
+            "cycles": 8,
+            "repeat": 0
+          },
+          "step": 160,
+          "total": 1440,
+          "cycles": 0,
+          "numerics": "log_weight_v1"
+        }
+      }
+    ],
+    "campaign_log_tail": "",
+    "gpu": "name, memory.used [MiB], utilization.gpu [%]\nNVIDIA H800 PCIe, 3164 MiB, 99 %\n",
+    "deadline_utc": "2026-11-03T12:59:37.507694+00:00"
+  }
+}

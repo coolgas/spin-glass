@@ -1,0 +1,204 @@
+{
+  "runs": [
+    {
+      "file": "0e2020c03cd9455e674e7268.json",
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "ancestry_alarm": false,
+      "minimum_descendant_ess": 20.988310648518816,
+      "largest_lineage": 0.1484375,
+      "raw_sha256": "c8613018ff1ec0b96c5ff1838663e0b85092dd03eb4a33574dd21397d1d9e894"
+    },
+    {
+      "file": "0fe362fe83a4ec5976999219.json",
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "ancestry_alarm": false,
+      "minimum_descendant_ess": 17.522994652406418,
+      "largest_lineage": 0.205078125,
+      "raw_sha256": "1a6092eb4d7aa6ddc33ed80c65367f1c363376dd6f51fb4fc05f0521032d8a26"
+    },
+    {
+      "file": "1504226f26cac1ec7a559cae.json",
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "ancestry_alarm": true,
+      "minimum_descendant_ess": 7.527682058350563,
+      "largest_lineage": 0.34375,
+      "raw_sha256": "60086b4b4e13562e40f40f95a33ad4f6386b0eaeb56d55e84b158e2d32c53d84"
+    },
+    {
+      "file": "1b51132a95bdc4c9a8d21ed9.json",
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "population",
+        "walkers": 1024,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "ancestry_alarm": false,
+      "minimum_descendant_ess": 37.29463650590411,
+      "largest_lineage": 0.1171875,
+      "raw_sha256": "3004cc9c966e4ce98f2313c705dd7380e3abfde175eadf78109ef9c07006532f"
+    },
+    {
+      "file": "269550d887b5632abc51a699.json",
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "time",
+        "walkers": 512,
+        "equil": 32.0,
+        "forward": 32.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "ancestry_alarm": true,
+      "minimum_descendant_ess": 1.7930015594648574,
+      "largest_lineage": 0.740234375,
+      "raw_sha256": "00e77dc2486922b93acb66c281a26475a5c007b84bd84ae56b39b3f23c58a7ce"
+    },
+    {
+      "file": "88b1f145d1e54df5356d5612.json",
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "ancestry_alarm": false,
+      "minimum_descendant_ess": 23.62083258244729,
+      "largest_lineage": 0.142578125,
+      "raw_sha256": "c194ab3a43c9137fdc05b086615c1fbe1731d9cfe5b10682ee731738f01852c7"
+    },
+    {
+      "file": "91cffbd9cb21e7c228743333.json",
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "time",
+        "walkers": 512,
+        "equil": 32.0,
+        "forward": 32.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "ancestry_alarm": false,
+      "minimum_descendant_ess": 10.10110974106042,
+      "largest_lineage": 0.271484375,
+      "raw_sha256": "4ecf05e991e8bbb003d018857e22b46450d3bbe36c0086b1f256c12affcd57d7"
+    },
+    {
+      "file": "9d1b72718f980d01559cc76a.json",
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "population",
+        "walkers": 1024,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "ancestry_alarm": false,
+      "minimum_descendant_ess": 31.30451397181753,
+      "largest_lineage": 0.14453125,
+      "raw_sha256": "7c3c64a5975f2d8e073db0b7655cd046dac7204651154df48e5446dc1b10e00d"
+    },
+    {
+      "file": "e97c919d5c4a32f4f4bedc08.json",
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "ancestry_alarm": false,
+      "minimum_descendant_ess": 10.08789348110521,
+      "largest_lineage": 0.2890625,
+      "raw_sha256": "66f39bab9f56621cd91e1aa50f01b0efaf78a79cac6213b7787355007ba52c4d"
+    }
+  ],
+  "timing_arithmetic_verified": true,
+  "physical_convergence_qualified": false
+}

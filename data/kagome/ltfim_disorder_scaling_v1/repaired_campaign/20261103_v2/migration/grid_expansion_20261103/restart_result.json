@@ -1,0 +1,24 @@
+{
+  "completed_utc": "2026-11-03T07:40:53.025514+00:00",
+  "old_pid": 317887,
+  "new_pid": 320640,
+  "old_processes_exited": [
+    317887,
+    317889,
+    317890,
+    317893,
+    317894,
+    317895,
+    317896,
+    317899,
+    317900,
+    317901,
+    317902,
+    317903
+  ],
+  "retained_checkpoints": 18,
+  "source_manifest_sha256": "d85b505a9624cac5341894cab14bbf44b877018de5a3970760e7181828cb6a77",
+  "deadline_utc": "2026-11-03T12:59:37.507694+00:00",
+  "training_workers": 4,
+  "projector_workers": 6
+}

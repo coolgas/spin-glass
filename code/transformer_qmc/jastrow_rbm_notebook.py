@@ -201,7 +201,9 @@ def main():
         if repair_manifest.exists():outputs.append(repair_manifest)
         progress_root=root/'data/kagome/ltfim_disorder_scaling_v1/repaired_campaign/20261103_v2'
         outputs.extend(p for p in [progress_root/'progress.json',progress_root/'PROGRESS.md',
-            progress_root/'progress_sha256.json',Path(__file__).with_name('repaired_campaign_progress.py').resolve()] if p.exists())
+            progress_root/'progress_sha256.json',progress_root/'TIMING.md',progress_root/'timing_estimate.json',
+            progress_root/'sha256.json',Path(__file__).with_name('repaired_campaign_progress.py').resolve(),
+            Path(__file__).with_name('repaired_campaign_timing.py').resolve()] if p.exists())
         outputs.extend(sorted((root/'figures/simple_overlap').glob('*')))
         manifest = {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest()
             for p in outputs if p.is_file()}

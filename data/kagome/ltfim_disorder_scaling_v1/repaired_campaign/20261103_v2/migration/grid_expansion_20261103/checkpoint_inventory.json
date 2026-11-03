@@ -1,0 +1,324 @@
+{
+  "training": [
+    {
+      "file": "L4_s60000_g0p55_jastrow_anneal_seed0.pt",
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "stage": 3,
+      "step": 0,
+      "seconds": 446.8680678922683,
+      "completed": true,
+      "sha256": "22d1bc38e838de02d4c5ec4bf9a8ef74b102549cff06544c4e4fe7e0ba7948f8"
+    },
+    {
+      "file": "L4_s60000_g0p55_jastrow_anneal_seed1.pt",
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "stage": 3,
+      "step": 0,
+      "seconds": 450.93416864424944,
+      "completed": true,
+      "sha256": "650e948d36ce295aa3a0bf990c21742b8c7f5142ce3fa86433ab693fd636bebf"
+    },
+    {
+      "file": "L4_s60000_g0p55_rbm_2_anneal_seed0.pt",
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "stage": 3,
+      "step": 0,
+      "seconds": 451.3428940847516,
+      "completed": true,
+      "sha256": "6191a6bfb0066fa8efa36d51254d3a00d5a4f80bbc64bfe8e3bcc6a006d46dc1"
+    },
+    {
+      "file": "L4_s60000_g0p55_rbm_2_anneal_seed1.pt",
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "stage": 3,
+      "step": 0,
+      "seconds": 450.9370212480426,
+      "completed": true,
+      "sha256": "32b4db83ebf81a2a07aaf5f8e89791b9abf2564884ff93724b9b442eef520cff"
+    },
+    {
+      "file": "L4_s60001_g0p55_jastrow_anneal_seed0.pt",
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60001,
+        "kind": "jastrow",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "stage": 3,
+      "step": 0,
+      "seconds": 420.88733908347785,
+      "completed": false,
+      "sha256": "a287ec5d52ee5e6177bece3672a078bc86c2465012b773bd566d0228d385de00"
+    },
+    {
+      "file": "L4_s60001_g0p55_jastrow_anneal_seed1.pt",
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60001,
+        "kind": "jastrow",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "stage": 3,
+      "step": 0,
+      "seconds": 421.2253553662449,
+      "completed": false,
+      "sha256": "249d8c1f1f0b06deccdb94398f71e649015052ad0904a862a7c5504d031f9294"
+    },
+    {
+      "file": "L6_s60000_g0p55_jastrow_anneal_seed0.pt",
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "stage": 1,
+      "step": 175,
+      "seconds": 423.3620588053018,
+      "completed": false,
+      "sha256": "654acd242b03d9db0d5fc290fd01e5f9b80fa0041400c764589826aade51c889"
+    },
+    {
+      "file": "L6_s60000_g0p55_jastrow_anneal_seed1.pt",
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "stage": 1,
+      "step": 175,
+      "seconds": 423.4742049984634,
+      "completed": false,
+      "sha256": "50b54e7f09fad904c6aea4727a36e429f8e22a2511e36d362cc354db37376c4c"
+    },
+    {
+      "file": "L6_s60000_g0p55_rbm_2_anneal_seed0.pt",
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "stage": 3,
+      "step": 0,
+      "seconds": 569.8824821617454,
+      "completed": true,
+      "sha256": "6597ae06ba46e9275bf53843181c684af556c9bf7e74cb66697c3d166004ae4d"
+    },
+    {
+      "file": "L6_s60000_g0p55_rbm_2_anneal_seed1.pt",
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "stage": 3,
+      "step": 0,
+      "seconds": 346.0775016453117,
+      "completed": true,
+      "sha256": "c3ff04816ae4c03a54805f1f23ade86a81754b5275d3641165ffc4d5553c26b7"
+    },
+    {
+      "file": "L6_s60000_g0p6_rbm_2_anneal_seed0.pt",
+      "task": {
+        "L": 6,
+        "gamma": 0.6,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "stage": 3,
+      "step": 0,
+      "seconds": 105.15129427611828,
+      "completed": true,
+      "sha256": "14634926ff6dd2433cc84927427c6044f8de71740dd050ab6d309a9d0040c191"
+    },
+    {
+      "file": "L6_s60000_g0p6_rbm_2_anneal_seed1.pt",
+      "task": {
+        "L": 6,
+        "gamma": 0.6,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "stage": 1,
+      "step": 125,
+      "seconds": 46.045022835955024,
+      "completed": false,
+      "sha256": "3db24e43deeab3223225968868efe49a88e1e8f620be224f8c213a7599c1e7f6"
+    }
+  ],
+  "projectors": [
+    {
+      "file": "318579bf586b7a7f247c24d9.npz",
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "step": 640,
+      "seconds": 1025.590678434819,
+      "sha256": "a35581368c63d06166b6046e09a0e71dfbefbdc4a42d2740b0f1a649f9da801c"
+    },
+    {
+      "file": "476d501bffc2d1ec42df7dd1.npz",
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "step": 640,
+      "seconds": 1075.8448099568486,
+      "sha256": "ca9b5120edfc8a4b71915657b74b9ca2f41eaeaa238a6d4bc3d391e0dd3927fc"
+    },
+    {
+      "file": "65026e0820f0214df31114de.npz",
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "population",
+        "walkers": 1024,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "step": 300,
+      "seconds": 1057.1714756339788,
+      "sha256": "5df92ecc40c3933947ffb5cd61f6c7ae4a800f64b7b81c3886666ed7af0afa2b"
+    },
+    {
+      "file": "9ee79022667972ca5593e896.npz",
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "time",
+        "walkers": 512,
+        "equil": 32.0,
+        "forward": 32.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "step": 640,
+      "seconds": 1070.6222502943128,
+      "sha256": "a57df111e7f7dcf48c414141ffe6cfc84fb611ee0241bce1a373c88e8cffe794"
+    },
+    {
+      "file": "a5be896362b2d00a1db159dc.npz",
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "population",
+        "walkers": 1024,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "step": 320,
+      "seconds": 1075.401183526963,
+      "sha256": "9ea0e155fa84af36e2c606c8a1a72b321f41c28606669391677af94b6ec01abc"
+    },
+    {
+      "file": "d909fd2250be05a5aca6f3d7.npz",
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "step": 640,
+      "seconds": 1024.8848377466202,
+      "sha256": "f87d36648ab11b42b695778587e85a5a5b21cc186fec9b4392d9077a7a4803bf"
+    }
+  ]
+}

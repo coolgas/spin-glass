@@ -51,7 +51,15 @@
       0.58,
       0.59,
       0.6,
+      0.61,
+      0.62,
+      0.63,
+      0.64,
       0.65,
+      0.66,
+      0.67,
+      0.68,
+      0.69,
       0.7,
       0.85,
       1.0
@@ -273,5 +281,20 @@
     "watch_correlation_campaign.py": "369af22624699cf69f9dff41f0fc46e9275f5931288c623368ce3a67a8a5584e"
   },
   "numerics_sha256": "5215dfd57cf61570c0508f78be2882a253ea650949db976de499cd45672d15cd",
-  "ground_state_qualified": false
+  "ground_state_qualified": false,
+  "grid_revision": {
+    "at_utc": "2026-11-03T07:40:53.021223+00:00",
+    "added_L6_fields": [
+      0.61,
+      0.62,
+      0.63,
+      0.64,
+      0.66,
+      0.67,
+      0.68,
+      0.69
+    ],
+    "audit": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/migration/grid_expansion_20261103",
+    "reason": "User extends L6 fine grid through Gamma .70"
+  }
 }

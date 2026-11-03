@@ -7829,13 +7829,13 @@ ansatz/optimization test, not scalable sampled-training validation.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=db95d5e6">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=80fc95fd">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_repaired-campaign-progress" data-mime-type="text/markdown">
-<h2 id="Corrected-campaign:-compute-allocation-and-progress">Corrected campaign: compute allocation and progress<a class="anchor-link" href="#Corrected-campaign:-compute-allocation-and-progress">¶</a></h2><p><strong>Snapshot: 2026-11-03T07:32:54.982215+00:00 (UTC).</strong> This is a saved status, not a live monitor.</p>
+<h2 id="Corrected-campaign:-compute-allocation-and-progress">Corrected campaign: compute allocation and progress<a class="anchor-link" href="#Corrected-campaign:-compute-allocation-and-progress">¶</a></h2><p><strong>Snapshot: 2026-11-03T07:47:06.115722+00:00 (UTC).</strong> This is a saved status, not a live monitor.</p>
 <table>
 <thead>
 <tr>
@@ -7864,14 +7864,19 @@ ansatz/optimization test, not scalable sampled-training validation.</p>
 <tr>
 <td>Corrected main campaign</td>
 <td>running</td>
-<td style="text-align:right">3/896</td>
-<td style="text-align:right">0/1568</td>
+<td style="text-align:right">9/1152</td>
+<td style="text-align:right">11/2016</td>
 <td>4 training + 6 GFMC workers</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Recorded failures:</strong> corrected campaign 0; retired campaigns disorder-scaling-20261103-v1: 16, disorder-scaling-fine-20261103-v1: 0. All are retained.</p>
-<p><strong>One-shot process/source check (2026-11-03T07:31:55.675354+00:00):</strong> 0 active legacy processes; 199 production source files checked, 0 mismatches.</p>
+<p><strong>Early GFMC measurement check:</strong> 9 completed records pass saved raw-hash, normalization, overlap-moment and finite-diagnostic checks; 2 have ancestry alarms. These remain in the data and are not qualified as converged results.</p>
+<ul>
+<li>Ancestry alarm: L=4, Gamma=0.55, disorder 60000, jastrow, start, repeat 1.</li>
+<li>Ancestry alarm: L=4, Gamma=0.55, disorder 60000, jastrow, time, repeat 1.</li>
+</ul>
+<p><strong>One-shot process/source check (2026-11-03T07:44:53.762818+00:00):</strong> 0 active legacy processes; 199 production source files checked, 0 mismatches.</p>
 <table>
 <thead>
 <tr>
@@ -7884,56 +7889,102 @@ ansatz/optimization test, not scalable sampled-training validation.</p>
 </thead>
 <tbody>
 <tr>
-<td>rbm_2 / time</td>
-<td>L=6, Gamma=0.55, J=60000</td>
-<td style="text-align:right">0</td>
-<td style="text-align:right">320/2880</td>
-<td style="text-align:right">0</td>
-</tr>
-<tr>
 <td>rbm_2 / main</td>
 <td>L=6, Gamma=0.55, J=60000</td>
 <td style="text-align:right">1</td>
-<td style="text-align:right">320/1440</td>
-<td style="text-align:right">1</td>
+<td style="text-align:right">700/1440</td>
+<td style="text-align:right">3</td>
 </tr>
 <tr>
 <td>rbm_2 / main</td>
 <td>L=6, Gamma=0.55, J=60000</td>
 <td style="text-align:right">0</td>
-<td style="text-align:right">320/1440</td>
-<td style="text-align:right">1</td>
+<td style="text-align:right">700/1440</td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td>rbm_2 / population</td>
+<td>L=4, Gamma=0.55, J=60000</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">160/1440</td>
+<td style="text-align:right">0</td>
 </tr>
 <tr>
 <td>rbm_2 / start</td>
-<td>L=6, Gamma=0.55, J=60000</td>
+<td>L=4, Gamma=0.55, J=60000</td>
 <td style="text-align:right">0</td>
-<td style="text-align:right">320/1440</td>
-<td style="text-align:right">1</td>
-</tr>
-<tr>
-<td>rbm_2 / population</td>
-<td>L=6, Gamma=0.55, J=60000</td>
-<td style="text-align:right">1</td>
-<td style="text-align:right">160/1440</td>
-<td style="text-align:right">0</td>
-</tr>
-<tr>
-<td>rbm_2 / population</td>
-<td>L=6, Gamma=0.55, J=60000</td>
-<td style="text-align:right">0</td>
-<td style="text-align:right">160/1440</td>
+<td style="text-align:right">100/1440</td>
 <td style="text-align:right">0</td>
 </tr>
 </tbody>
 </table>
 <p>Checkpoint steps show trajectory progress only; they do not measure convergence.</p>
 <p><strong>What is running:</strong> repaired large-RBM learning rate (0.001), log-domain GFMC, and frozen random/up/down sampling checks before guide selection. The standalone weak-field pilot has been merged into this campaign; its completed fits and partial checkpoint are reused with matching source hashes.</p>
-<p><strong>Priority and coverage:</strong> fixed h=0.15; periodic kagome, N=3L². Ascending Gamma across L=4 and L=6. L=4 retains Gamma=0.55,0.56,...,0.70 plus 0.85 and 1.00; L=6 retains 0.55,...,0.60 plus 0.65,0.70,0.85,1.00. Disorders 60000–60007, both Jastrow/RBM guides, and both training seeds remain in the plan. No disorder is selected by overlap width.</p>
-<p><strong>Resource budget:</strong> at most 6 projector futures are submitted at once; 2 are deferred at this snapshot. New dispatch stops at 2026-11-03T12:59:37.507694+00:00; already-running GFMC jobs finish their finite trajectories. The complete 896-fit plan is not a promise of completion within this budget.</p>
+<p><strong>Priority and coverage:</strong> fixed h=0.15; periodic kagome, N=3L². Ascending Gamma across L=4 and L=6. L=4: Gamma=0.55, 0.56, 0.57, 0.58, 0.59, 0.60, 0.61, 0.62, 0.63, 0.64, 0.65, 0.66, 0.67, 0.68, 0.69, 0.70, 0.85, 1.00; L=6: Gamma=0.55, 0.56, 0.57, 0.58, 0.59, 0.60, 0.61, 0.62, 0.63, 0.64, 0.65, 0.66, 0.67, 0.68, 0.69, 0.70, 0.85, 1.00. Disorders 60000–60007, both Jastrow/RBM guides, and both training seeds remain in the plan. No disorder is selected by overlap width.</p>
+<p><strong>Resource budget:</strong> at most 6 projector futures are submitted at once; 16 are deferred at this snapshot. New dispatch stops at 2026-11-03T12:59:37.507694+00:00; already-running GFMC jobs finish their finite trajectories. The complete 1152-fit plan is not a promise of completion within this budget.</p>
 <p><strong>Validated so far:</strong> the repair controls contain 24 strong-field projection runs with no final projection failure or ancestry alarm, and the earlier 30-test regression suite passed. Sixteen targeted restart checks also passed, including the repaired histogram checkpoint replay and numerical-provenance mismatch rejection. These are implementation checks, not a ground-state convergence certificate.</p>
 <p><strong>Physical conclusions still pending:</strong> corrected weak-field disorder averages, population/forward-time sensitivity, and connected-correlation size checks. Passing frozen-start diagnostics alone does not establish equilibrium. The existing physical figures retain the frozen 112-run broader snapshot; the retired counts above are not corrected ensemble results.</p>
 <p>Remote campaign: <code>/root/autodl-tmp/disorder-scaling-repaired-20261103-v2</code>. Raw stop audit, launch configuration, source hashes, and imported-checkpoint identities are preserved with this snapshot.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=100be97a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_repaired-campaign-progress" data-mime-type="text/markdown">
+<h2 id="Expanded-campaign:-scope-and-runtime-estimate">Expanded campaign: scope and runtime estimate<a class="anchor-link" href="#Expanded-campaign:-scope-and-runtime-estimate">¶</a></h2><p><strong>Measured at 2026-11-03T07:44:25.854853+00:00.</strong> Runtime scenarios, not a completion guarantee or a convergence certificate.</p>
+<p>Both L=4 (N=48) and L=6 (N=108) target Gamma=0.55,...,0.70 by 0.01, plus 0.85 and 1.00, at h=0.15. Eight fixed disorders, both guide families, two training seeds, and two projection repeats are retained.</p>
+<p><strong>Full plan:</strong> 1152 fits; 1152 main GFMC runs + 864 population/time/start checks = 2016 runs.</p>
+<p><strong>Saved progress:</strong> 7 completed fits, 7 completed GFMC records; 0 recorded failures.</p>
+<table>
+<thead>
+<tr>
+<th>Milestone</th>
+<th>Planning time from this snapshot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>First L=6, Gamma=0.55 RBM main repeats</td>
+<td>Approximately 20–40 minutes; individual-disorder runs</td>
+</tr>
+<tr>
+<td>Gamma=0.55, both sizes/guides, all eight disorders: main ensemble</td>
+<td>Approximately 4–6 hours</td>
+</tr>
+<tr>
+<td>Gamma=0.55 including all planned sensitivities</td>
+<td>Approximately 6–10 hours</td>
+</tr>
+<tr>
+<td>Gamma=0.55–0.60, both sizes, including sensitivities</td>
+<td>Approximately 1–2 days</td>
+</tr>
+<tr>
+<td>Entire expanded plan including 0.85 and 1.00</td>
+<td>Approximately 4–6 days of continued operation</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Measured rates and assumptions:</strong></p>
+<ul>
+<li>L=4 jastrow: 11.2 minutes per fit; 2 repaired completed fits; scenario -10%/+20%.</li>
+<li>L=4 rbm_2: 11.2 minutes per fit; 2 repaired completed fits; scenario -10%/+20%.</li>
+<li>L=6 jastrow: 22.5 minutes per fit; explicit 15–30 minute planning assumption; partial L6 Jastrow optimizer timing is about 15 minutes before frozen diagnostics.</li>
+<li>L=6 rbm_2: 22.5 minutes per fit; explicit 15–30 minute planning assumption; partial L6 Jastrow optimizer timing is about 15 minutes before frozen diagnostics.</li>
+<li>L=6 RBM GFMC main: 39.3 minutes per run; repaired partial-trajectory extrapolation (2 observations).</li>
+<li>L=6 RBM GFMC population: 82.6 minutes per run; repaired partial-trajectory extrapolation (2 observations).</li>
+<li>L=6 RBM GFMC time: 80.3 minutes per run; repaired partial-trajectory extrapolation (1 observations).</li>
+<li>L=6 RBM GFMC start: 38.4 minutes per run; repaired partial-trajectory extrapolation (1 observations).</li>
+</ul>
+<p>At 4 training workers, central full-plan training workload is 80.9 wall-hours; the explicit training-rate scenario spans 60.2–104.3 hours.
+At 6 GFMC workers, central full-plan projection workload is 85.3 wall-hours. Training and projection overlap, so these totals are not added.
+With completed work credited, the idealized remaining-work bottleneck is 84.9 hours; the planning scenario is 97.7–135.9 hours, allowing 15–60% pipeline/throughput overhead and the upper training-rate scenario.</p>
+<p><strong>Limitations:</strong> This is a saved forecast for the initial expanded-grid restart, not an adaptive scheduler or live ETA. The milestone ranges are planning judgments based on these throughput estimates. L6 RBM projection timing is extrapolated from saved partial repaired trajectories. L4 estimates use repaired completions/checkpoints when available. L6 Jastrow projection timings use retired-campaign timing metadata only, not its physics results. Field, disorder, guide and CPU contention can change runtime. Before-projection guide sampling is covered by the overhead scenario. Training samples are still few; imported pilot timing is not treated as representative of four-worker throughput. Failed sampling checks can leave contexts unqualified rather than supply a complete ensemble. The 4–6 day range covers the prescribed runs only; further convergence extensions have no defensible fixed ETA yet.</p>
+<p><strong>Current dispatch cutoff:</strong> 2026-11-03T12:59:37.507694+00:00, approximately 5.25 hours after this snapshot. The full plan requires an extended/resumed budget; this estimate does not extend the deadline. Already active GFMC trajectories may drain afterward.</p>
 </div>
 </div>
 </div>
@@ -8238,7 +8289,7 @@ claim those follow-ups have converged.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=07587a36">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=43f264f9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9200,7 +9251,7 @@ No matched-size crossing or collapse is inferred from this report.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4d7055c0">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b735bb38">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9272,7 +9323,7 @@ equal weight.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=48f3089d">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5ff1501a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9479,7 +9530,7 @@ equal weight.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f97e7e23">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=684694c7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9496,7 +9547,7 @@ them does not by itself demonstrate exploration of competing sectors.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=07717da2">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e131909a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9539,7 +9590,7 @@ and numerical/ancestry diagnostics remain available in the source bundle.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b548c157">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9fe64251">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9932,7 +9983,7 @@ and numerical/ancestry diagnostics remain available in the source bundle.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f9ea10c5">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=040e3913">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9955,7 +10006,7 @@ Its pending fits are not included as physical measurements here.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ac66b779">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e3600cca">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>

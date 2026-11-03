@@ -1,12 +1,12 @@
 {
-  "checked_utc": "2026-11-03T07:31:55.675354+00:00",
+  "checked_utc": "2026-11-03T07:44:53.762818+00:00",
   "status": {
     "state": "running",
-    "completed_fits": 3,
-    "planned_fits": 896,
+    "completed_fits": 9,
+    "planned_fits": 1152,
     "active_training": [
       {
-        "L": 4,
+        "L": 6,
         "gamma": 0.55,
         "sample_id": 60000,
         "kind": "jastrow",
@@ -14,7 +14,7 @@
         "mode": "anneal"
       },
       {
-        "L": 4,
+        "L": 6,
         "gamma": 0.55,
         "sample_id": 60000,
         "kind": "jastrow",
@@ -24,7 +24,7 @@
       {
         "L": 4,
         "gamma": 0.55,
-        "sample_id": 60000,
+        "sample_id": 60001,
         "kind": "rbm_2",
         "seed": 0,
         "mode": "anneal"
@@ -32,15 +32,45 @@
       {
         "L": 4,
         "gamma": 0.55,
-        "sample_id": 60000,
+        "sample_id": 60001,
         "kind": "rbm_2",
         "seed": 1,
         "mode": "anneal"
       }
     ],
     "trainers": 4,
-    "queued_or_running_projectors": 8,
+    "queued_or_running_projectors": 24,
     "running_projectors": [
+      {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
       {
         "L": 6,
         "gamma": 0.55,
@@ -72,11 +102,11 @@
         "repeat": 1
       },
       {
-        "L": 6,
+        "L": 4,
         "gamma": 0.55,
         "sample_id": 60000,
         "kind": "rbm_2",
-        "training_seed": 1,
+        "training_seed": 0,
         "audit": "population",
         "walkers": 1024,
         "equil": 16.0,
@@ -87,11 +117,11 @@
         "repeat": 0
       },
       {
-        "L": 6,
+        "L": 4,
         "gamma": 0.55,
         "sample_id": 60000,
         "kind": "rbm_2",
-        "training_seed": 1,
+        "training_seed": 0,
         "audit": "start",
         "walkers": 512,
         "equil": 16.0,
@@ -100,143 +130,88 @@
         "delta": 0.1,
         "cycles": 8,
         "repeat": 0
-      },
-      {
-        "L": 6,
-        "gamma": 0.55,
-        "sample_id": 60000,
-        "kind": "rbm_2",
-        "training_seed": 1,
-        "audit": "time",
-        "walkers": 512,
-        "equil": 32.0,
-        "forward": 32.0,
-        "start": "guide",
-        "delta": 0.1,
-        "cycles": 8,
-        "repeat": 0
-      },
-      {
-        "L": 6,
-        "gamma": 0.55,
-        "sample_id": 60000,
-        "kind": "rbm_2",
-        "training_seed": 1,
-        "audit": "population",
-        "walkers": 1024,
-        "equil": 16.0,
-        "forward": 16.0,
-        "start": "guide",
-        "delta": 0.1,
-        "cycles": 8,
-        "repeat": 1
       }
     ],
-    "deferred_projectors": 2,
+    "deferred_projectors": 18,
     "projector_workers": 6,
-    "submitted_contexts": 1,
-    "completed_runs": 0,
+    "submitted_contexts": 4,
+    "completed_runs": 8,
     "deadline_unix": 1793710777.5076935,
     "failures": [],
-    "updated_unix": 1793691114.3418815
+    "updated_unix": 1793691870.0139418
   },
   "legacy_active_processes": [],
   "corrected_processes": [
     {
-      "pid": 317887,
+      "pid": 320640,
       "ppid": 1,
-      "state": "S",
-      "command": "/root/miniconda3/bin/python -u -m transformer_qmc.fine_overlap_campaign --output /root/autodl-tmp/disorder-scaling-repaired-20261103-v2/results --trainers 4 --workers 6 --deadline-unix 1793710777.5076935 ",
-      "pythonpath": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code"
+      "state": "S"
     },
     {
-      "pid": 317889,
-      "ppid": 317887,
-      "state": "S",
-      "command": "/root/miniconda3/bin/python -c from multiprocessing.resource_tracker import main;main(7) ",
-      "pythonpath": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code"
+      "pid": 320649,
+      "ppid": 320640,
+      "state": "S"
     },
     {
-      "pid": 317890,
-      "ppid": 317887,
-      "state": "R",
-      "command": "/root/miniconda3/bin/python -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=8, pipe_handle=18) --multiprocessing-fork ",
-      "pythonpath": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code"
+      "pid": 320650,
+      "ppid": 320640,
+      "state": "R"
     },
     {
-      "pid": 317893,
-      "ppid": 317887,
-      "state": "R",
-      "command": "/root/miniconda3/bin/python -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=8, pipe_handle=20) --multiprocessing-fork ",
-      "pythonpath": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code"
+      "pid": 320653,
+      "ppid": 320640,
+      "state": "R"
     },
     {
-      "pid": 317894,
-      "ppid": 317887,
-      "state": "R",
-      "command": "/root/miniconda3/bin/python -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=8, pipe_handle=22) --multiprocessing-fork ",
-      "pythonpath": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code"
+      "pid": 320654,
+      "ppid": 320640,
+      "state": "R"
     },
     {
-      "pid": 317895,
-      "ppid": 317887,
-      "state": "R",
-      "command": "/root/miniconda3/bin/python -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=8, pipe_handle=24) --multiprocessing-fork ",
-      "pythonpath": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code"
+      "pid": 320655,
+      "ppid": 320640,
+      "state": "R"
     },
     {
-      "pid": 317896,
-      "ppid": 317887,
-      "state": "R",
-      "command": "/root/miniconda3/bin/python -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=8, pipe_handle=26) --multiprocessing-fork ",
-      "pythonpath": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code"
+      "pid": 320656,
+      "ppid": 320640,
+      "state": "R"
     },
     {
-      "pid": 317899,
-      "ppid": 317887,
-      "state": "R",
-      "command": "/root/miniconda3/bin/python -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=8, pipe_handle=28) --multiprocessing-fork ",
-      "pythonpath": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code"
+      "pid": 320659,
+      "ppid": 320640,
+      "state": "R"
     },
     {
-      "pid": 317900,
-      "ppid": 317887,
-      "state": "R",
-      "command": "/root/miniconda3/bin/python -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=8, pipe_handle=30) --multiprocessing-fork ",
-      "pythonpath": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code"
+      "pid": 320660,
+      "ppid": 320640,
+      "state": "R"
     },
     {
-      "pid": 317901,
-      "ppid": 317887,
-      "state": "R",
-      "command": "/root/miniconda3/bin/python -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=8, pipe_handle=32) --multiprocessing-fork ",
-      "pythonpath": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code"
+      "pid": 320661,
+      "ppid": 320640,
+      "state": "R"
     },
     {
-      "pid": 317902,
-      "ppid": 317887,
-      "state": "R",
-      "command": "/root/miniconda3/bin/python -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=8, pipe_handle=34) --multiprocessing-fork ",
-      "pythonpath": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code"
+      "pid": 320662,
+      "ppid": 320640,
+      "state": "R"
     },
     {
-      "pid": 317903,
-      "ppid": 317887,
-      "state": "R",
-      "command": "/root/miniconda3/bin/python -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=8, pipe_handle=36) --multiprocessing-fork ",
-      "pythonpath": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/code"
+      "pid": 320663,
+      "ppid": 320640,
+      "state": "R"
     }
   ],
   "production_source_mismatches": [],
   "production_source_files": 199,
   "training_progress": [
     {
-      "file": "317890.json",
-      "modified_utc": "2026-11-03T07:29:55.653813+00:00",
+      "file": "320650.json",
       "record": {
         "state": "training",
         "task": {
-          "L": 4,
+          "L": 6,
           "gamma": 0.55,
           "sample_id": 60000,
           "kind": "jastrow",
@@ -245,19 +220,18 @@
         },
         "stage": 2,
         "gamma": 0.55,
-        "step": 400,
-        "energy": -52.64769297775145,
-        "variance": 0.4028056106743425,
-        "gradient_norm": 0.06608641029693331
+        "step": 75,
+        "energy": -120.19056227815216,
+        "variance": 1.2278478296674455,
+        "gradient_norm": 0.08665939379860096
       }
     },
     {
-      "file": "317893.json",
-      "modified_utc": "2026-11-03T07:30:00.150408+00:00",
+      "file": "320654.json",
       "record": {
         "state": "training",
         "task": {
-          "L": 4,
+          "L": 6,
           "gamma": 0.55,
           "sample_id": 60000,
           "kind": "jastrow",
@@ -266,59 +240,57 @@
         },
         "stage": 2,
         "gamma": 0.55,
-        "step": 400,
-        "energy": -52.66650815956447,
-        "variance": 0.38264609701175706,
-        "gradient_norm": 0.07024075447778867
+        "step": 75,
+        "energy": -121.2760999152346,
+        "variance": 2.3250626275796518,
+        "gradient_norm": 0.11418319705961016
       }
     },
     {
-      "file": "317895.json",
-      "modified_utc": "2026-11-03T07:30:00.162410+00:00",
+      "file": "320655.json",
       "record": {
         "state": "training",
         "task": {
           "L": 4,
           "gamma": 0.55,
-          "sample_id": 60000,
-          "kind": "rbm_2",
-          "seed": 1,
-          "mode": "anneal"
-        },
-        "stage": 2,
-        "gamma": 0.55,
-        "step": 400,
-        "energy": -51.8805306289537,
-        "variance": 0.7244786688507937,
-        "gradient_norm": 0.0900048954798948
-      }
-    },
-    {
-      "file": "317894.json",
-      "modified_utc": "2026-11-03T07:30:00.590466+00:00",
-      "record": {
-        "state": "training",
-        "task": {
-          "L": 4,
-          "gamma": 0.55,
-          "sample_id": 60000,
+          "sample_id": 60001,
           "kind": "rbm_2",
           "seed": 0,
           "mode": "anneal"
         },
-        "stage": 2,
-        "gamma": 0.55,
-        "step": 400,
-        "energy": -52.516623374265635,
-        "variance": 0.7683417178749748,
-        "gradient_norm": 0.09501509280539065
+        "stage": 0,
+        "gamma": 1.5,
+        "step": 50,
+        "energy": -81.6502898862914,
+        "variance": 19.086311114133082,
+        "gradient_norm": 0.3303491941060911
+      }
+    },
+    {
+      "file": "320653.json",
+      "record": {
+        "state": "training",
+        "task": {
+          "L": 4,
+          "gamma": 0.55,
+          "sample_id": 60001,
+          "kind": "rbm_2",
+          "seed": 1,
+          "mode": "anneal"
+        },
+        "stage": 0,
+        "gamma": 1.5,
+        "step": 50,
+        "energy": -81.59570542502365,
+        "variance": 19.945492882785896,
+        "gradient_norm": 0.4421460980513834
       }
     }
   ],
   "projector_progress": [
     {
       "file": "9ee79022667972ca5593e896.json",
-      "modified_utc": "2026-11-03T07:31:21.872401+00:00",
+      "modified_utc": "2026-11-03T07:40:18.503298+00:00",
       "record": {
         "task": {
           "L": 6,
@@ -335,15 +307,15 @@
           "cycles": 8,
           "repeat": 0
         },
-        "step": 320,
+        "step": 640,
         "total": 2880,
-        "cycles": 0,
+        "cycles": 1,
         "numerics": "log_weight_v1"
       }
     },
     {
       "file": "318579bf586b7a7f247c24d9.json",
-      "modified_utc": "2026-11-03T07:31:03.658303+00:00",
+      "modified_utc": "2026-11-03T07:42:35.320642+00:00",
       "record": {
         "task": {
           "L": 6,
@@ -360,15 +332,15 @@
           "cycles": 8,
           "repeat": 1
         },
-        "step": 320,
+        "step": 700,
         "total": 1440,
-        "cycles": 1,
+        "cycles": 3,
         "numerics": "log_weight_v1"
       }
     },
     {
       "file": "476d501bffc2d1ec42df7dd1.json",
-      "modified_utc": "2026-11-03T07:31:32.657611+00:00",
+      "modified_utc": "2026-11-03T07:42:33.116565+00:00",
       "record": {
         "task": {
           "L": 6,
@@ -385,15 +357,15 @@
           "cycles": 8,
           "repeat": 0
         },
-        "step": 320,
+        "step": 700,
         "total": 1440,
-        "cycles": 1,
+        "cycles": 3,
         "numerics": "log_weight_v1"
       }
     },
     {
       "file": "d909fd2250be05a5aca6f3d7.json",
-      "modified_utc": "2026-11-03T07:31:09.598995+00:00",
+      "modified_utc": "2026-11-03T07:39:32.793223+00:00",
       "record": {
         "task": {
           "L": 6,
@@ -410,15 +382,15 @@
           "cycles": 8,
           "repeat": 0
         },
-        "step": 320,
+        "step": 640,
         "total": 1440,
-        "cycles": 1,
+        "cycles": 3,
         "numerics": "log_weight_v1"
       }
     },
     {
       "file": "a5be896362b2d00a1db159dc.json",
-      "modified_utc": "2026-11-03T07:30:53.249072+00:00",
+      "modified_utc": "2026-11-03T07:40:23.387510+00:00",
       "record": {
         "task": {
           "L": 6,
@@ -435,15 +407,15 @@
           "cycles": 8,
           "repeat": 1
         },
-        "step": 160,
+        "step": 320,
         "total": 1440,
-        "cycles": 0,
+        "cycles": 1,
         "numerics": "log_weight_v1"
       }
     },
     {
       "file": "65026e0820f0214df31114de.json",
-      "modified_utc": "2026-11-03T07:31:55.448088+00:00",
+      "modified_utc": "2026-11-03T07:40:05.082705+00:00",
       "record": {
         "task": {
           "L": 6,
@@ -460,14 +432,313 @@
           "cycles": 8,
           "repeat": 0
         },
+        "step": 300,
+        "total": 1440,
+        "cycles": 0,
+        "numerics": "log_weight_v1"
+      }
+    },
+    {
+      "file": "0e2020c03cd9455e674e7268.json",
+      "modified_utc": "2026-11-03T07:41:32.210326+00:00",
+      "record": {
+        "task": {
+          "L": 4,
+          "gamma": 0.55,
+          "sample_id": 60000,
+          "kind": "jastrow",
+          "training_seed": 0,
+          "audit": "main",
+          "walkers": 512,
+          "equil": 16.0,
+          "forward": 16.0,
+          "start": "guide",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 0
+        },
+        "step": 1440,
+        "total": 1440,
+        "cycles": 8,
+        "numerics": "log_weight_v1"
+      }
+    },
+    {
+      "file": "e97c919d5c4a32f4f4bedc08.json",
+      "modified_utc": "2026-11-03T07:44:47.152790+00:00",
+      "record": {
+        "task": {
+          "L": 4,
+          "gamma": 0.55,
+          "sample_id": 60000,
+          "kind": "rbm_2",
+          "training_seed": 0,
+          "audit": "main",
+          "walkers": 512,
+          "equil": 16.0,
+          "forward": 16.0,
+          "start": "guide",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 0
+        },
+        "step": 1200,
+        "total": 1440,
+        "cycles": 6,
+        "numerics": "log_weight_v1"
+      }
+    },
+    {
+      "file": "88b1f145d1e54df5356d5612.json",
+      "modified_utc": "2026-11-03T07:41:38.522569+00:00",
+      "record": {
+        "task": {
+          "L": 4,
+          "gamma": 0.55,
+          "sample_id": 60000,
+          "kind": "jastrow",
+          "training_seed": 0,
+          "audit": "main",
+          "walkers": 512,
+          "equil": 16.0,
+          "forward": 16.0,
+          "start": "guide",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 1
+        },
+        "step": 1440,
+        "total": 1440,
+        "cycles": 8,
+        "numerics": "log_weight_v1"
+      }
+    },
+    {
+      "file": "191a098a4fad8fbdce85a6d3.json",
+      "modified_utc": "2026-11-03T07:44:50.588887+00:00",
+      "record": {
+        "task": {
+          "L": 4,
+          "gamma": 0.55,
+          "sample_id": 60000,
+          "kind": "rbm_2",
+          "training_seed": 0,
+          "audit": "main",
+          "walkers": 512,
+          "equil": 16.0,
+          "forward": 16.0,
+          "start": "guide",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 1
+        },
+        "step": 1100,
+        "total": 1440,
+        "cycles": 5,
+        "numerics": "log_weight_v1"
+      }
+    },
+    {
+      "file": "0fe362fe83a4ec5976999219.json",
+      "modified_utc": "2026-11-03T07:42:14.055888+00:00",
+      "record": {
+        "task": {
+          "L": 4,
+          "gamma": 0.55,
+          "sample_id": 60000,
+          "kind": "jastrow",
+          "training_seed": 0,
+          "audit": "start",
+          "walkers": 512,
+          "equil": 16.0,
+          "forward": 16.0,
+          "start": "uniform",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 0
+        },
+        "step": 1440,
+        "total": 1440,
+        "cycles": 8,
+        "numerics": "log_weight_v1"
+      }
+    },
+    {
+      "file": "9d1b72718f980d01559cc76a.json",
+      "modified_utc": "2026-11-03T07:42:44.576963+00:00",
+      "record": {
+        "task": {
+          "L": 4,
+          "gamma": 0.55,
+          "sample_id": 60000,
+          "kind": "jastrow",
+          "training_seed": 0,
+          "audit": "population",
+          "walkers": 1024,
+          "equil": 16.0,
+          "forward": 16.0,
+          "start": "guide",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 0
+        },
+        "step": 1440,
+        "total": 1440,
+        "cycles": 8,
+        "numerics": "log_weight_v1"
+      }
+    },
+    {
+      "file": "91cffbd9cb21e7c228743333.json",
+      "modified_utc": "2026-11-03T07:43:09.857814+00:00",
+      "record": {
+        "task": {
+          "L": 4,
+          "gamma": 0.55,
+          "sample_id": 60000,
+          "kind": "jastrow",
+          "training_seed": 0,
+          "audit": "time",
+          "walkers": 512,
+          "equil": 32.0,
+          "forward": 32.0,
+          "start": "guide",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 0
+        },
+        "step": 2880,
+        "total": 2880,
+        "cycles": 8,
+        "numerics": "log_weight_v1"
+      }
+    },
+    {
+      "file": "1504226f26cac1ec7a559cae.json",
+      "modified_utc": "2026-11-03T07:43:30.114471+00:00",
+      "record": {
+        "task": {
+          "L": 4,
+          "gamma": 0.55,
+          "sample_id": 60000,
+          "kind": "jastrow",
+          "training_seed": 0,
+          "audit": "start",
+          "walkers": 512,
+          "equil": 16.0,
+          "forward": 16.0,
+          "start": "uniform",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 1
+        },
+        "step": 1440,
+        "total": 1440,
+        "cycles": 8,
+        "numerics": "log_weight_v1"
+      }
+    },
+    {
+      "file": "1b51132a95bdc4c9a8d21ed9.json",
+      "modified_utc": "2026-11-03T07:43:52.191164+00:00",
+      "record": {
+        "task": {
+          "L": 4,
+          "gamma": 0.55,
+          "sample_id": 60000,
+          "kind": "jastrow",
+          "training_seed": 0,
+          "audit": "population",
+          "walkers": 1024,
+          "equil": 16.0,
+          "forward": 16.0,
+          "start": "guide",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 1
+        },
+        "step": 1440,
+        "total": 1440,
+        "cycles": 8,
+        "numerics": "log_weight_v1"
+      }
+    },
+    {
+      "file": "269550d887b5632abc51a699.json",
+      "modified_utc": "2026-11-03T07:44:27.404221+00:00",
+      "record": {
+        "task": {
+          "L": 4,
+          "gamma": 0.55,
+          "sample_id": 60000,
+          "kind": "jastrow",
+          "training_seed": 0,
+          "audit": "time",
+          "walkers": 512,
+          "equil": 32.0,
+          "forward": 32.0,
+          "start": "guide",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 1
+        },
+        "step": 2880,
+        "total": 2880,
+        "cycles": 8,
+        "numerics": "log_weight_v1"
+      }
+    },
+    {
+      "file": "f2ce6a7ca33ceac7f09d23f1.json",
+      "modified_utc": "2026-11-03T07:44:50.832894+00:00",
+      "record": {
+        "task": {
+          "L": 4,
+          "gamma": 0.55,
+          "sample_id": 60000,
+          "kind": "rbm_2",
+          "training_seed": 0,
+          "audit": "population",
+          "walkers": 1024,
+          "equil": 16.0,
+          "forward": 16.0,
+          "start": "guide",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 0
+        },
         "step": 160,
+        "total": 1440,
+        "cycles": 0,
+        "numerics": "log_weight_v1"
+      }
+    },
+    {
+      "file": "ce151eac1e580822625e3b7e.json",
+      "modified_utc": "2026-11-03T07:44:45.284737+00:00",
+      "record": {
+        "task": {
+          "L": 4,
+          "gamma": 0.55,
+          "sample_id": 60000,
+          "kind": "rbm_2",
+          "training_seed": 0,
+          "audit": "start",
+          "walkers": 512,
+          "equil": 16.0,
+          "forward": 16.0,
+          "start": "uniform",
+          "delta": 0.1,
+          "cycles": 8,
+          "repeat": 0
+        },
+        "step": 100,
         "total": 1440,
         "cycles": 0,
         "numerics": "log_weight_v1"
       }
     }
   ],
-  "campaign_log_tail": "",
-  "gpu": "name, memory.used [MiB], utilization.gpu [%]\nNVIDIA H800 PCIe, 3164 MiB, 99 %\n",
+  "campaign_log_tail": "/root/miniconda3/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 10 leaked semaphore objects to clean up at shutdown\n  warnings.warn('resource_tracker: There appear to be %d '\n",
   "deadline_utc": "2026-11-03T12:59:37.507694+00:00"
 }

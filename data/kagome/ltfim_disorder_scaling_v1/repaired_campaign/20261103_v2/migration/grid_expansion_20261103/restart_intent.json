@@ -1,0 +1,100 @@
+{
+  "at_utc": "2026-11-03T07:40:52.476176+00:00",
+  "reason": "User requests L6 Gamma .55-.70 inclusive by .01, retaining .85 and 1.00",
+  "targets": [
+    {
+      "pid": 317887,
+      "ppid": 1,
+      "state": "S",
+      "start_ticks": "1157380652",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 317889,
+      "ppid": 317887,
+      "state": "S",
+      "start_ticks": "1157380972",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 317890,
+      "ppid": 317887,
+      "state": "R",
+      "start_ticks": "1157380975",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 317893,
+      "ppid": 317887,
+      "state": "R",
+      "start_ticks": "1157380975",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 317894,
+      "ppid": 317887,
+      "state": "R",
+      "start_ticks": "1157380975",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 317895,
+      "ppid": 317887,
+      "state": "R",
+      "start_ticks": "1157380976",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 317896,
+      "ppid": 317887,
+      "state": "R",
+      "start_ticks": "1157380976",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 317899,
+      "ppid": 317887,
+      "state": "R",
+      "start_ticks": "1157380976",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 317900,
+      "ppid": 317887,
+      "state": "R",
+      "start_ticks": "1157380976",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 317901,
+      "ppid": 317887,
+      "state": "R",
+      "start_ticks": "1157380976",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 317902,
+      "ppid": 317887,
+      "state": "R",
+      "start_ticks": "1157380976",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 317903,
+      "ppid": 317887,
+      "state": "R",
+      "start_ticks": "1157380976",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    }
+  ],
+  "added_fields": [
+    0.61,
+    0.62,
+    0.63,
+    0.64,
+    0.66,
+    0.67,
+    0.68,
+    0.69
+  ]
+}

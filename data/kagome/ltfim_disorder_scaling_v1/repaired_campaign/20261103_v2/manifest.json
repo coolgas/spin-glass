@@ -104,7 +104,7 @@
   ],
   "overlap": "four independently branching populations; save raw tags/counts; equal cycles, repeat means, equal disorder weights",
   "uncertainty": "capped disorder SE in reporting; do not select disorder by overlap shape",
-  "dispatch": "4 CUDA training workers, 6 CPU projectors; at most 6 submitted projector futures; stop dispatch at existing deadline",
+  "dispatch": "4 CUDA training workers, 6 CPU projectors; at most 6 submitted projector futures; no wall-clock cutoff; process finite manifest until complete",
   "sources": {
     "notebook_simple_guides.py": "39c489fe0727397eed5ea14cd2a35dfc0e3e289034e8340ff90c1bf09fa1beab",
     "push_accuracy.py": "0552eef10f9c255c86a976b2f347c8a17e3cc34f0489800b51b1ff2190ad9d4e",
@@ -117,7 +117,7 @@
     "diagnose_shared.py": "01d8f671273df7cf57950da2efb95daf6ea54d102a0be0aab00fd56ab2d86bc3",
     "overnight_remedies.py": "862c6379d63c0f2c1cc8f747ea3b6123bf5418ef7838ad7172789ad5a549c62c",
     "direct_gfmc_pilot.py": "8e5a0098ce34b921bd0702e3d81125aa8080134c2f46978a5877df7291d310db",
-    "parallel_disorder_scaling.py": "42fec519d9974c9b994d02d2b36991b41e06b0e4acc2043fccad82f36e2d98a6",
+    "parallel_disorder_scaling.py": "7593f40c95eef281310a9343ce3adad24c8583d3ce86d773c6f526c7c0c0dbbe",
     "physical_decoder.py": "fc598594de4b282a3f5c542cbf76638036bbd589eab110963862b99e6b64ec9e",
     "physics.py": "9ce8568f1d3f74701abc8b993ca4b1296fd38b69e5c10b18c60b9170529bd4d9",
     "plan_gfmc_production.py": "3480fc4ddd6316ac3d13f3602636ca72304c8ebeb3491e44b202246341d260fc",
@@ -296,5 +296,11 @@
     ],
     "audit": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/migration/grid_expansion_20261103",
     "reason": "User extends L6 fine grid through Gamma .70"
+  },
+  "runtime_policy": {
+    "mode": "until_complete",
+    "deadline_unix": null,
+    "authorized_utc": "2026-11-03T08:03:16.182268+00:00",
+    "audit": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/migration/unlimited_runtime_20261103"
   }
 }

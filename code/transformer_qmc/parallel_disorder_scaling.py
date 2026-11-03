@@ -64,14 +64,16 @@ def main():
     p.add_argument('--output',type=Path,required=True)
     p.add_argument('--trainers',type=int,default=4)
     p.add_argument('--workers',type=int,default=8)
-    p.add_argument('--deadline-unix',type=float,required=True)
+    budget=p.add_mutually_exclusive_group(required=True)
+    budget.add_argument('--deadline-unix',type=float)
+    budget.add_argument('--no-deadline',action='store_true',help='Run the finite manifest to completion without a wall-clock cutoff')
     a=p.parse_args()
     if a.trainers<1 or a.workers<1:raise ValueError('Positive worker counts required')
     manifest=json.loads((a.output/'manifest.json').read_text())
     for name,digest in manifest['sources'].items():
         assert sha(Path(__file__).with_name(name))==digest, name
     if manifest['sizes']!=[4,6]:raise ValueError('This continuation is restricted to the authorized L4/L6 pilot')
-    deadline=time.monotonic()+max(0,a.deadline_unix-time.time())
+    deadline=float('inf') if a.no_deadline else time.monotonic()+max(0,a.deadline_unix-time.time())
     tasks=ordered_tasks(manifest)
     completed_fits={};pending=[];submitted_contexts=set();projectors={};failures=[]
     waiting_projectors=[]
@@ -149,7 +151,8 @@ def main():
                 running_projectors=list(projectors.values()),deferred_projectors=len(waiting_projectors),
                 projector_workers=a.workers,submitted_contexts=len(submitted_contexts),
                 completed_runs=len(list((a.output/'projector/runs').glob('*.json'))),
-                deadline_unix=a.deadline_unix,failures=failures,updated_unix=time.time()))
+                deadline_unix=a.deadline_unix,budget_mode='until_complete' if a.no_deadline else 'deadline',
+                failures=failures,updated_unix=time.time()))
         fill();dispatch_projectors();status('running')
         while active or projectors:
             done,_=wait(list(active)+list(projectors),timeout=30,return_when=FIRST_COMPLETED)

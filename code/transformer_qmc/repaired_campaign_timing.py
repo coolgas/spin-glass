@@ -15,6 +15,10 @@ def read(path):
 
 def describe(record):
     counts=record['plan']; estimates=record['estimates']
+    budget=("**Runtime policy:** no wall-clock cutoff. The finite campaign is authorized to continue until all planned tasks have been attempted. "
+        "The throughput estimates above retain their original measurement timestamp." if record['deadline_utc'] is None else
+        f"**Current dispatch cutoff:** {record['deadline_utc']}, approximately {record['hours_until_deadline']:.2f} hours after this snapshot. "
+        "The full plan requires an extended/resumed budget; this estimate does not extend the deadline. Already active GFMC trajectories may drain afterward.")
     lines=['## Expanded campaign: scope and runtime estimate', '',
         f"**Measured at {record['snapshot_utc']}.** Runtime scenarios, not a completion guarantee or a convergence certificate.", '',
         f"Both L=4 (N=48) and L=6 (N=108) target Gamma=0.55,...,0.70 by 0.01, plus 0.85 and 1.00, at h=0.15. Eight fixed disorders, both guide families, two training seeds, and two projection repeats are retained.", '',
@@ -36,7 +40,7 @@ def describe(record):
         f"At {record['projector_workers']} GFMC workers, central full-plan projection workload is {estimates['projector_hours']:.1f} wall-hours. Training and projection overlap, so these totals are not added.",
         f"With completed work credited, the idealized remaining-work bottleneck is {estimates['remaining_ideal_bottleneck_hours']:.1f} hours; the planning scenario is {estimates['planning_low_hours']:.1f}–{estimates['planning_high_hours']:.1f} hours, allowing 15–60% pipeline/throughput overhead and the upper training-rate scenario.", '',
         '**Limitations:** This is a saved forecast for the initial expanded-grid restart, not an adaptive scheduler or live ETA. The milestone ranges are planning judgments based on these throughput estimates. L6 RBM projection timing is extrapolated from saved partial repaired trajectories. L4 estimates use repaired completions/checkpoints when available. L6 Jastrow projection timings use retired-campaign timing metadata only, not its physics results. Field, disorder, guide and CPU contention can change runtime. Before-projection guide sampling is covered by the overhead scenario. Training samples are still few; imported pilot timing is not treated as representative of four-worker throughput. Failed sampling checks can leave contexts unqualified rather than supply a complete ensemble. The 4–6 day range covers the prescribed runs only; further convergence extensions have no defensible fixed ETA yet.', '',
-        f"**Current dispatch cutoff:** {record['deadline_utc']}, approximately {record['hours_until_deadline']:.2f} hours after this snapshot. The full plan requires an extended/resumed budget; this estimate does not extend the deadline. Already active GFMC trajectories may drain afterward."])
+        budget])
     return '\n'.join(lines)+'\n'
 
 
@@ -104,7 +108,8 @@ def estimate(root):
     remaining_training=max(0,training_seconds['central_seconds']-earned_fit_seconds)/trainers/3600
     remaining_projection=max(0,projection_seconds-earned_projection_seconds)/workers/3600
     bottleneck=max(remaining_training,remaining_projection)
-    return dict(snapshot_utc=now.isoformat(),deadline_utc=launch['deadline_utc'],hours_until_deadline=max(0,(datetime.fromtimestamp(status['deadline_unix'],timezone.utc)-now).total_seconds()/3600),
+    hours_remaining=None if status['deadline_unix'] is None else max(0,(datetime.fromtimestamp(status['deadline_unix'],timezone.utc)-now).total_seconds()/3600)
+    return dict(snapshot_utc=now.isoformat(),deadline_utc=launch['deadline_utc'],hours_until_deadline=hours_remaining,
         fields_by_size=manifest['fields_by_size'],training_workers=trainers,projector_workers=workers,
         completed_fits=len(fits),completed_runs=len(completed),failures=status['failures'],
         plan=dict(fits=fit_count,main_runs=main_count,audit_runs=audit_count,projector_runs=main_count+audit_count),

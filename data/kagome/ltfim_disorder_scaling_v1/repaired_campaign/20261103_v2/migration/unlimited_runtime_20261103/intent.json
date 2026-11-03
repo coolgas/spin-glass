@@ -1,0 +1,78 @@
+{
+  "at_utc": "2026-11-03T08:03:15.595626+00:00",
+  "authorization": "User explicitly requests removing artificial time restriction; unlimited server access charged by instance time",
+  "targets": [
+    {
+      "pid": 320640,
+      "ppid": 1,
+      "start_ticks": "1157491846",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 320649,
+      "ppid": 320640,
+      "start_ticks": "1157492176",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 320650,
+      "ppid": 320640,
+      "start_ticks": "1157492181",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 320653,
+      "ppid": 320640,
+      "start_ticks": "1157492181",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 320654,
+      "ppid": 320640,
+      "start_ticks": "1157492181",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 320655,
+      "ppid": 320640,
+      "start_ticks": "1157492181",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 320656,
+      "ppid": 320640,
+      "start_ticks": "1157492181",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 320659,
+      "ppid": 320640,
+      "start_ticks": "1157492181",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 320660,
+      "ppid": 320640,
+      "start_ticks": "1157492181",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 320661,
+      "ppid": 320640,
+      "start_ticks": "1157492181",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 320662,
+      "ppid": 320640,
+      "start_ticks": "1157492182",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 320663,
+      "ppid": 320640,
+      "start_ticks": "1157492182",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    }
+  ]
+}

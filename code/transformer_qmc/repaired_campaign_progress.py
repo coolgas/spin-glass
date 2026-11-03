@@ -15,6 +15,10 @@ def describe(record):
         '6':[v/100 for v in range(55,61)]+[.65,.70,.85,1.]})
     coverage='; '.join(f"L={size}: Gamma="+', '.join(f'{g:.2f}' for g in fields)
         for size,fields in fields_by_size.items())
+    budget=("No wall-clock cutoff: dispatch continues until the finite manifest has been processed. "
+        "Failures and unqualified guide selections remain explicit." if record['deadline_utc'] is None else
+        f"New dispatch stops at {record['deadline_utc']}; already-running GFMC jobs finish their finite trajectories. "
+        f"The complete {current['planned_fits']}-fit plan is not a promise of completion within this budget.")
     lines=['## Corrected campaign: compute allocation and progress',
         '',f"**Snapshot: {record['snapshot_utc']} (UTC).** This is a saved status, not a live monitor.",'',
         '| Work | Status | Completed training fits | Completed GFMC runs | Compute allocation |',
@@ -52,7 +56,7 @@ def describe(record):
         '',
         '**Priority and coverage:** fixed h=0.15; periodic kagome, N=3L². Ascending Gamma across L=4 and L=6. '+coverage+'. Disorders 60000–60007, both Jastrow/RBM guides, and both training seeds remain in the plan. No disorder is selected by overlap width.',
         '',
-        f"**Resource budget:** at most {current['projector_workers']} projector futures are submitted at once; {current['deferred_projectors']} are deferred at this snapshot. New dispatch stops at {record['deadline_utc']}; already-running GFMC jobs finish their finite trajectories. The complete {current['planned_fits']}-fit plan is not a promise of completion within this budget.",
+        f"**Resource budget:** at most {current['projector_workers']} projector futures are submitted at once; {current['deferred_projectors']} are deferred at this snapshot. "+budget,
         '',
         '**Validated so far:** the repair controls contain 24 strong-field projection runs with no final projection failure or ancestry alarm, and the earlier 30-test regression suite passed. Sixteen targeted restart checks also passed, including the repaired histogram checkpoint replay and numerical-provenance mismatch rejection. These are implementation checks, not a ground-state convergence certificate.',
         '',

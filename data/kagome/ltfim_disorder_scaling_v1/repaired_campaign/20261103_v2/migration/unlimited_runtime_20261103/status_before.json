@@ -1,0 +1,140 @@
+{
+  "state": "running",
+  "completed_fits": 13,
+  "planned_fits": 1152,
+  "active_training": [
+    {
+      "L": 6,
+      "gamma": 0.55,
+      "sample_id": 60001,
+      "kind": "jastrow",
+      "seed": 0,
+      "mode": "anneal"
+    },
+    {
+      "L": 6,
+      "gamma": 0.55,
+      "sample_id": 60001,
+      "kind": "jastrow",
+      "seed": 1,
+      "mode": "anneal"
+    },
+    {
+      "L": 6,
+      "gamma": 0.55,
+      "sample_id": 60001,
+      "kind": "rbm_2",
+      "seed": 0,
+      "mode": "anneal"
+    },
+    {
+      "L": 6,
+      "gamma": 0.55,
+      "sample_id": 60001,
+      "kind": "rbm_2",
+      "seed": 1,
+      "mode": "anneal"
+    }
+  ],
+  "trainers": 4,
+  "queued_or_running_projectors": 30,
+  "running_projectors": [
+    {
+      "L": 6,
+      "gamma": 0.55,
+      "sample_id": 60000,
+      "kind": "rbm_2",
+      "training_seed": 1,
+      "audit": "main",
+      "walkers": 512,
+      "equil": 16.0,
+      "forward": 16.0,
+      "start": "guide",
+      "delta": 0.1,
+      "cycles": 8,
+      "repeat": 0
+    },
+    {
+      "L": 6,
+      "gamma": 0.55,
+      "sample_id": 60000,
+      "kind": "rbm_2",
+      "training_seed": 1,
+      "audit": "main",
+      "walkers": 512,
+      "equil": 16.0,
+      "forward": 16.0,
+      "start": "guide",
+      "delta": 0.1,
+      "cycles": 8,
+      "repeat": 1
+    },
+    {
+      "L": 6,
+      "gamma": 0.55,
+      "sample_id": 60000,
+      "kind": "rbm_2",
+      "training_seed": 1,
+      "audit": "population",
+      "walkers": 1024,
+      "equil": 16.0,
+      "forward": 16.0,
+      "start": "guide",
+      "delta": 0.1,
+      "cycles": 8,
+      "repeat": 0
+    },
+    {
+      "L": 6,
+      "gamma": 0.55,
+      "sample_id": 60000,
+      "kind": "rbm_2",
+      "training_seed": 1,
+      "audit": "start",
+      "walkers": 512,
+      "equil": 16.0,
+      "forward": 16.0,
+      "start": "uniform",
+      "delta": 0.1,
+      "cycles": 8,
+      "repeat": 0
+    },
+    {
+      "L": 6,
+      "gamma": 0.55,
+      "sample_id": 60000,
+      "kind": "rbm_2",
+      "training_seed": 1,
+      "audit": "time",
+      "walkers": 512,
+      "equil": 32.0,
+      "forward": 32.0,
+      "start": "guide",
+      "delta": 0.1,
+      "cycles": 8,
+      "repeat": 0
+    },
+    {
+      "L": 6,
+      "gamma": 0.55,
+      "sample_id": 60000,
+      "kind": "jastrow",
+      "training_seed": 1,
+      "audit": "main",
+      "walkers": 512,
+      "equil": 16.0,
+      "forward": 16.0,
+      "start": "guide",
+      "delta": 0.1,
+      "cycles": 8,
+      "repeat": 0
+    }
+  ],
+  "deferred_projectors": 24,
+  "projector_workers": 6,
+  "submitted_contexts": 6,
+  "completed_runs": 18,
+  "deadline_unix": 1793710777.5076935,
+  "failures": [],
+  "updated_unix": 1793692971.1098886
+}

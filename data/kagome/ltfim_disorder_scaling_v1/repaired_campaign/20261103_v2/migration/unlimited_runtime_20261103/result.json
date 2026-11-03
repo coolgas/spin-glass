@@ -1,0 +1,24 @@
+{
+  "new_pid": 323816,
+  "old_pid": 320640,
+  "old_processes_exited": [
+    320640,
+    320649,
+    320650,
+    320653,
+    320654,
+    320655,
+    320656,
+    320659,
+    320660,
+    320661,
+    320662,
+    320663
+  ],
+  "preserved_artifacts": 109,
+  "budget_mode": "until_complete",
+  "deadline_utc": null,
+  "changed_production_sources": [
+    "transformer_qmc/parallel_disorder_scaling.py"
+  ]
+}

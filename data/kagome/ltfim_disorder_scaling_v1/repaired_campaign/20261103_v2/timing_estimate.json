@@ -1,7 +1,7 @@
 {
   "snapshot_utc": "2026-11-03T07:44:25.854853+00:00",
-  "deadline_utc": "2026-11-03T12:59:37.507694+00:00",
-  "hours_until_deadline": 5.253236900277778,
+  "deadline_utc": null,
+  "hours_until_deadline": null,
   "fields_by_size": {
     "4": [
       0.55,
@@ -2922,5 +2922,6 @@
         "sha256": "6406b7f74812974ecaefa215dc195211053ce3332defbcf9daddd76002c4d707"
       }
     ]
-  }
+  },
+  "runtime_policy_updated_utc": "2026-11-03T08:03:39.059230+00:00"
 }

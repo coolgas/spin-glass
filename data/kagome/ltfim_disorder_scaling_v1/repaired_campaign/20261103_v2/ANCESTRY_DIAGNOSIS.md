@@ -1,6 +1,14 @@
+## Resumed production and longer target-field training
+
+Updated 2026-11-03T09:41:39.577651+00:00. The user authorized resuming L6 and testing longer training. The main L4/L6 campaign now runs with two GPU training and two CPU GFMC workers, no deadline. Two additional GPU workers extend the L6 RBM at Gamma=.55, disorder60000, seeds0/1. The existing field/ancestry diagnostic retains two CPU workers; matched extension GFMC uses two CPU workers after training. Maximum combined allocation: four GPU training workers and six CPU projector workers.
+
+Each extension preserves parameters, Adam moments, tempered chains and RNG, then adds 1200 and 3600 cumulative target-field updates (1600 and 4000 target-field updates including the original 400). Both checkpoints get frozen random/up/down diagnostics. Original and extended guides are compared with 512-walker GFMC, equilibration16, forward16, eight cycles and two repeats. Failed frozen checks remain visible and block that extended guide from projection. No automatic guide replacement or convergence claim.
+
+The continuation regression reproduces uninterrupted model, optimizer, sampler and RNG states exactly; the interrupted GFMC replay check also passed. The extended checkpoints and comparisons are pending.
+
 ## Ancestry diagnosis and matched field controls
 
-Snapshot: 2026-11-03T09:32:03.276006+00:00. Broad production dispatch is paused; previously submitted tasks may finish. The previous 4–6 day completion estimate is suspended.
+Snapshot: 2026-11-03T09:32:03.276006+00:00. This is the historical diagnosis that prompted a temporary hold. Production has since resumed as described above. The previous 4–6 day ETA is provisional and has not been recalculated for the new allocation.
 
 Completed production GFMC records: 44; records with ancestry alarms: 19. Alarms are retained, not excluded from the ensemble.
 

@@ -104,7 +104,7 @@
   ],
   "overlap": "four independently branching populations; save raw tags/counts; equal cycles, repeat means, equal disorder weights",
   "uncertainty": "capped disorder SE in reporting; do not select disorder by overlap shape",
-  "dispatch": "4 CUDA training workers, 6 CPU projectors; at most 6 submitted projector futures; no wall-clock cutoff; process finite manifest until complete",
+  "dispatch": "2 GPU training workers and 2 CPU GFMC workers; no deadline. Additional 2 GPU workers reserved for target-field training extension, 2 CPU field/ancestry controls, and 2 CPU training-extension controls.",
   "sources": {
     "notebook_simple_guides.py": "39c489fe0727397eed5ea14cd2a35dfc0e3e289034e8340ff90c1bf09fa1beab",
     "push_accuracy.py": "0552eef10f9c255c86a976b2f347c8a17e3cc34f0489800b51b1ff2190ad9d4e",

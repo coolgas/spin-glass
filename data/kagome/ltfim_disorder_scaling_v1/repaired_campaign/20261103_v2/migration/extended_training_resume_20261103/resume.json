@@ -1,0 +1,10 @@
+{
+  "resumed_utc": "2026-11-03T09:41:01.512390+00:00",
+  "campaign_pid": 332789,
+  "extension_pid": 332790,
+  "training_workers_total": 4,
+  "cpu_workers_max": 6,
+  "previous_parent": 323816,
+  "preserved_artifacts": 232,
+  "hold_resolved": true
+}

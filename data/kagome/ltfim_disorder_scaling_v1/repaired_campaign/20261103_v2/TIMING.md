@@ -1,3 +1,5 @@
+> Historical forecast: measured with four production training and six production GFMC workers. The current allocation splits these resources between production and diagnostics; this forecast is not a current completion promise.
+
 ## Expanded campaign: scope and runtime estimate
 
 **Measured at 2026-11-03T07:44:25.854853+00:00.** Runtime scenarios, not a completion guarantee or a convergence certificate.

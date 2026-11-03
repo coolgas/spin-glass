@@ -1,0 +1,149 @@
+{
+  "at_utc": "2026-11-03T09:26:45.750797+00:00",
+  "pid": 323816,
+  "start_ticks": "1157626162",
+  "reason": "Pause new production dispatch after systematic L6 RBM ancestry collapse; user flags unacceptable progress",
+  "mechanism": "SIGSTOP scheduler parent only; already submitted workers may finish and save results",
+  "status_before": {
+    "state": "running",
+    "completed_fits": 29,
+    "planned_fits": 1152,
+    "active_training": [
+      {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60003,
+        "kind": "jastrow",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60003,
+        "kind": "jastrow",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60003,
+        "kind": "rbm_2",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60003,
+        "kind": "rbm_2",
+        "seed": 1,
+        "mode": "anneal"
+      }
+    ],
+    "trainers": 4,
+    "queued_or_running_projectors": 34,
+    "running_projectors": [
+      {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "population",
+        "walkers": 1024,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "time",
+        "walkers": 512,
+        "equil": 32.0,
+        "forward": 32.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60001,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60001,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60002,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60002,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      }
+    ],
+    "deferred_projectors": 28,
+    "projector_workers": 6,
+    "submitted_contexts": 14,
+    "completed_runs": 43,
+    "deadline_unix": null,
+    "budget_mode": "until_complete",
+    "failures": [],
+    "updated_unix": 1793697988.0782616
+  },
+  "resume_requires": "Review diagnostic evidence and validated projection settings; verify PID/start_ticks before SIGCONT"
+}

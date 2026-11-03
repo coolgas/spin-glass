@@ -1,5 +1,5 @@
 {
-  "pid": 323816,
+  "pid": 332789,
   "command": [
     "/root/miniconda3/bin/python",
     "-u",
@@ -8,16 +8,16 @@
     "--output",
     "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/results",
     "--trainers",
-    "4",
+    "2",
     "--workers",
-    "6",
+    "2",
     "--no-deadline"
   ],
   "launched_utc": "2026-11-03T07:22:21.089905+00:00",
   "deadline_utc": null,
   "source_manifest_sha256": "341da2f6c9dcc77f6eecb514759415f8a124e8123e6757873b02be21ee3b042f",
-  "training_workers": 4,
-  "projector_workers": 6,
+  "training_workers": 2,
+  "projector_workers": 2,
   "planned_fits": 1152,
   "planned_projector_runs": 2016,
   "imports": [
@@ -87,9 +87,10 @@
     }
   ],
   "mps_environment": {},
-  "previous_pid": 320640,
-  "restarted_utc": "2026-11-03T08:03:16.183595+00:00",
+  "previous_pid": 323816,
+  "restarted_utc": "2026-11-03T09:41:01.499093+00:00",
   "grid_revision": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/migration/grid_expansion_20261103",
   "budget_mode": "until_complete",
-  "runtime_revision": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/migration/unlimited_runtime_20261103"
+  "runtime_revision": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/migration/unlimited_runtime_20261103",
+  "resume_reason": "User explicitly requests resuming L6 while testing longer target-field training"
 }

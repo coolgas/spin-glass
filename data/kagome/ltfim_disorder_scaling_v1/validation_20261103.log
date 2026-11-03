@@ -1,0 +1,9 @@
+...................../root/autodl-tmp/overlap-milestone-20261103-validation/code/transformer_qmc/test_core.py:72: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:838.)
+  self.assertAlmostEqual(float(p.sum()), 1., places=10)
+............
+----------------------------------------------------------------------
+Ran 33 tests in 5.148s
+
+OK
+{"report": "/tmp/tmp6j966l9k/PHYSICAL_CONVERGENCE.md", "guided_contrast_counts": {"within_pointwise_tolerance": 0, "resolved_shift_beyond_tolerance": 0, "unresolved_precision_or_shift": 0}}

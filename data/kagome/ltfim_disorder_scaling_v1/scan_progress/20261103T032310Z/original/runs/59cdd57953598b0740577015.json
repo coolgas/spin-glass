@@ -1,0 +1,40 @@
+{
+  "task": {
+    "L": 4,
+    "gamma": 0.7,
+    "sample_id": 60000,
+    "kind": "rbm_2",
+    "training_seed": 0,
+    "audit": "time",
+    "walkers": 512,
+    "equil": 32.0,
+    "forward": 32.0,
+    "start": "guide",
+    "delta": 0.1,
+    "cycles": 8,
+    "repeat": 1
+  },
+  "provenance": {
+    "model_sha256": "f4109f695107677b96c88cbda2e87f3e557f1f7fbcb4f51b3259fb666dd72fde",
+    "sources": {
+      "disorder_scaling.py": "8beebd1404128b53ca8faf2f20715776ac85625ad6d96bf97c4d7a4abea2343b",
+      "projector.py": "d02426e30016556814515a7887b76fea47a3fd3c15744581b2b3e08842aee47a",
+      "simple_guides.py": "b586ac97f7612fb411b11d50365a013af242071e34577af6199cd8a6c474d418",
+      "independent_replica_projector.py": "96d187249acb4c84bdd1e82cc0e9e73ffcccc3cb0d5877c935beccf55428a07e",
+      "physics.py": "9ce8568f1d3f74701abc8b993ca4b1296fd38b69e5c10b18c60b9170529bd4d9"
+    }
+  },
+  "q": 0.4875514888101154,
+  "q2": 0.2588380562417485,
+  "spectrum": [
+    0.5240282350788708,
+    0.4973656944834965,
+    0.4580262149316903,
+    0.4593361851424822
+  ],
+  "minimum_descendant_ess": 1.0938618819111203,
+  "ancestry_alarm": true,
+  "seconds": 615.1541051231325,
+  "npz_sha256": "31ffae484ecbc215706d6cbf20ae2324a506fec72c50cbd36a7382084981159b",
+  "ground_state_qualified": false
+}

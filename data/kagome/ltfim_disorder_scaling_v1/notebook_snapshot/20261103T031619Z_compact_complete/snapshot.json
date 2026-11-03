@@ -1,0 +1,51 @@
+{
+  "created_utc": "20261103T021444Z",
+  "source": "/root/autodl-tmp/disorder-scaling-20261103-v1/results",
+  "parallel_status": {
+    "state": "running",
+    "completed_fits": 174,
+    "planned_fits": 320,
+    "active_training": [
+      {
+        "L": 6,
+        "gamma": 0.6,
+        "sample_id": 60003,
+        "kind": "rbm_2",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      {
+        "L": 6,
+        "gamma": 0.6,
+        "sample_id": 60003,
+        "kind": "rbm_2",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      {
+        "L": 6,
+        "gamma": 0.6,
+        "sample_id": 60004,
+        "kind": "jastrow",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      {
+        "L": 6,
+        "gamma": 0.6,
+        "sample_id": 60004,
+        "kind": "jastrow",
+        "seed": 1,
+        "mode": "anneal"
+      }
+    ],
+    "trainers": 4,
+    "queued_or_running_projectors": 167,
+    "submitted_contexts": 87,
+    "completed_runs": 151,
+    "deadline_unix": 1793710777.5076935,
+    "failures": [],
+    "updated_unix": 1793672078.247503
+  },
+  "failures": []
+}

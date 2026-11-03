@@ -1,0 +1,12 @@
+{
+  "task": {
+    "L": 4,
+    "gamma": 0.56,
+    "sample_id": 60000,
+    "kind": "rbm_2",
+    "seed": 0,
+    "mode": "anneal"
+  },
+  "error": "RuntimeError('Parent directory results/training does not exist.')",
+  "training": true
+}

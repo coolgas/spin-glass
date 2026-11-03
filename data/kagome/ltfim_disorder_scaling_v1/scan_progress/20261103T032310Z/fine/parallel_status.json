@@ -1,0 +1,30 @@
+{
+  "state": "running",
+  "completed_fits": 30,
+  "planned_fits": 576,
+  "active_training": [
+    {
+      "L": 4,
+      "gamma": 0.55,
+      "sample_id": 60007,
+      "kind": "rbm_2",
+      "seed": 0,
+      "mode": "anneal"
+    },
+    {
+      "L": 4,
+      "gamma": 0.55,
+      "sample_id": 60007,
+      "kind": "rbm_2",
+      "seed": 1,
+      "mode": "anneal"
+    }
+  ],
+  "trainers": 2,
+  "queued_or_running_projectors": 40,
+  "submitted_contexts": 15,
+  "completed_runs": 14,
+  "deadline_unix": 1793710777.5076935,
+  "failures": [],
+  "updated_unix": 1793676166.819369
+}

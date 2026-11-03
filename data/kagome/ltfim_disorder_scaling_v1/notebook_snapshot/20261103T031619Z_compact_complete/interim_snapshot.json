@@ -1,0 +1,17 @@
+{
+  "created_utc": "20261103T031619Z",
+  "source_snapshot": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z",
+  "measurement_status": "complete",
+  "input_sha256": {
+    "manifest.json": "56e4028ac172adf17ffe9e9807f95472eee1e734fef556778fc9ff74483e8481",
+    "snapshot.json": "0ff9b87692eacc584b608010829bbff9b5442a382aa9dd4f7e6dda91c4624216",
+    "guide_distributions.json": "c4f93f2a44265ac5f4df5ae1b543e1f41fdda3de4d4b6962ce3c9964b1b8370f",
+    "guide_distributions_l2.json": "ddb7f9233a7119b82f1fe88166ec79a994cabc488c3126458b64a94e0d41e479",
+    "projected_distributions.json": "70596f71e293de68ea66459ada82982f0ed63d79b2b3072b5c32d71ed367370f",
+    "exact_l2_reference.json": "5832d5b85b0cbbe492bedd965f1f0abf3e55051a334bc9a913f657e9994a6988",
+    "histogram_protocol.json": "3af0264ed0950788c5fc1906018a2eaac22cdac5173148367e6bffc9143e8f1d",
+    "histogram_sources.json": "7d9bdae15e61a60ac3657b5b5b8c313843c4bc7c06e687be9534a4880fa4b5a8",
+    "histogram_complete.json": "4710c6ac859f568078206fe136267e48b90548f46d73dede495b7d090a7e919a"
+  },
+  "generator_sha256": "a2b15ff45eccaa20d340dce01ce53efc1725836fc19c8e7df259f3b6dc9f6676"
+}

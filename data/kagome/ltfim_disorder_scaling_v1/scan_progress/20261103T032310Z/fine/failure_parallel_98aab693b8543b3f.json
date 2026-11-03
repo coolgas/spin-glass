@@ -1,0 +1,12 @@
+{
+  "task": {
+    "L": 4,
+    "gamma": 0.55,
+    "sample_id": 60002,
+    "kind": "jastrow",
+    "seed": 1,
+    "mode": "anneal"
+  },
+  "error": "RuntimeError('Parent directory results/training does not exist.')",
+  "training": true
+}

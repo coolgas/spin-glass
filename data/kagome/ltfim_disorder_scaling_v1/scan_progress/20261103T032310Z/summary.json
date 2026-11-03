@@ -1,0 +1,216 @@
+{
+  "created_utc": "2026-11-03T03:23:10.611834+00:00",
+  "complete_ensembles": [
+    {
+      "campaign": "original",
+      "L": 4,
+      "gamma": 0.6,
+      "kind": "jastrow",
+      "mean_q": 0.5809497182360954,
+      "mean_q_se": 0.027816285664472497,
+      "width": 0.15669650284184305,
+      "width_se": 0.010514798937118599,
+      "within_disorder_variance": 0.019137573765690995,
+      "between_disorder_variance": 0.005416220237172769,
+      "ancestry_alarms": 6,
+      "runs": 16
+    },
+    {
+      "campaign": "original",
+      "L": 4,
+      "gamma": 0.6,
+      "kind": "rbm_2",
+      "mean_q": 0.5972952092480328,
+      "mean_q_se": 0.024524298815795768,
+      "width": 0.14528278483461646,
+      "width_se": 0.009554590861213817,
+      "within_disorder_variance": 0.01689699894245637,
+      "between_disorder_variance": 0.004210088626845094,
+      "ancestry_alarms": 8,
+      "runs": 16
+    },
+    {
+      "campaign": "original",
+      "L": 4,
+      "gamma": 0.65,
+      "kind": "jastrow",
+      "mean_q": 0.5393348327423964,
+      "mean_q_se": 0.029275564702807608,
+      "width": 0.16247088820624728,
+      "width_se": 0.010993944368038213,
+      "within_disorder_variance": 0.02039737869384902,
+      "between_disorder_variance": 0.005999410820677923,
+      "ancestry_alarms": 5,
+      "runs": 16
+    },
+    {
+      "campaign": "original",
+      "L": 4,
+      "gamma": 0.65,
+      "kind": "rbm_2",
+      "mean_q": 0.5570908832467265,
+      "mean_q_se": 0.02451008406866919,
+      "width": 0.15320232232465697,
+      "width_se": 0.007687567232828034,
+      "within_disorder_variance": 0.019265742018295538,
+      "between_disorder_variance": 0.004205209547372619,
+      "ancestry_alarms": 14,
+      "runs": 16
+    },
+    {
+      "campaign": "original",
+      "L": 4,
+      "gamma": 0.7,
+      "kind": "jastrow",
+      "mean_q": 0.4925543679338363,
+      "mean_q_se": 0.02842474056922989,
+      "width": 0.17033188836699714,
+      "width_se": 0.009809416333891157,
+      "within_disorder_variance": 0.023357191059670976,
+      "between_disorder_variance": 0.005655761134996164,
+      "ancestry_alarms": 5,
+      "runs": 16
+    },
+    {
+      "campaign": "original",
+      "L": 4,
+      "gamma": 0.7,
+      "kind": "rbm_2",
+      "mean_q": 0.5055745166933371,
+      "mean_q_se": 0.025568838961091505,
+      "width": 0.16192646898126967,
+      "width_se": 0.007269789996822529,
+      "within_disorder_variance": 0.021643822676014477,
+      "between_disorder_variance": 0.004576358680727617,
+      "ancestry_alarms": 14,
+      "runs": 16
+    },
+    {
+      "campaign": "original",
+      "L": 4,
+      "gamma": 0.85,
+      "kind": "jastrow",
+      "mean_q": 0.32064414127833313,
+      "mean_q_se": 0.03373140364952007,
+      "width": 0.20247566953633223,
+      "width_se": 0.01290195900062362,
+      "within_disorder_variance": 0.03303174360901803,
+      "between_disorder_variance": 0.00796465314516799,
+      "ancestry_alarms": 6,
+      "runs": 16
+    },
+    {
+      "campaign": "original",
+      "L": 4,
+      "gamma": 0.85,
+      "kind": "rbm_2",
+      "mean_q": 0.31710601034056807,
+      "mean_q_se": 0.03612461925071168,
+      "width": 0.21188372664791075,
+      "width_se": 0.012758882645973893,
+      "within_disorder_variance": 0.035759796806144335,
+      "between_disorder_variance": 0.009134916812062221,
+      "ancestry_alarms": 15,
+      "runs": 16
+    }
+  ],
+  "coverage": [
+    [
+      "fine",
+      4,
+      0.55,
+      "jastrow",
+      1,
+      2
+    ],
+    [
+      "fine",
+      4,
+      0.55,
+      "rbm_2",
+      1,
+      2
+    ],
+    [
+      "original",
+      4,
+      0.6,
+      "jastrow",
+      8,
+      16
+    ],
+    [
+      "original",
+      4,
+      0.6,
+      "rbm_2",
+      8,
+      16
+    ],
+    [
+      "original",
+      4,
+      0.65,
+      "jastrow",
+      8,
+      16
+    ],
+    [
+      "original",
+      4,
+      0.65,
+      "rbm_2",
+      8,
+      16
+    ],
+    [
+      "original",
+      4,
+      0.7,
+      "jastrow",
+      8,
+      16
+    ],
+    [
+      "original",
+      4,
+      0.7,
+      "rbm_2",
+      8,
+      16
+    ],
+    [
+      "original",
+      4,
+      0.85,
+      "jastrow",
+      8,
+      16
+    ],
+    [
+      "original",
+      4,
+      0.85,
+      "rbm_2",
+      8,
+      16
+    ],
+    [
+      "original",
+      4,
+      1.0,
+      "jastrow",
+      4,
+      8
+    ],
+    [
+      "original",
+      4,
+      1.0,
+      "rbm_2",
+      2,
+      4
+    ]
+  ],
+  "ground_state_qualified": false
+}

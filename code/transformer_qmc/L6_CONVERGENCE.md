@@ -1,6 +1,7 @@
 # L6 convergence first — 2026-11-03
 
-The broad L4/L6 sweep is paused at saved checkpoints at the user's direction.
+The combined L4/L6 runner is paused at saved checkpoints. At the user's direction,
+L4 production continues in a separate L4-only runner; broad L6 production is paused.
 Compute priority is L6 reliability in Gamma=.55–.70 at h=.15. Existing artifacts,
 including L2 exact comparisons, remain preserved. No larger-size production or
 automatic broad-campaign restart follows from completion of this study.
@@ -31,7 +32,10 @@ All raw overlaps, counts, weights, energies and model provenance are retained.
 
 Allocation: new study two GPU trainers/two CPU projectors; existing extension
 two GPU trainers then two CPU projectors; existing field controls two CPU
-projectors. At most four GPU trainers and six CPU projectors. No deadline.
+projectors. L4 additionally uses one GPU trainer and one CPU projector.
+At most five GPU trainers and seven CPU projectors
+across these finite jobs; four trainers/six projectors remain allocated to L6.
+No deadline. The added L4 workload may affect throughput; the L6 ETA remains provisional.
 
 ## Completion budget
 

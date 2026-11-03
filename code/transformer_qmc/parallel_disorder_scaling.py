@@ -72,7 +72,8 @@ def main():
     manifest=json.loads((a.output/'manifest.json').read_text())
     for name,digest in manifest['sources'].items():
         assert sha(Path(__file__).with_name(name))==digest, name
-    if manifest['sizes']!=[4,6]:raise ValueError('This continuation is restricted to the authorized L4/L6 pilot')
+    if manifest['sizes'] not in ([4], [4,6]):
+        raise ValueError('This continuation supports L4 production or the authorized L4/L6 pilot')
     deadline=float('inf') if a.no_deadline else time.monotonic()+max(0,a.deadline_unix-time.time())
     tasks=ordered_tasks(manifest)
     completed_fits={};pending=[];submitted_contexts=set();projectors={};failures=[]

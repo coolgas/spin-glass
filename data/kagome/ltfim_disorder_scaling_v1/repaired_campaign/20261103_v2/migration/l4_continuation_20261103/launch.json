@@ -1,0 +1,22 @@
+{
+  "pid": 334854,
+  "command": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "-m",
+    "transformer_qmc.fine_overlap_campaign",
+    "--output",
+    "/root/autodl-tmp/l4-production-20261103-v1/results",
+    "--trainers",
+    "1",
+    "--workers",
+    "1",
+    "--no-deadline"
+  ],
+  "launched_utc": "2026-11-03T10:09:32.476950+00:00",
+  "training_workers": 1,
+  "projector_workers": 1,
+  "deadline": null,
+  "planned_fits": 576,
+  "planned_projector_runs": 1008
+}

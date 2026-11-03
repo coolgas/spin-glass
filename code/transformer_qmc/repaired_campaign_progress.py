@@ -27,7 +27,7 @@ def describe(record):
         '|---|---|---:|---:|---|']
     if hold:
         at=hold.get('at_utc',hold.get('held_utc','unknown'))
-        detail=('Production processes stopped; saved checkpoints are preserved. Compute is devoted to the L6 convergence study.'
+        detail=('The combined production processes stopped; saved checkpoints are preserved. L6 convergence has priority; see the current plan for the separate L4 continuation.'
             if hold.get('state')=='paused_checkpointed' else
             'The scheduler is held; already submitted workers may finish. Stored worker limits below are capacity settings, not evidence that new tasks are being dispatched.')
         lines[2:2]=[f"**Production dispatch paused at {at} for convergence diagnosis.** "+detail,'']

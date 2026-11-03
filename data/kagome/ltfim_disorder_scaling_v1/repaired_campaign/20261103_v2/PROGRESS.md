@@ -1,8 +1,8 @@
 ## Corrected campaign: compute allocation and progress
 
-**Production dispatch paused at 2026-11-03T10:01:10.713605+00:00 for convergence diagnosis.** Production processes stopped; saved checkpoints are preserved. Compute is devoted to the L6 convergence study.
+**Production dispatch paused at 2026-11-03T10:01:10.713605+00:00 for convergence diagnosis.** The combined production processes stopped; saved checkpoints are preserved. L6 convergence has priority; see the current plan for the separate L4 continuation.
 
-**Snapshot: 2026-11-03T10:02:30.984631+00:00 (UTC).** This is a saved status, not a live monitor.
+**Snapshot: 2026-11-03T10:10:05.318406+00:00 (UTC).** This is a saved status, not a live monitor.
 
 | Work | Status | Completed training fits | Completed GFMC runs | Compute allocation |
 |---|---|---:|---:|---|

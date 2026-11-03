@@ -1,0 +1,4 @@
+{
+  "reason": "CUDA serial/parallel test exceeded 50 second foreground limit under active workload; test children terminated; no passing claim",
+  "utc": "2026-11-03T10:09:30.032789+00:00"
+}

@@ -1,6 +1,7 @@
 # L6 convergence first — 2026-11-03
 
-The broad L4/L6 sweep is paused at saved checkpoints at the user's direction.
+The combined L4/L6 runner is paused at saved checkpoints. At the user's direction,
+L4 production continues in a separate L4-only runner; broad L6 production is paused.
 Compute priority is L6 reliability in Gamma=.55–.70 at h=.15. Existing artifacts,
 including L2 exact comparisons, remain preserved. No larger-size production or
 automatic broad-campaign restart follows from completion of this study.
@@ -31,7 +32,10 @@ All raw overlaps, counts, weights, energies and model provenance are retained.
 
 Allocation: new study two GPU trainers/two CPU projectors; existing extension
 two GPU trainers then two CPU projectors; existing field controls two CPU
-projectors. At most four GPU trainers and six CPU projectors. No deadline.
+projectors. L4 additionally uses one GPU trainer and one CPU projector.
+At most five GPU trainers and seven CPU projectors
+across these finite jobs; four trainers/six projectors remain allocated to L6.
+No deadline. The added L4 workload may affect throughput; the L6 ETA remains provisional.
 
 ## Completion budget
 
@@ -78,6 +82,6 @@ Retain .85/1.00 references and L4 work for the later resumed plan. Report any
 disorder summaries with equal prespecified weights and capped uncertainty bars;
 never replace a difficult disorder. No fixed ETA for scientific convergence.
 
-## Launch snapshot
+## L4 continuation snapshot
 
-Verified 2026-11-03T10:02:29.712322+00:00. New runner PID 334070, two trainers and two projector workers. Broad production paused with 33 fits and 50 GFMC records; 267 saved artifacts verified unchanged. Existing extension and field controls remain active. Four regression checks passed on AutoDL, including exact continuation and interrupted GFMC replay.
+Verified 2026-11-03T10:10:04.474465+00:00. L4 runner PID 334854: one trainer, one GFMC worker, no deadline. Imported 16 fits and 26 GFMC runs, with 170 file hashes verified. Full L4 scope remains 576 fits and 1008 GFMC runs over Gamma .55–.70 in .01 steps plus .85/1.00. Broad L6 production remains paused; the L6 convergence jobs retain their workers. CUDA serial/parallel regression attempts timed out under the live workload and were terminated; task-priority tests and L4-only manifest/source checks passed.

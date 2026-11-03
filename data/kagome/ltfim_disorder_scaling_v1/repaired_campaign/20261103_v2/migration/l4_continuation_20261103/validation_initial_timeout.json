@@ -1,0 +1,5 @@
+{
+  "test": "parallel training and priority",
+  "reason": "SSH command exceeded 60 seconds; initial test did not inherit campaign MPS environment; terminated only this test tree",
+  "pid": 334591
+}

@@ -168,7 +168,34 @@ increase. These remain preliminary because of ancestry alarms and incomplete
 sensitivity checks. Full histogram shapes at 0.70/0.85, complete fine-grid
 averages and L6 projected ensembles remain pending at this snapshot.
 
-To refresh on AutoDL, use `python -m transformer_qmc.overlap_scan_progress`
+The subsequent measured-histogram update is in
+`notebook/broader_overlap_distributions.ipynb` and its `.html` companion.
+The live replay campaign uses `broader_histograms/20261103T034000Z/`;
+the delivered preview is `broader_histograms/20261103T035100Z_preview/`
+(112 verified runs: Jastrow at 0.60/0.65/0.70/0.85/1.00 and RBM at 0.60/0.65).
+It reuses the verified 0.60/0.65 histograms and adds deterministic higher-field
+replays for complete ensembles.
+Its common-axis plots show actual probability masses with capped disorder
+standard errors, alongside widths, negative mass and uniform magnetization.
+Paired field comparisons reuse the same disorders and include a jackknife
+error on the width change. Frozen production moments, raw histogram tags and
+counts, guide models for new replays, source files and checkpoints are retained.
+The earlier width snapshot above records its own historical coverage.
+
+To reproduce the measured update on AutoDL, run
+`python -m transformer_qmc.broader_overlap_distributions --production ... --reference ... --folder ... --workers 4`
+with the original campaign and compact complete snapshot, then
+`python -m transformer_qmc.broader_overlap_notebook --folder ... --root ...`.
+The measurement command freezes complete ensembles on its first invocation;
+later invocations resume that frozen selection. The report verifies raw hashes,
+reconstructs moments and spectra from descendant measurements, and compares
+them against frozen production records to tolerance 1e-12.
+Pass `--preview <new-folder>` to the notebook command while measurements are
+active to capture only complete histogram ensembles. The root delivery manifest
+`broader_overlap_delivery_sha256.json` covers the frozen preview and executed
+notebook/HTML. Higher-field RBM histogram measurements remain in progress.
+
+To refresh the moment scan on AutoDL, use `python -m transformer_qmc.overlap_scan_progress`
 with `--original /root/autodl-tmp/disorder-scaling-20261103-v1`,
 `--fine /root/autodl-tmp/disorder-scaling-fine-20261103-v1` and a separate
 `--root` bundle directory. Each execution freezes a new dated snapshot.

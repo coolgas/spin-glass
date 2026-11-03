@@ -1,0 +1,40 @@
+{
+  "task": {
+    "L": 4,
+    "gamma": 0.65,
+    "sample_id": 60003,
+    "kind": "jastrow",
+    "training_seed": 1,
+    "audit": "main",
+    "walkers": 512,
+    "equil": 16.0,
+    "forward": 16.0,
+    "start": "guide",
+    "delta": 0.1,
+    "cycles": 8,
+    "repeat": 0
+  },
+  "provenance": {
+    "model_sha256": "c89732a0e4b5c2908cb2c86af8cc32c2aa361afda6b7170b952e7ced36a6ac91",
+    "sources": {
+      "disorder_scaling.py": "8beebd1404128b53ca8faf2f20715776ac85625ad6d96bf97c4d7a4abea2343b",
+      "projector.py": "d02426e30016556814515a7887b76fea47a3fd3c15744581b2b3e08842aee47a",
+      "simple_guides.py": "b586ac97f7612fb411b11d50365a013af242071e34577af6199cd8a6c474d418",
+      "independent_replica_projector.py": "96d187249acb4c84bdd1e82cc0e9e73ffcccc3cb0d5877c935beccf55428a07e",
+      "physics.py": "9ce8568f1d3f74701abc8b993ca4b1296fd38b69e5c10b18c60b9170529bd4d9"
+    }
+  },
+  "q": 0.6872814082437091,
+  "q2": 0.48529972239500946,
+  "spectrum": [
+    0.19624224052626327,
+    0.19250255200145752,
+    0.18427212300036336,
+    0.18326436095085927
+  ],
+  "minimum_descendant_ess": 42.555844155844156,
+  "ancestry_alarm": false,
+  "seconds": 33.63182024285197,
+  "npz_sha256": "a20d31e921da3bb91ee6c371e09860d9326a028a0d4ff623bbb8b35320d3114c",
+  "ground_state_qualified": false
+}

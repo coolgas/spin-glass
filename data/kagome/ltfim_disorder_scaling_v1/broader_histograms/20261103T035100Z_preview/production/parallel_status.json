@@ -1,0 +1,46 @@
+{
+  "state": "running",
+  "completed_fits": 258,
+  "planned_fits": 320,
+  "active_training": [
+    {
+      "L": 6,
+      "gamma": 0.85,
+      "sample_id": 60000,
+      "kind": "rbm_2",
+      "seed": 0,
+      "mode": "anneal"
+    },
+    {
+      "L": 6,
+      "gamma": 0.85,
+      "sample_id": 60000,
+      "kind": "rbm_2",
+      "seed": 1,
+      "mode": "anneal"
+    },
+    {
+      "L": 6,
+      "gamma": 0.85,
+      "sample_id": 60001,
+      "kind": "jastrow",
+      "seed": 0,
+      "mode": "anneal"
+    },
+    {
+      "L": 6,
+      "gamma": 0.85,
+      "sample_id": 60001,
+      "kind": "jastrow",
+      "seed": 1,
+      "mode": "anneal"
+    }
+  ],
+  "trainers": 4,
+  "queued_or_running_projectors": 182,
+  "submitted_contexts": 129,
+  "completed_runs": 274,
+  "deadline_unix": 1793710777.5076935,
+  "failures": [],
+  "updated_unix": 1793676959.6439092
+}

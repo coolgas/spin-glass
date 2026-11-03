@@ -65,3 +65,36 @@ Ancestry alarms and limited start/population/time sensitivity checks keep
 ground_state_qualified=false. Disorder error bars do not bound mixing or
 projection bias. Broadening does not yet establish glassiness, finite-size
 drift, a critical point or a scaling collapse.
+
+## Measured broader-distribution follow-up
+
+`notebook/broader_overlap_distributions.ipynb` and its HTML companion add
+measured higher-field histograms, executed on AutoDL. The separate campaign
+`broader_histograms/20261103T034000Z/` freezes all complete original main
+ensembles, reuses the 64 verified 0.60/0.65 histogram records, and replays 80
+higher-field runs with four CPU workers at reduced priority. It retains models,
+source hashes, raw measurements, production checkpoints and replay checkpoints.
+The earlier paragraph describes the state before this follow-up.
+
+The preview freezes only complete measured groups into a separate snapshot;
+pending RBM histogram ensembles are labeled on the plots. Jastrow at Gamma=0.85
+has peak q=0.375, mean q=0.32064, width 0.20248, and negative mass 0.05365,
+compared with peak q=0.625, mean q=0.58095, width 0.15670 and negative mass
+0.000735 at Gamma=0.60. These are actual histogram shapes, with no smoothing
+or selection by broadness. The report includes capped pointwise disorder bars,
+width jackknife errors, paired field differences, magnetization and a variance
+decomposition. All ancestry alarms remain equally weighted.
+
+Delivered preview: `broader_histograms/20261103T035100Z_preview/`, captured at
+2026-11-03T03:49:58Z. It contains 112 verified histogram runs: complete Jastrow
+ensembles at 0.60,0.65,0.70,0.85,1.00 and complete RBM at 0.60,0.65.
+At Gamma=1.00, Jastrow has peak q=1/6, mean q=0.13456, width
+0.21726 +/- 0.00687 and P(q<0)=0.23566. The histogram remains single-peaked
+while broadening and shifting toward zero. Higher-field RBM replays continue
+in the separate campaign. `broader_overlap_delivery_sha256.json` at the
+repository root covers the frozen preview and executed report.
+
+Five focused AutoDL regression tests passed. The notebook audits frozen input
+hashes and raw measurement hashes, reconstructs moments and connected spectra
+from descendant measurements, and compares every displayed run against frozen
+production to 1e-12. Ground-state qualification remains unresolved.

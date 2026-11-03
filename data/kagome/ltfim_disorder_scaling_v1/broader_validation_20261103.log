@@ -1,0 +1,10 @@
+test_checkpoint_replay (transformer_qmc.test_disorder_scaling.ScalingTests.test_checkpoint_replay) ... ok
+test_exact_moment_identities (transformer_qmc.test_disorder_scaling.ScalingTests.test_exact_moment_identities) ... ok
+test_population_permutation (transformer_qmc.test_disorder_scaling.ScalingTests.test_population_permutation) ... ok
+test_against_explicit_two_copy_enumeration (transformer_qmc.test_overlap_distribution.OverlapTests.test_against_explicit_two_copy_enumeration) ... ok
+test_uniform_and_spin_flip_cat_limits (transformer_qmc.test_overlap_distribution.OverlapTests.test_uniform_and_spin_flip_cat_limits) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.106s
+
+OK

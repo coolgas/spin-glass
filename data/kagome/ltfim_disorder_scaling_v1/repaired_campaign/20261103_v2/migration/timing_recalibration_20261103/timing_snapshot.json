@@ -1,0 +1,1556 @@
+{
+  "snapshot_utc": "2026-11-03T09:51:10.509579+00:00",
+  "status": {
+    "state": "running",
+    "completed_fits": 31,
+    "planned_fits": 1152,
+    "active_training": [
+      {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60003,
+        "kind": "rbm_2",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60003,
+        "kind": "rbm_2",
+        "seed": 1,
+        "mode": "anneal"
+      }
+    ],
+    "trainers": 2,
+    "queued_or_running_projectors": 56,
+    "running_projectors": [
+      {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60002,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60002,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      }
+    ],
+    "deferred_projectors": 54,
+    "projector_workers": 2,
+    "submitted_contexts": 15,
+    "completed_runs": 46,
+    "deadline_unix": null,
+    "budget_mode": "until_complete",
+    "failures": [],
+    "updated_unix": 1793699450.3146508
+  },
+  "completed_fits": 31,
+  "completed_runs": 46,
+  "rates": [
+    {
+      "phase": "training",
+      "group": [
+        4,
+        "jastrow"
+      ],
+      "n": 8,
+      "completed": 8,
+      "planned": 288,
+      "median_seconds": 678.4150269115344,
+      "min_seconds": 629.3673135433346,
+      "max_seconds": 972.6253373324871,
+      "remaining_worker_hours": 52.76561320423045
+    },
+    {
+      "phase": "training",
+      "group": [
+        4,
+        "rbm_2"
+      ],
+      "n": 8,
+      "completed": 8,
+      "planned": 288,
+      "median_seconds": 677.0737156048417,
+      "min_seconds": 673.5910732951015,
+      "max_seconds": 1010.3021816685796,
+      "remaining_worker_hours": 52.66128899148769
+    },
+    {
+      "phase": "training",
+      "group": [
+        6,
+        "jastrow"
+      ],
+      "n": 8,
+      "completed": 8,
+      "planned": 288,
+      "median_seconds": 1589.1862789196894,
+      "min_seconds": 1370.8931238427758,
+      "max_seconds": 1872.6498014163226,
+      "remaining_worker_hours": 123.60337724930918
+    },
+    {
+      "phase": "training",
+      "group": [
+        6,
+        "rbm_2"
+      ],
+      "n": 4,
+      "completed": 7,
+      "planned": 288,
+      "median_seconds": 1761.1261525480077,
+      "min_seconds": 1573.9850994516164,
+      "max_seconds": 1950.8289809469134,
+      "remaining_worker_hours": 137.4656802405528
+    },
+    {
+      "phase": "projection",
+      "group": [
+        4,
+        "jastrow",
+        "main"
+      ],
+      "n": 6,
+      "completed": 6,
+      "planned": 288,
+      "median_seconds": 39.48361364938319,
+      "min_seconds": 32.72997714020312,
+      "max_seconds": 42.66053509898484,
+      "remaining_worker_hours": 3.092883069201683
+    },
+    {
+      "phase": "projection",
+      "group": [
+        4,
+        "jastrow",
+        "population"
+      ],
+      "n": 2,
+      "completed": 2,
+      "planned": 72,
+      "median_seconds": 66.97777289245278,
+      "min_seconds": 66.34971422888339,
+      "max_seconds": 67.60583155602217,
+      "remaining_worker_hours": 1.3023455840199152
+    },
+    {
+      "phase": "projection",
+      "group": [
+        4,
+        "jastrow",
+        "start"
+      ],
+      "n": 2,
+      "completed": 2,
+      "planned": 72,
+      "median_seconds": 20.2759490031749,
+      "min_seconds": 20.267655543982983,
+      "max_seconds": 20.28424246236682,
+      "remaining_worker_hours": 0.3942545639506231
+    },
+    {
+      "phase": "projection",
+      "group": [
+        4,
+        "jastrow",
+        "time"
+      ],
+      "n": 2,
+      "completed": 2,
+      "planned": 72,
+      "median_seconds": 56.478791519999504,
+      "min_seconds": 55.71577633544803,
+      "max_seconds": 57.24180670455098,
+      "remaining_worker_hours": 1.0981987239999904
+    },
+    {
+      "phase": "projection",
+      "group": [
+        4,
+        "rbm_2",
+        "main"
+      ],
+      "n": 6,
+      "completed": 6,
+      "planned": 288,
+      "median_seconds": 288.8812030944973,
+      "min_seconds": 256.079642040655,
+      "max_seconds": 357.91854440793395,
+      "remaining_worker_hours": 22.629027575735623
+    },
+    {
+      "phase": "projection",
+      "group": [
+        4,
+        "rbm_2",
+        "population"
+      ],
+      "n": 2,
+      "completed": 2,
+      "planned": 72,
+      "median_seconds": 505.1931893704459,
+      "min_seconds": 476.31637884676456,
+      "max_seconds": 534.0699998941272,
+      "remaining_worker_hours": 9.823200904425336
+    },
+    {
+      "phase": "projection",
+      "group": [
+        4,
+        "rbm_2",
+        "start"
+      ],
+      "n": 2,
+      "completed": 2,
+      "planned": 72,
+      "median_seconds": 236.16400078963488,
+      "min_seconds": 236.05098890326917,
+      "max_seconds": 236.2770126760006,
+      "remaining_worker_hours": 4.592077793131789
+    },
+    {
+      "phase": "projection",
+      "group": [
+        4,
+        "rbm_2",
+        "time"
+      ],
+      "n": 2,
+      "completed": 2,
+      "planned": 72,
+      "median_seconds": 479.43851555883884,
+      "min_seconds": 477.7823009956628,
+      "max_seconds": 481.0947301220149,
+      "remaining_worker_hours": 9.322415580310755
+    },
+    {
+      "phase": "projection",
+      "group": [
+        6,
+        "jastrow",
+        "main"
+      ],
+      "n": 6,
+      "completed": 6,
+      "planned": 288,
+      "median_seconds": 161.05440726689994,
+      "min_seconds": 151.6644203942269,
+      "max_seconds": 253.1635834928602,
+      "remaining_worker_hours": 12.615928569240495
+    },
+    {
+      "phase": "projection",
+      "group": [
+        6,
+        "jastrow",
+        "population"
+      ],
+      "n": 2,
+      "completed": 2,
+      "planned": 72,
+      "median_seconds": 404.020539582707,
+      "min_seconds": 332.43545019999146,
+      "max_seconds": 475.6056289654225,
+      "remaining_worker_hours": 7.855954936330414
+    },
+    {
+      "phase": "projection",
+      "group": [
+        6,
+        "jastrow",
+        "start"
+      ],
+      "n": 2,
+      "completed": 2,
+      "planned": 72,
+      "median_seconds": 63.01998776663095,
+      "min_seconds": 48.186124401167035,
+      "max_seconds": 77.85385113209486,
+      "remaining_worker_hours": 1.225388651017824
+    },
+    {
+      "phase": "projection",
+      "group": [
+        6,
+        "jastrow",
+        "time"
+      ],
+      "n": 2,
+      "completed": 2,
+      "planned": 72,
+      "median_seconds": 314.9497222388163,
+      "min_seconds": 288.48538948595524,
+      "max_seconds": 341.4140549916774,
+      "remaining_worker_hours": 6.124022376865873
+    },
+    {
+      "phase": "projection",
+      "group": [
+        6,
+        "rbm_2",
+        "main"
+      ],
+      "n": 4,
+      "completed": 4,
+      "planned": 288,
+      "median_seconds": 2372.44328199327,
+      "min_seconds": 2140.9000259265304,
+      "max_seconds": 2396.0115958191454,
+      "remaining_worker_hours": 187.15941446835797
+    },
+    {
+      "phase": "projection",
+      "group": [
+        6,
+        "rbm_2",
+        "population"
+      ],
+      "n": 2,
+      "completed": 2,
+      "planned": 72,
+      "median_seconds": 5467.014176826924,
+      "min_seconds": 5205.550270857289,
+      "max_seconds": 5728.478082796559,
+      "remaining_worker_hours": 106.3030534383013
+    },
+    {
+      "phase": "projection",
+      "group": [
+        6,
+        "rbm_2",
+        "start"
+      ],
+      "n": 2,
+      "completed": 2,
+      "planned": 72,
+      "median_seconds": 2769.4671238204464,
+      "min_seconds": 2719.049622077495,
+      "max_seconds": 2819.884625563398,
+      "remaining_worker_hours": 53.850749629842014
+    },
+    {
+      "phase": "projection",
+      "group": [
+        6,
+        "rbm_2",
+        "time"
+      ],
+      "n": 2,
+      "completed": 2,
+      "planned": 72,
+      "median_seconds": 5134.688367258757,
+      "min_seconds": 5062.883857155219,
+      "max_seconds": 5206.492877362296,
+      "remaining_worker_hours": 99.84116269669806
+    }
+  ],
+  "remaining_worker_hours": {
+    "training": 366.49595968558015,
+    "projection": 527.2300785614297
+  },
+  "current_two_two_ideal_hours": 263.6150392807148,
+  "current_planning_days": [
+    12.631553965534252,
+    17.574335952047658
+  ],
+  "conditional_four_six_ideal_hours": 91.62398992139504,
+  "overhead_factors": [
+    1.15,
+    1.6
+  ],
+  "interpretation": "Scenario bounds, not confidence intervals. Rates are mostly Gamma .55 under mixed historical concurrency. No automatic resource reassignment. Partial active work is not credited. No convergence ETA.",
+  "fits": [
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "seconds": 838.4660776257515
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "seconds": 396.7155381012708
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.6,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "seconds": 201.6895356606692
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60001,
+        "kind": "rbm_2",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "seconds": 1943.120617935434
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "seconds": 669.5987523719668
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "seconds": 1371.3729335926473
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "seconds": 673.6006594933569
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "seconds": 673.5910732951015
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60001,
+        "kind": "rbm_2",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "seconds": 1950.8289809469134
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "seconds": 673.7804463226348
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60002,
+        "kind": "jastrow",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "seconds": 970.1934672761708
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60001,
+        "kind": "jastrow",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "seconds": 629.3673135433346
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60002,
+        "kind": "jastrow",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "seconds": 972.6253373324871
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60001,
+        "kind": "jastrow",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "seconds": 629.7166752666235
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60001,
+        "kind": "rbm_2",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "seconds": 677.4811667110771
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60002,
+        "kind": "rbm_2",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "seconds": 1005.8645018301904
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60001,
+        "kind": "rbm_2",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "seconds": 677.5368558950722
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60002,
+        "kind": "rbm_2",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "seconds": 1010.3021816685796
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "seconds": 1370.8931238427758
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60001,
+        "kind": "jastrow",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "seconds": 1869.7471942603588
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60001,
+        "kind": "jastrow",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "seconds": 1872.6498014163226
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60002,
+        "kind": "jastrow",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "seconds": 1618.4422492161393
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60002,
+        "kind": "jastrow",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "seconds": 1619.2684783544391
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60002,
+        "kind": "rbm_2",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "seconds": 1579.1316871605814
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60002,
+        "kind": "rbm_2",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "seconds": 1573.9850994516164
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60003,
+        "kind": "jastrow",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "seconds": 683.3478220850229
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60003,
+        "kind": "jastrow",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "seconds": 683.2293943297118
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60003,
+        "kind": "rbm_2",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "seconds": 676.3476616032422
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60003,
+        "kind": "rbm_2",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "seconds": 676.6662644986063
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60003,
+        "kind": "jastrow",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "seconds": 1557.2118343170732
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60003,
+        "kind": "jastrow",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "seconds": 1559.9303086232394
+    }
+  ],
+  "runs": [
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "seconds": 32.72997714020312
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "seconds": 39.02336838655174
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "seconds": 20.28424246236682
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "population",
+        "walkers": 1024,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "seconds": 66.34971422888339
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "time",
+        "walkers": 512,
+        "equil": 32.0,
+        "forward": 32.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "seconds": 55.71577633544803
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "seconds": 20.267655543982983
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "population",
+        "walkers": 1024,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "seconds": 67.60583155602217
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "time",
+        "walkers": 512,
+        "equil": 32.0,
+        "forward": 32.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "seconds": 57.24180670455098
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "seconds": 276.8962626326829
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "seconds": 300.8661435563117
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60001,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "seconds": 37.468972627073526
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60001,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "seconds": 42.66053509898484
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "seconds": 236.2770126760006
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "seconds": 236.05098890326917
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "population",
+        "walkers": 1024,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "seconds": 534.0699998941272
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "time",
+        "walkers": 512,
+        "equil": 32.0,
+        "forward": 32.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "seconds": 477.7823009956628
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "population",
+        "walkers": 1024,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "seconds": 476.31637884676456
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "time",
+        "walkers": 512,
+        "equil": 32.0,
+        "forward": 32.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "seconds": 481.0947301220149
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "seconds": 151.6644203942269
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "seconds": 2396.0115958191454
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "seconds": 2353.806037541479
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "seconds": 164.77476332336664
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "seconds": 48.186124401167035
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60001,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "seconds": 310.6708110291511
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60001,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "seconds": 357.91854440793395
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "seconds": 77.85385113209486
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "population",
+        "walkers": 1024,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "seconds": 332.43545019999146
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "time",
+        "walkers": 512,
+        "equil": 32.0,
+        "forward": 32.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "seconds": 288.48538948595524
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "population",
+        "walkers": 1024,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "seconds": 475.6056289654225
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "time",
+        "walkers": 512,
+        "equil": 32.0,
+        "forward": 32.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "seconds": 341.4140549916774
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "seconds": 2719.049622077495
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60001,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "seconds": 249.50254358910024
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60001,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "seconds": 253.1635834928602
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "start",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "uniform",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "seconds": 2819.884625563398
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "population",
+        "walkers": 1024,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "seconds": 5205.550270857289
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60002,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "seconds": 41.45906702056527
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60002,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "seconds": 39.94385891221464
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "time",
+        "walkers": 512,
+        "equil": 32.0,
+        "forward": 32.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "seconds": 5206.492877362296
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60002,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "seconds": 256.079642040655
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.55,
+        "sample_id": 60002,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "seconds": 257.75705171748996
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60002,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "seconds": 155.11675715632737
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60002,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "seconds": 157.33405121043324
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60001,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "seconds": 2391.080526445061
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "population",
+        "walkers": 1024,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "seconds": 5728.478082796559
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60001,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "seconds": 2140.9000259265304
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "time",
+        "walkers": 512,
+        "equil": 32.0,
+        "forward": 32.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "seconds": 5062.883857155219
+    }
+  ]
+}

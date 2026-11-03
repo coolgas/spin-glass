@@ -1,37 +1,55 @@
-> Historical forecast: measured with four production training and six production GFMC workers. The current allocation splits these resources between production and diagnostics; this forecast is not a current completion promise.
+## Recalibrated campaign runtime
 
-## Expanded campaign: scope and runtime estimate
+**Snapshot: 2026-11-03T09:51:10.509579+00:00.** Supersedes the earlier 4–6 day forecast. All times below are remaining time from this snapshot.
 
-**Measured at 2026-11-03T07:44:25.854853+00:00.** Runtime scenarios, not a completion guarantee or a convergence certificate.
+Production has 31/1152 completed fits and 46/2016 completed GFMC records. Its live allocation is **two GPU training workers and two CPU GFMC workers**, with no deadline. Diagnostics have separate workers. Finishing diagnostics does not automatically enlarge the production pools.
 
-Both L=4 (N=48) and L=6 (N=108) target Gamma=0.55,...,0.70 by 0.01, plus 0.85 and 1.00, at h=0.15. Eight fixed disorders, both guide families, two training seeds, and two projection repeats are retained.
-
-**Full plan:** 1152 fits; 1152 main GFMC runs + 864 population/time/start checks = 2016 runs.
-
-**Saved progress:** 7 completed fits, 7 completed GFMC records; 0 recorded failures.
-
-| Milestone | Planning time from this snapshot |
+| Milestone | Planning estimate |
 |---|---|
-| First L=6, Gamma=0.55 RBM main repeats | Approximately 20–40 minutes; individual-disorder runs |
-| Gamma=0.55, both sizes/guides, all eight disorders: main ensemble | Approximately 4–6 hours |
-| Gamma=0.55 including all planned sensitivities | Approximately 6–10 hours |
-| Gamma=0.55–0.60, both sizes, including sensitivities | Approximately 1–2 days |
-| Entire expanded plan including 0.85 and 1.00 | Approximately 4–6 days of continued operation |
+| Both RBM seeds: +1200 updates and frozen checks | Approximately 20–35 minutes |
+| Both RBM seeds: +3600 cumulative updates and frozen checks | Approximately 1–2 hours |
+| Original versus extended guides: all matched GFMC controls | Approximately 5–8 hours, if guides pass frozen checks |
+| Ten field/forward-time/population controls | Approximately 5–8 hours |
+| Gamma .55, both sizes/guides, all eight disorders and planned sensitivities | Approximately 8–12 hours |
+| Gamma .55–.60, both sizes, including sensitivities | Approximately 4–6 days |
+| All standard production training | Approximately 9–12 days |
+| Entire prescribed L4/L6 campaign, current two/two allocation | **Approximately 13–18 days (November 16–21)** |
+| Conditional: restore four trainers/six projectors after diagnostics | Approximately 5–7 days; requires an explicit scheduler change |
 
-**Measured rates and assumptions:**
-- L=4 jastrow: 11.2 minutes per fit; 2 repaired completed fits; scenario -10%/+20%.
-- L=4 rbm_2: 11.2 minutes per fit; 2 repaired completed fits; scenario -10%/+20%.
-- L=6 jastrow: 22.5 minutes per fit; explicit 15–30 minute planning assumption; partial L6 Jastrow optimizer timing is about 15 minutes before frozen diagnostics.
-- L=6 rbm_2: 22.5 minutes per fit; explicit 15–30 minute planning assumption; partial L6 Jastrow optimizer timing is about 15 minutes before frozen diagnostics.
-- L=6 RBM GFMC main: 39.3 minutes per run; repaired partial-trajectory extrapolation (2 observations).
-- L=6 RBM GFMC population: 82.6 minutes per run; repaired partial-trajectory extrapolation (2 observations).
-- L=6 RBM GFMC time: 80.3 minutes per run; repaired partial-trajectory extrapolation (1 observations).
-- L=6 RBM GFMC start: 38.4 minutes per run; repaired partial-trajectory extrapolation (1 observations).
+**Measured production rates:**
 
-At 4 training workers, central full-plan training workload is 80.9 wall-hours; the explicit training-rate scenario spans 60.2–104.3 hours.
-At 6 GFMC workers, central full-plan projection workload is 85.3 wall-hours. Training and projection overlap, so these totals are not added.
-With completed work credited, the idealized remaining-work bottleneck is 84.9 hours; the planning scenario is 97.7–135.9 hours, allowing 15–60% pipeline/throughput overhead and the upper training-rate scenario.
+| Size / guide | Fits sampled | Median minutes per fit | Observed range |
+|---|---:|---:|---:|
+| L4 / jastrow | 8 | 11.3 | 10.5–16.2 |
+| L4 / rbm_2 | 8 | 11.3 | 11.2–16.8 |
+| L6 / jastrow | 8 | 26.5 | 22.8–31.2 |
+| L6 / rbm_2 | 4 | 29.4 | 26.2–32.5 |
 
-**Limitations:** This is a saved forecast for the initial expanded-grid restart, not an adaptive scheduler or live ETA. The milestone ranges are planning judgments based on these throughput estimates. L6 RBM projection timing is extrapolated from saved partial repaired trajectories. L4 estimates use repaired completions/checkpoints when available. L6 Jastrow projection timings use retired-campaign timing metadata only, not its physics results. Field, disorder, guide and CPU contention can change runtime. Before-projection guide sampling is covered by the overhead scenario. Training samples are still few; imported pilot timing is not treated as representative of four-worker throughput. Failed sampling checks can leave contexts unqualified rather than supply a complete ensemble. The 4–6 day range covers the prescribed runs only; further convergence extensions have no defensible fixed ETA yet.
+| Size / guide / GFMC setting | Runs sampled | Median minutes per run |
+|---|---:|---:|
+| L4 / jastrow / main | 6 | 0.7 |
+| L4 / jastrow / population | 2 | 1.1 |
+| L4 / jastrow / start | 2 | 0.3 |
+| L4 / jastrow / time | 2 | 0.9 |
+| L4 / rbm_2 / main | 6 | 4.8 |
+| L4 / rbm_2 / population | 2 | 8.4 |
+| L4 / rbm_2 / start | 2 | 3.9 |
+| L4 / rbm_2 / time | 2 | 8.0 |
+| L6 / jastrow / main | 6 | 2.7 |
+| L6 / jastrow / population | 2 | 6.7 |
+| L6 / jastrow / start | 2 | 1.1 |
+| L6 / jastrow / time | 2 | 5.2 |
+| L6 / rbm_2 / main | 4 | 39.5 |
+| L6 / rbm_2 / population | 2 | 91.1 |
+| L6 / rbm_2 / start | 2 | 46.2 |
+| L6 / rbm_2 / time | 2 | 85.6 |
 
-**Runtime policy:** no wall-clock cutoff. The finite campaign is authorized to continue until all planned tasks have been attempted. The throughput estimates above retain their original measurement timestamp.
+Remaining workload is **366.5 training worker-hours** and **527.2 GFMC worker-hours**, calculated by multiplying each size/guide/audit median by its unfinished task count. Two workers give 183.2 training wall-hours and 263.6 projection wall-hours. Training and projection overlap; these are not added. The idealized bottleneck is 11.0 days. Applying a stated 15–60% allowance for pipeline delays, guide-histogram sampling and throughput variation gives 12.6–17.6 days, rounded to 13–18 days.
+
+The extension checkpoints measured approximately 0.94 seconds per update per seed under the current split. Completed L6 fits indicate about eight additional minutes for frozen diagnostics per milestone. Extension GFMC starts after both training milestones; up to twelve runs share two CPU workers. Diagnostic and first-field milestones are planning judgments from these rates and queue sizes, not simulated schedules.
+
+The conditional four/six scenario has an idealized bottleneck of 3.8 days, plus the diagnostic interval and throughput allowance. It is not the active configuration and was not enacted by this recalibration.
+
+**Limits:** Timing samples are predominantly Gamma=.55, with few disorders and changing concurrency. Higher fields, particularly .85/1.00, may change rates beyond this range. The 15–60% allowance is a planning scenario, not a statistical confidence interval. Imported L6 RBM pilot timings are excluded from the rate estimate, but their completed fits are credited. Active partial work is conservatively counted as unfinished. Projection timings omit subsequent guide-histogram sampling, covered by the allowance. Failed qualification can leave a prescribed context without valid results; no failed disorder is replaced. The schedule covers standard fits and the already launched finite diagnostics, not extending every RBM fit or additional convergence remedies. Scientific convergence and L8/L10 expansion have no defensible completion date yet.
+
+**Runtime policy:** no wall-clock cutoff; the finite authorized campaign continues.

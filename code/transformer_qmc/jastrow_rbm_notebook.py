@@ -8,6 +8,11 @@ from pathlib import Path
 
 import nbformat as nb
 
+if __package__:
+    from .overlap_polarization import notebook_cells as polarization_cells
+else:
+    from overlap_polarization import notebook_cells as polarization_cells
+
 
 MARKER = 'consolidated-disorder-results'
 SIZE_NOTE = r'''**System sizes:** periodic kagome, three spins per unit cell,
@@ -129,6 +134,7 @@ def consolidate(notebook, root):
         source = source.replace('ax.set(title=names[kind]+', "ax.set(title='L=4, N=48 | '+names[kind]+")
         cell.source = source
         cells.append(cell)
+    cells.extend(polarization_cells())
     cells.append(nb.v4.new_markdown_cell(r'''### Interpretation and pending size coverage
 
 These $L=4$ histograms are measured finite-population, finite-forward-time
@@ -173,7 +179,8 @@ def main():
         nb.write(notebook, path)
         html, _ = HTMLExporter().from_notebook_node(notebook)
         path.with_suffix('.html').write_text(html)
-        outputs = [path, path.with_suffix('.html'), Path(__file__).resolve()]
+        outputs = [path, path.with_suffix('.html'), Path(__file__).resolve(),
+                   Path(__file__).with_name('overlap_polarization.py').resolve()]
         outputs.extend(sorted((root/'figures/simple_overlap').glob('*')))
         manifest = {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest()
             for p in outputs if p.is_file()}

@@ -11,6 +11,7 @@ RELATIVE=Path('data/kagome/ltfim_disorder_scaling_v1/repaired_campaign/20261103_
 
 def describe(record):
     current=record['corrected'];legacy=record['legacy']
+    hold=record.get('dispatch_hold')
     fields_by_size=record.get('fields_by_size',{'4':[v/100 for v in range(55,71)]+[.85,1.],
         '6':[v/100 for v in range(55,61)]+[.65,.70,.85,1.]})
     coverage='; '.join(f"L={size}: Gamma="+', '.join(f'{g:.2f}' for g in fields)
@@ -19,10 +20,13 @@ def describe(record):
         "Failures and unqualified guide selections remain explicit." if record['deadline_utc'] is None else
         f"New dispatch stops at {record['deadline_utc']}; already-running GFMC jobs finish their finite trajectories. "
         f"The complete {current['planned_fits']}-fit plan is not a promise of completion within this budget.")
+    if hold:budget='No wall-clock cutoff, but the convergence hold overrides dispatch. The earlier completion ETA is suspended pending diagnosis.'
     lines=['## Corrected campaign: compute allocation and progress',
         '',f"**Snapshot: {record['snapshot_utc']} (UTC).** This is a saved status, not a live monitor.",'',
         '| Work | Status | Completed training fits | Completed GFMC runs | Compute allocation |',
         '|---|---|---:|---:|---|']
+    if hold:
+        lines[2:2]=[f"**Production dispatch paused at {hold['at_utc']} for convergence diagnosis.** The scheduler is held; already submitted workers may finish. Stored worker limits below are capacity settings, not evidence that new tasks are being dispatched.",'']
     for row in legacy:
         lines.append(f"| {row['name']} | Retired; preserved legacy output | {row['completed_fits']} | {row['completed_runs']} | Zero workers |")
     run_total=record.get('planned_projector_runs')
@@ -45,14 +49,14 @@ def describe(record):
             f"{len(health['production_source_mismatches'])} mismatches.",'',
             '| Active GFMC checkpoint | Size / field / disorder | Repeat | Saved steps / total | Completed measurement cycles |',
             '|---|---|---:|---:|---:|'])
-        running=current.get('running_projectors',[])
+        running=[] if hold else current.get('running_projectors',[])
         for item in health['projector_progress']:
             progress=item['record'];task=progress['task']
             if task not in running:continue
             lines.append(f"| {task['kind']} / {task['audit']} | L={task['L']}, Gamma={task['gamma']:g}, J={task['sample_id']} | {task['repeat']} | {progress['step']}/{progress['total']} | {progress['cycles']} |")
         lines.extend(['','Checkpoint steps show trajectory progress only; they do not measure convergence.'])
     lines.extend(['',
-        '**What is running:** repaired large-RBM learning rate (0.001), log-domain GFMC, and frozen random/up/down sampling checks before guide selection. The standalone weak-field pilot has been merged into this campaign; its completed fits and partial checkpoint are reused with matching source hashes.',
+        '**Configured numerical protocol:** repaired large-RBM learning rate (0.001), log-domain GFMC, and frozen random/up/down sampling checks before guide selection. The standalone weak-field pilot has been merged into this campaign; its completed fits and partial checkpoint are reused with matching source hashes.',
         '',
         '**Priority and coverage:** fixed h=0.15; periodic kagome, N=3L². Ascending Gamma across L=4 and L=6. '+coverage+'. Disorders 60000–60007, both Jastrow/RBM guides, and both training seeds remain in the plan. No disorder is selected by overlap width.',
         '',
@@ -75,8 +79,13 @@ def notebook_cells(root):
     cell=nb.v4.new_markdown_cell(describe(record))
     cell.metadata.tags=['repaired-campaign-progress']
     cells=[cell]
+    diagnosis=folder/'ANCESTRY_DIAGNOSIS.md'
+    if diagnosis.exists():
+        diagnostic_cell=nb.v4.new_markdown_cell(diagnosis.read_text())
+        diagnostic_cell.metadata.tags=['repaired-campaign-progress']
+        cells.append(diagnostic_cell)
     timing=folder/'TIMING.md'
-    if timing.exists():
+    if timing.exists() and not record.get('dispatch_hold'):
         timing_cell=nb.v4.new_markdown_cell(timing.read_text())
         timing_cell.metadata.tags=['repaired-campaign-progress']
         cells.append(timing_cell)
@@ -89,6 +98,13 @@ def main():
     parser.add_argument('--destination',type=Path,required=True)
     args=parser.parse_args();root=args.campaign;dest=args.destination;dest.mkdir(parents=True,exist_ok=True)
     current=json.loads((root/'results/parallel_status.json').read_text())
+    hold_path=root/'results/dispatch_hold.json'
+    hold=json.loads(hold_path.read_text()) if hold_path.exists() else None
+    if hold:
+        current['state']='dispatch_paused_for_convergence_diagnosis'
+        current['completed_fits']=sum(json.loads(p.read_text()).get('status')=='completed'
+            for p in (root/'results/training').glob('*.json'))
+        current['completed_runs']=len(list((root/'results/projector/runs').glob('*.json')))
     manifest=json.loads((root/'results/manifest.json').read_text())
     launch=json.loads((root/'launch.json').read_text())
     stop=json.loads((root/'migration/legacy_stop.json').read_text())
@@ -100,6 +116,7 @@ def main():
         planned_projector_runs=launch['planned_projector_runs'],
         fields_by_size=manifest['fields_by_size'],
         ground_state_qualified=False)
+    if hold:record['dispatch_hold']=hold
     health=dest/'migration/health_check.json'
     if health.exists():record['health_check']=json.loads(health.read_text())
     validation=dest/'migration/grid_expansion_20261103/early_run_validation.json'

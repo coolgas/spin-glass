@@ -68,3 +68,57 @@ disorder. No original near-unit L6 overlap is relabeled as a corrected result.
 The separate 40-minute `rbm_weak_repair_pilot` prioritizes L6 Gamma=.55 then .60,
 disorder 60000 and seeds 0/1. Its models and failures are retained independently;
 it does not replace the planned eight-disorder weak-field ensembles.
+
+## Staged finite-size scaling plan (user direction, 2026-11-03)
+
+The agreed sequence is to establish L6 convergence and algorithm reliability
+before committing substantial production compute to L8 and L10. The current
+L4/L6 campaign remains the priority. This plan does not launch larger-size jobs.
+
+### Gate: qualify the L6 results
+
+Record the evidence and quantitative acceptance tolerances in
+`notebook/jastrow_rbm_overlap_distributions.ipynb` before interpreting size
+dependence. The tolerances must be tied to the precision needed for the scaling
+observables and specified before judging the corresponding sensitivity results.
+Required checks are:
+
+- Training-budget and learning-rate sensitivity on prespecified matched fields
+  and disorders, multiple training seeds, and frozen random/up/down sampling
+  checks. Check L4 as well as L6 so differing optimization quality is assessed.
+- Population, equilibration-time, forward-time, and starting-state sensitivity
+  of projected energy, P(q), and connected-correlation observables. Include
+  independent repeats and comparisons between independently trained guides.
+- Investigate ancestry alarms and residual guide dependence; preserve failed
+  and unqualified contexts explicitly. Numerical stability, checkpoint replay,
+  or agreement in energy alone does not satisfy this gate.
+- Retain L2 exact benchmarks and applicable algorithmic controls, with explicit
+  limits on what they establish for interacting L6.
+- Report equal-weight averages over the prespecified disorder set, capped
+  uncertainty bars, and completeness by field. Do not remove or replace
+  disorders according to overlap shape or diagnostic difficulty.
+
+The gate remains pending until its evidence is recorded; completing the
+currently scheduled runs alone does not mark it passed.
+
+### After the gate: expand to L8 and L10
+
+The user authorizes a substantial larger-size finite-size-scaling campaign
+conditional on passing the gate. Use periodic kagome sizes L=4,6,8,10
+(N=48,108,192,300) at fixed h=0.15 and the same Hamiltonian/bond-sampling
+prescription, with matched field grids and observable definitions.
+
+1. Run targeted L8/L10 feasibility and convergence checks to measure memory,
+   throughput, guide quality, and the required training/projector budgets.
+2. Expand validated settings into prespecified disorder ensembles. Keep
+   Gamma=0.55,...,0.70 by 0.01 as the initial common fine grid; retain the
+   existing 0.85/1.00 reference coverage when designing the larger-size plan.
+3. Build field-by-field P(q) and connected-correlation size comparisons, then
+   finite-size fits/crossing analyses with disorder uncertainty, sensitivity
+   checks, and corrections-to-scaling assessment. Determine whether additional
+   disorders or field resolution are needed from a prespecified precision
+   criterion, not from a preferred scaling outcome.
+
+Do not assume L6 hyperparameters establish convergence at L8 or L10. Apply the
+standing AutoDL run-until-complete policy to each authorized finite campaign,
+with bounded resource allocation, checkpoints, and retained provenance.

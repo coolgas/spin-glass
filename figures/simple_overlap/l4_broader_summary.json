@@ -1,0 +1,309 @@
+{
+  "created_utc": "2026-11-03T03:36:14.755475+00:00",
+  "measurement_snapshot_utc": "2026-11-03T03:49:58.555724+00:00",
+  "complete_ensembles": [
+    {
+      "L": 4,
+      "gamma": 0.6,
+      "kind": "jastrow",
+      "width": 0.15669650284184322,
+      "width_se": 0.010514798937118715,
+      "mean_q": 0.5809497182360953,
+      "mean_q_se": 0.027816285664472484,
+      "peak_q": 0.625,
+      "negative_mass": 0.0007351941118637721,
+      "negative_mass_se": 0.00031929319405031673,
+      "uniform_m": 0.06896130243937174,
+      "uniform_m_se": 0.005060448583763694,
+      "within_disorder_variance": 0.01913757376569103,
+      "between_disorder_variance": 0.0054162202371727634,
+      "ancestry_alarms": 6,
+      "runs": 16
+    },
+    {
+      "L": 4,
+      "gamma": 0.6,
+      "kind": "rbm_2",
+      "width": 0.14528278483461685,
+      "width_se": 0.00955459086121342,
+      "mean_q": 0.5972952092480328,
+      "mean_q_se": 0.02452429881579579,
+      "peak_q": 0.625,
+      "negative_mass": 0.00014001565674940747,
+      "negative_mass_se": 0.00011887581489633208,
+      "uniform_m": 0.06769275665283203,
+      "uniform_m_se": 0.006142886192092806,
+      "within_disorder_variance": 0.01689699894245634,
+      "between_disorder_variance": 0.0042100886268451,
+      "ancestry_alarms": 8,
+      "runs": 16
+    },
+    {
+      "L": 4,
+      "gamma": 0.65,
+      "kind": "jastrow",
+      "width": 0.16247088820624708,
+      "width_se": 0.01099394436803823,
+      "mean_q": 0.5393348327423961,
+      "mean_q_se": 0.029275564702807615,
+      "peak_q": 0.5833333333333333,
+      "negative_mass": 0.001603741819659869,
+      "negative_mass_se": 0.0008665781719936119,
+      "uniform_m": 0.06597328186035156,
+      "uniform_m_se": 0.004922409748649678,
+      "within_disorder_variance": 0.02039737869384902,
+      "between_disorder_variance": 0.005999410820677925,
+      "ancestry_alarms": 5,
+      "runs": 16
+    },
+    {
+      "L": 4,
+      "gamma": 0.65,
+      "kind": "rbm_2",
+      "width": 0.1532023223246575,
+      "width_se": 0.007687567232828251,
+      "mean_q": 0.5570908832467263,
+      "mean_q_se": 0.024510084068669214,
+      "peak_q": 0.5833333333333333,
+      "negative_mass": 0.0004349760711193084,
+      "negative_mass_se": 0.00023114653468146718,
+      "uniform_m": 0.06424538294474283,
+      "uniform_m_se": 0.00537470090404465,
+      "within_disorder_variance": 0.01926574201829553,
+      "between_disorder_variance": 0.004205209547372628,
+      "ancestry_alarms": 14,
+      "runs": 16
+    },
+    {
+      "L": 4,
+      "gamma": 0.7,
+      "kind": "jastrow",
+      "width": 0.1703318883669973,
+      "width_se": 0.009809416333890989,
+      "mean_q": 0.49255436793383617,
+      "mean_q_se": 0.02842474056922988,
+      "peak_q": 0.5416666666666665,
+      "negative_mass": 0.0038046985864639282,
+      "negative_mass_se": 0.0017066672336558415,
+      "uniform_m": 0.06285492579142252,
+      "uniform_m_se": 0.00440437079837727,
+      "within_disorder_variance": 0.023357191059671045,
+      "between_disorder_variance": 0.005655761134996162,
+      "ancestry_alarms": 5,
+      "runs": 16
+    },
+    {
+      "L": 4,
+      "gamma": 0.85,
+      "kind": "jastrow",
+      "width": 0.20247566953633225,
+      "width_se": 0.012901959000623592,
+      "mean_q": 0.3206441412783331,
+      "mean_q_se": 0.03373140364952007,
+      "peak_q": 0.375,
+      "negative_mass": 0.0536524790028731,
+      "negative_mass_se": 0.019049832260552457,
+      "uniform_m": 0.05240774154663086,
+      "uniform_m_se": 0.0035715804018481814,
+      "within_disorder_variance": 0.033031743609018026,
+      "between_disorder_variance": 0.007964653145167994,
+      "ancestry_alarms": 6,
+      "runs": 16
+    },
+    {
+      "L": 4,
+      "gamma": 1.0,
+      "kind": "jastrow",
+      "width": 0.2172611156675083,
+      "width_se": 0.0068739709033704376,
+      "mean_q": 0.1345648321633537,
+      "mean_q_se": 0.030257628453339017,
+      "peak_q": 0.16666666666666652,
+      "negative_mass": 0.23566077028711635,
+      "negative_mass_se": 0.045772537989345954,
+      "uniform_m": 0.04261382420857747,
+      "uniform_m_se": 0.002467954022448657,
+      "within_disorder_variance": 0.04079372382374826,
+      "between_disorder_variance": 0.006408668557342177,
+      "ancestry_alarms": 5,
+      "runs": 16
+    }
+  ],
+  "production_coverage": [
+    {
+      "L": 4,
+      "gamma": 0.6,
+      "kind": "jastrow",
+      "runs": 16,
+      "complete": true
+    },
+    {
+      "L": 4,
+      "gamma": 0.6,
+      "kind": "rbm_2",
+      "runs": 16,
+      "complete": true
+    },
+    {
+      "L": 4,
+      "gamma": 0.65,
+      "kind": "jastrow",
+      "runs": 16,
+      "complete": true
+    },
+    {
+      "L": 4,
+      "gamma": 0.65,
+      "kind": "rbm_2",
+      "runs": 16,
+      "complete": true
+    },
+    {
+      "L": 4,
+      "gamma": 0.7,
+      "kind": "jastrow",
+      "runs": 16,
+      "complete": true
+    },
+    {
+      "L": 4,
+      "gamma": 0.7,
+      "kind": "rbm_2",
+      "runs": 16,
+      "complete": true
+    },
+    {
+      "L": 4,
+      "gamma": 0.85,
+      "kind": "jastrow",
+      "runs": 16,
+      "complete": true
+    },
+    {
+      "L": 4,
+      "gamma": 0.85,
+      "kind": "rbm_2",
+      "runs": 16,
+      "complete": true
+    },
+    {
+      "L": 4,
+      "gamma": 1.0,
+      "kind": "jastrow",
+      "runs": 16,
+      "complete": true
+    },
+    {
+      "L": 4,
+      "gamma": 1.0,
+      "kind": "rbm_2",
+      "runs": 10,
+      "complete": false
+    }
+  ],
+  "measured_coverage": [
+    {
+      "gamma": 0.6,
+      "kind": "jastrow",
+      "runs": 16
+    },
+    {
+      "gamma": 0.6,
+      "kind": "rbm_2",
+      "runs": 16
+    },
+    {
+      "gamma": 0.65,
+      "kind": "jastrow",
+      "runs": 16
+    },
+    {
+      "gamma": 0.65,
+      "kind": "rbm_2",
+      "runs": 16
+    },
+    {
+      "gamma": 0.7,
+      "kind": "jastrow",
+      "runs": 16
+    },
+    {
+      "gamma": 0.7,
+      "kind": "rbm_2",
+      "runs": 0
+    },
+    {
+      "gamma": 0.85,
+      "kind": "jastrow",
+      "runs": 16
+    },
+    {
+      "gamma": 0.85,
+      "kind": "rbm_2",
+      "runs": 0
+    },
+    {
+      "gamma": 1.0,
+      "kind": "jastrow",
+      "runs": 16
+    },
+    {
+      "gamma": 1.0,
+      "kind": "rbm_2",
+      "runs": 0
+    }
+  ],
+  "ground_state_qualified": false,
+  "paired_field_comparisons": [
+    {
+      "kind": "jastrow",
+      "gamma": 0.65,
+      "reference_gamma": 0.6,
+      "width_change": 0.005774385364403861,
+      "paired_width_change_se": 0.002259133223386664,
+      "width_ratio": 1.0368507609275242,
+      "within_variance_change": 0.0012598049281579912,
+      "within_variance_change_se": 0.0003643509375525515
+    },
+    {
+      "kind": "jastrow",
+      "gamma": 0.7,
+      "reference_gamma": 0.6,
+      "width_change": 0.013635385525154087,
+      "paired_width_change_se": 0.00524955224687858,
+      "width_ratio": 1.0870178037024638,
+      "within_variance_change": 0.004219617293980016,
+      "within_variance_change_se": 0.0011383768912803776
+    },
+    {
+      "kind": "jastrow",
+      "gamma": 0.85,
+      "reference_gamma": 0.6,
+      "width_change": 0.04577916669448903,
+      "paired_width_change_se": 0.013684722813412235,
+      "width_ratio": 1.2921518085230965,
+      "within_variance_change": 0.013894169843327,
+      "within_variance_change_se": 0.0021044418892877115
+    },
+    {
+      "kind": "jastrow",
+      "gamma": 1.0,
+      "reference_gamma": 0.6,
+      "width_change": 0.06056461282566508,
+      "paired_width_change_se": 0.014193034816956355,
+      "width_ratio": 1.3865090268593556,
+      "within_variance_change": 0.02165615005805723,
+      "within_variance_change_se": 0.003077549998406464
+    },
+    {
+      "kind": "rbm_2",
+      "gamma": 0.65,
+      "reference_gamma": 0.6,
+      "width_change": 0.007919537490040651,
+      "paired_width_change_se": 0.004379660881421571,
+      "width_ratio": 1.054511190015086,
+      "within_variance_change": 0.002368743075839192,
+      "within_variance_change_se": 0.0009471267797806545
+    }
+  ]
+}

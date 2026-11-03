@@ -1,3 +1,5 @@
+> Historical diagnostic record below. Superseded compute allocation: broad production is now paused at the user’s direction; the active plan is L6_CONVERGENCE.md. Earlier resumed-production statements describe the previous allocation.
+
 ## Resumed production and longer target-field training
 
 Updated 2026-11-03T09:41:39.577651+00:00. The user authorized resuming L6 and testing longer training. The main L4/L6 campaign now runs with two GPU training and two CPU GFMC workers, no deadline. Two additional GPU workers extend the L6 RBM at Gamma=.55, disorder60000, seeds0/1. The existing field/ancestry diagnostic retains two CPU workers; matched extension GFMC uses two CPU workers after training. Maximum combined allocation: four GPU training workers and six CPU projector workers.

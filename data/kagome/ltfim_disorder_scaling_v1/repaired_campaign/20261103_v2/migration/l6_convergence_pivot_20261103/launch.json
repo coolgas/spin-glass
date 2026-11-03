@@ -1,0 +1,96 @@
+{
+  "pid": 332789,
+  "command": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "-m",
+    "transformer_qmc.fine_overlap_campaign",
+    "--output",
+    "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/results",
+    "--trainers",
+    "2",
+    "--workers",
+    "2",
+    "--no-deadline"
+  ],
+  "launched_utc": "2026-11-03T07:22:21.089905+00:00",
+  "deadline_utc": null,
+  "source_manifest_sha256": "341da2f6c9dcc77f6eecb514759415f8a124e8123e6757873b02be21ee3b042f",
+  "training_workers": 2,
+  "projector_workers": 2,
+  "planned_fits": 1152,
+  "planned_projector_runs": 2016,
+  "imports": [
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "completed": true,
+      "stage": 3,
+      "step": 0,
+      "source": "/root/autodl-tmp/rbm-repair-20261103-v1/weak_pilot/training/L6_s60000_g0p55_rbm_2_anneal_seed0.pt",
+      "checkpoint_sha256": "6597ae06ba46e9275bf53843181c684af556c9bf7e74cb66697c3d166004ae4d",
+      "sampling_alarms": []
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.55,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "completed": true,
+      "stage": 3,
+      "step": 0,
+      "source": "/root/autodl-tmp/rbm-repair-20261103-v1/weak_pilot/training/L6_s60000_g0p55_rbm_2_anneal_seed1.pt",
+      "checkpoint_sha256": "c3ff04816ae4c03a54805f1f23ade86a81754b5275d3641165ffc4d5553c26b7",
+      "sampling_alarms": []
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.6,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "completed": true,
+      "stage": 3,
+      "step": 0,
+      "source": "/root/autodl-tmp/rbm-repair-20261103-v1/weak_pilot/training/L6_s60000_g0p6_rbm_2_anneal_seed0.pt",
+      "checkpoint_sha256": "14634926ff6dd2433cc84927427c6044f8de71740dd050ab6d309a9d0040c191",
+      "sampling_alarms": []
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 0.6,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "seed": 1,
+        "mode": "anneal"
+      },
+      "completed": false,
+      "stage": 1,
+      "step": 125,
+      "source": "/root/autodl-tmp/rbm-repair-20261103-v1/weak_pilot/training/L6_s60000_g0p6_rbm_2_anneal_seed1.pt",
+      "checkpoint_sha256": "3db24e43deeab3223225968868efe49a88e1e8f620be224f8c213a7599c1e7f6",
+      "sampling_alarms": null
+    }
+  ],
+  "mps_environment": {},
+  "previous_pid": 323816,
+  "restarted_utc": "2026-11-03T09:41:01.499093+00:00",
+  "grid_revision": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/migration/grid_expansion_20261103",
+  "budget_mode": "until_complete",
+  "runtime_revision": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2/migration/unlimited_runtime_20261103",
+  "resume_reason": "User explicitly requests resuming L6 while testing longer target-field training"
+}

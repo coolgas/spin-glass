@@ -1,3 +1,5 @@
+> Suspended forecast: broad production is paused for the L6 convergence study. The dates below are historical scenarios, not an active completion ETA.
+
 ## Recalibrated campaign runtime
 
 **Snapshot: 2026-11-03T09:51:10.509579+00:00.** Supersedes the earlier 4–6 day forecast. All times below are remaining time from this snapshot.

@@ -1,0 +1,47 @@
+{
+  "pid": 332789,
+  "start_ticks": "1158212693",
+  "held_utc": "2026-11-03T10:01:10.713605+00:00",
+  "reason": "User directs resources to L6 convergence across Gamma .55-.70 before broad production.",
+  "processes": [
+    {
+      "pid": 332789,
+      "ppid": 1,
+      "start_ticks": "1158212693",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 332794,
+      "ppid": 332789,
+      "start_ticks": "1158213046",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 332800,
+      "ppid": 332789,
+      "start_ticks": "1158213063",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 332803,
+      "ppid": 332789,
+      "start_ticks": "1158213063",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 332804,
+      "ppid": 332789,
+      "start_ticks": "1158213063",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    },
+    {
+      "pid": 332807,
+      "ppid": 332789,
+      "start_ticks": "1158213063",
+      "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+    }
+  ],
+  "state": "paused_checkpointed",
+  "restart_policy": "No automatic broad restart; evaluate L6 convergence study first",
+  "preserved_artifacts": 267
+}

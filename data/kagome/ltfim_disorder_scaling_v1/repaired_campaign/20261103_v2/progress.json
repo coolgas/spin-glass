@@ -1,5 +1,5 @@
 {
-  "snapshot_utc": "2026-11-03T09:41:40.243635+00:00",
+  "snapshot_utc": "2026-11-03T10:02:30.984631+00:00",
   "remote_root": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2",
   "legacy": [
     {
@@ -16,69 +16,21 @@
     }
   ],
   "corrected": {
-    "state": "running",
-    "completed_fits": 29,
+    "state": "dispatch_paused_for_convergence_diagnosis",
+    "completed_fits": 33,
     "planned_fits": 1152,
-    "active_training": [
-      {
-        "L": 6,
-        "gamma": 0.55,
-        "sample_id": 60003,
-        "kind": "jastrow",
-        "seed": 0,
-        "mode": "anneal"
-      },
-      {
-        "L": 6,
-        "gamma": 0.55,
-        "sample_id": 60003,
-        "kind": "jastrow",
-        "seed": 1,
-        "mode": "anneal"
-      }
-    ],
-    "trainers": 2,
-    "queued_or_running_projectors": 54,
-    "running_projectors": [
-      {
-        "L": 6,
-        "gamma": 0.55,
-        "sample_id": 60002,
-        "kind": "rbm_2",
-        "training_seed": 1,
-        "audit": "main",
-        "walkers": 512,
-        "equil": 16.0,
-        "forward": 16.0,
-        "start": "guide",
-        "delta": 0.1,
-        "cycles": 8,
-        "repeat": 0
-      },
-      {
-        "L": 6,
-        "gamma": 0.55,
-        "sample_id": 60002,
-        "kind": "rbm_2",
-        "training_seed": 1,
-        "audit": "main",
-        "walkers": 512,
-        "equil": 16.0,
-        "forward": 16.0,
-        "start": "guide",
-        "delta": 0.1,
-        "cycles": 8,
-        "repeat": 1
-      }
-    ],
-    "deferred_projectors": 52,
-    "projector_workers": 2,
-    "submitted_contexts": 14,
-    "completed_runs": 46,
+    "active_training": [],
+    "trainers": 0,
+    "queued_or_running_projectors": 55,
+    "running_projectors": [],
+    "deferred_projectors": 53,
+    "projector_workers": 0,
+    "submitted_contexts": 16,
+    "completed_runs": 50,
     "deadline_unix": null,
     "budget_mode": "until_complete",
     "failures": [],
-    "updated_unix": 1793698899.0645144
+    "updated_unix": 1793700071.3877752
   },
   "deadline_utc": null,
   "legacy_stopped_utc": "2026-11-03T07:16:30.656190+00:00",
@@ -193,6 +145,53 @@
     ]
   },
   "ground_state_qualified": false,
+  "dispatch_hold": {
+    "pid": 332789,
+    "start_ticks": "1158212693",
+    "held_utc": "2026-11-03T10:01:10.713605+00:00",
+    "reason": "User directs resources to L6 convergence across Gamma .55-.70 before broad production.",
+    "processes": [
+      {
+        "pid": 332789,
+        "ppid": 1,
+        "start_ticks": "1158212693",
+        "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+      },
+      {
+        "pid": 332794,
+        "ppid": 332789,
+        "start_ticks": "1158213046",
+        "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+      },
+      {
+        "pid": 332800,
+        "ppid": 332789,
+        "start_ticks": "1158213063",
+        "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+      },
+      {
+        "pid": 332803,
+        "ppid": 332789,
+        "start_ticks": "1158213063",
+        "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+      },
+      {
+        "pid": 332804,
+        "ppid": 332789,
+        "start_ticks": "1158213063",
+        "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+      },
+      {
+        "pid": 332807,
+        "ppid": 332789,
+        "start_ticks": "1158213063",
+        "cwd": "/root/autodl-tmp/disorder-scaling-repaired-20261103-v2"
+      }
+    ],
+    "state": "paused_checkpointed",
+    "restart_policy": "No automatic broad restart; evaluate L6 convergence study first",
+    "preserved_artifacts": 267
+  },
   "health_check": {
     "checked_utc": "2026-11-03T08:03:39.066712+00:00",
     "status": {

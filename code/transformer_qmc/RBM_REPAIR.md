@@ -73,7 +73,8 @@ it does not replace the planned eight-disorder weak-field ensembles.
 
 The agreed sequence is to establish L6 convergence and algorithm reliability
 before committing substantial production compute to L8 and L10. The current
-L4/L6 campaign remains the priority. This plan does not launch larger-size jobs.
+priority is the L6 study in `L6_CONVERGENCE.md`; the broad L4/L6 campaign is
+paused at saved checkpoints. This plan does not launch larger-size jobs.
 
 ### Gate: qualify the L6 results
 

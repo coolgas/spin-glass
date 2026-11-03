@@ -26,7 +26,11 @@ def describe(record):
         '| Work | Status | Completed training fits | Completed GFMC runs | Compute allocation |',
         '|---|---|---:|---:|---|']
     if hold:
-        lines[2:2]=[f"**Production dispatch paused at {hold['at_utc']} for convergence diagnosis.** The scheduler is held; already submitted workers may finish. Stored worker limits below are capacity settings, not evidence that new tasks are being dispatched.",'']
+        at=hold.get('at_utc',hold.get('held_utc','unknown'))
+        detail=('Production processes stopped; saved checkpoints are preserved. Compute is devoted to the L6 convergence study.'
+            if hold.get('state')=='paused_checkpointed' else
+            'The scheduler is held; already submitted workers may finish. Stored worker limits below are capacity settings, not evidence that new tasks are being dispatched.')
+        lines[2:2]=[f"**Production dispatch paused at {at} for convergence diagnosis.** "+detail,'']
     for row in legacy:
         lines.append(f"| {row['name']} | Retired; preserved legacy output | {row['completed_fits']} | {row['completed_runs']} | Zero workers |")
     run_total=record.get('planned_projector_runs')
@@ -79,6 +83,11 @@ def notebook_cells(root):
     cell=nb.v4.new_markdown_cell(describe(record))
     cell.metadata.tags=['repaired-campaign-progress']
     cells=[cell]
+    convergence=folder/'L6_CONVERGENCE.md'
+    if convergence.exists():
+        convergence_cell=nb.v4.new_markdown_cell(convergence.read_text())
+        convergence_cell.metadata.tags=['repaired-campaign-progress']
+        cells.append(convergence_cell)
     diagnosis=folder/'ANCESTRY_DIAGNOSIS.md'
     if diagnosis.exists():
         diagnostic_cell=nb.v4.new_markdown_cell(diagnosis.read_text())

@@ -1,0 +1,1 @@
+{"pid": 314772, "case": {"L": 6, "gamma": 4.0, "sample_id": 60000, "kind": "jastrow", "seed": 0, "mode": "direct", "steps": 400}, "reason": "Fresh worker avoids repeat torch.set_num_interop_threads call"}

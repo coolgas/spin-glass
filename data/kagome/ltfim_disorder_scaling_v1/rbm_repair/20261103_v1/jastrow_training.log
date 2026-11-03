@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/root/autodl-tmp/rbm-repair-20261103-v1/code/transformer_qmc/strong_field_validation.py", line 37, in training_case
+    return train(task, settings, dest, time.monotonic()+1800)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/rbm-repair-20261103-v1/code/transformer_qmc/sampled_simple_guides.py", line 229, in train
+    write(root/'status.json',dict(state='training',task=task,**row))
+  File "/root/autodl-tmp/rbm-repair-20261103-v1/code/transformer_qmc/collective_campaign.py", line 48, in write
+    temporary.replace(path)
+  File "/root/miniconda3/lib/python3.12/pathlib.py", line 1376, in replace
+    os.replace(self, target)
+FileNotFoundError: [Errno 2] No such file or directory: '/root/autodl-tmp/rbm-repair-20261103-v1/validation/training/status.tmp' -> '/root/autodl-tmp/rbm-repair-20261103-v1/validation/training/status.json'

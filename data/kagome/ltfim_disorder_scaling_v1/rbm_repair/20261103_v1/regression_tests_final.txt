@@ -1,0 +1,38 @@
+test_interval_log_integral (transformer_qmc.test_log_projector.LogProjectorTests.test_interval_log_integral) ... ok
+test_l6_exact_product_guide_with_extreme_shift (transformer_qmc.test_log_projector.LogProjectorTests.test_l6_exact_product_guide_with_extreme_shift) ... ok
+test_resampling_offset_invariance_and_invalid_mass (transformer_qmc.test_log_projector.LogProjectorTests.test_resampling_offset_invariance_and_invalid_mass) ... ok
+test_signed_mixed_integrals_for_extreme_population_spread (transformer_qmc.test_log_projector.LogProjectorTests.test_signed_mixed_integrals_for_extreme_population_spread) ... ok
+test_exchange_detailed_balance (transformer_qmc.test_sampled_simple_guides.SampledTests.test_exchange_detailed_balance) ... ok
+test_guide_selection_rejects_spuriously_low_unmixed_energy (transformer_qmc.test_sampled_simple_guides.SampledTests.test_guide_selection_rejects_spuriously_low_unmixed_energy) ... ok
+test_local_energy_and_covariance_gradient (transformer_qmc.test_sampled_simple_guides.SampledTests.test_local_energy_and_covariance_gradient) ... ok
+test_low_variance_does_not_override_sampling_alarm (transformer_qmc.test_sampled_simple_guides.SampledTests.test_low_variance_does_not_override_sampling_alarm) ... ok
+test_tempered_frozen_marginal (transformer_qmc.test_sampled_simple_guides.SampledTests.test_tempered_frozen_marginal) ... ok
+test_analytic_flip_ratios (transformer_qmc.test_simple_guides.SimpleTests.test_analytic_flip_ratios) ... ok
+test_rbm_squared_amplitude_gibbs_invariance (transformer_qmc.test_simple_guides.SimpleTests.test_rbm_squared_amplitude_gibbs_invariance) ... ok
+test_training_energy_and_gradient (transformer_qmc.test_simple_guides.SimpleTests.test_training_energy_and_gradient) ... ok
+test_cached_and_direct_propagation_agree_for_both_guides (transformer_qmc.test_table_projector.TableProjectorTests.test_cached_and_direct_propagation_agree_for_both_guides) ... ok
+test_constant_guide_is_exact_for_independent_transverse_spins (transformer_qmc.test_pure_gfmc.PureGFMCPhysicsTests.test_constant_guide_is_exact_for_independent_transverse_spins) ... ok
+test_exact_forward_target_matches_importance_transformed_kernel (transformer_qmc.test_pure_gfmc.PureGFMCPhysicsTests.test_exact_forward_target_matches_importance_transformed_kernel) ... ok
+test_unguided_kernel_against_exact_propagator (transformer_qmc.test_pure_gfmc.PureGFMCPhysicsTests.test_unguided_kernel_against_exact_propagator) ... ok
+test_checkpoint_replay (transformer_qmc.test_disorder_scaling.ScalingTests.test_checkpoint_replay) ... ok
+test_exact_moment_identities (transformer_qmc.test_disorder_scaling.ScalingTests.test_exact_moment_identities) ... ok
+test_population_permutation (transformer_qmc.test_disorder_scaling.ScalingTests.test_population_permutation) ... ok
+test_af_identity (transformer_qmc.test_core.CoreTests.test_af_identity) ... ok
+test_exact_guide_and_short_time_generator (transformer_qmc.test_core.CoreTests.test_exact_guide_and_short_time_generator) ... ok
+test_four_replica_connected_identity (transformer_qmc.test_core.CoreTests.test_four_replica_connected_identity) ... ok
+test_transformer_causality_normalization_gradient (transformer_qmc.test_core.CoreTests.test_transformer_causality_normalization_gradient) ... /root/autodl-tmp/rbm-repair-20261103-v1/final_source/transformer_qmc/test_core.py:72: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:838.)
+  self.assertAlmostEqual(float(p.sum()), 1., places=10)
+ok
+test_unified_size_transfer_and_causality (transformer_qmc.test_core.CoreTests.test_unified_size_transfer_and_causality) ... ok
+test_constant_local_energy_preserves_all_ancestors (transformer_qmc.test_correlation_remedy.CorrelationRemedyTests.test_constant_local_energy_preserves_all_ancestors) ... ok
+test_disjoint_moment_identity_for_unequal_distributions (transformer_qmc.test_correlation_remedy.CorrelationRemedyTests.test_disjoint_moment_identity_for_unequal_distributions) ... ok
+test_energy_gradient_and_variational_decrease (transformer_qmc.test_correlation_remedy.CorrelationRemedyTests.test_energy_gradient_and_variational_decrease) ... ok
+test_fourier_spectrum_matches_independent_exact_contraction (transformer_qmc.test_correlation_remedy.CorrelationRemedyTests.test_fourier_spectrum_matches_independent_exact_contraction) ... ok
+test_lower_fields_across_sizes_precede_higher_l4_fields (transformer_qmc.test_training_priority.PriorityTests.test_lower_fields_across_sizes_precede_higher_l4_fields) ... ok
+test_serial_parallel_and_reuse (transformer_qmc.test_parallel_disorder_scaling.ParallelTrainingTests.test_serial_parallel_and_reuse) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 117.974s
+
+OK

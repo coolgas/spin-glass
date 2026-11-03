@@ -1,0 +1,1 @@
+{"pid": 314825, "command": ["/root/miniconda3/bin/python", "-u", "-m", "transformer_qmc.strong_field_validation", "--phase", "projection", "--projection-kinds", "rbm_2", "--output", "/root/autodl-tmp/rbm-repair-20261103-v1/validation", "--workers", "2"]}

@@ -1,0 +1,54 @@
+{
+  "results": [
+    {
+      "case": {
+        "L": 2,
+        "gamma": 4.0,
+        "kind": "rbm_2",
+        "steps": 300,
+        "sample_id": 60000,
+        "seed": 0,
+        "mode": "direct"
+      },
+      "status": "completed",
+      "sampling_alarms": []
+    },
+    {
+      "case": {
+        "L": 6,
+        "gamma": 4.0,
+        "kind": "rbm_2",
+        "steps": 400,
+        "sample_id": 60000,
+        "seed": 0,
+        "mode": "direct"
+      },
+      "status": "completed",
+      "sampling_alarms": []
+    },
+    {
+      "case": {
+        "L": 6,
+        "gamma": 4.0,
+        "kind": "jastrow",
+        "steps": 400,
+        "sample_id": 60000,
+        "seed": 0,
+        "mode": "direct"
+      },
+      "error": "RuntimeError('Error: cannot set number of interop threads after parallel work has started or set_num_interop_threads called')"
+    },
+    {
+      "case": {
+        "L": 6,
+        "gamma": 1.0,
+        "kind": "rbm_2",
+        "steps": 400,
+        "sample_id": 60000,
+        "seed": 0,
+        "mode": "anneal"
+      },
+      "error": "RuntimeError('Error: cannot set number of interop threads after parallel work has started or set_num_interop_threads called')"
+    }
+  ]
+}

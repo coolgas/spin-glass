@@ -1,0 +1,21 @@
+test_interval_log_integral (transformer_qmc.test_log_projector.LogProjectorTests.test_interval_log_integral) ... ok
+test_l6_exact_product_guide_with_extreme_shift (transformer_qmc.test_log_projector.LogProjectorTests.test_l6_exact_product_guide_with_extreme_shift) ... ok
+test_resampling_offset_invariance_and_invalid_mass (transformer_qmc.test_log_projector.LogProjectorTests.test_resampling_offset_invariance_and_invalid_mass) ... ok
+test_exchange_detailed_balance (transformer_qmc.test_sampled_simple_guides.SampledTests.test_exchange_detailed_balance) ... ok
+test_local_energy_and_covariance_gradient (transformer_qmc.test_sampled_simple_guides.SampledTests.test_local_energy_and_covariance_gradient) ... ok
+test_tempered_frozen_marginal (transformer_qmc.test_sampled_simple_guides.SampledTests.test_tempered_frozen_marginal) ... ok
+test_analytic_flip_ratios (transformer_qmc.test_simple_guides.SimpleTests.test_analytic_flip_ratios) ... ok
+test_rbm_squared_amplitude_gibbs_invariance (transformer_qmc.test_simple_guides.SimpleTests.test_rbm_squared_amplitude_gibbs_invariance) ... ok
+test_training_energy_and_gradient (transformer_qmc.test_simple_guides.SimpleTests.test_training_energy_and_gradient) ... ok
+test_cached_and_direct_propagation_agree_for_both_guides (transformer_qmc.test_table_projector.TableProjectorTests.test_cached_and_direct_propagation_agree_for_both_guides) ... ok
+test_constant_guide_is_exact_for_independent_transverse_spins (transformer_qmc.test_pure_gfmc.PureGFMCPhysicsTests.test_constant_guide_is_exact_for_independent_transverse_spins) ... ok
+test_exact_forward_target_matches_importance_transformed_kernel (transformer_qmc.test_pure_gfmc.PureGFMCPhysicsTests.test_exact_forward_target_matches_importance_transformed_kernel) ... ok
+test_unguided_kernel_against_exact_propagator (transformer_qmc.test_pure_gfmc.PureGFMCPhysicsTests.test_unguided_kernel_against_exact_propagator) ... ok
+test_checkpoint_replay (transformer_qmc.test_disorder_scaling.ScalingTests.test_checkpoint_replay) ... ok
+test_exact_moment_identities (transformer_qmc.test_disorder_scaling.ScalingTests.test_exact_moment_identities) ... ok
+test_population_permutation (transformer_qmc.test_disorder_scaling.ScalingTests.test_population_permutation) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 3.177s
+
+OK

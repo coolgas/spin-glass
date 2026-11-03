@@ -1,0 +1,243 @@
+{
+  "task": {
+    "L": 6,
+    "gamma": 4.0,
+    "sample_id": 60000,
+    "kind": "jastrow",
+    "seed": 0,
+    "mode": "direct"
+  },
+  "signature": {
+    "task": {
+      "L": 6,
+      "gamma": 4.0,
+      "sample_id": 60000,
+      "kind": "jastrow",
+      "seed": 0,
+      "mode": "direct"
+    },
+    "chains": 256,
+    "temperatures": 8,
+    "steps": 400,
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "gradient_norm_cap": 1.0,
+    "sweeps_per_step": 2,
+    "diagnostic_sweeps": 100,
+    "sources": {
+      "sampled_simple_guides.py": "98c5deca77efc16f3aebccecbcbe1f22a34726a07b40bd9416c1f88e2d76cb8d",
+      "simple_guides.py": "b586ac97f7612fb411b11d50365a013af242071e34577af6199cd8a6c474d418"
+    }
+  },
+  "status": "completed",
+  "history": [
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 25,
+      "energy": -436.42572145996644,
+      "variance": 172.1552014482157,
+      "gradient_norm": 1.1902423513681406
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 50,
+      "energy": -439.84385042841575,
+      "variance": 95.42596245803327,
+      "gradient_norm": 0.8771209361270192
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 75,
+      "energy": -442.75026492885877,
+      "variance": 39.64811974729229,
+      "gradient_norm": 0.5703799761853264
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 100,
+      "energy": -443.6623785019255,
+      "variance": 22.218652268515154,
+      "gradient_norm": 0.4285487078389531
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 125,
+      "energy": -444.27940874522477,
+      "variance": 10.846099638297847,
+      "gradient_norm": 0.2973310529975136
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 150,
+      "energy": -444.91022999365055,
+      "variance": 4.9210784241564225,
+      "gradient_norm": 0.20216119572905242
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 175,
+      "energy": -445.1057324095147,
+      "variance": 2.501823015523677,
+      "gradient_norm": 0.1441132518765128
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 200,
+      "energy": -445.1979351214282,
+      "variance": 1.0826797148550804,
+      "gradient_norm": 0.09354884542569644
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 225,
+      "energy": -445.2761816827382,
+      "variance": 0.5447235467240674,
+      "gradient_norm": 0.06683398662004608
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 250,
+      "energy": -445.2305324852996,
+      "variance": 0.2520259235597739,
+      "gradient_norm": 0.044559385822184654
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 275,
+      "energy": -445.17332012357423,
+      "variance": 0.14294107176164064,
+      "gradient_norm": 0.034191010768366364
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 300,
+      "energy": -445.18914497483854,
+      "variance": 0.07292848257897211,
+      "gradient_norm": 0.024257245786364096
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 325,
+      "energy": -445.2248737505726,
+      "variance": 0.06218514249440542,
+      "gradient_norm": 0.0225785926527251
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 350,
+      "energy": -445.1980679570929,
+      "variance": 0.05299243296299777,
+      "gradient_norm": 0.020513501341191842
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 375,
+      "energy": -445.18680143396216,
+      "variance": 0.055611732529688464,
+      "gradient_norm": 0.02156562296222632
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 400,
+      "energy": -445.2170279874226,
+      "variance": 0.04430159825582133,
+      "gradient_norm": 0.018820280417258792
+    }
+  ],
+  "diagnostics": [
+    {
+      "start": "random",
+      "energy": -445.21067668657304,
+      "variance": 0.04924523411461437,
+      "chain_mean_energy_sd": 0.04492243949420183,
+      "sweeps": 200,
+      "exchange_fraction": [
+        0.8556249737739563,
+        0.8579687476158142,
+        0.8583593964576721,
+        0.8582812547683716,
+        0.8642968535423279,
+        0.8660937547683716,
+        0.8635156154632568
+      ],
+      "round_trips": 9247,
+      "labels_with_round_trips": 2048,
+      "warning": "Round trips measure temperature transport, not independent valley equilibration"
+    },
+    {
+      "start": "up",
+      "energy": -445.21222241382947,
+      "variance": 0.049004081557912346,
+      "chain_mean_energy_sd": 0.04247628018248785,
+      "sweeps": 200,
+      "exchange_fraction": [
+        0.8600780963897705,
+        0.8616406321525574,
+        0.854296863079071,
+        0.8582422137260437,
+        0.8568359613418579,
+        0.8624609112739563,
+        0.8662109375
+      ],
+      "round_trips": 9334,
+      "labels_with_round_trips": 2047,
+      "warning": "Round trips measure temperature transport, not independent valley equilibration"
+    },
+    {
+      "start": "down",
+      "energy": -445.2155244809048,
+      "variance": 0.04877479386811502,
+      "chain_mean_energy_sd": 0.04292214980127377,
+      "sweeps": 200,
+      "exchange_fraction": [
+        0.8586719036102295,
+        0.860156238079071,
+        0.8580077886581421,
+        0.8544140458106995,
+        0.8592187762260437,
+        0.8637499809265137,
+        0.8662499785423279
+      ],
+      "round_trips": 9222,
+      "labels_with_round_trips": 2048,
+      "warning": "Round trips measure temperature transport, not independent valley equilibration"
+    }
+  ],
+  "training_sampler": {
+    "sweeps": 800,
+    "exchange_fraction": [
+      0.8711230754852295,
+      0.8693261742591858,
+      0.8714648485183716,
+      0.8729785084724426,
+      0.8772070407867432,
+      0.8768163919448853,
+      0.8781836032867432
+    ],
+    "round_trips": 45192,
+    "labels_with_round_trips": 2048,
+    "warning": "Round trips measure temperature transport, not independent valley equilibration"
+  },
+  "sampling_alarms": [],
+  "seconds": 409.1796269174665,
+  "ground_state_qualified": false,
+  "scope": "Sampled energy-only VMC; adaptive training samples are not convergence evidence",
+  "npz_sha256": "452cf067096f2317b1103071a636cfc4dd86567a39efbf9c699e3b89e592bd19",
+  "checkpoint_sha256": "944c51007eab395512d86cfa4e7217ec14b4d86794a707ba3ca4a0f9cbaf4a78"
+}

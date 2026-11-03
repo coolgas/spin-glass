@@ -1,0 +1,1 @@
+{"pid": 314773, "case": {"L": 6, "gamma": 1.0, "sample_id": 60000, "kind": "rbm_2", "seed": 0, "mode": "anneal", "steps": 400}, "reason": "Fresh worker avoids repeat torch.set_num_interop_threads call"}

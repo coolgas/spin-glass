@@ -1,0 +1,237 @@
+{
+  "task": {
+    "L": 2,
+    "gamma": 4.0,
+    "sample_id": 60000,
+    "kind": "rbm_2",
+    "seed": 0,
+    "mode": "direct"
+  },
+  "signature": {
+    "task": {
+      "L": 2,
+      "gamma": 4.0,
+      "sample_id": 60000,
+      "kind": "rbm_2",
+      "seed": 0,
+      "mode": "direct"
+    },
+    "chains": 256,
+    "temperatures": 8,
+    "steps": 300,
+    "optimizer": "Adam",
+    "learning_rate": 0.01,
+    "gradient_norm_cap": 1.0,
+    "sweeps_per_step": 2,
+    "diagnostic_sweeps": 100,
+    "sources": {
+      "sampled_simple_guides.py": "165812828ca3a1c65b4eb230103d72b88b4c9241447723bd17b695489c300040",
+      "simple_guides.py": "b586ac97f7612fb411b11d50365a013af242071e34577af6199cd8a6c474d418"
+    }
+  },
+  "status": "completed",
+  "history": [
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 25,
+      "energy": -49.4569099067194,
+      "variance": 2.5537110336036624,
+      "gradient_norm": 0.16508397388998147
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 50,
+      "energy": -49.65642942657233,
+      "variance": 0.7895735129283407,
+      "gradient_norm": 0.08010551125674892
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 75,
+      "energy": -49.68079862334392,
+      "variance": 0.3332682406208641,
+      "gradient_norm": 0.05685568216623909
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 100,
+      "energy": -49.64748122119186,
+      "variance": 0.2684942542377984,
+      "gradient_norm": 0.05881659496464473
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 125,
+      "energy": -49.716913881685755,
+      "variance": 0.24030462860018906,
+      "gradient_norm": 0.05022593964964832
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 150,
+      "energy": -49.6220914351032,
+      "variance": 0.23782950701373337,
+      "gradient_norm": 0.05229199122183479
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 175,
+      "energy": -49.64333904954575,
+      "variance": 0.19178030904260931,
+      "gradient_norm": 0.042935186733579295
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 200,
+      "energy": -49.70210339879942,
+      "variance": 0.1854869260190338,
+      "gradient_norm": 0.04375657252103262
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 225,
+      "energy": -49.65738169897466,
+      "variance": 0.17017186461153325,
+      "gradient_norm": 0.05142851731263033
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 250,
+      "energy": -49.64494775157999,
+      "variance": 0.12962790871077826,
+      "gradient_norm": 0.03750195449722688
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 275,
+      "energy": -49.65627820599199,
+      "variance": 0.1359012960929413,
+      "gradient_norm": 0.032252805362756334
+    },
+    {
+      "stage": 0,
+      "gamma": 4.0,
+      "step": 300,
+      "energy": -49.646078955943594,
+      "variance": 0.1741496452439022,
+      "gradient_norm": 0.055416157020727656
+    }
+  ],
+  "diagnostics": [
+    {
+      "start": "random",
+      "energy": -49.65594483341478,
+      "variance": 0.149455108169198,
+      "chain_mean_energy_sd": 0.07849990653317009,
+      "sweeps": 200,
+      "exchange_fraction": [
+        0.9462890625,
+        0.950390636920929,
+        0.9476562738418579,
+        0.9521093964576721,
+        0.9521093964576721,
+        0.9495702981948853,
+        0.9519140720367432
+      ],
+      "round_trips": 16567,
+      "labels_with_round_trips": 2048,
+      "warning": "Round trips measure temperature transport, not independent valley equilibration",
+      "tv_from_exact_guide_probability": 0.31217669440872353,
+      "energy_minus_exact_guide_energy": -0.004409247851448583
+    },
+    {
+      "start": "up",
+      "energy": -49.65972154219071,
+      "variance": 0.14891989962474755,
+      "chain_mean_energy_sd": 0.0743355310683752,
+      "sweeps": 200,
+      "exchange_fraction": [
+        0.949414074420929,
+        0.9492968916893005,
+        0.9503515362739563,
+        0.94921875,
+        0.9494922161102295,
+        0.9510937333106995,
+        0.9538280963897705
+      ],
+      "round_trips": 16652,
+      "labels_with_round_trips": 2048,
+      "warning": "Round trips measure temperature transport, not independent valley equilibration",
+      "tv_from_exact_guide_probability": 0.2992603045232666,
+      "energy_minus_exact_guide_energy": -0.008185956627379198
+    },
+    {
+      "start": "down",
+      "energy": -49.64521969491657,
+      "variance": 0.15047752304423484,
+      "chain_mean_energy_sd": 0.07601088180086309,
+      "sweeps": 200,
+      "exchange_fraction": [
+        0.9502734541893005,
+        0.947265625,
+        0.9478124976158142,
+        0.9506640434265137,
+        0.9519140720367432,
+        0.9510937333106995,
+        0.9521484375
+      ],
+      "round_trips": 16626,
+      "labels_with_round_trips": 2048,
+      "warning": "Round trips measure temperature transport, not independent valley equilibration",
+      "tv_from_exact_guide_probability": 0.3071989895943459,
+      "energy_minus_exact_guide_energy": 0.006315890646760636
+    }
+  ],
+  "training_sampler": {
+    "sweeps": 600,
+    "exchange_fraction": [
+      0.9497526288032532,
+      0.9509896039962769,
+      0.9498698115348816,
+      0.9513932466506958,
+      0.9495573043823242,
+      0.95235675573349,
+      0.9533854126930237
+    ],
+    "round_trips": 53628,
+    "labels_with_round_trips": 2048,
+    "warning": "Round trips measure temperature transport, not independent valley equilibration"
+  },
+  "sampling_alarms": [],
+  "seconds": 87.97717962041497,
+  "ground_state_qualified": false,
+  "scope": "Sampled energy-only VMC; adaptive training samples are not convergence evidence",
+  "exact_evaluation": {
+    "energy": -49.65153558556333,
+    "energy_error": 0.00787713907681109,
+    "variance": 0.1481523611338374,
+    "fidelity": 0.9994647456029502,
+    "max_spectral_error": 0.0005624131740286446,
+    "spectrum": [
+      1.0589783335223344,
+      1.0112486958998241,
+      1.018402079189171,
+      1.0199926226532672
+    ],
+    "exact_spectrum": [
+      1.0592489261238691,
+      1.0117288141497958,
+      1.0182301260286353,
+      1.0205666027556306
+    ],
+    "input_sha256": "336eee27a62ac370c4aa0e70947a6ddd8ceaa173998a41a56d3925b50554f61b"
+  },
+  "npz_sha256": "dbe9a2acb5e5fb292f5db96487073569140d702132a51def65d0ff5a11f1cd11",
+  "checkpoint_sha256": "1415519c90bdad7d5d6dfc300c337fa0b6fa67304137c4c0b5bc8104d25b4fde"
+}

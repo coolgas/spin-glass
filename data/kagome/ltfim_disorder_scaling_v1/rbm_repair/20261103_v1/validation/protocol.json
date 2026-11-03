@@ -1,0 +1,53 @@
+{
+  "cases": [
+    {
+      "L": 2,
+      "gamma": 4.0,
+      "kind": "rbm_2",
+      "steps": 300,
+      "sample_id": 60000,
+      "seed": 0,
+      "mode": "direct"
+    },
+    {
+      "L": 6,
+      "gamma": 4.0,
+      "kind": "rbm_2",
+      "steps": 400,
+      "sample_id": 60000,
+      "seed": 0,
+      "mode": "direct"
+    },
+    {
+      "L": 6,
+      "gamma": 4.0,
+      "kind": "jastrow",
+      "steps": 400,
+      "sample_id": 60000,
+      "seed": 0,
+      "mode": "direct"
+    },
+    {
+      "L": 6,
+      "gamma": 1.0,
+      "kind": "rbm_2",
+      "steps": 400,
+      "sample_id": 60000,
+      "seed": 0,
+      "mode": "anneal"
+    }
+  ],
+  "h": 0.15,
+  "boundary": "periodic kagome",
+  "N": "3 L^2",
+  "bonds": "K iid U(.5,1.5); SeedSequence([20261027,L,60000,1]); J=-K",
+  "sources": {
+    "strong_field_validation.py": "cb2eb6e397b11b4e8c86f4d9ae011dc4fcd1e1379195b5175b2b4ce85d0b0e95",
+    "sampled_simple_guides.py": "165812828ca3a1c65b4eb230103d72b88b4c9241447723bd17b695489c300040",
+    "simple_guides.py": "b586ac97f7612fb411b11d50365a013af242071e34577af6199cd8a6c474d418",
+    "projector.py": "1132b41421c40e4da224fa24d394cbcd16d2812236c5a996a95a53bdb2dbd290",
+    "physics.py": "9ce8568f1d3f74701abc8b993ca4b1296fd38b69e5c10b18c60b9170529bd4d9"
+  },
+  "numerics_sha256": "5215dfd57cf61570c0508f78be2882a253ea650949db976de499cd45672d15cd",
+  "scope": "One prespecified disorder; controls only, no disorder ensemble qualification"
+}

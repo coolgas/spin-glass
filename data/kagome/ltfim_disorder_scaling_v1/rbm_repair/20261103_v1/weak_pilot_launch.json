@@ -1,0 +1,1 @@
+{"pid": 315493, "command": ["/root/miniconda3/bin/python", "-u", "-m", "transformer_qmc.rbm_weak_repair_pilot", "--output", "/root/autodl-tmp/rbm-repair-20261103-v1/weak_pilot", "--minutes", "40"]}

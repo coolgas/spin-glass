@@ -44,6 +44,15 @@ def context(task):
     return tuple(task[k] for k in ['L','gamma','sample_id','kind'])
 
 
+def ordered_tasks(manifest):
+    """Weak fields first across sizes, preserving every configured context."""
+    fields_by_size=manifest.get('fields_by_size',{})
+    tasks=[dict(L=L,gamma=g,sample_id=sid,kind=kind,seed=seed,mode='anneal')
+           for L in manifest['sizes'] for g in fields_by_size.get(str(L),manifest['fields'])
+           for sid in manifest['disorders'] for kind in manifest['kinds'] for seed in manifest['seeds']]
+    return sorted(tasks,key=lambda t:(t['gamma'],t['sample_id'],t['L'],t['kind'],t['seed']))
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--output',type=Path,required=True)
@@ -57,10 +66,7 @@ def main():
         assert sha(Path(__file__).with_name(name))==digest, name
     if manifest['sizes']!=[4,6]:raise ValueError('This continuation is restricted to the authorized L4/L6 pilot')
     deadline=time.monotonic()+max(0,a.deadline_unix-time.time())
-    fields_by_size=manifest.get('fields_by_size',{})
-    tasks=[dict(L=L,gamma=g,sample_id=sid,kind=kind,seed=seed,mode='anneal')
-           for L in manifest['sizes'] for g in fields_by_size.get(str(L),manifest['fields'])
-           for sid in manifest['disorders'] for kind in manifest['kinds'] for seed in manifest['seeds']]
+    tasks=ordered_tasks(manifest)
     completed_fits={};pending=[];submitted_contexts=set();projectors={};failures=[]
     training=a.output/'training';ctx=mp.get_context('spawn')
     training.mkdir(parents=True,exist_ok=True)
@@ -72,7 +78,16 @@ def main():
             if key in submitted_contexts:return
             candidates=[completed_fits.get(key+(seed,)) for seed in manifest['seeds']]
             if any(r is None for r in candidates):return
-            best=min(candidates,key=lambda r:np.mean([d['energy'] for d in r['diagnostics']]))
+            try:
+                best=sampled_simple_guides.select_sampled_guide(candidates)
+            except RuntimeError as error:
+                failure=dict(context=list(key),error=str(error),training=False,
+                    candidate_alarms=[dict(seed=r['task']['seed'],alarms=sampled_simple_guides.sampling_alarms(
+                        r['diagnostics'],r['signature']['chains'])) for r in candidates])
+                failures.append(failure)
+                write(a.output/('failure_selection_'+identity(dict(context=list(key)))[:16]+'.json'),failure)
+                submitted_contexts.add(key)
+                return
             name=fit_name(best['task']);model_path=training/(name+'.pt')
             assert sha(model_path)==best['checkpoint_sha256']
             write(a.output/'selections'/(name+'.json'),dict(selected=best['task'],

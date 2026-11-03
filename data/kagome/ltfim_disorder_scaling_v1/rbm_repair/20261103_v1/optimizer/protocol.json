@@ -1,0 +1,19 @@
+{
+  "L": 6,
+  "N": 108,
+  "h": 0.15,
+  "periodic": true,
+  "sample_id": 60000,
+  "seed": 0,
+  "chains": 256,
+  "temperatures": 8,
+  "sweeps_per_step": 2,
+  "steps": 200,
+  "sources": {
+    "rbm_optimizer_diagnostic.py": "fa45b00912a5b34ac9411fe45c9cd5209df51b13a9055540fa4fa6504d765e1b",
+    "sampled_simple_guides.py": "b7580fd9e6402f1b989db9920536391ff37dbf53a79827a805e9c53b95d81c0d",
+    "simple_guides.py": "b586ac97f7612fb411b11d50365a013af242071e34577af6199cd8a6c474d418",
+    "physics.py": "9ce8568f1d3f74701abc8b993ca4b1296fd38b69e5c10b18c60b9170529bd4d9"
+  },
+  "purpose": "Matched step-size diagnostic; not an ensemble"
+}

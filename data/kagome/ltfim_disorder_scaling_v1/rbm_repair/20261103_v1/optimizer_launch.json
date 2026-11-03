@@ -1,0 +1,1 @@
+{"pid": 314113, "command": ["/root/miniconda3/bin/python", "-u", "-m", "transformer_qmc.rbm_optimizer_diagnostic", "--output", "/root/autodl-tmp/rbm-repair-20261103-v1/optimizer", "--steps", "200"]}

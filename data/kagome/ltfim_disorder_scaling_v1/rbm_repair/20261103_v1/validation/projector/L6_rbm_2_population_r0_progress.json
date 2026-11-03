@@ -1,0 +1,20 @@
+{
+  "case": {
+    "L": 6,
+    "gamma": 4.0,
+    "sample_id": 60000,
+    "kind": "rbm_2",
+    "name": "L6_rbm_2_population_r0",
+    "checkpoint": "/root/autodl-tmp/rbm-repair-20261103-v1/validation/training/L6_s60000_g4_rbm_2_direct_seed0.pt",
+    "walkers": 256,
+    "equil": 0.5,
+    "forward": 0.5,
+    "cycles": 4,
+    "start": "guide",
+    "seed": 8700,
+    "repeat": 0,
+    "audit": "population"
+  },
+  "step": 40,
+  "total": 50
+}

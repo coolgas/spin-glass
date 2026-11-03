@@ -1,0 +1,36 @@
+{
+  "verified": [
+    "L2_rbm_2_main_r0.json",
+    "L2_rbm_2_main_r1.json",
+    "L2_rbm_2_start_r0.json",
+    "L2_rbm_2_start_r1.json",
+    "L2_rbm_2_population_r0.json",
+    "L2_rbm_2_population_r1.json",
+    "L2_rbm_2_time_r0.json",
+    "L2_rbm_2_time_r1.json",
+    "L6_rbm_2_main_r0.json",
+    "L6_rbm_2_main_r1.json",
+    "L6_rbm_2_start_r0.json",
+    "L6_rbm_2_start_r1.json",
+    "L6_rbm_2_population_r0.json",
+    "L6_rbm_2_population_r1.json",
+    "L6_rbm_2_time_r0.json",
+    "L6_rbm_2_time_r1.json",
+    "L6_jastrow_main_r0.json",
+    "L6_jastrow_main_r1.json",
+    "L6_jastrow_start_r0.json",
+    "L6_jastrow_start_r1.json",
+    "L6_jastrow_population_r0.json",
+    "L6_jastrow_population_r1.json",
+    "L6_jastrow_time_r0.json",
+    "L6_jastrow_time_r1.json"
+  ],
+  "checks": [
+    "hash",
+    "q cross-population identity",
+    "counts normalization",
+    "finite energies",
+    "descendant ESS",
+    "largest lineage"
+  ]
+}

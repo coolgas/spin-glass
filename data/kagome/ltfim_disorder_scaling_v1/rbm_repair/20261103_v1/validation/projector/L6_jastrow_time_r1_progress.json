@@ -1,0 +1,20 @@
+{
+  "case": {
+    "L": 6,
+    "gamma": 4.0,
+    "sample_id": 60000,
+    "kind": "jastrow",
+    "name": "L6_jastrow_time_r1",
+    "checkpoint": "/root/autodl-tmp/rbm-repair-20261103-v1/validation/jastrow_stable/training/L6_s60000_g4_jastrow_direct_seed0.pt",
+    "walkers": 128,
+    "equil": 1.0,
+    "forward": 1.0,
+    "cycles": 4,
+    "start": "guide",
+    "seed": 8701,
+    "repeat": 1,
+    "audit": "time"
+  },
+  "step": 100,
+  "total": 100
+}

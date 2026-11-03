@@ -119,6 +119,50 @@ def energy_loss(logs, energies, n_sites):
     return 2*((logs-logs.mean())*centered).mean()/n_sites
 
 
+def learning_rate(model, requested=None):
+    """Conservative large-RBM step size; explicit overrides enter provenance.
+
+    A global gradient-norm cap does not bound Adam's per-coordinate steps.
+    The N=108 matched diagnostic is recorded by rbm_optimizer_diagnostic.py.
+    """
+    value = requested if requested is not None else (
+        .001 if isinstance(model, RBM) and model.n_sites > 48 else .01)
+    if not np.isfinite(value) or value <= 0:
+        raise ValueError('learning rate must be positive and finite')
+    return float(value)
+
+
+def sampling_alarms(diagnostic, chains):
+    """Necessary transport/start checks only, never a convergence certificate."""
+    alarms = []
+    for row in diagnostic:
+        if row['round_trips'] == 0:
+            alarms.append(row['start']+': no temperature round trips')
+        if min(row['exchange_fraction']) < .01:
+            alarms.append(row['start']+': exchange bottleneck below 1%')
+        if not np.isfinite([row['energy'], row['variance'], row['chain_mean_energy_sd']]).all():
+            alarms.append(row['start']+': nonfinite frozen diagnostic')
+    for i, a in enumerate(diagnostic):
+        for b in diagnostic[i+1:]:
+            se = np.hypot(a['chain_mean_energy_sd'], b['chain_mean_energy_sd'])/np.sqrt(chains)
+            if abs(a['energy']-b['energy']) > max(5*se, 1e-10):
+                alarms.append(a['start']+'/'+b['start']+': energy discrepancy exceeds five chain SE')
+    return alarms
+
+
+def select_sampled_guide(candidates):
+    """Rank only fits passing necessary independent-start sampling checks.
+
+    A failed context must remain a visible missing ensemble member; it is
+    never replaced by another disorder or hidden from the completion count.
+    """
+    eligible = [r for r in candidates if r['status'] == 'completed' and not
+                sampling_alarms(r['diagnostics'], r['signature']['chains'])]
+    if not eligible:
+        raise RuntimeError('No candidate passes frozen sampler checks; retraining required')
+    return min(eligible, key=lambda r: np.mean([d['energy'] for d in r['diagnostics']]))
+
+
 def freeze_diagnostics(model,ham,gamma,chains,temperatures,sweeps,seed):
     rows=[];arrays={}
     for k,start in enumerate(['random','up','down']):
@@ -148,12 +192,14 @@ def train(task,args,root,deadline):
     ham=make_af_sample(L,sid).hamiltonian(.15)
     model=(Jastrow(ham.n_sites,seed) if kind=='jastrow' else RBM(ham.n_sites,2,seed)).to(args.device)
     sampler=TemperedChains(model,args.chains,args.temperatures,seed+100)
-    optimizer=torch.optim.Adam(model.parameters(),lr=.01)
+    lr=learning_rate(model,getattr(args,'learning_rate',None))
+    optimizer=torch.optim.Adam(model.parameters(),lr=lr)
     schedule=sorted(set([1.5,.75,gamma]),reverse=True) if mode=='anneal' else [gamma]
     schedule=[g for g in schedule if g>=gamma]
     name=f'L{L}_s{sid}_g{gamma:g}_{kind}_{mode}_seed{seed}'.replace('.','p')
     final=root/(name+'.json');checkpoint=root/(name+'.pt')
     signature=dict(task=task,chains=args.chains,temperatures=args.temperatures,steps=args.steps,
+        optimizer='Adam',learning_rate=lr,gradient_norm_cap=1.,
         sweeps_per_step=args.sweeps_per_step,diagnostic_sweeps=args.diagnostic_sweeps,
         sources={p:sha(Path(__file__).with_name(p)) for p in ['sampled_simple_guides.py','simple_guides.py']})
     if final.exists():
@@ -199,6 +245,7 @@ def train(task,args,root,deadline):
         args.diagnostic_sweeps,seed)
     record=dict(task=task,signature=signature,status='completed',history=history,
         diagnostics=diagnostic,training_sampler=sampler.diagnostics(),
+        sampling_alarms=sampling_alarms(diagnostic,args.chains),
         seconds=seconds_before+time.monotonic()-started,ground_state_qualified=False,
         scope='Sampled energy-only VMC; adaptive training samples are not convergence evidence')
     if L==2:
@@ -237,6 +284,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--output',type=Path,required=True);p.add_argument('--inputs',type=Path,required=True)
     p.add_argument('--device',default='cuda');p.add_argument('--steps',type=int,default=400)
+    p.add_argument('--learning-rate',type=float,default=None,help='Default .001 for RBM N>48; .01 otherwise')
     p.add_argument('--chains',type=int,default=256);p.add_argument('--temperatures',type=int,default=8)
     p.add_argument('--sweeps-per-step',type=int,default=2);p.add_argument('--diagnostic-sweeps',type=int,default=200)
     p.add_argument('--hours',type=float,default=3);p.add_argument('--seeds',type=int,default=2)

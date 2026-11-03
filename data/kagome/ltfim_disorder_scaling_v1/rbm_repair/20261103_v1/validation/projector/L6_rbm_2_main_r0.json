@@ -1,0 +1,2141 @@
+{
+  "case": {
+    "L": 6,
+    "gamma": 4.0,
+    "sample_id": 60000,
+    "kind": "rbm_2",
+    "name": "L6_rbm_2_main_r0",
+    "checkpoint": "/root/autodl-tmp/rbm-repair-20261103-v1/validation/training/L6_s60000_g4_rbm_2_direct_seed0.pt",
+    "walkers": 128,
+    "equil": 0.5,
+    "forward": 0.5,
+    "cycles": 4,
+    "start": "guide",
+    "seed": 8700,
+    "repeat": 0,
+    "audit": "main"
+  },
+  "energy": -445.22671484647765,
+  "growth_energy": -445.2266598875791,
+  "mean_q": 0.0005349053276909721,
+  "q2": 0.009729945719596398,
+  "minimum_weight_ess": 121.84846317607365,
+  "minimum_descendant_ess": 37.067873303167424,
+  "largest_lineage": 0.078125,
+  "seconds": 121.54208544269204,
+  "ground_state_qualified": false,
+  "checkpoint_sha256": "1a4cdc9db583bc80f077bf3ce6fe89394c14361cc2cf04fe03beb0aa049601f4",
+  "log_weight_min": -0.8075303675882475,
+  "log_weight_max": 0.665238741215248,
+  "projection_sources": {
+    "strong_field_validation.py": "ddc0e68e813e2609e8cb5902f9619b611b9401ad2899f3426bad342a55df68ef",
+    "projector.py": "1132b41421c40e4da224fa24d394cbcd16d2812236c5a996a95a53bdb2dbd290",
+    "simple_guides.py": "b586ac97f7612fb411b11d50365a013af242071e34577af6199cd8a6c474d418",
+    "physics.py": "9ce8568f1d3f74701abc8b993ca4b1296fd38b69e5c10b18c60b9170529bd4d9"
+  },
+  "numerics_sha256": "5215dfd57cf61570c0508f78be2882a253ea650949db976de499cd45672d15cd",
+  "ancestry_alarm": false,
+  "raw_sha256": "e53de70738041d1eaee893218e3938394054394e6d47e0804ca5abde52c79f82",
+  "numerical_trace": [
+    [
+      {
+        "min_local": -455.0684180592836,
+        "max_local": -433.2292348791648,
+        "min_increment": -0.0842359621782483,
+        "max_increment": 0.1334108701569382,
+        "events": 2824,
+        "min_log_weight": -0.3828618405585185,
+        "max_log_weight": 0.4184372405979178,
+        "weight_ess": 124.37109626439116
+      },
+      {
+        "min_local": -455.80723851299143,
+        "max_local": -431.1937091879364,
+        "min_increment": -0.13334867762916633,
+        "max_increment": 0.14419467209452397,
+        "events": 2674,
+        "min_log_weight": -0.4906133493050231,
+        "max_log_weight": 0.4903152678504634,
+        "weight_ess": 123.13340591378407
+      },
+      {
+        "min_local": -457.06797329570605,
+        "max_local": -432.34296116893734,
+        "min_increment": -0.13997112286794744,
+        "max_increment": 0.12094846236362626,
+        "events": 2620,
+        "min_log_weight": -0.4145840770279666,
+        "max_log_weight": 0.41458640424921583,
+        "weight_ess": 123.15469010956686
+      },
+      {
+        "min_local": -455.4447394451734,
+        "max_local": -429.91837926289804,
+        "min_increment": -0.09477602614758136,
+        "max_increment": 0.10234791684897177,
+        "events": 2666,
+        "min_log_weight": -0.5426566466631753,
+        "max_log_weight": 0.49529910019940904,
+        "weight_ess": 124.57890142207665
+      }
+    ],
+    [
+      {
+        "min_local": -457.8365168755138,
+        "max_local": -427.64635355350924,
+        "min_increment": -0.17702407506358867,
+        "max_increment": 0.09022072923341407,
+        "events": 2698,
+        "min_log_weight": -0.6414375946380848,
+        "max_log_weight": 0.4525110785019276,
+        "weight_ess": 123.02930762203998
+      },
+      {
+        "min_local": -456.3419635603919,
+        "max_local": -426.327029680117,
+        "min_increment": -0.1441278411373082,
+        "max_increment": 0.10728233702667965,
+        "events": 2686,
+        "min_log_weight": -0.554066925008102,
+        "max_log_weight": 0.467999278779725,
+        "weight_ess": 123.31417697377121
+      },
+      {
+        "min_local": -457.95651840603347,
+        "max_local": -426.57390228247743,
+        "min_increment": -0.1511395817997426,
+        "max_increment": 0.08552569547102855,
+        "events": 2672,
+        "min_log_weight": -0.5963705334916499,
+        "max_log_weight": 0.4637310741741633,
+        "weight_ess": 122.86037008119645
+      },
+      {
+        "min_local": -457.6911669976964,
+        "max_local": -429.0943197161157,
+        "min_increment": -0.09390386266586785,
+        "max_increment": 0.10211818837410779,
+        "events": 2676,
+        "min_log_weight": -0.5615362524146581,
+        "max_log_weight": 0.5381545056112772,
+        "weight_ess": 123.46398330176923
+      }
+    ],
+    [
+      {
+        "min_local": -456.7372278851685,
+        "max_local": -430.32132106701357,
+        "min_increment": -0.09745803938046793,
+        "max_increment": 0.08868969923598899,
+        "events": 2764,
+        "min_log_weight": -0.47566837735265366,
+        "max_log_weight": 0.4950408423197439,
+        "weight_ess": 123.23856992487795
+      },
+      {
+        "min_local": -456.0532156453024,
+        "max_local": -429.6804388072292,
+        "min_increment": -0.07163130356220829,
+        "max_increment": 0.1371412218911469,
+        "events": 2717,
+        "min_log_weight": -0.4234873772735998,
+        "max_log_weight": 0.43765724035549114,
+        "weight_ess": 123.66017652877305
+      },
+      {
+        "min_local": -459.02188193910683,
+        "max_local": -427.4854130966524,
+        "min_increment": -0.21460649681556335,
+        "max_increment": 0.1425206988034986,
+        "events": 2699,
+        "min_log_weight": -0.6600628515927836,
+        "max_log_weight": 0.46481424285305006,
+        "weight_ess": 122.47375982020472
+      },
+      {
+        "min_local": -457.9271025302743,
+        "max_local": -429.71151298184895,
+        "min_increment": -0.09722023205036583,
+        "max_increment": 0.14050801220362438,
+        "events": 2722,
+        "min_log_weight": -0.596413960988654,
+        "max_log_weight": 0.4370134594944821,
+        "weight_ess": 123.51004023747319
+      }
+    ],
+    [
+      {
+        "min_local": -459.1705981169355,
+        "max_local": -431.6082655901284,
+        "min_increment": -0.10668299617690616,
+        "max_increment": 0.08887207603429552,
+        "events": 2631,
+        "min_log_weight": -0.4935536406290933,
+        "max_log_weight": 0.526337380268304,
+        "weight_ess": 123.12474355429998
+      },
+      {
+        "min_local": -459.52305269843254,
+        "max_local": -424.4736193776868,
+        "min_increment": -0.1000459433914872,
+        "max_increment": 0.09493826736373304,
+        "events": 2648,
+        "min_log_weight": -0.7585779068767718,
+        "max_log_weight": 0.5404535819537228,
+        "weight_ess": 123.50259607993274
+      },
+      {
+        "min_local": -455.282484754318,
+        "max_local": -431.1604876676145,
+        "min_increment": -0.12549398324581834,
+        "max_increment": 0.08228061166592941,
+        "events": 2672,
+        "min_log_weight": -0.49230566246228047,
+        "max_log_weight": 0.3303655603443083,
+        "weight_ess": 124.16977504689088
+      },
+      {
+        "min_local": -458.16535360597817,
+        "max_local": -430.5308610555934,
+        "min_increment": -0.17486549845963512,
+        "max_increment": 0.1211478618386268,
+        "events": 2704,
+        "min_log_weight": -0.628657691673586,
+        "max_log_weight": 0.4490062503159614,
+        "weight_ess": 123.29768122443345
+      }
+    ],
+    [
+      {
+        "min_local": -457.28475343930836,
+        "max_local": -425.4432803286168,
+        "min_increment": -0.1871917108619709,
+        "max_increment": 0.10440702628961501,
+        "events": 2738,
+        "min_log_weight": -0.7662034772959597,
+        "max_log_weight": 0.4523845701727408,
+        "weight_ess": 122.72754820541783
+      },
+      {
+        "min_local": -460.5800245744345,
+        "max_local": -427.83135680089265,
+        "min_increment": -0.10217703886050374,
+        "max_increment": 0.09987104839666977,
+        "events": 2652,
+        "min_log_weight": -0.497897541387636,
+        "max_log_weight": 0.5799159616210219,
+        "weight_ess": 122.90848325478271
+      },
+      {
+        "min_local": -456.87476066898716,
+        "max_local": -430.19273655182474,
+        "min_increment": -0.18716613094554094,
+        "max_increment": 0.08402389320064918,
+        "events": 2701,
+        "min_log_weight": -0.5122610630656478,
+        "max_log_weight": 0.375947410952125,
+        "weight_ess": 123.63386533423454
+      },
+      {
+        "min_local": -458.377556581412,
+        "max_local": -429.29600327455694,
+        "min_increment": -0.10953481614499419,
+        "max_increment": 0.10329218533920521,
+        "events": 2779,
+        "min_log_weight": -0.47310211381980416,
+        "max_log_weight": 0.5162225243714207,
+        "weight_ess": 123.29645421866152
+      }
+    ],
+    [
+      {
+        "min_local": -459.0564617789464,
+        "max_local": -427.60262974887695,
+        "min_increment": -0.1004867994646384,
+        "max_increment": 0.09291364424156719,
+        "events": 2699,
+        "min_log_weight": -0.6022040098828806,
+        "max_log_weight": 0.44556075142820767,
+        "weight_ess": 123.58596212309648
+      },
+      {
+        "min_local": -455.68416571808586,
+        "max_local": -429.6117133615664,
+        "min_increment": -0.10314810424770848,
+        "max_increment": 0.07773846799153862,
+        "events": 2685,
+        "min_log_weight": -0.5328984846286213,
+        "max_log_weight": 0.3463638897349594,
+        "weight_ess": 124.31575646469241
+      },
+      {
+        "min_local": -458.9540654430764,
+        "max_local": -428.13901042273665,
+        "min_increment": -0.23858339178279545,
+        "max_increment": 0.1060177640255905,
+        "events": 2653,
+        "min_log_weight": -0.7333267706547193,
+        "max_log_weight": 0.42217715780397075,
+        "weight_ess": 123.67770343107557
+      },
+      {
+        "min_local": -457.70229027851263,
+        "max_local": -433.6923753969009,
+        "min_increment": -0.10381214354777436,
+        "max_increment": 0.10421833783068707,
+        "events": 2607,
+        "min_log_weight": -0.42025250301407036,
+        "max_log_weight": 0.4692037774769377,
+        "weight_ess": 123.83744925151196
+      }
+    ],
+    [
+      {
+        "min_local": -458.7044453109744,
+        "max_local": -432.5439377896062,
+        "min_increment": -0.0971329395672878,
+        "max_increment": 0.09456194961089943,
+        "events": 2663,
+        "min_log_weight": -0.5174756168445505,
+        "max_log_weight": 0.35185230331673434,
+        "weight_ess": 124.20714279413214
+      },
+      {
+        "min_local": -459.82220899733574,
+        "max_local": -428.78223177705416,
+        "min_increment": -0.11142460707059659,
+        "max_increment": 0.12211986903934952,
+        "events": 2657,
+        "min_log_weight": -0.5236392675492711,
+        "max_log_weight": 0.49545165434855587,
+        "weight_ess": 123.68555695885286
+      },
+      {
+        "min_local": -458.1988470336043,
+        "max_local": -430.58149802599087,
+        "min_increment": -0.21187359029905353,
+        "max_increment": 0.09106367313809983,
+        "events": 2734,
+        "min_log_weight": -0.4599067404300242,
+        "max_log_weight": 0.45581933888567483,
+        "weight_ess": 123.8596400809746
+      },
+      {
+        "min_local": -459.49621007498695,
+        "max_local": -433.4246335615022,
+        "min_increment": -0.13987888382947825,
+        "max_increment": 0.1577583353083818,
+        "events": 2629,
+        "min_log_weight": -0.45158209907075886,
+        "max_log_weight": 0.45738589434843757,
+        "weight_ess": 123.55661442022179
+      }
+    ],
+    [
+      {
+        "min_local": -456.76193404496433,
+        "max_local": -430.9913460871237,
+        "min_increment": -0.1251277214337834,
+        "max_increment": 0.10798786421102577,
+        "events": 2703,
+        "min_log_weight": -0.5058341953584964,
+        "max_log_weight": 0.42425908258361594,
+        "weight_ess": 123.8143625125292
+      },
+      {
+        "min_local": -455.508358199016,
+        "max_local": -427.93166722768746,
+        "min_increment": -0.1597166493115081,
+        "max_increment": 0.07691790884819741,
+        "events": 2722,
+        "min_log_weight": -0.576673342607058,
+        "max_log_weight": 0.43352853365023586,
+        "weight_ess": 123.73675660167086
+      },
+      {
+        "min_local": -457.0427239670918,
+        "max_local": -429.64099666600185,
+        "min_increment": -0.1430060540050916,
+        "max_increment": 0.09457396584408774,
+        "events": 2620,
+        "min_log_weight": -0.4890565224653462,
+        "max_log_weight": 0.4181327821445944,
+        "weight_ess": 123.47937550522742
+      },
+      {
+        "min_local": -457.16940877681407,
+        "max_local": -430.6038284547992,
+        "min_increment": -0.12576586315307126,
+        "max_increment": 0.07712448151151148,
+        "events": 2629,
+        "min_log_weight": -0.45423244394413953,
+        "max_log_weight": 0.36047283364402766,
+        "weight_ess": 124.29372359425662
+      }
+    ],
+    [
+      {
+        "min_local": -457.3045739390144,
+        "max_local": -428.8725063192501,
+        "min_increment": -0.09474149788397944,
+        "max_increment": 0.086446270643615,
+        "events": 2815,
+        "min_log_weight": -0.49763221424093196,
+        "max_log_weight": 0.3345968678736992,
+        "weight_ess": 123.32151672176758
+      },
+      {
+        "min_local": -458.3854189715936,
+        "max_local": -429.18565634569256,
+        "min_increment": -0.14456504060627462,
+        "max_increment": 0.08842290045546261,
+        "events": 2635,
+        "min_log_weight": -0.5953436330325036,
+        "max_log_weight": 0.5164684850815869,
+        "weight_ess": 123.9285598680111
+      },
+      {
+        "min_local": -460.25088039884076,
+        "max_local": -430.41784962893865,
+        "min_increment": -0.12251643158187965,
+        "max_increment": 0.1347583148126006,
+        "events": 2688,
+        "min_log_weight": -0.4238471486568861,
+        "max_log_weight": 0.5240055930254867,
+        "weight_ess": 123.77149665644029
+      },
+      {
+        "min_local": -456.04086586865424,
+        "max_local": -430.6994280087705,
+        "min_increment": -0.11403515198933807,
+        "max_increment": 0.07863205413884274,
+        "events": 2646,
+        "min_log_weight": -0.5479924173494716,
+        "max_log_weight": 0.35590344306272703,
+        "weight_ess": 124.43075979718608
+      }
+    ],
+    [
+      {
+        "min_local": -455.96797388680153,
+        "max_local": -432.4228885237331,
+        "min_increment": -0.09711139725767239,
+        "max_increment": 0.08567532534178834,
+        "events": 2725,
+        "min_log_weight": -0.46542462062907186,
+        "max_log_weight": 0.3757459277056205,
+        "weight_ess": 124.7132442649686
+      },
+      {
+        "min_local": -457.8620843163533,
+        "max_local": -427.1098648775364,
+        "min_increment": -0.19458460248556472,
+        "max_increment": 0.08650234109381023,
+        "events": 2700,
+        "min_log_weight": -0.6612486827274296,
+        "max_log_weight": 0.42812712279034615,
+        "weight_ess": 123.77215406491464
+      },
+      {
+        "min_local": -458.9211514655711,
+        "max_local": -430.73301106301653,
+        "min_increment": -0.13365942351949792,
+        "max_increment": 0.12028254330389149,
+        "events": 2679,
+        "min_log_weight": -0.47754878151887686,
+        "max_log_weight": 0.4330936710453673,
+        "weight_ess": 123.55645258404738
+      },
+      {
+        "min_local": -460.3092905850491,
+        "max_local": -428.94690204849854,
+        "min_increment": -0.1976036815221501,
+        "max_increment": 0.10712734701949556,
+        "events": 2630,
+        "min_log_weight": -0.5737401773168394,
+        "max_log_weight": 0.6225754588127935,
+        "weight_ess": 123.19542108514369
+      }
+    ],
+    [
+      {
+        "min_local": -456.10964739291046,
+        "max_local": -428.5414734472577,
+        "min_increment": -0.1322529436553046,
+        "max_increment": 0.06061962480708372,
+        "events": 2700,
+        "min_log_weight": -0.5277595925916901,
+        "max_log_weight": 0.30992633832285554,
+        "weight_ess": 124.88479708066501
+      },
+      {
+        "min_local": -454.58134532394735,
+        "max_local": -432.3329760725673,
+        "min_increment": -0.090584439420413,
+        "max_increment": 0.08877388700945868,
+        "events": 2734,
+        "min_log_weight": -0.41338057217601376,
+        "max_log_weight": 0.3718328780685448,
+        "weight_ess": 124.24197728971073
+      },
+      {
+        "min_local": -457.484072025854,
+        "max_local": -432.98880922819615,
+        "min_increment": -0.09373418796309634,
+        "max_increment": 0.0926966268640177,
+        "events": 2719,
+        "min_log_weight": -0.413408623336573,
+        "max_log_weight": 0.40761426624823444,
+        "weight_ess": 123.50761607156366
+      },
+      {
+        "min_local": -459.1526732979732,
+        "max_local": -432.4624772836969,
+        "min_increment": -0.1226604461375499,
+        "max_increment": 0.1137648995225496,
+        "events": 2709,
+        "min_log_weight": -0.48532022084813836,
+        "max_log_weight": 0.4577023741278091,
+        "weight_ess": 123.37562158320478
+      }
+    ],
+    [
+      {
+        "min_local": -458.2526029875596,
+        "max_local": -429.8501133386649,
+        "min_increment": -0.10659790947824711,
+        "max_increment": 0.2441733884967985,
+        "events": 2670,
+        "min_log_weight": -0.4367354666838158,
+        "max_log_weight": 0.553679719294507,
+        "weight_ess": 123.31546176109927
+      },
+      {
+        "min_local": -456.36491309175574,
+        "max_local": -431.46322814379494,
+        "min_increment": -0.07474607045299905,
+        "max_increment": 0.150887342970865,
+        "events": 2698,
+        "min_log_weight": -0.4477080267629141,
+        "max_log_weight": 0.3505515000725953,
+        "weight_ess": 124.23965985736659
+      },
+      {
+        "min_local": -457.704312501483,
+        "max_local": -430.9085049466666,
+        "min_increment": -0.1491046699054557,
+        "max_increment": 0.13295498554341886,
+        "events": 2740,
+        "min_log_weight": -0.6215356746874369,
+        "max_log_weight": 0.34326335587182066,
+        "weight_ess": 123.81448982189026
+      },
+      {
+        "min_local": -457.06817271966133,
+        "max_local": -429.73249342193117,
+        "min_increment": -0.07506248420762617,
+        "max_increment": 0.11304458309509938,
+        "events": 2725,
+        "min_log_weight": -0.5163191355184347,
+        "max_log_weight": 0.4360918526592997,
+        "weight_ess": 123.99819915784514
+      }
+    ],
+    [
+      {
+        "min_local": -457.38140065365525,
+        "max_local": -429.1739709833384,
+        "min_increment": -0.11579566149408865,
+        "max_increment": 0.11353315677586724,
+        "events": 2735,
+        "min_log_weight": -0.5465901913041357,
+        "max_log_weight": 0.4134712568415936,
+        "weight_ess": 123.22072303541843
+      },
+      {
+        "min_local": -457.74558206253073,
+        "max_local": -431.9377490166962,
+        "min_increment": -0.11323419618409783,
+        "max_increment": 0.10376487798758337,
+        "events": 2651,
+        "min_log_weight": -0.44382606458392165,
+        "max_log_weight": 0.5338019845176116,
+        "weight_ess": 123.57859828398146
+      },
+      {
+        "min_local": -459.1174618171809,
+        "max_local": -431.749363383317,
+        "min_increment": -0.10613236703732903,
+        "max_increment": 0.10267633325910776,
+        "events": 2658,
+        "min_log_weight": -0.449840103314357,
+        "max_log_weight": 0.5251965210999265,
+        "weight_ess": 122.94160808409377
+      },
+      {
+        "min_local": -457.2266028542295,
+        "max_local": -430.6302851727512,
+        "min_increment": -0.11537588968366817,
+        "max_increment": 0.10108180270013117,
+        "events": 2699,
+        "min_log_weight": -0.5803147834455514,
+        "max_log_weight": 0.43976226723483663,
+        "weight_ess": 123.98424209673048
+      }
+    ],
+    [
+      {
+        "min_local": -457.4858147589665,
+        "max_local": -428.3248204753314,
+        "min_increment": -0.11982924020438274,
+        "max_increment": 0.08838552239409753,
+        "events": 2722,
+        "min_log_weight": -0.6097037299771265,
+        "max_log_weight": 0.3968870364178424,
+        "weight_ess": 123.4488890926307
+      },
+      {
+        "min_local": -455.987394886763,
+        "max_local": -426.3747994875071,
+        "min_increment": -0.14917996801735034,
+        "max_increment": 0.10398939503632218,
+        "events": 2753,
+        "min_log_weight": -0.6043734956162317,
+        "max_log_weight": 0.32441175255529353,
+        "weight_ess": 123.79858641823594
+      },
+      {
+        "min_local": -459.1174618171809,
+        "max_local": -432.89303454283555,
+        "min_increment": -0.10093693824174396,
+        "max_increment": 0.1568300836823525,
+        "events": 2654,
+        "min_log_weight": -0.3792098027881392,
+        "max_log_weight": 0.5173546882620287,
+        "weight_ess": 123.42190247168764
+      },
+      {
+        "min_local": -458.98113825442374,
+        "max_local": -429.53650381419794,
+        "min_increment": -0.14823296568301075,
+        "max_increment": 0.11829357722328554,
+        "events": 2689,
+        "min_log_weight": -0.5273988655031485,
+        "max_log_weight": 0.4521260020083946,
+        "weight_ess": 123.38329213333262
+      }
+    ],
+    [
+      {
+        "min_local": -458.27146593088935,
+        "max_local": -432.15811283329924,
+        "min_increment": -0.09524048129726619,
+        "max_increment": 0.0728500616954159,
+        "events": 2844,
+        "min_log_weight": -0.41926984006408774,
+        "max_log_weight": 0.5167178424528821,
+        "weight_ess": 123.99450167491209
+      },
+      {
+        "min_local": -457.6577504886143,
+        "max_local": -427.0240336653791,
+        "min_increment": -0.1601361392109662,
+        "max_increment": 0.08645242495062225,
+        "events": 2685,
+        "min_log_weight": -0.7664440232964058,
+        "max_log_weight": 0.42256256114543056,
+        "weight_ess": 123.11396053983223
+      },
+      {
+        "min_local": -455.0344521854116,
+        "max_local": -432.44217031907914,
+        "min_increment": -0.10239637017742279,
+        "max_increment": 0.10031374001999964,
+        "events": 2741,
+        "min_log_weight": -0.47147415741011217,
+        "max_log_weight": 0.38522535193709023,
+        "weight_ess": 123.86322142457269
+      },
+      {
+        "min_local": -457.4353374947308,
+        "max_local": -429.7611080536086,
+        "min_increment": -0.16574992362050603,
+        "max_increment": 0.10783492985621161,
+        "events": 2713,
+        "min_log_weight": -0.5087682786809118,
+        "max_log_weight": 0.4750320613610559,
+        "weight_ess": 122.45997528872151
+      }
+    ],
+    [
+      {
+        "min_local": -457.38353178683155,
+        "max_local": -432.2829771764439,
+        "min_increment": -0.13358530377713737,
+        "max_increment": 0.13580981173590337,
+        "events": 2746,
+        "min_log_weight": -0.49511276704609086,
+        "max_log_weight": 0.38643313891878295,
+        "weight_ess": 123.66437443776267
+      },
+      {
+        "min_local": -458.1050134892005,
+        "max_local": -430.93355441215874,
+        "min_increment": -0.15001590424656522,
+        "max_increment": 0.12092834451085571,
+        "events": 2635,
+        "min_log_weight": -0.5386102073984953,
+        "max_log_weight": 0.47180602555052464,
+        "weight_ess": 122.56454347941609
+      },
+      {
+        "min_local": -457.2433420105821,
+        "max_local": -429.03317906920364,
+        "min_increment": -0.19268104976163733,
+        "max_increment": 0.13367536199874153,
+        "events": 2767,
+        "min_log_weight": -0.531638524959909,
+        "max_log_weight": 0.46756031893655786,
+        "weight_ess": 122.80865910722457
+      },
+      {
+        "min_local": -461.62709495339334,
+        "max_local": -431.0480518950791,
+        "min_increment": -0.10408949013326538,
+        "max_increment": 0.1675506831300489,
+        "events": 2653,
+        "min_log_weight": -0.5871640499962912,
+        "max_log_weight": 0.5018053372281988,
+        "weight_ess": 122.92980464016898
+      }
+    ],
+    [
+      {
+        "min_local": -456.8955129044991,
+        "max_local": -430.87673120305715,
+        "min_increment": -0.11795357491462098,
+        "max_increment": 0.14402465144802806,
+        "events": 2684,
+        "min_log_weight": -0.536873174059744,
+        "max_log_weight": 0.3746913230305538,
+        "weight_ess": 123.58955006972869
+      },
+      {
+        "min_local": -456.3261436202026,
+        "max_local": -427.2826552327504,
+        "min_increment": -0.14106742263438796,
+        "max_increment": 0.13775524571173148,
+        "events": 2699,
+        "min_log_weight": -0.6118173339458376,
+        "max_log_weight": 0.39909247719805774,
+        "weight_ess": 123.34516485707111
+      },
+      {
+        "min_local": -456.55676457434384,
+        "max_local": -430.9374295342466,
+        "min_increment": -0.08893897691618514,
+        "max_increment": 0.09906458005638714,
+        "events": 2685,
+        "min_log_weight": -0.4652749850816317,
+        "max_log_weight": 0.41077247735008243,
+        "weight_ess": 124.52875074126845
+      },
+      {
+        "min_local": -458.2708529709803,
+        "max_local": -433.66246340654607,
+        "min_increment": -0.11213458364143794,
+        "max_increment": 0.0925618923896374,
+        "events": 2679,
+        "min_log_weight": -0.41237717243246,
+        "max_log_weight": 0.46524824036347334,
+        "weight_ess": 123.63512200229448
+      }
+    ],
+    [
+      {
+        "min_local": -456.65280460788506,
+        "max_local": -432.56757099507115,
+        "min_increment": -0.1602087563982385,
+        "max_increment": 0.12680821770579537,
+        "events": 2743,
+        "min_log_weight": -0.4993891158351823,
+        "max_log_weight": 0.3525933632375278,
+        "weight_ess": 123.97718075025315
+      },
+      {
+        "min_local": -463.12458284201045,
+        "max_local": -424.2550838739345,
+        "min_increment": -0.12736439707386102,
+        "max_increment": 0.142569912370845,
+        "events": 2631,
+        "min_log_weight": -0.5262718260223292,
+        "max_log_weight": 0.5637333067926077,
+        "weight_ess": 122.64095768599412
+      },
+      {
+        "min_local": -458.31626151804824,
+        "max_local": -432.0529645053772,
+        "min_increment": -0.12608482400105717,
+        "max_increment": 0.09688571331260373,
+        "events": 2712,
+        "min_log_weight": -0.5250245477037878,
+        "max_log_weight": 0.46016282564616623,
+        "weight_ess": 124.10741400801071
+      },
+      {
+        "min_local": -455.0627576254422,
+        "max_local": -429.59540967312677,
+        "min_increment": -0.13393111906832456,
+        "max_increment": 0.06708642360366517,
+        "events": 2591,
+        "min_log_weight": -0.611914025710545,
+        "max_log_weight": 0.36885514869476377,
+        "weight_ess": 123.69916076277856
+      }
+    ],
+    [
+      {
+        "min_local": -456.50932218716594,
+        "max_local": -433.50421075200757,
+        "min_increment": -0.13163151524933733,
+        "max_increment": 0.09414772868756593,
+        "events": 2715,
+        "min_log_weight": -0.45120629208824814,
+        "max_log_weight": 0.3686575121875062,
+        "weight_ess": 123.86361062516426
+      },
+      {
+        "min_local": -456.91449446599523,
+        "max_local": -430.1442147719676,
+        "min_increment": -0.12706845521403187,
+        "max_increment": 0.13746016132267233,
+        "events": 2729,
+        "min_log_weight": -0.5829187007181298,
+        "max_log_weight": 0.342580485582543,
+        "weight_ess": 123.68377365522998
+      },
+      {
+        "min_local": -459.59116863883025,
+        "max_local": -428.09114756043607,
+        "min_increment": -0.1154153168600937,
+        "max_increment": 0.09454331804808293,
+        "events": 2664,
+        "min_log_weight": -0.5856795444956794,
+        "max_log_weight": 0.40430018346978813,
+        "weight_ess": 123.47336948538015
+      },
+      {
+        "min_local": -456.71656997318786,
+        "max_local": -432.0274572152826,
+        "min_increment": -0.11959287656683207,
+        "max_increment": 0.1048395431303975,
+        "events": 2739,
+        "min_log_weight": -0.5170743990070062,
+        "max_log_weight": 0.46334510340361623,
+        "weight_ess": 124.19106218407468
+      }
+    ],
+    [
+      {
+        "min_local": -456.59675031857523,
+        "max_local": -432.2217963096558,
+        "min_increment": -0.12204382244398146,
+        "max_increment": 0.12218153796179641,
+        "events": 2667,
+        "min_log_weight": -0.5158539224988383,
+        "max_log_weight": 0.3969761659562293,
+        "weight_ess": 123.90878901694688
+      },
+      {
+        "min_local": -458.55546383496414,
+        "max_local": -432.19858421015056,
+        "min_increment": -0.09746177167324958,
+        "max_increment": 0.1263770773506413,
+        "events": 2739,
+        "min_log_weight": -0.43815614066266745,
+        "max_log_weight": 0.489612069183002,
+        "weight_ess": 124.44947059232125
+      },
+      {
+        "min_local": -457.43736833786267,
+        "max_local": -431.28493768592256,
+        "min_increment": -0.17058813226830963,
+        "max_increment": 0.08567374664198792,
+        "events": 2720,
+        "min_log_weight": -0.6197242140793381,
+        "max_log_weight": 0.4122670210410163,
+        "weight_ess": 123.88364781140052
+      },
+      {
+        "min_local": -458.07392476963344,
+        "max_local": -430.57076775096857,
+        "min_increment": -0.14827427784879935,
+        "max_increment": 0.10195024049779025,
+        "events": 2727,
+        "min_log_weight": -0.592264447142141,
+        "max_log_weight": 0.4348342470124468,
+        "weight_ess": 123.84921587715776
+      }
+    ],
+    [
+      {
+        "min_local": -457.9667723487873,
+        "max_local": -426.0838877145208,
+        "min_increment": -0.13973994150086805,
+        "max_increment": 0.11900190800683988,
+        "events": 2700,
+        "min_log_weight": -0.624957181808953,
+        "max_log_weight": 0.42423319602979004,
+        "weight_ess": 123.67636255737602
+      },
+      {
+        "min_local": -458.55546383496414,
+        "max_local": -427.8238143477347,
+        "min_increment": -0.17576447326083783,
+        "max_increment": 0.08864047309345334,
+        "events": 2778,
+        "min_log_weight": -0.6496528513868896,
+        "max_log_weight": 0.36550028051279626,
+        "weight_ess": 124.32603966349265
+      },
+      {
+        "min_local": -457.60604414699793,
+        "max_local": -432.0990318955127,
+        "min_increment": -0.08373461630573575,
+        "max_increment": 0.10281508964750391,
+        "events": 2743,
+        "min_log_weight": -0.43518880223842965,
+        "max_log_weight": 0.365217353360377,
+        "weight_ess": 124.36747743161395
+      },
+      {
+        "min_local": -458.3419587751209,
+        "max_local": -431.50370135661325,
+        "min_increment": -0.17255021455133202,
+        "max_increment": 0.13159802778580637,
+        "events": 2722,
+        "min_log_weight": -0.5264791068565786,
+        "max_log_weight": 0.4448505864576532,
+        "weight_ess": 123.44438193665164
+      }
+    ],
+    [
+      {
+        "min_local": -457.20379383839753,
+        "max_local": -428.1450484414131,
+        "min_increment": -0.12514855170220596,
+        "max_increment": 0.07995337745451604,
+        "events": 2601,
+        "min_log_weight": -0.47961158111051805,
+        "max_log_weight": 0.35679711899975425,
+        "weight_ess": 124.21647945317713
+      },
+      {
+        "min_local": -457.5397661633732,
+        "max_local": -432.43818369647823,
+        "min_increment": -0.12154040295238733,
+        "max_increment": 0.0949477105149148,
+        "events": 2733,
+        "min_log_weight": -0.42695526506013515,
+        "max_log_weight": 0.42831301619908074,
+        "weight_ess": 123.78626074249601
+      },
+      {
+        "min_local": -458.358245614786,
+        "max_local": -428.97352582776426,
+        "min_increment": -0.21090174437728343,
+        "max_increment": 0.10459647199896734,
+        "events": 2707,
+        "min_log_weight": -0.692736092797593,
+        "max_log_weight": 0.5081461976616767,
+        "weight_ess": 124.16613362511752
+      },
+      {
+        "min_local": -457.58377303568517,
+        "max_local": -428.9496922511026,
+        "min_increment": -0.12456482691405868,
+        "max_increment": 0.09054289732260196,
+        "events": 2672,
+        "min_log_weight": -0.6197027109792458,
+        "max_log_weight": 0.46791989388852134,
+        "weight_ess": 123.21346344430597
+      }
+    ],
+    [
+      {
+        "min_local": -460.6647622849375,
+        "max_local": -431.51216345890276,
+        "min_increment": -0.13744176156531412,
+        "max_increment": 0.12273061284531593,
+        "events": 2769,
+        "min_log_weight": -0.4925722097357856,
+        "max_log_weight": 0.6010411579769943,
+        "weight_ess": 122.89502236291413
+      },
+      {
+        "min_local": -457.89425484187,
+        "max_local": -430.28819524079427,
+        "min_increment": -0.1333020391226008,
+        "max_increment": 0.12068699801708237,
+        "events": 2752,
+        "min_log_weight": -0.5455531533772109,
+        "max_log_weight": 0.4760609966665269,
+        "weight_ess": 123.34650012168849
+      },
+      {
+        "min_local": -456.5148850641424,
+        "max_local": -425.9311912776732,
+        "min_increment": -0.16146210922746973,
+        "max_increment": 0.11870945194855567,
+        "events": 2672,
+        "min_log_weight": -0.7066422474814951,
+        "max_log_weight": 0.43629087154945356,
+        "weight_ess": 123.12438502584885
+      },
+      {
+        "min_local": -461.7231805900635,
+        "max_local": -428.413803168269,
+        "min_increment": -0.14572868105278522,
+        "max_increment": 0.13180634123603951,
+        "events": 2664,
+        "min_log_weight": -0.6225843210966112,
+        "max_log_weight": 0.4984562116875754,
+        "weight_ess": 123.81215678401372
+      }
+    ],
+    [
+      {
+        "min_local": -457.60262513515045,
+        "max_local": -431.468046690862,
+        "min_increment": -0.09878080940419827,
+        "max_increment": 0.15608124876125118,
+        "events": 2739,
+        "min_log_weight": -0.45144332756179206,
+        "max_log_weight": 0.40513957891089886,
+        "weight_ess": 123.77263448566737
+      },
+      {
+        "min_local": -457.330595591257,
+        "max_local": -427.2445857762551,
+        "min_increment": -0.14456492580376293,
+        "max_increment": 0.11515203291631156,
+        "events": 2736,
+        "min_log_weight": -0.7270589731878332,
+        "max_log_weight": 0.42312583300737977,
+        "weight_ess": 123.26333043263183
+      },
+      {
+        "min_local": -457.31411617462226,
+        "max_local": -429.73305184053254,
+        "min_increment": -0.10798375761552752,
+        "max_increment": 0.09509361669350093,
+        "events": 2660,
+        "min_log_weight": -0.48594186925675015,
+        "max_log_weight": 0.38008212947422854,
+        "weight_ess": 124.11121558345893
+      },
+      {
+        "min_local": -461.5303361624501,
+        "max_local": -431.787320729817,
+        "min_increment": -0.11786395489130563,
+        "max_increment": 0.1687316948696762,
+        "events": 2696,
+        "min_log_weight": -0.4304439660539897,
+        "max_log_weight": 0.551755267503741,
+        "weight_ess": 122.95789447976388
+      }
+    ],
+    [
+      {
+        "min_local": -459.8394785492653,
+        "max_local": -431.3520022909887,
+        "min_increment": -0.16712624646300764,
+        "max_increment": 0.11252974843559224,
+        "events": 2663,
+        "min_log_weight": -0.49790986086615635,
+        "max_log_weight": 0.4014876933104122,
+        "weight_ess": 124.07367625389648
+      },
+      {
+        "min_local": -459.08913477912984,
+        "max_local": -424.75501471954357,
+        "min_increment": -0.14654903893472784,
+        "max_increment": 0.1779763131042231,
+        "events": 2692,
+        "min_log_weight": -0.766288111415484,
+        "max_log_weight": 0.6046219872262177,
+        "weight_ess": 122.98208615614465
+      },
+      {
+        "min_local": -457.45996790782135,
+        "max_local": -430.26467957658485,
+        "min_increment": -0.11302532590392192,
+        "max_increment": 0.13881578693394223,
+        "events": 2662,
+        "min_log_weight": -0.5910032387124727,
+        "max_log_weight": 0.44213671478384153,
+        "weight_ess": 123.81855433322718
+      },
+      {
+        "min_local": -458.4204646951817,
+        "max_local": -431.53254431185405,
+        "min_increment": -0.11707135283068257,
+        "max_increment": 0.08384345553074153,
+        "events": 2746,
+        "min_log_weight": -0.4991646393825781,
+        "max_log_weight": 0.47523705024716634,
+        "weight_ess": 123.42756586606608
+      }
+    ],
+    [
+      {
+        "min_local": -458.3069373004929,
+        "max_local": -430.2162993223578,
+        "min_increment": -0.10967612718503857,
+        "max_increment": 0.10962093387430139,
+        "events": 2695,
+        "min_log_weight": -0.4685837145239463,
+        "max_log_weight": 0.3702227420599511,
+        "weight_ess": 124.51744902844483
+      },
+      {
+        "min_local": -457.69661634042944,
+        "max_local": -431.87101782548245,
+        "min_increment": -0.08164497634160651,
+        "max_increment": 0.10469370059356395,
+        "events": 2790,
+        "min_log_weight": -0.41153291702517436,
+        "max_log_weight": 0.47343603653781957,
+        "weight_ess": 124.13057960797757
+      },
+      {
+        "min_local": -457.37353991295265,
+        "max_local": -431.8002753493086,
+        "min_increment": -0.12665301048376573,
+        "max_increment": 0.07944603042885257,
+        "events": 2733,
+        "min_log_weight": -0.4834120855690297,
+        "max_log_weight": 0.42510950439199785,
+        "weight_ess": 124.73417779982945
+      },
+      {
+        "min_local": -456.84142662684803,
+        "max_local": -428.72744001307086,
+        "min_increment": -0.09250596590024236,
+        "max_increment": 0.09198790679256832,
+        "events": 2672,
+        "min_log_weight": -0.5253304713460855,
+        "max_log_weight": 0.42637866398179547,
+        "weight_ess": 123.64312270772037
+      }
+    ],
+    [
+      {
+        "min_local": -456.92821571625615,
+        "max_local": -431.4898701261706,
+        "min_increment": -0.11482076559677079,
+        "max_increment": 0.11396341100001438,
+        "events": 2634,
+        "min_log_weight": -0.44072330368444834,
+        "max_log_weight": 0.3467948829427786,
+        "weight_ess": 124.14583488818823
+      },
+      {
+        "min_local": -456.816956134943,
+        "max_local": -429.36592551860014,
+        "min_increment": -0.07719446151944566,
+        "max_increment": 0.09125043680011223,
+        "events": 2687,
+        "min_log_weight": -0.5491592169492953,
+        "max_log_weight": 0.429118330905523,
+        "weight_ess": 124.16689290450957
+      },
+      {
+        "min_local": -457.8934678708866,
+        "max_local": -427.4135425695921,
+        "min_increment": -0.12933257076930885,
+        "max_increment": 0.09052135164457342,
+        "events": 2667,
+        "min_log_weight": -0.7618748261355835,
+        "max_log_weight": 0.4568566786744825,
+        "weight_ess": 124.06279358415176
+      },
+      {
+        "min_local": -457.8407145441431,
+        "max_local": -431.68692101252793,
+        "min_increment": -0.1178412654658145,
+        "max_increment": 0.10447115869168769,
+        "events": 2652,
+        "min_log_weight": -0.4826670852057302,
+        "max_log_weight": 0.44471892337909746,
+        "weight_ess": 123.39974099725923
+      }
+    ],
+    [
+      {
+        "min_local": -456.9248038239406,
+        "max_local": -430.86748225653855,
+        "min_increment": -0.11034309108983034,
+        "max_increment": 0.08207458532195817,
+        "events": 2657,
+        "min_log_weight": -0.5181998059859627,
+        "max_log_weight": 0.3517890220921079,
+        "weight_ess": 123.64450586005769
+      },
+      {
+        "min_local": -455.92856659056645,
+        "max_local": -431.44187268641036,
+        "min_increment": -0.1353905892924855,
+        "max_increment": 0.08783591836285877,
+        "events": 2702,
+        "min_log_weight": -0.5402995110139956,
+        "max_log_weight": 0.3417582637114882,
+        "weight_ess": 124.24062531435862
+      },
+      {
+        "min_local": -456.9965108748289,
+        "max_local": -430.8019985751935,
+        "min_increment": -0.09363807935740151,
+        "max_increment": 0.08330119311236137,
+        "events": 2706,
+        "min_log_weight": -0.47259881514012536,
+        "max_log_weight": 0.3334742011902855,
+        "weight_ess": 124.50704776728924
+      },
+      {
+        "min_local": -458.07473949615155,
+        "max_local": -429.81910314286864,
+        "min_increment": -0.11133348350738974,
+        "max_increment": 0.09875128457500454,
+        "events": 2667,
+        "min_log_weight": -0.5234133895864599,
+        "max_log_weight": 0.4616095502956198,
+        "weight_ess": 123.75682541438881
+      }
+    ],
+    [
+      {
+        "min_local": -458.00922822473706,
+        "max_local": -430.1616203847383,
+        "min_increment": -0.18931918727025965,
+        "max_increment": 0.08288292767262696,
+        "events": 2657,
+        "min_log_weight": -0.5631431753583669,
+        "max_log_weight": 0.41561870297365866,
+        "weight_ess": 123.16837878548435
+      },
+      {
+        "min_local": -457.1692566527576,
+        "max_local": -432.02005798550005,
+        "min_increment": -0.16950378918184775,
+        "max_increment": 0.11550608830506585,
+        "events": 2707,
+        "min_log_weight": -0.5601533927985981,
+        "max_log_weight": 0.3857820888342633,
+        "weight_ess": 124.74716386298762
+      },
+      {
+        "min_local": -459.3195147324733,
+        "max_local": -430.4036519042029,
+        "min_increment": -0.11775114862586028,
+        "max_increment": 0.11930398407207872,
+        "events": 2758,
+        "min_log_weight": -0.5321726670994839,
+        "max_log_weight": 0.451161612020867,
+        "weight_ess": 123.67028467151758
+      },
+      {
+        "min_local": -458.3159428855739,
+        "max_local": -429.9756345669673,
+        "min_increment": -0.20610916016210326,
+        "max_increment": 0.10103961455277337,
+        "events": 2683,
+        "min_log_weight": -0.5105820115087554,
+        "max_log_weight": 0.49886897147624965,
+        "weight_ess": 123.91716320563849
+      }
+    ],
+    [
+      {
+        "min_local": -457.856521649218,
+        "max_local": -431.5598474129547,
+        "min_increment": -0.1168590806104694,
+        "max_increment": 0.08909454816846038,
+        "events": 2638,
+        "min_log_weight": -0.5053642816945247,
+        "max_log_weight": 0.44200345171978966,
+        "weight_ess": 123.76467905132787
+      },
+      {
+        "min_local": -458.5667407372165,
+        "max_local": -431.3995350317979,
+        "min_increment": -0.1112039508815732,
+        "max_increment": 0.07767169515162216,
+        "events": 2703,
+        "min_log_weight": -0.47588581761614,
+        "max_log_weight": 0.49581747363726836,
+        "weight_ess": 123.45832827360232
+      },
+      {
+        "min_local": -459.3195147324733,
+        "max_local": -430.70204548603,
+        "min_increment": -0.11765789145278482,
+        "max_increment": 0.09717557123086495,
+        "events": 2724,
+        "min_log_weight": -0.5115002686619199,
+        "max_log_weight": 0.3775868127777448,
+        "weight_ess": 123.48149448842403
+      },
+      {
+        "min_local": -456.79779964770574,
+        "max_local": -430.18097735738485,
+        "min_increment": -0.10949409659039185,
+        "max_increment": 0.0845357236330143,
+        "events": 2665,
+        "min_log_weight": -0.499223335834878,
+        "max_log_weight": 0.455522918402127,
+        "weight_ess": 124.00029090534112
+      }
+    ],
+    [
+      {
+        "min_local": -460.35708802778464,
+        "max_local": -425.59816163886524,
+        "min_increment": -0.12094922489732927,
+        "max_increment": 0.11830791221326553,
+        "events": 2628,
+        "min_log_weight": -0.5982594985940201,
+        "max_log_weight": 0.5673569635114167,
+        "weight_ess": 123.06410511466325
+      },
+      {
+        "min_local": -456.8645779973662,
+        "max_local": -430.2073637549421,
+        "min_increment": -0.1224729805845372,
+        "max_increment": 0.11289940755512795,
+        "events": 2732,
+        "min_log_weight": -0.5048100309188022,
+        "max_log_weight": 0.4020052464198891,
+        "weight_ess": 123.41827188003225
+      },
+      {
+        "min_local": -457.11223298594405,
+        "max_local": -430.3875723927289,
+        "min_increment": -0.09683655057465033,
+        "max_increment": 0.09392667651826497,
+        "events": 2636,
+        "min_log_weight": -0.5318617540747638,
+        "max_log_weight": 0.49153943302483677,
+        "weight_ess": 122.9880404457948
+      },
+      {
+        "min_local": -460.58809948269175,
+        "max_local": -428.41986371998064,
+        "min_increment": -0.11303004448190224,
+        "max_increment": 0.0977199876827764,
+        "events": 2676,
+        "min_log_weight": -0.623233254271453,
+        "max_log_weight": 0.42241811202875973,
+        "weight_ess": 123.9581390432662
+      }
+    ],
+    [
+      {
+        "min_local": -458.2122428443083,
+        "max_local": -427.08932380685627,
+        "min_increment": -0.12106207206607936,
+        "max_increment": 0.07594226652464854,
+        "events": 2679,
+        "min_log_weight": -0.5427717727966778,
+        "max_log_weight": 0.3793874842649609,
+        "weight_ess": 124.42239142436561
+      },
+      {
+        "min_local": -454.9813492375347,
+        "max_local": -428.4831487424393,
+        "min_increment": -0.11256691086357352,
+        "max_increment": 0.09949618752059593,
+        "events": 2664,
+        "min_log_weight": -0.4804190925666266,
+        "max_log_weight": 0.35724041122086614,
+        "weight_ess": 124.35585356174532
+      },
+      {
+        "min_local": -457.910309573085,
+        "max_local": -433.53197639442766,
+        "min_increment": -0.09224573995706592,
+        "max_increment": 0.11563583221411314,
+        "events": 2655,
+        "min_log_weight": -0.3917819679216207,
+        "max_log_weight": 0.4818150445237485,
+        "weight_ess": 124.2734502362074
+      },
+      {
+        "min_local": -460.1759582144399,
+        "max_local": -428.21912279635416,
+        "min_increment": -0.14357969624250597,
+        "max_increment": 0.11705495951639758,
+        "events": 2748,
+        "min_log_weight": -0.5977004193515992,
+        "max_log_weight": 0.6151123230897788,
+        "weight_ess": 123.25808844299274
+      }
+    ],
+    [
+      {
+        "min_local": -458.2122428443083,
+        "max_local": -432.80900851362816,
+        "min_increment": -0.11550551453244877,
+        "max_increment": 0.09429352389609297,
+        "events": 2760,
+        "min_log_weight": -0.47178493377479863,
+        "max_log_weight": 0.37145654469652334,
+        "weight_ess": 124.08368807435059
+      },
+      {
+        "min_local": -459.2025041902397,
+        "max_local": -428.4669661340782,
+        "min_increment": -0.10610163950030631,
+        "max_increment": 0.08895162901477606,
+        "events": 2797,
+        "min_log_weight": -0.6549331899615931,
+        "max_log_weight": 0.49248472185791425,
+        "weight_ess": 122.93487587004141
+      },
+      {
+        "min_local": -458.4452378840912,
+        "max_local": -431.3957973765346,
+        "min_increment": -0.13478450649496604,
+        "max_increment": 0.08135712161444694,
+        "events": 2746,
+        "min_log_weight": -0.49825921504653076,
+        "max_log_weight": 0.3563506583336075,
+        "weight_ess": 124.19350210108392
+      },
+      {
+        "min_local": -459.15005287749176,
+        "max_local": -432.8439149071417,
+        "min_increment": -0.10828708437805998,
+        "max_increment": 0.10503452937315558,
+        "events": 2613,
+        "min_log_weight": -0.4539358769864017,
+        "max_log_weight": 0.3734022300740351,
+        "weight_ess": 124.04698020602676
+      }
+    ],
+    [
+      {
+        "min_local": -457.49578100896406,
+        "max_local": -430.97865187631226,
+        "min_increment": -0.10002256554813749,
+        "max_increment": 0.104775162967842,
+        "events": 2741,
+        "min_log_weight": -0.39440214553835157,
+        "max_log_weight": 0.4910410353524077,
+        "weight_ess": 123.5845095881974
+      },
+      {
+        "min_local": -460.1585927273658,
+        "max_local": -427.4894088399266,
+        "min_increment": -0.12569013568364973,
+        "max_increment": 0.09603776754605446,
+        "events": 2662,
+        "min_log_weight": -0.5883464167341858,
+        "max_log_weight": 0.582973544357664,
+        "weight_ess": 121.84846317607365
+      },
+      {
+        "min_local": -456.16425919674276,
+        "max_local": -429.3101182624874,
+        "min_increment": -0.23968935911290387,
+        "max_increment": 0.08258877948383703,
+        "events": 2649,
+        "min_log_weight": -0.6155393313439281,
+        "max_log_weight": 0.38081793530436975,
+        "weight_ess": 123.88118667257974
+      },
+      {
+        "min_local": -459.0842366409684,
+        "max_local": -433.31818083315557,
+        "min_increment": -0.11044987042146724,
+        "max_increment": 0.08815645524284045,
+        "events": 2651,
+        "min_log_weight": -0.4204138982821907,
+        "max_log_weight": 0.52791248794773,
+        "weight_ess": 124.54239148829267
+      }
+    ],
+    [
+      {
+        "min_local": -459.29466514977173,
+        "max_local": -429.36525381540224,
+        "min_increment": -0.11677492484981017,
+        "max_increment": 0.11696985114458712,
+        "events": 2672,
+        "min_log_weight": -0.49222748052782905,
+        "max_log_weight": 0.5155856149376148,
+        "weight_ess": 124.06858398338242
+      },
+      {
+        "min_local": -459.68669083288864,
+        "max_local": -431.64572110948893,
+        "min_increment": -0.1377309021946217,
+        "max_increment": 0.1319850352545857,
+        "events": 2741,
+        "min_log_weight": -0.4683545430584704,
+        "max_log_weight": 0.5373767823925746,
+        "weight_ess": 122.58513432580631
+      },
+      {
+        "min_local": -458.9414080833884,
+        "max_local": -430.24131383348373,
+        "min_increment": -0.11147216630685006,
+        "max_increment": 0.07858701137268068,
+        "events": 2743,
+        "min_log_weight": -0.45736245800687814,
+        "max_log_weight": 0.5011794518593785,
+        "weight_ess": 124.55772767333195
+      },
+      {
+        "min_local": -458.6182502729839,
+        "max_local": -433.54460914381036,
+        "min_increment": -0.09175447349475546,
+        "max_increment": 0.16137329052364216,
+        "events": 2607,
+        "min_log_weight": -0.38198219440993997,
+        "max_log_weight": 0.5572580911877123,
+        "weight_ess": 124.29914891421596
+      }
+    ],
+    [
+      {
+        "min_local": -458.3448269454458,
+        "max_local": -430.71072553809256,
+        "min_increment": -0.12381271259728677,
+        "max_increment": 0.1465853195360868,
+        "events": 2654,
+        "min_log_weight": -0.5536690805404055,
+        "max_log_weight": 0.3864305352735904,
+        "weight_ess": 124.43199319640166
+      },
+      {
+        "min_local": -457.18267124746785,
+        "max_local": -428.62242815927823,
+        "min_increment": -0.1135802526829151,
+        "max_increment": 0.12873901467629004,
+        "events": 2681,
+        "min_log_weight": -0.5638853440692082,
+        "max_log_weight": 0.45229720304685894,
+        "weight_ess": 124.05646859284397
+      },
+      {
+        "min_local": -455.6778930359462,
+        "max_local": -432.8256920518682,
+        "min_increment": -0.08142319822696122,
+        "max_increment": 0.09210332807661717,
+        "events": 2583,
+        "min_log_weight": -0.4302543829988409,
+        "max_log_weight": 0.41483603346988207,
+        "weight_ess": 124.2560043416702
+      },
+      {
+        "min_local": -457.80871331184073,
+        "max_local": -430.0474896964985,
+        "min_increment": -0.15378929187132068,
+        "max_increment": 0.08636481416644877,
+        "events": 2654,
+        "min_log_weight": -0.6242446101317842,
+        "max_log_weight": 0.4900036760430897,
+        "weight_ess": 123.38719052658229
+      }
+    ],
+    [
+      {
+        "min_local": -459.47463004222675,
+        "max_local": -430.71072553809256,
+        "min_increment": -0.07847864066578138,
+        "max_increment": 0.15274380763057832,
+        "events": 2685,
+        "min_log_weight": -0.42135766065193514,
+        "max_log_weight": 0.576717936693998,
+        "weight_ess": 124.05641991019945
+      },
+      {
+        "min_local": -455.96342092251865,
+        "max_local": -430.16536342583714,
+        "min_increment": -0.1142292598930047,
+        "max_increment": 0.07551336456574775,
+        "events": 2720,
+        "min_log_weight": -0.5230570347721375,
+        "max_log_weight": 0.34871858425636926,
+        "weight_ess": 124.83049795547885
+      },
+      {
+        "min_local": -456.6393452041386,
+        "max_local": -430.6542615597519,
+        "min_increment": -0.08085229146325333,
+        "max_increment": 0.1125865805414969,
+        "events": 2622,
+        "min_log_weight": -0.44711639271527154,
+        "max_log_weight": 0.44798426866882046,
+        "weight_ess": 124.10976346833914
+      },
+      {
+        "min_local": -458.7068101958896,
+        "max_local": -428.7810669684902,
+        "min_increment": -0.11682253196861955,
+        "max_increment": 0.10189974215410894,
+        "events": 2721,
+        "min_log_weight": -0.6451845972228337,
+        "max_log_weight": 0.471701646253444,
+        "weight_ess": 123.60163573761193
+      }
+    ],
+    [
+      {
+        "min_local": -458.2945075477403,
+        "max_local": -433.6274127233268,
+        "min_increment": -0.10197868146551062,
+        "max_increment": 0.08550883263886509,
+        "events": 2705,
+        "min_log_weight": -0.3728997486087477,
+        "max_log_weight": 0.4340521788673128,
+        "weight_ess": 124.69204312420433
+      },
+      {
+        "min_local": -456.11239048800246,
+        "max_local": -432.17630713951917,
+        "min_increment": -0.10753086724666301,
+        "max_increment": 0.10427219738421412,
+        "events": 2758,
+        "min_log_weight": -0.4747165291389923,
+        "max_log_weight": 0.37114508344791275,
+        "weight_ess": 124.57423671573348
+      },
+      {
+        "min_local": -460.0085379503891,
+        "max_local": -431.29587162593674,
+        "min_increment": -0.08907385527143678,
+        "max_increment": 0.14442009573037243,
+        "events": 2607,
+        "min_log_weight": -0.5179297552610282,
+        "max_log_weight": 0.6130073151872497,
+        "weight_ess": 123.95918171499491
+      },
+      {
+        "min_local": -458.3373212292011,
+        "max_local": -425.55511937970965,
+        "min_increment": -0.10315299971855063,
+        "max_increment": 0.10528593991223958,
+        "events": 2741,
+        "min_log_weight": -0.7767212849728933,
+        "max_log_weight": 0.45682512896170274,
+        "weight_ess": 123.09318465662086
+      }
+    ],
+    [
+      {
+        "min_local": -459.07476996829206,
+        "max_local": -432.38777574028643,
+        "min_increment": -0.11202949429079298,
+        "max_increment": 0.13649882341396324,
+        "events": 2653,
+        "min_log_weight": -0.4441036799743454,
+        "max_log_weight": 0.4975121174998278,
+        "weight_ess": 123.27135779815686
+      },
+      {
+        "min_local": -458.0043040137094,
+        "max_local": -429.96546438024507,
+        "min_increment": -0.17397015548942982,
+        "max_increment": 0.11182650795342966,
+        "events": 2708,
+        "min_log_weight": -0.4984982733338945,
+        "max_log_weight": 0.41194629499746843,
+        "weight_ess": 123.61360923558472
+      },
+      {
+        "min_local": -463.5411607892049,
+        "max_local": -431.89103746426275,
+        "min_increment": -0.12059868958392114,
+        "max_increment": 0.17279714682160974,
+        "events": 2616,
+        "min_log_weight": -0.41715373776810133,
+        "max_log_weight": 0.665238741215248,
+        "weight_ess": 123.05837934507248
+      },
+      {
+        "min_local": -457.4435441369196,
+        "max_local": -427.61931314893707,
+        "min_increment": -0.0935255811233637,
+        "max_increment": 0.11580114717683328,
+        "events": 2734,
+        "min_log_weight": -0.6392682834355554,
+        "max_log_weight": 0.33749918288599634,
+        "weight_ess": 123.34928557637261
+      }
+    ],
+    [
+      {
+        "min_local": -459.24441845818154,
+        "max_local": -432.81010853238627,
+        "min_increment": -0.10565117117290679,
+        "max_increment": 0.08848175279147127,
+        "events": 2619,
+        "min_log_weight": -0.4288351336899935,
+        "max_log_weight": 0.4650137060498985,
+        "weight_ess": 124.10297665566416
+      },
+      {
+        "min_local": -458.5906716332319,
+        "max_local": -426.49581938077125,
+        "min_increment": -0.16986362133382538,
+        "max_increment": 0.09841420981025162,
+        "events": 2632,
+        "min_log_weight": -0.7030205150617953,
+        "max_log_weight": 0.46578927394129904,
+        "weight_ess": 123.6411653912901
+      },
+      {
+        "min_local": -458.03607114393014,
+        "max_local": -429.01435908391664,
+        "min_increment": -0.11992483674857882,
+        "max_increment": 0.1346230452419984,
+        "events": 2703,
+        "min_log_weight": -0.578107367373773,
+        "max_log_weight": 0.3651280596505003,
+        "weight_ess": 124.2841926673386
+      },
+      {
+        "min_local": -457.7462294695006,
+        "max_local": -432.2716542310417,
+        "min_increment": -0.0913581960823303,
+        "max_increment": 0.08166938580254872,
+        "events": 2712,
+        "min_log_weight": -0.41018376030268777,
+        "max_log_weight": 0.46508629199558166,
+        "weight_ess": 123.52860405751059
+      }
+    ],
+    [
+      {
+        "min_local": -456.62427393326874,
+        "max_local": -431.71330867902657,
+        "min_increment": -0.1199243282539734,
+        "max_increment": 0.10224706392275235,
+        "events": 2638,
+        "min_log_weight": -0.5429799522367325,
+        "max_log_weight": 0.4510023080619092,
+        "weight_ess": 123.7739726000952
+      },
+      {
+        "min_local": -456.9274874821905,
+        "max_local": -430.5294446696944,
+        "min_increment": -0.16162059754912375,
+        "max_increment": 0.09424480011373801,
+        "events": 2713,
+        "min_log_weight": -0.5267391372334617,
+        "max_log_weight": 0.4377784463767167,
+        "weight_ess": 122.4217368496351
+      },
+      {
+        "min_local": -458.3276628272451,
+        "max_local": -431.8917922964456,
+        "min_increment": -0.14758313847523552,
+        "max_increment": 0.07908187894845208,
+        "events": 2715,
+        "min_log_weight": -0.4773838103645527,
+        "max_log_weight": 0.4689823283752086,
+        "weight_ess": 123.40266506089408
+      },
+      {
+        "min_local": -459.6560449498979,
+        "max_local": -430.0116219180775,
+        "min_increment": -0.12994146774678056,
+        "max_increment": 0.105542602622627,
+        "events": 2794,
+        "min_log_weight": -0.507473326799814,
+        "max_log_weight": 0.5292989384326361,
+        "weight_ess": 123.02780467249028
+      }
+    ],
+    [
+      {
+        "min_local": -456.85790679950884,
+        "max_local": -431.6167367345072,
+        "min_increment": -0.15236850181317937,
+        "max_increment": 0.09445085977470935,
+        "events": 2657,
+        "min_log_weight": -0.5261426827866971,
+        "max_log_weight": 0.45317480672677335,
+        "weight_ess": 123.88779557331097
+      },
+      {
+        "min_local": -456.95826109612466,
+        "max_local": -431.5405227631294,
+        "min_increment": -0.13314813368357012,
+        "max_increment": 0.06893381281740887,
+        "events": 2716,
+        "min_log_weight": -0.4621533250786561,
+        "max_log_weight": 0.3877379726638869,
+        "weight_ess": 123.4243752166135
+      },
+      {
+        "min_local": -456.63672790226025,
+        "max_local": -430.0217403799092,
+        "min_increment": -0.12205242997937214,
+        "max_increment": 0.10334657409197168,
+        "events": 2721,
+        "min_log_weight": -0.5873683387620695,
+        "max_log_weight": 0.4558393728161871,
+        "weight_ess": 122.7902664238285
+      },
+      {
+        "min_local": -456.10358370276333,
+        "max_local": -431.15580025332065,
+        "min_increment": -0.12970831324267987,
+        "max_increment": 0.08992894658508248,
+        "events": 2693,
+        "min_log_weight": -0.494051943345744,
+        "max_log_weight": 0.3273121503622769,
+        "weight_ess": 124.33143946190155
+      }
+    ],
+    [
+      {
+        "min_local": -457.73384369283013,
+        "max_local": -427.9386734869358,
+        "min_increment": -0.11249982660221126,
+        "max_increment": 0.0859876987093883,
+        "events": 2703,
+        "min_log_weight": -0.47589460177803034,
+        "max_log_weight": 0.4228160783188469,
+        "weight_ess": 124.0055201700228
+      },
+      {
+        "min_local": -458.06531788829574,
+        "max_local": -430.8259956984813,
+        "min_increment": -0.10637828221637788,
+        "max_increment": 0.10262059971302782,
+        "events": 2687,
+        "min_log_weight": -0.4424405960279068,
+        "max_log_weight": 0.344287941765029,
+        "weight_ess": 124.72970351625851
+      },
+      {
+        "min_local": -457.43785302516676,
+        "max_local": -429.4591914527827,
+        "min_increment": -0.12679299301086858,
+        "max_increment": 0.0868327416580333,
+        "events": 2716,
+        "min_log_weight": -0.5951323961882916,
+        "max_log_weight": 0.4396080269117747,
+        "weight_ess": 122.3610525799559
+      },
+      {
+        "min_local": -457.36709946907354,
+        "max_local": -430.7204088567558,
+        "min_increment": -0.10041863176140173,
+        "max_increment": 0.11320619221756134,
+        "events": 2667,
+        "min_log_weight": -0.557582404404396,
+        "max_log_weight": 0.4261753632322301,
+        "weight_ess": 124.16280280348518
+      }
+    ],
+    [
+      {
+        "min_local": -457.38603387535574,
+        "max_local": -427.9386734869358,
+        "min_increment": -0.10577543280389833,
+        "max_increment": 0.12381900682257618,
+        "events": 2649,
+        "min_log_weight": -0.4925156788996734,
+        "max_log_weight": 0.3836550185658842,
+        "weight_ess": 123.91214577482502
+      },
+      {
+        "min_local": -456.64761044118353,
+        "max_local": -430.1267562129702,
+        "min_increment": -0.09219822312788024,
+        "max_increment": 0.07238180794932612,
+        "events": 2745,
+        "min_log_weight": -0.47380838290615035,
+        "max_log_weight": 0.4572728131792067,
+        "weight_ess": 124.0681274993657
+      },
+      {
+        "min_local": -457.22687878736286,
+        "max_local": -425.39393237301164,
+        "min_increment": -0.12097949695933458,
+        "max_increment": 0.09821769693487906,
+        "events": 2692,
+        "min_log_weight": -0.8075303675882475,
+        "max_log_weight": 0.5101038637347162,
+        "weight_ess": 122.80483926203907
+      },
+      {
+        "min_local": -457.228729046904,
+        "max_local": -430.38865487504177,
+        "min_increment": -0.1080319369776249,
+        "max_increment": 0.12044895347607709,
+        "events": 2736,
+        "min_log_weight": -0.5496262963444507,
+        "max_log_weight": 0.4452456801280323,
+        "weight_ess": 123.01987910414992
+      }
+    ],
+    [
+      {
+        "min_local": -459.94010056650524,
+        "max_local": -431.8575821181489,
+        "min_increment": -0.1239077304448868,
+        "max_increment": 0.1325550651970316,
+        "events": 2719,
+        "min_log_weight": -0.40462991870416815,
+        "max_log_weight": 0.47140993389924185,
+        "weight_ess": 123.68375116158117
+      },
+      {
+        "min_local": -454.8519212891078,
+        "max_local": -428.13598264816835,
+        "min_increment": -0.17650808202015628,
+        "max_increment": 0.07999902713045909,
+        "events": 2701,
+        "min_log_weight": -0.5892970154418827,
+        "max_log_weight": 0.33581655187492626,
+        "weight_ess": 123.81445897447973
+      },
+      {
+        "min_local": -456.45498728265136,
+        "max_local": -422.0950351691146,
+        "min_increment": -0.11042784752045612,
+        "max_increment": 0.09168410213215034,
+        "events": 2676,
+        "min_log_weight": -0.7816751072846951,
+        "max_log_weight": 0.459725393843909,
+        "weight_ess": 124.53537869505205
+      },
+      {
+        "min_local": -457.51237320441675,
+        "max_local": -432.7834998838998,
+        "min_increment": -0.08019284293169361,
+        "max_increment": 0.08321657846466216,
+        "events": 2731,
+        "min_log_weight": -0.45157036373559767,
+        "max_log_weight": 0.46778817859760696,
+        "weight_ess": 124.0197949811197
+      }
+    ],
+    [
+      {
+        "min_local": -458.4448823908181,
+        "max_local": -430.3862726500968,
+        "min_increment": -0.09740596717287955,
+        "max_increment": 0.08478979730227774,
+        "events": 2726,
+        "min_log_weight": -0.541084759520579,
+        "max_log_weight": 0.5000750548783977,
+        "weight_ess": 123.5893935607868
+      },
+      {
+        "min_local": -456.9241078208823,
+        "max_local": -431.61108460015885,
+        "min_increment": -0.08979877332278144,
+        "max_increment": 0.14795779659341501,
+        "events": 2717,
+        "min_log_weight": -0.45011928671504914,
+        "max_log_weight": 0.4440045597729609,
+        "weight_ess": 123.52337665328143
+      },
+      {
+        "min_local": -455.0873099885638,
+        "max_local": -430.673125172061,
+        "min_increment": -0.12656842091059406,
+        "max_increment": 0.1588870175301128,
+        "events": 2675,
+        "min_log_weight": -0.5019747091036426,
+        "max_log_weight": 0.3061790736232178,
+        "weight_ess": 125.01391449575313
+      },
+      {
+        "min_local": -459.12513424492283,
+        "max_local": -431.05340179016775,
+        "min_increment": -0.09745697003494287,
+        "max_increment": 0.11926079972559367,
+        "events": 2716,
+        "min_log_weight": -0.44668655801981505,
+        "max_log_weight": 0.5232287102036727,
+        "weight_ess": 123.71240877031047
+      }
+    ],
+    [
+      {
+        "min_local": -458.3826070955074,
+        "max_local": -433.2728109599785,
+        "min_increment": -0.09673338967231912,
+        "max_increment": 0.12470143555806835,
+        "events": 2680,
+        "min_log_weight": -0.4420105189498109,
+        "max_log_weight": 0.4841760231860266,
+        "weight_ess": 124.2032178308048
+      },
+      {
+        "min_local": -456.4744562127855,
+        "max_local": -428.1406948695397,
+        "min_increment": -0.12544576338478705,
+        "max_increment": 0.09627742180396544,
+        "events": 2646,
+        "min_log_weight": -0.5732663174988611,
+        "max_log_weight": 0.4343895573180595,
+        "weight_ess": 123.93849879283609
+      },
+      {
+        "min_local": -459.71498573445945,
+        "max_local": -431.29770944175215,
+        "min_increment": -0.12630306134767705,
+        "max_increment": 0.10532328673213708,
+        "events": 2768,
+        "min_log_weight": -0.4412114911252633,
+        "max_log_weight": 0.5105233908523308,
+        "weight_ess": 124.17662217424983
+      },
+      {
+        "min_local": -461.0468124267531,
+        "max_local": -429.2543248213674,
+        "min_increment": -0.12580925134218204,
+        "max_increment": 0.11304693590177547,
+        "events": 2765,
+        "min_log_weight": -0.4940211185935144,
+        "max_log_weight": 0.5540266348944585,
+        "weight_ess": 123.19832548760839
+      }
+    ],
+    [
+      {
+        "min_local": -456.03808466653453,
+        "max_local": -428.59463847435256,
+        "min_increment": -0.09240130033252812,
+        "max_increment": 0.1589576817028561,
+        "events": 2694,
+        "min_log_weight": -0.4822960294311952,
+        "max_log_weight": 0.41108760001355027,
+        "weight_ess": 123.99654178017686
+      },
+      {
+        "min_local": -456.419963820224,
+        "max_local": -431.56819252898276,
+        "min_increment": -0.07877860065294806,
+        "max_increment": 0.11161813151761629,
+        "events": 2724,
+        "min_log_weight": -0.4007959557204453,
+        "max_log_weight": 0.43816243425589413,
+        "weight_ess": 123.98126794279489
+      },
+      {
+        "min_local": -456.4802912217063,
+        "max_local": -428.73406091243453,
+        "min_increment": -0.09592993210125056,
+        "max_increment": 0.09405666319520656,
+        "events": 2717,
+        "min_log_weight": -0.4728695754170025,
+        "max_log_weight": 0.44303199260143206,
+        "weight_ess": 123.33228187857041
+      },
+      {
+        "min_local": -461.0484037250863,
+        "max_local": -429.93616768037793,
+        "min_increment": -0.1825635478710677,
+        "max_increment": 0.09917755148331932,
+        "events": 2705,
+        "min_log_weight": -0.5599388711598436,
+        "max_log_weight": 0.6156576276727798,
+        "weight_ess": 122.993265469485
+      }
+    ],
+    [
+      {
+        "min_local": -456.7947299034954,
+        "max_local": -428.2911874357144,
+        "min_increment": -0.15407662440135336,
+        "max_increment": 0.09753463253071697,
+        "events": 2693,
+        "min_log_weight": -0.6830204617712587,
+        "max_log_weight": 0.4427728113619549,
+        "weight_ess": 123.7211578966186
+      },
+      {
+        "min_local": -457.19462578440726,
+        "max_local": -430.70573423056584,
+        "min_increment": -0.10396352017910587,
+        "max_increment": 0.13757892234893673,
+        "events": 2607,
+        "min_log_weight": -0.5668286222286456,
+        "max_log_weight": 0.4085990802497213,
+        "weight_ess": 124.04555159536282
+      },
+      {
+        "min_local": -456.6286791502896,
+        "max_local": -429.4840864371297,
+        "min_increment": -0.09730879365374634,
+        "max_increment": 0.09832086197709965,
+        "events": 2727,
+        "min_log_weight": -0.5549169454859488,
+        "max_log_weight": 0.3575620816587215,
+        "weight_ess": 124.07408103655015
+      },
+      {
+        "min_local": -459.1084004026834,
+        "max_local": -433.1365246865245,
+        "min_increment": -0.13348784791524715,
+        "max_increment": 0.11875669350492846,
+        "events": 2736,
+        "min_log_weight": -0.3938876536087489,
+        "max_log_weight": 0.5224391503129395,
+        "weight_ess": 123.80332033455913
+      }
+    ],
+    [
+      {
+        "min_local": -458.49331291220113,
+        "max_local": -432.4215772121749,
+        "min_increment": -0.10732061327598313,
+        "max_increment": 0.12277139674114708,
+        "events": 2702,
+        "min_log_weight": -0.459540199603858,
+        "max_log_weight": 0.5099293968402249,
+        "weight_ess": 123.58524095994343
+      },
+      {
+        "min_local": -458.2528567116552,
+        "max_local": -432.0487197764331,
+        "min_increment": -0.10610144537222423,
+        "max_increment": 0.12814000399189168,
+        "events": 2684,
+        "min_log_weight": -0.4410205993570555,
+        "max_log_weight": 0.5692611606266383,
+        "weight_ess": 124.21442152125084
+      },
+      {
+        "min_local": -458.74150769298024,
+        "max_local": -426.54507184644643,
+        "min_increment": -0.1314916673624924,
+        "max_increment": 0.08283587277223584,
+        "events": 2703,
+        "min_log_weight": -0.6222197883114196,
+        "max_log_weight": 0.5114802723315268,
+        "weight_ess": 123.20635796856254
+      },
+      {
+        "min_local": -457.21385619822985,
+        "max_local": -429.67846125136487,
+        "min_increment": -0.09770835191697304,
+        "max_increment": 0.11893543643266236,
+        "events": 2666,
+        "min_log_weight": -0.43532416866936746,
+        "max_log_weight": 0.44262387628242145,
+        "weight_ess": 124.06696623596444
+      }
+    ]
+  ]
+}

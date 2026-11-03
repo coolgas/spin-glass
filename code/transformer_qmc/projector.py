@@ -7,28 +7,42 @@ Forward cycles always finish: poor ancestry is reported, never selected away.
 
 import numpy as np
 
-from qmc_numerics import systematic
+from qmc_numerics import systematic_log, log_expm1_ratio
 from .physics import diagonal
 
 
 def rates_and_local(ham, gamma, guide, states):
     shape = states.shape
     ratios = guide.all_flip_log_ratios(states.reshape(-1, ham.n_sites))
-    rates = gamma * np.exp(ratios).reshape(shape)
+    if not np.isfinite(ratios).all():
+        raise FloatingPointError('nonfinite guide log flip ratios')
+    with np.errstate(over='ignore', under='ignore'):
+        rates = gamma * np.exp(ratios).reshape(shape)
     if not np.isfinite(rates).all() or np.any(rates <= 0):
-        raise FloatingPointError("guide rates must be finite and strictly positive")
+        raise FloatingPointError("guide rates must be finite and strictly positive; "
+                                 f"log-ratio range [{ratios.min()}, {ratios.max()}]")
     local = diagonal(ham, states).sum(axis=1) - rates.sum(axis=(1, 2))
+    if not np.isfinite(local).all():
+        raise FloatingPointError('nonfinite local energy or total escape rate')
     return rates, local
 
 
-def propagate(ham, gamma, guide, states, shift, duration, rng):
-    """Advance all walkers independently, then systematic population resampling."""
+def propagate(ham, gamma, guide, states, shift, duration, rng, diagnostics=None):
+    """Exact event times with log-domain branching and interval integrals.
+
+    The returned estimators retain the original weighted-time convention.
+    Numerical stabilization does not cure poor guides or population bias.
+    """
+    if not np.isfinite(shift) or not np.isfinite(duration) or duration <= 0:
+        raise ValueError('finite shift and positive finite duration required')
     count, replicas, sites = states.shape
     states = states.copy()
     remaining = np.full(count, duration)
-    weights = np.ones(count)
-    energy_integral = np.zeros(count)
-    time_integral = np.zeros(count)
+    log_weights = np.zeros(count)
+    log_time_integral = np.full(count, -np.inf)
+    interval_energy = np.zeros(count)
+    extrema = dict(min_local=np.inf, max_local=-np.inf,
+                   min_increment=np.inf, max_increment=-np.inf, events=0)
     while True:
         active = np.flatnonzero(remaining > 1e-14)
         if not active.size:
@@ -38,18 +52,25 @@ def propagate(ham, gamma, guide, states, shift, duration, rng):
         escape = flattened.sum(axis=1)
         waiting = rng.exponential(1 / escape)
         dt = np.minimum(waiting, remaining[active])
+        if np.any(dt <= 0) or not np.isfinite(dt).all():
+            raise FloatingPointError('nonpositive or nonfinite event interval')
         exponent = -(local - shift) * dt
-        if np.any(exponent > 700):
-            raise FloatingPointError("weight overflow: reduce branch interval")
-        integral_factor = np.ones_like(exponent)
-        nonzero = np.abs(exponent) > 1e-8
-        integral_factor[nonzero] = np.expm1(exponent[nonzero]) / exponent[nonzero]
-        integral_factor[~nonzero] = 1 + exponent[~nonzero] / 2
-        piece = weights[active] * dt * integral_factor
-        time_integral[active] += piece
-        energy_integral[active] += piece * local
-        weights[active] *= np.exp(exponent)
+        log_piece = log_weights[active] + np.log(dt) + log_expm1_ratio(exponent)
+        combined = np.logaddexp(log_time_integral[active], log_piece)
+        interval_energy[active] = (
+            np.exp(log_time_integral[active] - combined) * interval_energy[active]
+            + np.exp(log_piece - combined) * local)
+        log_time_integral[active] = combined
+        log_weights[active] += exponent
+        if not np.isfinite(log_weights[active]).all() or not np.isfinite(combined).all():
+            raise FloatingPointError('nonfinite accumulated log weight or log time integral')
         hopping = waiting < remaining[active]
+        if diagnostics is not None:
+            extrema['min_local'] = min(extrema['min_local'], float(local.min()))
+            extrema['max_local'] = max(extrema['max_local'], float(local.max()))
+            extrema['min_increment'] = min(extrema['min_increment'], float(exponent.min()))
+            extrema['max_increment'] = max(extrema['max_increment'], float(exponent.max()))
+            extrema['events'] += int(hopping.sum())
         if np.any(hopping):
             cumulative = np.cumsum(flattened[hopping], axis=1)
             draw = rng.random(hopping.sum()) * escape[hopping]
@@ -57,11 +78,17 @@ def propagate(ham, gamma, guide, states, shift, duration, rng):
             which = active[hopping]
             states[which, choice // sites, choice % sites] *= -1
         remaining[active] -= dt
-    children, log_total = systematic(weights, rng)
+    children, log_total = systematic_log(log_weights, rng)
     growth_pair = shift - (log_total - np.log(count)) / duration
-    scaled = weights / weights.max()
+    scaled = np.exp(log_weights - log_weights.max())
     ess = scaled.sum()**2 / (scaled @ scaled)
-    mixed = energy_integral.sum() / time_integral.sum() / replicas
+    time_scaled = np.exp(log_time_integral - log_time_integral.max())
+    mixed = (time_scaled @ interval_energy) / time_scaled.sum() / replicas
+    if not np.isfinite(mixed) or not np.isfinite(growth_pair):
+        raise FloatingPointError('nonfinite mixed or growth energy after log accumulation')
+    if diagnostics is not None:
+        diagnostics.update(extrema, min_log_weight=float(log_weights.min()),
+                           max_log_weight=float(log_weights.max()), weight_ess=float(ess))
     return (states[children], children, 0.5 * (shift + growth_pair),
             mixed, growth_pair / replicas, float(ess))
 
@@ -90,6 +117,7 @@ def project(ham, gamma, guide, *, n_walkers=512, n_replicas=2,
             or n_equilibrate < 0 or n_measure < 2 or n_cycles < 2):
         raise ValueError("invalid projector settings")
     configuration = dict(n_sites=ham.n_sites, gamma=gamma, n_walkers=n_walkers,
+                         numerics='log_weight_v1',
                          n_replicas=n_replicas, tau_block=tau_block,
                          n_equilibrate=n_equilibrate, n_measure=n_measure,
                          tau_forward=tau_forward, n_cycles=n_cycles, seed=int(seed))

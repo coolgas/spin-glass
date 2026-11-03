@@ -1,0 +1,158 @@
+{
+  "gamma": 4.0,
+  "lr": 0.001,
+  "history": [
+    {
+      "step": 25,
+      "energy": -435.4373083322557,
+      "variance": 175.18031659395388,
+      "gradient_norm": 0.34356676680303844,
+      "sweeps": 50,
+      "exchange_fraction": [
+        0.967968761920929,
+        0.9717187285423279,
+        0.9728124737739563,
+        0.9678124785423279,
+        0.9668750166893005,
+        0.9689062237739563,
+        0.96484375
+      ],
+      "round_trips": 3247,
+      "labels_with_round_trips": 1966,
+      "warning": "Round trips measure temperature transport, not independent valley equilibration"
+    },
+    {
+      "step": 50,
+      "energy": -436.91478314771086,
+      "variance": 135.09059333186568,
+      "gradient_norm": 0.35815018760533956,
+      "sweeps": 100,
+      "exchange_fraction": [
+        0.9534375071525574,
+        0.955078125,
+        0.9561718702316284,
+        0.952343761920929,
+        0.9497656226158142,
+        0.9489062428474426,
+        0.9496093988418579
+      ],
+      "round_trips": 7447,
+      "labels_with_round_trips": 2048,
+      "warning": "Round trips measure temperature transport, not independent valley equilibration"
+    },
+    {
+      "step": 75,
+      "energy": -438.10960150597833,
+      "variance": 108.31753037943267,
+      "gradient_norm": 0.3686685851943605,
+      "sweeps": 150,
+      "exchange_fraction": [
+        0.94140625,
+        0.9410937428474426,
+        0.9405729174613953,
+        0.9384375214576721,
+        0.9357812404632568,
+        0.9334375262260437,
+        0.9348958134651184
+      ],
+      "round_trips": 10928,
+      "labels_with_round_trips": 2048,
+      "warning": "Round trips measure temperature transport, not independent valley equilibration"
+    },
+    {
+      "step": 100,
+      "energy": -439.9322327189286,
+      "variance": 81.96171942563345,
+      "gradient_norm": 0.3439475533522984,
+      "sweeps": 200,
+      "exchange_fraction": [
+        0.9313281178474426,
+        0.9309765696525574,
+        0.9292187690734863,
+        0.9283984303474426,
+        0.9264062643051147,
+        0.9230077862739563,
+        0.9248046875
+      ],
+      "round_trips": 14236,
+      "labels_with_round_trips": 2048,
+      "warning": "Round trips measure temperature transport, not independent valley equilibration"
+    },
+    {
+      "step": 125,
+      "energy": -440.86658811219894,
+      "variance": 61.876294110943654,
+      "gradient_norm": 0.3144830293562321,
+      "sweeps": 250,
+      "exchange_fraction": [
+        0.9239062666893005,
+        0.9235937595367432,
+        0.9210000038146973,
+        0.9203437566757202,
+        0.9185000061988831,
+        0.9158437252044678,
+        0.9150312542915344
+      ],
+      "round_trips": 17400,
+      "labels_with_round_trips": 2048,
+      "warning": "Round trips measure temperature transport, not independent valley equilibration"
+    },
+    {
+      "step": 150,
+      "energy": -440.7817794979234,
+      "variance": 59.89259712900712,
+      "gradient_norm": 0.32566668436536356,
+      "sweeps": 300,
+      "exchange_fraction": [
+        0.917395830154419,
+        0.9166666865348816,
+        0.9142447710037231,
+        0.9132031202316284,
+        0.9118489623069763,
+        0.9089322686195374,
+        0.9084635376930237
+      ],
+      "round_trips": 20411,
+      "labels_with_round_trips": 2048,
+      "warning": "Round trips measure temperature transport, not independent valley equilibration"
+    },
+    {
+      "step": 175,
+      "energy": -442.8886598845899,
+      "variance": 45.384990019504805,
+      "gradient_norm": 0.28567722561259073,
+      "sweeps": 350,
+      "exchange_fraction": [
+        0.912678599357605,
+        0.9107812643051147,
+        0.9092187285423279,
+        0.9085714221000671,
+        0.9071205258369446,
+        0.9040625095367432,
+        0.9039955139160156
+      ],
+      "round_trips": 23377,
+      "labels_with_round_trips": 2048,
+      "warning": "Round trips measure temperature transport, not independent valley equilibration"
+    },
+    {
+      "step": 200,
+      "energy": -442.9061499651683,
+      "variance": 47.44115072139516,
+      "gradient_norm": 0.31311929958227247,
+      "sweeps": 400,
+      "exchange_fraction": [
+        0.9087304472923279,
+        0.906542956829071,
+        0.9044530987739563,
+        0.9046679735183716,
+        0.9024804830551147,
+        0.8990625143051147,
+        0.9012695550918579
+      ],
+      "round_trips": 26262,
+      "labels_with_round_trips": 2048,
+      "warning": "Round trips measure temperature transport, not independent valley equilibration"
+    }
+  ]
+}

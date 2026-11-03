@@ -1,0 +1,17 @@
+{
+  "state": "training",
+  "task": {
+    "L": 6,
+    "gamma": 4.0,
+    "sample_id": 60000,
+    "kind": "jastrow",
+    "seed": 0,
+    "mode": "direct"
+  },
+  "stage": 0,
+  "gamma": 4.0,
+  "step": 400,
+  "energy": -445.2170279874226,
+  "variance": 0.04430159825582133,
+  "gradient_norm": 0.018820280417258792
+}

@@ -1,0 +1,13 @@
+{
+  "case": {
+    "L": 6,
+    "gamma": 4.0,
+    "sample_id": 60000,
+    "kind": "jastrow",
+    "seed": 0,
+    "mode": "direct",
+    "steps": 400,
+    "learning_rate": 0.001
+  },
+  "reason": "Explicit stable step size; original failed status write retained at parent; no changed RBM runs"
+}

@@ -135,6 +135,13 @@ def consolidate(notebook, root):
         cell.source = source
         cells.append(cell)
     cells.extend(polarization_cells())
+    repair_summary = root/'data/kagome/ltfim_disorder_scaling_v1/rbm_repair/20261103_v1/validation/projection_complete.json'
+    if repair_summary.exists():
+        if __package__:
+            from .strong_field_report import notebook_cells as repair_cells
+        else:
+            from strong_field_report import notebook_cells as repair_cells
+        cells.extend(repair_cells())
     cells.append(nb.v4.new_markdown_cell(r'''### Interpretation and pending size coverage
 
 These $L=4$ histograms are measured finite-population, finite-forward-time
@@ -181,6 +188,10 @@ def main():
         path.with_suffix('.html').write_text(html)
         outputs = [path, path.with_suffix('.html'), Path(__file__).resolve(),
                    Path(__file__).with_name('overlap_polarization.py').resolve()]
+        repair_report=Path(__file__).with_name('strong_field_report.py').resolve()
+        if repair_report.exists():outputs.append(repair_report)
+        repair_manifest=root/'data/kagome/ltfim_disorder_scaling_v1/rbm_repair/20261103_v1/sha256.json'
+        if repair_manifest.exists():outputs.append(repair_manifest)
         outputs.extend(sorted((root/'figures/simple_overlap').glob('*')))
         manifest = {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest()
             for p in outputs if p.is_file()}

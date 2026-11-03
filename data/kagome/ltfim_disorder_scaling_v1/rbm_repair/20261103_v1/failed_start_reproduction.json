@@ -1,0 +1,40 @@
+{
+  "task": {
+    "L": 6,
+    "gamma": 0.6,
+    "sample_id": 60000,
+    "kind": "rbm_2",
+    "training_seed": 0,
+    "audit": "start",
+    "walkers": 512,
+    "equil": 16.0,
+    "forward": 16.0,
+    "start": "uniform",
+    "delta": 0.1,
+    "cycles": 8,
+    "repeat": 0
+  },
+  "source_sha256": "d02426e30016556814515a7887b76fea47a3fd3c15744581b2b3e08842aee47a",
+  "model_sha256": "78b806302532ffd5e664ec0007dcff2b8a2c9d7815004afe0db2ef17ef4df71c",
+  "initial_shift": -5198982.323344832,
+  "original": {
+    "error": "RuntimeError('walker weights left the positive reals')",
+    "seconds": 7.447855122387409
+  },
+  "log_weight": {
+    "mixed": -2668356.0624920814,
+    "growth": -724.5684575568885,
+    "ess": 3.6544440063384807,
+    "diagnostics": {
+      "min_local": -3168831891.55336,
+      "max_local": -79.53941725806489,
+      "min_increment": -513989.7084420219,
+      "max_increment": 3.5978186600600393,
+      "events": 24497,
+      "min_log_weight": -519862.8581659645,
+      "max_log_weight": -519820.4472082837,
+      "weight_ess": 3.6544440063384807
+    },
+    "seconds": 7.445787800475955
+  }
+}

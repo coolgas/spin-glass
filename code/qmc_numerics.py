@@ -81,6 +81,40 @@ def systematic(weights, rng):
     return positive[picked], log_total
 
 
+def systematic_log(log_weights, rng):
+    """Resample unmaterialized weights; -inf denotes exactly zero mass.
+
+    A common offset never enters the exponentiation. NaN, +inf, empty, and
+    all-zero populations are distinguished instead of conflating their causes.
+    """
+    logs = np.asarray(log_weights, dtype=np.float64)
+    if logs.ndim != 1 or logs.size == 0:
+        raise ValueError('log weights must be a nonempty vector')
+    if np.isnan(logs).any() or np.isposinf(logs).any():
+        raise FloatingPointError('log weights contain NaN or positive infinity')
+    if not np.isfinite(logs).any():
+        raise FloatingPointError('log weights have no finite mass (all -inf)')
+    peak = float(logs.max())
+    children, log_scaled_total = systematic(np.exp(logs - peak), rng)
+    return children, peak + log_scaled_total
+
+
+def log_expm1_ratio(exponent):
+    """log((exp(x)-1)/x), including zero and very large finite +/-x."""
+    x = np.asarray(exponent, dtype=np.float64)
+    if not np.isfinite(x).all():
+        raise FloatingPointError('nonfinite interval log-weight increment')
+    result = np.empty_like(x)
+    small = np.abs(x) < 1e-4
+    positive = (~small) & (x > 0)
+    negative = (~small) & (x < 0)
+    result[small] = x[small]/2 + x[small]**2/24 - x[small]**4/2880
+    result[positive] = (x[positive] + np.log(-np.expm1(-x[positive]))
+                        - np.log(x[positive]))
+    result[negative] = np.log(-np.expm1(x[negative])) - np.log(-x[negative])
+    return result
+
+
 def _autocovariance(centered):
     n_points = centered.size
     return np.correlate(centered, centered, mode="full")[n_points - 1 :] / n_points

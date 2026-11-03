@@ -20,7 +20,7 @@ from .independent_replica_projector import spectrum_from_moments
 from .physics import make_af_sample
 from .production_protocol import geometry,identity
 from .projector import propagate,rates_and_local
-from .sampled_simple_guides import train
+from .sampled_simple_guides import train,select_sampled_guide
 from .simple_guides import Jastrow,RBM,SimpleGuide
 
 
@@ -44,6 +44,7 @@ def _project(task,model_path,root):
     key=identity(task)[:24];dest=root/'runs'/(key+'.json');cp=root/'checkpoints'/(key+'.npz')
     provenance=dict(model_sha256=sha(model_path),sources={n:sha(Path(__file__).with_name(n)) for n in
         ['disorder_scaling.py','projector.py','simple_guides.py','independent_replica_projector.py','physics.py']})
+    provenance['numerics_sha256']=sha(Path(__file__).parent.parent/'qmc_numerics.py')
     if dest.exists():
         record=json.loads(dest.read_text());assert record['provenance']==provenance
         assert sha(dest.with_suffix('.npz'))==record['npz_sha256'];return record
@@ -187,7 +188,13 @@ def main():
                 if r['status']!='completed':paused=True;break
                 candidates.append(r);fits+=1
             if paused:break
-            best=min(candidates,key=lambda r:np.mean([d['energy'] for d in r['diagnostics']]))
+            try:
+                best=select_sampled_guide(candidates)
+            except RuntimeError as error:
+                write(a.output/('failure_selection_'+identity(dict(L=L,gamma=g,sample_id=sid,kind=kind))[:16]+'.json'),
+                      dict(L=L,gamma=g,sample_id=sid,kind=kind,error=str(error),
+                           candidate_alarms=[r.get('sampling_alarms') for r in candidates]))
+                raise
             name='L{L}_s{sample_id}_g{gamma:g}_{kind}_{mode}_seed{seed}'.format(**best['task']).replace('.','p')
             model_path=training/(name+'.pt');assert sha(model_path)==best['checkpoint_sha256']
             write(a.output/'selections'/(name+'.json'),dict(selected=best['task'],

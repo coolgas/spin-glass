@@ -1,0 +1,26 @@
+{
+  "verified_utc": "2026-11-04T03:57:22.369535+00:00",
+  "report_utc": "2026-11-04T03:55:21.811810+00:00",
+  "completed_projection_runs": 8,
+  "all_raw_hashes_verified": true,
+  "all_model_hashes_verified": true,
+  "remote_raw_reconstruction_passed": true,
+  "files": {
+    "projection/fixed_r0/runs/47dc178d80f6233fafb15c10.json": "d4f8ba64928971e33eb12019f4aa9e54e29d63da593822677ac2cbd92293c9ea",
+    "projection/fixed_r0/runs/47dc178d80f6233fafb15c10.npz": "c45880277deb0fc9e9f1f6e3575171085f6ce7b5b77ad6c6befb8629acd9aed2",
+    "projection/fixed_r1/runs/c909447a82d7ed2efa155c3a.json": "0154236b89fdff6f5140ff513188db691c9d9466b62edad264fcc01204c6738b",
+    "projection/fixed_r1/runs/c909447a82d7ed2efa155c3a.npz": "d0b9b5a90020ece4a5c62c7d592b077f2473044d1ac98b30339de3da7d94a4ff",
+    "projection/fixed_r2/runs/a0c6cc5d4e459ea0db9cfecd.json": "383dbc403f740a1e22b356564bade1ae98ce40f58ac34bf185b86baff7a1539d",
+    "projection/fixed_r2/runs/a0c6cc5d4e459ea0db9cfecd.npz": "4c7141846f4ca18e05703389355a792ea14d2591554ff8b9534a546cb7144a2c",
+    "projection/release_r0/runs/bb052eef808279cb15c77900.json": "baf88b6d49a6a358e7f3436e89f98dc67eaf98f1d9c91be8c71423d05259f2c3",
+    "projection/release_r0/runs/bb052eef808279cb15c77900.npz": "3b6fb9f42e6b71ab3323463d50034d73a0d847e9d9352290076c89aa810de2dc",
+    "projection/release_r1/runs/61a2dbef619e4c16981d2a0a.json": "aeb2c73c60028e2249417a09998ebf0101d6bca9e8e5179523d41993cbb6cfde",
+    "projection/release_r1/runs/61a2dbef619e4c16981d2a0a.npz": "38fff6472e3882e076bc86bdb8b14f215b913679722cd0a86a4cf94c98e869b4",
+    "projection/release_r2/runs/8c46603511fcc8a2f1063b03.json": "ecfcc40dd57af396349733462b17b286a4a825baf51d8e37803371f53253b26f",
+    "projection/release_r2/runs/8c46603511fcc8a2f1063b03.npz": "2cc780f410410b5950859ef62457a266ee76bc2472385f3d0197e6150e08fd31",
+    "projection/unpinned/runs/80a865c0741902362ecf37ba.json": "298b51cb99af30410998ed3532e8c508bce94f79edacc276eddb5fedea4804d7",
+    "projection/unpinned/runs/80a865c0741902362ecf37ba.npz": "9f43b05b9c9a9991e6b20b6028fa0292be43522873452df4a375f40516e0b6ae",
+    "projection/unpinned/runs/d197249d6bc7ef32bcfb4eeb.json": "3d7dcfa7a259ca432dae4e5538f330166ebb7299178a4e4648630840ae8b5d07",
+    "projection/unpinned/runs/d197249d6bc7ef32bcfb4eeb.npz": "8bfe65ac5eb3fe2320ace0907872be73e3b63ab430e75a18b1d668bc228b6128"
+  }
+}

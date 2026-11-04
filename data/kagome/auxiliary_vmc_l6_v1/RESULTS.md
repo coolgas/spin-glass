@@ -1,6 +1,6 @@
 # L6 auxiliary-field pilot
 
-Verified snapshot: 2026-11-04T03:15:10.156937+00:00
+Verified snapshot: 2026-11-04T03:55:21.811810+00:00
 
 One periodic disorder (60000), one training seed (0), N=108, Gamma=0.6, h=0.15.
 Every listed energy and variance uses the original Hamiltonian.
@@ -29,10 +29,16 @@ The references were selected before training; choosing the best branch afterward
 
 | Projection branch | Repeat | Energy/site | Descendant ESS minimum | Largest lineage | Alarm |
 |---|---:|---:|---:|---:|---|
+| fixed_r0 | 0 | -1.1426385 | 1.00 | 1.000 | True |
+| fixed_r1 | 0 | -1.1463178 | 1.01 | 0.996 | True |
+| fixed_r2 | 0 | -1.1400613 | 1.02 | 0.992 | True |
 | release_r0 | 0 | -1.1465957 | 1.34 | 0.861 | True |
+| release_r1 | 0 | -1.1402744 | 1.03 | 0.986 | True |
+| release_r2 | 0 | -1.1448256 | 1.77 | 0.742 | True |
 | unpinned | 0 | -1.1461901 | 1.49 | 0.793 | True |
+| unpinned | 1 | -1.1463276 | 1.03 | 0.984 | True |
 
-Completed projection repeats: 2/14; genealogy alarms: 2.
+Completed projection repeats: 8/14; genealogy alarms: 8.
 Recorded failed branches/tasks: 0.
 
 Projection records are independently reconstructed from raw arrays before inclusion.

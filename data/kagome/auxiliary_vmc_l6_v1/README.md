@@ -1,7 +1,11 @@
 # L6 auxiliary-field VMC pilot artifacts
 
-The current audited measurements and scientific limitations are in `RESULTS.md`
-and `analysis_results.json`. The executed results notebook is
+The finite pilot is complete: all seven training branches, 28 frozen
+diagnostics and fourteen projection runs finished without recorded task
+failures. All fourteen projections trigger genealogy alarms, and no branch
+passes every planned repeat-agreement threshold. The scientific conclusion
+is in `FINAL_ASSESSMENT.md`; audited measurements and limitations are in
+`RESULTS.md` and `analysis_results.json`. The executed results notebook is
 `../../../notebook/auxiliary_field_vmc_results.ipynb`.
 
 - `candidate_bank.npz` preserves the classical candidates, selected references,

@@ -1,0 +1,9 @@
+{
+  "state": "audited_report_completed",
+  "utc": "2026-11-04T04:32:11.357079+00:00",
+  "campaign_status": {
+    "state": "completed_unqualified",
+    "failures": [],
+    "utc": "2026-11-04T04:31:17.485864+00:00"
+  }
+}

@@ -1,0 +1,2 @@
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+/root/autodl-tmp/auxiliary-vmc-l6-20261104-report/notebook/auxiliary_field_vmc_results.ipynb

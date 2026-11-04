@@ -15,8 +15,8 @@
     "cycles": 8,
     "repeat": 1
   },
-  "step": 1100,
+  "step": 1440,
   "total": 1440,
-  "cycles": 5,
+  "cycles": 8,
   "numerics": "log_weight_v1"
 }

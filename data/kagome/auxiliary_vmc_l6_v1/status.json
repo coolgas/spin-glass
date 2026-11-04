@@ -1,6 +1,5 @@
 {
-  "state": "projecting",
-  "branch": "release_r0",
-  "repeat": 1,
-  "utc": "2026-11-04T03:51:06.834053+00:00"
+  "state": "completed_unqualified",
+  "failures": [],
+  "utc": "2026-11-04T04:31:17.485864+00:00"
 }

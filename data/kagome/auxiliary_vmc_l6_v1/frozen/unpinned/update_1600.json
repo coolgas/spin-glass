@@ -1,0 +1,115 @@
+{
+  "branch": "unpinned",
+  "update": 1600,
+  "rows": [
+    {
+      "start": "random",
+      "energy_per_site": -1.1339458426720148,
+      "variance_per_site": 0.02923143464099582,
+      "chain_mean_energy_sd_per_site": 0.0009930123973375278,
+      "energy_chain_standard_error_per_site": 8.811560147083556e-05,
+      "reference_overlap": [
+        0.04294840494791499,
+        0.4563236942997836,
+        -0.14126247829861563
+      ],
+      "q2_born": 0.4248085629823522,
+      "chi_connected_born": 0.3017533802629156,
+      "unique_states": 32768,
+      "sweeps": 1424,
+      "round_trips": 4773,
+      "exchange_fraction": [
+        0.9732597470283508,
+        0.9449613690376282,
+        0.9119338393211365,
+        0.873299241065979,
+        0.8219693899154663,
+        0.7416608333587646,
+        0.5619403719902039,
+        0.3294197618961334,
+        0.363753080368042,
+        0.48071014881134033,
+        0.5579573512077332,
+        0.6200513243675232,
+        0.6745084524154663,
+        0.7141744494438171,
+        0.7456109523773193
+      ],
+      "warning": "Adaptive transport is diagnostic, not proof of equilibrium or valley mixing."
+    },
+    {
+      "start": "reference",
+      "energy_per_site": -1.133850184804288,
+      "variance_per_site": 0.028803669488282675,
+      "chain_mean_energy_sd_per_site": 0.0011139169749888509,
+      "energy_chain_standard_error_per_site": 9.884414787054631e-05,
+      "reference_overlap": [
+        0.042275887948493594,
+        0.4559846100983957,
+        -0.1408408836082238
+      ],
+      "q2_born": 0.4255028643194377,
+      "chi_connected_born": 0.3027256015198813,
+      "unique_states": 32768,
+      "sweeps": 1424,
+      "round_trips": 4804,
+      "exchange_fraction": [
+        0.9739620089530945,
+        0.944522500038147,
+        0.9124276041984558,
+        0.8729261755943298,
+        0.8210476636886597,
+        0.7377984523773193,
+        0.560327410697937,
+        0.33074745535850525,
+        0.36550867557525635,
+        0.47792309522628784,
+        0.5601299405097961,
+        0.623046875,
+        0.6719518303871155,
+        0.7151180505752563,
+        0.7441844940185547
+      ],
+      "warning": "Adaptive transport is diagnostic, not proof of equilibrium or valley mixing."
+    },
+    {
+      "start": "inverse",
+      "energy_per_site": -1.1337054588759992,
+      "variance_per_site": 0.029002798060066334,
+      "chain_mean_energy_sd_per_site": 0.0009762537742110041,
+      "energy_chain_standard_error_per_site": 8.662851413881832e-05,
+      "reference_overlap": [
+        0.041878594292532795,
+        0.4568091498481078,
+        -0.14213675039786483
+      ],
+      "q2_born": 0.4258397293867306,
+      "chi_connected_born": 0.3013304613860001,
+      "unique_states": 32768,
+      "sweeps": 1424,
+      "round_trips": 4796,
+      "exchange_fraction": [
+        0.9737096428871155,
+        0.9453015327453613,
+        0.9122849106788635,
+        0.875252366065979,
+        0.8229129910469055,
+        0.7368218898773193,
+        0.5631803274154663,
+        0.32807013392448425,
+        0.364038348197937,
+        0.48096251487731934,
+        0.560360312461853,
+        0.6228164434432983,
+        0.6730051636695862,
+        0.7113434672355652,
+        0.7445246577262878
+      ],
+      "warning": "Adaptive transport is diagnostic, not proof of equilibrium or valley mixing."
+    }
+  ],
+  "model_sha256": "bcc92b7a6fd0f4671b33e28e1353f17f72b23d1087602ae26ad6886088237d7e",
+  "raw_sha256": "a69e1db7d13bb293d86ddb880a3528cbdeeb5fa6e28bcbc6a9f498ee60b60112",
+  "energy_start_range": 0.00024038379601565296,
+  "scope": "Born-distribution frozen-guide diagnostics, not projected ground-state estimates"
+}

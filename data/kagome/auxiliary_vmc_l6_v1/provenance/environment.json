@@ -1,0 +1,12 @@
+{
+  "utc": "2026-11-04T02:47:14.373210+00:00",
+  "python": "3.12.3",
+  "torch": "2.12.1+cu130",
+  "numpy": "2.4.6",
+  "scipy": "1.18.1",
+  "cuda": "13.0",
+  "gpu": "NVIDIA H800 PCIe",
+  "campaign_pid": 420697,
+  "initial_sha256": "eef882727b076aef0a6cf5d1a1336854ad1e3f84c0cc9e434c82f4727c16a61f",
+  "sources_immutable_since_launch": true
+}

@@ -1,0 +1,16 @@
+{
+  "pid": 420697,
+  "command": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "-m",
+    "transformer_qmc.auxiliary_vmc_pilot",
+    "--output",
+    "/root/autodl-tmp/auxiliary-vmc-l6-20261104-v1/results",
+    "--initial",
+    "/root/autodl-tmp/auxiliary-vmc-l6-20261104-v1/initial.pt"
+  ],
+  "utc": "2026-11-04T02:30:56.078314+00:00",
+  "deadline": null,
+  "workers": 1
+}

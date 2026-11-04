@@ -9,15 +9,28 @@ from nbconvert import HTMLExporter
 
 INTRO = r"""# Auxiliary-field annealing for a VMC guiding wave function
 
-**Design draft — 2026-11-04. No auxiliary-field training results exist yet.**
+**Design and implementation record — 2026-11-04.**
+
+The first authorized numerical pilot uses disorder 60000, seed 0, and seven
+branches. VMC training is complete; original-Hamiltonian projection screens
+follow automatically. See `auxiliary_field_vmc_results.ipynb` for measurements.
+The wider two-disorder/two-seed design below remains a possible follow-up.
+
+Implemented protocol changes: blocked two-copy Gibbs tempering replaces
+power tempering (the cold marginal is still exactly the guide Born density).
+Classical restarts use independent coordinates in one vectorized RNG stream,
+with shared sweep permutations, rather than separate per-restart streams.
+An additional frozen diagnostic at update 400 precedes the release comparison.
+Exact L2 local-energy and gradient checks and bitwise CUDA continuation passed
+before launch. The immutable campaign manifest records all source hashes.
 
 Question: can temporary steering toward reproducible classical low-energy
 configurations produce a better guide for the original quantum Hamiltonian,
 after the steering field has been removed?
 
 Agreed choices: existing periodic L6 samples and a classical candidate bank.
-All numerical budgets, reference-selection rules and schedules below are
-**proposed defaults**, ready for discussion. Executing this notebook checks
+The numerical budgets, reference-selection rules and schedules below describe
+the original design. Executing this notebook checks
 and displays the design; it does not run classical search, VMC or GFMC.
 
 ## Fixed physical problem
@@ -28,7 +41,8 @@ H_0=\sum_{\langle ij\rangle}K_{ij}Z_iZ_j
 \qquad N=3(6)^2=108,\quad K_{ij}\sim U(0.5,1.5).
 $$
 
-Use disorder IDs 60000 and 60001, training seeds 0 and 1, regular kagome
+The broader design uses disorder IDs 60000 and 60001 and training seeds 0
+and 1. The launched pilot uses only 60000 and seed 0, regular kagome
 connectivity, periodic in both cell directions. Stored couplings use `J=-K`.
 The existing disorder stream is
 `default_rng(SeedSequence([20261027, 6, sample_id, 1]))`.
@@ -78,10 +92,11 @@ $E^{\rm cl}_0(s)=\sum K_{ij}s_i s_j-0.15\sum s_i$.
 The transverse term has zero expectation in a computational-basis state;
 classical energy ranking need not rank the usefulness of quantum guides.
 
-Proposed search per disorder:
+Implemented search for the pilot disorder:
 
-1. Run 128 independent uniform random starts, with streams
-   `SeedSequence([20261104, 6, sample_id, 0, restart])`.
+1. Run 128 uniform random starts in a vectorized array, with one stream
+   `SeedSequence([20261104, 6, sample_id, 0])`. Restart coordinates draw
+   distinct random values; sweep permutations are shared across restarts.
 2. Use Metropolis single-spin simulated annealing at 64 geometrically spaced
    temperatures from 2 to 0.02 (bond-energy units), 16 random-permutation sweeps
    at each temperature. One sweep attempts each of the 108 spins once.
@@ -89,7 +104,7 @@ Proposed search per disorder:
    $\Delta E_i=2s_i(0.15-\sum_j K_{ij}s_j)$.
 3. Quench both the best visited state and the final state by up to 108
    random-permutation sweeps accepting strictly negative $\Delta E$ only;
-   stop each quench after a sweep with no accepted move. Record residual
+   stop the vectorized quench after a sweep with no accepted move in any row. Record residual
    downhill moves when the cap is reached. Save both pre-quench and post-quench
    candidates, all energies, restart seeds and search histories.
 4. Deduplicate exact bitstrings. Keep the full bank. Do not identify $s$ with
@@ -116,8 +131,12 @@ TRAINING = r"""## Matched VMC comparison
 Use the existing positive real RBM with $\alpha=2$, float64, Adam with
 learning rate $10^{-3}$ and gradient-norm cap 1. Use 128 chains per temperature,
 16 temperatures with the existing linear $\beta\in[0,1]$ ladder, and 10
-tempered sweeps per update. These chains sample $\lvert\psi\rvert^{2\beta}$; their
-temperature is distinct from the classical-search temperature above.
+tempered sweeps per update. The implemented blocked two-copy Gibbs kernel
+samples a marginal proportional to
+$\exp(2\beta a\cdot s)\prod_j[2\cosh(\beta(sW+b)_j)]^2$.
+Its cold marginal is exactly $\lvert\psi\rvert^2$; its hot path differs from
+power tempering. The tempering parameter is distinct from the classical-search
+temperature above.
 
 For each disorder/seed, reuse its existing shared $\Gamma=4$, 400-update VMC
 checkpoint only after checking its Hamiltonian, architecture and training
@@ -172,7 +191,7 @@ DIAGNOSTICS = r"""## Frozen-guide diagnostics and target-Hamiltonian projection
 Adaptive VMC traces describe optimization. Evaluate frozen checkpoints with
 fresh RNG streams, independent of training and reference search.
 
-At updates 1600, 2000 and 2400, for every branch, run fixed-parameter tempered
+At updates 400, 1600, 2000 and 2400, for every branch, run fixed-parameter tempered
 sampling from uniform, reference-aligned and inverse-reference starts. For
 the baseline, use all three selected references for the latter two start
 families. Use 128 chains/temperature, 400 warmup sweeps and 1024 measurement
@@ -180,12 +199,14 @@ sweeps, saving cold states every four sweeps. Record start families separately.
 Extend this fixed budget only through an explicit protocol revision if mixing
 remains unresolved. All diagnostic sweeps are outside the optimization budget.
 
-Record target and training energy per site, local-energy variance (both total
-and divided by $N$), reference overlaps for **all** bank references, interchain
-agreement, acceptance rates, temperature round trips, autocorrelation estimates
-with their reliability flags and unique configurations. Track the probability
-mass across nearest-reference regions with deterministic tie-breaking; those
-regions are descriptive and are not proven thermodynamic basins. Compare
+The pilot records target energy per site, target local-energy variance divided
+by $N$, reference overlaps for **all** bank references, chain-mean energy
+spread, exchange rates, temperature round trips and unique configurations.
+The analysis reconstructs conditional energy errors, selected energy
+autocorrelations, and nearest-reference region masses from saved raw spins
+and energies. These regions use reference-index tie breaking and are
+descriptive, with no thermodynamic basin interpretation. Training traces
+also record the pinned energy. Compare
 starts and seeds. Good energy or round trips alone do not establish mixing.
 The sampled local-energy variance estimates the quantum variance only when
 the Born distribution is sampled correctly; its finite-chain estimate is not
@@ -244,17 +265,20 @@ arrays; classical search trajectories and candidate bank; selected reference
 bitstrings and selection decisions; initialization checkpoint; model, Adam,
 sampler and RNG checkpoint states; every training stage and elapsed time;
 frozen diagnostics; raw projection data; all failures, alarms and exclusions.
-Use independent `SeedSequence` namespaces for search, initial sampling,
-training, frozen diagnostics and projection; persist namespace definitions
-and states so resumption reproduces the continuation. Preserve all completed
+The implemented RNG namespaces are: NumPy `SeedSequence` for search;
+CUDA generator seed `20261104 + seed` for identical initial sampling and
+training streams across branches; `300000 + 100*update + start_index` for
+frozen sampling, also shared across branches; and hashed task identities
+including the branch for independent projection streams. Complete training
+RNG states are checkpointed. Preserve all completed
 branches and stop failed branches with a recorded reason; no automatic retry
 loop, reference substitution or schedule tuning based on favorable results.
 
-Implementation should add an explicit auxiliary-field schedule path using
-`sampled_simple_guides.local_energy`, `energy_loss`, `TemperedChains` and
+The pilot implements an explicit auxiliary-field schedule path using
+`sampled_simple_guides.local_energy`, `energy_loss`, `TwoCopyTempering` and
 `simple_guides.RBM`. The existing trainer's `steps` is per transverse-field
 stage and its field schedule is implicit; it cannot represent this budget by
-merely changing one argument. Use a separate source snapshot for a future run.
+merely changing one argument. The launched source snapshot remains immutable.
 
 Before any scientific launch, validate the diagonal penalty, $\epsilon=0$
 recovery and covariance gradient against exact small-system calculations on
@@ -262,18 +286,20 @@ AutoDL; verify resumed versus uninterrupted optimizer/sampler continuation;
 audit the target measurement Hamiltonian. The checks executed below validate
 only the design arithmetic and notebook, not a trainer implementation.
 
-## Decisions to settle before implementation
+## Finite pilot choices and possible follow-up
 
-1. Keep $\epsilon_0=0.20$ as the single pilot strength, or add a weaker 0.05
-   schedule? A strength scan increases both training and measurement scope.
-2. Keep three references and 2400 updates/branch, including 800 at zero
-   pinning? This gives a bounded first test of reference dependence and release.
-3. Keep the proposed 128-start classical search, 2.16 energy window and
-   distance-11 diversity rule? Bank coverage must be reviewed before selection
-   can be considered adequate.
+The pilot fixes $\epsilon_0=0.20$, three references, and 2400 updates per
+branch, including 800 at zero pinning for each release branch. It uses the
+128-start search, 2.16 energy window, and distance-11 diversity rule above.
+The bank contains 226 unique candidates; the selected energies are
+$-107.4408686$, $-107.2924054$, and $-107.1338829$, with mutual Hamming
+distances 38, 29, and 67. These are low-energy candidates from a finite search.
+Weaker pinning, more refinement, and additional seeds/disorders are possible
+follow-ups requiring a separate finite experimental design.
 
-**Current result: protocol draft only. Auxiliary-field usefulness, quantum-gap
-changes and ground-state convergence are all unmeasured.**
+**The finite pilot is authorized. See the companion results
+notebook for measured guide quality and projection diagnostics. Quantum-gap
+changes and ground-state convergence remain unestablished.**
 """
 
 CONFIG = '''from itertools import product
@@ -281,8 +307,8 @@ import json
 import matplotlib.pyplot as plt
 
 config = dict(
-    status="proposed_design_no_training", L=6, n_sites=108, periodic=True,
-    sample_ids=[60000, 60001], seeds=[0, 1], gamma=0.6, h=0.15,
+    status="authorized_first_pilot", L=6, n_sites=108, periodic=True,
+    sample_ids=[60000], seeds=[0], gamma=0.6, h=0.15,
     references_per_disorder=3, classical_restarts=128,
     energy_window_per_site=0.02, minimum_reference_distance=11,
     updates_per_branch=2400, shared_initialization_updates=400,
@@ -303,14 +329,14 @@ for stages in schedules.values():
     assert sum(updates for updates, epsilon in stages) == 2400
 assert sum(n for n, e in schedules["release"] if e == 0) == 800
 assert schedules["release"][-1][1] == 0
-assert len(contexts) == 28
+assert len(contexts) == 7
 print(json.dumps(config, indent=2))
 print("Training branches:", len(contexts))
 print("Comparison updates:", len(contexts) * config["updates_per_branch"])
-print("Shared initialization: 4 existing checkpoints, 1600 historical updates")
+print("Shared initialization: 1 existing checkpoint, 400 historical updates")
 print("Final GFMC repeat groups:", len(contexts) * config["projection_repeats"])
 print("Final GFMC independent populations:", len(contexts) * config["projection_repeats"] * config["projection_islands"])
-print("Design checks passed; no scientific computation launched.")
+print("Design arithmetic passed; scientific computation runs in the separate pilot worker.")
 '''
 
 PLOT = '''fig, ax = plt.subplots(figsize=(8, 3.5))
@@ -322,7 +348,7 @@ for arm, stages in schedules.items():
               baseline=None, linewidth=2)
 ax.axvspan(1600, 2400, color="green", alpha=0.08)
 ax.set(xlabel="Completed VMC updates", ylabel="Penalty per mismatched spin",
-       title="Proposed schedules — fixed transverse field Γ = 0.6", ylim=(-0.01, 0.23))
+        title="Pilot schedules — fixed transverse field Γ = 0.6", ylim=(-0.01, 0.23))
 ax.legend()
 fig.tight_layout()
 plt.show()
@@ -337,7 +363,7 @@ def build(output, execute=False):
                  [DIAGNOSTICS, PROVENANCE])
     notebook = nbformat.v4.new_notebook(cells=cells, metadata=dict(
         kernelspec=dict(name='python3', display_name='Python 3', language='python'),
-        auxiliary_vmc=dict(status='design_only', scientific_runs_launched=False)))
+        auxiliary_vmc=dict(status='authorized_first_pilot', scientific_runs_launched=True)))
     nbformat.validate(notebook)
     output.mkdir(parents=True, exist_ok=True)
     if execute:

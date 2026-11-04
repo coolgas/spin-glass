@@ -1,0 +1,16 @@
+{
+  "pid": 426186,
+  "command": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "-m",
+    "transformer_qmc.auxiliary_vmc_report_completion",
+    "--root",
+    "/root/autodl-tmp/auxiliary-vmc-l6-20261104-v1/results",
+    "--output",
+    "/root/autodl-tmp/auxiliary-vmc-l6-20261104-report/notebook",
+    "--pid",
+    "420697"
+  ],
+  "utc": "2026-11-04T03:13:03.909572+00:00"
+}

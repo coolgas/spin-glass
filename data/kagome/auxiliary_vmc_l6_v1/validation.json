@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "exact_local_energy": true,
+  "exact_covariance_gradient": true,
+  "resumed_cuda_continuation_bitwise": true,
+  "source_sha256": "d96d77a468e08dc41ee723d6a47833ef1516ba782fa17cb50f97ecfb2e3bd980"
+}

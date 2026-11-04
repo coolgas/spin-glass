@@ -1,0 +1,39 @@
+{
+  "sample_id": 60000,
+  "seed_entropy": [
+    20261104,
+    6,
+    60000,
+    0
+  ],
+  "restarts": 128,
+  "rng_policy": "Independent restart coordinates in one fixed vectorized random stream; shared sweep permutations.",
+  "reference_energies": [
+    -107.44086860734531,
+    -107.29240540593722,
+    -107.13388291690629
+  ],
+  "minimum_bank_energy": -107.44086860734531,
+  "unique_candidates": 226,
+  "reference_distances": [
+    [
+      0,
+      38,
+      29
+    ],
+    [
+      38,
+      0,
+      67
+    ],
+    [
+      29,
+      67,
+      0
+    ]
+  ],
+  "reference_count": 3,
+  "quench_sweeps": 2,
+  "residual_downhill": 0,
+  "raw_sha256": "47812f9b1ff6211c8b6aedf81097be04a8dcd3529e9e5e9a1afba8bcb5e0ff59"
+}

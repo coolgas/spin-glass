@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "tests": 4,
+  "module": "transformer_qmc.test_feedback_samplers",
+  "checks": [
+    "exact Gibbs marginal and invariance",
+    "exchange and inversion detailed balance",
+    "empirical step cap and rejection restore",
+    "full sampler cold distribution"
+  ],
+  "execution_host": "AutoDL",
+  "run_source_snapshot": "/root/autodl-tmp/auxiliary-vmc-l6-20261104-v1/code"
+}

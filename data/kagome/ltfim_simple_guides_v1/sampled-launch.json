@@ -1,0 +1,26 @@
+{
+  "pid": 291520,
+  "command": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "-m",
+    "transformer_qmc.sampled_simple_guides",
+    "--output",
+    "data/kagome/ltfim_simple_guides_v1/sampled",
+    "--inputs",
+    "/root/autodl-tmp/expanded-correlation-20261102T072808Z/results",
+    "--hours",
+    "3",
+    "--steps",
+    "400",
+    "--chains",
+    "256",
+    "--temperatures",
+    "8",
+    "--sizes",
+    "2",
+    "4"
+  ],
+  "launched_unix": 1793661338.4533803,
+  "scope": "48 sampled-VMC fits, checkpointed three-hour training budget; fixed-guide diagnostics afterward"
+}

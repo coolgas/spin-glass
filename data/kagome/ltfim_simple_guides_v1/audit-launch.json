@@ -1,0 +1,20 @@
+{
+  "pid": 291658,
+  "command": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "-m",
+    "transformer_qmc.audit_simple_guides",
+    "--screen",
+    "data/kagome/ltfim_simple_guides_v1/screen",
+    "--projector",
+    "data/kagome/ltfim_simple_guides_v1/projector",
+    "--output",
+    "data/kagome/ltfim_simple_guides_v1/audit",
+    "--workers",
+    "16",
+    "--hours",
+    "2"
+  ],
+  "launched_unix": 1793661449.9755554
+}

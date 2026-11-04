@@ -1,0 +1,15 @@
+{
+  "source_sha256": "36651db60c52f3889284e738e2942d8406104f96fe6880d3493be8b620218a56",
+  "notebook_sha256": "237fd8be8f90d81d6bc2058fd419dd7457e7bd898bc866f710b970829de670cf",
+  "figures": {
+    "l4_k1_interim.png": "e844372d14d763824a99ca1a459006ef1262f558991d424ee5677a54c2df5c21",
+    "l2_k1_interim.png": "7c45cca84048792c26360c3ec7fe4ad5f200437f1d90fa23a67a7a98406f48f3",
+    "l4_k0.5_interim.png": "2b56bf6e63ea1386a61e8dec1880781c1914e3b9d22ebcfcd340f2b75a9d167e",
+    "l2_k0.5_interim.png": "2076dad9fbcbfbe7fc1cf29ac0559c53ae94c69f0b4aeb2ab3fcd1f43f09bf02",
+    "l4_k0.2_interim.png": "4e88188813bfbe65c6362111d5f2d2b5e4190a2da84cdc707cb25491bff84f98",
+    "l2_k0.2_interim.png": "30a60f684bff7b1ab743fb3cf3de98f8c3c08623e035efedf12998639b066889",
+    "l4_k0.1_interim.png": "97a76fe2066c9885c2710300fb020b2bc64fb91ad070e6c58ef1744f84285034",
+    "l2_k0.1_interim.png": "b8a5c341d2500a5631e78d6162e46332d1fa9e65de62bfa2b438da1e18597436",
+    "l4_gamma_interim_overlays.png": "a3bcdf4781bd27a31679529f4aa00810cee4066ccab9da4b4f5796cda54fe34f"
+  }
+}

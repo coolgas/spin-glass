@@ -1,0 +1,9 @@
+{
+  "pid": 82341,
+  "stage": "notebook_stage_b",
+  "started_utc": "2026-10-27T06:31:15.195690+00:00",
+  "monitoring_hours": 11.592230659127235,
+  "interval_seconds": 180,
+  "remote_deadline_unix": 1793123207.218088,
+  "scope": "Follow active_stage.json, audit results and mirror checkpoints"
+}

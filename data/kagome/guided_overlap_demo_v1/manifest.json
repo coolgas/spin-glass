@@ -1,0 +1,43 @@
+{
+  "sample_id": 50000,
+  "L": 2,
+  "contexts": [
+    [
+      0.5,
+      0.0
+    ],
+    [
+      0.5,
+      0.05
+    ],
+    [
+      2.0,
+      0.0
+    ],
+    [
+      2.0,
+      0.05
+    ]
+  ],
+  "parameters": {
+    "n_walkers": 512,
+    "n_replicas": 4,
+    "tau_block": 0.1,
+    "n_equilibrate": 40,
+    "n_measure": 10,
+    "tau_forward": 2.0,
+    "n_cycles": 8
+  },
+  "repeats": 4,
+  "ground_state_qualified": false,
+  "purpose": "One-disorder histogram demonstration; not a convergence qualification",
+  "source_sha256": {
+    "code/transformer_qmc/guided_overlap_demo.py": "4849b7a5e40e3dabe02df0f9d9d15536991c573e67602b083ebc7620c6f913ec",
+    "code/transformer_qmc/projector.py": "d02426e30016556814515a7887b76fea47a3fd3c15744581b2b3e08842aee47a",
+    "code/transformer_qmc/model.py": "077a03140f2fccfe38e6dbf5cb57645788156337fe45f71fb835909faab290ab",
+    "code/transformer_qmc/physics.py": "9ce8568f1d3f74701abc8b993ca4b1296fd38b69e5c10b18c60b9170529bd4d9",
+    "code/transformer_qmc/assess_overlap_onset.py": "4c6cb120075b1e39a8097ddcf8164128bf1c8094938186c52d78e5bce5235208",
+    "code/qmc_numerics.py": "88e433af2447ce91c1cc08fcac0e646b2829008c2a1406a25f2fc77f6d23355c",
+    "code/kagome_qea/exact.py": "043025716b8d85f7d707e7d0bf0a4fac5681335990b17760cf41995483920b52"
+  }
+}

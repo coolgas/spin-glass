@@ -1,0 +1,8 @@
+{
+  "root": "/root/autodl-tmp/worldline-accuracy-20261102T134655Z",
+  "pid": 279987,
+  "workers": 18,
+  "tasks": 80,
+  "monitor": false,
+  "state": "cancelled at user request; 0/80 completed; see cancellation.json"
+}

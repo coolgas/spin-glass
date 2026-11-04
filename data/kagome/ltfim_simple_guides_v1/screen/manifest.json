@@ -1,0 +1,20 @@
+{
+  "source_sha256": {
+    "simple_guides.py": "b586ac97f7612fb411b11d50365a013af242071e34577af6199cd8a6c474d418",
+    "simple_guide_benchmark.py": "989f3c0cba2b452d7734ccf35866a15c6d795201bb4a17db0bc23712025fcde8"
+  },
+  "settings": {
+    "inputs": "data/kagome/ltfim_correlation_expanded_v1",
+    "output": "data/kagome/ltfim_simple_guides_v1/screen",
+    "device": "cpu",
+    "seeds": 3,
+    "adam_steps": 800,
+    "lbfgs_steps": 200,
+    "kinds": [
+      "jastrow",
+      "rbm_1",
+      "rbm_2"
+    ]
+  },
+  "selection": "All seeds retained; select by variational energy only"
+}

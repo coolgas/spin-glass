@@ -1,0 +1,14 @@
+{
+  "pid": 292475,
+  "command": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "-m",
+    "transformer_qmc.sampled_overlap_scan",
+    "--output",
+    "data/kagome/ltfim_simple_overlap_v1/sampled",
+    "--hours",
+    "3"
+  ],
+  "launched_unix": 1793662843.851617
+}

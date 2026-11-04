@@ -1,0 +1,13 @@
+# Runtime dependencies; historical environment versions are recorded in campaign metadata.
+# This is an installation list, not a claim of a fully pinned historical environment.
+numpy
+scipy
+torch
+matplotlib
+nbformat
+nbclient
+nbconvert
+ipykernel
+threadpoolctl
+numba
+pandas

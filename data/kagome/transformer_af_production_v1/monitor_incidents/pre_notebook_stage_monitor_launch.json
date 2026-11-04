@@ -1,0 +1,8 @@
+{
+  "pid": 70389,
+  "started_utc": "2026-10-27T06:18:44.939757+00:00",
+  "monitoring_hours": 11.800635201070044,
+  "remote_deadline_utc": "2026-10-27T17:46:47.218088+00:00",
+  "interval_seconds": 180,
+  "scope": "Mirror results, audit, back up checkpoints; no remote writes"
+}

@@ -1,0 +1,11 @@
+{
+  "source_sha256": "8d9dcb44597690f3be9775ff48f89b4dbc98231b2dcf6cad90f02d0611b7f336",
+  "files": {
+    "l6_gamma_pq.png": "598b1a16425dcb9de9369a8def1d12df76bb3e9311f662f6ff71c9fea6c9d316",
+    "l6_gamma_pq.pdf": "5b5a57f5d4cc8d19ea48c8e00645c78c2274ec55c90920e0d07b5756c4a3bb20",
+    "l6_gamma_moments.png": "8fe024549c14be363e9f842207c8e70912bec3b999c55a1993df96f3789c1356",
+    "l6_gamma_moments.pdf": "a7909f9cf3b076883f4e1f82db3bb551569d8c826dae3a72336be93dd4dd4e6d",
+    "triangle_effective_l6_gamma_scan.ipynb": "e2b3a0fa3d75231516df92723bea6afb4157d17c1b5be2987890e4aa884a867f",
+    "summary.json": "bad91791518d69fd20f3c7d71337fcc0550b1336fec968f235e1f8a06f25505f"
+  }
+}

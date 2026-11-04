@@ -1,0 +1,15 @@
+{
+  "source_sha256": "36651db60c52f3889284e738e2942d8406104f96fe6880d3493be8b620218a56",
+  "notebook_sha256": "28515c22817b39f458e08add80aaea4acbfd275795e7593ffc870f22415fb478",
+  "figures": {
+    "l4_k1_interim.png": "e844372d14d763824a99ca1a459006ef1262f558991d424ee5677a54c2df5c21",
+    "l2_k1_interim.png": "7c45cca84048792c26360c3ec7fe4ad5f200437f1d90fa23a67a7a98406f48f3",
+    "l4_k0.5_interim.png": "8987f8058a0aa8ed2fcc1f9175c8d7df56f59e62ec679167fd1bc2cfbcc447e1",
+    "l2_k0.5_interim.png": "2076dad9fbcbfbe7fc1cf29ac0559c53ae94c69f0b4aeb2ab3fcd1f43f09bf02",
+    "l4_k0.2_interim.png": "9d2330c6fb77b628ba98c7f7153369414a9fc27c29e92024ace5f72dafe427c7",
+    "l2_k0.2_interim.png": "8f74c04fd6c4b5d490d23fba67088fe14ef89e967140ec5b8f71f19b799ffa8c",
+    "l4_k0.1_interim.png": "97a76fe2066c9885c2710300fb020b2bc64fb91ad070e6c58ef1744f84285034",
+    "l2_k0.1_interim.png": "b8a5c341d2500a5631e78d6162e46332d1fa9e65de62bfa2b438da1e18597436",
+    "l4_gamma_interim_overlays.png": "7b8b5fc18b2c6f3c8405ed0b6aa469ae1ec303669a3921c3a986e61516db5152"
+  }
+}

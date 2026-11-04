@@ -1,0 +1,12 @@
+{
+  "remote_root": "/root/autodl-tmp/collective-gfmc-20261103-v1",
+  "cpu_controller_pid": 283385,
+  "gpu_probe_pid": 283307,
+  "support_followup_pid": 283668,
+  "cpu_workers": 18,
+  "primary_hours_cap": 8,
+  "gpu_seconds_cap": 7200,
+  "support_hours_cap_after_primary": 6,
+  "logs": ["overnight.log", "gpu-pilot.log", "support-followup.log"],
+  "note": "PIDs identify the launch and may exit after completion. Read status files for current state. No polling monitor is running."
+}

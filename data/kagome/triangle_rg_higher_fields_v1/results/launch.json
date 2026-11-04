@@ -1,0 +1,29 @@
+{
+  "created": 1793776711.512259,
+  "reference_sha256": "72dd83e30f0552c957ba098ac33f30ef605149af985431a265711b2adaf93269",
+  "fields": [
+    0.6,
+    0.65,
+    0.7,
+    0.85,
+    1.0
+  ],
+  "disorders": [
+    60000,
+    60001,
+    60002,
+    60003,
+    60004,
+    60005,
+    60006,
+    60007
+  ],
+  "schedules": "m6 chi8 all 40 contexts; m8 chi8 disorder60000 all five fields",
+  "threads": 1,
+  "sources": {
+    "triangle_effective_rg.py": "a5b2b5fcf78c27b90206dc5e0548a1ca8e020c96d84f2e61e21a4c26bbc3fc33",
+    "triangle_effective_benchmark.py": "9a34ff8151ebbaa14f34a37e7aa2b54b7093497a09136c0a0d161c25988bb14a",
+    "triangle_effective_report.py": "cf38c92f0621adab8615dc0ff74618a837e4db393360174d6206184c6e6f2c94",
+    "triangle_effective_field_scan.py": "238ef71963b1f739cb82c6e71bef0855a7538cf33c50221a77d7cc44078b756f"
+  }
+}

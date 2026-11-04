@@ -1,0 +1,24 @@
+{
+  "contexts": [
+    {
+      "L": 2,
+      "gamma": 0.25,
+      "sample_id": 50004,
+      "steps": 200
+    },
+    {
+      "L": 4,
+      "gamma": 0.5,
+      "sample_id": 50004,
+      "steps": 100
+    }
+  ],
+  "batch": 128,
+  "learning_rate": 0.00015,
+  "checkpoint_sha256": "5f9fa33b04102ddff2e43179440514021090ed3aaf228ce67dce53c2139e2544",
+  "training": "Autoregressive independent samples; covariance energy gradient; Adam",
+  "enumerated_training": false,
+  "exact_training_labels": false,
+  "quartic_correction": false,
+  "qualification": "Feasibility pilot only; energy improvement does not qualify correlations or GFMC"
+}

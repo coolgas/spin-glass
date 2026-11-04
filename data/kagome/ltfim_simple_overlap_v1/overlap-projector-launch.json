@@ -1,0 +1,16 @@
+{
+  "pid": 292620,
+  "command": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "-m",
+    "transformer_qmc.overlap_scan_projector",
+    "--scan",
+    "data/kagome/ltfim_simple_overlap_v1/scan",
+    "--output",
+    "data/kagome/ltfim_simple_overlap_v1/projector",
+    "--workers",
+    "16"
+  ],
+  "launched_unix": 1793662964.1256466
+}

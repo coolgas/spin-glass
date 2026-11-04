@@ -1,0 +1,47 @@
+{
+  "source_sha256": {
+    "collective_campaign.py": "5d0fe073d6fb91c38d4683461674ad2935fe8c89391e1ebba3703903d2eca55e",
+    "collective_projector.py": "e35e0a09d07f1b188ce5c1a12cfebb45aab7dc1585df4d6ba4a9b641ebb4d8a0",
+    "projector.py": "d02426e30016556814515a7887b76fea47a3fd3c15744581b2b3e08842aee47a",
+    "independent_replica_projector.py": "96d187249acb4c84bdd1e82cc0e9e73ffcccc3cb0d5877c935beccf55428a07e",
+    "physics.py": "9ce8568f1d3f74701abc8b993ca4b1296fd38b69e5c10b18c60b9170529bd4d9",
+    "model.py": "077a03140f2fccfe38e6dbf5cb57645788156337fe45f71fb835909faab290ab",
+    "production_protocol.py": "03e8de1c6e7d6564770a5f2b37f1c50247485c2cc3e2e9f6d2e8379fe9d65eb5",
+    "correlation_lengths.py": "cd7c2f8df21ecbfd4a1095707fcb9da9e040fec26f1ffa861cdf77cc2856c270",
+    "triangle_projector.py": "a4534d1af0bd5dfba7aee48329abb7df3cc2dbcede7d32a013705568220a8958",
+    "triangle_campaign.py": "8ddee715038d856b4a46fabd96904b0593c780ee5d7098bd1c6fcfa7ed2c9cd8"
+  },
+  "stages": [
+    "pilot"
+  ],
+  "methods": [
+    [
+      "ct",
+      0.1
+    ],
+    [
+      "guided",
+      0.1
+    ],
+    [
+      "triangle",
+      0.1
+    ],
+    [
+      "triangle",
+      0.05
+    ],
+    [
+      "triangle",
+      0.2
+    ]
+  ],
+  "workers": 2,
+  "hours": 1.0,
+  "inputs": {
+    "L2_s50025_g0p25_h0p15": "d3db65aa2617453b88e5a4eca56006ac7f70fab4585dbb3711946371c83dd9dd",
+    "L2_s50059_g0p25_h0p15": "016db178e01121acb6d6caa673f1c6e497c9fb5950b803dfb7817776c9d05998",
+    "L2_s50043_g0p5_h0p15": "d4ff43d4b8953571c255ca9f9054c9cb2f134a0200abf926d7aecbb73ba03a14",
+    "L2_s50004_g0p75_h0p15": "7e41dae5ab5207e37c15f30a5d626a07227a4d49f3cfeb8cfca04e614808588b"
+  }
+}

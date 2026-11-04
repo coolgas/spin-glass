@@ -1,0 +1,36 @@
+{
+  "fields": [
+    0.5,
+    0.55,
+    0.6,
+    0.65,
+    0.7,
+    0.75,
+    0.85,
+    1.0
+  ],
+  "disorders": [
+    50000,
+    50001,
+    50002,
+    50003,
+    50004,
+    50005,
+    50006,
+    50007,
+    50043
+  ],
+  "seeds": 3,
+  "h": 0.15,
+  "L": 2,
+  "training": "800 Adam + 200 L-BFGS; full-basis energy only",
+  "selection": "minimum variational energy, all seeds retained",
+  "grouping": "50000..50007 ensemble; 50043 separate difficult-case diagnostic",
+  "sources": {
+    "simple_overlap_scan.py": "21be45be45b4853a10fc1c91082c3ec7dcea4434c3e383ecce637dd6623db1a8",
+    "simple_guides.py": "b586ac97f7612fb411b11d50365a013af242071e34577af6199cd8a6c474d418",
+    "simple_guide_benchmark.py": "989f3c0cba2b452d7734ccf35866a15c6d795201bb4a17db0bc23712025fcde8",
+    "assess_overlap_onset.py": "4c6cb120075b1e39a8097ddcf8164128bf1c8094938186c52d78e5bce5235208",
+    "physics.py": "9ce8568f1d3f74701abc8b993ca4b1296fd38b69e5c10b18c60b9170529bd4d9"
+  }
+}

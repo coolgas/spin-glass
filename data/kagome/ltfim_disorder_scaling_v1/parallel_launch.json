@@ -1,0 +1,25 @@
+{
+  "pid": 296406,
+  "command": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "-m",
+    "transformer_qmc.parallel_disorder_scaling",
+    "--output",
+    "results",
+    "--trainers",
+    "4",
+    "--workers",
+    "8",
+    "--deadline-unix",
+    "1793710777.5076935"
+  ],
+  "launched_unix": 1793669006.4781775,
+  "supersedes_pid": 295079,
+  "archive": "/root/autodl-tmp/disorder-scaling-20261103-v1/pre_parallel_20261103T092326",
+  "deadline_unix": 1793710777.5076935,
+  "trainers": 4,
+  "cpu_projectors": 8,
+  "scientific_source_snapshot": "unchanged",
+  "mps": true
+}

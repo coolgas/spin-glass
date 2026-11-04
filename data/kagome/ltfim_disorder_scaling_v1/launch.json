@@ -1,0 +1,17 @@
+{
+  "pid": 295079,
+  "command": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "-m",
+    "transformer_qmc.disorder_scaling",
+    "--output",
+    "results",
+    "--workers",
+    "8",
+    "--hours",
+    "12"
+  ],
+  "launched_unix": 1793667577.5076935,
+  "scope": "320 sampled fits, 560 CT GFMC runs if full pilot completes; training checkpoint budget 12h, submitted projector work drains afterward"
+}

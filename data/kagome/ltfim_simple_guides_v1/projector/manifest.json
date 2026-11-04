@@ -1,0 +1,203 @@
+{
+  "selections": [
+    {
+      "kind": "jastrow",
+      "gamma": 0.25,
+      "sample_id": 50025,
+      "selected_seed": 0,
+      "energy": -12.875888029243306,
+      "parent_sha256": "a41fc7a685fe9b3b8d4f65eefd060e1ed8bdabeb87e6b7474446bb62f0ee72e7",
+      "guide_sha256": "4b787e31b55858b764be7137a76fccd7b904cf46b26f00f48a0e443bc50fcde0",
+      "criterion": "minimum variational energy, no exact labels",
+      "all_seeds": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "kind": "jastrow",
+      "gamma": 0.25,
+      "sample_id": 50059,
+      "selected_seed": 1,
+      "energy": -13.501408836271029,
+      "parent_sha256": "2b233b80cbf556d2e932c1a36afc745856464933736d0cfdcb657e39faf2e10e",
+      "guide_sha256": "0b4c7282e1c5d29727d5aaa7ced41c31483bec3b6b3807d99107c9bf5272df5f",
+      "criterion": "minimum variational energy, no exact labels",
+      "all_seeds": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "kind": "jastrow",
+      "gamma": 0.5,
+      "sample_id": 50043,
+      "selected_seed": 1,
+      "energy": -12.704298418092646,
+      "parent_sha256": "0824aecc9724e2e487176171fe87ded824a7cfe69b92397710f018d380ac2510",
+      "guide_sha256": "0c7cfd9794d681f6f8410e63da38354a775a2deb3743d437a6583a35872bc3ea",
+      "criterion": "minimum variational energy, no exact labels",
+      "all_seeds": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "kind": "jastrow",
+      "gamma": 0.75,
+      "sample_id": 50004,
+      "selected_seed": 1,
+      "energy": -13.982433169478995,
+      "parent_sha256": "083fb62170f65351ae13a98d276242d0120cba4e8825f0307e1b0cc7762bafd8",
+      "guide_sha256": "2e8ed2e854ea03ba4b13f05b0d45ac5f4d840995cbb197ab96d80404480da91c",
+      "criterion": "minimum variational energy, no exact labels",
+      "all_seeds": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "kind": "rbm_1",
+      "gamma": 0.25,
+      "sample_id": 50025,
+      "selected_seed": 0,
+      "energy": -12.876706816208635,
+      "parent_sha256": "0255f9e3c10b1ffd1e0f8c3d4bcdd929bc034c0cf6d9437a278fdb1673491f10",
+      "guide_sha256": "1fbbb6df1999831a0989c61ebba2fd55c2b96e52e1a977d2ba4b3a8e985e0293",
+      "criterion": "minimum variational energy, no exact labels",
+      "all_seeds": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "kind": "rbm_1",
+      "gamma": 0.25,
+      "sample_id": 50059,
+      "selected_seed": 2,
+      "energy": -13.365413918109628,
+      "parent_sha256": "cff747cf6f43a9a9ea0e9c4e64683a07ba3b63a636caca9a7356488174d35ec6",
+      "guide_sha256": "af8de95de029c4adec1baa4c7cfaae56b93310d7b9db0804ae5f381dc693a15f",
+      "criterion": "minimum variational energy, no exact labels",
+      "all_seeds": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "kind": "rbm_1",
+      "gamma": 0.5,
+      "sample_id": 50043,
+      "selected_seed": 1,
+      "energy": -12.708962895130517,
+      "parent_sha256": "46081703c59709a8947c69bd1680cb8cd72734e1c10872f79be09cb8ed1c269c",
+      "guide_sha256": "7b9959cbac9c4233f816be71440e5a591bfc96497aac2a415f776bf8fb1cd034",
+      "criterion": "minimum variational energy, no exact labels",
+      "all_seeds": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "kind": "rbm_1",
+      "gamma": 0.75,
+      "sample_id": 50004,
+      "selected_seed": 0,
+      "energy": -13.99911110495493,
+      "parent_sha256": "fd557350b1232d3e58c6549798fba8a94168a345596ff0a49ff3f9cb21e7832d",
+      "guide_sha256": "8921806ca3c4833cd9df5a6cd4377be8a0999f3577b34b9224fe67180678554f",
+      "criterion": "minimum variational energy, no exact labels",
+      "all_seeds": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "kind": "rbm_2",
+      "gamma": 0.25,
+      "sample_id": 50025,
+      "selected_seed": 1,
+      "energy": -12.876749918578152,
+      "parent_sha256": "0b91f027fee74b6a7102d5b17784a9c10dec185f78efa8a1858e3f8cad364469",
+      "guide_sha256": "d5b48da472afc02d6494ee71e8ebd2811074141fd9cbc5e578ebde1d3fed50a0",
+      "criterion": "minimum variational energy, no exact labels",
+      "all_seeds": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "kind": "rbm_2",
+      "gamma": 0.25,
+      "sample_id": 50059,
+      "selected_seed": 2,
+      "energy": -13.501723098901628,
+      "parent_sha256": "97aa4e7c49bbfe7c8ed7dfc744d4eec133ba4ec53bed39cd1fdb05998c7577b9",
+      "guide_sha256": "8b024fae012da7d1fc126d1ca48651b0f2401d360a12cb641e46c4417120e179",
+      "criterion": "minimum variational energy, no exact labels",
+      "all_seeds": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "kind": "rbm_2",
+      "gamma": 0.5,
+      "sample_id": 50043,
+      "selected_seed": 0,
+      "energy": -12.709627069568736,
+      "parent_sha256": "5743944a8056e876ab8f136440d3d1c704b67d9c4be71c057aa4478d8d419622",
+      "guide_sha256": "8e949373a46dc65f96d1d5213d36edc4914c171ccfa75ee6ba9bc91f92a53a7d",
+      "criterion": "minimum variational energy, no exact labels",
+      "all_seeds": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "kind": "rbm_2",
+      "gamma": 0.75,
+      "sample_id": 50004,
+      "selected_seed": 0,
+      "energy": -14.000709820278834,
+      "parent_sha256": "39bd4f32b067321f3a0476d91afd97ed82d042b6c465187811e88e5243f5ce7b",
+      "guide_sha256": "bae33fe6156406249930859f436eb0c4ec5783b2ce4a6bba3c9725f2162fd5d2",
+      "criterion": "minimum variational energy, no exact labels",
+      "all_seeds": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "source_sha256": {
+    "collective_campaign.py": "5d0fe073d6fb91c38d4683461674ad2935fe8c89391e1ebba3703903d2eca55e",
+    "collective_projector.py": "e35e0a09d07f1b188ce5c1a12cfebb45aab7dc1585df4d6ba4a9b641ebb4d8a0",
+    "projector.py": "d02426e30016556814515a7887b76fea47a3fd3c15744581b2b3e08842aee47a",
+    "independent_replica_projector.py": "96d187249acb4c84bdd1e82cc0e9e73ffcccc3cb0d5877c935beccf55428a07e",
+    "physics.py": "9ce8568f1d3f74701abc8b993ca4b1296fd38b69e5c10b18c60b9170529bd4d9",
+    "model.py": "077a03140f2fccfe38e6dbf5cb57645788156337fe45f71fb835909faab290ab",
+    "production_protocol.py": "03e8de1c6e7d6564770a5f2b37f1c50247485c2cc3e2e9f6d2e8379fe9d65eb5",
+    "correlation_lengths.py": "cd7c2f8df21ecbfd4a1095707fcb9da9e040fec26f1ffa861cdf77cc2856c270",
+    "triangle_projector.py": "a4534d1af0bd5dfba7aee48329abb7df3cc2dbcede7d32a013705568220a8958",
+    "triangle_campaign.py": "8ddee715038d856b4a46fabd96904b0593c780ee5d7098bd1c6fcfa7ed2c9cd8"
+  },
+  "driver_sha256": "0d41555e312bc06c9676efb44599a234a450d49d0aefd8c3e797e91d93eb80f3",
+  "training_manifest_sha256": "f944a72725ae3ab6695fb6eccbef788f15aa9d423ac2c36fd64dbbad3b684e08",
+  "settings": {
+    "repeats": 4,
+    "workers": 4
+  },
+  "scope": "Full-basis-trained L2 guides; enumerated initialization; four independent GFMC populations"
+}

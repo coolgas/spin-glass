@@ -1,0 +1,2955 @@
+{
+  "source_sha256": "690a892a630be7173887dafd1cb53e24beece7ac27dc95e0ebe4ac8e803c8031",
+  "specs": [
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60003,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60003_g0p65_rbm_2_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/00a354cfdcbb32eab4292f96.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60006,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60006_g0p6_jastrow_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/05121ee775e5acbfb44c07c1.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60005,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60005_g0p65_jastrow_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/08b83a1430451f4d784072d7.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60002,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60002_g0p6_jastrow_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/097b5511efc55912b6e07250.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60005,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60005_g0p6_jastrow_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/09866327ca2f91cd570aa79b.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60004,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60004_g0p6_jastrow_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/1268888e9bdefaa902dd8dd3.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60002,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60002_g0p65_rbm_2_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/1d1e102864276a5d32fe84f0.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60003,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60003_g0p65_rbm_2_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/1e986589f67d85f1abd18649.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60003,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60003_g0p6_rbm_2_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/24ab626326363ee8ca3a7246.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60001,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60001_g0p6_rbm_2_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/25f5bb04de74628f9a9e81f4.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60002,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60002_g0p6_rbm_2_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/28428d2c975282cc8084bf4e.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60006,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60006_g0p65_rbm_2_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/2e0fe214f53e6381395e1ab1.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60005,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60005_g0p6_jastrow_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/3290c05f98dcbc8061dbbbc8.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60000_g0p6_rbm_2_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/3921146fbe6c832880b0875f.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60001,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60001_g0p6_jastrow_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/4a1af3b16683be7b60a6cc90.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60000_g0p6_rbm_2_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/4dedf474c02be1ad8fd38418.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60006,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60006_g0p6_rbm_2_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/53f55c9c9d934006aa2e9106.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60003,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60003_g0p6_jastrow_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/55a9228f33bea1d23d0b8ea7.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60002,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60002_g0p6_rbm_2_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/5cb44fbfb86565a7266877f1.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60003,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60003_g0p65_jastrow_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/5d62b815050d0bf0d6a85cbe.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60000_g0p6_jastrow_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/5fa402aa1beffef6d9f524e2.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60001,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60001_g0p65_rbm_2_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/63c560bf56254a1ca399fd0a.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60001,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60001_g0p65_jastrow_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/64365d308d4f68e670c76ade.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60000_g0p6_jastrow_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/671ccd3b857935d8893461cd.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60005,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60005_g0p6_rbm_2_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/683ca74fdad5cbfc9898ac5b.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60001,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60001_g0p6_rbm_2_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/694b96715c9bbc02afde361d.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60000_g0p65_jastrow_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/69afaed11a700a7956cf56f7.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60007,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60007_g0p6_jastrow_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/6d8a1592f43e8e9128565119.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60007,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60007_g0p6_rbm_2_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/6f226dbfa1639407b477ec68.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60005,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60005_g0p65_jastrow_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/6f64d0cec1347fadc3d39393.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60002,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60002_g0p6_jastrow_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/7162202a6d26a620c76e49aa.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60003,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60003_g0p6_rbm_2_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/86043bfd9fcfc217e78130a0.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60006,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60006_g0p6_jastrow_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/86cf7878679782fcda4bd463.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60006,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60006_g0p65_jastrow_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/8b949ff02c085d250c88eac6.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60002,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60002_g0p65_jastrow_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/906b22d94c9669a4cf6e72b6.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60006,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60006_g0p6_rbm_2_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/947d4acb247d4adc06b1b747.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60001,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60001_g0p65_jastrow_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/95bf0ff0ec35ec08a3603844.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60006,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60006_g0p65_jastrow_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/9792ac58a5d0dde5e5854c56.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60000,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60000_g0p65_jastrow_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/99fe95b0c24b87ac82de9995.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60007,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60007_g0p65_rbm_2_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/9c5b929c98a16a49a07d08d9.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60004,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60004_g0p65_rbm_2_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/a0bf178064e32831479adaba.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60004,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60004_g0p6_jastrow_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/a13dea36802dc88dcae14f60.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60004,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60004_g0p65_jastrow_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/a480f4d7d2716b624120c0bb.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60007,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60007_g0p6_jastrow_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/a993a961a13d482e88dabe83.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60005,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60005_g0p6_rbm_2_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/ba560ed39a44dd9f7af7e434.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60004,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60004_g0p65_rbm_2_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/ba659a87065499f7634ac1b7.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60004,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60004_g0p6_rbm_2_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/bc7927f5718fce7784b27f56.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60003,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60003_g0p65_jastrow_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/bd1f65aac17c30709b2e442e.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60003,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60003_g0p6_jastrow_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/c9e7e2eeceda27cacea3e5f4.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60007,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60007_g0p65_jastrow_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/d72295e389d3792a85eedef6.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60004,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60004_g0p6_rbm_2_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/dcf2d07a3a7e9392c457a19d.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60001,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60001_g0p6_jastrow_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/e21998e9099fd6ba0e94cb11.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60000_g0p65_rbm_2_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/e281193b24a831c71aa997f0.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60007,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60007_g0p65_rbm_2_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/e59cb415a8130d82cc0fb359.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60000,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60000_g0p65_rbm_2_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/e68ca722939f90e9e5c8482c.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60005,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60005_g0p65_rbm_2_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/f0b1381b54bc2ec417ff089a.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60004,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60004_g0p65_jastrow_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/f19c53cfeb97e67b866961f4.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60005,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60005_g0p65_rbm_2_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/f37919922e8894e74ac76415.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60002,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60002_g0p65_jastrow_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/f3917ffad5b81dc616e43e7d.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60007,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60007_g0p65_jastrow_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/f5a0bd0b1ec50a87cdcf80f2.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60001,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60001_g0p65_rbm_2_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/fb144d22a3bb6647d083a281.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.6,
+        "sample_id": 60007,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60007_g0p6_rbm_2_anneal_seed1.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/fc88a9b5286d0d29a64e1be1.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60002,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60002_g0p65_rbm_2_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/fd23018ac4dee73e03625b18.json"
+    },
+    {
+      "task": {
+        "L": 4,
+        "gamma": 0.65,
+        "sample_id": 60006,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/disorder-scaling-20261103-v1/results/training/L4_s60006_g0p65_rbm_2_anneal_seed0.pt",
+      "original": "/root/autodl-tmp/disorder-scaling-20261103-v1/preliminary_notebook_bundle/data/kagome/ltfim_disorder_scaling_v1/notebook_snapshot/20261103T021444Z/projector/runs/fe2c306a300fcd7863fbd2bb.json"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50000,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50000_g0p65_h0p15_jastrow_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50000,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50000_g0p65_h0p15_jastrow_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50000,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50000_g0p65_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50000,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50000_g0p65_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50000,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50000_g0p6_h0p15_jastrow_seed0.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50000,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50000_g0p6_h0p15_jastrow_seed0.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50000,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50000_g0p6_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50000,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50000_g0p6_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50001,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50001_g0p65_h0p15_jastrow_seed0.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50001,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50001_g0p65_h0p15_jastrow_seed0.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50001,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50001_g0p65_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50001,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50001_g0p65_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50001,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50001_g0p6_h0p15_jastrow_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50001,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50001_g0p6_h0p15_jastrow_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50001,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50001_g0p6_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50001,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50001_g0p6_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50002,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50002_g0p65_h0p15_jastrow_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50002,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50002_g0p65_h0p15_jastrow_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50002,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50002_g0p65_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50002,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50002_g0p65_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50002,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50002_g0p6_h0p15_jastrow_seed0.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50002,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50002_g0p6_h0p15_jastrow_seed0.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50002,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50002_g0p6_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50002,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50002_g0p6_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50003,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50003_g0p65_h0p15_jastrow_seed0.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50003,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50003_g0p65_h0p15_jastrow_seed0.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50003,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50003_g0p65_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50003,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50003_g0p65_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50003,
+        "kind": "jastrow",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50003_g0p6_h0p15_jastrow_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50003,
+        "kind": "jastrow",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50003_g0p6_h0p15_jastrow_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50003,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50003_g0p6_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50003,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50003_g0p6_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50004,
+        "kind": "jastrow",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50004_g0p65_h0p15_jastrow_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50004,
+        "kind": "jastrow",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50004_g0p65_h0p15_jastrow_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50004,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50004_g0p65_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50004,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50004_g0p65_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50004,
+        "kind": "jastrow",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50004_g0p6_h0p15_jastrow_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50004,
+        "kind": "jastrow",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50004_g0p6_h0p15_jastrow_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50004,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50004_g0p6_h0p15_rbm_2_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50004,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50004_g0p6_h0p15_rbm_2_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50005,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50005_g0p65_h0p15_jastrow_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50005,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50005_g0p65_h0p15_jastrow_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50005,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50005_g0p65_h0p15_rbm_2_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50005,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50005_g0p65_h0p15_rbm_2_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50005,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50005_g0p6_h0p15_jastrow_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50005,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50005_g0p6_h0p15_jastrow_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50005,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50005_g0p6_h0p15_rbm_2_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50005,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50005_g0p6_h0p15_rbm_2_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50006,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50006_g0p65_h0p15_jastrow_seed0.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50006,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50006_g0p65_h0p15_jastrow_seed0.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50006,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50006_g0p65_h0p15_rbm_2_seed0.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50006,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50006_g0p65_h0p15_rbm_2_seed0.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50006,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50006_g0p6_h0p15_jastrow_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50006,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50006_g0p6_h0p15_jastrow_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50006,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50006_g0p6_h0p15_rbm_2_seed0.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50006,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50006_g0p6_h0p15_rbm_2_seed0.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50007,
+        "kind": "jastrow",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50007_g0p65_h0p15_jastrow_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50007,
+        "kind": "jastrow",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50007_g0p65_h0p15_jastrow_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50007,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50007_g0p65_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50007,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50007_g0p65_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50007,
+        "kind": "jastrow",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50007_g0p6_h0p15_jastrow_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50007,
+        "kind": "jastrow",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50007_g0p6_h0p15_jastrow_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50007,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50007_g0p6_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50007,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 1
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50007_g0p6_h0p15_rbm_2_seed2.pt"
+    }
+  ],
+  "guide_specs": [
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50000,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50000_g0p65_h0p15_jastrow_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50000,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50000_g0p65_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50000,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50000_g0p6_h0p15_jastrow_seed0.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50000,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50000_g0p6_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50001,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50001_g0p65_h0p15_jastrow_seed0.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50001,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50001_g0p65_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50001,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50001_g0p6_h0p15_jastrow_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50001,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50001_g0p6_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50002,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50002_g0p65_h0p15_jastrow_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50002,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50002_g0p65_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50002,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50002_g0p6_h0p15_jastrow_seed0.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50002,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50002_g0p6_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50003,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50003_g0p65_h0p15_jastrow_seed0.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50003,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50003_g0p65_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50003,
+        "kind": "jastrow",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50003_g0p6_h0p15_jastrow_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50003,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50003_g0p6_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50004,
+        "kind": "jastrow",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50004_g0p65_h0p15_jastrow_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50004,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50004_g0p65_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50004,
+        "kind": "jastrow",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50004_g0p6_h0p15_jastrow_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50004,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50004_g0p6_h0p15_rbm_2_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50005,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50005_g0p65_h0p15_jastrow_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50005,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50005_g0p65_h0p15_rbm_2_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50005,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50005_g0p6_h0p15_jastrow_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50005,
+        "kind": "rbm_2",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50005_g0p6_h0p15_rbm_2_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50006,
+        "kind": "jastrow",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50006_g0p65_h0p15_jastrow_seed0.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50006,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50006_g0p65_h0p15_rbm_2_seed0.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50006,
+        "kind": "jastrow",
+        "training_seed": 1,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50006_g0p6_h0p15_jastrow_seed1.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50006,
+        "kind": "rbm_2",
+        "training_seed": 0,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50006_g0p6_h0p15_rbm_2_seed0.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50007,
+        "kind": "jastrow",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50007_g0p65_h0p15_jastrow_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.65,
+        "sample_id": 50007,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50007_g0p65_h0p15_rbm_2_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50007,
+        "kind": "jastrow",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50007_g0p6_h0p15_jastrow_seed2.pt"
+    },
+    {
+      "task": {
+        "L": 2,
+        "gamma": 0.6,
+        "sample_id": 50007,
+        "kind": "rbm_2",
+        "training_seed": 2,
+        "audit": "main",
+        "walkers": 512,
+        "equil": 16.0,
+        "forward": 16.0,
+        "start": "guide",
+        "delta": 0.1,
+        "cycles": 8,
+        "repeat": 0
+      },
+      "model": "/root/autodl-tmp/simple-guides-20261103-v1/data/kagome/ltfim_simple_overlap_v1/scan/L2_s50007_g0p6_h0p15_rbm_2_seed2.pt"
+    }
+  ],
+  "estimator": "Four independently branching populations; pool equal forward cycles, histogram all cross-population weighted pairs; average six population pairs, two repeats, then eight disorders equally.",
+  "L4": "Deterministic replay; q, q2 and spectra must agree with frozen production to 1e-12.",
+  "L2": "Selected full-basis energy-trained guides; before: actual parallel-tempering MCMC; after: CT GFMC, 512 walkers/population, equil=forward=16, eight cycles, two repeats.",
+  "uncertainty": "Capped one-standard-error bars across eight disorder means; exclude mixing and projection-bias bounds."
+}

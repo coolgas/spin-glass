@@ -1,0 +1,7 @@
+{
+  "remote_root": "/root/autodl-tmp/transformer-af-production-20261027-v1",
+  "checkpoint": "/root/autodl-tmp/transformer-af-ltfim-20261026-shared-symmetric-v2-main/results/shared_symmetric_alibi__L02-04-06-08__seed501__final.pt",
+  "baseline": "/root/autodl-tmp/transformer-af-ltfim-20261027-disorder-gfmc-v1/results",
+  "stage": "qualification",
+  "final_data_started": false
+}

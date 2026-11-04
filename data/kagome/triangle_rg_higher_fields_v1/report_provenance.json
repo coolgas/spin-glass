@@ -1,0 +1,5 @@
+{
+  "source": "report_source.py",
+  "sha256": "750e88e92f3af3564cbc12bbf2b2577fe7c8336a2902c1481e1e715053d5bc64",
+  "note": "Post-campaign report adds raw-sample and moment validation; launch code preserved in source_snapshot.tar.gz"
+}

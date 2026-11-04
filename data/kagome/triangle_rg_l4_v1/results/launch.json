@@ -1,0 +1,13 @@
+{
+  "created": 1793775256.385783,
+  "platform": "Linux-5.15.0-140-generic-x86_64-with-glibc2.35",
+  "numpy": "2.4.6",
+  "sources": {
+    "triangle_effective_benchmark.py": "e4b2f24d1d7091f3230f76e1bbf8a15bf88aa885eff7364b1b207f7f9b122d1f",
+    "triangle_effective_rg.py": "a5b2b5fcf78c27b90206dc5e0548a1ca8e020c96d84f2e61e21a4c26bbc3fc33"
+  },
+  "threads": "1",
+  "scope": "validation then diagnostic L4 retention ladder; no L6",
+  "baseline": "/root/autodl-tmp/l4-production-20261103-v1/results",
+  "draws": 16384
+}

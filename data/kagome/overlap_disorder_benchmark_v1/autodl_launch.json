@@ -1,0 +1,8 @@
+{
+  "pid": 53672,
+  "started_unix": 1793350220.1574585,
+  "root": "/root/autodl-tmp/overlap-disorder-benchmark-20261030-v1",
+  "host": "autodl-container-092840bd03-412aa263",
+  "python": "/root/miniconda3/envs/yjye_project_env/bin/python",
+  "expected_runs": 160
+}

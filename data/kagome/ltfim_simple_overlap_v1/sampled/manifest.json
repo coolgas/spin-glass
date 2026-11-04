@@ -1,0 +1,25 @@
+{
+  "fields": [
+    0.5,
+    0.6,
+    0.7,
+    0.75
+  ],
+  "sizes": [
+    2,
+    4
+  ],
+  "seeds": 2,
+  "disorder": 50043,
+  "updates_per_fit": 1200,
+  "chains": 256,
+  "temperatures": 8,
+  "diagnostic_sweeps": 200,
+  "sources": {
+    "sampled_overlap_scan.py": "f8ffb8ecf07fb9a3206d44753854ab717d168fc1d0dd67f29026a606aab35011",
+    "sampled_simple_guides.py": "b7580fd9e6402f1b989db9920536391ff37dbf53a79827a805e9c53b95d81c0d",
+    "simple_guides.py": "b586ac97f7612fb411b11d50365a013af242071e34577af6199cd8a6c474d418",
+    "physics.py": "9ce8568f1d3f74701abc8b993ca4b1296fd38b69e5c10b18c60b9170529bd4d9"
+  },
+  "scope": "Difficult-disorder diagnostic, equal update budgets; no ensemble or phase qualification"
+}

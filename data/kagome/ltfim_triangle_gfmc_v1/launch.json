@@ -1,0 +1,24 @@
+{
+  "pid": 284305,
+  "command": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "-m",
+    "transformer_qmc.triangle_campaign",
+    "--output",
+    "/root/autodl-tmp/triangle-gfmc-20261103-v1/results",
+    "--inputs",
+    "/root/autodl-tmp/expanded-correlation-20261102T072808Z/results",
+    "--baseline",
+    "/root/autodl-tmp/collective-gfmc-20261103-v1/overnight-results/references.json",
+    "--wait-lock",
+    "/root/autodl-tmp/collective-gfmc-20261103-v1/overnight-results/controller.lock",
+    "--workers",
+    "18",
+    "--hours",
+    "6"
+  ],
+  "launched_unix": 1793637179.132439,
+  "validation": "10 tests passed remotely",
+  "scope": "384 matched L2 runs; six-hour sampling budget after primary lock"
+}

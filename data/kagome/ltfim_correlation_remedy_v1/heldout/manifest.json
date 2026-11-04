@@ -1,0 +1,53 @@
+{
+  "sample_ids": [
+    50016,
+    50017,
+    50018,
+    50019,
+    50020,
+    50021,
+    50022,
+    50023
+  ],
+  "gamma": [
+    0.25,
+    0.5,
+    0.75
+  ],
+  "settings": {
+    "base": {
+      "n_walkers": 1024,
+      "tau_block": 0.1,
+      "n_equilibrate": 160,
+      "n_measure": 10,
+      "tau_forward": 16.0,
+      "n_cycles": 16,
+      "start": "guide"
+    },
+    "time": {
+      "n_walkers": 1024,
+      "tau_block": 0.1,
+      "n_equilibrate": 320,
+      "n_measure": 10,
+      "tau_forward": 32.0,
+      "n_cycles": 16,
+      "start": "guide"
+    }
+  },
+  "degree": 4,
+  "maxiter": 2000,
+  "exact_labels_used": false,
+  "checkpoint_sha256": "5f9fa33b04102ddff2e43179440514021090ed3aaf228ce67dce53c2139e2544",
+  "selection": "Fixed recipe; disorders excluded from eight-disorder development ensemble",
+  "source_sha256": {
+    "validate_correlation_remedy.py": "7b008dd329a749aa9ce16e80e5c8acb2bc65ccb3a414e4cc0a97911ec1de44a0",
+    "refine_correlation_guide.py": "5f90371f24ab41daec5ec6f491156b778e5341353afa902b995889dd93a4cf7b",
+    "independent_replica_projector.py": "96d187249acb4c84bdd1e82cc0e9e73ffcccc3cb0d5877c935beccf55428a07e",
+    "correlation_remedy_campaign.py": "46198e899e132370378580c8d9db0bb45984f10bd4b8d1e70cff22762b50a02b",
+    "projector.py": "d02426e30016556814515a7887b76fea47a3fd3c15744581b2b3e08842aee47a",
+    "model.py": "077a03140f2fccfe38e6dbf5cb57645788156337fe45f71fb835909faab290ab",
+    "physics.py": "9ce8568f1d3f74701abc8b993ca4b1296fd38b69e5c10b18c60b9170529bd4d9",
+    "production_protocol.py": "03e8de1c6e7d6564770a5f2b37f1c50247485c2cc3e2e9f6d2e8379fe9d65eb5",
+    "frozen_scan.py": "b396ee2c6f59166e43dbf84cbb211ec82100e310277630ca001e164f2c895635"
+  }
+}

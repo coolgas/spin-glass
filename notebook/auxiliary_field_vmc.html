@@ -7796,7 +7796,7 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=49680923">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c7865112">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7810,11 +7810,11 @@ after the steering field has been removed?</p>
 All numerical budgets, reference-selection rules and schedules below are
 <strong>proposed defaults</strong>, ready for discussion. Executing this notebook checks
 and displays the design; it does not run classical search, VMC or GFMC.</p>
-<h2 id="Fixed-physical-problem">Fixed physical problem<a class="anchor-link" href="#Fixed-physical-problem">¶</a></h2><p>[
+<h2 id="Fixed-physical-problem">Fixed physical problem<a class="anchor-link" href="#Fixed-physical-problem">¶</a></h2><p>$$
 H_0=\sum_{\langle ij\rangle}K_{ij}Z_iZ_j
 -0.15\sum_i Z_i-0.6\sum_i X_i,
 \qquad N=3(6)^2=108,\quad K_{ij}\sim U(0.5,1.5).
-]</p>
+$$</p>
 <p>Use disorder IDs 60000 and 60001, training seeds 0 and 1, regular kagome
 connectivity, periodic in both cell directions. Stored couplings use <code>J=-K</code>.
 The existing disorder stream is
@@ -7824,21 +7824,21 @@ are insufficient provenance. This is bond disorder on regular kagome.</p>
 <p>An eventual amorphous OBC study requires its own graph definition and matched
 Hamiltonians across solvers. Changing the current generator's boundary flag
 also changes its coupling stream. This pilot makes no OBC/PBC scaling claim.</p>
-<h2 id="Auxiliary-term-and-what-it-guarantees">Auxiliary term and what it guarantees<a class="anchor-link" href="#Auxiliary-term-and-what-it-guarantees">¶</a></h2><p>For a fixed candidate reference $s^\star_i\in\{-1,+1\}$, use
-[
+<h2 id="Auxiliary-term-and-what-it-guarantees">Auxiliary term and what it guarantees<a class="anchor-link" href="#Auxiliary-term-and-what-it-guarantees">¶</a></h2><p>For a fixed candidate reference $s^\star_i\in\{-1,+1\}$, use</p>
+<p>$$
 D_\star=\frac12\sum_i(1-s_i^\star Z_i),\qquad
 H_\epsilon=H_0+\epsilon D_\star.
-]
-Here <strong>$\epsilon$ is energy per mismatched spin</strong>, so the added longitudinal
+$$</p>
+<p>Here <strong>$\epsilon$ is energy per mismatched spin</strong>, so the added longitudinal
 field coefficient is $\epsilon/2$ and the constant is $\epsilon N/2$.
 Retain the constant in recorded training energies.
-For a classical configuration $s$,
-[
-E^{\rm cl}<em>\epsilon(s)-E^{\rm cl}</em>\epsilon(s^\star)
-=E^{\rm cl}<em>0(s)-E^{\rm cl}_0(s^\star)+\epsilon d_H(s,s^\star),
-\qquad q</em>\star=1-2d_H/N.
-]
-At $\epsilon=0.2$, a competitor differing on 40 sites receives an additional
+For a classical configuration $s$,</p>
+<p>$$
+E^{\rm cl}_\epsilon(s)-E^{\rm cl}_\epsilon(s^\star)
+=E^{\rm cl}_0(s)-E^{\rm cl}_0(s^\star)+\epsilon d_H(s,s^\star),
+\qquad q_\star=1-2d_H/N.
+$$</p>
+<p>At $\epsilon=0.2$, a competitor differing on 40 sites receives an additional
 energy penalty of 8. The operator norm of the perturbation is $\epsilon N$;
 a small coefficient compared with a bond can still strongly alter the state.</p>
 <p>The finite system already has a unique ground state at $\Gamma&gt;0$ by
@@ -7851,7 +7851,7 @@ original-Hamiltonian projection after release. Neither is guaranteed.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=201e0284">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4a3ed0c8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7895,7 +7895,7 @@ $-s^\star$ and uniform starts in later sampling diagnostics.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6b9763ba">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=79e38dc2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7904,7 +7904,7 @@ $-s^\star$ and uniform starts in later sampling diagnostics.</p>
 <h2 id="Matched-VMC-comparison">Matched VMC comparison<a class="anchor-link" href="#Matched-VMC-comparison">¶</a></h2><p>Use the existing positive real RBM with $\alpha=2$, float64, Adam with
 learning rate $10^{-3}$ and gradient-norm cap 1. Use 128 chains per temperature,
 16 temperatures with the existing linear $\beta\in[0,1]$ ladder, and 10
-tempered sweeps per update. These chains sample $|\psi|^{2\beta}$; their
+tempered sweeps per update. These chains sample $\lvert\psi\rvert^{2\beta}$; their
 temperature is distinct from the classical-search temperature above.</p>
 <p>For each disorder/seed, reuse its existing shared $\Gamma=4$, 400-update VMC
 checkpoint only after checking its Hamiltonian, architecture and training
@@ -7964,12 +7964,12 @@ Thus any improvement competes against spending the same budget directly on
 the target. Save release checkpoints after 0, 400 and 800 zero-pinning updates
 (updates 1600, 2000 and 2400) to expose refinement dependence. A later extra
 target-training extension must apply equally to the baseline and release arms.</p>
-<p>For every sampled configuration, compute
-[
-E_{L,0}(s)=E^{\rm cl}<em>0(s)-\Gamma\sum_i\frac{\psi(s^{(i)})}{\psi(s)},
-\qquad E</em>{L,\epsilon}(s)=E_{L,0}(s)+\epsilon d_H(s,s^\star).
-]
-The VMC gradient uses the covariance of $\nabla\log\psi$ with the <strong>training</strong>
+<p>For every sampled configuration, compute</p>
+<p>$$
+E_{L,0}(s)=E^{\rm cl}_0(s)-\Gamma\sum_i\frac{\psi(s^{(i)})}{\psi(s)},
+\qquad E_{L,\epsilon}(s)=E_{L,0}(s)+\epsilon d_H(s,s^\star).
+$$</p>
+<p>The VMC gradient uses the covariance of $\nabla\log\psi$ with the <strong>training</strong>
 local energy; record both training and target energy/variance on the same
 states. The existing detached-local-energy covariance loss can be reused.
 Pinning does not change the flip ratios or the sampling distribution for fixed
@@ -7981,7 +7981,7 @@ Matched update counts do not imply identical wall time; record both.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2141f9a6">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=49d5b927">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8076,7 +8076,7 @@ Design checks passed; no scientific computation launched.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3a1e77dd">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d29ed28b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8115,7 +8115,7 @@ Design checks passed; no scientific computation launched.
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ae245d84">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9e972393">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8147,25 +8147,48 @@ screen. Use fresh populations and measurement streams; save their starts.
 No auxiliary term, adaptation or likelihood-feedback stage enters this screen.
 Any optional projection with nonzero pinning is a separately labeled study.</p>
 <p>Reconstruct pure diagonal statistics using the validated forward-walking
-estimator. Pair independently generated replicas/populations to form
-[
+estimator. Pair independently generated replicas/populations to form</p>
+<p>$$
 q=\frac1N\sum_i s_i^{(a)}s_i^{(b)},\quad P(q),\quad \langle q^2\rangle,
 \qquad C_{ij}=\langle Z_iZ_j\rangle-\langle Z_i\rangle\langle Z_j\rangle.
-]
-Do not substitute the guide's Born samples or the mixed GFMC distribution for
+$$</p>
+<p>Do not substitute the guide's Born samples or the mixed GFMC distribution for
 the target ground-state distribution. Preserve per-cycle raw tags, descendant
 counts, spins, weights, mixed/growth energies and estimator normalization.
 Use the existing connected-spectrum definition and record its normalization.
 The exact overlap grid is $q_k=-1+2k/N$ with $k=0,\ldots,N$; compare probability
 masses on this shared grid without smoothing.</p>
 <p>Screening alarms and repeat discrepancies retain the existing conventions:</p>
-<p>| Diagnostic | Proposed screening threshold |
-|---|---|
-| Descendant genealogy | alarm if ESS &lt; 8 or largest lineage &gt; 0.5 in any island/cycle |
-| Energy per site, repeat absolute difference | 0.001 |
-| $\langle q^2\rangle$, repeat absolute difference | 0.01 |
-| $P(q)$ total variation, $\frac12\sum_k|p_k-p'_k|$ | 0.05 |
-| Connected-spectrum mode differences | $|c_k-c'_k|/\max(|c_k|,|c'_k|,0.001)\le0.10$ |</p>
+<table>
+<thead>
+<tr>
+<th>Diagnostic</th>
+<th>Proposed screening threshold</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Descendant genealogy</td>
+<td>alarm if ESS &lt; 8 or largest lineage &gt; 0.5 in any island/cycle</td>
+</tr>
+<tr>
+<td>Energy per site, repeat absolute difference</td>
+<td>0.001</td>
+</tr>
+<tr>
+<td>$\langle q^2\rangle$, repeat absolute difference</td>
+<td>0.01</td>
+</tr>
+<tr>
+<td>$P(q)$ total variation, $\frac12\sum_k\lvert p_k-p'_k\rvert$</td>
+<td>0.05</td>
+</tr>
+<tr>
+<td>Connected-spectrum mode differences</td>
+<td>$\lvert c_k-c'_k\rvert/\max(\lvert c_k\rvert,\lvert c'_k\rvert,0.001)\le0.10$</td>
+</tr>
+</tbody>
+</table>
 <p>Apply observable comparisons also across references and seeds within each
 disorder, reporting all discrepancies rather than only pass counts. These are
 diagnostic thresholds, not confidence intervals. Two repeats cannot establish
@@ -8181,7 +8204,7 @@ escalation equally across compared arms; this draft does not schedule it.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=34e1f070">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d855adbe">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>

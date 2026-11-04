@@ -22,11 +22,11 @@ and displays the design; it does not run classical search, VMC or GFMC.
 
 ## Fixed physical problem
 
-\[
+$$
 H_0=\sum_{\langle ij\rangle}K_{ij}Z_iZ_j
 -0.15\sum_i Z_i-0.6\sum_i X_i,
 \qquad N=3(6)^2=108,\quad K_{ij}\sim U(0.5,1.5).
-\]
+$$
 
 Use disorder IDs 60000 and 60001, training seeds 0 and 1, regular kagome
 connectivity, periodic in both cell directions. Stored couplings use `J=-K`.
@@ -42,19 +42,23 @@ also changes its coupling stream. This pilot makes no OBC/PBC scaling claim.
 ## Auxiliary term and what it guarantees
 
 For a fixed candidate reference $s^\star_i\in\{-1,+1\}$, use
-\[
+
+$$
 D_\star=\frac12\sum_i(1-s_i^\star Z_i),\qquad
 H_\epsilon=H_0+\epsilon D_\star.
-\]
+$$
+
 Here **$\epsilon$ is energy per mismatched spin**, so the added longitudinal
 field coefficient is $\epsilon/2$ and the constant is $\epsilon N/2$.
 Retain the constant in recorded training energies.
 For a classical configuration $s$,
-\[
+
+$$
 E^{\rm cl}_\epsilon(s)-E^{\rm cl}_\epsilon(s^\star)
 =E^{\rm cl}_0(s)-E^{\rm cl}_0(s^\star)+\epsilon d_H(s,s^\star),
 \qquad q_\star=1-2d_H/N.
-\]
+$$
+
 At $\epsilon=0.2$, a competitor differing on 40 sites receives an additional
 energy penalty of 8. The operator norm of the perturbation is $\epsilon N$;
 a small coefficient compared with a bond can still strongly alter the state.
@@ -112,7 +116,7 @@ TRAINING = r"""## Matched VMC comparison
 Use the existing positive real RBM with $\alpha=2$, float64, Adam with
 learning rate $10^{-3}$ and gradient-norm cap 1. Use 128 chains per temperature,
 16 temperatures with the existing linear $\beta\in[0,1]$ ladder, and 10
-tempered sweeps per update. These chains sample $|\psi|^{2\beta}$; their
+tempered sweeps per update. These chains sample $\lvert\psi\rvert^{2\beta}$; their
 temperature is distinct from the classical-search temperature above.
 
 For each disorder/seed, reuse its existing shared $\Gamma=4$, 400-update VMC
@@ -145,10 +149,12 @@ the target. Save release checkpoints after 0, 400 and 800 zero-pinning updates
 target-training extension must apply equally to the baseline and release arms.
 
 For every sampled configuration, compute
-\[
+
+$$
 E_{L,0}(s)=E^{\rm cl}_0(s)-\Gamma\sum_i\frac{\psi(s^{(i)})}{\psi(s)},
 \qquad E_{L,\epsilon}(s)=E_{L,0}(s)+\epsilon d_H(s,s^\star).
-\]
+$$
+
 The VMC gradient uses the covariance of $\nabla\log\psi$ with the **training**
 local energy; record both training and target energy/variance on the same
 states. The existing detached-local-energy covariance loss can be reused.
@@ -194,10 +200,12 @@ Any optional projection with nonzero pinning is a separately labeled study.
 
 Reconstruct pure diagonal statistics using the validated forward-walking
 estimator. Pair independently generated replicas/populations to form
-\[
+
+$$
 q=\frac1N\sum_i s_i^{(a)}s_i^{(b)},\quad P(q),\quad \langle q^2\rangle,
 \qquad C_{ij}=\langle Z_iZ_j\rangle-\langle Z_i\rangle\langle Z_j\rangle.
-\]
+$$
+
 Do not substitute the guide's Born samples or the mixed GFMC distribution for
 the target ground-state distribution. Preserve per-cycle raw tags, descendant
 counts, spins, weights, mixed/growth energies and estimator normalization.
@@ -212,8 +220,8 @@ Screening alarms and repeat discrepancies retain the existing conventions:
 | Descendant genealogy | alarm if ESS < 8 or largest lineage > 0.5 in any island/cycle |
 | Energy per site, repeat absolute difference | 0.001 |
 | $\langle q^2\rangle$, repeat absolute difference | 0.01 |
-| $P(q)$ total variation, $\frac12\sum_k|p_k-p'_k|$ | 0.05 |
-| Connected-spectrum mode differences | $|c_k-c'_k|/\max(|c_k|,|c'_k|,0.001)\le0.10$ |
+| $P(q)$ total variation, $\frac12\sum_k\lvert p_k-p'_k\rvert$ | 0.05 |
+| Connected-spectrum mode differences | $\lvert c_k-c'_k\rvert/\max(\lvert c_k\rvert,\lvert c'_k\rvert,0.001)\le0.10$ |
 
 Apply observable comparisons also across references and seeds within each
 disorder, reporting all discrepancies rather than only pass counts. These are

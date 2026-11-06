@@ -1,0 +1,19 @@
+{
+  "code_cells": 15,
+  "embedded_figures": 13,
+  "executed_utc": "2026-11-05T10:23:11.356219+00:00",
+  "execution_location": "AutoDL",
+  "evidence_sha256": "8e130f4b3fca7ccc8c53894c053616e0b9b4ba77288816781d0b97fc16b688a7",
+  "l4_evidence_sha256": "0233dc8672416e454abbfe61757678a354fb20f28b5f76f490b9842eadcd844a",
+  "generator_sha256": "430bf5817007c33fc77c7cdc11fcf4fb14c8e6f5b764c1890c31cecd64ca2234",
+  "error_count": 0,
+  "plot_peak_coverage_assertions_passed": true,
+  "notebook_sha256": "762c1c44c004af342921d7cb185f6716cd938d70267de0cfddd99330b48b06ce",
+  "local_fresh_kernel": true,
+  "training_dependencies_blocked": true,
+  "local_verified_utc": "2026-11-05T10:24:00.143329+00:00",
+  "notebook": "notebook/monte_carlo_failure_L6_glassy_diagnostics.ipynb",
+  "original_evidence_unchanged": true,
+  "generator_sources_match": true,
+  "markdown_control_character_check_passed": true
+}

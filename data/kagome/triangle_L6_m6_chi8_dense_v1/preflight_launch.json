@@ -1,0 +1,37 @@
+{
+  "utc": 1793852848.2952266,
+  "phase": "fallback_validation_and_profile",
+  "chi": 8,
+  "jobs": [
+    {
+      "name": "validation",
+      "pid": 553001,
+      "command": [
+        "/root/miniconda3/bin/python",
+        "-u",
+        "-m",
+        "transformer_qmc.triangle_correlation_highchi",
+        "--output",
+        "/root/autodl-tmp/triangle-L6-m6-c8-dense-20261105-v1/results",
+        "--mode",
+        "case",
+        "--backend",
+        "cpu",
+        "--task-json",
+        "{\"L\": 4, \"gamma\": 0.5, \"sample_id\": 60000, \"m\": 6, \"chi\": 8, \"validate\": true, \"qualify_overlap\": true}"
+      ]
+    },
+    {
+      "name": "profile",
+      "pid": 553002,
+      "command": [
+        "/root/miniconda3/bin/python",
+        "-u",
+        "-c",
+        "from pathlib import Path; from transformer_qmc.triangle_correlation_highchi import profile; profile(Path('/root/autodl-tmp/triangle-L6-m6-c8-dense-20261105-v1/results'),{'L': 6, 'gamma': 1.0, 'sample_id': 60003, 'm': 6, 'chi': 8, 'validate': False},\"cpu\",max_threads=4)"
+      ]
+    }
+  ],
+  "full_scan": "held_pending_selection",
+  "reason": "User authorizes chi8 if chi16 is not doable"
+}

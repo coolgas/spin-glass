@@ -1,0 +1,29 @@
+{
+  "pid": 299823,
+  "command": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "-m",
+    "transformer_qmc.parallel_disorder_scaling",
+    "--output",
+    "results",
+    "--trainers",
+    "2",
+    "--workers",
+    "2",
+    "--deadline-unix",
+    "1793710777.5076935"
+  ],
+  "trainers": 2,
+  "cpu_projectors": 2,
+  "deadline_unix": 1793710777.5076935,
+  "h": 0.15,
+  "fields": [
+    0.55,
+    0.56,
+    0.57,
+    0.58,
+    0.59
+  ],
+  "existing_comparison": 0.6
+}

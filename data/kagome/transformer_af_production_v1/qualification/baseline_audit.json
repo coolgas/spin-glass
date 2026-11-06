@@ -1,0 +1,11 @@
+{
+  "caches": 448,
+  "expected_caches": 448,
+  "populations": 7168,
+  "expected_populations": 7168,
+  "finite_forward": 448,
+  "source_snapshot_verified": true,
+  "complete": true,
+  "passed": true,
+  "checkpoint_sha256": "5f9fa33b04102ddff2e43179440514021090ed3aaf228ce67dce53c2139e2544"
+}

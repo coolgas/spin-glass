@@ -1,0 +1,9 @@
+setting,W,tau_eq,tau_measure,tau_forward,cycles,branch,initial
+combined,128,0.16,0.32,0.16,4,0.01,guide
+alternative_start,64,0.08,0.16,0.08,2,0.02,uniform
+population128,128,0.04,0.08,0.04,2,0.02,guide
+population64,64,0.04,0.08,0.04,2,0.02,guide
+cadence,64,0.08,0.16,0.08,2,0.01,guide
+time2,64,0.08,0.16,0.08,2,0.02,guide
+time4,64,0.16,0.32,0.16,2,0.02,guide
+base,32,0.04,0.08,0.04,2,0.02,guide

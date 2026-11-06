@@ -1,0 +1,45 @@
+{
+  "utc": "2026-11-05T03:32:27.533515+00:00",
+  "source_sha256": "1ac1d78f8530d5402c61bf8c28e604e5ccc0eab78a9a0fa021ab4a3bd3bef73f",
+  "dependency_sha256": {
+    "triangle_overlap_report.py": "3e8d2518008dbd0b93d6818f78f61315a2534ef39a3cbcdeea6d92a8fe6885ca",
+    "triangle_correlation_observables.py": "c85a182feaa279fb53cb02bfbc860500505ab761b413489ccbec5a75c00fff2c"
+  },
+  "bootstrap_sha256": "db6c1003713822d977c0e2d6ff78507cded16429577d3038141cc130238aa688",
+  "files": {
+    "triangle_overlap_available.ipynb": {
+      "bytes": 1164573,
+      "sha256": "18248f6c975898a01b3f66fdb710be6ceed963d242c949d4db7663313191c50b"
+    },
+    "brief.json": {
+      "bytes": 2541,
+      "sha256": "1e89b346d48094335ed291a33bc71522d29d855b7c9405c87781b518119337b7"
+    },
+    "requested_individual_curves.png": {
+      "bytes": 265063,
+      "sha256": "45ec19a040b12679922cfbc5e0fc465a4d9927f51587e69b206df0dcbafaf426"
+    },
+    "paired_retention_shifts.png": {
+      "bytes": 115126,
+      "sha256": "41fb6e245f19b4be5c7bccc2d0cec86b5f6c002bf1337acb88520fb61f2815da"
+    },
+    "requested_two_disorder_means.png": {
+      "bytes": 121351,
+      "sha256": "7e27fa671b7913dae1a81d6fc70b272b3d700399b98459a560e6f7b9efd17caf"
+    },
+    "existing_L6_eight_disorder_scan.png": {
+      "bytes": 109207,
+      "sha256": "2361ac040bd7fe5fc3e6c409ce87b0e8e97e14014d0f5761cfb9545d1faa6702"
+    },
+    "existing_L8_retention.png": {
+      "bytes": 256568,
+      "sha256": "66f67be379c6826cb3fd001b2c4494ec9cab12b95cf43effcf00c2c6e3b7617d"
+    }
+  },
+  "roots": [
+    "/root/autodl-tmp/triangle-overlap-dense-scan-20261105-v1/results",
+    "/root/autodl-tmp/triangle-correlation-retention-20261105-v6/results",
+    "/root/autodl-tmp/triangle-correlation-highchi-20261105-v7/results"
+  ],
+  "previous_cases_sha256": "18bc93dd8d3712eef8e9a187bb8a7bb19d5d6fddfa612d689024f5073372b621"
+}

@@ -1,0 +1,40 @@
+{
+  "code_cells": 16,
+  "embedded_figures": 14,
+  "executed_utc": "2026-11-05T11:15:53.136203+00:00",
+  "execution_location": "AutoDL",
+  "error_count": 0,
+  "evidence_sha256": "8e130f4b3fca7ccc8c53894c053616e0b9b4ba77288816781d0b97fc16b688a7",
+  "l4_evidence_sha256": "2a61f0bac1e62a5a95973a78f76771a95d37b29bc2c5d160b9c38aafb3828762",
+  "generator_sha256": "5810b43404e913c7d477546408713e02d5b1eaaf3ca58adeb79c31bf9d2c6d01",
+  "l4_runs": 8,
+  "new_seed1_projections": 4,
+  "plot_peak_coverage_assertions_passed": true,
+  "all_l4_histogram_bins_reconstructed": true,
+  "notebook_sha256": "48c41e6317397d758bcfbdae87c65eb50a9ebff56883289076c5db9c6a971649",
+  "local_fresh_kernel": true,
+  "training_dependencies_blocked": true,
+  "local_verified_utc": "2026-11-05T11:16:34.667493+00:00",
+  "generator_sources_match": true,
+  "original_evidence_unchanged": true,
+  "seed0_supplement_unchanged": true,
+  "only_planned_cells_modified": true,
+  "notebook": "notebook/monte_carlo_failure_L6_glassy_diagnostics.ipynb",
+  "l4_figures_visually_reviewed": true,
+  "all_eight_l4_curves_visible": true,
+  "previous_execution_notebook_sha256": "65501f2e997eb9c6a19c397bf34aca14bc247e8f703767a8ff543e72b9cfff16",
+  "interpretation_revision": {
+    "revised_utc": "2026-11-05T11:21:51.974698+00:00",
+    "previous_notebook_sha256": "65501f2e997eb9c6a19c397bf34aca14bc247e8f703767a8ff543e72b9cfff16",
+    "changed_cells": [
+      0,
+      18,
+      31,
+      33
+    ],
+    "change_type": "Markdown-only interpretation update; executed code and outputs unchanged",
+    "conclusion": "L4 disorder60000 unreliable at tested budget; neither seed established correct",
+    "generator_sha256": "5810b43404e913c7d477546408713e02d5b1eaaf3ca58adeb79c31bf9d2c6d01"
+  },
+  "executed_code_and_outputs_unchanged": true
+}

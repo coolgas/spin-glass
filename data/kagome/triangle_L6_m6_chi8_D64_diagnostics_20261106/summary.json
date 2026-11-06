@@ -1,0 +1,48 @@
+{
+  "cases": 456,
+  "records": 1824,
+  "comparisons": 1368,
+  "solver_passed": 111,
+  "solver_failed": 345,
+  "ladder_failed": 334,
+  "starts_failed": 22,
+  "gate_failure_cases": {
+    "energy": 345,
+    "spectrum": 209,
+    "q": 184,
+    "q2": 153,
+    "connected": 208,
+    "R": 136,
+    "last_energy": 73,
+    "canonical": 0,
+    "truncation": 228,
+    "prior_truncation": 250
+  },
+  "q_only_pass": 272,
+  "q_and_q2_pass": 271,
+  "overlap_only_pass": 242,
+  "full_fail_but_q_pass": 161,
+  "full_fail_but_overlap_pass": 131,
+  "source_sha256": {
+    "triangle_effective_mps.py": "a5d092b8525fa6c5215715711a432195903cd5161b2a04efe444a7dcdf262354",
+    "triangle_correlation_observables.py": "c85a182feaa279fb53cb02bfbc860500505ab761b413489ccbec5a75c00fff2c",
+    "triangle_l6_chi8_dense.py": "34f641c791ddf5d083945c6b7d3bc3eccf1d510561dd342041fe023f8bc3195f",
+    "triangle_effective_rg.py": "907c95ac92296cc21a511bbafbf27a2512c6e5e0359faf4c2d32b469050f7d1a",
+    "triangle_correlation_dmrg.py": "4098e68bf9af5c8753536721057625df2afe3f538c5e69cc8a8e186efaa709ce",
+    "triangle_overlap_report.py": "3e8d2518008dbd0b93d6818f78f61315a2534ef39a3cbcdeea6d92a8fe6885ca"
+  },
+  "disorder_sha256": {
+    "60000": "05a2863b69bd9a51863545f19183282aff0d0c275e37075bd6b33b5f01eae681",
+    "60001": "b46d9ac2224d5836adf65eb72b4e45938b179e38d0a60f2e4e74821d50e645e7",
+    "60002": "7692b31a0d01288e32a4c47a4527aaf09ce63222c2772737921805e4ca9a52dd",
+    "60003": "b506202d566848f8a48800f189115fd3cc17dbcd366579ce5e06faba91a3eb1b",
+    "60004": "28f0b702c7c0145ab9713fb2d2fd215a5188e96d560894cac2b1cfbdf0198073",
+    "60005": "b9c625ec284af23d292c9b3f50885f54f298a44c78a970506fbcc64b08c3c661",
+    "60006": "a728ff51419d7c3bd221a94bc1b539fe87b7a0be07ab56f83daf38a50be70d5c",
+    "60007": "674c99952d2e5f76db43d07d3db4da11cdef48fb16169a28794462c61582b0ff"
+  },
+  "archive_sha256": "89d0de7415e5463a202d2a5208853fad155298715f27f0de2b4b8da35801c10d",
+  "verified_utc": "2026-11-05T23:42:12.030874+00:00",
+  "remote_root": "/root/autodl-tmp/triangle-L6-m6-c8-D64-dense-20261105-v1",
+  "interpretation": "Finite D32-to-D64 sensitivity and start agreement; not proof of asymptotic nonconvergence or physical retention convergence."
+}

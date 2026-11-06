@@ -1,0 +1,260 @@
+{
+  "provenance_and_structure_passed": true,
+  "signature": "20c9397c89db176c2cd9f66056c0400bad7f9df4f2e346cd0c5097710d087a95",
+  "completed": 11267,
+  "expected": 27328,
+  "completed_by_size": {
+    "5": 1162,
+    "2": 3136,
+    "4": 1162,
+    "8": 1162,
+    "7": 1162,
+    "10": 1160,
+    "6": 1162,
+    "9": 1161
+  },
+  "completed_by_stage": {
+    "feasibility_ladder": 7056,
+    "precision_ensemble": 3136,
+    "direct_feasibility": 1075
+  },
+  "ancestry_alarms_by_size": {
+    "5": 306,
+    "2": 1,
+    "4": 196,
+    "8": 567,
+    "7": 477,
+    "10": 687,
+    "6": 382,
+    "9": 626
+  },
+  "completed_by_method": {
+    "constant": 8064,
+    "lookup_direct": 3136,
+    "network": 67
+  },
+  "network_completed_by_size": {
+    "6": 10,
+    "4": 10,
+    "10": 8,
+    "8": 10,
+    "7": 10,
+    "5": 10,
+    "9": 9
+  },
+  "constant_completed_by_size": {
+    "5": 1152,
+    "4": 1152,
+    "8": 1152,
+    "7": 1152,
+    "10": 1152,
+    "6": 1152,
+    "9": 1152
+  },
+  "direct_checks": 392,
+  "exact_references": 392,
+  "max_pointwise_relative_rate_difference": 5.3020140573325145e-06,
+  "max_exact_residual": 2.5969438897526673e-11,
+  "latest_result_unix": 1793082205.220522,
+  "supervisor": {
+    "state": "paused",
+    "error": null,
+    "pid": 817567,
+    "updated_unix": 1793082246.3719797,
+    "completed": 11267,
+    "expected": 27328,
+    "final_data_started": false,
+    "deadline_unix": 1793123207.218088,
+    "gpu_workers": 1,
+    "cpu_workers": 4
+  },
+  "throughput": {
+    "signature": "20c9397c89db176c2cd9f66056c0400bad7f9df4f2e346cd0c5097710d087a95",
+    "selected_workers": 1,
+    "results": [
+      {
+        "workers": 1,
+        "wall_seconds": 58.66751135699451,
+        "tasks": 8,
+        "tasks_per_second": 0.13636167301046112
+      },
+      {
+        "workers": 2,
+        "wall_seconds": 59.87177771516144,
+        "tasks": 8,
+        "tasks_per_second": 0.13361888197240124
+      },
+      {
+        "workers": 4,
+        "wall_seconds": 60.43294190056622,
+        "tasks": 8,
+        "tasks_per_second": 0.13237813266087323
+      }
+    ],
+    "interpretation": "Eight matched L10 tasks per wave, includes process/model setup; precision candidate only"
+  },
+  "final_data_started": false,
+  "notebook_stage_b": {
+    "signature": "555f5bd1d025773e8b191502a05393c7a8d1c1b1347f778ddaf2c04c860b317e",
+    "completed": 288,
+    "expected": 288,
+    "completed_by_method": {
+      "constant": 144,
+      "network": 144
+    },
+    "ancestry_alarms_by_method": {
+      "constant": 144,
+      "network": 87
+    },
+    "supervisor": {
+      "state": "awaiting_stage_b_cost_review",
+      "pid": 818159,
+      "updated_unix": 1793093023.7366247,
+      "started_unix": 1793082442.7197478,
+      "deadline_unix": 1793123207.218088,
+      "completed": 288,
+      "expected": 288,
+      "completed_by_method": {
+        "network": 144,
+        "constant": 144
+      },
+      "gpu_workers": 1,
+      "cpu_workers": 4,
+      "final_data_started": false,
+      "ground_state_qualified": false,
+      "active": [],
+      "error": null
+    },
+    "specification": {
+      "L": 4,
+      "n_sites": 48,
+      "periodic": true,
+      "development_ids": [
+        60000,
+        60001,
+        60002,
+        60003
+      ],
+      "gamma": [
+        0.5,
+        1.0,
+        2.0
+      ],
+      "h": [
+        0.0,
+        0.15,
+        0.3
+      ],
+      "repeats": 4,
+      "methods": [
+        "network",
+        "constant"
+      ],
+      "precision": "float64",
+      "parameters": {
+        "n_walkers": 64,
+        "n_replicas": 4,
+        "tau_block": 0.1,
+        "n_equilibrate": 20,
+        "n_measure": 10,
+        "tau_forward": 1.0,
+        "n_cycles": 4
+      }
+    },
+    "deadline_unix": 1793123207.218088,
+    "median_seconds_by_method": {
+      "constant": 0.41348632983863354,
+      "network": 45.2505694180727
+    },
+    "active_failures": [],
+    "provenance_and_structure_passed": true,
+    "final_data_started": false,
+    "ground_state_qualified": false
+  },
+  "notebook_stage_b_escalation": {
+    "signature": "0e910b5e5d6cfbe08460b7f5f45a37e0d34a8f928f8ae91958f730e37cccde7d",
+    "completed": 130,
+    "expected": 144,
+    "completed_by_method": {
+      "constant": 72,
+      "network": 58
+    },
+    "ancestry_alarms_by_method": {
+      "constant": 72,
+      "network": 8
+    },
+    "supervisor": {
+      "state": "running_notebook_stage_b_escalation",
+      "pid": 880636,
+      "updated_unix": 1793179510.3484957,
+      "started_unix": 1793150636.8924422,
+      "deadline_unix": 1793237036.8464184,
+      "completed": 130,
+      "expected": 144,
+      "completed_by_method": {
+        "network": 58,
+        "constant": 72
+      },
+      "gpu_workers": 1,
+      "cpu_workers": 4,
+      "final_data_started": false,
+      "ground_state_qualified": false,
+      "active": [
+        {
+          "id": "bb88e9604398d5eba725f30d",
+          "L": 4,
+          "gamma": 2.0,
+          "h": 0.0,
+          "method": "network",
+          "lane": "gpu"
+        }
+      ],
+      "error": null
+    },
+    "specification": {
+      "L": 4,
+      "disorders": [
+        60000
+      ],
+      "gamma": [
+        0.5,
+        2.0
+      ],
+      "h": [
+        0.0,
+        0.05
+      ],
+      "repeats": 4,
+      "rationale": "Prespecified low/high gamma cost and ancestry extremes; zero versus small nonzero h; first fixed development disorder. No selection by observable agreement."
+    },
+    "deadline_unix": 1793123207.218088,
+    "median_seconds_by_method": {
+      "constant": 3.5769435688853264,
+      "network": 412.3618139969185
+    },
+    "active_failures": [],
+    "provenance_and_structure_passed": true,
+    "final_data_started": false,
+    "ground_state_qualified": false
+  },
+  "precision_assessment": {
+    "state": "completed",
+    "contexts": 49,
+    "disorders": 8,
+    "repeats": 4,
+    "short_run_equivalence_passes": 40,
+    "comparisons": 147,
+    "production_precision_qualified": false,
+    "ground_state_qualified": false,
+    "interpretation": "Approximate paired-disorder 95% bounds at one short setting; inconclusive bounds require more repeats. No long-time or large-size precision claim.",
+    "script_sha256": "a800ec551145f3a3d3e5c62a9d0a868ea85901f9c501faf1d54d7a7a8579c75d",
+    "finite_forward_references": 784,
+    "short_run_equivalence_unresolved": 107
+  },
+  "active_failures": [],
+  "reviewed_failures": [
+    "reviewed_failures/scheduler_queue_collision/review.json"
+  ],
+  "gpu_recent_mean_percent": 97.43333333333334,
+  "audited_utc": "2026-10-28T09:25:51.086356+00:00"
+}

@@ -1,0 +1,9 @@
+{
+  "utc": 1793855768.2350526,
+  "L4_exact_replay_passed": true,
+  "low_field_replay_qualified": true,
+  "wrong_cap_rejected": true,
+  "validation_method": "Replay existing hash-verified exact and D32/D64 checkpoints through capped control flow",
+  "new_optimization_test": "First production workers execute missing stages with guarded cap",
+  "D64_archive_bytes": 8869998
+}

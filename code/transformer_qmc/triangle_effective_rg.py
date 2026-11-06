@@ -90,7 +90,8 @@ def triangles(ham, gamma, m, orientation=0, lam=1.):
                 zops=zops, operator=Operator([m]*len(sites), terms))
 
 
-def hierarchy(ham, gamma, m, chi, orientation=0, origin=(0, 0), lam=1.):
+def hierarchy(ham, gamma, m, chi, orientation=0, origin=(0, 0), lam=1.,
+              eigensolver='cpu'):
     L = int(round(np.sqrt(ham.n_sites/3)))
     if L % 2 or L < 4:
         raise ValueError('Superblock benchmark requires even L>=4')
@@ -132,8 +133,19 @@ def hierarchy(ham, gamma, m, chi, orientation=0, origin=(0, 0), lam=1.):
         local = Operator([m]*4, local_terms[b])
         # Internal matrices are at most 4096 square for m<=8.
         dense = local.dense()
-        values, vectors = canonical_eigh(dense)
-        W = vectors[:, :chi]
+        if eigensolver == 'cpu':
+            values, vectors = canonical_eigh(dense)
+        elif eigensolver == 'cuda':
+            import torch
+            tensor = torch.as_tensor(dense, dtype=torch.float64, device='cuda')
+            eigenvalues, eigenvectors = torch.linalg.eigh(tensor)
+            values, vectors = eigenvalues.cpu().numpy(), eigenvectors.cpu().numpy()
+            pivots = np.argmax(abs(vectors), axis=0)
+            vectors *= np.where(vectors[pivots, np.arange(len(values))] < 0, -1., 1.)
+            del tensor, eigenvalues, eigenvectors
+        else:
+            raise ValueError(f'Unknown eigensolver: {eigensolver}')
+        W = vectors[:, :chi].copy()
         retained.append(W); super_spectra.append(values)
         top_terms.append((1., [(b, np.diag(values[:chi]))]))
         decoder = W.reshape((m,)*4+(chi,))

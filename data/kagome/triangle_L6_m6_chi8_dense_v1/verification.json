@@ -1,0 +1,235 @@
+{
+  "utc": "2026-11-05T04:35:54Z",
+  "controller_pid": 553232,
+  "worker_pids": [
+    553075,
+    553076,
+    553290,
+    553291
+  ],
+  "workers": 4,
+  "threads": 16,
+  "status": {
+    "utc": 1793853346.4308922,
+    "state": "running",
+    "phase": "pilots",
+    "target": 456,
+    "completed": 0,
+    "qualified": 0,
+    "excluded": 0,
+    "running": {
+      "g1000_s60003": {
+        "task": {
+          "L": 6,
+          "gamma": 1.0,
+          "sample_id": 60003,
+          "m": 6,
+          "chi": 8,
+          "validate": false,
+          "qualify_overlap": true
+        },
+        "pid": 553075,
+        "command": [
+          "/root/miniconda3/bin/python",
+          "-u",
+          "-m",
+          "transformer_qmc.triangle_correlation_highchi",
+          "--output",
+          "/root/autodl-tmp/triangle-L6-m6-c8-dense-20261105-v1/results",
+          "--mode",
+          "case",
+          "--backend",
+          "cpu",
+          "--task-json",
+          "{\"L\": 6, \"gamma\": 1.0, \"sample_id\": 60003, \"m\": 6, \"chi\": 8, \"validate\": false, \"qualify_overlap\": true}"
+        ],
+        "threads": 4,
+        "memory_reservation_gib": 13.5
+      },
+      "g1500_s60000": {
+        "task": {
+          "L": 6,
+          "gamma": 1.5,
+          "sample_id": 60000,
+          "m": 6,
+          "chi": 8,
+          "validate": false,
+          "qualify_overlap": true
+        },
+        "pid": 553076,
+        "command": [
+          "/root/miniconda3/bin/python",
+          "-u",
+          "-m",
+          "transformer_qmc.triangle_correlation_highchi",
+          "--output",
+          "/root/autodl-tmp/triangle-L6-m6-c8-dense-20261105-v1/results",
+          "--mode",
+          "case",
+          "--backend",
+          "cpu",
+          "--task-json",
+          "{\"L\": 6, \"gamma\": 1.5, \"sample_id\": 60000, \"m\": 6, \"chi\": 8, \"validate\": false, \"qualify_overlap\": true}"
+        ],
+        "threads": 4,
+        "memory_reservation_gib": 13.5
+      },
+      "g0100_s60000": {
+        "task": {
+          "L": 6,
+          "m": 6,
+          "chi": 8,
+          "gamma": 0.1,
+          "sample_id": 60000,
+          "validate": false,
+          "qualify_overlap": true
+        },
+        "pid": 553290,
+        "command": [
+          "/root/miniconda3/bin/python",
+          "-u",
+          "-m",
+          "transformer_qmc.triangle_l6_chi8_dense",
+          "--output",
+          "/root/autodl-tmp/triangle-L6-m6-c8-dense-20261105-v1/results",
+          "--worker",
+          "--gamma",
+          "0.1",
+          "--sample-id",
+          "60000"
+        ],
+        "threads": 4,
+        "memory_reservation_gib": 13.5
+      },
+      "g1000_s60000": {
+        "task": {
+          "L": 6,
+          "m": 6,
+          "chi": 8,
+          "gamma": 1.0,
+          "sample_id": 60000,
+          "validate": false,
+          "qualify_overlap": true
+        },
+        "pid": 553291,
+        "command": [
+          "/root/miniconda3/bin/python",
+          "-u",
+          "-m",
+          "transformer_qmc.triangle_l6_chi8_dense",
+          "--output",
+          "/root/autodl-tmp/triangle-L6-m6-c8-dense-20261105-v1/results",
+          "--worker",
+          "--gamma",
+          "1.0",
+          "--sample-id",
+          "60000"
+        ],
+        "threads": 4,
+        "memory_reservation_gib": 13.5
+      }
+    },
+    "attempts": {},
+    "reason": null,
+    "projection": null,
+    "disk_free_gib": 7.41827392578125
+  },
+  "pilots": [
+    {
+      "case": "L6_g0.1_s60000_m6_c8",
+      "archived_bytes": 5255324,
+      "stage": "seed0_D64",
+      "records": [
+        {
+          "seed": 0,
+          "D_MPS": 32,
+          "seconds": 50.949688928201795,
+          "ladder_stable": false,
+          "truncation_failure": null
+        }
+      ]
+    },
+    {
+      "case": "L6_g1.5_s60000_m6_c8",
+      "archived_bytes": 7579406,
+      "stage": "seed0_D128",
+      "records": [
+        {
+          "seed": 0,
+          "D_MPS": 32,
+          "seconds": 65.29860781505704,
+          "ladder_stable": false,
+          "truncation_failure": "Maximum truncation error (``max_trunc_err``) exceeded."
+        },
+        {
+          "seed": 0,
+          "D_MPS": 64,
+          "seconds": 251.62385685183108,
+          "ladder_stable": false,
+          "truncation_failure": "Maximum truncation error (``max_trunc_err``) exceeded."
+        }
+      ]
+    },
+    {
+      "case": "L6_g1_s60000_m6_c8",
+      "archived_bytes": 5391673,
+      "stage": "seed0_D64",
+      "records": [
+        {
+          "seed": 0,
+          "D_MPS": 32,
+          "seconds": 73.57985372655094,
+          "ladder_stable": false,
+          "truncation_failure": "Maximum truncation error (``max_trunc_err``) exceeded."
+        }
+      ]
+    },
+    {
+      "case": "L6_g1_s60003_m6_c8",
+      "archived_bytes": 7579259,
+      "stage": "seed0_D128",
+      "records": [
+        {
+          "seed": 0,
+          "D_MPS": 32,
+          "seconds": 48.328547487035394,
+          "ladder_stable": false,
+          "truncation_failure": "Maximum truncation error (``max_trunc_err``) exceeded."
+        },
+        {
+          "seed": 0,
+          "D_MPS": 64,
+          "seconds": 238.38869155198336,
+          "ladder_stable": false,
+          "truncation_failure": "Maximum truncation error (``max_trunc_err``) exceeded."
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "solver_passed": true,
+    "seconds": 14.340697560459375,
+    "peak_rss_kib": 717676
+  },
+  "profile_timings": [
+    {
+      "threads": 1,
+      "seconds": 1.776061749085784,
+      "energy": -143.35124035383663
+    },
+    {
+      "threads": 2,
+      "seconds": 1.8535292148590088,
+      "energy": -143.35124035383654
+    },
+    {
+      "threads": 4,
+      "seconds": 1.8584965281188488,
+      "energy": -143.3512403538367
+    }
+  ],
+  "source_hashes_verified": true,
+  "chi16_stopped_verified": true,
+  "other_controller_alive": true,
+  "free_disk_gib": 7.41827392578125
+}

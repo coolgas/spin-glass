@@ -1,0 +1,14 @@
+{
+  "manifests_scanned": 5,
+  "collisions": [],
+  "reserved_development": [
+    60000,
+    60032
+  ],
+  "reserved_final": [
+    61000,
+    61256
+  ],
+  "range_convention": "half-open",
+  "scope": "existing remote campaign manifests and metadata"
+}

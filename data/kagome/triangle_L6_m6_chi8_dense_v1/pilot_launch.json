@@ -1,0 +1,62 @@
+{
+  "utc": 1793852915.5380094,
+  "jobs": [
+    {
+      "task": {
+        "L": 6,
+        "gamma": 1.0,
+        "sample_id": 60003,
+        "m": 6,
+        "chi": 8,
+        "validate": false,
+        "qualify_overlap": true
+      },
+      "pid": 553075,
+      "command": [
+        "/root/miniconda3/bin/python",
+        "-u",
+        "-m",
+        "transformer_qmc.triangle_correlation_highchi",
+        "--output",
+        "/root/autodl-tmp/triangle-L6-m6-c8-dense-20261105-v1/results",
+        "--mode",
+        "case",
+        "--backend",
+        "cpu",
+        "--task-json",
+        "{\"L\": 6, \"gamma\": 1.0, \"sample_id\": 60003, \"m\": 6, \"chi\": 8, \"validate\": false, \"qualify_overlap\": true}"
+      ],
+      "threads": 4,
+      "memory_reservation_gib": 13.5
+    },
+    {
+      "task": {
+        "L": 6,
+        "gamma": 1.5,
+        "sample_id": 60000,
+        "m": 6,
+        "chi": 8,
+        "validate": false,
+        "qualify_overlap": true
+      },
+      "pid": 553076,
+      "command": [
+        "/root/miniconda3/bin/python",
+        "-u",
+        "-m",
+        "transformer_qmc.triangle_correlation_highchi",
+        "--output",
+        "/root/autodl-tmp/triangle-L6-m6-c8-dense-20261105-v1/results",
+        "--mode",
+        "case",
+        "--backend",
+        "cpu",
+        "--task-json",
+        "{\"L\": 6, \"gamma\": 1.5, \"sample_id\": 60000, \"m\": 6, \"chi\": 8, \"validate\": false, \"qualify_overlap\": true}"
+      ],
+      "threads": 4,
+      "memory_reservation_gib": 13.5
+    }
+  ],
+  "scope": "finite feasibility pilots; original gates; both starts; no deadline"
+}

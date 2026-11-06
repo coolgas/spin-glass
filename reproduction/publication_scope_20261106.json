@@ -1,0 +1,209 @@
+{
+  "source_commit": "6552d0664c966a449f043379a6237b7c59511a4b",
+  "published_file_count": 22044,
+  "published_bytes": 1280001569,
+  "omitted_file_count": 71102,
+  "omitted_bytes": 8923779342,
+  "omitted_by_directory": {
+    ".DS_Store": [
+      1,
+      8196
+    ],
+    "data/kagome/autodl_cleanup": [
+      2,
+      4229639
+    ],
+    "data/kagome/autodl_relocated_for_D128_20261106": [
+      14480,
+      4771363871
+    ],
+    "data/kagome/auxiliary_vmc_l6_v1": [
+      1,
+      407187
+    ],
+    "data/kagome/guided_overlap_demo_v1": [
+      20,
+      139586
+    ],
+    "data/kagome/guided_overlap_grid_v1": [
+      245,
+      1700787
+    ],
+    "data/kagome/ltfim_collective_gfmc_v1": [
+      1469,
+      16357014
+    ],
+    "data/kagome/ltfim_correlation_expanded_v1": [
+      3148,
+      645717906
+    ],
+    "data/kagome/ltfim_correlation_lengths_v1": [
+      3,
+      2069
+    ],
+    "data/kagome/ltfim_correlation_lengths_v2": [
+      229,
+      6994784
+    ],
+    "data/kagome/ltfim_correlation_lengths_v3": [
+      3094,
+      101442499
+    ],
+    "data/kagome/ltfim_correlation_lengths_v4": [
+      106,
+      7612841
+    ],
+    "data/kagome/ltfim_correlation_remedy_v1": [
+      706,
+      162138715
+    ],
+    "data/kagome/ltfim_disorder_scaling_v1": [
+      1115,
+      220085241
+    ],
+    "data/kagome/ltfim_simple_guides_v1": [
+      726,
+      25514098
+    ],
+    "data/kagome/ltfim_simple_overlap_v1": [
+      490,
+      56338346
+    ],
+    "data/kagome/ltfim_triangle_gfmc_v1": [
+      326,
+      2563687
+    ],
+    "data/kagome/ltfim_worldline_accuracy_v2": [
+      2,
+      45573
+    ],
+    "data/kagome/ltfim_worldline_v1": [
+      123,
+      2914797
+    ],
+    "data/kagome/monte_carlo_failure_v1": [
+      6,
+      1119114
+    ],
+    "data/kagome/overlap_disorder_benchmark_v1": [
+      205,
+      1567573
+    ],
+    "data/kagome/overlap_disorder_long_time_v1": [
+      84,
+      806003
+    ],
+    "data/kagome/transformer-af-obc-shared-v1-20261028T083657Z": [
+      54,
+      19124168
+    ],
+    "data/kagome/transformer_af_l10_feasibility_v1": [
+      3,
+      42783
+    ],
+    "data/kagome/transformer_af_l10_feasibility_v2": [
+      3,
+      35456
+    ],
+    "data/kagome/transformer_af_l10_feasibility_v3": [
+      3,
+      28817
+    ],
+    "data/kagome/transformer_af_l10_results": [
+      2,
+      390569
+    ],
+    "data/kagome/transformer_af_production_v1": [
+      37638,
+      1734421121
+    ],
+    "data/kagome/triangle_L6_m6_chi3_dense_v1": [
+      4,
+      5129
+    ],
+    "data/kagome/triangle_L6_m6_chi8_D128_diagnostics_20261106": [
+      5,
+      8499626
+    ],
+    "data/kagome/triangle_L6_m6_chi8_D64_dense_v1": [
+      3,
+      23813
+    ],
+    "data/kagome/triangle_L6_m6_chi8_D64_diagnostics_20261106": [
+      4568,
+      280471875
+    ],
+    "data/kagome/triangle_L6_m6_chi8_dense_v1": [
+      7,
+      11924
+    ],
+    "data/kagome/triangle_overlap_analysis_v1": [
+      3,
+      638835
+    ],
+    "data/kagome/triangle_overlap_available_v1": [
+      3,
+      9829
+    ],
+    "data/kagome/triangle_overlap_dense_scan_v1": [
+      2,
+      28586
+    ],
+    "data/kagome/triangle_rg_bond_ranges_v1": [
+      825,
+      469774119
+    ],
+    "data/kagome/triangle_rg_correlation_highchi_v7": [
+      6,
+      19300
+    ],
+    "data/kagome/triangle_rg_correlation_retention_v5": [
+      119,
+      131030
+    ],
+    "data/kagome/triangle_rg_correlation_retention_v6": [
+      233,
+      284079
+    ],
+    "data/kagome/triangle_rg_correlation_scaling_v1": [
+      87,
+      493222
+    ],
+    "data/kagome/triangle_rg_correlation_scaling_v2": [
+      5,
+      6249
+    ],
+    "data/kagome/triangle_rg_correlation_scaling_v3": [
+      183,
+      206611
+    ],
+    "data/kagome/triangle_rg_correlation_scaling_v4": [
+      4,
+      1882
+    ],
+    "data/kagome/triangle_rg_higher_fields_v1": [
+      95,
+      79345896
+    ],
+    "data/kagome/triangle_rg_interaction_v1": [
+      188,
+      98327590
+    ],
+    "data/kagome/triangle_rg_l4_v1": [
+      135,
+      9551477
+    ],
+    "data/kagome/triangle_rg_l6_gamma_scan_v1": [
+      243,
+      150778216
+    ],
+    "data/kagome/triangle_rg_l6_uniform_g05_disorder8_v1": [
+      99,
+      42049418
+    ],
+    "figures": [
+      1,
+      8196
+    ]
+  }
+}

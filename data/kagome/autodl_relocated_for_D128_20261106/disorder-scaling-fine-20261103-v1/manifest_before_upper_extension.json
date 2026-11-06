@@ -1,0 +1,64 @@
+{
+  "sizes": [
+    4,
+    6
+  ],
+  "fields": [
+    0.55,
+    0.56,
+    0.57,
+    0.58,
+    0.59
+  ],
+  "disorders": [
+    60000,
+    60001,
+    60002,
+    60003,
+    60004,
+    60005,
+    60006,
+    60007
+  ],
+  "h": 0.15,
+  "kinds": [
+    "jastrow",
+    "rbm_2"
+  ],
+  "seeds": [
+    0,
+    1
+  ],
+  "updates_per_fit": 1200,
+  "selection": "lowest frozen mean energy across random/up/down diagnostics",
+  "training": "parallel tempering and decreasing field; no enumeration",
+  "audit_ids": [
+    60000,
+    60001
+  ],
+  "sources": {
+    "disorder_scaling.py": "8beebd1404128b53ca8faf2f20715776ac85625ad6d96bf97c4d7a4abea2343b",
+    "sampled_simple_guides.py": "b7580fd9e6402f1b989db9920536391ff37dbf53a79827a805e9c53b95d81c0d",
+    "simple_guides.py": "b586ac97f7612fb411b11d50365a013af242071e34577af6199cd8a6c474d418",
+    "projector.py": "d02426e30016556814515a7887b76fea47a3fd3c15744581b2b3e08842aee47a",
+    "physics.py": "9ce8568f1d3f74701abc8b993ca4b1296fd38b69e5c10b18c60b9170529bd4d9",
+    "production_protocol.py": "03e8de1c6e7d6564770a5f2b37f1c50247485c2cc3e2e9f6d2e8379fe9d65eb5",
+    "independent_replica_projector.py": "96d187249acb4c84bdd1e82cc0e9e73ffcccc3cb0d5877c935beccf55428a07e",
+    "correlation_lengths.py": "cd7c2f8df21ecbfd4a1095707fcb9da9e040fec26f1ffa861cdf77cc2856c270",
+    "report_disorder_scaling.py": "53430729d2f975f71389b4da2337f38b5d77be8532e872727282051db53b360a"
+  },
+  "refinement": {
+    "h": 0.15,
+    "delta_gamma": 0.01,
+    "display_fields": [
+      0.55,
+      0.56,
+      0.57,
+      0.58,
+      0.59,
+      0.6
+    ],
+    "comparison_source": "/root/autodl-tmp/disorder-scaling-20261103-v1/results",
+    "purpose": "Measure overlap width without selecting disorder by histogram shape"
+  }
+}

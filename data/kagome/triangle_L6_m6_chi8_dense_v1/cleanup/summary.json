@@ -1,0 +1,38 @@
+{
+  "utc": "2026-11-05T05:01:29Z",
+  "data_disk_before_gib": 7.630443572998047,
+  "data_disk_after_gib": 9.350051879882812,
+  "system_disk_before_gib": 5.885730743408203,
+  "system_disk_after_gib": 6.258655548095703,
+  "pip_cache_removed_bytes": 391620006,
+  "archive_compression_saved_bytes": 626934805,
+  "historical_logs_compressed": 91,
+  "historical_log_saved_bytes": 1224278755,
+  "dedupe_note": "685 identical file destinations verified; no measured capacity gain, so not counted as reclaimed space",
+  "chi3_baseline_cases_hash_verified": 456,
+  "chi8_completed_cases_hash_verified": true,
+  "active_worker_pids": [
+    553075,
+    553076,
+    553291
+  ],
+  "controller_pid": 553232,
+  "campaign_status": {
+    "utc": 1793854887.6599326,
+    "state": "running",
+    "phase": "pilots",
+    "target": 456,
+    "completed": 1,
+    "qualified": 1,
+    "excluded": 0,
+    "reason": null,
+    "projection": null,
+    "disk_free_gib": 9.35006332397461
+  },
+  "chi16_still_stopped": true,
+  "unrelated_overlap_controller_alive": true,
+  "archive_new_path": "/root/autodl-tmp/alphaqubit-aq2/export_onnx/models.tar.gz",
+  "all_scientific_results_preserved": true,
+  "data_disk_net_gain_gib": 1.7196083068847656,
+  "system_disk_net_gain_gib": 0.3729248046875
+}

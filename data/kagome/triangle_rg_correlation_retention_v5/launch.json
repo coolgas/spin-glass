@@ -1,0 +1,19 @@
+{
+  "pid": 519038,
+  "args": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "-m",
+    "transformer_qmc.triangle_correlation_retention",
+    "--output",
+    "/root/autodl-tmp/triangle-correlation-retention-20261105-v5/results",
+    "--previous",
+    "/root/autodl-tmp/triangle-correlation-scaling-20261105-v3/results",
+    "--wait-pid",
+    "515820",
+    "--diagnostic",
+    "/root/autodl-tmp/triangle-correlation-scaling-20261105-v4/diagnostic"
+  ],
+  "worker_threads": 1,
+  "dense_scan": "held"
+}

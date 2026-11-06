@@ -1,0 +1,19 @@
+{
+  "pid": 540660,
+  "command": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "-m",
+    "transformer_qmc.triangle_correlation_highchi",
+    "--output",
+    "/root/autodl-tmp/triangle-correlation-highchi-20261105-v7/results",
+    "--predecessor",
+    "521299",
+    "515820"
+  ],
+  "pythonpath": "/root/autodl-tmp/triangle-correlation-scaling-20261104-v1/vendor:/root/autodl-tmp/triangle-correlation-highchi-20261105-v7/code",
+  "checks": [
+    "preflight_passed.json",
+    "controller_checks_passed.json"
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "target": 456,
+  "completed": 0,
+  "qualified": 0,
+  "q_pass": 0,
+  "full_fields": [],
+  "snapshot": {
+    "utc": 1793923234.6618516,
+    "state": "running",
+    "target": 456,
+    "completed": 0,
+    "qualified": 0,
+    "excluded": 0,
+    "running": {
+      "L6_g0.1_s60000_m6_c8": {
+        "pid": 638723,
+        "command": [
+          "/root/miniconda3/bin/python",
+          "-u",
+          "-m",
+          "transformer_qmc.triangle_l6_d128",
+          "--output",
+          "/root/autodl-tmp/triangle-L6-m6-c8-D128-dense-20261106-v1/results",
+          "--baseline",
+          "/root/autodl-tmp/triangle-L6-m6-c8-D64-dense-20261105-v1/results",
+          "--worker",
+          "--gamma",
+          "0.1",
+          "--sample-id",
+          "60000"
+        ],
+        "threads": 1,
+        "gamma": 0.1,
+        "sample_id": 60000
+      },
+      "L6_g0.95_s60001_m6_c8": {
+        "pid": 638724,
+        "command": [
+          "/root/miniconda3/bin/python",
+          "-u",
+          "-m",
+          "transformer_qmc.triangle_l6_d128",
+          "--output",
+          "/root/autodl-tmp/triangle-L6-m6-c8-D128-dense-20261106-v1/results",
+          "--baseline",
+          "/root/autodl-tmp/triangle-L6-m6-c8-D64-dense-20261105-v1/results",
+          "--worker",
+          "--gamma",
+          "0.95",
+          "--sample-id",
+          "60001"
+        ],
+        "threads": 1,
+        "gamma": 0.95,
+        "sample_id": 60001
+      },
+      "L6_g1.5_s60000_m6_c8": {
+        "pid": 638725,
+        "command": [
+          "/root/miniconda3/bin/python",
+          "-u",
+          "-m",
+          "transformer_qmc.triangle_l6_d128",
+          "--output",
+          "/root/autodl-tmp/triangle-L6-m6-c8-D128-dense-20261106-v1/results",
+          "--baseline",
+          "/root/autodl-tmp/triangle-L6-m6-c8-D64-dense-20261105-v1/results",
+          "--worker",
+          "--gamma",
+          "1.5",
+          "--sample-id",
+          "60000"
+        ],
+        "threads": 1,
+        "gamma": 1.5,
+        "sample_id": 60000
+      }
+    },
+    "failures": {},
+    "reason": null,
+    "disk_free_gib": 4.381832122802734,
+    "projected_remaining_gib": 6.6796875,
+    "case_bytes_projection": 12582912,
+    "elapsed_seconds": 430.06065011024475
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "code_cells": 16,
+  "embedded_figures": 14,
+  "executed_utc": "2026-11-05T10:40:30.360409+00:00",
+  "execution_location": "AutoDL",
+  "evidence_sha256": "8e130f4b3fca7ccc8c53894c053616e0b9b4ba77288816781d0b97fc16b688a7",
+  "l4_evidence_sha256": "0233dc8672416e454abbfe61757678a354fb20f28b5f76f490b9842eadcd844a",
+  "generator_sha256": "249904c898bb6c65637ca667a004e2eeeae72b133b444362d823cdb4ecac9e53",
+  "error_count": 0,
+  "plot_peak_coverage_assertions_passed": true,
+  "l2_data_origin": "Existing small_exact measurements; no new simulations",
+  "notebook_sha256": "9f0afb231ba3f7e7e836f9680aee4e4a9e250a78f0a732fc624d36cd6fa064f9",
+  "local_fresh_kernel": true,
+  "training_dependencies_blocked": true,
+  "local_verified_utc": "2026-11-05T10:41:03.235980+00:00",
+  "notebook": "notebook/monte_carlo_failure_L6_glassy_diagnostics.ipynb",
+  "original_evidence_unchanged": true,
+  "generator_sources_match": true
+}

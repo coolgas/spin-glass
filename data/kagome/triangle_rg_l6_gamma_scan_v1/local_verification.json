@@ -1,0 +1,15 @@
+{
+  "cases": 120,
+  "raw_hashes_verified": 120,
+  "source_snapshots_verified": true,
+  "matched_bonds_verified": true,
+  "histograms_verified": true,
+  "direct_moments_verified": true,
+  "disorder_averages_and_SE_verified": true,
+  "paired_changes_verified": true,
+  "report_hashes_verified": true,
+  "embedded_figures_verified": true,
+  "max_physical_energy_error": 5.115907697472721e-13,
+  "alarms": [],
+  "notebook_sha256": "e2b3a0fa3d75231516df92723bea6afb4157d17c1b5be2987890e4aa884a867f"
+}

@@ -1,0 +1,45 @@
+{
+  "utc": "2026-11-05T05:18:31Z",
+  "state": "running",
+  "completed": 1,
+  "qualified": 1,
+  "workers": [
+    {
+      "case": "g1500_s60000",
+      "pid": 556397,
+      "stage": "seed1_D32",
+      "saved_stages": [
+        "seed0_D32",
+        "seed0_D64"
+      ]
+    },
+    {
+      "case": "g1000_s60000",
+      "pid": 556398,
+      "stage": "seed1_D32",
+      "saved_stages": [
+        "seed0_D32",
+        "seed0_D64"
+      ]
+    },
+    {
+      "case": "g1000_s60003",
+      "pid": 556399,
+      "stage": "seed1_D32",
+      "saved_stages": [
+        "seed0_D32",
+        "seed0_D64"
+      ]
+    },
+    {
+      "case": "g0100_s60001",
+      "pid": 556400,
+      "stage": "seed0_D64",
+      "saved_stages": [
+        "seed0_D32"
+      ]
+    }
+  ],
+  "attempt_failures": [],
+  "max_bond_dimension": 64
+}

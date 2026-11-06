@@ -1,0 +1,83 @@
+{
+  "quota": 100,
+  "lengths": [
+    6,
+    7
+  ],
+  "sites": "all, separate",
+  "bins": 20,
+  "c6_values": [
+    65536,
+    130728,
+    260767,
+    520160,
+    1037582,
+    2069702,
+    4128510,
+    8235289,
+    16427232,
+    32768000
+  ],
+  "time_grid": "0:0.01:19.99",
+  "windows": [
+    [
+      1.0,
+      5.0
+    ],
+    [
+      6.0,
+      10.0
+    ],
+    [
+      11.0,
+      15.0
+    ],
+    [
+      15.99,
+      19.99
+    ],
+    [
+      5.0,
+      10.0
+    ],
+    [
+      10.0,
+      15.0
+    ],
+    [
+      15.0,
+      19.99
+    ],
+    [
+      1.0,
+      10.0
+    ],
+    [
+      1.0,
+      15.0
+    ],
+    [
+      1.0,
+      19.99
+    ]
+  ],
+  "snapshot_times": [
+    5.0,
+    10.0,
+    15.0,
+    19.99
+  ],
+  "primary_windows": "first four; fixed duration 4 ending at each snapshot",
+  "input_defect_sigma": 1.0,
+  "background_sigma": 0.02,
+  "x_coordinate": "RMS over all nearest-neighbor bonds and all 100 geometries of bond minus 8 micrometers",
+  "projector": "no adjacent excitations, fixed across all parameters",
+  "precision": "float64 and complex128",
+  "derivative": "central difference, accepted half step, adaptive convergence on every geometry",
+  "bootstrap": "300 whole-geometry resamples, percentile 95% intervals",
+  "rate": "absolute logarithmic endpoint growth of ensemble RMS displacement derivative",
+  "numerical_mask": "both endpoint D > max(1e-7, 10*RMS derivative-step discrepancy)",
+  "original_source": "/root/autodl-tmp/geometry-qfi-20261031/frustration_scan",
+  "status": "complete",
+  "seconds": 1031.444561433047
+}

@@ -1,0 +1,12 @@
+{
+  "cases": 48,
+  "raw_hashes_verified": 48,
+  "histograms_reconstructed": 48,
+  "disorders": 16,
+  "launch_sources_verified": true,
+  "reused_sources_verified": true,
+  "averages_verified": true,
+  "max_physical_energy_error": 4.263256414560601e-13,
+  "alarms": [],
+  "notebook_sha256": "2f23745e3799fcfb5e54039006ee6521438b60bd9b1b3427cfb58df2bfe87613"
+}

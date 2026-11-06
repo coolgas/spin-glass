@@ -1,0 +1,22 @@
+{
+  "utc": 1793851208.8754525,
+  "pid": 550628,
+  "command": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "-m",
+    "transformer_qmc.triangle_l6_dense",
+    "--output",
+    "/root/autodl-tmp/triangle-L6-m6-c3-dense-20261105-v1/results",
+    "--previous-cases",
+    "/root/autodl-tmp/triangle-overlap-available-20261105-v1/report/cases.json",
+    "--workers",
+    "12"
+  ],
+  "workers": 12,
+  "threads_per_worker": 1,
+  "scope": "456 L6 m6 chi3 field/disorder cases; original physics and two-start exact solver",
+  "runtime": "finite queue, no deadline",
+  "raw_artifacts": "remote only",
+  "local_notebook": "notebook/triangle_L6_m6_chi3_dense.ipynb"
+}

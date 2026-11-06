@@ -1,0 +1,12 @@
+{
+  "raw_hashes_verified": 256,
+  "l4_histograms_reconstructed": 192,
+  "common_base_disorder_verified": true,
+  "all_bonds_scaled": true,
+  "notebook_validated": true,
+  "notebook_sha256": "8b8b4eae1eba4a5210f085ebea8c04093da0a546ea40537a2bb7004d4104ac4a",
+  "source_snapshot_sha256": "fc782a7e3be21384f6b7bb75f94653e9a753c4ad78e7b71d2e2b6621dd2e7d00",
+  "report_provenance_verified": true,
+  "candidates": 0,
+  "resolved_q2_candidate_pairs": 0
+}

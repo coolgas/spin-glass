@@ -1,0 +1,95 @@
+{
+  "utc": "2026-11-05T04:10:15.881021+00:00",
+  "status": {
+    "utc": 1793851771.7228153,
+    "state": "complete",
+    "total": 456,
+    "completed": 456,
+    "qualified": 456,
+    "excluded": 0,
+    "failed": [],
+    "reused": 40,
+    "running": {}
+  },
+  "counts": {
+    "total": 456,
+    "completed": 456,
+    "qualified": 456,
+    "excluded": 0,
+    "failed": 0,
+    "complete_eight_disorder_fields": 57,
+    "fields": 57,
+    "reused": 40
+  },
+  "full_grid_verified": true,
+  "raw_chi_identity": true,
+  "notebook_validated": true,
+  "embedded_figures": 4,
+  "controller_elapsed_seconds": 562.8473627567291,
+  "new_cases": 416,
+  "new_raw_bytes": 787799290,
+  "disk_free_gib": 7.494998931884766,
+  "max_peak_rss_gib": 0.6804046630859375,
+  "max_residual": 9.106076590434086e-10,
+  "max_start_difference": {
+    "q_absolute": 1.0164251385003098e-10,
+    "chi_relative": 1.1364663979287612e-10,
+    "q2_relative": 3.677859721052463e-10
+  },
+  "expensive_processes_absent": [
+    515820,
+    521214,
+    521259,
+    538983,
+    540126,
+    543928,
+    543375,
+    540660
+  ],
+  "unrelated_controller_alive": true,
+  "individual_susceptibility_peaks": [
+    {
+      "sample_id": 60000,
+      "gamma": 0.775,
+      "chi": 2.274628492629799
+    },
+    {
+      "sample_id": 60001,
+      "gamma": 0.95,
+      "chi": 1.825834022845336
+    },
+    {
+      "sample_id": 60002,
+      "gamma": 1.125,
+      "chi": 1.4664799674868203
+    },
+    {
+      "sample_id": 60003,
+      "gamma": 1.0,
+      "chi": 2.5512252689218182
+    },
+    {
+      "sample_id": 60004,
+      "gamma": 1.275,
+      "chi": 1.3607852858251737
+    },
+    {
+      "sample_id": 60005,
+      "gamma": 1.025,
+      "chi": 1.5154600743452082
+    },
+    {
+      "sample_id": 60006,
+      "gamma": 0.775,
+      "chi": 1.4067700880111937
+    },
+    {
+      "sample_id": 60007,
+      "gamma": 1.05,
+      "chi": 1.6945075022455485
+    }
+  ],
+  "verification_utc": "2026-11-05T04:12:54.382652+00:00",
+  "report_utc": "2026-11-05T04:12:49.779984+00:00",
+  "notebook_sha256": "7c28ae40925a10e56ad64bf4dd4e951dc0373978945d5cd5919643462b7ce50c"
+}

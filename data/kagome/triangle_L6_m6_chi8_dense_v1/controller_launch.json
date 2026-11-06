@@ -1,0 +1,17 @@
+{
+  "utc": 1793853072.1561618,
+  "pid": 553232,
+  "command": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "-m",
+    "transformer_qmc.triangle_l6_chi8_dense",
+    "--output",
+    "/root/autodl-tmp/triangle-L6-m6-c8-dense-20261105-v1/results",
+    "--baseline",
+    "/root/autodl-tmp/triangle-L6-m6-c3-dense-20261105-v1/results",
+    "--chi16-root",
+    "/root/autodl-tmp/triangle-L6-m6-c16-dense-20261105-v1"
+  ],
+  "policy": "adopt existing workers; four pilots; select retention and verify storage before full dispatch"
+}

@@ -1,0 +1,26 @@
+{
+  "pid": 520842,
+  "args": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "-m",
+    "transformer_qmc.triangle_correlation_parallel",
+    "--output",
+    "/root/autodl-tmp/triangle-correlation-retention-20261105-v6/results",
+    "--previous",
+    "/root/autodl-tmp/triangle-correlation-retention-20261105-v5/results",
+    "--wait-pid",
+    "515820",
+    "--diagnostic",
+    "/root/autodl-tmp/triangle-correlation-scaling-20261105-v4/diagnostic",
+    "--workers",
+    "16",
+    "--threads",
+    "1",
+    "--memory-budget-gib",
+    "48"
+  ],
+  "utc": "2026-11-05T00:45:58.313946+00:00",
+  "supersedes": "/root/autodl-tmp/triangle-correlation-retention-20261105-v5",
+  "dense_scan": "held"
+}

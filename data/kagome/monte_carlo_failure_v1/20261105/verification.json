@@ -1,0 +1,20 @@
+{
+  "verified_utc": "2026-11-05T08:47:17.160385+00:00",
+  "notebook": "notebook/monte_carlo_failure_L6_glassy_diagnostics.ipynb",
+  "notebook_sha256": "f8480a9e886dc5767a528c89590f5b26538ce17cda9f316fa0202470c6cd55f5",
+  "evidence_sha256": "8e130f4b3fca7ccc8c53894c053616e0b9b4ba77288816781d0b97fc16b688a7",
+  "all_code_cells_passed": 13,
+  "embedded_figures": 11,
+  "local_fresh_kernel": true,
+  "training_dependencies_blocked": true,
+  "headline_counts_verified": true,
+  "remote_execution": {
+    "code_cells": 13,
+    "embedded_figures": 11,
+    "evidence_sha256": "8e130f4b3fca7ccc8c53894c053616e0b9b4ba77288816781d0b97fc16b688a7",
+    "executed_utc": "2026-11-05T08:46:53.515893+00:00",
+    "execution_location": "AutoDL",
+    "generator_sha256": "82d076c48efaf14e10c6964d9fe257c1e000594fda5916425dfa78e471a3a5b6"
+  },
+  "saved_stderr": []
+}

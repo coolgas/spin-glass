@@ -1,0 +1,13 @@
+{
+  "utc": "2026-11-05T04:55:30Z",
+  "elapsed_seconds": 56.12877631187439,
+  "method": "FIDEDUPERANGE in 8 MiB block-aligned chunks; no deleted or linked files",
+  "files_deduplicated": 685,
+  "shared_logical_bytes": 11887296512,
+  "free_before_bytes": 8191459328,
+  "free_after_bytes": 8190595072,
+  "content_sha256_verified_all": true,
+  "metadata_verified_all": true,
+  "source_candidates_sha256": "0104d287193c3b87300e47dcccb3ffc85c26b8f2a20c8834895e4ceaed717ecf",
+  "free_increase_bytes": -864256
+}

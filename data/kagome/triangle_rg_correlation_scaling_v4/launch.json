@@ -1,0 +1,11 @@
+{
+  "pid": 515820,
+  "source": "/root/autodl-tmp/triangle-correlation-scaling-20261105-v3/results/cases/L8_g1_s60000_m6_c3",
+  "source_result_sha256": "536735f5294bb0576cfd8a09010aefc53255b4d99ea04a6f66add534dbc52297",
+  "dimension": 1024,
+  "seeds": [
+    0,
+    1
+  ],
+  "threads": 1
+}

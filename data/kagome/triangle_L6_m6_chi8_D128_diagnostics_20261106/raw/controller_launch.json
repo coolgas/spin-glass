@@ -1,0 +1,25 @@
+{
+  "pid": 638706,
+  "command": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "-m",
+    "transformer_qmc.triangle_l6_d128",
+    "--output",
+    "/root/autodl-tmp/triangle-L6-m6-c8-D128-dense-20261106-v1/results",
+    "--baseline",
+    "/root/autodl-tmp/triangle-L6-m6-c8-D64-dense-20261105-v1/results",
+    "--workers",
+    "12",
+    "--threads",
+    "1"
+  ],
+  "utc": 1793922801.1641896,
+  "environment": {
+    "PYTHONPATH": "/root/autodl-tmp/triangle-L6-m6-c8-D128-dense-20261106-v1/source/code:/root/autodl-tmp/triangle-correlation-scaling-20261104-v1/vendor",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1"
+  }
+}

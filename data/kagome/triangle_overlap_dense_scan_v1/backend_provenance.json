@@ -1,0 +1,42 @@
+{
+  "source": "/root/autodl-tmp/triangle-correlation-highchi-20261105-v7/results/backend_benchmark.json",
+  "sha256": "fdc19b93f29f3ec05c7e6fa663288b24632f29bf57ecc6405870e9c039152b56",
+  "benchmark": {
+    "records": [
+      {
+        "m": 6,
+        "cpu_threads": 4,
+        "cpu_seconds": 0.38107450120151043,
+        "cuda_seconds": 0.16903429478406906,
+        "subspaces": {
+          "8": 1.3322676295501878e-15,
+          "16": 1.3322676295501878e-15,
+          "32": 3.197442310920451e-14
+        },
+        "eigenvalue_error": 1.509903313490213e-14,
+        "retained_subspace_error": 3.197442310920451e-14,
+        "residual": 9.896647123569911e-14,
+        "orthogonality_error": 9.136278018995109e-15,
+        "cuda_validated": true
+      },
+      {
+        "m": 8,
+        "cpu_threads": 4,
+        "cpu_seconds": 6.32028641551733,
+        "cuda_seconds": 0.6728236116468906,
+        "subspaces": {
+          "8": 9.992007221626409e-16,
+          "16": 2.220446049250313e-15,
+          "32": 7.971401316808624e-14
+        },
+        "eigenvalue_error": 2.842170943040401e-14,
+        "retained_subspace_error": 7.971401316808624e-14,
+        "residual": 1.6215477238430385e-13,
+        "orthogonality_error": 1.037650607468528e-14,
+        "cuda_validated": true
+      }
+    ],
+    "validated": true,
+    "selected": "cuda"
+  }
+}

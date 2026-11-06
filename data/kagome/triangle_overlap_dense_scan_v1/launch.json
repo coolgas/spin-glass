@@ -1,0 +1,75 @@
+{
+  "utc": 1793847157.9964905,
+  "original": {
+    "pid": 543375,
+    "argv": [
+      "/root/miniconda3/bin/python",
+      "-u",
+      "-m",
+      "transformer_qmc.triangle_correlation_parallel",
+      "--output",
+      "/root/autodl-tmp/triangle-correlation-retention-20261105-v6/results",
+      "--previous",
+      "/root/autodl-tmp/triangle-correlation-retention-20261105-v5/results",
+      "--wait-pid",
+      "515820",
+      "--diagnostic",
+      "/root/autodl-tmp/triangle-correlation-scaling-20261105-v4/diagnostic",
+      "--workers",
+      "16",
+      "--threads",
+      "1",
+      "--memory-budget-gib",
+      "48",
+      "--peer-roots",
+      "/root/autodl-tmp/triangle-overlap-dense-scan-20261105-v1/results",
+      "--dispatch-lock",
+      "/root/autodl-tmp/triangle-correlation-shared-dispatch.lock"
+    ],
+    "log": "/root/autodl-tmp/triangle-overlap-dense-scan-20261105-v1/handover-v4/original-controller.log"
+  },
+  "dense": {
+    "pid": 543928,
+    "argv": [
+      "/root/miniconda3/bin/python",
+      "-u",
+      "-m",
+      "transformer_qmc.triangle_overlap_dense",
+      "--output",
+      "/root/autodl-tmp/triangle-overlap-dense-scan-20261105-v1/results",
+      "--reuse",
+      "/root/autodl-tmp/triangle-correlation-retention-20261105-v6/results",
+      "--backend",
+      "/root/autodl-tmp/triangle-correlation-highchi-20261105-v7/results/backend_benchmark.json",
+      "--profile-threads",
+      "2",
+      "--dispatch-lock",
+      "/root/autodl-tmp/triangle-correlation-shared-dispatch.lock"
+    ],
+    "log": "/root/autodl-tmp/triangle-overlap-dense-scan-20261105-v1/handover-v5/dense-controller.log"
+  },
+  "preserved_workers": [
+    521214,
+    521259,
+    538523,
+    538983,
+    539180,
+    540126
+  ],
+  "held_controller": 540660,
+  "source": "/root/autodl-tmp/triangle-overlap-dense-scan-20261105-v1/source-v5",
+  "dispatch_lock": "/root/autodl-tmp/triangle-correlation-shared-dispatch.lock",
+  "memory_accounting": "unused plus reclaimable inactive file pages; active file, shmem, anon remain charged",
+  "supersedes": "/root/autodl-tmp/triangle-overlap-dense-scan-20261105-v1/handover-v4/launch.json",
+  "original_source": "/root/autodl-tmp/triangle-overlap-dense-scan-20261105-v1/source-v4",
+  "preserved_dense_workers": [
+    543765,
+    543813,
+    543814
+  ],
+  "explicit_profile_retry": {
+    "name": "profile_L6_g0.5_s60000_m8_c16",
+    "reason": "Record D16 timing truncation as a diagnostic; production solver gates unchanged",
+    "archived_failure": "/root/autodl-tmp/triangle-overlap-dense-scan-20261105-v1/handover-v5"
+  }
+}

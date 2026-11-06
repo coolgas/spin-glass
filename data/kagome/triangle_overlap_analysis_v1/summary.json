@@ -1,0 +1,2458 @@
+{
+  "utc": "2026-11-05T01:59:24.231595+00:00",
+  "counts": {
+    "extracted": 198,
+    "qualified_L8": 32,
+    "planned_L8": 108
+  },
+  "two_disorder_means": [
+    {
+      "gamma": 0.1,
+      "m": 4,
+      "chi": 2,
+      "disorders": [
+        60000,
+        60001
+      ],
+      "observables": {
+        "q_ea_finite": 0.9335692924623574,
+        "magnetization": 0.14841623511426727,
+        "chi_sg_connected_equal_time": 0.029722543522782238,
+        "chi_sg_connected_diagonal": 0.028908433479079475,
+        "chi_sg_connected_off_diagonal": 0.0008141100437027652,
+        "q2_raw": 0.872224950572096,
+        "chi_sg_raw_equal_time": 167.46719050984245
+      }
+    },
+    {
+      "gamma": 0.1,
+      "m": 4,
+      "chi": 3,
+      "disorders": [
+        60000,
+        60001
+      ],
+      "observables": {
+        "q_ea_finite": 0.9297732640563359,
+        "magnetization": 0.09974167508003284,
+        "chi_sg_connected_equal_time": 0.036576445426697315,
+        "chi_sg_connected_diagonal": 0.03055669449141193,
+        "chi_sg_connected_off_diagonal": 0.006019750935285388,
+        "q2_raw": 0.8651661404758022,
+        "chi_sg_raw_equal_time": 166.11189897135404
+      }
+    },
+    {
+      "gamma": 0.1,
+      "m": 6,
+      "chi": 2,
+      "disorders": [
+        60000,
+        60001
+      ],
+      "observables": {
+        "q_ea_finite": 0.9446505079514063,
+        "magnetization": 0.15067630906257407,
+        "chi_sg_connected_equal_time": 0.024452254659701973,
+        "chi_sg_connected_diagonal": 0.019919983583123264,
+        "chi_sg_connected_off_diagonal": 0.004532271076578711,
+        "q2_raw": 0.8930048754847437,
+        "chi_sg_raw_equal_time": 171.4569360930708
+      }
+    },
+    {
+      "gamma": 0.1,
+      "m": 6,
+      "chi": 3,
+      "disorders": [
+        60000,
+        60001
+      ],
+      "observables": {
+        "q_ea_finite": 0.9459056640238072,
+        "magnetization": 0.1376635777345731,
+        "chi_sg_connected_equal_time": 0.028743959565558842,
+        "chi_sg_connected_diagonal": 0.024723446057843892,
+        "chi_sg_connected_off_diagonal": 0.00402051350771495,
+        "q2_raw": 0.8953699161469999,
+        "chi_sg_raw_equal_time": 171.91102390022397
+      }
+    },
+    {
+      "gamma": 0.1,
+      "m": 8,
+      "chi": 2,
+      "disorders": [
+        60000,
+        60001
+      ],
+      "observables": {
+        "q_ea_finite": 0.9436043541700873,
+        "magnetization": 0.15060825880494985,
+        "chi_sg_connected_equal_time": 0.029180387248874128,
+        "chi_sg_connected_diagonal": 0.02105481773922808,
+        "chi_sg_connected_off_diagonal": 0.008125569509646047,
+        "q2_raw": 0.8910730094390173,
+        "chi_sg_raw_equal_time": 171.08601781229135
+      }
+    },
+    {
+      "gamma": 0.1,
+      "m": 8,
+      "chi": 3,
+      "disorders": [
+        60000,
+        60001
+      ],
+      "observables": {
+        "q_ea_finite": 0.9463596632763938,
+        "magnetization": 0.13765470858397716,
+        "chi_sg_connected_equal_time": 0.02867090233628256,
+        "chi_sg_connected_diagonal": 0.024627840647430323,
+        "chi_sg_connected_off_diagonal": 0.004043061688852238,
+        "q2_raw": 0.896216839500731,
+        "chi_sg_raw_equal_time": 172.07363318414036
+      }
+    },
+    {
+      "gamma": 0.5,
+      "m": 4,
+      "chi": 2,
+      "disorders": [
+        60000,
+        60001
+      ],
+      "observables": {
+        "q_ea_finite": 0.5486491829819378,
+        "magnetization": 0.06713127236565386,
+        "chi_sg_connected_equal_time": 0.35953464140296154,
+        "chi_sg_connected_diagonal": 0.2928442438346204,
+        "chi_sg_connected_off_diagonal": 0.06669039756834119,
+        "q2_raw": 0.3055749961893242,
+        "chi_sg_raw_equal_time": 58.67039926835025
+      }
+    },
+    {
+      "gamma": 0.5,
+      "m": 4,
+      "chi": 3,
+      "disorders": [
+        60000,
+        60001
+      ],
+      "observables": {
+        "q_ea_finite": 0.5609950009782978,
+        "magnetization": 0.07833748705015185,
+        "chi_sg_connected_equal_time": 0.3437090171184094,
+        "chi_sg_connected_diagonal": 0.2761176994322457,
+        "chi_sg_connected_off_diagonal": 0.0675913176861637,
+        "q2_raw": 0.3196465115362406,
+        "chi_sg_raw_equal_time": 61.37213021495819
+      }
+    },
+    {
+      "gamma": 0.5,
+      "m": 6,
+      "chi": 2,
+      "disorders": [
+        60000,
+        60001
+      ],
+      "observables": {
+        "q_ea_finite": 0.5532941832510581,
+        "magnetization": 0.06745247625595341,
+        "chi_sg_connected_equal_time": 0.3783211552352242,
+        "chi_sg_connected_diagonal": 0.3002819036519238,
+        "chi_sg_connected_off_diagonal": 0.07803925158330038,
+        "q2_raw": 0.3107356008648344,
+        "chi_sg_raw_equal_time": 59.6612353660482
+      }
+    },
+    {
+      "gamma": 0.5,
+      "m": 6,
+      "chi": 3,
+      "disorders": [
+        60000,
+        60001
+      ],
+      "observables": {
+        "q_ea_finite": 0.5712128440898183,
+        "magnetization": 0.06794036492936671,
+        "chi_sg_connected_equal_time": 0.3500478669750302,
+        "chi_sg_connected_diagonal": 0.2834801264155282,
+        "chi_sg_connected_off_diagonal": 0.06656774055950201,
+        "q2_raw": 0.33046759044179685,
+        "chi_sg_raw_equal_time": 63.449777364824996
+      }
+    },
+    {
+      "gamma": 0.5,
+      "m": 8,
+      "chi": 2,
+      "disorders": [
+        60000,
+        60001
+      ],
+      "observables": {
+        "q_ea_finite": 0.5580199302133412,
+        "magnetization": 0.06828309385920354,
+        "chi_sg_connected_equal_time": 0.3763865319958365,
+        "chi_sg_connected_diagonal": 0.29804438823542445,
+        "chi_sg_connected_off_diagonal": 0.07834214376041207,
+        "q2_raw": 0.3159510151173358,
+        "chi_sg_raw_equal_time": 60.66259490252847
+      }
+    },
+    {
+      "gamma": 0.5,
+      "m": 8,
+      "chi": 3,
+      "disorders": [
+        60000,
+        60001
+      ],
+      "observables": {
+        "q_ea_finite": 0.5757838684265446,
+        "magnetization": 0.06839132450066983,
+        "chi_sg_connected_equal_time": 0.3484281341685723,
+        "chi_sg_connected_diagonal": 0.28132674441306305,
+        "chi_sg_connected_off_diagonal": 0.06710138975550925,
+        "q2_raw": 0.33569961526699477,
+        "chi_sg_raw_equal_time": 64.45432613126299
+      }
+    },
+    {
+      "gamma": 1.0,
+      "m": 4,
+      "chi": 2,
+      "disorders": [
+        60000,
+        60001
+      ],
+      "observables": {
+        "q_ea_finite": 0.1262059004816212,
+        "magnetization": 0.04419241657497931,
+        "chi_sg_connected_equal_time": 1.108772743242778,
+        "chi_sg_connected_diagonal": 0.7892364011551811,
+        "chi_sg_connected_off_diagonal": 0.31953634208759707,
+        "q2_raw": 0.024391897961597568,
+        "chi_sg_raw_equal_time": 4.683244408626733
+      }
+    },
+    {
+      "gamma": 1.0,
+      "m": 6,
+      "chi": 2,
+      "disorders": [
+        60000,
+        60001
+      ],
+      "observables": {
+        "q_ea_finite": 0.10567067884619313,
+        "magnetization": 0.04248931838408126,
+        "chi_sg_connected_equal_time": 1.1884201290380159,
+        "chi_sg_connected_diagonal": 0.821353088979258,
+        "chi_sg_connected_off_diagonal": 0.3670670400587579,
+        "q2_raw": 0.020196050444523477,
+        "chi_sg_raw_equal_time": 3.877641685348508
+      }
+    },
+    {
+      "gamma": 1.0,
+      "m": 8,
+      "chi": 2,
+      "disorders": [
+        60000,
+        60001
+      ],
+      "observables": {
+        "q_ea_finite": 0.11193378324843381,
+        "magnetization": 0.04307392945345986,
+        "chi_sg_connected_equal_time": 1.178355203923134,
+        "chi_sg_connected_diagonal": 0.8123970503192877,
+        "chi_sg_connected_off_diagonal": 0.3659581536038463,
+        "q2_raw": 0.021392364118465037,
+        "chi_sg_raw_equal_time": 4.107333910745288
+      }
+    }
+  ],
+  "retention_comparisons": [
+    {
+      "gamma": 0.1,
+      "sample_id": 60000,
+      "axis": "chi",
+      "settings": [
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "q_absolute": 0.01285816110556337,
+      "chi_relative": 0.178350190418594,
+      "within_prospective_tolerance": false
+    },
+    {
+      "gamma": 0.1,
+      "sample_id": 60000,
+      "axis": "m",
+      "settings": [
+        [
+          4,
+          2
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "q_absolute": 0.018086815332341133,
+      "chi_relative": 0.21883991810800216,
+      "within_prospective_tolerance": false
+    },
+    {
+      "gamma": 0.1,
+      "sample_id": 60000,
+      "axis": "chi",
+      "settings": [
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          3
+        ]
+      ],
+      "q_absolute": 0.01576506540549738,
+      "chi_relative": 0.4960804266804074,
+      "within_prospective_tolerance": false
+    },
+    {
+      "gamma": 0.1,
+      "sample_id": 60000,
+      "axis": "m",
+      "settings": [
+        [
+          4,
+          3
+        ],
+        [
+          6,
+          3
+        ]
+      ],
+      "q_absolute": 0.020993719632275143,
+      "chi_relative": 0.5209128626685174,
+      "within_prospective_tolerance": false
+    },
+    {
+      "gamma": 0.1,
+      "sample_id": 60000,
+      "axis": "m",
+      "settings": [
+        [
+          6,
+          2
+        ],
+        [
+          8,
+          2
+        ]
+      ],
+      "q_absolute": 0.0027195423887959036,
+      "chi_relative": 0.23065314220566677,
+      "within_prospective_tolerance": false
+    },
+    {
+      "gamma": 0.1,
+      "sample_id": 60000,
+      "axis": "chi",
+      "settings": [
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          3
+        ]
+      ],
+      "q_absolute": 0.01874071784064335,
+      "chi_relative": 0.6131660124290802,
+      "within_prospective_tolerance": false
+    },
+    {
+      "gamma": 0.1,
+      "sample_id": 60000,
+      "axis": "m",
+      "settings": [
+        [
+          6,
+          3
+        ],
+        [
+          8,
+          3
+        ]
+      ],
+      "q_absolute": 0.0002561100463500665,
+      "chi_relative": 0.002205254405442561,
+      "within_prospective_tolerance": true
+    },
+    {
+      "gamma": 0.1,
+      "sample_id": 60001,
+      "axis": "chi",
+      "settings": [
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "q_absolute": 0.020450217917606484,
+      "chi_relative": 0.5365462326056561,
+      "within_prospective_tolerance": false
+    },
+    {
+      "gamma": 0.1,
+      "sample_id": 60001,
+      "axis": "chi",
+      "settings": [
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "q_absolute": 0.00099401523740128,
+      "chi_relative": 0.056393958616219056,
+      "within_prospective_tolerance": false
+    },
+    {
+      "gamma": 0.1,
+      "sample_id": 60001,
+      "axis": "m",
+      "settings": [
+        [
+          4,
+          2
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "q_absolute": 0.004075615645756647,
+      "chi_relative": 0.08317839320467942,
+      "within_prospective_tolerance": false
+    },
+    {
+      "gamma": 0.1,
+      "sample_id": 60001,
+      "axis": "chi",
+      "settings": [
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          3
+        ]
+      ],
+      "q_absolute": 0.013254753260695695,
+      "chi_relative": 0.5955973297874138,
+      "within_prospective_tolerance": false
+    },
+    {
+      "gamma": 0.1,
+      "sample_id": 60001,
+      "axis": "m",
+      "settings": [
+        [
+          4,
+          3
+        ],
+        [
+          6,
+          3
+        ]
+      ],
+      "q_absolute": 0.011271080302667436,
+      "chi_relative": 0.04825027970718342,
+      "within_prospective_tolerance": false
+    },
+    {
+      "gamma": 0.1,
+      "sample_id": 60001,
+      "axis": "m",
+      "settings": [
+        [
+          6,
+          2
+        ],
+        [
+          8,
+          2
+        ]
+      ],
+      "q_absolute": 0.0006272348261577854,
+      "chi_relative": 0.012244433050213303,
+      "within_prospective_tolerance": true
+    },
+    {
+      "gamma": 0.1,
+      "sample_id": 60001,
+      "axis": "chi",
+      "settings": [
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          3
+        ]
+      ],
+      "q_absolute": 0.013230099628030456,
+      "chi_relative": 0.599477985084768,
+      "within_prospective_tolerance": false
+    },
+    {
+      "gamma": 0.1,
+      "sample_id": 60001,
+      "axis": "m",
+      "settings": [
+        [
+          6,
+          3
+        ],
+        [
+          8,
+          3
+        ]
+      ],
+      "q_absolute": 0.0006518884588230245,
+      "chi_relative": 0.00267407554018695,
+      "within_prospective_tolerance": true
+    },
+    {
+      "gamma": 0.5,
+      "sample_id": 60000,
+      "axis": "chi",
+      "settings": [
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "q_absolute": 0.015050550383727934,
+      "chi_relative": 0.07731477028634297,
+      "within_prospective_tolerance": false
+    },
+    {
+      "gamma": 0.5,
+      "sample_id": 60000,
+      "axis": "m",
+      "settings": [
+        [
+          4,
+          2
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "q_absolute": 0.017613751832020408,
+      "chi_relative": 0.015213800067342331,
+      "within_prospective_tolerance": false
+    },
+    {
+      "gamma": 0.5,
+      "sample_id": 60000,
+      "axis": "chi",
+      "settings": [
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          3
+        ]
+      ],
+      "q_absolute": 0.016530335084636083,
+      "chi_relative": 0.06612427811099715,
+      "within_prospective_tolerance": false
+    },
+    {
+      "gamma": 0.5,
+      "sample_id": 60000,
+      "axis": "m",
+      "settings": [
+        [
+          4,
+          3
+        ],
+        [
+          6,
+          3
+        ]
+      ],
+      "q_absolute": 0.019093536532928557,
+      "chi_relative": 0.003270136172175258,
+      "within_prospective_tolerance": false
+    },
+    {
+      "gamma": 0.5,
+      "sample_id": 60000,
+      "axis": "m",
+      "settings": [
+        [
+          6,
+          2
+        ],
+        [
+          8,
+          2
+        ]
+      ],
+      "q_absolute": 0.003126157874980162,
+      "chi_relative": 0.002716290622621475,
+      "within_prospective_tolerance": true
+    },
+    {
+      "gamma": 0.5,
+      "sample_id": 60000,
+      "axis": "chi",
+      "settings": [
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          3
+        ]
+      ],
+      "q_absolute": 0.01649308693567708,
+      "chi_relative": 0.06640756617114553,
+      "within_prospective_tolerance": false
+    },
+    {
+      "gamma": 0.5,
+      "sample_id": 60000,
+      "axis": "m",
+      "settings": [
+        [
+          6,
+          3
+        ],
+        [
+          8,
+          3
+        ]
+      ],
+      "q_absolute": 0.0030889097260211607,
+      "chi_relative": 0.0024136761655950503,
+      "within_prospective_tolerance": true
+    },
+    {
+      "gamma": 0.5,
+      "sample_id": 60001,
+      "axis": "chi",
+      "settings": [
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "q_absolute": 0.00964108560899235,
+      "chi_relative": 0.0027958109731144884,
+      "within_prospective_tolerance": true
+    },
+    {
+      "gamma": 0.5,
+      "sample_id": 60001,
+      "axis": "chi",
+      "settings": [
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "q_absolute": 0.01947276374804008,
+      "chi_relative": 0.12141336320728625,
+      "within_prospective_tolerance": false
+    },
+    {
+      "gamma": 0.5,
+      "sample_id": 60001,
+      "axis": "m",
+      "settings": [
+        [
+          4,
+          2
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "q_absolute": 0.008323751293779713,
+      "chi_relative": 0.11954179416508273,
+      "within_prospective_tolerance": false
+    },
+    {
+      "gamma": 0.5,
+      "sample_id": 60001,
+      "axis": "chi",
+      "settings": [
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          3
+        ]
+      ],
+      "q_absolute": 0.019306986592884434,
+      "chi_relative": 0.08397463699350373,
+      "within_prospective_tolerance": false
+    },
+    {
+      "gamma": 0.5,
+      "sample_id": 60001,
+      "axis": "m",
+      "settings": [
+        [
+          4,
+          3
+        ],
+        [
+          6,
+          3
+        ]
+      ],
+      "q_absolute": 0.0013421496901123708,
+      "chi_relative": 0.04151495517548379,
+      "within_prospective_tolerance": false
+    },
+    {
+      "gamma": 0.5,
+      "sample_id": 60001,
+      "axis": "m",
+      "settings": [
+        [
+          6,
+          2
+        ],
+        [
+          8,
+          2
+        ]
+      ],
+      "q_absolute": 0.006325336049586072,
+      "chi_relative": 0.013526243783088839,
+      "within_prospective_tolerance": true
+    },
+    {
+      "gamma": 0.5,
+      "sample_id": 60001,
+      "axis": "chi",
+      "settings": [
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          3
+        ]
+      ],
+      "q_absolute": 0.019034789490729898,
+      "chi_relative": 0.08287160155012065,
+      "within_prospective_tolerance": false
+    },
+    {
+      "gamma": 0.5,
+      "sample_id": 60001,
+      "axis": "m",
+      "settings": [
+        [
+          6,
+          3
+        ],
+        [
+          8,
+          3
+        ]
+      ],
+      "q_absolute": 0.006053138947431536,
+      "chi_relative": 0.012338377637654642,
+      "within_prospective_tolerance": true
+    },
+    {
+      "gamma": 1.0,
+      "sample_id": 60000,
+      "axis": "m",
+      "settings": [
+        [
+          4,
+          2
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "q_absolute": 0.01795181455293117,
+      "chi_relative": 0.0471541896397792,
+      "within_prospective_tolerance": false
+    },
+    {
+      "gamma": 1.0,
+      "sample_id": 60000,
+      "axis": "m",
+      "settings": [
+        [
+          6,
+          2
+        ],
+        [
+          8,
+          2
+        ]
+      ],
+      "q_absolute": 0.0076485255328005985,
+      "chi_relative": 0.015557260473095271,
+      "within_prospective_tolerance": true
+    },
+    {
+      "gamma": 1.0,
+      "sample_id": 60001,
+      "axis": "m",
+      "settings": [
+        [
+          4,
+          2
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "q_absolute": 0.023118628717924944,
+      "chi_relative": 0.08963727585157816,
+      "within_prospective_tolerance": false
+    },
+    {
+      "gamma": 1.0,
+      "sample_id": 60001,
+      "axis": "m",
+      "settings": [
+        [
+          6,
+          2
+        ],
+        [
+          8,
+          2
+        ]
+      ],
+      "q_absolute": 0.004877683271680755,
+      "chi_relative": 0.000399007215464483,
+      "within_prospective_tolerance": true
+    }
+  ],
+  "archive_means": [
+    {
+      "L": 6,
+      "gamma": 0.1,
+      "m": 4,
+      "chi": 2,
+      "disorders": [
+        60000,
+        60001,
+        60002,
+        60003,
+        60004,
+        60005,
+        60006,
+        60007
+      ],
+      "observables": {
+        "q_ea_finite": {
+          "mean": 0.9372773855175178,
+          "interval95": [
+            0.9306031837193991,
+            0.944415193694519
+          ]
+        },
+        "chi_sg_connected_equal_time": {
+          "mean": 0.027513535777935437,
+          "interval95": [
+            0.018797760956224437,
+            0.03757458587554924
+          ]
+        },
+        "magnetization": {
+          "mean": 0.12816442589244748,
+          "interval95": [
+            0.10350858661573081,
+            0.15022312343256372
+          ]
+        }
+      }
+    },
+    {
+      "L": 6,
+      "gamma": 0.25,
+      "m": 4,
+      "chi": 2,
+      "disorders": [
+        60000,
+        60001,
+        60002,
+        60003,
+        60004,
+        60005,
+        60006,
+        60007
+      ],
+      "observables": {
+        "q_ea_finite": {
+          "mean": 0.8001741847135566,
+          "interval95": [
+            0.7823505766209224,
+            0.8150954050130554
+          ]
+        },
+        "chi_sg_connected_equal_time": {
+          "mean": 0.11879683941983016,
+          "interval95": [
+            0.09178709372407991,
+            0.15906646773374894
+          ]
+        },
+        "magnetization": {
+          "mean": 0.1099645828633817,
+          "interval95": [
+            0.08534557245376456,
+            0.132139758095413
+          ]
+        }
+      }
+    },
+    {
+      "L": 6,
+      "gamma": 0.5,
+      "m": 4,
+      "chi": 2,
+      "disorders": [
+        60000,
+        60001,
+        60002,
+        60003,
+        60004,
+        60005,
+        60006,
+        60007
+      ],
+      "observables": {
+        "q_ea_finite": {
+          "mean": 0.5372387830067045,
+          "interval95": [
+            0.5040970927140658,
+            0.5702391283251407
+          ]
+        },
+        "chi_sg_connected_equal_time": {
+          "mean": 0.41935341118176145,
+          "interval95": [
+            0.34045991664970465,
+            0.5054618703504647
+          ]
+        },
+        "magnetization": {
+          "mean": 0.06934322915665736,
+          "interval95": [
+            0.05951599188870284,
+            0.08026094177382895
+          ]
+        }
+      }
+    },
+    {
+      "L": 6,
+      "gamma": 0.75,
+      "m": 4,
+      "chi": 2,
+      "disorders": [
+        60000,
+        60001,
+        60002,
+        60003,
+        60004,
+        60005,
+        60006,
+        60007
+      ],
+      "observables": {
+        "q_ea_finite": {
+          "mean": 0.3328461233987662,
+          "interval95": [
+            0.31341156153618427,
+            0.3505514389707313
+          ]
+        },
+        "chi_sg_connected_equal_time": {
+          "mean": 0.6897713858865591,
+          "interval95": [
+            0.6315482911895375,
+            0.7765546017458601
+          ]
+        },
+        "magnetization": {
+          "mean": 0.0541742089327594,
+          "interval95": [
+            0.04325267652591501,
+            0.06217637031461924
+          ]
+        }
+      }
+    },
+    {
+      "L": 6,
+      "gamma": 1.0,
+      "m": 4,
+      "chi": 2,
+      "disorders": [
+        60000,
+        60001,
+        60002,
+        60003,
+        60004,
+        60005,
+        60006,
+        60007
+      ],
+      "observables": {
+        "q_ea_finite": {
+          "mean": 0.09526797502264046,
+          "interval95": [
+            0.04521335832497885,
+            0.1523359604505628
+          ]
+        },
+        "chi_sg_connected_equal_time": {
+          "mean": 1.31390694604519,
+          "interval95": [
+            1.0703084610690965,
+            1.5342126901509854
+          ]
+        },
+        "magnetization": {
+          "mean": 0.04274624330544505,
+          "interval95": [
+            0.03633912270034899,
+            0.04726947416071672
+          ]
+        }
+      }
+    },
+    {
+      "L": 6,
+      "gamma": 0.1,
+      "m": 6,
+      "chi": 2,
+      "disorders": [
+        60000,
+        60001,
+        60002,
+        60003,
+        60004,
+        60005,
+        60006,
+        60007
+      ],
+      "observables": {
+        "q_ea_finite": {
+          "mean": 0.9386383550606954,
+          "interval95": [
+            0.9284034381716787,
+            0.9490106867098218
+          ]
+        },
+        "chi_sg_connected_equal_time": {
+          "mean": 0.03249293221552922,
+          "interval95": [
+            0.022289148298155762,
+            0.04366637278111632
+          ]
+        },
+        "magnetization": {
+          "mean": 0.13948199573269848,
+          "interval95": [
+            0.10986140123966721,
+            0.16665153479104122
+          ]
+        }
+      }
+    },
+    {
+      "L": 6,
+      "gamma": 0.25,
+      "m": 6,
+      "chi": 2,
+      "disorders": [
+        60000,
+        60001,
+        60002,
+        60003,
+        60004,
+        60005,
+        60006,
+        60007
+      ],
+      "observables": {
+        "q_ea_finite": {
+          "mean": 0.8186369521781198,
+          "interval95": [
+            0.8059225149099737,
+            0.8357133794145853
+          ]
+        },
+        "chi_sg_connected_equal_time": {
+          "mean": 0.11533923820551217,
+          "interval95": [
+            0.09377676565470554,
+            0.1392807210084045
+          ]
+        },
+        "magnetization": {
+          "mean": 0.11169229914787389,
+          "interval95": [
+            0.09031262577694749,
+            0.13118453512802322
+          ]
+        }
+      }
+    },
+    {
+      "L": 6,
+      "gamma": 0.5,
+      "m": 6,
+      "chi": 2,
+      "disorders": [
+        60000,
+        60001,
+        60002,
+        60003,
+        60004,
+        60005,
+        60006,
+        60007
+      ],
+      "observables": {
+        "q_ea_finite": {
+          "mean": 0.53535217818822,
+          "interval95": [
+            0.4979524691184141,
+            0.5743997206004352
+          ]
+        },
+        "chi_sg_connected_equal_time": {
+          "mean": 0.45716349019324004,
+          "interval95": [
+            0.37295513963246024,
+            0.5415516880980901
+          ]
+        },
+        "magnetization": {
+          "mean": 0.06833643731774278,
+          "interval95": [
+            0.054281646671553566,
+            0.0850912501526497
+          ]
+        }
+      }
+    },
+    {
+      "L": 6,
+      "gamma": 0.75,
+      "m": 6,
+      "chi": 2,
+      "disorders": [
+        60000,
+        60001,
+        60002,
+        60003,
+        60004,
+        60005,
+        60006,
+        60007
+      ],
+      "observables": {
+        "q_ea_finite": {
+          "mean": 0.31268870677718286,
+          "interval95": [
+            0.25839936066239805,
+            0.358900381239437
+          ]
+        },
+        "chi_sg_connected_equal_time": {
+          "mean": 0.8025789840401332,
+          "interval95": [
+            0.6260853526146094,
+            1.075816095810751
+          ]
+        },
+        "magnetization": {
+          "mean": 0.055729592577189,
+          "interval95": [
+            0.05093419841261634,
+            0.060771805503081075
+          ]
+        }
+      }
+    },
+    {
+      "L": 6,
+      "gamma": 1.0,
+      "m": 6,
+      "chi": 2,
+      "disorders": [
+        60000,
+        60001,
+        60002,
+        60003,
+        60004,
+        60005,
+        60006,
+        60007
+      ],
+      "observables": {
+        "q_ea_finite": {
+          "mean": 0.08271591978074647,
+          "interval95": [
+            0.03623824046051064,
+            0.1377892900225023
+          ]
+        },
+        "chi_sg_connected_equal_time": {
+          "mean": 1.3462832945952958,
+          "interval95": [
+            1.1285530406232793,
+            1.5328742802281436
+          ]
+        },
+        "magnetization": {
+          "mean": 0.04471937858715714,
+          "interval95": [
+            0.04223629694601562,
+            0.047726683712627394
+          ]
+        }
+      }
+    },
+    {
+      "L": 6,
+      "gamma": 0.1,
+      "m": 6,
+      "chi": 3,
+      "disorders": [
+        60000,
+        60001,
+        60002,
+        60003,
+        60004,
+        60005,
+        60006,
+        60007
+      ],
+      "observables": {
+        "q_ea_finite": {
+          "mean": 0.9384704515626877,
+          "interval95": [
+            0.9271281551077533,
+            0.9493186300931984
+          ]
+        },
+        "chi_sg_connected_equal_time": {
+          "mean": 0.034783099857006936,
+          "interval95": [
+            0.021785153274052556,
+            0.05112087581153899
+          ]
+        },
+        "magnetization": {
+          "mean": 0.13170574089315068,
+          "interval95": [
+            0.10383049327632213,
+            0.155966060623226
+          ]
+        }
+      }
+    },
+    {
+      "L": 6,
+      "gamma": 0.25,
+      "m": 6,
+      "chi": 3,
+      "disorders": [
+        60000,
+        60001,
+        60002,
+        60003,
+        60004,
+        60005,
+        60006,
+        60007
+      ],
+      "observables": {
+        "q_ea_finite": {
+          "mean": 0.8234476333571069,
+          "interval95": [
+            0.8052752933543971,
+            0.8444895696965524
+          ]
+        },
+        "chi_sg_connected_equal_time": {
+          "mean": 0.10891895265665977,
+          "interval95": [
+            0.08222894116310436,
+            0.1389061542542518
+          ]
+        },
+        "magnetization": {
+          "mean": 0.10961918955423897,
+          "interval95": [
+            0.0931275950754982,
+            0.12237245025963567
+          ]
+        }
+      }
+    },
+    {
+      "L": 6,
+      "gamma": 0.5,
+      "m": 6,
+      "chi": 3,
+      "disorders": [
+        60000,
+        60001,
+        60002,
+        60003,
+        60004,
+        60005,
+        60006,
+        60007
+      ],
+      "observables": {
+        "q_ea_finite": {
+          "mean": 0.5640748131651063,
+          "interval95": [
+            0.5404724674651602,
+            0.5870064930569084
+          ]
+        },
+        "chi_sg_connected_equal_time": {
+          "mean": 0.4444050732195074,
+          "interval95": [
+            0.3836710156627541,
+            0.514655578206499
+          ]
+        },
+        "magnetization": {
+          "mean": 0.07005907284811047,
+          "interval95": [
+            0.05884955635575247,
+            0.07966110010851132
+          ]
+        }
+      }
+    },
+    {
+      "L": 6,
+      "gamma": 0.75,
+      "m": 6,
+      "chi": 3,
+      "disorders": [
+        60000,
+        60001,
+        60002,
+        60003,
+        60004,
+        60005,
+        60006,
+        60007
+      ],
+      "observables": {
+        "q_ea_finite": {
+          "mean": 0.28944081935115484,
+          "interval95": [
+            0.2456193074193179,
+            0.3339278891680984
+          ]
+        },
+        "chi_sg_connected_equal_time": {
+          "mean": 0.9361872004206326,
+          "interval95": [
+            0.7406725927994801,
+            1.1496807060191268
+          ]
+        },
+        "magnetization": {
+          "mean": 0.056300036864482206,
+          "interval95": [
+            0.050087639603388565,
+            0.06329533202578001
+          ]
+        }
+      }
+    },
+    {
+      "L": 6,
+      "gamma": 1.0,
+      "m": 6,
+      "chi": 3,
+      "disorders": [
+        60000,
+        60001,
+        60002,
+        60003,
+        60004,
+        60005,
+        60006,
+        60007
+      ],
+      "observables": {
+        "q_ea_finite": {
+          "mean": 0.07109665033215587,
+          "interval95": [
+            0.03353032146331425,
+            0.11747231346198253
+          ]
+        },
+        "chi_sg_connected_equal_time": {
+          "mean": 1.5435626577563208,
+          "interval95": [
+            1.2396819684363416,
+            1.8946969338104716
+          ]
+        },
+        "magnetization": {
+          "mean": 0.0444626804639283,
+          "interval95": [
+            0.04153066641945943,
+            0.0483815828471702
+          ]
+        }
+      }
+    }
+  ],
+  "excluded": [
+    {
+      "L": 8,
+      "gamma": 0.1,
+      "sample_id": 60000,
+      "m": 4,
+      "chi": 4,
+      "solver_passed": false,
+      "analysis_qualified": false,
+      "checks": {
+        "ladder": [
+          {
+            "q_absolute": 0.0,
+            "chi_relative": 4.194622804184987e-15
+          },
+          {
+            "q_absolute": 2.220446049250313e-15,
+            "chi_relative": 1.125194583443828e-13
+          }
+        ],
+        "starts": {
+          "q_absolute": 0.0068789082719080685,
+          "chi_relative": 0.04197534049567662
+        }
+      }
+    },
+    {
+      "L": 8,
+      "gamma": 0.5,
+      "sample_id": 60000,
+      "m": 4,
+      "chi": 4,
+      "solver_passed": false,
+      "analysis_qualified": false,
+      "checks": {
+        "ladder": [
+          {
+            "q_absolute": 7.215895714285381e-08,
+            "chi_relative": 3.341128976397998e-07
+          },
+          {
+            "q_absolute": 7.601969242987394e-08,
+            "chi_relative": 3.1186852778625124e-07
+          }
+        ],
+        "starts": {
+          "q_absolute": 0.008828431220797128,
+          "chi_relative": 0.03831823214410273
+        }
+      }
+    },
+    {
+      "L": 8,
+      "gamma": 1.0,
+      "sample_id": 60000,
+      "m": 6,
+      "chi": 3,
+      "solver_passed": false,
+      "analysis_qualified": false,
+      "checks": {
+        "ladder": [
+          {
+            "q_absolute": 1.8756665683572482e-05,
+            "chi_relative": 7.164507818644722e-05
+          },
+          {
+            "q_absolute": 1.8756665760774616e-05,
+            "chi_relative": 7.164507847227449e-05
+          }
+        ],
+        "starts": {
+          "q_absolute": 9.769962616701378e-15,
+          "chi_relative": 1.4163995864547018e-14
+        }
+      }
+    }
+  ],
+  "unfinished": [
+    {
+      "path": "/root/autodl-tmp/triangle-correlation-retention-20261105-v6/results/cases/L8_g1_s60000_m4_c3",
+      "state": "unfinished"
+    },
+    {
+      "path": "/root/autodl-tmp/triangle-correlation-retention-20261105-v6/results/cases/L8_g1_s60000_m4_c4",
+      "state": "unfinished"
+    },
+    {
+      "path": "/root/autodl-tmp/triangle-correlation-retention-20261105-v6/results/cases/L8_g1_s60000_m8_c3",
+      "state": "unfinished"
+    },
+    {
+      "path": "/root/autodl-tmp/triangle-correlation-retention-20261105-v6/results/cases/L8_g1_s60001_m4_c3",
+      "state": "unfinished"
+    },
+    {
+      "path": "/root/autodl-tmp/triangle-correlation-retention-20261105-v6/results/cases/L8_g1_s60001_m6_c3",
+      "state": "unfinished"
+    },
+    {
+      "path": "/root/autodl-tmp/triangle-correlation-retention-20261105-v6/results/cases/L8_g1_s60001_m8_c3",
+      "state": "unfinished"
+    }
+  ],
+  "campaigns": [
+    {
+      "root": "/root/autodl-tmp/triangle-correlation-retention-20261105-v6/results",
+      "status": {
+        "state": "running",
+        "solver_passing_L8": 32,
+        "target_L8": 54,
+        "completed_L8": 35,
+        "running": [
+          {
+            "pid": 521214,
+            "threads": 1,
+            "L": 8,
+            "gamma": 1.0,
+            "sample_id": 60000,
+            "m": 4,
+            "chi": 3,
+            "validate": false
+          },
+          {
+            "pid": 521259,
+            "threads": 1,
+            "L": 8,
+            "gamma": 1.0,
+            "sample_id": 60001,
+            "m": 4,
+            "chi": 3,
+            "validate": false
+          },
+          {
+            "pid": 538523,
+            "threads": 2,
+            "L": 8,
+            "gamma": 1.0,
+            "sample_id": 60001,
+            "m": 6,
+            "chi": 3,
+            "validate": false
+          },
+          {
+            "pid": 538983,
+            "threads": 2,
+            "L": 8,
+            "gamma": 1.0,
+            "sample_id": 60000,
+            "m": 8,
+            "chi": 3,
+            "validate": false
+          },
+          {
+            "pid": 539180,
+            "threads": 2,
+            "L": 8,
+            "gamma": 1.0,
+            "sample_id": 60001,
+            "m": 8,
+            "chi": 3,
+            "validate": false
+          },
+          {
+            "pid": 540126,
+            "threads": 4,
+            "L": 8,
+            "gamma": 1.0,
+            "sample_id": 60000,
+            "m": 4,
+            "chi": 4,
+            "validate": false
+          }
+        ],
+        "workers": 16,
+        "threads_per_worker": 1,
+        "worker_cpu_threads": 12,
+        "diagnostic_active": true,
+        "pending": 19,
+        "blocked_by_validation": [],
+        "worker_failures": {},
+        "dense_scan": "held"
+      }
+    },
+    {
+      "root": "/root/autodl-tmp/triangle-correlation-highchi-20261105-v7/results",
+      "status": {
+        "state": "waiting_for_predecessors",
+        "predecessors_active": [
+          521299,
+          515820
+        ],
+        "running": {},
+        "solver_passing_L8": 0,
+        "completed_L8": 0,
+        "target_L8": 54,
+        "validations_passed": 0,
+        "pending_jobs": 72,
+        "blocked_dependencies": [
+          {
+            "mode": "profile",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60000,
+              "m": 6,
+              "chi": 8,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "profile",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60000,
+              "m": 8,
+              "chi": 8,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "profile",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60000,
+              "m": 4,
+              "chi": 8,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.1,
+              "sample_id": 60000,
+              "m": 6,
+              "chi": 8,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.1,
+              "sample_id": 60000,
+              "m": 8,
+              "chi": 8,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.1,
+              "sample_id": 60000,
+              "m": 4,
+              "chi": 8,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.1,
+              "sample_id": 60001,
+              "m": 6,
+              "chi": 8,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.1,
+              "sample_id": 60001,
+              "m": 8,
+              "chi": 8,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.1,
+              "sample_id": 60001,
+              "m": 4,
+              "chi": 8,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60000,
+              "m": 6,
+              "chi": 8,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60000,
+              "m": 8,
+              "chi": 8,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60000,
+              "m": 4,
+              "chi": 8,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60001,
+              "m": 6,
+              "chi": 8,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60001,
+              "m": 8,
+              "chi": 8,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60001,
+              "m": 4,
+              "chi": 8,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 1.0,
+              "sample_id": 60000,
+              "m": 6,
+              "chi": 8,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 1.0,
+              "sample_id": 60000,
+              "m": 8,
+              "chi": 8,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 1.0,
+              "sample_id": 60000,
+              "m": 4,
+              "chi": 8,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 1.0,
+              "sample_id": 60001,
+              "m": 6,
+              "chi": 8,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 1.0,
+              "sample_id": 60001,
+              "m": 8,
+              "chi": 8,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 1.0,
+              "sample_id": 60001,
+              "m": 4,
+              "chi": 8,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "profile",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60000,
+              "m": 6,
+              "chi": 16,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "profile",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60000,
+              "m": 8,
+              "chi": 16,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "profile",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60000,
+              "m": 4,
+              "chi": 16,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.1,
+              "sample_id": 60000,
+              "m": 6,
+              "chi": 16,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.1,
+              "sample_id": 60000,
+              "m": 8,
+              "chi": 16,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.1,
+              "sample_id": 60000,
+              "m": 4,
+              "chi": 16,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.1,
+              "sample_id": 60001,
+              "m": 6,
+              "chi": 16,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.1,
+              "sample_id": 60001,
+              "m": 8,
+              "chi": 16,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.1,
+              "sample_id": 60001,
+              "m": 4,
+              "chi": 16,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60000,
+              "m": 6,
+              "chi": 16,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60000,
+              "m": 8,
+              "chi": 16,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60000,
+              "m": 4,
+              "chi": 16,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60001,
+              "m": 6,
+              "chi": 16,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60001,
+              "m": 8,
+              "chi": 16,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60001,
+              "m": 4,
+              "chi": 16,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 1.0,
+              "sample_id": 60000,
+              "m": 6,
+              "chi": 16,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 1.0,
+              "sample_id": 60000,
+              "m": 8,
+              "chi": 16,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 1.0,
+              "sample_id": 60000,
+              "m": 4,
+              "chi": 16,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 1.0,
+              "sample_id": 60001,
+              "m": 6,
+              "chi": 16,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 1.0,
+              "sample_id": 60001,
+              "m": 8,
+              "chi": 16,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 1.0,
+              "sample_id": 60001,
+              "m": 4,
+              "chi": 16,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "profile",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60000,
+              "m": 6,
+              "chi": 32,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "profile",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60000,
+              "m": 8,
+              "chi": 32,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "profile",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60000,
+              "m": 4,
+              "chi": 32,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.1,
+              "sample_id": 60000,
+              "m": 6,
+              "chi": 32,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.1,
+              "sample_id": 60000,
+              "m": 8,
+              "chi": 32,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.1,
+              "sample_id": 60000,
+              "m": 4,
+              "chi": 32,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.1,
+              "sample_id": 60001,
+              "m": 6,
+              "chi": 32,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.1,
+              "sample_id": 60001,
+              "m": 8,
+              "chi": 32,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.1,
+              "sample_id": 60001,
+              "m": 4,
+              "chi": 32,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60000,
+              "m": 6,
+              "chi": 32,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60000,
+              "m": 8,
+              "chi": 32,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60000,
+              "m": 4,
+              "chi": 32,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60001,
+              "m": 6,
+              "chi": 32,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60001,
+              "m": 8,
+              "chi": 32,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 0.5,
+              "sample_id": 60001,
+              "m": 4,
+              "chi": 32,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 1.0,
+              "sample_id": 60000,
+              "m": 6,
+              "chi": 32,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 1.0,
+              "sample_id": 60000,
+              "m": 8,
+              "chi": 32,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 1.0,
+              "sample_id": 60000,
+              "m": 4,
+              "chi": 32,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 1.0,
+              "sample_id": 60001,
+              "m": 6,
+              "chi": 32,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 1.0,
+              "sample_id": 60001,
+              "m": 8,
+              "chi": 32,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          },
+          {
+            "mode": "case",
+            "task": {
+              "L": 8,
+              "gamma": 1.0,
+              "sample_id": 60001,
+              "m": 4,
+              "chi": 32,
+              "validate": false
+            },
+            "reason": "L4 validation not passing or unfinished"
+          }
+        ],
+        "attempts": {},
+        "allocation": {
+          "cpu_cores": 20.0,
+          "memory_gib": 100.0,
+          "available_gib": 45.81562805175781
+        },
+        "disk_free_gib": 8.819999694824219,
+        "backend": "cuda",
+        "dense_scan": "held",
+        "utc": 1793843957.5442278
+      }
+    }
+  ],
+  "thresholds": {
+    "solver_q_absolute": 0.001,
+    "solver_chi_relative": 0.005,
+    "starts_and_exact_chi_relative": 0.01,
+    "retention_q_absolute": 0.01,
+    "retention_chi_relative": 0.02
+  },
+  "retention_qualified": false,
+  "interpretation": "Finite-ladder sensitivity; no thermodynamic-order conclusion"
+}

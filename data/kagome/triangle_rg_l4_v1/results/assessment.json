@@ -1,0 +1,112 @@
+{
+  "status": "fixed_low_energy_schedule_fails_pilot",
+  "physical_accuracy_qualified": false,
+  "scope": {
+    "L": 4,
+    "N": 48,
+    "sample_id": 60000,
+    "gamma": 0.55,
+    "h": 0.15,
+    "orientation": 0,
+    "origin": [
+      0,
+      0
+    ]
+  },
+  "cases": 5,
+  "reference": {
+    "jastrow": {
+      "energy_per_site": -1.0999635518089794,
+      "q2": 0.3900319155374611
+    },
+    "rbm_2": {
+      "energy_per_site": -1.09986246174827,
+      "q2": 0.4060941576543782
+    }
+  },
+  "uncertainties": [
+    {
+      "key": "s60000_g0.55_m4_c4_o0_x0y0",
+      "q2_sampling_error": -0.000329436138333139,
+      "q2_sampling_se": 0.0010616550019534527,
+      "tv_bootstrap_conditional": {
+        "jastrow": [
+          0.18789793414374192,
+          0.20094843084613484
+        ],
+        "rbm_2": [
+          0.22639701565106707,
+          0.23975470302005608
+        ]
+      }
+    },
+    {
+      "key": "s60000_g0.55_m4_c8_o0_x0y0",
+      "q2_sampling_error": 0.0001304414468061288,
+      "q2_sampling_se": 0.001137231647214522,
+      "tv_bootstrap_conditional": {
+        "jastrow": [
+          0.27008545100688935,
+          0.2855944829682509
+        ],
+        "rbm_2": [
+          0.3061093767484029,
+          0.3213117082913716
+        ]
+      }
+    },
+    {
+      "key": "s60000_g0.55_m4_c16_o0_x0y0",
+      "q2_sampling_error": 0.0016891724048980206,
+      "q2_sampling_se": 0.0011074418286656491,
+      "tv_bootstrap_conditional": {
+        "jastrow": [
+          0.11929977399607498,
+          0.1327426612377167
+        ],
+        "rbm_2": [
+          0.1572788208723068,
+          0.17083015143871305
+        ]
+      }
+    },
+    {
+      "key": "s60000_g0.55_m6_c8_o0_x0y0",
+      "q2_sampling_error": 0.0005313983419780732,
+      "q2_sampling_se": 0.0011957641125508634,
+      "tv_bootstrap_conditional": {
+        "jastrow": [
+          0.034237939864397035,
+          0.04718291151026883
+        ],
+        "rbm_2": [
+          0.05781027923027675,
+          0.07142123579978944
+        ]
+      }
+    },
+    {
+      "key": "s60000_g0.55_m8_c8_o0_x0y0",
+      "q2_sampling_error": -0.0017124418101285843,
+      "q2_sampling_se": 0.0012025489789302725,
+      "tv_bootstrap_conditional": {
+        "jastrow": [
+          0.02969544579585391,
+          0.042609008649984986
+        ],
+        "rbm_2": [
+          0.048134442791342734,
+          0.061189015830556547
+        ]
+      }
+    }
+  ],
+  "decision": "Do not expand this fixed schedule to the full L4 grid or L6. Reassess state selection.",
+  "limitations": [
+    "One disorder, field and partition; not an ensemble conclusion.",
+    "GFMC is comparison data, not exact N48 ground truth.",
+    "TV bootstrap conditions on fixed GFMC baseline and is not a convergence certificate.",
+    "Reported timings exclude baseline hashing, imports and validation; no speedup claim.",
+    "The full Stage B/C/D grid was not run after the initial screen failed."
+  ]
+}

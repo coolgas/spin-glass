@@ -1,0 +1,7 @@
+{
+  "raw_hashes_verified": 256,
+  "l4_histograms_reconstructed": 192,
+  "l2_histograms_reconstructed": 64,
+  "all_bonds_scaled": true,
+  "report_sources_sha256": "6789f1463acaa0477b9f5c37676fcfe8174d0a91f67e3d770e8f4287218b38f5"
+}

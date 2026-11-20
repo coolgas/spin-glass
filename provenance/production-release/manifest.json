@@ -1,0 +1,43 @@
+{
+  "release_id": "rydberg-kagome-20261117-v5",
+  "files": {
+    "code/rydberg_kagome/dmrg.py": "4bc41903df07a631d9133092938937a4f4dcb1b1710deba710c41769691e9db0",
+    "code/rydberg_kagome/queue.py": "1378ea63d646b199f653fea7456c5e8f3f45b097fe2f3e03da15e406083f8e3f",
+    "code/rydberg_kagome/convergence.py": "be5a7e83457bd97de0c9e07c2643c68730bc22ab85727d783c5cd26e9d227430",
+    "code/rydberg_kagome/config.py": "eb2292c06471d4f82a1fda36d95d02272bce2249cf188b4118adc4768f328fcf",
+    "code/rydberg_kagome/analysis.py": "83cad191254a43710b56827dd1bf0ce73720165789e98a732ff9d6da4c5ceb82",
+    "code/rydberg_kagome/audit.py": "8b07514adf375a6bbcd83fce2bc5ad8fefef512a661a4c533097febbeeb08948",
+    "code/rydberg_kagome/results.py": "566f6bffdf772db711287e3681fb3ee0ab07cb863c30054ded3e182625139247",
+    "code/rydberg_kagome/superblock.py": "b87e8f4a8bd20906ec9c4ed5917b4bac9df35453b6eba8520911e5087c75d150",
+    "code/rydberg_kagome/__init__.py": "1dc756ae961cbda7061064cfc404b51fd8d062981c2aac8e39e45dd4bddd1dc1",
+    "code/rydberg_kagome/README.md": "e7e13be4cfe824cf990871d723b42bcd8b0ca152a1a51a8c1a6bfb91844f6299",
+    "code/rydberg_kagome/campaign.py": "7b78e82dbd8fc4efe360448baf38df4a9b5b846bf41188e5c54cdb666ed7fac5",
+    "code/rydberg_kagome/exact.py": "c0a104a55f21510431af0d1b24fc5c1d8714dde2fc39c994f01fd4b2a7fbda43",
+    "code/rydberg_kagome/qualification.py": "4a404b88299539961eb89fb07ccddee57361d6b150ff5703d34fbe6fb599df7f",
+    "code/rydberg_kagome/geometry.py": "4e27bcde4fbff1e7de3b07396d521b388b123001778db9e845d9091fb95236c3",
+    "code/rydberg_kagome/sampling.py": "0b4681fa27378a824cd7a3ec1e324ac7ddcff65c39896096a751be2362d0ff62",
+    "code/rydberg_kagome/observables.py": "da4999fcad799218379f2808e6f7efd055dff0858afcf0d51d79bddcbabd68c9",
+    "code/rydberg_kagome/hamiltonian.py": "47277e038a372837bb1b4ee6e95fd46d80a20caf32ad03d63c6ed0a1603d6ea8",
+    "code/rydberg_kagome/__main__.py": "4700fe3ff6a07f26563c322f2686ccead4e21ebc940d296b98ec2bdd55934be0",
+    "code/rydberg_kagome/production.py": "92edeafe84cbbed037f30e30918933de7bf78234ac76fddbbe80ef171448a5f7",
+    "code/rydberg_kagome/tests/test_production.py": "7b22dbf3d6e162c1ba97b2d66aedc2a0eea2e1e7f0ebc38c809bd92158546266",
+    "code/rydberg_kagome/tests/test_dmrg.py": "5dac24f3f3af9ec4e807335fca237338855ae0d2b4de82fa1a81f11adaca7da3",
+    "code/rydberg_kagome/tests/__init__.py": "2d88cb878c2045b38616303c4e3cfee9230055b46ad0b1d6a92883b08169488f",
+    "code/rydberg_kagome/tests/test_superblock.py": "d2337afb08c3f8f3b73ac5cd10f901640856ba78cedd6dbc7129facd002f59b7",
+    "code/rydberg_kagome/tests/test_hamiltonian.py": "4235940bbce0dd9ed8c20ddf482081259d8aaedf9f3d971c79c7ef6bb9201dd7",
+    "code/rydberg_kagome/tests/test_observables.py": "91100c9ee430e939e9f0c0cbe928f0e22606365877a45e95477487d37378d8a6",
+    "code/rydberg_kagome/tests/test_geometry.py": "e21799cae8699d5c27e54b5ab599c05c7503c2c8079544fccc190e772d1cac40",
+    "code/rydberg_kagome/tests/test_sampling.py": "e9d7342b4883db3f7bddd03ad33e793e1347f5cdbfc0ac115d6d2c20fe2cf013",
+    "code/rydberg_kagome/configs/l4_pq.json": "5742619df7572e17d5dfede140f6be7eb8d3a82ccfc73ffab580a9c9b017ed9f"
+  },
+  "git_revision": "6552d0664c966a449f043379a6237b7c59511a4b",
+  "source_uncommitted": true,
+  "selection": "user-selected chi12 D128; RG convergence not claimed",
+  "file_count": 28,
+  "bytes": 59950,
+  "artifacts": {
+    "production-tasks.json": "fe52612862230a5a442d2f479117bacaa6c126589d685a974312938a72a6b31f",
+    "production-spec.json": "9177dda82d5fb381ce4594ba9b97bc1d9284afbd1ab6b4408aac8f82cf281db9"
+  },
+  "change": "Compare checkpoint round trip to state immediately before serialization; sampler canonicalizes MPS."
+}

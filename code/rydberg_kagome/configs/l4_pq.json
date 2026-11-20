@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "L": 4,
+  "sample_ids": {"first": 0, "last": 127, "required_count": 128},
+  "deltas": [2.0, 3.15],
+  "models": ["full", "nn_nnn", "nn"],
+  "drive_grid": {"kind": "geomspace", "minimum": 0.03, "maximum": 10.0, "count": 30},
+  "physics": {"R_um": 8.0, "w_um": 1.0, "minimum_distance_um": 4.0,
+              "c6_MHz_um6": 1074181.80463517, "seed_prefix": 20261116, "max_attempts": 100000},
+  "pair_convention": "ordered i!=j; occupation V/2; ZZ V/8",
+  "distance_convention": "euclidean-shortest-oblique-v1",
+  "chi_ladder": [8, 12, 16, 24, 32],
+  "D_ladder": [32, 64, 128, 256, 512],
+  "starts": [0, 1],
+  "production_chi": 12,
+  "production_D": 128,
+  "production_mode": "two independent starts optimized directly at D128",
+  "replica_pairs_initial": 20000,
+  "production_gate": "User-selected chi12 D128 approximation; check sweeps, starts and sampling per case; report RG sensitivity separately."
+}

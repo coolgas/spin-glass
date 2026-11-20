@@ -1,0 +1,10 @@
+{
+  "source_repository": "/Users/tianyiyan/Dropbox/spin-glasses",
+  "source_git_revision": "6552d0664c966a449f043379a6237b7c59511a4b",
+  "source_uncommitted": true,
+  "production_release": "rydberg-kagome-20261117-v5",
+  "notebook_sha256": "1b303bac56f5111e1aced6f08338172e6c2ac9561474c939436cb8959de0f346",
+  "snapshot": "snapshot-20261119T005408Z",
+  "destination": "/mnt/ali/yty/spin-glasses/rydberg-kagome-l4-pq",
+  "code_equals_frozen_production_release": true
+}

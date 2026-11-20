@@ -1,0 +1,12 @@
+{
+  "status": "history-compaction-complete",
+  "retired_files": 4502,
+  "source_bytes": 4753399672,
+  "archive_bytes": 3290888153,
+  "net_bytes_saved": 1462511519,
+  "unique_blobs": 4498,
+  "archive_sha256": "6919abd3d36eb192494f0fb3fb885d31a8bb92f84319af99bb930c9c22c3d24a",
+  "manifest_sha256": "48ccdd8dfcf2194daffa2432bb3fbf547816993e087bacf7f2026692d2d77471",
+  "receipts_sha256": "b53f15ddd053cd6bae946116412ba1c275d42f306eb3603f4a4a05ca463f4cee",
+  "time": 1795103551.856758
+}

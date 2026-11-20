@@ -1,0 +1,4 @@
+# Recorded production dependency versions; use Python 3.12 for reconstruction.
+numpy==2.4.6
+scipy==1.18.1
+physics-tenpy==1.1.0

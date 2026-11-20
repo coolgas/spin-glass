@@ -1,0 +1,7 @@
+# Compatible requirements, not a claim of a historical environment lock.
+numpy>=2.0
+matplotlib>=3.9
+ipython>=8
+nbformat>=5
+nbclient>=0.10
+ipykernel>=6

@@ -1,0 +1,16 @@
+{
+  "status": "cleanup-complete",
+  "deleted_files": 23034,
+  "deleted_bytes": 4924041999,
+  "deleted_allocated_bytes": 4959182848,
+  "retained_models": 23040,
+  "retained_states": 23046,
+  "retained_model_bytes": 38336825883,
+  "retained_state_bytes": 4927370243,
+  "free_bytes_before": 16889671680,
+  "free_bytes_after": 21832986624,
+  "manifest_sha256": "09cf37bb1de3a73b9c3a9d514450257d04b5c79f77eeb9309bffaab73016ee8c",
+  "receipts_sha256": "fc053eb66f6d96935f22f45a2baf32b69c586d03354e2917be893b979dcfbe3a",
+  "post_verification": "All retained checkpoint and original result hashes verified; all six flagged cases retain both states",
+  "time": 1795103129.3330448
+}

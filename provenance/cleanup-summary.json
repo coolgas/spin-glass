@@ -1,0 +1,12 @@
+{
+  "status": "complete-verified",
+  "production_removed_files": 23034,
+  "production_bytes_saved": 4924041999,
+  "historical_retired_files": 4502,
+  "historical_net_bytes_saved": 1462511519,
+  "total_checkpoint_bytes_saved": 6386553518,
+  "production_retained_models": 23040,
+  "production_retained_states": 23046,
+  "historical_archive_bytes": 3290888153,
+  "checkpoint_location": "AutoDL; Lenovo preserves current plot reproduction package and checkpoint cleanup manifests/receipts, not retained checkpoint contents"
+}

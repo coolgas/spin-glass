@@ -1,0 +1,374 @@
+[
+  {
+    "L": 6,
+    "sample": 0,
+    "model": "full",
+    "delta": 2.0,
+    "omega": 0.9037538790536807,
+    "chi": 12,
+    "pairs": 20000,
+    "id": "L6_s000_full_d2_g17_c12_D128",
+    "dimensions": [
+      128
+    ],
+    "fixed_production": true,
+    "purpose": "L4-protocol baseline"
+  },
+  {
+    "L": 6,
+    "sample": 0,
+    "model": "full",
+    "delta": 2.0,
+    "omega": 0.9037538790536807,
+    "chi": 12,
+    "pairs": 20000,
+    "id": "L6_s000_full_d2_g17_c12_D64-128-256",
+    "dimensions": [
+      64,
+      128,
+      256
+    ],
+    "fixed_production": false,
+    "purpose": "Bond-dimension qualification"
+  },
+  {
+    "L": 6,
+    "sample": 0,
+    "model": "nn_nnn",
+    "delta": 2.0,
+    "omega": 0.9037538790536807,
+    "chi": 12,
+    "pairs": 20000,
+    "id": "L6_s000_nn_nnn_d2_g17_c12_D128",
+    "dimensions": [
+      128
+    ],
+    "fixed_production": true,
+    "purpose": "L4-protocol baseline"
+  },
+  {
+    "L": 6,
+    "sample": 0,
+    "model": "nn_nnn",
+    "delta": 2.0,
+    "omega": 0.9037538790536807,
+    "chi": 12,
+    "pairs": 20000,
+    "id": "L6_s000_nn_nnn_d2_g17_c12_D64-128-256",
+    "dimensions": [
+      64,
+      128,
+      256
+    ],
+    "fixed_production": false,
+    "purpose": "Bond-dimension qualification"
+  },
+  {
+    "L": 6,
+    "sample": 0,
+    "model": "nn",
+    "delta": 2.0,
+    "omega": 0.9037538790536807,
+    "chi": 12,
+    "pairs": 20000,
+    "id": "L6_s000_nn_d2_g17_c12_D128",
+    "dimensions": [
+      128
+    ],
+    "fixed_production": true,
+    "purpose": "L4-protocol baseline"
+  },
+  {
+    "L": 6,
+    "sample": 0,
+    "model": "nn",
+    "delta": 2.0,
+    "omega": 0.9037538790536807,
+    "chi": 12,
+    "pairs": 20000,
+    "id": "L6_s000_nn_d2_g17_c12_D64-128-256",
+    "dimensions": [
+      64,
+      128,
+      256
+    ],
+    "fixed_production": false,
+    "purpose": "Bond-dimension qualification"
+  },
+  {
+    "L": 6,
+    "sample": 0,
+    "model": "full",
+    "delta": 3.15,
+    "omega": 0.9037538790536807,
+    "chi": 12,
+    "pairs": 20000,
+    "id": "L6_s000_full_d3.15_g17_c12_D128",
+    "dimensions": [
+      128
+    ],
+    "fixed_production": true,
+    "purpose": "L4-protocol baseline"
+  },
+  {
+    "L": 6,
+    "sample": 0,
+    "model": "full",
+    "delta": 3.15,
+    "omega": 0.9037538790536807,
+    "chi": 12,
+    "pairs": 20000,
+    "id": "L6_s000_full_d3.15_g17_c12_D64-128-256",
+    "dimensions": [
+      64,
+      128,
+      256
+    ],
+    "fixed_production": false,
+    "purpose": "Bond-dimension qualification"
+  },
+  {
+    "L": 6,
+    "sample": 0,
+    "model": "nn_nnn",
+    "delta": 3.15,
+    "omega": 0.9037538790536807,
+    "chi": 12,
+    "pairs": 20000,
+    "id": "L6_s000_nn_nnn_d3.15_g17_c12_D128",
+    "dimensions": [
+      128
+    ],
+    "fixed_production": true,
+    "purpose": "L4-protocol baseline"
+  },
+  {
+    "L": 6,
+    "sample": 0,
+    "model": "nn_nnn",
+    "delta": 3.15,
+    "omega": 0.9037538790536807,
+    "chi": 12,
+    "pairs": 20000,
+    "id": "L6_s000_nn_nnn_d3.15_g17_c12_D64-128-256",
+    "dimensions": [
+      64,
+      128,
+      256
+    ],
+    "fixed_production": false,
+    "purpose": "Bond-dimension qualification"
+  },
+  {
+    "L": 6,
+    "sample": 0,
+    "model": "nn",
+    "delta": 3.15,
+    "omega": 0.9037538790536807,
+    "chi": 12,
+    "pairs": 20000,
+    "id": "L6_s000_nn_d3.15_g17_c12_D128",
+    "dimensions": [
+      128
+    ],
+    "fixed_production": true,
+    "purpose": "L4-protocol baseline"
+  },
+  {
+    "L": 6,
+    "sample": 0,
+    "model": "nn",
+    "delta": 3.15,
+    "omega": 0.9037538790536807,
+    "chi": 12,
+    "pairs": 20000,
+    "id": "L6_s000_nn_d3.15_g17_c12_D64-128-256",
+    "dimensions": [
+      64,
+      128,
+      256
+    ],
+    "fixed_production": false,
+    "purpose": "Bond-dimension qualification"
+  },
+  {
+    "L": 6,
+    "sample": 0,
+    "model": "full",
+    "delta": 2.0,
+    "omega": 0.03,
+    "chi": 12,
+    "pairs": 20000,
+    "id": "L6_s000_full_d2_g00_c12_D128",
+    "dimensions": [
+      128
+    ],
+    "fixed_production": true,
+    "purpose": "L4-protocol baseline"
+  },
+  {
+    "L": 6,
+    "sample": 0,
+    "model": "nn_nnn",
+    "delta": 2.0,
+    "omega": 0.03,
+    "chi": 12,
+    "pairs": 20000,
+    "id": "L6_s000_nn_nnn_d2_g00_c12_D128",
+    "dimensions": [
+      128
+    ],
+    "fixed_production": true,
+    "purpose": "L4-protocol baseline"
+  },
+  {
+    "L": 6,
+    "sample": 0,
+    "model": "nn",
+    "delta": 2.0,
+    "omega": 0.03,
+    "chi": 12,
+    "pairs": 20000,
+    "id": "L6_s000_nn_d2_g00_c12_D128",
+    "dimensions": [
+      128
+    ],
+    "fixed_production": true,
+    "purpose": "L4-protocol baseline"
+  },
+  {
+    "L": 6,
+    "sample": 0,
+    "model": "full",
+    "delta": 3.15,
+    "omega": 0.03,
+    "chi": 12,
+    "pairs": 20000,
+    "id": "L6_s000_full_d3.15_g00_c12_D128",
+    "dimensions": [
+      128
+    ],
+    "fixed_production": true,
+    "purpose": "L4-protocol baseline"
+  },
+  {
+    "L": 6,
+    "sample": 0,
+    "model": "nn_nnn",
+    "delta": 3.15,
+    "omega": 0.03,
+    "chi": 12,
+    "pairs": 20000,
+    "id": "L6_s000_nn_nnn_d3.15_g00_c12_D128",
+    "dimensions": [
+      128
+    ],
+    "fixed_production": true,
+    "purpose": "L4-protocol baseline"
+  },
+  {
+    "L": 6,
+    "sample": 0,
+    "model": "nn",
+    "delta": 3.15,
+    "omega": 0.03,
+    "chi": 12,
+    "pairs": 20000,
+    "id": "L6_s000_nn_d3.15_g00_c12_D128",
+    "dimensions": [
+      128
+    ],
+    "fixed_production": true,
+    "purpose": "L4-protocol baseline"
+  },
+  {
+    "L": 6,
+    "sample": 0,
+    "model": "full",
+    "delta": 2.0,
+    "omega": 10.0,
+    "chi": 12,
+    "pairs": 20000,
+    "id": "L6_s000_full_d2_g29_c12_D128",
+    "dimensions": [
+      128
+    ],
+    "fixed_production": true,
+    "purpose": "L4-protocol baseline"
+  },
+  {
+    "L": 6,
+    "sample": 0,
+    "model": "nn_nnn",
+    "delta": 2.0,
+    "omega": 10.0,
+    "chi": 12,
+    "pairs": 20000,
+    "id": "L6_s000_nn_nnn_d2_g29_c12_D128",
+    "dimensions": [
+      128
+    ],
+    "fixed_production": true,
+    "purpose": "L4-protocol baseline"
+  },
+  {
+    "L": 6,
+    "sample": 0,
+    "model": "nn",
+    "delta": 2.0,
+    "omega": 10.0,
+    "chi": 12,
+    "pairs": 20000,
+    "id": "L6_s000_nn_d2_g29_c12_D128",
+    "dimensions": [
+      128
+    ],
+    "fixed_production": true,
+    "purpose": "L4-protocol baseline"
+  },
+  {
+    "L": 6,
+    "sample": 0,
+    "model": "full",
+    "delta": 3.15,
+    "omega": 10.0,
+    "chi": 12,
+    "pairs": 20000,
+    "id": "L6_s000_full_d3.15_g29_c12_D128",
+    "dimensions": [
+      128
+    ],
+    "fixed_production": true,
+    "purpose": "L4-protocol baseline"
+  },
+  {
+    "L": 6,
+    "sample": 0,
+    "model": "nn_nnn",
+    "delta": 3.15,
+    "omega": 10.0,
+    "chi": 12,
+    "pairs": 20000,
+    "id": "L6_s000_nn_nnn_d3.15_g29_c12_D128",
+    "dimensions": [
+      128
+    ],
+    "fixed_production": true,
+    "purpose": "L4-protocol baseline"
+  },
+  {
+    "L": 6,
+    "sample": 0,
+    "model": "nn",
+    "delta": 3.15,
+    "omega": 10.0,
+    "chi": 12,
+    "pairs": 20000,
+    "id": "L6_s000_nn_d3.15_g29_c12_D128",
+    "dimensions": [
+      128
+    ],
+    "fixed_production": true,
+    "purpose": "L4-protocol baseline"
+  }
+]

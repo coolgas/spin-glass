@@ -14,14 +14,26 @@ class CaseTests(unittest.TestCase):
             root=Path(folder)/'case'
             args=dict(output=str(root),L=4,sid=0,model_name='full',delta=2.,omega=.03,
                 chi=2,dimensions=[4,8],pairs=2000,max_sweeps=120,validate=False,adaptive=True)
-            result=run_case(**args,invocation_sweeps=3)
-            self.assertFalse(result['completed']); self.assertEqual(result['sweeps_per_start'],[2,1])
+            result=run_case(**args,invocation_sweeps=11)
+            self.assertFalse(result['completed']); self.assertEqual(result['sweeps_per_start'],[6,5])
+            paused=json.loads((root/'resume.json').read_text())['state']['moments']
+            for moments in paused:
+                self.assertTrue(np.isfinite(moments['5']['canonical_error']))
             self.assertFalse((root/'result.json').exists())
             result=run_case(**args)
             self.assertTrue(result['completed']); self.assertTrue(result['solver_pass'])
             self.assertTrue(result['sampling_moment_check'])
             self.assertFalse(result['production_qualified']); self.assertFalse(result['rg_converged'])
             self.assertTrue(all(e['sweeps']<=120 for e in result['endpoints']))
+            diagnostics=result['canonical_diagnostics']
+            self.assertEqual(diagnostics['interval_sweeps'],5)
+            saved_moments=json.loads((root/'resume.json').read_text())['state']['moments']
+            for seed,records in enumerate(diagnostics['starts']):
+                self.assertEqual(records[0]['canonical_error'],paused[seed]['5']['canonical_error'])
+                self.assertEqual([r['sweep'] for r in records],list(range(5,result['endpoints'][seed]['sweeps']+1,5)))
+                for record in records:
+                    self.assertEqual(record['canonical_error'],saved_moments[seed][str(record['sweep'])]['canonical_error'])
+                self.assertLess(records[-1]['canonical_error'],1e-8)
             with np.load(root/'pq.npz') as h: self.assertEqual(int(h['counts'].sum()),2000)
             saved=digest(root/'result.json')
             again=run_case(**args)
@@ -34,6 +46,9 @@ class CaseTests(unittest.TestCase):
                 self.assertAlmostEqual(a['energy'],b['energy'],places=10)
                 self.assertAlmostEqual(a['observables']['qea'],b['observables']['qea'],places=10)
             np.testing.assert_allclose(result['sampling']['qmean'],direct['sampling']['qmean'],atol=1e-12)
+            for resumed,direct_records in zip(diagnostics['starts'],direct['canonical_diagnostics']['starts']):
+                np.testing.assert_allclose([r['canonical_error'] for r in resumed],
+                                           [r['canonical_error'] for r in direct_records],atol=1e-11)
 
     def test_memory_deferral_is_resumable_not_complete(self):
         with tempfile.TemporaryDirectory() as folder:

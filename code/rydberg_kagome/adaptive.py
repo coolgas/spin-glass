@@ -112,7 +112,7 @@ def optimize(root,mpo,model,order,dimensions,identity,seconds=None,
                 state['disagreement'][str(sweep)]=(de>=1e-7 or dq>=1e-3) and all(
                     locally_stable(state['history'][s],moments[s],sweep,n) for s in (0,1))
                 stable=[final_window_pass(state['history'][s],moments[s],sweep,n,
-                    float(np.linalg.norm(engines[s].psi.norm_test()))) for s in (0,1)]
+                    moments[s][sweep]['canonical_error']) for s in (0,1)]
                 if all(stable) and de<1e-7 and dq<1e-3:
                     state['solver_pass']=True; state['complete']=True
                 if sweep in (20,40,60) and not state['complete']:
@@ -156,7 +156,8 @@ def optimize(root,mpo,model,order,dimensions,identity,seconds=None,
         if sweep%5==0:
             m=physical_m(engine.psi,model,order)
             if not np.isfinite(m).all(): raise FloatingPointError('Nonfinite moments')
-            state['moments'][seed][str(sweep)]=dict(D=state['D'],mixer=mixed,m=m.tolist(),qea=float(np.mean(m*m)))
+            state['moments'][seed][str(sweep)]=dict(D=state['D'],mixer=mixed,m=m.tolist(),qea=float(np.mean(m*m)),
+                canonical_error=float(np.linalg.norm(engine.psi.norm_test())))
         progress('checkpointing'); save()
     reason=reason or ('converged' if state['solver_pass'] else 'sweep_limit')
     progress(reason)

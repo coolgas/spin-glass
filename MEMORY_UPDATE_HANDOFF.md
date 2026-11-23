@@ -1,5 +1,32 @@
 # Memory work handoff — 2026-11-23
 
+## Canonical-residual diagnostics update
+
+The user requested that canonical residuals be saved every `x` rounds in
+production. Implemented on the feature source as a **5-sweep cadence**, aligned
+with paired convergence checks. For each start, each sweep-5 moment record now
+stores `canonical_error = numpy.linalg.norm(psi.norm_test())` alongside `D`,
+`mixer`, `m`, and `qea`; the exact stored value is used in the acceptance check
+instead of recomputing it. Completed `result.json` writes the cadence, definition,
+threshold and full compact per-start history under `canonical_diagnostics`.
+Final endpoint canonical error remains a separate measurement after final
+canonicalization. Missing diagnostics from older checkpoints/source versions
+are not interpreted as zero.
+
+Updated `ADAPTIVE_CASE_USAGE.md` and the case integration test to verify values
+persist across pause/resume, match uninterrupted execution, and appear in final
+results. Focused remote validation passed: 6 tests (`test_adaptive_case` and
+`test_adaptive_resume`) in 30.141 s, on Ali in isolated worktree
+`worktrees/canonical-diagnostics-20261123-v1`, outputs in
+`outputs/canonical-diagnostics-tests-20261123-v1`.
+
+**The active full-case test was not modified or resumed with this source.** Its
+checkpoint/source identity is locked to the earlier revision; do not hot-patch
+or migrate it. The diagnostic also must not be retroactively inferred for that
+run. Use this revision for new production cases after the existing convergence
+gate and other production prerequisites are met. Publication commits and remote
+refs should be recorded below when completed.
+
 ## Latest monitoring update
 
 Watcher SSH `sh_2064a687d001y5aNeQfeFoOxK7` disconnected with a broken pipe.

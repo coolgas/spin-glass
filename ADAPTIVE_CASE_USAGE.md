@@ -58,6 +58,21 @@ retained.
 
 ## Results and storage
 
+Canonical residuals are measured and checkpointed every five cumulative sweeps
+per start, together with the observable measurements. In `resume.json` and each
+immutable restart manifest, read `state.moments[start][sweep].canonical_error`;
+the record also contains `D` and `mixer`. The value is exactly
+`numpy.linalg.norm(psi.norm_test())`, before final canonicalization, and is reused
+by the paired acceptance check with threshold `<1e-8`. This avoids additional
+norm-test contractions. The cadence is currently fixed at five sweeps.
+Completed `result.json` includes the full compact history in
+`canonical_diagnostics.starts`, indexed by start, with explicit sweep numbers,
+definition, cadence and threshold. Endpoint `canonical_error` remains a separate
+measurement after final canonicalization. Older source versions did not save
+the periodic residual; missing historical measurements must not be treated as zero.
+This source revision is for new cases; existing source-locked runs require an
+explicit migration and must not be hot-patched to enable these diagnostics.
+
 Paused and memory-deferred cases return `completed=false` and retain a restart
 pointer; they do not create `result.json`. Completed optimization produces final
 checkpoints, moments and replica-sampling output, including cases that reach

@@ -136,7 +136,11 @@ def run_case(output,L,sid,model_name,delta,omega,chi=12,dimensions=(128,256,384,
             sampling=hist,sampling_moment_check=sampling_pass,solver_pass=bool(all(e['solver_pass'] for e in endpoints) and agreed['passed']),
             rg_converged=False,production_qualified=False,production_selected=True,bond_dimension_verified=False,
             approximation_status='chi12 adaptive D; RG and D sensitivity unresolved' if chi==12 else 'adaptive validation fixture',
-            decisions=state['decisions'],geometry_sha256=array_hash(geometry['points']),
+            decisions=state['decisions'],canonical_diagnostics=dict(interval_sweeps=5,
+                definition='numpy.linalg.norm(psi.norm_test())',threshold=1e-8,
+                starts=[[dict(sweep=int(k),D=v['D'],mixer=v['mixer'],canonical_error=v['canonical_error'])
+                         for k,v in sorted(m.items(),key=lambda item:int(item[0]))]
+                        for m in state['moments']]),geometry_sha256=array_hash(geometry['points']),
             attempts=geometry['attempts'],distance_version=geometry['distance_version'],
             block_cut_gaps=model['cut_gaps'],block_residuals=model['block_residuals'],
             seconds=time.monotonic()-started,peak_rss_kib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,

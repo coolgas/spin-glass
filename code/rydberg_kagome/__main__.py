@@ -21,6 +21,11 @@ def main():
     case.add_argument('--max-sweeps',type=int,default=120)
     case.add_argument('--no-exact',action='store_true')
     case.add_argument('--fixed-production',action='store_true')
+    case.add_argument('--adaptive',action='store_true')
+    case.add_argument('--seconds',type=float)
+    case.add_argument('--invocation-sweeps',type=int)
+    case.add_argument('--memory-gib',type=float,default=8.)
+    case.add_argument('--model-cache')
     args=parser.parse_args()
     if args.command=='spec':
         from .config import specification
@@ -33,8 +38,9 @@ def main():
     else:
         from .campaign import run_case
         result=run_case(args.output,args.L,args.sample,args.model,args.delta,args.omega,args.chi,
-                        args.dimensions,args.pairs,args.max_sweeps,not args.no_exact,args.fixed_production)
-        print(json.dumps({k:result[k] for k in ['solver_pass','sampling_moment_check','rg_converged','seconds']},indent=2))
+                        args.dimensions,args.pairs,args.max_sweeps,not args.no_exact,args.fixed_production,
+                        args.adaptive,args.seconds,args.invocation_sweeps,args.memory_gib,args.model_cache)
+        print(json.dumps({k:result.get(k) for k in ['state','completed','sweeps_per_start','solver_pass','sampling_moment_check','rg_converged','seconds']},indent=2))
 
 
 if __name__=='__main__': main()

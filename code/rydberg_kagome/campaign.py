@@ -16,7 +16,14 @@ from .results import json_write,checkpoint,load_checkpoint,array_hash,source_has
 
 
 def run_case(output,L,sid,model_name,delta,omega,chi,dimensions=(32,64,128,256),
-             pairs=20000,max_sweeps=120,validate=True,fixed_production=False):
+             pairs=20000,max_sweeps=120,validate=True,fixed_production=False,
+             adaptive=False,seconds=None,invocation_sweeps=None,memory_gib=8.,model_cache=None):
+    if adaptive:
+        if validate or fixed_production:
+            raise ValueError('Adaptive path requires validate=False and fixed_production=False')
+        from .adaptive_case import run_case as adaptive_run
+        return adaptive_run(output,L,sid,model_name,delta,omega,chi,dimensions,pairs,max_sweeps,
+                            seconds,invocation_sweeps,memory_gib,model_cache)
     if not Path(output).is_absolute():
         raise ValueError("Output path must be absolute")
     root=Path(output).resolve()

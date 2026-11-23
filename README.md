@@ -1,5 +1,17 @@
 # Rydberg kagome L4 P(q): reproducible production and figures
 
+## L6 adaptive feature branch
+
+`pilot/adaptive-d-20261123` adds the compact MPO, adaptive two-start case path
+and verified process restart. See [ADAPTIVE_CASE_USAGE.md](ADAPTIVE_CASE_USAGE.md)
+for invocation and restart semantics, [PREPRODUCTION_REVIEW.md](PREPRODUCTION_REVIEW.md)
+for validation, and [MEMORY_UPDATE_HANDOFF.md](MEMORY_UPDATE_HANDOFF.md) for Ali
+outputs and ownership. L6 production remains paused. Source files on this feature
+branch differ from the historical frozen L4 manifest; the snapshot verifier below
+applies to the baseline release. Keep the L4 manifest and dataset intact.
+
+## Historical L4 deployment
+
 Versioned deployment of `rydberg_kagome_L4_Pq_progress.ipynb`, its complete
 simulation source, production configuration, reduced dataset and provenance.
 Production source: **rydberg-kagome-20261117-v5**. Figure snapshot:

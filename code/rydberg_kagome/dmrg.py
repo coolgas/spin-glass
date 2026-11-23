@@ -2,7 +2,38 @@
 import numpy as np
 
 
-def build_mpo(model):
+def _validate_projected_couplings(model, v):
+    """Reject mismatched interblock interactions before changing representation.
+
+    Compare each small two-block operator, never the full many-block tensor.
+    Onsite terms are copied verbatim from model, independent of v.
+    """
+    chi=model['chi']; pairs={}
+    for coefficient,factors in model['operator'].terms:
+        if len(factors)==1: continue
+        if len(factors)!=2: raise ValueError('Only onsite and two-block terms supported')
+        (b,left),(c,right)=sorted(factors,key=lambda f:f[0])
+        if b==c: raise ValueError('Two-block term requires distinct blocks')
+        key=(b,c)
+        pairs.setdefault(key,[]).append((coefficient,left,right))
+    for b in range(len(model['sites'])):
+        for c in range(b+1,len(model['sites'])):
+            coupling=v[np.ix_(model['sites'][b],model['sites'][c])]/4
+            expected=np.einsum('ij,iab,jcd->abcd',coupling,
+                               model['zops'][b],model['zops'][c],optimize=True)
+            actual=np.zeros_like(expected)
+            for coefficient,left,right in pairs.get((b,c),[]):
+                actual+=coefficient*np.einsum('ab,cd->abcd',left,right)
+            if not np.allclose(actual,expected,rtol=1e-11,atol=1e-12):
+                raise ValueError(f'Interaction/model mismatch for blocks {b},{c}')
+
+
+def build_mpo(model, interactions=None):
+    """Build MPO; optional physical interactions share exact outgoing Z channels.
+
+    `interactions` must be the same masked symmetric matrix used to build model.
+    The legacy factorized builder remains available for reproducibility.
+    """
     from tenpy.linalg import np_conserved as npc
     from tenpy.models.lattice import Lattice
     from tenpy.models.model import CouplingModel, MPOModel
@@ -21,13 +52,38 @@ def build_mpo(model):
             for c in range(a):
                 sites[i].add_op(f'P{a}_{c}',W.T @ ((spins[:,a]*spins[:,c])[:,None]*W))
     terms=[]
-    for k,(coefficient,factors) in enumerate(model['operator'].terms):
-        converted=[]
-        for b,matrix in factors:
-            i=inverse[b]; name=f'T{k}_{i}'
+    if interactions is None:
+        for k,(coefficient,factors) in enumerate(model['operator'].terms):
+            converted=[]
+            for b,matrix in factors:
+                i=inverse[b]; name=f'T{k}_{i}'
+                sites[i].add_op(name,matrix)
+                converted.append((i,name))
+            terms.append((coefficient,sorted(converted)))
+    else:
+        v=np.asarray(interactions)
+        n=model['sites'].size
+        if v.shape!=(n,n) or not np.isfinite(v).all() or not np.allclose(v,v.T,rtol=0,atol=1e-14):
+            raise ValueError('Finite symmetric physical interaction matrix required')
+        _validate_projected_couplings(model,v)
+        # Keep the exact onsite terms of the original projected Hamiltonian.
+        for k,(coefficient,factors) in enumerate(model['operator'].terms):
+            if len(factors)!=1: continue
+            b,matrix=factors[0]; i=inverse[b]; name=f'Local{k}'
             sites[i].add_op(name,matrix)
-            converted.append((i,name))
-        terms.append((coefficient,sorted(converted)))
+            terms.append((coefficient,[(i,name)]))
+        # One outgoing channel per physical Z at each left block, reused for
+        # every destination. No SVD truncation or interaction cutoff is applied.
+        for i,b in enumerate(order):
+            for j in range(i+1,count):
+                c=order[j]
+                coupling=v[np.ix_(model['sites'][b],model['sites'][c])]/4
+                for a in range(12):
+                    if not np.any(coupling[a]): continue
+                    matrix=sum(coupling[a,d]*model['zops'][c][d] for d in range(12))
+                    name=f'Right{i}_{a}'
+                    sites[j].add_op(name,matrix)
+                    terms.append((1.,[(i,f'Z{a}'),(j,name)]))
     coupling=CouplingModel(Lattice([1],sites,bc='open',bc_MPS='finite'))
     for coefficient,factors in terms:
         if len(factors)==1:

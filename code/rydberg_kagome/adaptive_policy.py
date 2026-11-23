@@ -50,7 +50,7 @@ def growth_reason(history, moments, cap, sweep, n):
     return reasons
 
 
-def final_window_pass(history, moments, sweep, n, canonical):
+def final_window_pass(history, moments, sweep, n):
     if len(history) < 51 or sweep-20 not in moments or sweep not in moments:
         return False
     tail = history[-51:]
@@ -60,9 +60,8 @@ def final_window_pass(history, moments, sweep, n, canonical):
     a, b = moments[sweep-20], moments[sweep]
     if a['D'] != cap or b['D'] != cap or a['mixer'] or b['mixer']:
         return False
-    if not (math.isfinite(canonical) and all(math.isfinite(r['energy']) for r in tail)
+    if not (all(math.isfinite(r['energy']) for r in tail)
             and all(math.isfinite(x) for x in a['m']+b['m'])):
         return False
     return (max(abs(y['energy']-x['energy'])/n for x, y in zip(tail, tail[1:])) < 1e-8
-            and max(abs(x-y) for x, y in zip(a['m'], b['m'])) < 1e-4
-            and canonical < 1e-8)
+            and max(abs(x-y) for x, y in zip(a['m'], b['m'])) < 1e-4)

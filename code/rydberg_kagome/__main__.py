@@ -26,6 +26,8 @@ def main():
     case.add_argument('--invocation-sweeps',type=int)
     case.add_argument('--memory-gib',type=float,default=8.)
     case.add_argument('--model-cache')
+    case.add_argument('--checkpoint-interval',type=int,default=30)
+    case.add_argument('--final-state-retention',choices=['full','analysis'],default='full')
     args=parser.parse_args()
     if args.command=='spec':
         from .config import specification
@@ -39,7 +41,8 @@ def main():
         from .campaign import run_case
         result=run_case(args.output,args.L,args.sample,args.model,args.delta,args.omega,args.chi,
                         args.dimensions,args.pairs,args.max_sweeps,not args.no_exact,args.fixed_production,
-                        args.adaptive,args.seconds,args.invocation_sweeps,args.memory_gib,args.model_cache)
+                         args.adaptive,args.seconds,args.invocation_sweeps,args.memory_gib,args.model_cache,
+                          args.checkpoint_interval,args.final_state_retention)
         print(json.dumps({k:result.get(k) for k in ['state','completed','sweeps_per_start','solver_pass','sampling_moment_check','rg_converged','seconds']},indent=2))
 
 

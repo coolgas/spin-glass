@@ -52,6 +52,21 @@ class ResumeTests(unittest.TestCase):
             (root/rec['files'][1]['file']).write_bytes(b'corrupt')
             with self.assertRaisesRegex(ValueError,'hash'): load_restart(root,model,{'source':'A'})
 
+    def test_successful_commit_retires_only_previous_generation(self):
+        model,a=self.engine(); _,b=self.engine()
+        state=dict(D=2,history=[[],[]],stage_start=0)
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder); old=save_restart(root,[a,b],state,{'source':'A'})
+            one_sweep(a); advanced=copy.deepcopy(state); advanced['history'][0].append({})
+            new=save_restart(root,[a,b],advanced,{'source':'A'})
+            self.assertNotEqual(old['generation'],new['generation'])
+            self.assertFalse((root/'restart'/f"{old['generation']}.json").exists())
+            self.assertEqual(len(list((root/'restart').glob('*.json'))),1)
+            self.assertEqual(len(list((root/'restart').glob('*.pkl.gz'))),2)
+            engines,resumed=load_restart(root,model,{'source':'A'})
+            self.assertEqual([e.sweeps for e in engines],[1,0])
+            self.assertEqual(resumed,advanced)
+
     def test_second_payload_failure_preserves_committed_pair(self):
         model,a=self.engine(); _,b=self.engine(); one_sweep(a)
         state=dict(D=2,history=[[{}],[]],pending_growth=4,stage_start=0)

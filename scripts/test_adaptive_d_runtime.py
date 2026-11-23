@@ -25,7 +25,7 @@ class RuntimeTests(unittest.TestCase):
             history.append(dict(D=cap,mixer=mixed,energy=float(energy)))
             if sweep%5==0:
                 moments[sweep]=dict(D=cap,mixer=mixed,m=psi.expectation_value('Sigmaz').tolist())
-                if final_window_pass(history,moments,sweep,6,float(np.linalg.norm(psi.norm_test()))):
+                if final_window_pass(history,moments,sweep,6):
                     accepted.append(sweep)
             if sweep in (20,40,60):
                 cap+=2; stage=sweep; increase_dimension(engine,cap)

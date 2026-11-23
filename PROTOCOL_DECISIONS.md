@@ -1,9 +1,10 @@
 # Agreed L6 protocol and unresolved validation
 
-Status: design and bounded pilot validation only; production is paused.
-Update 2026-11-23: the user authorized one complete adaptive L6 case and requires
-at least one full-case convergence success before production. This is a necessary
-gate, not blanket production authorization or ensemble-wide accuracy evidence.
+Status 2026-11-23: production is authorized, with canonical residuals retained as
+diagnostics. It has not launched; storage/admission and integration validation
+remain in validation. The user selected thirty-sweep restart saves and substantial
+SSD capacity remaining afterward. The implementation uses a 64-GiB admission
+budget and six final-wavefunction audit cases; see `PRODUCTION_STORAGE_ESTIMATE.md`.
 
 ## User decisions
 
@@ -14,6 +15,8 @@ gate, not blanket production authorization or ensemble-wide accuracy evidence.
   equal disorder weighting and the L4 observable definitions.
 - Start production-like adaptation at D128, with proposed ladder
   128/256/384/512. The reduced 16/32/64/128 ladder is a short demo only.
+- Save one paired restart every 30 cumulative sweeps per start, plus forced
+  growth/controlled-exit/completion saves; retain the latest committed pair.
 - Hard limit is 120 total sweeps PER START, not 120 per D. No extra 40-sweep
   extension. Decision points are 20, 40 and 60; no later D increase.
 - Both starts retain their own states; if either triggers growth, grow both.
@@ -25,8 +28,11 @@ gate, not blanket production authorization or ensemble-wide accuracy evidence.
 ## Final acceptance
 
 Require 50 consecutive energy differences below 1e-8 per physical spin, all at
-the final D with the mixer off; magnetization drift below 1e-4; canonical error
-below 1e-8; and two-start agreement within 1e-7 energy per spin and 1e-3 q_EA.
+the final D with the mixer off; magnetization drift below 1e-4; and two-start
+agreement within 1e-7 energy per spin and 1e-3 q_EA. Canonical residuals are
+recorded every five sweeps and at final endpoints as representation diagnostics,
+not a solver convergence condition. A final `canonical_form()` is applied before
+endpoint observables and the endpoint residual is retained in results.
 Do not count earlier-D/mixer-active sweeps toward final confirmation. Keep
 sampling consistency, solver convergence, bond-dimension verification and RG
 convergence as separate flags. Completion or a timeout never implies accuracy.
@@ -58,10 +64,14 @@ throughput, available CPU allocation, external workload, peak memory at the acti
 D, and checkpoint I/O. CPU demand is concurrent cases times simultaneous start
 workers per case times threads per start, including nested numerical libraries.
 Memory admission must budget whole cases and transient D-growth peaks. Implement
-shared reservations before overlapping production controllers; current live checks
-do not provide that coordination. No ensemble launch is authorized by this design.
+shared reservations before overlapping production controllers. The new queue
+implements a common admission lock, PID/start-time identities, peak-memory
+reservations updated before growth, and adoption of live workers on restart.
+Each new case initially reserves 24 GiB, based on the measured 19.1-GiB D256
+peak with headroom; higher-D growth reserves its own measured forecast. Operational
+memory pauses retain restart data and do not extend the scientific sweep budget.
 
 See `ADAPTIVE_PILOT.md` for verified pilot behavior and
 `MEMORY_UPDATE_HANDOFF.md` for memory changes and unfinished work. Do not use
-the generic legacy queue for L6: it defaults to L4 and uses inadequate generic
-memory forecasts. A shared-host production scheduler has not been validated.
+older queue revisions for L6. Use the validated adaptive manifest and source
+identity recorded in the handoff, with explicit output and four threads per case.

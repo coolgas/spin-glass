@@ -1,13 +1,49 @@
 # Memory work handoff — 2026-11-23
 
+## Current override: compact production and 64-GiB admission budget
+
+The user authorized production and diagnostic-only canonical residuals. They
+subsequently changed restart cadence to **30 sweeps per start**. The local solver,
+CLI, case wrappers, task manifest and queue fallback defaults now use 30. A
+paired boundary writes once, with forced growth/controlled-exit/completion saves.
+Only the latest committed pair is retained for unfinished new cases; preserve
+the original completed test and cancelled retries. Production is authorized.
+The endpoint and window policies now treat canonical residuals as diagnostics.
+
+All cases keep models, geometry, both starts' final moments, full optimization
+history, signed histograms, flags and provenance. Only six audit cases retain
+final wavefunctions (sid 0, drive indices 0/14/29, both detunings); other successful
+cases retire verified restart tensors after analysis commits. Later resampling
+or extension requires rerunning those cases. Sampling-check failures retain
+restart tensors and are reported separately; sampling exceptions remain resumable.
+
+See `PRODUCTION_STORAGE_ESTIMATE.md`: expected retained data **35–45 GiB**,
+campaign admission budget **64 GiB**, currently 917 GiB free. This replaces all
+older all-wavefunction capacity estimates. New writes are bounded per tensor,
+case and log; current allocated bytes, failure evidence, active write reserves
+and pending outputs are included at every admission cycle. This is an application
+budget, not a filesystem quota. Shared admission and growth reservations use PID
+identities and a common lock; each case runs four numerical-library threads.
+
+Validation v2 passed 36 tests in 81.949 s; v3 passed 37 in 82.418 s. The final v4
+passed **39 tests in 82.020 s**, including hard address-space/deadline protection,
+missing-artifact classification and cgroup ancestry admission. Evidence is Ali
+`outputs/compact-production-tests-20261123-v4/tests.log`; validated source is
+`worktrees/compact-production-validation-20261123-v4`. These are operational changes;
+scientific inputs and acceptance thresholds are unchanged. The worker uses a
+64-GiB address-space ceiling, 72-hour graceful optimization budget, and 73-hour
+hard invocation deadline. Production has not launched yet; publication and
+live-worker evidence will be recorded here.
+Older paused-authorization, storage and active-process statements below are
+historical; the original full-case worker/watcher is finished.
+
 ## Canonical-residual diagnostics update
 
 The user requested that canonical residuals be saved every `x` rounds in
 production. Implemented on the feature source as a **5-sweep cadence**, aligned
 with paired convergence checks. For each start, each sweep-5 moment record now
 stores `canonical_error = numpy.linalg.norm(psi.norm_test())` alongside `D`,
-`mixer`, `m`, and `qea`; the exact stored value is used in the acceptance check
-instead of recomputing it. Completed `result.json` writes the cadence, definition,
+`mixer`, `m`, and `qea`. Completed `result.json` writes the cadence, definition,
 threshold and full compact per-start history under `canonical_diagnostics`.
 Final endpoint canonical error remains a separate measurement after final
 canonicalization. Missing diagnostics from older checkpoints/source versions
@@ -28,6 +64,25 @@ gate and other production prerequisites are met. Publication commits and remote
 refs should be recorded below when completed.
 
 ## Latest monitoring update
+
+## Full-case convergence-gate outcome
+
+The single authorized Ali full case finished at its 120-sweep-per-start limit:
+`outputs/adaptive-full-case-20261123-v6`, L6/sample 0/full model, delta=3.15,
+Omega/V0=0.9037538790536807, chi=12, final D=256. Both starts completed 120
+sweeps. Supervisor status is `completed_gate_failed`; optimization ended
+`sweep_limit`, `solver_pass=false`, and `full_case_gate_passed=false`. Production
+remains paused; the required convergence gate was not met.
+
+Finalization did complete. The 20,000-pair sampling-moment check passed. Endpoint
+canonical residuals **after final `psi.canonical_form()`** are 1.422650209431156e-14
+and 1.4172788008575924e-14; these are not the missing periodic pre-finalization
+residuals and do not explain the failed convergence check. Final energies are
+-159.98693668278554 and -159.98693668278560. Bond-dimension verification and RG
+convergence remain false; production qualification is false. Solver elapsed
+28,137.29 s; peak RSS was 20,052,260 KiB. Preserve checkpoints and result files.
+No further sweeps or retry are authorized by this outcome; review diagnostics and
+agree a new validation protocol before scheduling more computation.
 
 Watcher SSH `sh_2064a687d001y5aNeQfeFoOxK7` disconnected with a broken pipe.
 The detached solver was unaffected: controller 80189 and four-thread worker

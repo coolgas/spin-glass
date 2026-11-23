@@ -30,11 +30,12 @@ class PolicyTests(unittest.TestCase):
     def test_confirmation_cannot_cross_dimension_or_mixer(self):
         h=rows(120)
         m={100:dict(D=128,mixer=False,m=[0.]),120:dict(D=128,mixer=False,m=[0.])}
-        self.assertTrue(final_window_pass(h,m,120,108,1e-12))
+        self.assertTrue(final_window_pass(h,m,120,108))
+        self.assertTrue(final_window_pass(h,m,120,108))
         h[-51]['D']=64
-        self.assertFalse(final_window_pass(h,m,120,108,1e-12))
+        self.assertFalse(final_window_pass(h,m,120,108))
         h[-51]['D']=128; h[-51]['mixer']=True
-        self.assertFalse(final_window_pass(h,m,120,108,1e-12))
+        self.assertFalse(final_window_pass(h,m,120,108))
 
     def test_unsaturated_bonds_do_not_trigger_growth(self):
         h=rows(20, weight=1e-3)
@@ -50,7 +51,7 @@ class PolicyTests(unittest.TestCase):
     def test_nan_cannot_pass_confirmation(self):
         h=rows(120); h[-20]['energy']=float('nan')
         m={100:dict(D=128,mixer=False,m=[0.]),120:dict(D=128,mixer=False,m=[0.])}
-        self.assertFalse(final_window_pass(h,m,120,108,1e-12))
+        self.assertFalse(final_window_pass(h,m,120,108))
 
     def test_increase_invalidates_stall_window(self):
         h=rows(40,weight=0.,step=2e-6)

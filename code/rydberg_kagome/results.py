@@ -4,8 +4,10 @@ import json
 import os
 import pickle
 import gzip
+import time
 from pathlib import Path
 import numpy as np
+from .storage import BoundedWriter,checkpoint_limit
 
 
 def digest(path):
@@ -53,7 +55,19 @@ class _CheckpointUnpickler(pickle.Unpickler):
 def checkpoint(path,value,sites=()):
     path=Path(path); tmp=path.with_name(path.name+'.tmp')
     opener=gzip.open if path.suffix=='.gz' else open
-    with opener(tmp,'wb') as f: _CheckpointPickler(f,sites).dump(value)
+    limit=checkpoint_limit(path)
+    if limit is not None and tmp.exists():
+        tmp.rename(tmp.with_name(tmp.name+f'.orphan-{time.time_ns()}'))
+    if limit is None:
+        with opener(tmp,'wb') as f: _CheckpointPickler(f,sites).dump(value)
+    else:
+        # Bound compressed bytes, including a partial payload on interrupted writes.
+        with tmp.open('wb') as raw:
+            bounded=BoundedWriter(raw,limit)
+            if path.suffix=='.gz':
+                with gzip.GzipFile(fileobj=bounded,mode='wb') as f:
+                    _CheckpointPickler(f,sites).dump(value)
+            else: _CheckpointPickler(bounded,sites).dump(value)
     with opener(tmp,'rb') as f: _CheckpointUnpickler(f,sites).load()
     os.replace(tmp,path)
     return digest(path)

@@ -63,8 +63,9 @@ per start, together with the observable measurements. In `resume.json` and each
 immutable restart manifest, read `state.moments[start][sweep].canonical_error`;
 the record also contains `D` and `mixer`. The value is exactly
 `numpy.linalg.norm(psi.norm_test())`, before final canonicalization, and is reused
-by the paired acceptance check with threshold `<1e-8`. This avoids additional
-norm-test contractions. The cadence is currently fixed at five sweeps.
+as a diagnostic, avoiding redundant norm-test contractions. It is not a solver
+convergence criterion. The cadence is fixed
+at five sweeps.
 Completed `result.json` includes the full compact history in
 `canonical_diagnostics.starts`, indexed by start, with explicit sweep numbers,
 definition, cadence and threshold. Endpoint `canonical_error` remains a separate
@@ -80,11 +81,15 @@ the sweep limit without satisfying convergence. Check `solver_pass`, sampling
 consistency, bond-dimension verification, RG convergence and production
 qualification separately. Existing complete outputs are hash-checked on reuse.
 
-All restart generations are currently retained. This is the bounded validation
-retention policy, not a campaign-scale storage policy. Keep outputs on local or
-HPC storage outside Git and synced roots. Before production, measure checkpoint
-bytes, write overhead and final sampling cost; define retention and stable
-archives while preserving verified resume points and scientific milestones.
+Restart checkpoints are committed once after both starts complete each thirty
+sweeps (30, 60, 90, 120). An abrupt process loss can replay up to thirty sweeps
+per start. A
+graceful pause, memory deferral, growth transition or completion forces a save.
+Only the latest committed two-start generation is retained; the previous pair is
+retired after the replacement pointer commits. Orphan and failure evidence is
+preserved. Final per-start checkpoints and moments remain in completed cases.
+Keep outputs on local/HPC storage outside Git and synced roots. Measure write
+overhead and final sampling cost before scaling further.
 
 ## Tests
 
@@ -123,3 +128,15 @@ if the helper exits without a successful resume.
 
 Tests create temporary small-system data. The actual L6 validation outputs stay
 in the named Ali output directory in the handoff; they are not committed to Git.
+# Compact production retention (2026-11-23)
+
+Production tasks select `final_state_retention='analysis'` except six fixed audit
+cases (sample 0, drive indices 0/14/29, both detunings). CLI/API defaults remain
+`full`; use `--final-state-retention analysis` explicitly for standalone compact
+cases. Analysis mode retains models, geometry, final moments from both starts,
+optimization history, diagnostic records, full signed histograms and provenance.
+After sampling passes and the result commits, its verified restart payloads and
+pointer are retired. Later resampling/extension requires rerunning the case.
+Sampling failures retain restart data; completed sampling failures are immutable
+and reported by the queue, while sampling exceptions can resume without more
+optimization. See `PRODUCTION_STORAGE_ESTIMATE.md` for the 64-GiB admission budget.

@@ -18,9 +18,21 @@ from .sampling import mps_samples,overlap_histogram
 from .convergence import compare,sampling_check
 
 
+def retire_committed_restart(root,result):
+    """Finish a committed retention decision; never glob-delete failure evidence."""
+    for name,sha in result.get('retired_artifacts',{}).items():
+        path=(root/name).resolve()
+        if not path.is_relative_to(root.resolve()): raise ValueError('Retirement outside case')
+        if path.exists():
+            if digest(path)!=sha: raise ValueError('Retired artifact hash mismatch')
+            path.unlink()
+    folder=root/'restart'
+    if folder.exists() and not any(folder.iterdir()): folder.rmdir()
+
+
 def run_case(output,L,sid,model_name,delta,omega,chi=12,dimensions=(128,256,384,512),
              pairs=20000,max_sweeps=120,seconds=None,invocation_sweeps=None,
-             memory_gib=8.,model_cache=None):
+             memory_gib=8.,model_cache=None,checkpoint_interval=30,final_state_retention='full'):
     import scipy,tenpy
     root=Path(output)
     if not root.is_absolute() or any(s in root.resolve().parts for s in ('Dropbox','CloudStorage')):
@@ -32,6 +44,8 @@ def run_case(output,L,sid,model_name,delta,omega,chi=12,dimensions=(128,256,384,
         raise ValueError('Invalid case parameters')
     if seconds is not None and seconds<=0 or invocation_sweeps is not None and invocation_sweeps<1:
         raise ValueError('Invocation budgets must be positive')
+    if final_state_retention not in ('full','analysis'):
+        raise ValueError('Final state retention must be full or analysis')
     root.mkdir(parents=True,exist_ok=True)
     lock=(root/'case.lock').open('a')
     try: fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
@@ -43,6 +57,8 @@ def run_case(output,L,sid,model_name,delta,omega,chi=12,dimensions=(128,256,384,
     try:
         inputs=dict(L=L,sample_id=sid,model=model_name,delta=delta,omega=omega,chi=chi,
             dimensions=list(dimensions),pairs=pairs,max_sweeps=120,adaptive=True,
+            checkpoint_interval=checkpoint_interval,
+            final_state_retention=final_state_retention,
             fixed_production=False,validate=False,sources=source_hashes(),
             environment=dict(python=platform.python_version(),numpy=np.__version__,scipy=scipy.__version__,tenpy=tenpy.__version__))
         path=root/'inputs.json'
@@ -53,6 +69,7 @@ def run_case(output,L,sid,model_name,delta,omega,chi=12,dimensions=(128,256,384,
             result=json.loads((root/'result.json').read_text())
             for name,sha in result['hashes'].items():
                 if digest(root/name)!=sha: raise ValueError('Completed output hash mismatch')
+            retire_committed_restart(root,result)
             return result
         geometry=sample(L,sid); v=geometry['interactions']*masks(L)[model_name]
         model_path=root/'model.pkl.gz'; receipt=root/'model_hash.json'
@@ -98,7 +115,8 @@ def run_case(output,L,sid,model_name,delta,omega,chi=12,dimensions=(128,256,384,
                       mpo='shared-Z-exact-v1')
         remaining=max(.001,seconds-(time.monotonic()-started)) if seconds else None
         engines,state,outcome=adaptive.optimize(root,mpo,model,order,dimensions,identity,
-            seconds=remaining,invocation_sweeps=invocation_sweeps,memory_gib=memory_gib)
+            seconds=remaining,invocation_sweeps=invocation_sweeps,memory_gib=memory_gib,
+            checkpoint_interval=checkpoint_interval)
         if not state['complete']:
             return dict(state=outcome,completed=False,sweeps_per_start=[len(h) for h in state['history']],
                         final_D=state['D'],production_qualified=False)
@@ -113,16 +131,16 @@ def run_case(output,L,sid,model_name,delta,omega,chi=12,dimensions=(128,256,384,
                 canonical_error=float(np.linalg.norm(psi.norm_test())),
                 sweep_pass=bool(state['solver_pass']),solver_pass=bool(state['solver_pass']),
                 bond_dimension_verified=False,D_comparison=None)
-            if row['canonical_error']>=1e-8: row['solver_pass']=False
             final=root/f'start{seed}-final.pkl.gz'
             final_receipt=root/f'start{seed}-final-checkpoint.json'
-            if final.exists() and final_receipt.exists():
-                if digest(final)!=json.loads(final_receipt.read_text())['sha256']:
-                    raise ValueError('Final checkpoint hash mismatch')
-            else:
-                if final.exists(): final.rename(root/f'start{seed}-uncommitted-{time.time_ns()}.pkl.gz')
-                sha=checkpoint(final,psi,mpo.lat.mps_sites())
-                json_write(final_receipt,dict(sha256=sha))
+            if final_state_retention=='full':
+                if final.exists() and final_receipt.exists():
+                    if digest(final)!=json.loads(final_receipt.read_text())['sha256']:
+                        raise ValueError('Final checkpoint hash mismatch')
+                else:
+                    if final.exists(): final.rename(root/f'start{seed}-uncommitted-{time.time_ns()}.pkl.gz')
+                    sha=checkpoint(final,psi,mpo.lat.mps_sites())
+                    json_write(final_receipt,dict(sha256=sha))
             moments_path=root/f'start{seed}-final-moments.npz'
             tmp=root/f'start{seed}-final-moments.tmp.npz'
             np.savez_compressed(tmp,m=m,zz=zz,x=x); os.replace(tmp,moments_path)
@@ -132,6 +150,9 @@ def run_case(output,L,sid,model_name,delta,omega,chi=12,dimensions=(128,256,384,
         hist=overlap_histogram(samples); sampling_pass=sampling_check(hist,endpoints[winner]['observables'])
         tmp=root/'pq.tmp.npz'
         np.savez_compressed(tmp,counts=hist.pop('counts'),p=hist.pop('p'),q=hist.pop('q')); os.replace(tmp,root/'pq.npz')
+        # Retain the full optimization record without keeping its tensor payloads.
+        json_write(root/'optimization-history.json',state)
+        resume=json.loads((root/'resume.json').read_text())
         result=dict(inputs=inputs,state=outcome,completed=True,endpoints=endpoints,start_comparison=agreed,
             sampling=hist,sampling_moment_check=sampling_pass,solver_pass=bool(all(e['solver_pass'] for e in endpoints) and agreed['passed']),
             rg_converged=False,production_qualified=False,production_selected=True,bond_dimension_verified=False,
@@ -144,9 +165,34 @@ def run_case(output,L,sid,model_name,delta,omega,chi=12,dimensions=(128,256,384,
             attempts=geometry['attempts'],distance_version=geometry['distance_version'],
             block_cut_gaps=model['cut_gaps'],block_residuals=model['block_residuals'],
             seconds=time.monotonic()-started,peak_rss_kib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
-            resume_generation=json.loads((root/'resume.json').read_text())['generation'])
-        result['hashes']={p.name:digest(p) for p in root.iterdir() if p.suffix in ('.gz','.npz')}
+            resume_generation=resume['generation'],storage=dict(final_state_retention=final_state_retention,
+                wavefunctions_retained=final_state_retention=='full',
+                restart_retained=not bool(sampling_pass),
+                resampling_requires_rerun=final_state_retention=='analysis' and bool(sampling_pass)))
+        names=['inputs.json','model.pkl.gz','model_hash.json','geometry.npz','pq.npz',
+               'optimization-history.json']
+        for seed in (0,1):
+            names += [f'start{seed}-final-moments.npz',f'start{seed}-final.json']
+            if final_state_retention=='full':
+                names += [f'start{seed}-final.pkl.gz',f'start{seed}-final-checkpoint.json']
+        result['hashes']={name:digest(root/name) for name in names}
+        # Verify analysis data before committing any retirement, including signed
+        # histogram completeness. A failed sampling check keeps the restart pair.
+        with np.load(root/'pq.npz') as saved:
+            if int(saved['counts'].sum())!=pairs or len(saved['q'])!=3*L*L+1:
+                raise ValueError('Incomplete signed overlap histogram')
+        for seed in (0,1):
+            with np.load(root/f'start{seed}-final-moments.npz') as saved:
+                if not all(np.isfinite(saved[key]).all() for key in ('m','zz','x')):
+                    raise ValueError('Nonfinite final moments')
+        result['retired_artifacts']={}
+        if sampling_pass:
+            retired=[entry['file'] for entry in resume['files']]
+            retired += [f"restart/{resume['generation']}.json"]
+            if final_state_retention=='analysis': retired.append('resume.json')
+            result['retired_artifacts']={name:digest(root/name) for name in retired}
         json_write(root/'result.json',result)
+        retire_committed_restart(root,result)
         return result
     except BaseException:
         json_write(root/f'failure-{time.time_ns()}.json',dict(traceback=traceback.format_exc()))

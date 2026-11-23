@@ -17,29 +17,35 @@ Remote smoke tests passed six-thread MKL verification, pause/resume with identic
 scientific identity, final sampling checks, and controller launch/admission.
 Evidence: `thread-tuning-20261123-v1/smoke-verification.json`.
 
-Controller **471658**, birth **29019551**, adopted all four original workers;
-the previous controller 343925 was intentionally retired. Handover process
-**471661**, birth **29019612**, is owned by this authorized resource change.
-Do not duplicate either. It waits at most three hours for each original worker's
-next committed paired checkpoint, validates both payload hashes while the worker
-is stopped, records its old launch/checkpoint, terminates only that verified
-identity, and lets the controller resume the same case with six threads. No
-additional checkpoint stream is introduced. At Unix time `1795448251.997` all
-four original workers remained live at four threads, D128, sweeps [4,3]–[4,4];
-the handover was `awaiting_checkpoints`, not yet a completed six-thread switch.
+**The switch is done by a direct stop-and-restart, not by the checkpoint
+handover.** The user chose on 2026-11-23 to stop the jobs and run at six threads
+immediately rather than wait for each case's next committed paired checkpoint.
+The original four-thread workers (`343929`–`343932`, birth `28881849`), the
+adoption controller `471658` and its predecessor `343925` are retired; so are
+handover `471661` and its completion observer. Stopping mid-sweep discards
+uncommitted work, and the only committed generation for every case was its
+initialization pair, so each case restarted from sweep `[0,0]` at D128 and
+discarded 10–24 unsaved sweeps per start. Nothing was committed beyond that
+point, so no cumulative 120-sweep budget was lost and no partial checkpoint was
+left behind.
 
-Read `thread-tuning-20261123-v1/switch-status.json`, per-case handover receipts
-and `cases/<id>/thread-runtime-<pid>.json` for the actual transition outcome.
-The bounded handover verifies that resumed cases advance beyond their saved
-counts. Six-thread throughput has not yet been measured on the production cases.
-A read-only completion observer is attached to the existing handover: local
-background shell `sh_209111b78001XGWfX4RjRMmyNK`, sampling every 60 seconds and
-ending on completion, timeout, handover exit or ten minutes after its three-hour
-deadline. Its ownership/result files are `completion-observer-owner.json` and
-`completion-observer-result.json` in the tuning directory. Do not duplicate it;
-the local shell provides an automatic completion notification. Latest pre-observer
-snapshot at Unix `1795448391.917`: four running, 7,676 pending, original workers
-at four threads and D128 with sweeps [4,4]–[5,4]. Manifest and runtime hashes match.
+New controller **626445** runs the unchanged scientific source `9ffa6bb` through
+the six-thread wrapper and admitted all four cases: workers `626448`, `626449`,
+`626480`, `626481`. Each verified `MKL_Get_Max_Threads()=6`, `MKL_NUM_THREADS=6`,
+and the controller reports `reserved_cpu_threads=24` with
+`threads_per_new_case=6`. Original invocation start times and the 73-hour hard
+deadline are preserved (`hard_deadline` ≈ `1795709652`), and the manifest hash is
+still `12716ed7…f4e07`. Initial admission paused at two cases while the retired
+processes' load average decayed, then reached four. Evidence:
+`thread-tuning-20261123-v1/direct-six-thread-restart.json` (retired identities,
+checkpoint generations, discarded sweeps), `six-thread-relaunch.json`, and
+`cases/<id>/thread-runtime-<pid>.json`.
+
+Measured throughput at six threads is recorded in
+`thread-tuning-20261123-v1/six-thread-throughput.json`. Treat the former
+`plan.json`, `switch-status.json` and handover receipts as historical records of
+the abandoned checkpoint handover; do not restart that watcher. Per-sweep timings
+do not yet show whether six threads beat four, so do not assume a speedup.
 
 If the controller needs recovery, use the following command from the immutable
 production source, with its `code/` on `PYTHONPATH`, `PYTHONDONTWRITEBYTECODE=1`,

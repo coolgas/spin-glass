@@ -14,7 +14,10 @@ def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--root',type=Path,required=True)
     parser.add_argument('--model-cache',type=Path,required=True)
+    parser.add_argument('--threads',type=int,default=4)
+    parser.add_argument('--resume',action='store_true')
     args=parser.parse_args()
+    if not 1<=args.threads<=16: raise ValueError('Threads must be in 1..16')
     root=args.root.resolve()
     if not args.root.is_absolute() or any(x in root.parts for x in ('Dropbox','CloudStorage')):
         raise ValueError('Explicit non-synced output required')
@@ -26,11 +29,21 @@ def main():
         raise RuntimeError('Full-case test needs 64-GiB cap plus 16-GiB live headroom')
     if shutil.disk_usage(root.parent).free<64*GIB:
         raise RuntimeError('Full-case test requires 64 GiB free storage')
-    root.mkdir(exist_ok=False)
+    previous=None
+    if args.resume:
+        previous=json.loads((root/'status.json').read_text())
+        if not previous.get('finished'): raise RuntimeError('Previous controller is not finished')
+        if not (root/'case/resume.json').exists(): raise RuntimeError('No committed restart')
+        if previous['source_hashes']!=source_hashes(): raise RuntimeError('Source mismatch')
+        stamp=str(time.time_ns())
+        for name in ('status.json','worker.log','worker-resources.json'):
+            path=root/name
+            if path.exists(): path.rename(root/f'{stamp}-{name}')
+    else: root.mkdir(exist_ok=False)
     env=os.environ.copy(); env['PYTHONPATH']=str(repo/'code')
     env['PYTHONDONTWRITEBYTECODE']='1'
     for key in ('OMP_NUM_THREADS','OPENBLAS_NUM_THREADS','MKL_NUM_THREADS','NUMEXPR_NUM_THREADS'):
-        env[key]='1'
+        env[key]=str(args.threads)
     command=['case','--adaptive','--no-exact','--output',str(root/'case'),
         '--L','6','--sample','0','--model','full','--delta','3.15',
         '--omega','0.9037538790536807','--chi','12',
@@ -49,7 +62,7 @@ finally:
 '''
     status=dict(controller=os.getpid(),started=time.time(),production_campaign=False,
         purpose='single_full_case_convergence_gate',hard_seconds=72*3600,
-        memory_gib=64,threads=1,source_hashes=source_hashes(),
+        memory_gib=64,threads=args.threads,source_hashes=source_hashes(),
         retention='Retain all immutable generations; no automatic deletion',finished=False)
     def save():
         tmp=root/'status.tmp'; tmp.write_text(json.dumps(status,indent=2)+'\n')
@@ -59,7 +72,10 @@ finally:
             cwd=repo,env=env,stdin=subprocess.DEVNULL,stdout=log,stderr=subprocess.STDOUT,
             start_new_session=True)
     status.update(worker=child.pid,state='running'); save()
-    deadline=time.monotonic()+status['hard_seconds']
+    if previous:
+        status['original_started']=previous.get('original_started',previous['started'])
+        status['resumed_from_worker']=previous['worker']
+    deadline=time.monotonic()+max(0,status['hard_seconds']-(time.time()-status.get('original_started',status['started'])))
     while child.poll() is None:
         if time.monotonic()>=deadline:
             status['state']='hard_time_limit'

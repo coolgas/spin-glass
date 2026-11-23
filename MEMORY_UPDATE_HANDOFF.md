@@ -43,6 +43,36 @@ the local source. There is correctly no completed result. Output: 25 files,
 
 ## Authorized full-case convergence test
 
+### Threading change in progress (supersedes one-thread execution below)
+
+The user requires multithreaded cases and omega-parallel production with multiple
+CPU cores per omega. The current case is switching through an owned boundary
+controller, shell `sh_206474b280019KvNaUPOxJMeHG`, executing
+`scripts/switch_adaptive_threads.py`. It waits up to 600 s for the next committed
+checkpoint before signalling only the verified owned worker, then waits for the
+old supervisor to finish. The old completion watcher may consequently report
+`failed`/SIGTERM: this is an intentional resource switch, not a scientific failure.
+
+Four independent same-checkpoint sweep probes use 1/2/4/8 threads concurrently
+(15 total), each capped at 16 GiB, for at most 900 s. The script checks 80 GiB
+live headroom before dispatch. It verifies consistent energies, chooses the
+fastest successful multithreaded probe and resumes the original case with the
+same scientific source and counters. Probe outputs are under
+`outputs/adaptive-full-case-20261123-v6/thread-benchmark` and never write the
+case restart. Initial worker logs/status/resources are timestamp-archived on
+resume. The 72-hour deadline is retained relative to the original launch.
+New status and an owned watcher will be verified after switch completion.
+Boundary verified at [1,1], generation `2e0deae9402f4349ad48bffd8201bf3b`.
+Probe PIDs 78875/78876/78877/78878 used 1/2/4/8 live threads respectively,
+with measured CPU use ~100/186/342/638 percent at 46 seconds. Switch controller
+PID 78852. Multiple cores are demonstrably active. Parallel probes share memory
+bandwidth, so timings are conditional on this shared load and should not be
+presented as isolated per-thread scaling guarantees.
+
+Production design is now explicitly omega-parallel plus multithreaded per omega;
+see `PROTOCOL_DECISIONS.md`. The current case still alternates its two starts.
+Shared reservations and a validated production scheduler remain outstanding.
+
 Live worker PID 77262 was verified at one thread, ~100% of one CPU, ~2.7 GiB
 RSS while its first D128 sweep was running. Completion watcher
 `sh_2063f2934001bWACbOVhrkwWAQ` is owned by this session, samples every 120 s,

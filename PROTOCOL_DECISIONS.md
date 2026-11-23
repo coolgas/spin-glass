@@ -38,6 +38,22 @@ both sizes. Preserve these limitations in reports and future launch decisions.
 
 ## Engineering validation
 
+User requirement (2026-11-23): production must parallelize independent omega
+cases and assign multiple CPU workers/threads to each omega. Do not deploy a
+single-thread-per-case production configuration as the default. For the current
+solver, multiple BLAS/OpenMP threads accelerate each sequential DMRG sweep;
+the two independent starts are another possible process-level parallel unit.
+Separate processes cannot independently advance the same MPS without an explicit
+parallel algorithm. The present adaptive case still alternates its two starts.
+
+Choose concurrent omega count and cores per omega jointly from measured sweep
+throughput, available CPU allocation, external workload, peak memory at the active
+D, and checkpoint I/O. CPU demand is concurrent cases times simultaneous start
+workers per case times threads per start, including nested numerical libraries.
+Memory admission must budget whole cases and transient D-growth peaks. Implement
+shared reservations before overlapping production controllers; current live checks
+do not provide that coordination. No ensemble launch is authorized by this design.
+
 See `ADAPTIVE_PILOT.md` for verified pilot behavior and
 `MEMORY_UPDATE_HANDOFF.md` for memory changes and unfinished work. Do not use
 the generic legacy queue for L6: it defaults to L4 and uses inadequate generic

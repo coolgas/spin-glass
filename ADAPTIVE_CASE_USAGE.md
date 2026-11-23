@@ -9,7 +9,7 @@ remains paused. Read `PROTOCOL_DECISIONS.md`, `PREPRODUCTION_REVIEW.md` and
 From this checkout, with the spin-glass Python environment and `PYTHONPATH=code`:
 
 ```bash
-OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 \
+OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4 NUMEXPR_NUM_THREADS=4 \
 python -B -m rydberg_kagome case \
   --adaptive --no-exact \
   --output /absolute/non-synced/path/to/case \
@@ -20,6 +20,9 @@ python -B -m rydberg_kagome case \
 
 Always provide the explicit L6 ladder: generic CLI/API dimension defaults retain
 their historical values. `--max-sweeps` must remain 120 for adaptive execution.
+The example uses four threads; select threads from actual throughput measurements.
+Production is intended to run concurrent omega cases with multiple CPU cores per
+case. Account for both case concurrency and threads when sizing CPU/memory use.
 `--no-exact` selects the production-scale path; dense exact validation belongs
 to small scientific tests. Do not combine `--adaptive` with `--fixed-production`.
 
@@ -81,11 +84,25 @@ For `test_full_case_supervisor.py`, set TMPDIR to a project-owned directory on
 the data volume: its fixtures exercise the real 64-GiB storage preflight.
 
 The single authorized full-case test uses `scripts/run_adaptive_full_case.py`.
+Use `--threads N` to select per-case numerical-library threads. `--resume` reuses
+the original case after its previous controller has finished; source identity and
+checkpoint checks remain enforced. Earlier logs/status/resource receipts are
+timestamp-archived, and the original 72-hour deadline is retained.
 It applies a 64-GiB address-space ceiling and 72-hour hard timeout while retaining
 the scientific limit of 120 sweeps per start. Its `status.json` records
 `full_case_gate_passed` only when both solver and sampling pass. A passing case
 does not authorize the production campaign. Consult the primary handoff before
 using this supervisor; an owned full-case test may already be active.
+
+`benchmark_adaptive_threads.py` replays one start-sweep from a committed checkpoint
+into a separate timing/energy report. It does not advance the original case.
+`switch_adaptive_threads.py` is an owned one-time transition helper: waits for a
+new committed checkpoint, stops the verified worker, benchmarks 1/2/4/8 threads,
+and resumes with the fastest successful multithreaded setting. Its probe directory
+must not exist, preventing accidental duplicate use. Parallel probes measure under
+shared load and may contend for memory bandwidth; this is a first tuning result,
+not a universal optimal thread count. Keep failure reports and checkpoint state
+if the helper exits without a successful resume.
 
 Tests create temporary small-system data. The actual L6 validation outputs stay
 in the named Ali output directory in the handoff; they are not committed to Git.

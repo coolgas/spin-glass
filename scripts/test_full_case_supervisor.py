@@ -24,7 +24,8 @@ class FullCaseSupervisorTests(unittest.TestCase):
                 (package/'__main__.py').write_text(f'''import sys,json
 from pathlib import Path
 def main():
-    root=Path(sys.argv[sys.argv.index('--output')+1]); root.mkdir()
+    root=Path(sys.argv[sys.argv.index('--output')+1]); root.mkdir(exist_ok=True)
+    (root/'resume.json').write_text('{{}}')
     if {exit_code}: raise SystemExit({exit_code})
     (root/'result.json').write_text(json.dumps(dict(solver_pass={solver},sampling_moment_check={sampling},bond_dimension_verified=False,rg_converged=False,production_qualified=False)))
 ''')
@@ -36,6 +37,15 @@ def main():
                 self.assertEqual(report['full_case_gate_passed'],expected=='converged')
                 self.assertEqual(report['exit_code'],exit_code)
                 self.assertGreater(json.loads((out/'worker-resources.json').read_text())['peak_rss_kib'],0)
+                subprocess.run([sys.executable,'-B',str(script),'--root',str(out),
+                    '--model-cache',str(repo/'cache'),'--resume','--threads','2'],
+                    check=True,capture_output=True,timeout=15)
+                resumed=json.loads((out/'status.json').read_text())
+                self.assertEqual(resumed['threads'],2)
+                self.assertEqual(resumed['original_started'],report['started'])
+                self.assertEqual(resumed['resumed_from_worker'],report['worker'])
+                self.assertEqual(resumed['state'],expected)
+                self.assertEqual(len(list(out.glob('*-worker.log'))),1)
 
 
 if __name__=='__main__': unittest.main()

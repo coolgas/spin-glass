@@ -1,5 +1,25 @@
 # Memory work handoff — 2026-11-23
 
+## Project naming and canonical path — 2026-11-23
+
+The shared Ali project is now **`rydberg-kagome`**, independent of lattice size,
+covering L4, current L6, and future L8 campaigns. Canonical base:
+`/mnt/ali/yty/spin-glasses/rydberg-kagome`.
+The old `rydberg-kagome-l4-pq` path is a compatibility symlink to this directory.
+An atomic directory/symlink exchange preserved the directory inode and continuous
+old-path access. All five production processes were verified live afterward;
+the manifest hash was unchanged. Receipt: `project-path-rename-20261123.json`
+at the canonical project root. Existing commands, Git worktree metadata and
+immutable launch records below remain valid through the compatibility link.
+Use the canonical base for new runs and references. Keep that link while any
+running case, checkpoint or historical provenance depends on the old path.
+Local Git `origin` uses the canonical path:
+`ali:/mnt/ali/yty/spin-glasses/rydberg-kagome/worktrees/l6-pilot-20261120`.
+The post-rename verification found a fresh controller snapshot (about five
+seconds old), four running cases, 7,676 pending and the same manifest SHA-256.
+Git access through the canonical root resolves the production checkout to
+`9ffa6bb22cf4f1dec5e8c421d16c722ed2663f94`.
+
 ## Current override: compact production and 64-GiB admission budget
 
 The user authorized production and diagnostic-only canonical residuals. They
@@ -42,13 +62,13 @@ historical; the original full-case worker/watcher is finished.
 Implementation revision **`9ffa6bb22cf4f1dec5e8c421d16c722ed2663f94`** was pushed
 to Ali `pilot/adaptive-d-20261123` and GitHub `coolgas/spin-glass:ali`; both refs
 were verified. Production uses a clean detached checkout at Ali
-`/mnt/ali/yty/spin-glasses/rydberg-kagome-l4-pq/worktrees/l6-compact-production-20261123-v1`.
+`/mnt/ali/yty/spin-glasses/rydberg-kagome/worktrees/l6-compact-production-20261123-v1`.
 All 57 Python/JSON files under `code/` and `scripts/` matched the successful v4
 validation snapshot by SHA-256. Receipt:
 `outputs/l6-compact-source-verification-20261123-v1.json`.
 
 Campaign root (all output paths absolute and outside synced storage):
-`/mnt/ali/yty/spin-glasses/rydberg-kagome-l4-pq/outputs/l6-full-adaptive-production-20261123-v1`.
+`/mnt/ali/yty/spin-glasses/rydberg-kagome/outputs/l6-full-adaptive-production-20261123-v1`.
 Its `tasks.json` has 7,680 unique cases, including six full-retention audits;
 SHA-256 **`12716ed784d2f69a6bd96b1a0442c5d57f48953da9630e1e5762295e553f4e07`**.
 `launch-provenance.json` records the code revision, manifest hash, physical

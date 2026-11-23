@@ -1,4 +1,8 @@
-# Rydberg kagome L4 P(q): reproducible production and figures
+# Rydberg kagome: simulations, observables and figures
+
+The project covers multiple lattice sizes: the historical L4 dataset, current
+L6 adaptive production, and future L8 campaigns. Use `rydberg-kagome` for the
+shared project and identify lattice size in individual campaign names.
 
 ## L6 adaptive feature branch
 
@@ -6,8 +10,9 @@
 and verified process restart. See [ADAPTIVE_CASE_USAGE.md](ADAPTIVE_CASE_USAGE.md)
 for invocation and restart semantics, [PREPRODUCTION_REVIEW.md](PREPRODUCTION_REVIEW.md)
 for validation, and [MEMORY_UPDATE_HANDOFF.md](MEMORY_UPDATE_HANDOFF.md) for Ali
-outputs and ownership. L6 production remains paused. Source files on this feature
-branch differ from the historical frozen L4 manifest; the snapshot verifier below
+outputs and ownership. L6 production is running from the immutable `9ffa6bb`
+implementation; see the handoff for current paths and launch evidence. Source
+files on this feature branch differ from the historical frozen L4 manifest; the snapshot verifier below
 applies to the baseline release. Keep the L4 manifest and dataset intact.
 
 ## Historical L4 deployment
@@ -19,7 +24,10 @@ Production source: **rydberg-kagome-20261117-v5**. Figure snapshot:
 
 ## Placement on Ali
 
-Project root: `/mnt/ali/yty/spin-glasses/rydberg-kagome-l4-pq/`.
+Project root: `/mnt/ali/yty/spin-glasses/rydberg-kagome/`.
+The former `rydberg-kagome-l4-pq` path is a compatibility symlink. Existing jobs,
+Git worktree metadata and historical provenance can continue to use it. New
+campaigns and documentation should use the canonical project root above.
 
 | Path | Purpose |
 |---|---|

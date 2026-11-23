@@ -20,7 +20,7 @@ python -B -m rydberg_kagome case \
 
 Always provide the explicit L6 ladder: generic CLI/API dimension defaults retain
 their historical values. `--max-sweeps` must remain 120 for adaptive execution.
-The example uses four threads; select threads from actual throughput measurements.
+The example uses the user's selected four threads per omega case.
 Production is intended to run concurrent omega cases with multiple CPU cores per
 case. Account for both case concurrency and threads when sizing CPU/memory use.
 `--no-exact` selects the production-scale path; dense exact validation belongs
@@ -85,6 +85,8 @@ the data volume: its fixtures exercise the real 64-GiB storage preflight.
 
 The single authorized full-case test uses `scripts/run_adaptive_full_case.py`.
 Use `--threads N` to select per-case numerical-library threads. `--resume` reuses
+the existing case; the selected production setting is `--threads 4` (the default).
+For restart, `--resume` reuses
 the original case after its previous controller has finished; source identity and
 checkpoint checks remain enforced. Earlier logs/status/resource receipts are
 timestamp-archived, and the original 72-hour deadline is retained.

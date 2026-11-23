@@ -43,6 +43,13 @@ cases and assign multiple CPU workers/threads to each omega. Do not deploy a
 single-thread-per-case production configuration as the default. For the current
 solver, multiple BLAS/OpenMP threads accelerate each sequential DMRG sweep;
 the two independent starts are another possible process-level parallel unit.
+Final user selection: **four numerical-library threads per omega case**. This
+supersedes automatic selection of eight threads for the active validation case.
+Treat four cores as the total concurrent compute budget per omega; if starts are
+later parallelized, split that budget between them instead of silently doubling
+it. Set OMP/OPENBLAS/MKL/NUMEXPR thread counts consistently to prevent nesting.
+Tune the number of concurrent omega cases within shared CPU and memory headroom;
+do not assume all 32 host CPUs belong to this project.
 Separate processes cannot independently advance the same MPS without an explicit
 parallel algorithm. The present adaptive case still alternates its two starts.
 

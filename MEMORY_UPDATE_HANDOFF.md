@@ -43,6 +43,27 @@ the local source. There is correctly no completed result. Output: 25 files,
 
 ## Authorized full-case convergence test
 
+### User selection: four threads per omega
+
+Switch completed: saved counts [4,3], D128, generation
+`c2d579f971c2480b8aef433dbd5ebed4`. Controller PID 80189, worker PID 80191.
+Verified four live threads, ~336% CPU and OMP/OPENBLAS/MKL/NUMEXPR all set to 4.
+Existing watcher `sh_2064a687d001y5aNeQfeFoOxK7` (remote PID 79688) survived the
+quick handover and follows the current status; retain it, do not create another.
+Original 72-hour deadline and per-start sweep counts remain intact. The switch
+shell has finished successfully. Full convergence remains pending.
+The following transition description is historical; live verification is complete.
+
+The user selected four threads per omega, superseding the eight-thread benchmark
+choice. Owned switch `sh_2064daa2c001QZzrbuDUzWr4W6` waits for the next committed
+checkpoint, stops only verified worker 79488, and resumes this same case with
+`--threads 4`. Last snapshot before switch: D128 and counts [3,3]. The existing
+eight-thread watcher may report intentional -15 termination during the transition.
+No repeat benchmark is needed. Production uses four cores per omega, with omega
+concurrency chosen from shared CPU/memory headroom; parallelizing starts later
+must split the per-omega budget rather than double it. Final live verification
+and replacement watcher will follow completion of the owned switch.
+
 ### Threading switch completed (supersedes one-thread execution below)
 
 All four matched checkpoint probes exited 0. Times for the same second sweep

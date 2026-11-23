@@ -2,12 +2,23 @@
 
 ## Current integration review
 
-Threading update: the authorized full case has resumed with eight threads after
-matched same-checkpoint probes at 1/2/4/8 threads took 155.910/105.822/75.019/63.341 s.
+Current threading: the user selected four threads per omega, and the authorized
+full case resumed with four live threads (controller 80189, worker 80191).
+Production is intended to parallelize omega cases with four cores per case;
+the current solver alternates its two independent starts. The active watcher is
+`sh_2064a687d001y5aNeQfeFoOxK7`; do not duplicate it.
+
+Historical matched same-checkpoint probes at 1/2/4/8 threads took 155.910/105.822/75.019/63.341 s.
 Energy spread <7e-13; peak RSS ~5.53–5.56 GiB. Actual eight-thread CPU use was
 verified. This measures one D128 sweep under shared load, not whole-case scaling
 or the optimal production throughput configuration. The full convergence gate
 remains pending. See the primary handoff for current process/watcher ownership.
+
+Latest timing snapshot: counts [6,5] at D128; actual four-thread sweeps took
+63.24–63.79 s. If D128 and this rate persist, remaining optimization was ~2.3–4.0 h
+at that observation. The rough 2.5–4.5 h planning estimate includes a provisional
+allowance; final sampling/observable cost is unmeasured, and D growth can make
+the run substantially longer. This is not a convergence guarantee.
 
 The adaptive solver is integrated into the production case API and CLI, including
 final moments, sampling and immutable completed-result reuse. Both independent
@@ -45,7 +56,7 @@ identity. Both processes used an 8-GiB address-space cap, one thread and a
 
 The user subsequently required one complete case to converge before production.
 That test is now running separately in `outputs/adaptive-full-case-20261123-v6`,
-supervisor PID 77260, with the same parameters, two independent starts and the
+current supervisor PID 80189, with the same parameters, two independent starts and the
 128/256/384/512 ladder. The unchanged 120-sweep cap applies per start. The single
 worker has RLIMIT_AS=64 GiB and a 72-hour hard deadline; final sampling uses
 20,000 pairs. Solver and sampling must both pass. See the primary handoff for

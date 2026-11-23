@@ -45,6 +45,16 @@ the local source. There is correctly no completed result. Output: 25 files,
 
 ### User selection: four threads per omega
 
+Latest observed timing snapshot (2026-11-23; observation, not a live counter):
+counts [6,5], D128, four threads, ~22 minutes since original launch including
+benchmarking and switches. Completed four-thread sweeps took 63.24–63.79 s.
+At unchanged D128 and this rate, remaining optimization was ~2.3 h to the
+earliest acceptance near 70 sweeps/start, or ~4.0 h to the 120-sweep cap.
+The user-facing planning range was roughly 2.5–4.5 h remaining, but final
+observables/sampling cost is unmeasured and that allowance is provisional.
+Larger D can substantially extend runtime. The first growth decision at sweep
+20/start was ~30 minutes away at this snapshot. This is not a convergence promise.
+
 Switch completed: saved counts [4,3], D128, generation
 `c2d579f971c2480b8aef433dbd5ebed4`. Controller PID 80189, worker PID 80191.
 Verified four live threads, ~336% CPU and OMP/OPENBLAS/MKL/NUMEXPR all set to 4.
@@ -61,10 +71,10 @@ checkpoint, stops only verified worker 79488, and resumes this same case with
 eight-thread watcher may report intentional -15 termination during the transition.
 No repeat benchmark is needed. Production uses four cores per omega, with omega
 concurrency chosen from shared CPU/memory headroom; parallelizing starts later
-must split the per-omega budget rather than double it. Final live verification
-and replacement watcher will follow completion of the owned switch.
+must split the per-omega budget rather than double it. Live verification completed;
+the existing watcher was retained across the handover as recorded above.
 
-### Threading switch completed (supersedes one-thread execution below)
+### Historical eight-thread benchmark and transition
 
 All four matched checkpoint probes exited 0. Times for the same second sweep
 of start 0: 1 thread 155.910 s; 2 threads 105.822 s; 4 threads 75.019 s;
@@ -103,7 +113,8 @@ same scientific source and counters. Probe outputs are under
 `outputs/adaptive-full-case-20261123-v6/thread-benchmark` and never write the
 case restart. Initial worker logs/status/resources are timestamp-archived on
 resume. The 72-hour deadline is retained relative to the original launch.
-New status and an owned watcher will be verified after switch completion.
+The switch and live verification completed; the subsequent four-thread selection
+and current ownership are recorded above.
 Boundary verified at [1,1], generation `2e0deae9402f4349ad48bffd8201bf3b`.
 Probe PIDs 78875/78876/78877/78878 used 1/2/4/8 live threads respectively,
 with measured CPU use ~100/186/342/638 percent at 46 seconds. Switch controller
@@ -115,10 +126,10 @@ Production design is now explicitly omega-parallel plus multithreaded per omega;
 see `PROTOCOL_DECISIONS.md`. The current case still alternates its two starts.
 Shared reservations and a validated production scheduler remain outstanding.
 
-Live worker PID 77262 was verified at one thread, ~100% of one CPU, ~2.7 GiB
+Historical initial launch: worker PID 77262 was verified at one thread, ~100% of one CPU, ~2.7 GiB
 RSS while its first D128 sweep was running. Completion watcher
-`sh_2063f2934001bWACbOVhrkwWAQ` is owned by this session, samples every 120 s,
-and ends on terminal status/controller exit or after 73 hours. Do not duplicate.
+`sh_2063f2934001bWACbOVhrkwWAQ` finished during the first intentional switch.
+It is not the current watcher; use the four-thread ownership record above.
 
 The user now requires at least one full-case convergence before production and
 authorized this test. One separate case was launched, supervisor PID 77260,
@@ -128,7 +139,7 @@ resume demonstration separately. L6, sample 0, full interaction, delta=3.15,
 omega=0.9037538790536807, chi=12, D ladder 128/256/384/512, two starts,
 120 cumulative sweeps/start, 20,000 replica pairs. No accuracy threshold changes.
 
-One compute thread; RLIMIT_AS=64 GiB, live 16-GiB headroom reserve and peak-aware
+Initially one compute thread, now four; RLIMIT_AS=64 GiB, live 16-GiB headroom reserve and peak-aware
 growth admission. Memory cap is not predicted usage or exclusive allocation.
 Preflight observed ~117 GiB available and another user's active compute job.
 Data volume had ~932 GiB free and >65 million free inodes. Supervisor has a

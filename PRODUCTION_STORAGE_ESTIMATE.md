@@ -97,6 +97,10 @@ convention `0.5*(3-mean_dis(m4)/mean_dis(m2)**2)`.
 Current test results and launch ownership are recorded in
 `MEMORY_UPDATE_HANDOFF.md`. Preserve old validation snapshots and cancelled
 retries; no historical result is reinterpreted under the new acceptance policy.
+The final v4 regression passed 39 tests in 82.020 s. Production launched as
+`outputs/l6-full-adaptive-production-20261123-v1` from implementation `9ffa6bb`,
+with four cases admitted initially. Its 7,680-case manifest, source hashes and
+command/environment are recorded in `launch-provenance.json` in that campaign.
 
 Each production worker has a 64-GiB address-space ceiling, a 72-hour graceful
 optimization budget and a 73-hour hard invocation deadline covering finalization

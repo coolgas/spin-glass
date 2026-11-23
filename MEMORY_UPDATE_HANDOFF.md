@@ -32,10 +32,72 @@ missing-artifact classification and cgroup ancestry admission. Evidence is Ali
 `worktrees/compact-production-validation-20261123-v4`. These are operational changes;
 scientific inputs and acceptance thresholds are unchanged. The worker uses a
 64-GiB address-space ceiling, 72-hour graceful optimization budget, and 73-hour
-hard invocation deadline. Production has not launched yet; publication and
-live-worker evidence will be recorded here.
+hard invocation deadline. Production launched from the published implementation;
+the launch record below is authoritative.
 Older paused-authorization, storage and active-process statements below are
 historical; the original full-case worker/watcher is finished.
+
+## Production launch — 2026-11-23
+
+Implementation revision **`9ffa6bb22cf4f1dec5e8c421d16c722ed2663f94`** was pushed
+to Ali `pilot/adaptive-d-20261123` and GitHub `coolgas/spin-glass:ali`; both refs
+were verified. Production uses a clean detached checkout at Ali
+`/mnt/ali/yty/spin-glasses/rydberg-kagome-l4-pq/worktrees/l6-compact-production-20261123-v1`.
+All 57 Python/JSON files under `code/` and `scripts/` matched the successful v4
+validation snapshot by SHA-256. Receipt:
+`outputs/l6-compact-source-verification-20261123-v1.json`.
+
+Campaign root (all output paths absolute and outside synced storage):
+`/mnt/ali/yty/spin-glasses/rydberg-kagome-l4-pq/outputs/l6-full-adaptive-production-20261123-v1`.
+Its `tasks.json` has 7,680 unique cases, including six full-retention audits;
+SHA-256 **`12716ed784d2f69a6bd96b1a0442c5d57f48953da9630e1e5762295e553f4e07`**.
+`launch-provenance.json` records the code revision, manifest hash, physical
+conventions/seeds, environment, storage policy, command and launch identity.
+`initial-worker-verification.json` and `environment-verification.json` preserve
+live limits, thread settings and package versions. Four launch/source/environment
+receipts were downloaded and individually hash-verified into local
+`/Users/tianyiyan/ResearchLocal/spin-glasses/releases/l6-production-launch-20261123-v1`;
+its `transfer-record.json` records source and hashes. This is a launch record,
+not a backup of live campaign outputs.
+The controller PID is **343925**, `/proc` birth identity **28881825**.
+Owner: this authorized OpenCode L6 production launch; other sessions should
+observe or adopt at a natural boundary, without duplicating the controller.
+
+Launch command, from that source with `PYTHONPATH=<source>/code`,
+`PYTHONDONTWRITEBYTECODE=1`, `TMPDIR=<campaign>/tmp` and numerical thread variables 4:
+
+```bash
+/opt/miniconda3/envs/spin-glass/bin/python -B -u -m rydberg_kagome.queue \
+  --manifest /mnt/ali/yty/spin-glasses/rydberg-kagome-l4-pq/outputs/l6-full-adaptive-production-20261123-v1/tasks.json \
+  --output /mnt/ali/yty/spin-glasses/rydberg-kagome-l4-pq/outputs/l6-full-adaptive-production-20261123-v1 \
+  --workers 8
+```
+
+The ceiling is eight; actual admission currently permits **four cases**, owing
+to 24-GiB initial peak reservations and 16-GiB host headroom. Initial workers:
+343929/343930/343931/343932, sample 0, drive indices 0/1, both detunings. All four
+were live with four OS threads, BLAS/OpenMP variables 4, and `RLIMIT_AS=68719476736`
+bytes. Each reached `sweeping`, D128, next sweep 1. Initial allocated campaign size
+was 22,335,488 bytes; filesystem free 984,648,478,720 bytes. No completed production
+case or convergence claim follows from launch.
+
+The owned bounded verification watcher (`sh_208f964bd001l37fNeCWHdEyi2`) finished
+successfully at Unix time **1795447072.660321**: all four initial workers advanced
+to **[1,0]**, D128, and were sweeping start 1. Counts were **4 running / 7,676
+pending**, no completed or failed cases. Receipts: `launch-verification-watcher.json`
+and `launch-progress-verification.json` in the campaign. No watcher remains active.
+At that snapshot load1 was 31.43 and available memory 120,931,766,272 bytes;
+CPU and peak-memory admission both allowed no additional workers. The controller
+continues to evaluate shared resource headroom without changing four threads/case.
+The controller continuously schedules and adopts live worker identities on
+restart. If the controller dies, rerun the exact command/environment from the
+same immutable source and manifest; its exclusive lock prevents duplicate control.
+Do not modify this source or change scientific inputs while the campaign runs.
+
+Higher-D memory is forecast-based; hard limits may block or fail individual
+cases. Failed sampling/checkpoint evidence remains on disk and may pause
+application-budget admission. No filesystem quota was installed. The original
+full test and the three cancelled retries remain untouched and stopped.
 
 ## Canonical-residual diagnostics update
 

@@ -1,8 +1,10 @@
 # Agreed L6 protocol and unresolved validation
 
 Status 2026-11-23: production is authorized, with canonical residuals retained as
-diagnostics. It has not launched; storage/admission and integration validation
-remain in validation. The user selected thirty-sweep restart saves and substantial
+diagnostics. Production launched as `l6-full-adaptive-production-20261123-v1`
+from published implementation `9ffa6bb`; all 39 final v4 tests passed in 82.020 s.
+Four concurrent cases were initially admitted with four threads each. The user
+selected thirty-sweep restart saves and substantial
 SSD capacity remaining afterward. The implementation uses a 64-GiB admission
 budget and six final-wavefunction audit cases; see `PRODUCTION_STORAGE_ESTIMATE.md`.
 
@@ -75,3 +77,5 @@ See `ADAPTIVE_PILOT.md` for verified pilot behavior and
 `MEMORY_UPDATE_HANDOFF.md` for memory changes and unfinished work. Do not use
 older queue revisions for L6. Use the validated adaptive manifest and source
 identity recorded in the handoff, with explicit output and four threads per case.
+That handoff and the campaign's `launch-provenance.json` record ownership and
+the exact command for controller adoption; do not duplicate a live controller.

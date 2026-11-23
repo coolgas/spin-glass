@@ -2,6 +2,13 @@
 
 ## Current integration review
 
+Threading update: the authorized full case has resumed with eight threads after
+matched same-checkpoint probes at 1/2/4/8 threads took 155.910/105.822/75.019/63.341 s.
+Energy spread <7e-13; peak RSS ~5.53–5.56 GiB. Actual eight-thread CPU use was
+verified. This measures one D128 sweep under shared load, not whole-case scaling
+or the optimal production throughput configuration. The full convergence gate
+remains pending. See the primary handoff for current process/watcher ownership.
+
 The adaptive solver is integrated into the production case API and CLI, including
 final moments, sampling and immutable completed-result reuse. Both independent
 starts resume from hash-verified immutable checkpoint generations with source,

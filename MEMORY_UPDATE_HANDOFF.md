@@ -43,7 +43,28 @@ the local source. There is correctly no completed result. Output: 25 files,
 
 ## Authorized full-case convergence test
 
-### Threading change in progress (supersedes one-thread execution below)
+### Threading switch completed (supersedes one-thread execution below)
+
+All four matched checkpoint probes exited 0. Times for the same second sweep
+of start 0: 1 thread 155.910 s; 2 threads 105.822 s; 4 threads 75.019 s;
+8 threads 63.341 s. Eight threads were 2.46x faster than one in this shared-load
+test. Total energy spread was <7e-13; peak RSS ranged 5.53–5.56 GiB. Later-sweep
+single-thread time differs from the ~310-s first sweeps; compare matched sweeps.
+
+The original case resumed with eight threads, controller PID 79487, worker
+PID 79488. Live worker verified at eight threads and ~603% CPU, with all four
+numerical thread environment variables set to 8. Counts [1,1] and D128 were
+preserved. The old -15 exit is an intentional checkpoint-boundary switch.
+Original deadline is retained. Owned completion watcher:
+`sh_2064a687d001y5aNeQfeFoOxK7` (120-s interval, maximum 73 h). Prior watchers
+and the switch controller have finished. Do not duplicate the active watcher.
+
+Production should compare aggregate throughput as well as case latency: eight
+threads minimize measured latency here, but have lower per-core efficiency than
+two/four threads. Omega concurrency, external workload and memory determine the
+production choice; no universal eight-thread recommendation is established.
+
+Historical switch procedure:
 
 The user requires multithreaded cases and omega-parallel production with multiple
 CPU cores per omega. The current case is switching through an owned boundary

@@ -1,5 +1,16 @@
 # Memory work handoff — 2026-11-23
 
+## Latest monitoring update
+
+Watcher SSH `sh_2064a687d001y5aNeQfeFoOxK7` disconnected with a broken pipe.
+The detached solver was unaffected: controller 80189 and four-thread worker
+80191 verified live at saved counts [45,44], D256; status age ~15 s. Its orphan
+monitor PID 79688 was verified and terminated; no solver process was signalled.
+Replacement watcher: `sh_206d6df34001gGwMzREXoFA4Wt`, SSH keepalive every 30 s,
+120-s sampling interval, deadline original launch +73 h. Ownership receipt:
+`outputs/adaptive-full-case-20261123-v6/completion-watcher-replacement.json`.
+This supersedes watcher references below. Do not duplicate the replacement.
+
 ## Latest integration (v6)
 
 The user selected production-case integration, complete resume and bounded
